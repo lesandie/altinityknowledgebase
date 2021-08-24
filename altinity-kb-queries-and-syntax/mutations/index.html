@@ -13,13 +13,13 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://beta.kb.altinity.com/altinity-kb-queries-and-syntax/mutations/" /><meta property="article:section" content="altinity-kb-queries-and-syntax" />
 
-<meta property="article:modified_time" content="2021-08-12T14:22:56-06:00" /><meta property="og:site_name" content="Altinity Beta Knowledgebase" />
+<meta property="article:modified_time" content="2021-08-24T12:30:42-04:00" /><meta property="og:site_name" content="Altinity Beta Knowledgebase" />
 
 <meta itemprop="name" content="Mutations">
 <meta itemprop="description" content="ALTER UPDATE / DELETE
 ">
-<meta itemprop="dateModified" content="2021-08-12T14:22:56-06:00" />
-<meta itemprop="wordCount" content="55">
+<meta itemprop="dateModified" content="2021-08-24T12:30:42-04:00" />
+<meta itemprop="wordCount" content="49">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Mutations"/>
 <meta name="twitter:description" content="ALTER UPDATE / DELETE
@@ -78,7 +78,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.b811d937b4593e77b916f8be6c8c24dc.json"
+  data-offline-search-index-json-src="/offline-search-index.cc963022d0a41520d0e78bb7e456fb76.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -106,7 +106,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.b811d937b4593e77b916f8be6c8c24dc.json"
+  data-offline-search-index-json-src="/offline-search-index.cc963022d0a41520d0e78bb7e456fb76.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -608,17 +608,17 @@
 	       
 	<p>Q. How to know if <code>ALTER TABLE … DELETE/UPDATE mutation ON CLUSTER</code> was finished successfully on all the nodes?</p>
 <p>A. mutation status in system.mutations is local to each replica, so use</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">SELECT hostname(), * FROM clusterAllReplicas(&#39;your_cluster_name&#39;, system.mutations);
--- you can also add WHERE conditions to that query if needed.
-</code></pre></div><p>Look on <code>is_done</code> and <code>latest_fail_reason</code> columns</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#204a87;font-weight:bold">SELECT</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">hostname</span><span style="color:#000;font-weight:bold">(),</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">FROM</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">clusterAllReplicas</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;your_cluster_name&#39;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">system</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">mutations</span><span style="color:#000;font-weight:bold">);</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#8f5902;font-style:italic">-- you can also add WHERE conditions to that query if needed.
+</span></code></pre></div><p>Look on <code>is_done</code> and <code>latest_fail_reason</code> columns</p>
 
 	
 	
 	<div class="text-muted mt-5 pt-3 border-top">
 
     Last modified
-    2021.08.12
-    : <a  href="https://github.com/Altinity/betaknowledgebase/commit/5969b6886e2a31134118f644b6fd2463d98dcb80">General corrections and updates. (5969b68)</a>
+    2021.08.24
+    : <a  href="https://github.com/Altinity/betaknowledgebase/commit/df44ecb84f7a8746942b669ed577329137f95f40">Update mutations.md (df44ecb)</a>
 
 </div>
 
