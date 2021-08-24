@@ -13,13 +13,13 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://beta.kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-zookeeper/altinity-kb-recovering-from-complete-metadata-loss-in-zookeeper/" /><meta property="article:section" content="altinity-kb-setup-and-maintenance" />
 
-<meta property="article:modified_time" content="2021-08-24T12:58:55-04:00" /><meta property="og:site_name" content="Altinity Beta Knowledgebase" />
+<meta property="article:modified_time" content="2021-08-24T12:59:52-04:00" /><meta property="og:site_name" content="Altinity Beta Knowledgebase" />
 
 <meta itemprop="name" content="Recovering from complete metadata loss in ZooKeeper">
 <meta itemprop="description" content="Recovering from complete metadata loss in ZooKeeper
 ">
-<meta itemprop="dateModified" content="2021-08-24T12:58:55-04:00" />
-<meta itemprop="wordCount" content="467">
+<meta itemprop="dateModified" content="2021-08-24T12:59:52-04:00" />
+<meta itemprop="wordCount" content="461">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Recovering from complete metadata loss in ZooKeeper"/>
 <meta name="twitter:description" content="Recovering from complete metadata loss in ZooKeeper
@@ -78,7 +78,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.d433124afbab2519f11ba0396dc9be7f.json"
+  data-offline-search-index-json-src="/offline-search-index.1b5a1ea233a652340147909bffbafe57.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -106,7 +106,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.d433124afbab2519f11ba0396dc9be7f.json"
+  data-offline-search-index-json-src="/offline-search-index.1b5a1ea233a652340147909bffbafe57.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -639,9 +639,15 @@
 <p>In order to restore ZooKeeper we have to solve two tasks. First, we need to restore table metadata in ZooKeeper. Currently, the only way to do it is to recreate the table with the <code>CREATE TABLE DDL</code> statement.</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#204a87;font-weight:bold">CREATE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">TABLE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">table_name</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">...</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">ENGINE</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000">ReplicatedMergeTree</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;zookeeper_path&#39;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#4e9a06">&#39;replica_name&#39;</span><span style="color:#000;font-weight:bold">);</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></code></pre></div><p>The second and more difficult task is to populate zookeeper with information of clickhouse data parts. As mentioned above, ClickHouse stores the reference data about all parts of replicated tables in ZooKeeper, so we have to traverse all partitions and re-attach them to the recovered replicated table in order to fix that.</p>
-<p>{% hint style=&ldquo;info&rdquo; %}
-Starting from ClickHouse version 21.7 there is SYSTEM RESTORE REPLICA command
-{% endhint %}</p>
+
+
+<div class="alert alert-info" role="alert">
+<h4 class="alert-heading">Info</h4>
+
+    Starting from ClickHouse version 21.7 there is SYSTEM RESTORE REPLICA command
+
+</div>
+
 <p><a href="https://altinity.com/blog/a-new-way-to-restore-clickhouse-after-zookeeper-metadata-is-lost" target="_blank">https://altinity.com/blog/a-new-way-to-restore-clickhouse-after-zookeeper-metadata-is-lost</a></p>
 <h2 id="test-case">Test case</h2>
 <p>Let&rsquo;s say we have replicated table <code>table_repl</code>.</p>
@@ -727,7 +733,7 @@ ALTER TABLE table_repl ATTACH PARTITION 2 FROM table_repl_old;
 
     Last modified
     2021.08.24
-    : <a  href="https://github.com/Altinity/betaknowledgebase/commit/090977a7174e8695f3fd559fb914b66c0f3bdeae">Update altinity-kb-recovering-from-complete-metadata-loss-in-zookeeper.md (090977a)</a>
+    : <a  href="https://github.com/Altinity/betaknowledgebase/commit/8921d58b8b791e5f38d35fd510b5fc6450e98fd5">Update altinity-kb-recovering-from-complete-metadata-loss-in-zookeeper.md (8921d58)</a>
 
 </div>
 
