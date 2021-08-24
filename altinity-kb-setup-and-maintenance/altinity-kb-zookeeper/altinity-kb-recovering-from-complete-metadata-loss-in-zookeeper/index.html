@@ -13,13 +13,13 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://beta.kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-zookeeper/altinity-kb-recovering-from-complete-metadata-loss-in-zookeeper/" /><meta property="article:section" content="altinity-kb-setup-and-maintenance" />
 
-<meta property="article:modified_time" content="2021-08-24T12:59:52-04:00" /><meta property="og:site_name" content="Altinity Beta Knowledgebase" />
+<meta property="article:modified_time" content="2021-08-24T14:08:13-06:00" /><meta property="og:site_name" content="Altinity Beta Knowledgebase" />
 
 <meta itemprop="name" content="Recovering from complete metadata loss in ZooKeeper">
 <meta itemprop="description" content="Recovering from complete metadata loss in ZooKeeper
 ">
-<meta itemprop="dateModified" content="2021-08-24T12:59:52-04:00" />
-<meta itemprop="wordCount" content="461">
+<meta itemprop="dateModified" content="2021-08-24T14:08:13-06:00" />
+<meta itemprop="wordCount" content="375">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Recovering from complete metadata loss in ZooKeeper"/>
 <meta name="twitter:description" content="Recovering from complete metadata loss in ZooKeeper
@@ -78,7 +78,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.07cd1c3d6b4f70206ff272aaa8b85ff3.json"
+  data-offline-search-index-json-src="/offline-search-index.1610c312cdc306144441ee61546efd13.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -106,7 +106,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.07cd1c3d6b4f70206ff272aaa8b85ff3.json"
+  data-offline-search-index-json-src="/offline-search-index.1610c312cdc306144441ee61546efd13.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -677,53 +677,53 @@
 <ol>
 <li>
 <p>Detach replicated table.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">DETACH TABLE table_repl;
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000">DETACH</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">TABLE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">table_repl</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></code></pre></div></li>
 <li>
 <p>Save the table’s attach script and change engine of replicated table to non-replicated *mergetree analogue. Table definition is located in the ‘metadata’ folder, ‘<code>/var/lib/clickhouse/metadata/default/table_repl.sql</code>’ in our example. Please make a backup copy and modify the file as follows:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">ATTACH TABLE table_repl
-(
-   `number` UInt32
-)
-ENGINE = ReplicatedMergeTree(&#39;/clickhouse/{cluster}/tables/{shard}/table_repl&#39;, &#39;{replica}&#39;)
-PARTITION BY intDiv(number, 1000)
-ORDER BY number
-SETTINGS index_granularity = 8192
-</code></pre></div><p>Needs to be replaced with this:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">ATTACH TABLE table_repl
-(
-   `number` UInt32
-)
-ENGINE = MergeTree()
-PARTITION BY intDiv(number, 1000)
-ORDER BY number
-SETTINGS index_granularity = 8192
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000">ATTACH</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">TABLE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">table_repl</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000;font-weight:bold">(</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">   </span><span style="color:#ce5c00;font-weight:bold">`</span><span style="color:#204a87">number</span><span style="color:#ce5c00;font-weight:bold">`</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">UInt32</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">ENGINE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">ReplicatedMergeTree</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;/clickhouse/{cluster}/tables/{shard}/table_repl&#39;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;{replica}&#39;</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">PARTITION</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">BY</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">intDiv</span><span style="color:#000;font-weight:bold">(</span><span style="color:#204a87">number</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">1000</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">ORDER</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">BY</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87">number</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">SETTINGS</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">index_granularity</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">8192</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></code></pre></div><p>Needs to be replaced with this:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000">ATTACH</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">TABLE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">table_repl</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000;font-weight:bold">(</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">   </span><span style="color:#ce5c00;font-weight:bold">`</span><span style="color:#204a87">number</span><span style="color:#ce5c00;font-weight:bold">`</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">UInt32</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">ENGINE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">MergeTree</span><span style="color:#000;font-weight:bold">()</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">PARTITION</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">BY</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">intDiv</span><span style="color:#000;font-weight:bold">(</span><span style="color:#204a87">number</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">1000</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">ORDER</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">BY</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87">number</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">SETTINGS</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">index_granularity</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">8192</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></code></pre></div></li>
 <li>
 <p>Attach non-replicated table.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">ATTACH TABLE table_repl;
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000">ATTACH</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">TABLE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">table_repl</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></code></pre></div></li>
 <li>
 <p>Rename non-replicated table.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">RENAME TABLE table_repl TO table_repl_old;
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#204a87;font-weight:bold">RENAME</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">TABLE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">table_repl</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">TO</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">table_repl_old</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></code></pre></div></li>
 <li>
 <p>Create a new replicated table. Take the saved attach script and replace ATTACH with CREATE, and run it.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">CREATE TABLE table_repl
-(
-   `number` UInt32
-)
-ENGINE = ReplicatedMergeTree(&#39;/clickhouse/{cluster}/tables/{shard}/table_repl&#39;, &#39;{replica}&#39;)
-PARTITION BY intDiv(number, 1000)
-ORDER BY number
-SETTINGS index_granularity = 8192
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#204a87;font-weight:bold">CREATE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">TABLE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">table_repl</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000;font-weight:bold">(</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">   </span><span style="color:#ce5c00;font-weight:bold">`</span><span style="color:#204a87">number</span><span style="color:#ce5c00;font-weight:bold">`</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">UInt32</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">ENGINE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">ReplicatedMergeTree</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;/clickhouse/{cluster}/tables/{shard}/table_repl&#39;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;{replica}&#39;</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">PARTITION</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">BY</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">intDiv</span><span style="color:#000;font-weight:bold">(</span><span style="color:#204a87">number</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">1000</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">ORDER</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">BY</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87">number</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">SETTINGS</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">index_granularity</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">8192</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></code></pre></div></li>
 <li>
 <p>Attach parts from old table to new.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">ALTER TABLE table_repl ATTACH PARTITION 1 FROM table_repl_old;
-
-ALTER TABLE table_repl ATTACH PARTITION 2 FROM table_repl_old;
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#204a87;font-weight:bold">ALTER</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">TABLE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">table_repl</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">ATTACH</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">PARTITION</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">FROM</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">table_repl_old</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">ALTER</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">TABLE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">table_repl</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">ATTACH</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">PARTITION</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">2</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">FROM</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">table_repl_old</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></code></pre></div></li>
 </ol>
 <p>If the table has many partitions, it may require some shell script to make it easier.</p>
 <h3 id="automated-approach">Automated approach</h3>
@@ -735,7 +735,7 @@ ALTER TABLE table_repl ATTACH PARTITION 2 FROM table_repl_old;
 
     Last modified
     2021.08.24
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/8921d58b8b791e5f38d35fd510b5fc6450e98fd5">Update altinity-kb-recovering-from-complete-metadata-loss-in-zookeeper.md (8921d58)</a>
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/6fe6a9e5c054b468bc6eee26241652ee5ee65288">Code format corrections. (6fe6a9e)</a>
 
 </div>
 

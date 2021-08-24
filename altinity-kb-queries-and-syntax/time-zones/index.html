@@ -13,13 +13,13 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://beta.kb.altinity.com/altinity-kb-queries-and-syntax/time-zones/" /><meta property="article:section" content="altinity-kb-queries-and-syntax" />
 
-<meta property="article:modified_time" content="2021-08-24T12:59:49-06:00" /><meta property="og:site_name" content="Altinity Beta Knowledgebase" />
+<meta property="article:modified_time" content="2021-08-24T14:08:13-06:00" /><meta property="og:site_name" content="Altinity Beta Knowledgebase" />
 
 <meta itemprop="name" content="Time zones">
 <meta itemprop="description" content="Time zones
 ">
-<meta itemprop="dateModified" content="2021-08-24T12:59:49-06:00" />
-<meta itemprop="wordCount" content="428">
+<meta itemprop="dateModified" content="2021-08-24T14:08:13-06:00" />
+<meta itemprop="wordCount" content="255">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Time zones"/>
 <meta name="twitter:description" content="Time zones
@@ -78,7 +78,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.07cd1c3d6b4f70206ff272aaa8b85ff3.json"
+  data-offline-search-index-json-src="/offline-search-index.1610c312cdc306144441ee61546efd13.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -106,7 +106,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.07cd1c3d6b4f70206ff272aaa8b85ff3.json"
+  data-offline-search-index-json-src="/offline-search-index.1610c312cdc306144441ee61546efd13.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -633,87 +633,87 @@
 <li>clickhouse-client also by default tries to use server timezone (see also <code>--use_client_time_zone</code> flag)</li>
 <li>If you want you can store the timezone name inside the data type, in that case, timestamp &lt;-&gt; human-readable time rules of that timezone will be applied.</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">SELECT
-    timezone(),
-    toDateTime(now()) AS t,
-    toTypeName(t),
-    toDateTime(now(), &#39;UTC&#39;) AS t_utc,
-    toTypeName(t_utc),
-    toUnixTimestamp(t),
-    toUnixTimestamp(t_utc)
-
-Row 1:
-──────
-timezone():                                Europe/Warsaw
-t:                                         2021-07-16 12:50:28
-toTypeName(toDateTime(now())):             DateTime
-t_utc:                                     2021-07-16 10:50:28
-toTypeName(toDateTime(now(), &#39;UTC&#39;)):      DateTime(&#39;UTC&#39;)
-toUnixTimestamp(toDateTime(now())):        1626432628
-toUnixTimestamp(toDateTime(now(), &#39;UTC&#39;)): 1626432628
-</code></pre></div><p>Since version 20.4 clickhouse uses embedded tzdata (see <a href="https://github.com/ClickHouse/ClickHouse/pull/10425" target="_blank">https://github.com/ClickHouse/ClickHouse/pull/10425</a> )</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#204a87;font-weight:bold">SELECT</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#000">timezone</span><span style="color:#000;font-weight:bold">(),</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#000">toDateTime</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">now</span><span style="color:#000;font-weight:bold">())</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">AS</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">t</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#000">toTypeName</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">t</span><span style="color:#000;font-weight:bold">),</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#000">toDateTime</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">now</span><span style="color:#000;font-weight:bold">(),</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;UTC&#39;</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">AS</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">t_utc</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#000">toTypeName</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">t_utc</span><span style="color:#000;font-weight:bold">),</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#000">toUnixTimestamp</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">t</span><span style="color:#000;font-weight:bold">),</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#000">toUnixTimestamp</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">t_utc</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">Row</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">──────</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">timezone</span><span style="color:#000;font-weight:bold">():</span><span style="color:#f8f8f8;text-decoration:underline">                                </span><span style="color:#000">Europe</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">Warsaw</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">t</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">                                         </span><span style="color:#0000cf;font-weight:bold">2021</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#0000cf;font-weight:bold">07</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#0000cf;font-weight:bold">16</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">12</span><span style="color:#000;font-weight:bold">:</span><span style="color:#0000cf;font-weight:bold">50</span><span style="color:#000;font-weight:bold">:</span><span style="color:#0000cf;font-weight:bold">28</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">toTypeName</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">toDateTime</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">now</span><span style="color:#000;font-weight:bold">())):</span><span style="color:#f8f8f8;text-decoration:underline">             </span><span style="color:#000">DateTime</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">t_utc</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">                                     </span><span style="color:#0000cf;font-weight:bold">2021</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#0000cf;font-weight:bold">07</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#0000cf;font-weight:bold">16</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">10</span><span style="color:#000;font-weight:bold">:</span><span style="color:#0000cf;font-weight:bold">50</span><span style="color:#000;font-weight:bold">:</span><span style="color:#0000cf;font-weight:bold">28</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">toTypeName</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">toDateTime</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">now</span><span style="color:#000;font-weight:bold">(),</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;UTC&#39;</span><span style="color:#000;font-weight:bold">)):</span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#000">DateTime</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;UTC&#39;</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">toUnixTimestamp</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">toDateTime</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">now</span><span style="color:#000;font-weight:bold">())):</span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#0000cf;font-weight:bold">1626432628</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">toUnixTimestamp</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">toDateTime</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">now</span><span style="color:#000;font-weight:bold">(),</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;UTC&#39;</span><span style="color:#000;font-weight:bold">)):</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">1626432628</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></code></pre></div><p>Since version 20.4 clickhouse uses embedded tzdata (see <a href="https://github.com/ClickHouse/ClickHouse/pull/10425" target="_blank">https://github.com/ClickHouse/ClickHouse/pull/10425</a> )</p>
 <p>You get used tzdata version</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">SELECT *
-FROM system.build_options
-WHERE name = &#39;TZDATA_VERSION&#39;
-
-Query id: 0a9883f0-dadf-4fb1-8b42-8fe93f561430
-
-┌─name───────────┬─value─┐
-│ TZDATA_VERSION │ 2020e │
-└────────────────┴───────┘
-</code></pre></div><p>and list of available time zones</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">SELECT *
-FROM system.time_zones
-WHERE time_zone LIKE &#39;%Anta%&#39;
-
-Query id: 855453d7-eccd-44cb-9631-f63bb02a273c
-
-┌─time_zone─────────────────┐
-│ Antarctica/Casey          │
-│ Antarctica/Davis          │
-│ Antarctica/DumontDUrville │
-│ Antarctica/Macquarie      │
-│ Antarctica/Mawson         │
-│ Antarctica/McMurdo        │
-│ Antarctica/Palmer         │
-│ Antarctica/Rothera        │
-│ Antarctica/South_Pole     │
-│ Antarctica/Syowa          │
-│ Antarctica/Troll          │
-│ Antarctica/Vostok         │
-│ Indian/Antananarivo       │
-└───────────────────────────┘
-
-13 rows in set. Elapsed: 0.002 sec.
-
-</code></pre></div><h3 id="when-the-conversion-using-different-rules-happen">When the conversion using different rules happen</h3>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">SELECT timezone()
-
-┌─timezone()─┐
-│ UTC        │
-└────────────┘
-
-create table t_with_dt_utc ( ts DateTime64(3,&#39;Europe/Moscow&#39;) ) engine=Log;
-
-create table x (ts String) engine=Null;
-
-create materialized view x_mv to t_with_dt_utc as select parseDateTime64BestEffort(ts) as ts from x;
-
-$ echo &#39;2021-07-15T05:04:23.733&#39; | clickhouse-client -q &#39;insert into t_with_dt_utc format CSV&#39;
--- here client checks the type of the columns, see that it&#39;s &#39;Europe/Moscow&#39; and use conversion according to moscow rules
-
-$ echo &#39;2021-07-15T05:04:23.733&#39; | clickhouse-client -q &#39;insert into x format CSV&#39;
--- here client check tha type of the columns (it is string), and pass string value to the server.
--- parseDateTime64BestEffort(ts) uses server default timezone (UTC in my case), and convert the value using UTC rules.
--- and the result is 2 different timestamps (when i selecting from that is shows both in &#39;desired&#39; timezone, forced by column type, i.e. Moscow):
-
-SELECT * FROM t_with_dt_utc
-┌──────────────────────ts─┐
-│ 2021-07-15 05:04:23.733 │
-│ 2021-07-15 08:04:23.733 │
-└─────────────────────────┘
-</code></pre></div><p>Best practice here: use UTC timezone everywhere, OR use the same default timezone for clickhouse server as used by your data</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#204a87;font-weight:bold">SELECT</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">FROM</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">system</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">build_options</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">WHERE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">name</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;TZDATA_VERSION&#39;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">Query</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">id</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000">a9883f0</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">dadf</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#0000cf;font-weight:bold">4</span><span style="color:#000">fb1</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#0000cf;font-weight:bold">8</span><span style="color:#000">b42</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#0000cf;font-weight:bold">8</span><span style="color:#000">fe93f561430</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">┌─</span><span style="color:#000">name</span><span style="color:#a40000">───────────┬─</span><span style="color:#000">value</span><span style="color:#a40000">─┐</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">TZDATA_VERSION</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">2020</span><span style="color:#000">e</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">└────────────────┴───────┘</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></code></pre></div><p>and list of available time zones</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#204a87;font-weight:bold">SELECT</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">FROM</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">system</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">time_zones</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">WHERE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">time_zone</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">LIKE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;%Anta%&#39;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">Query</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">id</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">855453</span><span style="color:#000">d7</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">eccd</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#0000cf;font-weight:bold">44</span><span style="color:#000">cb</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#0000cf;font-weight:bold">9631</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">f63bb02a273c</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">┌─</span><span style="color:#000">time_zone</span><span style="color:#a40000">─────────────────┐</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Antarctica</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">Casey</span><span style="color:#f8f8f8;text-decoration:underline">          </span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Antarctica</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">Davis</span><span style="color:#f8f8f8;text-decoration:underline">          </span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Antarctica</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">DumontDUrville</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Antarctica</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">Macquarie</span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Antarctica</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">Mawson</span><span style="color:#f8f8f8;text-decoration:underline">         </span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Antarctica</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">McMurdo</span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Antarctica</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">Palmer</span><span style="color:#f8f8f8;text-decoration:underline">         </span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Antarctica</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">Rothera</span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Antarctica</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">South_Pole</span><span style="color:#f8f8f8;text-decoration:underline">     </span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Antarctica</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">Syowa</span><span style="color:#f8f8f8;text-decoration:underline">          </span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Antarctica</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">Troll</span><span style="color:#f8f8f8;text-decoration:underline">          </span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Antarctica</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">Vostok</span><span style="color:#f8f8f8;text-decoration:underline">         </span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Indian</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">Antananarivo</span><span style="color:#f8f8f8;text-decoration:underline">       </span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">└───────────────────────────┘</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#0000cf;font-weight:bold">13</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">rows</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">in</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">set</span><span style="color:#000;font-weight:bold">.</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Elapsed</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">.</span><span style="color:#0000cf;font-weight:bold">002</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">sec</span><span style="color:#000;font-weight:bold">.</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></code></pre></div><h3 id="when-the-conversion-using-different-rules-happen">When the conversion using different rules happen</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#204a87;font-weight:bold">SELECT</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">timezone</span><span style="color:#000;font-weight:bold">()</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">┌─</span><span style="color:#000">timezone</span><span style="color:#000;font-weight:bold">()</span><span style="color:#a40000">─┐</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">UTC</span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">└────────────┘</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">create</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">table</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">t_with_dt_utc</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">(</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">ts</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">DateTime64</span><span style="color:#000;font-weight:bold">(</span><span style="color:#0000cf;font-weight:bold">3</span><span style="color:#000;font-weight:bold">,</span><span style="color:#4e9a06">&#39;Europe/Moscow&#39;</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">engine</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000">Log</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">create</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">table</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">x</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">ts</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">String</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">engine</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#204a87;font-weight:bold">Null</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">create</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">materialized</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">view</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">x_mv</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">to</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">t_with_dt_utc</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">as</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">select</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">parseDateTime64BestEffort</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">ts</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">as</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">ts</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">from</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">x</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">$</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">echo</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;2021-07-15T05:04:23.733&#39;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">|</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">clickhouse</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">client</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">q</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;insert into t_with_dt_utc format CSV&#39;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#8f5902;font-style:italic">-- here client checks the type of the columns, see that it&#39;s &#39;Europe/Moscow&#39; and use conversion according to moscow rules
+</span><span style="color:#8f5902;font-style:italic"></span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">$</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">echo</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;2021-07-15T05:04:23.733&#39;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">|</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">clickhouse</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">client</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">q</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;insert into x format CSV&#39;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#8f5902;font-style:italic">-- here client check tha type of the columns (it is string), and pass string value to the server.
+</span><span style="color:#8f5902;font-style:italic">-- parseDateTime64BestEffort(ts) uses server default timezone (UTC in my case), and convert the value using UTC rules.
+</span><span style="color:#8f5902;font-style:italic">-- and the result is 2 different timestamps (when i selecting from that is shows both in &#39;desired&#39; timezone, forced by column type, i.e. Moscow):
+</span><span style="color:#8f5902;font-style:italic"></span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">SELECT</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">FROM</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">t_with_dt_utc</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">┌──────────────────────</span><span style="color:#000">ts</span><span style="color:#a40000">─┐</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">2021</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#0000cf;font-weight:bold">07</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#0000cf;font-weight:bold">15</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">05</span><span style="color:#000;font-weight:bold">:</span><span style="color:#0000cf;font-weight:bold">04</span><span style="color:#000;font-weight:bold">:</span><span style="color:#0000cf;font-weight:bold">23</span><span style="color:#000;font-weight:bold">.</span><span style="color:#0000cf;font-weight:bold">733</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">2021</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#0000cf;font-weight:bold">07</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#0000cf;font-weight:bold">15</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">08</span><span style="color:#000;font-weight:bold">:</span><span style="color:#0000cf;font-weight:bold">04</span><span style="color:#000;font-weight:bold">:</span><span style="color:#0000cf;font-weight:bold">23</span><span style="color:#000;font-weight:bold">.</span><span style="color:#0000cf;font-weight:bold">733</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">└─────────────────────────┘</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></code></pre></div><p>Best practice here: use UTC timezone everywhere, OR use the same default timezone for clickhouse server as used by your data</p>
 
 	
 	
@@ -721,7 +721,7 @@ SELECT * FROM t_with_dt_utc
 
     Last modified
     2021.08.24
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/5cdec4106d860a1959fafa170ad6998be341a087">Format corrections and spell checks. (5cdec41)</a>
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/6fe6a9e5c054b468bc6eee26241652ee5ee65288">Code format corrections. (6fe6a9e)</a>
 
 </div>
 

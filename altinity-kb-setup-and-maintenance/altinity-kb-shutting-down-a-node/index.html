@@ -13,13 +13,13 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://beta.kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-shutting-down-a-node/" /><meta property="article:section" content="altinity-kb-setup-and-maintenance" />
 
-<meta property="article:modified_time" content="2021-08-12T14:22:56-06:00" /><meta property="og:site_name" content="Altinity Beta Knowledgebase" />
+<meta property="article:modified_time" content="2021-08-24T14:08:13-06:00" /><meta property="og:site_name" content="Altinity Beta Knowledgebase" />
 
 <meta itemprop="name" content="Shutting down a node">
 <meta itemprop="description" content="Shutting down a node
 ">
-<meta itemprop="dateModified" content="2021-08-12T14:22:56-06:00" />
-<meta itemprop="wordCount" content="107">
+<meta itemprop="dateModified" content="2021-08-24T14:08:13-06:00" />
+<meta itemprop="wordCount" content="103">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Shutting down a node"/>
 <meta name="twitter:description" content="Shutting down a node
@@ -78,7 +78,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.07cd1c3d6b4f70206ff272aaa8b85ff3.json"
+  data-offline-search-index-json-src="/offline-search-index.1610c312cdc306144441ee61546efd13.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -106,7 +106,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.07cd1c3d6b4f70206ff272aaa8b85ff3.json"
+  data-offline-search-index-json-src="/offline-search-index.1610c312cdc306144441ee61546efd13.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -626,12 +626,12 @@
 <li>
 <p>Wait until all already running queries would finish execution on it.
 It’s possible to check it via query:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">SHOW PROCESSLIST;
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#204a87;font-weight:bold">SHOW</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">PROCESSLIST</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></code></pre></div></li>
 <li>
 <p>Run sync replica query in related shard replicas via query:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">SYSTEM SYNC REPLICA db.table;
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#204a87;font-weight:bold">SYSTEM</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">SYNC</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">REPLICA</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">db</span><span style="color:#000;font-weight:bold">.</span><span style="color:#204a87;font-weight:bold">table</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></code></pre></div></li>
 <li>
 <p>Shutdown server.</p>
 </li>
@@ -644,8 +644,8 @@ It’s possible to check it via query:</p>
 	<div class="text-muted mt-5 pt-3 border-top">
 
     Last modified
-    2021.08.12
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/5969b6886e2a31134118f644b6fd2463d98dcb80">General corrections and updates. (5969b68)</a>
+    2021.08.24
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/6fe6a9e5c054b468bc6eee26241652ee5ee65288">Code format corrections. (6fe6a9e)</a>
 
 </div>
 

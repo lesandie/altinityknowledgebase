@@ -13,12 +13,12 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://beta.kb.altinity.com/altinity-kb-integrations/altinity-kb-kafka/altinity-kb-kafka-parallel-consuming/" /><meta property="article:section" content="altinity-kb-integrations" />
 
-<meta property="article:modified_time" content="2021-08-12T14:22:56-06:00" /><meta property="og:site_name" content="Altinity Beta Knowledgebase" />
+<meta property="article:modified_time" content="2021-08-24T14:08:13-06:00" /><meta property="og:site_name" content="Altinity Beta Knowledgebase" />
 
 <meta itemprop="name" content="Kafka parallel consuming">
 <meta itemprop="description" content="Kafka parallel consuming
 ">
-<meta itemprop="dateModified" content="2021-08-12T14:22:56-06:00" />
+<meta itemprop="dateModified" content="2021-08-24T14:08:13-06:00" />
 <meta itemprop="wordCount" content="78">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Kafka parallel consuming"/>
@@ -78,7 +78,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.07cd1c3d6b4f70206ff272aaa8b85ff3.json"
+  data-offline-search-index-json-src="/offline-search-index.1610c312cdc306144441ee61546efd13.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -106,7 +106,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.07cd1c3d6b4f70206ff272aaa8b85ff3.json"
+  data-offline-search-index-json-src="/offline-search-index.1610c312cdc306144441ee61546efd13.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -625,8 +625,8 @@
 	
 	       
 	<p>For very large topics when you need more parallelism (especially on the insert side) you may use several tables with the same pipeline (pre 20.9) or enable <code>kafka_thread_per_consumer</code> (after 20.9).</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">kafka_num_consumers = N,
-kafka_thread_per_consumer=1
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ini" data-lang="ini"><span style="color:#c4a000">kafka_num_consumers</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">N,</span>
+<span style="color:#c4a000">kafka_thread_per_consumer</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">1</span>
 </code></pre></div><p>Notes:</p>
 <ul>
 <li>the inserts will happen in parallel (without that setting inserts happen linearly)</li>
@@ -639,8 +639,8 @@ kafka_thread_per_consumer=1
 	<div class="text-muted mt-5 pt-3 border-top">
 
     Last modified
-    2021.08.12
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/5969b6886e2a31134118f644b6fd2463d98dcb80">General corrections and updates. (5969b68)</a>
+    2021.08.24
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/6fe6a9e5c054b468bc6eee26241652ee5ee65288">Code format corrections. (6fe6a9e)</a>
 
 </div>
 

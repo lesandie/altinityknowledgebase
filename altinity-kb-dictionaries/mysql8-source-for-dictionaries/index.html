@@ -13,12 +13,12 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://beta.kb.altinity.com/altinity-kb-dictionaries/mysql8-source-for-dictionaries/" /><meta property="article:section" content="altinity-kb-dictionaries" />
 
-<meta property="article:modified_time" content="2021-08-12T14:22:56-06:00" /><meta property="og:site_name" content="Altinity Beta Knowledgebase" />
+<meta property="article:modified_time" content="2021-08-24T14:08:13-06:00" /><meta property="og:site_name" content="Altinity Beta Knowledgebase" />
 
 <meta itemprop="name" content="MySQL8 source for dictionaries">
 <meta itemprop="description" content="MySQL8 source for dictionaries
 ">
-<meta itemprop="dateModified" content="2021-08-12T14:22:56-06:00" />
+<meta itemprop="dateModified" content="2021-08-24T14:08:13-06:00" />
 <meta itemprop="wordCount" content="95">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="MySQL8 source for dictionaries"/>
@@ -78,7 +78,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.07cd1c3d6b4f70206ff272aaa8b85ff3.json"
+  data-offline-search-index-json-src="/offline-search-index.1610c312cdc306144441ee61546efd13.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -106,7 +106,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.07cd1c3d6b4f70206ff272aaa8b85ff3.json"
+  data-offline-search-index-json-src="/offline-search-index.1610c312cdc306144441ee61546efd13.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -627,8 +627,8 @@
 <p>As an example, in ClickHouse, run <code>SHOW TABLE STATUS LIKE 'table_name'</code> and try to figure out was table schema changed or not from MySQL response field <code>Update_time</code>.</p>
 <p>By default, to properly data loading from MySQL8 source to dictionaries, please turn off the <code>information_schema</code> cache.</p>
 <p>You can change default behavior with create <code>/etc/mysql/conf.d/information_schema_cache.cnf</code>with following content:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">[mysqld]
-information_schema_stats_expiry=0
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ini" data-lang="ini"><span style="color:#204a87;font-weight:bold">[mysqld]</span>
+<span style="color:#c4a000">information_schema_stats_expiry</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">0</span>
 </code></pre></div><p>Or setup it via SQL query:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#204a87;font-weight:bold">SET</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">GLOBAL</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">information_schema_stats_expiry</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></code></pre></div>
@@ -637,8 +637,8 @@ information_schema_stats_expiry=0
 	<div class="text-muted mt-5 pt-3 border-top">
 
     Last modified
-    2021.08.12
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/5969b6886e2a31134118f644b6fd2463d98dcb80">General corrections and updates. (5969b68)</a>
+    2021.08.24
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/6fe6a9e5c054b468bc6eee26241652ee5ee65288">Code format corrections. (6fe6a9e)</a>
 
 </div>
 

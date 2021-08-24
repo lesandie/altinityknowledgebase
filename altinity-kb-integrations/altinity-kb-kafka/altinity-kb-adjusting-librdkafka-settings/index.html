@@ -13,12 +13,12 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://beta.kb.altinity.com/altinity-kb-integrations/altinity-kb-kafka/altinity-kb-adjusting-librdkafka-settings/" /><meta property="article:section" content="altinity-kb-integrations" />
 
-<meta property="article:modified_time" content="2021-08-12T14:22:56-06:00" /><meta property="og:site_name" content="Altinity Beta Knowledgebase" />
+<meta property="article:modified_time" content="2021-08-24T14:08:13-06:00" /><meta property="og:site_name" content="Altinity Beta Knowledgebase" />
 
 <meta itemprop="name" content="Adjusting librdkafka settings">
 <meta itemprop="description" content="Adjusting librdkafka settings
 ">
-<meta itemprop="dateModified" content="2021-08-12T14:22:56-06:00" />
+<meta itemprop="dateModified" content="2021-08-24T14:08:13-06:00" />
 <meta itemprop="wordCount" content="201">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Adjusting librdkafka settings"/>
@@ -78,7 +78,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.07cd1c3d6b4f70206ff272aaa8b85ff3.json"
+  data-offline-search-index-json-src="/offline-search-index.1610c312cdc306144441ee61546efd13.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -106,7 +106,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.07cd1c3d6b4f70206ff272aaa8b85ff3.json"
+  data-offline-search-index-json-src="/offline-search-index.1610c312cdc306144441ee61546efd13.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -708,28 +708,28 @@
     &lt;sasl_kerberos_principal&gt;kafkauser/kafkahost@EXAMPLE.COM&lt;/sasl_kerberos_principal&gt;
   &lt;/kafka&gt;
 </code></pre><h3 id="confluent-cloud">confluent cloud</h3>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">    &lt;yandex&gt;
-        &lt;kafka&gt;
-        &lt;auto_offset_reset&gt;smallest&lt;/auto_offset_reset&gt;
-        &lt;security_protocol&gt;SASL_SSL&lt;/security_protocol&gt;
-        &lt;ssl_endpoint_identification_algorithm&gt;https&lt;/ssl_endpoint_identification_algorithm&gt;
-        &lt;sasl_mechanism&gt;PLAIN&lt;/sasl_mechanism&gt;
-        &lt;sasl_username&gt;username&lt;/sasl_username&gt;
-        &lt;sasl_password&gt;password&lt;/sasl_password&gt;
-        &lt;ssl_ca_location&gt;probe&lt;/ssl_ca_location&gt;
-        &lt;!--
-          &lt;ssl_ca_location&gt;/path/to/cert.pem&lt;/ssl_ca_location&gt;      
-        --&gt;
-        &lt;/kafka&gt;
-    &lt;/yandex&gt;
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml">    <span style="color:#204a87;font-weight:bold">&lt;yandex&gt;</span>
+        <span style="color:#204a87;font-weight:bold">&lt;kafka&gt;</span>
+        <span style="color:#204a87;font-weight:bold">&lt;auto_offset_reset&gt;</span>smallest<span style="color:#204a87;font-weight:bold">&lt;/auto_offset_reset&gt;</span>
+        <span style="color:#204a87;font-weight:bold">&lt;security_protocol&gt;</span>SASL_SSL<span style="color:#204a87;font-weight:bold">&lt;/security_protocol&gt;</span>
+        <span style="color:#204a87;font-weight:bold">&lt;ssl_endpoint_identification_algorithm&gt;</span>https<span style="color:#204a87;font-weight:bold">&lt;/ssl_endpoint_identification_algorithm&gt;</span>
+        <span style="color:#204a87;font-weight:bold">&lt;sasl_mechanism&gt;</span>PLAIN<span style="color:#204a87;font-weight:bold">&lt;/sasl_mechanism&gt;</span>
+        <span style="color:#204a87;font-weight:bold">&lt;sasl_username&gt;</span>username<span style="color:#204a87;font-weight:bold">&lt;/sasl_username&gt;</span>
+        <span style="color:#204a87;font-weight:bold">&lt;sasl_password&gt;</span>password<span style="color:#204a87;font-weight:bold">&lt;/sasl_password&gt;</span>
+        <span style="color:#204a87;font-weight:bold">&lt;ssl_ca_location&gt;</span>probe<span style="color:#204a87;font-weight:bold">&lt;/ssl_ca_location&gt;</span>
+        <span style="color:#8f5902;font-style:italic">&lt;!--
+</span><span style="color:#8f5902;font-style:italic">          &lt;ssl_ca_location&gt;/path/to/cert.pem&lt;/ssl_ca_location&gt;      
+</span><span style="color:#8f5902;font-style:italic">        --&gt;</span>
+        <span style="color:#204a87;font-weight:bold">&lt;/kafka&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;/yandex&gt;</span>
 </code></pre></div><p><a href="https://docs.confluent.io/cloud/current/client-apps/config-client.html" target="_blank">https://docs.confluent.io/cloud/current/client-apps/config-client.html</a></p>
 <h2 id="how-to-test-connection-settings">How to test connection settings</h2>
 <p>Use kafkacat utility - it internally uses same library to access Kafla as clickhouse itself and allows easily to test different settings.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">kafkacat -b my_broker:9092 -C -o -10 -t my_topic \
-   -X security.protocol=SASL_SSL  \
-   -X sasl.mechanisms=PLAIN \
-   -X sasl.username=uerName \
-   -X sasl.password=Password
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kafkacat -b my_broker:9092 -C -o -10 -t my_topic <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>   -X security.protocol<span style="color:#ce5c00;font-weight:bold">=</span>SASL_SSL  <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>   -X sasl.mechanisms<span style="color:#ce5c00;font-weight:bold">=</span>PLAIN <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>   -X sasl.username<span style="color:#ce5c00;font-weight:bold">=</span>uerName <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>   -X sasl.password<span style="color:#ce5c00;font-weight:bold">=</span>Password
 
 </code></pre></div>
 	
@@ -737,8 +737,8 @@
 	<div class="text-muted mt-5 pt-3 border-top">
 
     Last modified
-    2021.08.12
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/5969b6886e2a31134118f644b6fd2463d98dcb80">General corrections and updates. (5969b68)</a>
+    2021.08.24
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/6fe6a9e5c054b468bc6eee26241652ee5ee65288">Code format corrections. (6fe6a9e)</a>
 
 </div>
 

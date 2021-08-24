@@ -92,28 +92,28 @@
     &amp;lt;sasl_kerberos_principal&amp;gt;kafkauser/kafkahost@EXAMPLE.COM&amp;lt;/sasl_kerberos_principal&amp;gt;
   &amp;lt;/kafka&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;confluent-cloud&#34;&gt;confluent cloud&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;    &amp;lt;yandex&amp;gt;
-        &amp;lt;kafka&amp;gt;
-        &amp;lt;auto_offset_reset&amp;gt;smallest&amp;lt;/auto_offset_reset&amp;gt;
-        &amp;lt;security_protocol&amp;gt;SASL_SSL&amp;lt;/security_protocol&amp;gt;
-        &amp;lt;ssl_endpoint_identification_algorithm&amp;gt;https&amp;lt;/ssl_endpoint_identification_algorithm&amp;gt;
-        &amp;lt;sasl_mechanism&amp;gt;PLAIN&amp;lt;/sasl_mechanism&amp;gt;
-        &amp;lt;sasl_username&amp;gt;username&amp;lt;/sasl_username&amp;gt;
-        &amp;lt;sasl_password&amp;gt;password&amp;lt;/sasl_password&amp;gt;
-        &amp;lt;ssl_ca_location&amp;gt;probe&amp;lt;/ssl_ca_location&amp;gt;
-        &amp;lt;!--
-          &amp;lt;ssl_ca_location&amp;gt;/path/to/cert.pem&amp;lt;/ssl_ca_location&amp;gt;      
-        --&amp;gt;
-        &amp;lt;/kafka&amp;gt;
-    &amp;lt;/yandex&amp;gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-xml&#34; data-lang=&#34;xml&#34;&gt;    &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;yandex&amp;gt;&lt;/span&gt;
+        &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;kafka&amp;gt;&lt;/span&gt;
+        &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;auto_offset_reset&amp;gt;&lt;/span&gt;smallest&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/auto_offset_reset&amp;gt;&lt;/span&gt;
+        &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;security_protocol&amp;gt;&lt;/span&gt;SASL_SSL&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/security_protocol&amp;gt;&lt;/span&gt;
+        &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;ssl_endpoint_identification_algorithm&amp;gt;&lt;/span&gt;https&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/ssl_endpoint_identification_algorithm&amp;gt;&lt;/span&gt;
+        &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;sasl_mechanism&amp;gt;&lt;/span&gt;PLAIN&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/sasl_mechanism&amp;gt;&lt;/span&gt;
+        &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;sasl_username&amp;gt;&lt;/span&gt;username&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/sasl_username&amp;gt;&lt;/span&gt;
+        &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;sasl_password&amp;gt;&lt;/span&gt;password&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/sasl_password&amp;gt;&lt;/span&gt;
+        &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;ssl_ca_location&amp;gt;&lt;/span&gt;probe&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/ssl_ca_location&amp;gt;&lt;/span&gt;
+        &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;&amp;lt;!--
+&lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;          &amp;lt;ssl_ca_location&amp;gt;/path/to/cert.pem&amp;lt;/ssl_ca_location&amp;gt;      
+&lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;        --&amp;gt;&lt;/span&gt;
+        &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/kafka&amp;gt;&lt;/span&gt;
+    &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/yandex&amp;gt;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;a href=&#34;https://docs.confluent.io/cloud/current/client-apps/config-client.html&#34; target=&#34;_blank&#34;&gt;https://docs.confluent.io/cloud/current/client-apps/config-client.html&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&#34;how-to-test-connection-settings&#34;&gt;How to test connection settings&lt;/h2&gt;
 &lt;p&gt;Use kafkacat utility - it internally uses same library to access Kafla as clickhouse itself and allows easily to test different settings.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;kafkacat -b my_broker:9092 -C -o -10 -t my_topic \
-   -X security.protocol=SASL_SSL  \
-   -X sasl.mechanisms=PLAIN \
-   -X sasl.username=uerName \
-   -X sasl.password=Password
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;kafkacat -b my_broker:9092 -C -o -10 -t my_topic &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;   -X security.protocol&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;SASL_SSL  &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;   -X sasl.mechanisms&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;PLAIN &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;   -X sasl.username&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;uerName &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;   -X sasl.password&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;Password
 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
       </description>
@@ -242,8 +242,8 @@
         
         
         &lt;p&gt;For very large topics when you need more parallelism (especially on the insert side) you may use several tables with the same pipeline (pre 20.9) or enable &lt;code&gt;kafka_thread_per_consumer&lt;/code&gt; (after 20.9).&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;kafka_num_consumers = N,
-kafka_thread_per_consumer=1
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-ini&#34; data-lang=&#34;ini&#34;&gt;&lt;span style=&#34;color:#c4a000&#34;&gt;kafka_num_consumers&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;N,&lt;/span&gt;
+&lt;span style=&#34;color:#c4a000&#34;&gt;kafka_thread_per_consumer&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;1&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Notes:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;the inserts will happen in parallel (without that setting inserts happen linearly)&lt;/li&gt;
