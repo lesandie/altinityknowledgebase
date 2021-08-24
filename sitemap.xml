@@ -5,9 +5,6 @@
     <loc>http://beta.kb.altinity.com/altinity-kb-queries-and-syntax/sampling-example/</loc>
     <lastmod>2021-08-12T14:22:56-06:00</lastmod>
   </url><url>
-    <loc>http://beta.kb.altinity.com/altinity-kb-queries-and-syntax/ttl/ttl-group-by-examples/</loc>
-    <lastmod>2021-08-12T14:22:56-06:00</lastmod>
-  </url><url>
     <loc>http://beta.kb.altinity.com/altinity-kb-queries-and-syntax/ttl/ttl-recompress-example/</loc>
     <lastmod>2021-08-12T14:22:56-06:00</lastmod>
   </url><url>
@@ -427,6 +424,9 @@
   </url><url>
     <loc>http://beta.kb.altinity.com/altinity-kb-queries-and-syntax/ttl/</loc>
     <lastmod>2021-08-12T14:22:56-06:00</lastmod>
+  </url><url>
+    <loc>http://beta.kb.altinity.com/altinity-kb-queries-and-syntax/ttl/ttl-group-by-examples/</loc>
+    <lastmod>2021-08-24T12:37:38-04:00</lastmod>
   </url><url>
     <loc>http://beta.kb.altinity.com/altinity-kb-queries-and-syntax/update-via-dictionary/</loc>
     <lastmod>2021-08-12T14:22:56-06:00</lastmod>
