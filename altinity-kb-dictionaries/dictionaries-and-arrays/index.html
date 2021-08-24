@@ -13,13 +13,13 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://beta.kb.altinity.com/altinity-kb-dictionaries/dictionaries-and-arrays/" /><meta property="article:section" content="altinity-kb-dictionaries" />
 
-<meta property="article:modified_time" content="2021-08-24T12:12:43-04:00" /><meta property="og:site_name" content="Altinity Beta Knowledgebase" />
+<meta property="article:modified_time" content="2021-08-24T12:14:32-04:00" /><meta property="og:site_name" content="Altinity Beta Knowledgebase" />
 
 <meta itemprop="name" content="Dictionaries &amp; arrays">
 <meta itemprop="description" content="Dictionaries &amp; arrays
 ">
-<meta itemprop="dateModified" content="2021-08-24T12:12:43-04:00" />
-<meta itemprop="wordCount" content="42">
+<meta itemprop="dateModified" content="2021-08-24T12:14:32-04:00" />
+<meta itemprop="wordCount" content="55">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Dictionaries &amp; arrays"/>
 <meta name="twitter:description" content="Dictionaries &amp; arrays
@@ -78,7 +78,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.445c94b423692e17f40a58fb9f8c9467.json"
+  data-offline-search-index-json-src="/offline-search-index.6fc5df547e7287e332909905750d7b68.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -106,7 +106,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.445c94b423692e17f40a58fb9f8c9467.json"
+  data-offline-search-index-json-src="/offline-search-index.6fc5df547e7287e332909905750d7b68.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -706,7 +706,9 @@
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">└───────────────────┴──────────┘</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></code></pre></div><h2 id="dictionary-with-mysql-as-a-source">Dictionary with MySQL as a source</h2>
 <h3 id="test-data-in-mysql">Test data in MySQL</h3>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#204a87;font-weight:bold">create</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">table</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">arr_src</span><span style="color:#000;font-weight:bold">(</span><span style="color:#f8f8f8;text-decoration:underline">
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#8f5902;font-style:italic">-- casted into CH Arrays
+</span><span style="color:#8f5902;font-style:italic"></span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">create</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">table</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">arr_src</span><span style="color:#000;font-weight:bold">(</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">   </span><span style="color:#000">_key</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87">bigint</span><span style="color:#000;font-weight:bold">(</span><span style="color:#0000cf;font-weight:bold">20</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">NOT</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">NULL</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> 
 </span><span style="color:#f8f8f8;text-decoration:underline">   </span><span style="color:#000">_array_int</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87">text</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> 
 </span><span style="color:#f8f8f8;text-decoration:underline">   </span><span style="color:#000">_array_str</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87">text</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> 
@@ -728,7 +730,8 @@
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">ENGINE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">MySQL</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;mysql_host&#39;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;ch&#39;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;arr_src&#39;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;ch&#39;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;pass&#39;</span><span style="color:#000;font-weight:bold">);</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">CREATE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">DICTIONARY</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">mysql_arr_dict</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#8f5902;font-style:italic">-- dictionary fetches data from the supporting table
+</span><span style="color:#8f5902;font-style:italic"></span><span style="color:#204a87;font-weight:bold">CREATE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">DICTIONARY</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">mysql_arr_dict</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000;font-weight:bold">(</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#000">_key</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">UInt64</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#000">array_int</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87">Array</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">Int64</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">DEFAULT</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span><span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">,</span><span style="color:#0000cf;font-weight:bold">3</span><span style="color:#000;font-weight:bold">],</span><span style="color:#f8f8f8;text-decoration:underline">
@@ -769,7 +772,7 @@
 
     Last modified
     2021.08.24
-    : <a  href="https://github.com/Altinity/betaknowledgebase/commit/e1c1a259c54f64bc7f5236f87650fdeaf2bbfdb2">Update dictionaries-and-arrays.md (e1c1a25)</a>
+    : <a  href="https://github.com/Altinity/betaknowledgebase/commit/d3e6e8ed491cc6d43842d27485f6b199051024c2">Update dictionaries-and-arrays.md (d3e6e8e)</a>
 
 </div>
 
