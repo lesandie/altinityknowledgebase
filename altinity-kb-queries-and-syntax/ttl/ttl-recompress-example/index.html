@@ -6,21 +6,24 @@
 <meta name="generator" content="Hugo 0.87.0" /><META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
 <link rel="shortcut icon" href="/favicons/favicon.ico" >
 <link rel="icon" href="/favicons/favicon.ico" >
-<title>Altinity Beta Knowledgebase</title>
-<meta name="description" content="Altinity Beta Knowledgebase"><meta property="og:title" content="" />
-<meta property="og:description" content="Clickhouse able to recomress old data with more &#34;heavy&#34; compressor." />
+<title>TTL Recompress example | Altinity Beta Knowledgebase</title>
+<meta name="description" content="Altinity Beta Knowledgebase"><meta property="og:title" content="TTL Recompress example" />
+<meta property="og:description" content="TTL Recompress example
+" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://beta.kb.altinity.com/altinity-kb-queries-and-syntax/ttl/ttl-recompress-example/" /><meta property="article:section" content="altinity-kb-queries-and-syntax" />
 
-<meta property="article:modified_time" content="2021-08-12T14:22:56-06:00" /><meta property="og:site_name" content="Altinity Beta Knowledgebase" />
+<meta property="article:modified_time" content="2021-08-24T12:38:06-04:00" /><meta property="og:site_name" content="Altinity Beta Knowledgebase" />
 
-<meta itemprop="name" content="">
-<meta itemprop="description" content="Clickhouse able to recomress old data with more &#34;heavy&#34; compressor.">
-<meta itemprop="dateModified" content="2021-08-12T14:22:56-06:00" />
-<meta itemprop="wordCount" content="45">
+<meta itemprop="name" content="TTL Recompress example">
+<meta itemprop="description" content="TTL Recompress example
+">
+<meta itemprop="dateModified" content="2021-08-24T12:38:06-04:00" />
+<meta itemprop="wordCount" content="32">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content=""/>
-<meta name="twitter:description" content="Clickhouse able to recomress old data with more &#34;heavy&#34; compressor."/>
+<meta name="twitter:title" content="TTL Recompress example"/>
+<meta name="twitter:description" content="TTL Recompress example
+"/>
 
 
 
@@ -75,7 +78,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.c6fdb918a07515b63ab2cc175a8cef52.json"
+  data-offline-search-index-json-src="/offline-search-index.8f2d27ed70a5e998720cc460d2aba8e3.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -103,7 +106,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.c6fdb918a07515b63ab2cc175a8cef52.json"
+  data-offline-search-index-json-src="/offline-search-index.8f2d27ed70a5e998720cc460d2aba8e3.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -309,10 +312,10 @@
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-altinity-kb-queries-and-syntaxttl-li">
   <a href="/altinity-kb-queries-and-syntax/ttl/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-altinity-kb-queries-and-syntaxttl"><span class="">TTL</span></a>
   <ul class="ul-3 foldable">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-altinity-kb-queries-and-syntaxttlttl-recompress-example-li">
-  <a href="/altinity-kb-queries-and-syntax/ttl/ttl-recompress-example/" class="align-left pl-0 active td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-queries-and-syntaxttlttl-recompress-example"><span class="td-sidebar-nav-active-item"></span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-queries-and-syntaxttlttl-group-by-examples-li">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-queries-and-syntaxttlttl-group-by-examples-li">
   <a href="/altinity-kb-queries-and-syntax/ttl/ttl-group-by-examples/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-queries-and-syntaxttlttl-group-by-examples"><span class="">TTL GROUP BY Examples</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-altinity-kb-queries-and-syntaxttlttl-recompress-example-li">
+  <a href="/altinity-kb-queries-and-syntax/ttl/ttl-recompress-example/" class="align-left pl-0 active td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-queries-and-syntaxttlttl-recompress-example"><span class="td-sidebar-nav-active-item">TTL Recompress example</span></a>
 </li>
   </ul>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-queries-and-syntaxupdate-via-dictionary-li">
@@ -545,15 +548,6 @@
             
 
 
-<div class="td-toc"><nav id="TableOfContents">
-  <ul>
-    <li><a href="#ttl-recompress-example">title: &ldquo;TTL Recompress example&rdquo;
-linkTitle: &ldquo;TTL Recompress example&rdquo;
-description: &gt;
-TTL Recompress example</a></li>
-  </ul>
-</nav></div>
-
 
 
             
@@ -609,7 +603,7 @@ TTL Recompress example</a></li>
 
 
 <li class="breadcrumb-item active" aria-current="page">
-	<a href="http://beta.kb.altinity.com/altinity-kb-queries-and-syntax/ttl/ttl-recompress-example/"></a>
+	<a href="http://beta.kb.altinity.com/altinity-kb-queries-and-syntax/ttl/ttl-recompress-example/">TTL Recompress example</a>
 </li>
 
 	</ol>
@@ -617,17 +611,12 @@ TTL Recompress example</a></li>
 
             
 <div class="td-content">
-	<h1></h1>
-    <div class="lead">Clickhouse able to recomress old data with more &ldquo;heavy&rdquo; compressor.	
+	<h1>TTL Recompress example</h1>
+    <div class="lead">TTL Recompress example	
 	</div>
 	
 	       
-	<hr>
-<h2 id="ttl-recompress-example">title: &ldquo;TTL Recompress example&rdquo;
-linkTitle: &ldquo;TTL Recompress example&rdquo;
-description: &gt;
-TTL Recompress example</h2>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#204a87;font-weight:bold">CREATE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">TABLE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">hits</span><span style="color:#f8f8f8;text-decoration:underline">
+	<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#204a87;font-weight:bold">CREATE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">TABLE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">hits</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000;font-weight:bold">(</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#ce5c00;font-weight:bold">`</span><span style="color:#000">banner_id</span><span style="color:#ce5c00;font-weight:bold">`</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">UInt64</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#ce5c00;font-weight:bold">`</span><span style="color:#000">event_time</span><span style="color:#ce5c00;font-weight:bold">`</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">DateTime</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">CODEC</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">Delta</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">Default</span><span style="color:#000;font-weight:bold">),</span><span style="color:#f8f8f8;text-decoration:underline">
@@ -648,8 +637,8 @@ TTL Recompress example</h2>
 	<div class="text-muted mt-5 pt-3 border-top">
 
     Last modified
-    2021.08.12
-    : <a  href="https://github.com/Altinity/betaknowledgebase/commit/5969b6886e2a31134118f644b6fd2463d98dcb80">General corrections and updates. (5969b68)</a>
+    2021.08.24
+    : <a  href="https://github.com/Altinity/betaknowledgebase/commit/2a267930e8abae0169be6b94799e6953128329cd">Update ttl-recompress-example.md (2a26793)</a>
 
 </div>
 
