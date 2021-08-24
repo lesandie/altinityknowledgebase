@@ -3,23 +3,24 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.87.0" /><link rel="alternate" type="application/rss&#43;xml" href="http://beta.kb.altinity.com/altinity-kb-setup-and-maintenance/cluster-production-configuration-guide/index.xml">
-<META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
+<meta name="generator" content="Hugo 0.87.0" /><META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
 <link rel="shortcut icon" href="/favicons/favicon.ico" >
 <link rel="icon" href="/favicons/favicon.ico" >
-<title>Production Cluster Configuration Guide | Altinity Beta Knowledgebase</title>
-<meta name="description" content="Altinity Beta Knowledgebase"><meta property="og:title" content="Production Cluster Configuration Guide" />
-<meta property="og:description" content="Production Cluster Configuration Guide
-" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="http://beta.kb.altinity.com/altinity-kb-setup-and-maintenance/cluster-production-configuration-guide/" /><meta property="og:site_name" content="Altinity Beta Knowledgebase" />
+<title>Parts consistency | Altinity Beta Knowledgebase</title>
+<meta name="description" content="Altinity Beta Knowledgebase"><meta property="og:title" content="Parts consistency" />
+<meta property="og:description" content="SELECTdatabase,table,partition_id,ranges.1ASprevious_part,ranges.2ASnext_part,ranges.3ASprevious_block_number,ranges.4ASnext_block_number,range(toUInt64(previous_block_number&#43;1),toUInt64(next_block_number))ASmissing_block_numbersFROM(WITHarrayPopFront(groupArray(min_block_number)ASmin)ASmin_adj,arrayPopBack(groupArray(max_block_number)ASmax)ASmax_adj,arrayFilter((x,y,z)-&gt;(y!=(z&#43;1)),arrayZip(arrayPopBack(groupArray(name)ASname_arr),arrayPopFront(name_arr),max_adj,min_adj),min_adj,max_adj)ASmissing_rangesSELECTdatabase,table,partition_id,missing_rangesFROM(SELECT*FROMsystem.partsWHEREactiveAND(table=&#39;query_thread_log&#39;)AND(partition_id=&#39;202108&#39;)ANDactiveORDERBYmin_block_numberASC)GROUPBYdatabase,table,partition_id)ARRAYJOINmissing_rangesASranges┌─database─┬─table────────────┬─partition_id─┬─previous_part───────┬─next_part──────────┬─previous_block_number─┬─next_block_number─┬─missing_block_numbers─┐│system│query_thread_log│202108│202108_864_1637_556│202108_1639_1639_0│1637│1639│[1638]│└──────────┴──────────────────┴──────────────┴─────────────────────┴────────────────────┴───────────────────────┴───────────────────┴───────────────────────┘SELECTdatabase,table,partition_id,sum(max_block_number-min_block_number)ASblocks_countFROMsystem.partsWHEREactiveAND(table=&#39;query_thread_log&#39;)AND(partition_id=&#39;202108&#39;)ANDactiveGROUPBYdatabase,table,partition_id┌─database─┬─table────────────┬─partition_id─┬─blocks_count─┐│system│query_thread_log│202108│1635│└──────────┴──────────────────┴──────────────┴──────────────┘" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://beta.kb.altinity.com/altinity-kb-useful-queries/parts-consistency/" /><meta property="article:section" content="altinity-kb-useful-queries" />
 
-<meta itemprop="name" content="Production Cluster Configuration Guide">
-<meta itemprop="description" content="Production Cluster Configuration Guide
-"><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Production Cluster Configuration Guide"/>
-<meta name="twitter:description" content="Production Cluster Configuration Guide
-"/>
+<meta property="article:modified_time" content="2021-08-24T12:56:31-04:00" /><meta property="og:site_name" content="Altinity Beta Knowledgebase" />
+
+<meta itemprop="name" content="Parts consistency">
+<meta itemprop="description" content="SELECTdatabase,table,partition_id,ranges.1ASprevious_part,ranges.2ASnext_part,ranges.3ASprevious_block_number,ranges.4ASnext_block_number,range(toUInt64(previous_block_number&#43;1),toUInt64(next_block_number))ASmissing_block_numbersFROM(WITHarrayPopFront(groupArray(min_block_number)ASmin)ASmin_adj,arrayPopBack(groupArray(max_block_number)ASmax)ASmax_adj,arrayFilter((x,y,z)-&gt;(y!=(z&#43;1)),arrayZip(arrayPopBack(groupArray(name)ASname_arr),arrayPopFront(name_arr),max_adj,min_adj),min_adj,max_adj)ASmissing_rangesSELECTdatabase,table,partition_id,missing_rangesFROM(SELECT*FROMsystem.partsWHEREactiveAND(table=&#39;query_thread_log&#39;)AND(partition_id=&#39;202108&#39;)ANDactiveORDERBYmin_block_numberASC)GROUPBYdatabase,table,partition_id)ARRAYJOINmissing_rangesASranges┌─database─┬─table────────────┬─partition_id─┬─previous_part───────┬─next_part──────────┬─previous_block_number─┬─next_block_number─┬─missing_block_numbers─┐│system│query_thread_log│202108│202108_864_1637_556│202108_1639_1639_0│1637│1639│[1638]│└──────────┴──────────────────┴──────────────┴─────────────────────┴────────────────────┴───────────────────────┴───────────────────┴───────────────────────┘SELECTdatabase,table,partition_id,sum(max_block_number-min_block_number)ASblocks_countFROMsystem.partsWHEREactiveAND(table=&#39;query_thread_log&#39;)AND(partition_id=&#39;202108&#39;)ANDactiveGROUPBYdatabase,table,partition_id┌─database─┬─table────────────┬─partition_id─┬─blocks_count─┐│system│query_thread_log│202108│1635│└──────────┴──────────────────┴──────────────┴──────────────┘">
+<meta itemprop="dateModified" content="2021-08-24T12:56:31-04:00" />
+<meta itemprop="wordCount" content="1">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Parts consistency"/>
+<meta name="twitter:description" content="SELECTdatabase,table,partition_id,ranges.1ASprevious_part,ranges.2ASnext_part,ranges.3ASprevious_block_number,ranges.4ASnext_block_number,range(toUInt64(previous_block_number&#43;1),toUInt64(next_block_number))ASmissing_block_numbersFROM(WITHarrayPopFront(groupArray(min_block_number)ASmin)ASmin_adj,arrayPopBack(groupArray(max_block_number)ASmax)ASmax_adj,arrayFilter((x,y,z)-&gt;(y!=(z&#43;1)),arrayZip(arrayPopBack(groupArray(name)ASname_arr),arrayPopFront(name_arr),max_adj,min_adj),min_adj,max_adj)ASmissing_rangesSELECTdatabase,table,partition_id,missing_rangesFROM(SELECT*FROMsystem.partsWHEREactiveAND(table=&#39;query_thread_log&#39;)AND(partition_id=&#39;202108&#39;)ANDactiveORDERBYmin_block_numberASC)GROUPBYdatabase,table,partition_id)ARRAYJOINmissing_rangesASranges┌─database─┬─table────────────┬─partition_id─┬─previous_part───────┬─next_part──────────┬─previous_block_number─┬─next_block_number─┬─missing_block_numbers─┐│system│query_thread_log│202108│202108_864_1637_556│202108_1639_1639_0│1637│1639│[1638]│└──────────┴──────────────────┴──────────────┴─────────────────────┴────────────────────┴───────────────────────┴───────────────────┴───────────────────────┘SELECTdatabase,table,partition_id,sum(max_block_number-min_block_number)ASblocks_countFROMsystem.partsWHEREactiveAND(table=&#39;query_thread_log&#39;)AND(partition_id=&#39;202108&#39;)ANDactiveGROUPBYdatabase,table,partition_id┌─database─┬─table────────────┬─partition_id─┬─blocks_count─┐│system│query_thread_log│202108│1635│└──────────┴──────────────────┴──────────────┴──────────────┘"/>
 
 
 
@@ -48,7 +49,7 @@
 
 
   </head>
-  <body class="td-section">
+  <body class="td-page">
     <header>
       
 <nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
@@ -363,24 +364,24 @@
   </ul>
 </li>
   </ul>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-altinity-kb-setup-and-maintenance-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-altinity-kb-setup-and-maintenance-li">
   <a href="/altinity-kb-setup-and-maintenance/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-altinity-kb-setup-and-maintenance"><span class="">Setup &amp; maintenance</span></a>
   <ul class="ul-2 foldable">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenanceclickhouse-backup-li">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-setup-and-maintenanceclickhouse-backup-li">
   <a href="/altinity-kb-setup-and-maintenance/clickhouse-backup/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenanceclickhouse-backup"><span class=""></span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenancelogging-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-setup-and-maintenancelogging-li">
   <a href="/altinity-kb-setup-and-maintenance/logging/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancelogging"><span class=""></span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenancealtinity-packaging-compatibility-greater-than-21x-and-earlier-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-setup-and-maintenancealtinity-packaging-compatibility-greater-than-21x-and-earlier-li">
   <a href="/altinity-kb-setup-and-maintenance/altinity-packaging-compatibility-greater-than-21.x-and-earlier/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancealtinity-packaging-compatibility-greater-than-21x-and-earlier"><span class="">Altinity packaging compatibility &amp;gt;21.x and earlier</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenanceaws-ebs-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-setup-and-maintenanceaws-ebs-li">
   <a href="/altinity-kb-setup-and-maintenance/aws-ebs/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenanceaws-ebs"><span class="">AWS EBS</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenancealtinity-kb-clickhouse-in-docker-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-setup-and-maintenancealtinity-kb-clickhouse-in-docker-li">
   <a href="/altinity-kb-setup-and-maintenance/altinity-kb-clickhouse-in-docker/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancealtinity-kb-clickhouse-in-docker"><span class="">ClickHouse in Docker</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenanceuntitled-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-setup-and-maintenanceuntitled-li">
   <a href="/altinity-kb-setup-and-maintenance/untitled/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenanceuntitled"><span class="">ClickHouse versions</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenancealtinity-kb-converting-mergetree-to-replicated-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-setup-and-maintenancealtinity-kb-converting-mergetree-to-replicated-li">
   <a href="/altinity-kb-setup-and-maintenance/altinity-kb-converting-mergetree-to-replicated/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancealtinity-kb-converting-mergetree-to-replicated"><span class="">Converting MergeTree to Replicated</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-altinity-kb-setup-and-maintenancealtinity-kb-data-migration-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child collapse" id="m-altinity-kb-setup-and-maintenancealtinity-kb-data-migration-li">
   <a href="/altinity-kb-setup-and-maintenance/altinity-kb-data-migration/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-altinity-kb-setup-and-maintenancealtinity-kb-data-migration"><span class="">Data Migration</span></a>
   <ul class="ul-3 foldable">
     <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child collapse" id="m-altinity-kb-setup-and-maintenancealtinity-kb-data-migrationaltinity-kb-clickhouse-copier-li">
@@ -398,70 +399,70 @@
   <a href="/altinity-kb-setup-and-maintenance/altinity-kb-data-migration/rsync/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancealtinity-kb-data-migrationrsync"><span class="">rsync</span></a>
 </li>
   </ul>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-altinity-kb-setup-and-maintenancealtinity-kb-ddlworker-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child collapse" id="m-altinity-kb-setup-and-maintenancealtinity-kb-ddlworker-li">
   <a href="/altinity-kb-setup-and-maintenance/altinity-kb-ddlworker/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-altinity-kb-setup-and-maintenancealtinity-kb-ddlworker"><span class="">DDLWorker</span></a>
   <ul class="ul-3 foldable">
     <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-setup-and-maintenancealtinity-kb-ddlworkerthere-are-n-unfinished-hosts-0-of-them-are-currently-active-li">
   <a href="/altinity-kb-setup-and-maintenance/altinity-kb-ddlworker/there-are-n-unfinished-hosts-0-of-them-are-currently-active/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancealtinity-kb-ddlworkerthere-are-n-unfinished-hosts-0-of-them-are-currently-active"><span class="">There are N unfinished hosts (0 of them are currently active).</span></a>
 </li>
   </ul>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenancehigh-cpu-usage-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-setup-and-maintenancehigh-cpu-usage-li">
   <a href="/altinity-kb-setup-and-maintenance/high-cpu-usage/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancehigh-cpu-usage"><span class="">High CPU usage</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenanceload-balancers-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-setup-and-maintenanceload-balancers-li">
   <a href="/altinity-kb-setup-and-maintenance/load-balancers/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenanceload-balancers"><span class="">Load balancers</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenancealtinity-kb-memory-configuration-settings-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-setup-and-maintenancealtinity-kb-memory-configuration-settings-li">
   <a href="/altinity-kb-setup-and-maintenance/altinity-kb-memory-configuration-settings/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancealtinity-kb-memory-configuration-settings"><span class="">memory configuration settings</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenancealtinity-kb-monitoring-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-setup-and-maintenancealtinity-kb-monitoring-li">
   <a href="/altinity-kb-setup-and-maintenance/altinity-kb-monitoring/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancealtinity-kb-monitoring"><span class="">Monitoring</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenancealtinity-kb-moving-table-to-another-device-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-setup-and-maintenancealtinity-kb-moving-table-to-another-device-li">
   <a href="/altinity-kb-setup-and-maintenance/altinity-kb-moving-table-to-another-device./" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancealtinity-kb-moving-table-to-another-device"><span class="">Moving table to another device.</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenancealtinity-kb-object-consistency-in-a-cluster-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-setup-and-maintenancealtinity-kb-object-consistency-in-a-cluster-li">
   <a href="/altinity-kb-setup-and-maintenance/altinity-kb-object-consistency-in-a-cluster/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancealtinity-kb-object-consistency-in-a-cluster"><span class="">Object consistency in a cluster</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-altinity-kb-setup-and-maintenancecluster-production-configuration-guide-li">
-  <a href="/altinity-kb-setup-and-maintenance/cluster-production-configuration-guide/" class="align-left pl-0 active td-sidebar-link td-sidebar-link__section" id="m-altinity-kb-setup-and-maintenancecluster-production-configuration-guide"><span class="td-sidebar-nav-active-item">Production Cluster Configuration Guide</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child collapse" id="m-altinity-kb-setup-and-maintenancecluster-production-configuration-guide-li">
+  <a href="/altinity-kb-setup-and-maintenance/cluster-production-configuration-guide/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-altinity-kb-setup-and-maintenancecluster-production-configuration-guide"><span class="">Production Cluster Configuration Guide</span></a>
   <ul class="ul-3 foldable">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenancecluster-production-configuration-guidehardening-clickhouse-security-li">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-setup-and-maintenancecluster-production-configuration-guidehardening-clickhouse-security-li">
   <a href="/altinity-kb-setup-and-maintenance/cluster-production-configuration-guide/hardening-clickhouse-security/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancecluster-production-configuration-guidehardening-clickhouse-security"><span class="">Backups</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenancecluster-production-configuration-guidecluster-configuration-faq-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-setup-and-maintenancecluster-production-configuration-guidecluster-configuration-faq-li">
   <a href="/altinity-kb-setup-and-maintenance/cluster-production-configuration-guide/cluster-configuration-faq/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancecluster-production-configuration-guidecluster-configuration-faq"><span class="">Cluster Configuration FAQ</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenancecluster-production-configuration-guidecluster-configuration-process-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-setup-and-maintenancecluster-production-configuration-guidecluster-configuration-process-li">
   <a href="/altinity-kb-setup-and-maintenance/cluster-production-configuration-guide/cluster-configuration-process/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancecluster-production-configuration-guidecluster-configuration-process"><span class="">Cluster Configuration Process</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenancecluster-production-configuration-guidehardware-requirements-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-setup-and-maintenancecluster-production-configuration-guidehardware-requirements-li">
   <a href="/altinity-kb-setup-and-maintenance/cluster-production-configuration-guide/hardware-requirements/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancecluster-production-configuration-guidehardware-requirements"><span class="">Hardware Requirements</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenancecluster-production-configuration-guidemonitoring-considerations-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-setup-and-maintenancecluster-production-configuration-guidemonitoring-considerations-li">
   <a href="/altinity-kb-setup-and-maintenance/cluster-production-configuration-guide/monitoring-considerations/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancecluster-production-configuration-guidemonitoring-considerations"><span class="">Monitoring Considerations</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenancecluster-production-configuration-guidenetwork-configuration-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-setup-and-maintenancecluster-production-configuration-guidenetwork-configuration-li">
   <a href="/altinity-kb-setup-and-maintenance/cluster-production-configuration-guide/network-configuration/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancecluster-production-configuration-guidenetwork-configuration"><span class="">Network Configuration</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenancecluster-production-configuration-guideversion-upgrades-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-setup-and-maintenancecluster-production-configuration-guideversion-upgrades-li">
   <a href="/altinity-kb-setup-and-maintenance/cluster-production-configuration-guide/version-upgrades/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancecluster-production-configuration-guideversion-upgrades"><span class="">Version Upgrades</span></a>
 </li>
   </ul>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenancealtinity-kb-replication-queue-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-setup-and-maintenancealtinity-kb-replication-queue-li">
   <a href="/altinity-kb-setup-and-maintenance/altinity-kb-replication-queue/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancealtinity-kb-replication-queue"><span class="">Replication queue</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-altinity-kb-setup-and-maintenanceschema-migration-tools-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child collapse" id="m-altinity-kb-setup-and-maintenanceschema-migration-tools-li">
   <a href="/altinity-kb-setup-and-maintenance/schema-migration-tools/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-altinity-kb-setup-and-maintenanceschema-migration-tools"><span class="">Schema migration tools for ClickHouse</span></a>
   <ul class="ul-3 foldable">
     <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-setup-and-maintenanceschema-migration-toolsgolang-migrate-li">
   <a href="/altinity-kb-setup-and-maintenance/schema-migration-tools/golang-migrate/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenanceschema-migration-toolsgolang-migrate"><span class="">golang-migrate</span></a>
 </li>
   </ul>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenancealtinity-kb-server-config-files-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-setup-and-maintenancealtinity-kb-server-config-files-li">
   <a href="/altinity-kb-setup-and-maintenance/altinity-kb-server-config-files/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancealtinity-kb-server-config-files"><span class="">Server config files</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenancealtinity-kb-settings-to-adjust-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-setup-and-maintenancealtinity-kb-settings-to-adjust-li">
   <a href="/altinity-kb-setup-and-maintenance/altinity-kb-settings-to-adjust/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancealtinity-kb-settings-to-adjust"><span class="">Settings to adjust</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenancealtinity-kb-shutting-down-a-node-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-setup-and-maintenancealtinity-kb-shutting-down-a-node-li">
   <a href="/altinity-kb-setup-and-maintenance/altinity-kb-shutting-down-a-node/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancealtinity-kb-shutting-down-a-node"><span class="">Shutting down a node</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenancessl-connection-unexpectedly-closed-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-setup-and-maintenancessl-connection-unexpectedly-closed-li">
   <a href="/altinity-kb-setup-and-maintenance/ssl-connection-unexpectedly-closed/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancessl-connection-unexpectedly-closed"><span class="">SSL connection unexpectedly closed</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenancealtinity-kb-system-tables-eat-my-disk-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-setup-and-maintenancealtinity-kb-system-tables-eat-my-disk-li">
   <a href="/altinity-kb-setup-and-maintenance/altinity-kb-system-tables-eat-my-disk/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancealtinity-kb-system-tables-eat-my-disk"><span class="">System tables eat my disk</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenancealtinity-kb-threads-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-setup-and-maintenancealtinity-kb-threads-li">
   <a href="/altinity-kb-setup-and-maintenance/altinity-kb-threads/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancealtinity-kb-threads"><span class="">Threads</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenancealtinity-kb-who-ate-my-memory-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-setup-and-maintenancealtinity-kb-who-ate-my-memory-li">
   <a href="/altinity-kb-setup-and-maintenance/altinity-kb-who-ate-my-memory/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancealtinity-kb-who-ate-my-memory"><span class="">Who ate my memory</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenancex-rows-of-y-total-rows-in-filesystem-are-suspicious-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-setup-and-maintenancex-rows-of-y-total-rows-in-filesystem-are-suspicious-li">
   <a href="/altinity-kb-setup-and-maintenance/x-rows-of-y-total-rows-in-filesystem-are-suspicious/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancex-rows-of-y-total-rows-in-filesystem-are-suspicious"><span class="">X rows of Y total rows in filesystem are suspicious</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-altinity-kb-setup-and-maintenancealtinity-kb-zookeeper-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child collapse" id="m-altinity-kb-setup-and-maintenancealtinity-kb-zookeeper-li">
   <a href="/altinity-kb-setup-and-maintenance/altinity-kb-zookeeper/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-altinity-kb-setup-and-maintenancealtinity-kb-zookeeper"><span class="">ZooKeeper</span></a>
   <ul class="ul-3 foldable">
     <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-setup-and-maintenancealtinity-kb-zookeeperzookeeper-monitoring-li">
@@ -493,19 +494,19 @@
   <a href="/upgrade/removing-empty-parts/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-upgraderemoving-empty-parts"><span class="">Removing empty parts</span></a>
 </li>
   </ul>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-altinity-kb-useful-queries-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-altinity-kb-useful-queries-li">
   <a href="/altinity-kb-useful-queries/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-altinity-kb-useful-queries"><span class="">Useful queries</span></a>
   <ul class="ul-2 foldable">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-useful-queriesdetached-parts-li">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-useful-queriesdetached-parts-li">
   <a href="/altinity-kb-useful-queries/detached-parts/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-useful-queriesdetached-parts"><span class="">Can detached parts be dropped?</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-useful-queriesaltinity-kb-database-size-table-column-size-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-useful-queriesaltinity-kb-database-size-table-column-size-li">
   <a href="/altinity-kb-useful-queries/altinity-kb-database-size-table-column-size/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-useful-queriesaltinity-kb-database-size-table-column-size"><span class="">Database Size - Table - Column size</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-useful-queriesaltinity-kb-datasets-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-useful-queriesaltinity-kb-datasets-li">
   <a href="/altinity-kb-useful-queries/altinity-kb-datasets/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-useful-queriesaltinity-kb-datasets"><span class="">Datasets</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-useful-queriesaltinity-kb-number-of-active-parts-in-a-partition-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-useful-queriesaltinity-kb-number-of-active-parts-in-a-partition-li">
   <a href="/altinity-kb-useful-queries/altinity-kb-number-of-active-parts-in-a-partition/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-useful-queriesaltinity-kb-number-of-active-parts-in-a-partition"><span class="">Number of active parts in a partition</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-useful-queriesparts-consistency-li">
-  <a href="/altinity-kb-useful-queries/parts-consistency/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-useful-queriesparts-consistency"><span class="">Parts consistency</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-altinity-kb-useful-queriesparts-consistency-li">
+  <a href="/altinity-kb-useful-queries/parts-consistency/" class="align-left pl-0 active td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-useful-queriesparts-consistency"><span class="td-sidebar-nav-active-item">Parts consistency</span></a>
 </li>
   </ul>
 </li>
@@ -537,9 +538,9 @@
     
     
 
-    <a href="https://github.com/Altinity/betaknowledgebase/edit/main/content/en/altinity-kb-setup-and-maintenance/cluster-production-configuration-guide/_index.md" target="_blank"><i class="fa fa-edit fa-fw"></i> Edit this page</a>
-    <a href="https://github.com/Altinity/betaknowledgebase/new/main/content/en/altinity-kb-setup-and-maintenance/cluster-production-configuration-guide/_index.md?filename=change-me.md&amp;value=---%0Atitle%3A&#43;%22Long&#43;Page&#43;Title%22%0AlinkTitle%3A&#43;%22Short&#43;Nav&#43;Title%22%0Aweight%3A&#43;100%0Adescription%3A&#43;%3E-%0A&#43;&#43;&#43;&#43;&#43;Page&#43;description&#43;for&#43;heading&#43;and&#43;indexes.%0A---%0A%0A%23%23&#43;Heading%0A%0AEdit&#43;this&#43;template&#43;to&#43;create&#43;your&#43;new&#43;page.%0A%0A%2A&#43;Give&#43;it&#43;a&#43;good&#43;name%2C&#43;ending&#43;in&#43;%60.md%60&#43;-&#43;e.g.&#43;%60getting-started.md%60%0A%2A&#43;Edit&#43;the&#43;%22front&#43;matter%22&#43;section&#43;at&#43;the&#43;top&#43;of&#43;the&#43;page&#43;%28weight&#43;controls&#43;how&#43;its&#43;ordered&#43;amongst&#43;other&#43;pages&#43;in&#43;the&#43;same&#43;directory%3B&#43;lowest&#43;number&#43;first%29.%0A%2A&#43;Add&#43;a&#43;good&#43;commit&#43;message&#43;at&#43;the&#43;bottom&#43;of&#43;the&#43;page&#43;%28%3C80&#43;characters%3B&#43;use&#43;the&#43;extended&#43;description&#43;field&#43;for&#43;more&#43;detail%29.%0A%2A&#43;Create&#43;a&#43;new&#43;branch&#43;so&#43;you&#43;can&#43;preview&#43;your&#43;new&#43;file&#43;and&#43;request&#43;a&#43;review&#43;via&#43;Pull&#43;Request.%0A" target="_blank"><i class="fa fa-edit fa-fw"></i> Create child page</a>
-    <a href="https://github.com/Altinity/betaknowledgebase/issues/new?title=/altinity-kb-setup-and-maintenance/cluster-production-configuration-guide/" target="_blank"><i class="fab fa-github fa-fw"></i> Create documentation issue</a>
+    <a href="https://github.com/Altinity/betaknowledgebase/edit/main/content/en/altinity-kb-useful-queries/parts-consistency.md" target="_blank"><i class="fa fa-edit fa-fw"></i> Edit this page</a>
+    <a href="https://github.com/Altinity/betaknowledgebase/new/main/content/en/altinity-kb-useful-queries/parts-consistency.md?filename=change-me.md&amp;value=---%0Atitle%3A&#43;%22Long&#43;Page&#43;Title%22%0AlinkTitle%3A&#43;%22Short&#43;Nav&#43;Title%22%0Aweight%3A&#43;100%0Adescription%3A&#43;%3E-%0A&#43;&#43;&#43;&#43;&#43;Page&#43;description&#43;for&#43;heading&#43;and&#43;indexes.%0A---%0A%0A%23%23&#43;Heading%0A%0AEdit&#43;this&#43;template&#43;to&#43;create&#43;your&#43;new&#43;page.%0A%0A%2A&#43;Give&#43;it&#43;a&#43;good&#43;name%2C&#43;ending&#43;in&#43;%60.md%60&#43;-&#43;e.g.&#43;%60getting-started.md%60%0A%2A&#43;Edit&#43;the&#43;%22front&#43;matter%22&#43;section&#43;at&#43;the&#43;top&#43;of&#43;the&#43;page&#43;%28weight&#43;controls&#43;how&#43;its&#43;ordered&#43;amongst&#43;other&#43;pages&#43;in&#43;the&#43;same&#43;directory%3B&#43;lowest&#43;number&#43;first%29.%0A%2A&#43;Add&#43;a&#43;good&#43;commit&#43;message&#43;at&#43;the&#43;bottom&#43;of&#43;the&#43;page&#43;%28%3C80&#43;characters%3B&#43;use&#43;the&#43;extended&#43;description&#43;field&#43;for&#43;more&#43;detail%29.%0A%2A&#43;Create&#43;a&#43;new&#43;branch&#43;so&#43;you&#43;can&#43;preview&#43;your&#43;new&#43;file&#43;and&#43;request&#43;a&#43;review&#43;via&#43;Pull&#43;Request.%0A" target="_blank"><i class="fa fa-edit fa-fw"></i> Create child page</a>
+    <a href="https://github.com/Altinity/betaknowledgebase/issues/new?title=/altinity-kb-useful-queries/parts-consistency/" target="_blank"><i class="fab fa-github fa-fw"></i> Create documentation issue</a>
     
 
   
@@ -588,14 +589,14 @@
 
 
 <li class="breadcrumb-item" >
-	<a href="http://beta.kb.altinity.com/altinity-kb-setup-and-maintenance/">Setup &amp; maintenance</a>
+	<a href="http://beta.kb.altinity.com/altinity-kb-useful-queries/">Useful queries</a>
 </li>
 
 
 
 
 <li class="breadcrumb-item active" aria-current="page">
-	<a href="http://beta.kb.altinity.com/altinity-kb-setup-and-maintenance/cluster-production-configuration-guide/">Production Cluster Configuration Guide</a>
+	<a href="http://beta.kb.altinity.com/altinity-kb-useful-queries/parts-consistency/">Parts consistency</a>
 </li>
 
 	</ol>
@@ -603,236 +604,76 @@
 
             
 <div class="td-content">
-	<h1>Production Cluster Configuration Guide</h1>
-  <div class="lead">Production Cluster Configuration Guide</div>
-	<header class="article-meta">
-		
-		
-			
-				
-
-
-			
-				
-
-
-			
-		
-		
-	</header>
-	<p>Moving from a single ClickHouse server to a clustered format provides several benefits:</p>
-<ul>
-<li>Replication guarantees data integrity.</li>
-<li>Provides redundancy.</li>
-<li>Failover by being able to restart half of the nodes without encountering downtime.</li>
-</ul>
-<p>Moving from an unsharded ClickHouse environment to a sharded cluster requires redesign of schema and queries. Starting with a sharded cluster from the beginning makes it easier in the future to scale the cluster up.</p>
-<p>Setting up a ClickHouse cluster for a production environment requires the following stages:</p>
-<ul>
-<li>Hardware Requirements</li>
-<li>Network Configuration</li>
-<li>Create Host Names</li>
-<li>Monitoring Considerations</li>
-<li>Configuration Steps</li>
-<li>Setting Up Backups</li>
-<li>Staging Plans</li>
-<li>Upgrading The Cluster</li>
-</ul>
-
-        <div class="section-index">
-    
-    
-    
-    
-    
-    <hr class="panel-line">
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-                <div class="entry">
-                    <h5>
-                        <a href="/altinity-kb-setup-and-maintenance/cluster-production-configuration-guide/hardening-clickhouse-security/">Backups</a>
-                    </h5>
-                    <p>Backups
-                        
-                        
-                    </p>
-                </div>
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-                <div class="entry">
-                    <h5>
-                        <a href="/altinity-kb-setup-and-maintenance/cluster-production-configuration-guide/cluster-configuration-faq/">Cluster Configuration FAQ</a>
-                    </h5>
-                    <p>Cluster Configuration FAQ
-                        
-                        
-                    </p>
-                </div>
-            
-        
-            
-                <div class="entry">
-                    <h5>
-                        <a href="/altinity-kb-setup-and-maintenance/cluster-production-configuration-guide/cluster-configuration-process/">Cluster Configuration Process</a>
-                    </h5>
-                    <p>Cluster Configuration Process
-                        
-                        
-                    </p>
-                </div>
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-                <div class="entry">
-                    <h5>
-                        <a href="/altinity-kb-setup-and-maintenance/cluster-production-configuration-guide/hardware-requirements/">Hardware Requirements</a>
-                    </h5>
-                    <p>Hardware Requirements
-                        
-                        
-                    </p>
-                </div>
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-                <div class="entry">
-                    <h5>
-                        <a href="/altinity-kb-setup-and-maintenance/cluster-production-configuration-guide/monitoring-considerations/">Monitoring Considerations</a>
-                    </h5>
-                    <p>Monitoring Considerations
-                        
-                        
-                    </p>
-                </div>
-            
-        
-            
-        
-            
-                <div class="entry">
-                    <h5>
-                        <a href="/altinity-kb-setup-and-maintenance/cluster-production-configuration-guide/network-configuration/">Network Configuration</a>
-                    </h5>
-                    <p>Network Configuration
-                        
-                        
-                    </p>
-                </div>
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-                <div class="entry">
-                    <h5>
-                        <a href="/altinity-kb-setup-and-maintenance/cluster-production-configuration-guide/version-upgrades/">Version Upgrades</a>
-                    </h5>
-                    <p>Version Upgrades
-                        
-                        
-                    </p>
-                </div>
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-    
-</div>
-
+	<h1>Parts consistency</h1>
+    <div class="lead">	
+	</div>
+	
+	       
+	<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#204a87;font-weight:bold">SELECT</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">database</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">table</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#000">partition_id</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#000">ranges</span><span style="color:#000;font-weight:bold">.</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">AS</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">previous_part</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#000">ranges</span><span style="color:#000;font-weight:bold">.</span><span style="color:#0000cf;font-weight:bold">2</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">AS</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">next_part</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#000">ranges</span><span style="color:#000;font-weight:bold">.</span><span style="color:#0000cf;font-weight:bold">3</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">AS</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">previous_block_number</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#000">ranges</span><span style="color:#000;font-weight:bold">.</span><span style="color:#0000cf;font-weight:bold">4</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">AS</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">next_block_number</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#000">range</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">toUInt64</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">previous_block_number</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">+</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">),</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">toUInt64</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">next_block_number</span><span style="color:#000;font-weight:bold">))</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">AS</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">missing_block_numbers</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">FROM</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000;font-weight:bold">(</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">WITH</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#000">arrayPopFront</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">groupArray</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">min_block_number</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">AS</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">min</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">AS</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">min_adj</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#000">arrayPopBack</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">groupArray</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">max_block_number</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">AS</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">max</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">AS</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">max_adj</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#000">arrayFilter</span><span style="color:#000;font-weight:bold">((</span><span style="color:#000">x</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">y</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">z</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">-&gt;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">y</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">!=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">z</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">+</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">)),</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">arrayZip</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">arrayPopBack</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">groupArray</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">name</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">AS</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">name_arr</span><span style="color:#000;font-weight:bold">),</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">arrayPopFront</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">name_arr</span><span style="color:#000;font-weight:bold">),</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">max_adj</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">min_adj</span><span style="color:#000;font-weight:bold">),</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">min_adj</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">max_adj</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">AS</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">missing_ranges</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">SELECT</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">database</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">table</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#000">partition_id</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#000">missing_ranges</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">FROM</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#000;font-weight:bold">(</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">SELECT</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">FROM</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">system</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">parts</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">WHERE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">active</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">AND</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">table</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;query_thread_log&#39;</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">AND</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">partition_id</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;202108&#39;</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">AND</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">active</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">ORDER</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">BY</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">min_block_number</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">ASC</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">GROUP</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">BY</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">database</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">table</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#000">partition_id</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87">ARRAY</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">JOIN</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">missing_ranges</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">AS</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">ranges</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">┌─</span><span style="color:#204a87;font-weight:bold">database</span><span style="color:#a40000">─┬─</span><span style="color:#204a87;font-weight:bold">table</span><span style="color:#a40000">────────────┬─</span><span style="color:#000">partition_id</span><span style="color:#a40000">─┬─</span><span style="color:#000">previous_part</span><span style="color:#a40000">───────┬─</span><span style="color:#000">next_part</span><span style="color:#a40000">──────────┬─</span><span style="color:#000">previous_block_number</span><span style="color:#a40000">─┬─</span><span style="color:#000">next_block_number</span><span style="color:#a40000">─┬─</span><span style="color:#000">missing_block_numbers</span><span style="color:#a40000">─┐</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">system</span><span style="color:#f8f8f8;text-decoration:underline">   </span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">query_thread_log</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">202108</span><span style="color:#f8f8f8;text-decoration:underline">       </span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">202108</span><span style="color:#000">_864_1637_556</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">202108</span><span style="color:#000">_1639_1639_0</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline">                  </span><span style="color:#0000cf;font-weight:bold">1637</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline">              </span><span style="color:#0000cf;font-weight:bold">1639</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">1638</span><span style="color:#000;font-weight:bold">]</span><span style="color:#f8f8f8;text-decoration:underline">                </span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">└──────────┴──────────────────┴──────────────┴─────────────────────┴────────────────────┴───────────────────────┴───────────────────┴───────────────────────┘</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#204a87;font-weight:bold">SELECT</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">database</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">table</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#000">partition_id</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">sum</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">max_block_number</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">min_block_number</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">AS</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">blocks_count</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">FROM</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">system</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">parts</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">WHERE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">active</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">AND</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">table</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;query_thread_log&#39;</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">AND</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">partition_id</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;202108&#39;</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">AND</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">active</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">GROUP</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">BY</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">database</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">table</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#000">partition_id</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">┌─</span><span style="color:#204a87;font-weight:bold">database</span><span style="color:#a40000">─┬─</span><span style="color:#204a87;font-weight:bold">table</span><span style="color:#a40000">────────────┬─</span><span style="color:#000">partition_id</span><span style="color:#a40000">─┬─</span><span style="color:#000">blocks_count</span><span style="color:#a40000">─┐</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">system</span><span style="color:#f8f8f8;text-decoration:underline">   </span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">query_thread_log</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">202108</span><span style="color:#f8f8f8;text-decoration:underline">       </span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline">         </span><span style="color:#0000cf;font-weight:bold">1635</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">└──────────┴──────────────────┴──────────────┴──────────────┘</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></code></pre></div>
 	
 	
 	<div class="text-muted mt-5 pt-3 border-top">
 
     Last modified
-    2021.08.12
-    : <a  href="https://github.com/Altinity/betaknowledgebase/commit/5969b6886e2a31134118f644b6fd2463d98dcb80">General corrections and updates. (5969b68)</a>
+    2021.08.24
+    : <a  href="https://github.com/Altinity/betaknowledgebase/commit/e82aa57c3ee81dba9713de484c064060d20f6418">Create parts-consistency.md (e82aa57)</a>
 
 </div>
 
 </div>
+
 
           </main>
         </div>
