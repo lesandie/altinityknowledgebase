@@ -6,24 +6,21 @@
 <meta name="generator" content="Hugo 0.87.0" /><META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
 <link rel="shortcut icon" href="/favicons/favicon.ico" >
 <link rel="icon" href="/favicons/favicon.ico" >
-<title>-State &amp; -Merge combinators | Altinity Beta Knowledgebase</title>
-<meta name="description" content="Altinity Beta Knowledgebase"><meta property="og:title" content="-State &amp; -Merge combinators" />
-<meta property="og:description" content="-State &amp; -Merge combinators
-" />
+<title>Ingestion performance and formats | Altinity Beta Knowledgebase</title>
+<meta name="description" content="Altinity Beta Knowledgebase"><meta property="og:title" content="Ingestion performance and formats" />
+<meta property="og:description" content="clickhouse-client -q &#39;select toString(number) s, number n, number/1000 f from numbers(100000000) format TSV&#39; &gt; speed.tsv clickhouse-client -q &#39;select toString(number) s, number n, number/1000 f from numbers(100000000) format RowBinary&#39; &gt; speed.RowBinary clickhouse-client -q &#39;select toString(number) s, number n, number/1000 f from numbers(100000000) format Native&#39; &gt; speed.Native clickhouse-client -q &#39;select toString(number) s, number n, number/1000 f from numbers(100000000) format CSV&#39; &gt; speed.csv clickhouse-client -q &#39;select toString(number) s, number n, number/1000 f from numbers(100000000) format JSONEachRow&#39; &gt; speed." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://beta.kb.altinity.com/altinity-kb-queries-and-syntax/state-and-merge-combinators/" /><meta property="article:section" content="altinity-kb-queries-and-syntax" />
+<meta property="og:url" content="http://beta.kb.altinity.com/altinity-kb-schema-design/ingestion-performance-and-formats/" /><meta property="article:section" content="altinity-kb-schema-design" />
 
-<meta property="article:modified_time" content="2021-08-12T14:22:56-06:00" /><meta property="og:site_name" content="Altinity Beta Knowledgebase" />
+<meta property="article:modified_time" content="2021-08-24T13:25:14-04:00" /><meta property="og:site_name" content="Altinity Beta Knowledgebase" />
 
-<meta itemprop="name" content="-State &amp; -Merge combinators">
-<meta itemprop="description" content="-State &amp; -Merge combinators
-">
-<meta itemprop="dateModified" content="2021-08-12T14:22:56-06:00" />
-<meta itemprop="wordCount" content="142">
+<meta itemprop="name" content="Ingestion performance and formats">
+<meta itemprop="description" content="clickhouse-client -q &#39;select toString(number) s, number n, number/1000 f from numbers(100000000) format TSV&#39; &gt; speed.tsv clickhouse-client -q &#39;select toString(number) s, number n, number/1000 f from numbers(100000000) format RowBinary&#39; &gt; speed.RowBinary clickhouse-client -q &#39;select toString(number) s, number n, number/1000 f from numbers(100000000) format Native&#39; &gt; speed.Native clickhouse-client -q &#39;select toString(number) s, number n, number/1000 f from numbers(100000000) format CSV&#39; &gt; speed.csv clickhouse-client -q &#39;select toString(number) s, number n, number/1000 f from numbers(100000000) format JSONEachRow&#39; &gt; speed.">
+<meta itemprop="dateModified" content="2021-08-24T13:25:14-04:00" />
+<meta itemprop="wordCount" content="317">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="-State &amp; -Merge combinators"/>
-<meta name="twitter:description" content="-State &amp; -Merge combinators
-"/>
+<meta name="twitter:title" content="Ingestion performance and formats"/>
+<meta name="twitter:description" content="clickhouse-client -q &#39;select toString(number) s, number n, number/1000 f from numbers(100000000) format TSV&#39; &gt; speed.tsv clickhouse-client -q &#39;select toString(number) s, number n, number/1000 f from numbers(100000000) format RowBinary&#39; &gt; speed.RowBinary clickhouse-client -q &#39;select toString(number) s, number n, number/1000 f from numbers(100000000) format Native&#39; &gt; speed.Native clickhouse-client -q &#39;select toString(number) s, number n, number/1000 f from numbers(100000000) format CSV&#39; &gt; speed.csv clickhouse-client -q &#39;select toString(number) s, number n, number/1000 f from numbers(100000000) format JSONEachRow&#39; &gt; speed."/>
 
 
 
@@ -236,69 +233,69 @@
   <a href="/altinity-kb-kubernetes/altinity-kb-possible-issues-with-running-clickhouse-in-k8s/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-kubernetesaltinity-kb-possible-issues-with-running-clickhouse-in-k8s"><span class="">Possible issues with running ClickHouse in k8s</span></a>
 </li>
   </ul>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-altinity-kb-queries-and-syntax-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-altinity-kb-queries-and-syntax-li">
   <a href="/altinity-kb-queries-and-syntax/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-altinity-kb-queries-and-syntax"><span class="">Queries &amp; Syntax</span></a>
   <ul class="ul-2 foldable">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-queries-and-syntaxsampling-example-li">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-queries-and-syntaxsampling-example-li">
   <a href="/altinity-kb-queries-and-syntax/sampling-example/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-queries-and-syntaxsampling-example"><span class=""></span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-altinity-kb-queries-and-syntaxstate-and-merge-combinators-li">
-  <a href="/altinity-kb-queries-and-syntax/state-and-merge-combinators/" class="align-left pl-0 active td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-queries-and-syntaxstate-and-merge-combinators"><span class="td-sidebar-nav-active-item">-State &amp; -Merge combinators</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-queries-and-syntaxaltinity-kb-alter-modify-column-is-stuck-the-column-is-inaccessible-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-queries-and-syntaxstate-and-merge-combinators-li">
+  <a href="/altinity-kb-queries-and-syntax/state-and-merge-combinators/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-queries-and-syntaxstate-and-merge-combinators"><span class="">-State &amp; -Merge combinators</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-queries-and-syntaxaltinity-kb-alter-modify-column-is-stuck-the-column-is-inaccessible-li">
   <a href="/altinity-kb-queries-and-syntax/altinity-kb-alter-modify-column-is-stuck-the-column-is-inaccessible/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-queries-and-syntaxaltinity-kb-alter-modify-column-is-stuck-the-column-is-inaccessible"><span class="">ALTER MODIFY COLUMN is stuck, the column is inaccessible.</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-queries-and-syntaxansi-sql-mode-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-queries-and-syntaxansi-sql-mode-li">
   <a href="/altinity-kb-queries-and-syntax/ansi-sql-mode/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-queries-and-syntaxansi-sql-mode"><span class="">ANSI SQL mode</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-queries-and-syntaxatomic-insert-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-queries-and-syntaxatomic-insert-li">
   <a href="/altinity-kb-queries-and-syntax/atomic-insert/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-queries-and-syntaxatomic-insert"><span class="">Atomic insert</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-queries-and-syntaxcumulative-unique-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-queries-and-syntaxcumulative-unique-li">
   <a href="/altinity-kb-queries-and-syntax/cumulative-unique/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-queries-and-syntaxcumulative-unique"><span class="">Cumulative Anything</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-queries-and-syntaxdata-types-on-disk-and-in-ram-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-queries-and-syntaxdata-types-on-disk-and-in-ram-li">
   <a href="/altinity-kb-queries-and-syntax/data-types-on-disk-and-in-ram/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-queries-and-syntaxdata-types-on-disk-and-in-ram"><span class="">Data types on disk and in RAM</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-queries-and-syntaxdelete-via-tombstone-column-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-queries-and-syntaxdelete-via-tombstone-column-li">
   <a href="/altinity-kb-queries-and-syntax/delete-via-tombstone-column/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-queries-and-syntaxdelete-via-tombstone-column"><span class="">DELETE via tombstone column</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-queries-and-syntaxexplain-query-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-queries-and-syntaxexplain-query-li">
   <a href="/altinity-kb-queries-and-syntax/explain-query/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-queries-and-syntaxexplain-query"><span class="">EXPLAIN query</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-queries-and-syntaxfill-missing-values-at-query-time-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-queries-and-syntaxfill-missing-values-at-query-time-li">
   <a href="/altinity-kb-queries-and-syntax/fill-missing-values-at-query-time/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-queries-and-syntaxfill-missing-values-at-query-time"><span class="">Fill missing values at query time</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-queries-and-syntaxaltinity-kb-final-clause-speed-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-queries-and-syntaxaltinity-kb-final-clause-speed-li">
   <a href="/altinity-kb-queries-and-syntax/altinity-kb-final-clause-speed/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-queries-and-syntaxaltinity-kb-final-clause-speed"><span class="">FINAL clause speed</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-queries-and-syntaxjoin-with-calendar-using-arrays-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-queries-and-syntaxjoin-with-calendar-using-arrays-li">
   <a href="/altinity-kb-queries-and-syntax/join-with-calendar-using-arrays/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-queries-and-syntaxjoin-with-calendar-using-arrays"><span class="">Join with Calendar using Arrays</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-queries-and-syntaxjoins-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-queries-and-syntaxjoins-li">
   <a href="/altinity-kb-queries-and-syntax/joins/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-queries-and-syntaxjoins"><span class="">JOINs</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-altinity-kb-queries-and-syntaxjoins-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child collapse" id="m-altinity-kb-queries-and-syntaxjoins-li">
   <a href="/altinity-kb-queries-and-syntax/joins/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-altinity-kb-queries-and-syntaxjoins"><span class="">JOINs</span></a>
   <ul class="ul-3 foldable">
     <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-queries-and-syntaxjoinsjoin-table-engine-li">
   <a href="/altinity-kb-queries-and-syntax/joins/join-table-engine/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-queries-and-syntaxjoinsjoin-table-engine"><span class="">JOIN table engine</span></a>
 </li>
   </ul>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-queries-and-syntaxjsonextract-to-parse-many-attributes-at-a-time-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-queries-and-syntaxjsonextract-to-parse-many-attributes-at-a-time-li">
   <a href="/altinity-kb-queries-and-syntax/jsonextract-to-parse-many-attributes-at-a-time/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-queries-and-syntaxjsonextract-to-parse-many-attributes-at-a-time"><span class="">JSONExtract to parse many attributes at a time</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-queries-and-syntaxaltinity-kb-kill-query-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-queries-and-syntaxaltinity-kb-kill-query-li">
   <a href="/altinity-kb-queries-and-syntax/altinity-kb-kill-query/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-queries-and-syntaxaltinity-kb-kill-query"><span class="">KILL QUERY</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-queries-and-syntaxlag-lead-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-queries-and-syntaxlag-lead-li">
   <a href="/altinity-kb-queries-and-syntax/lag-lead/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-queries-and-syntaxlag-lead"><span class="">Lag / Lead</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-queries-and-syntaxmachine-learning-in-clickhouse-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-queries-and-syntaxmachine-learning-in-clickhouse-li">
   <a href="/altinity-kb-queries-and-syntax/machine-learning-in-clickhouse/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-queries-and-syntaxmachine-learning-in-clickhouse"><span class="">Machine learning in ClickHouse</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-queries-and-syntaxmutations-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-queries-and-syntaxmutations-li">
   <a href="/altinity-kb-queries-and-syntax/mutations/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-queries-and-syntaxmutations"><span class="">Mutations</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-queries-and-syntaxaltinity-kb-optimize-vs-optimize-final-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-queries-and-syntaxaltinity-kb-optimize-vs-optimize-final-li">
   <a href="/altinity-kb-queries-and-syntax/altinity-kb-optimize-vs-optimize-final/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-queries-and-syntaxaltinity-kb-optimize-vs-optimize-final"><span class="">OPTIMIZE vs OPTIMIZE FINAL</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-queries-and-syntaxaltinity-kb-parameterized-views-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-queries-and-syntaxaltinity-kb-parameterized-views-li">
   <a href="/altinity-kb-queries-and-syntax/altinity-kb-parameterized-views/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-queries-and-syntaxaltinity-kb-parameterized-views"><span class="">Parameterized views</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-queries-and-syntaxpivot-unpivot-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-queries-and-syntaxpivot-unpivot-li">
   <a href="/altinity-kb-queries-and-syntax/pivot-unpivot/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-queries-and-syntaxpivot-unpivot"><span class="">PIVOT / UNPIVOT</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-queries-and-syntaxaltinity-kb-possible-deadlock-avoided-client-should-retry-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-queries-and-syntaxaltinity-kb-possible-deadlock-avoided-client-should-retry-li">
   <a href="/altinity-kb-queries-and-syntax/altinity-kb-possible-deadlock-avoided.-client-should-retry/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-queries-and-syntaxaltinity-kb-possible-deadlock-avoided-client-should-retry"><span class="">Possible deadlock avoided. Client should retry</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-queries-and-syntaxprojections-examples-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-queries-and-syntaxprojections-examples-li">
   <a href="/altinity-kb-queries-and-syntax/projections-examples/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-queries-and-syntaxprojections-examples"><span class="">Projections examples</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-queries-and-syntaxroaring-bitmaps-for-calculating-retention-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-queries-and-syntaxroaring-bitmaps-for-calculating-retention-li">
   <a href="/altinity-kb-queries-and-syntax/roaring-bitmaps-for-calculating-retention/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-queries-and-syntaxroaring-bitmaps-for-calculating-retention"><span class="">Roaring bitmaps for calculating retention</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-queries-and-syntaxaltinity-kb-sample-by-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-queries-and-syntaxaltinity-kb-sample-by-li">
   <a href="/altinity-kb-queries-and-syntax/altinity-kb-sample-by/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-queries-and-syntaxaltinity-kb-sample-by"><span class="">SAMPLE by</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-queries-and-syntaxsimplestateif-or-ifstate-for-simple-aggregate-functions-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-queries-and-syntaxsimplestateif-or-ifstate-for-simple-aggregate-functions-li">
   <a href="/altinity-kb-queries-and-syntax/simplestateif-or-ifstate-for-simple-aggregate-functions/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-queries-and-syntaxsimplestateif-or-ifstate-for-simple-aggregate-functions"><span class="">Simple aggregate functions &amp; combinators</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-altinity-kb-queries-and-syntaxskip-indexes-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child collapse" id="m-altinity-kb-queries-and-syntaxskip-indexes-li">
   <a href="/altinity-kb-queries-and-syntax/skip-indexes/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-altinity-kb-queries-and-syntaxskip-indexes"><span class="">Skip indexes</span></a>
   <ul class="ul-3 foldable">
     <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-queries-and-syntaxskip-indexesminmax-li">
@@ -309,13 +306,13 @@
   <a href="/altinity-kb-queries-and-syntax/skip-indexes/skip-indexes-examples/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-queries-and-syntaxskip-indexesskip-indexes-examples"><span class="">Skip indexes examples</span></a>
 </li>
   </ul>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-queries-and-syntaxtime-zones-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-queries-and-syntaxtime-zones-li">
   <a href="/altinity-kb-queries-and-syntax/time-zones/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-queries-and-syntaxtime-zones"><span class="">Time zones</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-queries-and-syntaxtop-n-and-remain-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-queries-and-syntaxtop-n-and-remain-li">
   <a href="/altinity-kb-queries-and-syntax/top-n-and-remain/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-queries-and-syntaxtop-n-and-remain"><span class="">Top N &amp; Remain</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-queries-and-syntaxtroubleshooting-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-queries-and-syntaxtroubleshooting-li">
   <a href="/altinity-kb-queries-and-syntax/troubleshooting/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-queries-and-syntaxtroubleshooting"><span class="">Troubleshooting</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-altinity-kb-queries-and-syntaxttl-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child collapse" id="m-altinity-kb-queries-and-syntaxttl-li">
   <a href="/altinity-kb-queries-and-syntax/ttl/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-altinity-kb-queries-and-syntaxttl"><span class="">TTL</span></a>
   <ul class="ul-3 foldable">
     <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-queries-and-syntaxttlttl-group-by-examples-li">
@@ -324,20 +321,20 @@
   <a href="/altinity-kb-queries-and-syntax/ttl/ttl-recompress-example/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-queries-and-syntaxttlttl-recompress-example"><span class="">TTL Recompress example</span></a>
 </li>
   </ul>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-queries-and-syntaxupdate-via-dictionary-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-queries-and-syntaxupdate-via-dictionary-li">
   <a href="/altinity-kb-queries-and-syntax/update-via-dictionary/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-queries-and-syntaxupdate-via-dictionary"><span class="">UPDATE via Dictionary</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-queries-and-syntaxvalues-mapping-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-queries-and-syntaxvalues-mapping-li">
   <a href="/altinity-kb-queries-and-syntax/values-mapping/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-queries-and-syntaxvalues-mapping"><span class="">Values mapping</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-queries-and-syntaxwindow-functions-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-queries-and-syntaxwindow-functions-li">
   <a href="/altinity-kb-queries-and-syntax/window-functions/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-queries-and-syntaxwindow-functions"><span class="">Window functions</span></a>
 </li>
   </ul>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-altinity-kb-schema-design-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-altinity-kb-schema-design-li">
   <a href="/altinity-kb-schema-design/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-altinity-kb-schema-design"><span class="">Schema design</span></a>
   <ul class="ul-2 foldable">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-schema-designbest-schema-for-storing-many-metrics-registered-from-the-single-source-li">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-schema-designbest-schema-for-storing-many-metrics-registered-from-the-single-source-li">
   <a href="/altinity-kb-schema-design/best-schema-for-storing-many-metrics-registered-from-the-single-source/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-schema-designbest-schema-for-storing-many-metrics-registered-from-the-single-source"><span class="">Best schema for storing many metrics registered from the single source</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child collapse" id="m-altinity-kb-schema-designcodecs-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-altinity-kb-schema-designcodecs-li">
   <a href="/altinity-kb-schema-design/codecs/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-altinity-kb-schema-designcodecs"><span class="">Codecs</span></a>
   <ul class="ul-3 foldable">
     <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-schema-designcodecscodecs-on-array-columns-li">
@@ -348,21 +345,21 @@
   <a href="/altinity-kb-schema-design/codecs/altinity-kb-how-to-test-different-compression-codecs/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-schema-designcodecsaltinity-kb-how-to-test-different-compression-codecs"><span class="">How to test different compression codecs</span></a>
 </li>
   </ul>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-schema-designaltinity-kb-dictionaries-vs-lowcardinality-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-schema-designaltinity-kb-dictionaries-vs-lowcardinality-li">
   <a href="/altinity-kb-schema-design/altinity-kb-dictionaries-vs-lowcardinality/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-schema-designaltinity-kb-dictionaries-vs-lowcardinality"><span class="">Dictionaries vs LowCardinality</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-schema-designflattened-table-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-schema-designflattened-table-li">
   <a href="/altinity-kb-schema-design/flattened-table/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-schema-designflattened-table"><span class="">Flattened table</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-schema-designfloats-vs-decimals-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-schema-designfloats-vs-decimals-li">
   <a href="/altinity-kb-schema-design/floats-vs-decimals/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-schema-designfloats-vs-decimals"><span class="">Floats vs Decimals</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-schema-designingestion-performance-and-formats-li">
-  <a href="/altinity-kb-schema-design/ingestion-performance-and-formats/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-schema-designingestion-performance-and-formats"><span class="">Ingestion performance and formats</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-schema-designhow-to-store-ips-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-altinity-kb-schema-designingestion-performance-and-formats-li">
+  <a href="/altinity-kb-schema-design/ingestion-performance-and-formats/" class="align-left pl-0 active td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-schema-designingestion-performance-and-formats"><span class="td-sidebar-nav-active-item">Ingestion performance and formats</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-schema-designhow-to-store-ips-li">
   <a href="/altinity-kb-schema-design/how-to-store-ips/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-schema-designhow-to-store-ips"><span class="">IPs/masks</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-schema-designaltinity-kb-jsonasstring-and-mat-view-as-json-parser-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-schema-designaltinity-kb-jsonasstring-and-mat-view-as-json-parser-li">
   <a href="/altinity-kb-schema-design/altinity-kb-jsonasstring-and-mat.-view-as-json-parser/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-schema-designaltinity-kb-jsonasstring-and-mat-view-as-json-parser"><span class="">JSONAsString and Mat. View as JSON parser</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-schema-designlowcardinality-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-schema-designlowcardinality-li">
   <a href="/altinity-kb-schema-design/lowcardinality/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-schema-designlowcardinality"><span class="">LowCardinality</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child collapse" id="m-altinity-kb-schema-designmaterialized-views-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-altinity-kb-schema-designmaterialized-views-li">
   <a href="/altinity-kb-schema-design/materialized-views/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-altinity-kb-schema-designmaterialized-views"><span class="">MATERIALIZED VIEWS</span></a>
   <ul class="ul-3 foldable">
     <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-schema-designmaterialized-viewsbackfill-populate-mv-in-a-controlled-manner-li">
@@ -545,9 +542,9 @@
     
     
 
-    <a href="https://github.com/Altinity/betaknowledgebase/edit/main/content/en/altinity-kb-queries-and-syntax/state-and-merge-combinators.md" target="_blank"><i class="fa fa-edit fa-fw"></i> Edit this page</a>
-    <a href="https://github.com/Altinity/betaknowledgebase/new/main/content/en/altinity-kb-queries-and-syntax/state-and-merge-combinators.md?filename=change-me.md&amp;value=---%0Atitle%3A&#43;%22Long&#43;Page&#43;Title%22%0AlinkTitle%3A&#43;%22Short&#43;Nav&#43;Title%22%0Aweight%3A&#43;100%0Adescription%3A&#43;%3E-%0A&#43;&#43;&#43;&#43;&#43;Page&#43;description&#43;for&#43;heading&#43;and&#43;indexes.%0A---%0A%0A%23%23&#43;Heading%0A%0AEdit&#43;this&#43;template&#43;to&#43;create&#43;your&#43;new&#43;page.%0A%0A%2A&#43;Give&#43;it&#43;a&#43;good&#43;name%2C&#43;ending&#43;in&#43;%60.md%60&#43;-&#43;e.g.&#43;%60getting-started.md%60%0A%2A&#43;Edit&#43;the&#43;%22front&#43;matter%22&#43;section&#43;at&#43;the&#43;top&#43;of&#43;the&#43;page&#43;%28weight&#43;controls&#43;how&#43;its&#43;ordered&#43;amongst&#43;other&#43;pages&#43;in&#43;the&#43;same&#43;directory%3B&#43;lowest&#43;number&#43;first%29.%0A%2A&#43;Add&#43;a&#43;good&#43;commit&#43;message&#43;at&#43;the&#43;bottom&#43;of&#43;the&#43;page&#43;%28%3C80&#43;characters%3B&#43;use&#43;the&#43;extended&#43;description&#43;field&#43;for&#43;more&#43;detail%29.%0A%2A&#43;Create&#43;a&#43;new&#43;branch&#43;so&#43;you&#43;can&#43;preview&#43;your&#43;new&#43;file&#43;and&#43;request&#43;a&#43;review&#43;via&#43;Pull&#43;Request.%0A" target="_blank"><i class="fa fa-edit fa-fw"></i> Create child page</a>
-    <a href="https://github.com/Altinity/betaknowledgebase/issues/new?title=/altinity-kb-queries-and-syntax/state-and-merge-combinators/" target="_blank"><i class="fab fa-github fa-fw"></i> Create documentation issue</a>
+    <a href="https://github.com/Altinity/betaknowledgebase/edit/main/content/en/altinity-kb-schema-design/ingestion-performance-and-formats.md" target="_blank"><i class="fa fa-edit fa-fw"></i> Edit this page</a>
+    <a href="https://github.com/Altinity/betaknowledgebase/new/main/content/en/altinity-kb-schema-design/ingestion-performance-and-formats.md?filename=change-me.md&amp;value=---%0Atitle%3A&#43;%22Long&#43;Page&#43;Title%22%0AlinkTitle%3A&#43;%22Short&#43;Nav&#43;Title%22%0Aweight%3A&#43;100%0Adescription%3A&#43;%3E-%0A&#43;&#43;&#43;&#43;&#43;Page&#43;description&#43;for&#43;heading&#43;and&#43;indexes.%0A---%0A%0A%23%23&#43;Heading%0A%0AEdit&#43;this&#43;template&#43;to&#43;create&#43;your&#43;new&#43;page.%0A%0A%2A&#43;Give&#43;it&#43;a&#43;good&#43;name%2C&#43;ending&#43;in&#43;%60.md%60&#43;-&#43;e.g.&#43;%60getting-started.md%60%0A%2A&#43;Edit&#43;the&#43;%22front&#43;matter%22&#43;section&#43;at&#43;the&#43;top&#43;of&#43;the&#43;page&#43;%28weight&#43;controls&#43;how&#43;its&#43;ordered&#43;amongst&#43;other&#43;pages&#43;in&#43;the&#43;same&#43;directory%3B&#43;lowest&#43;number&#43;first%29.%0A%2A&#43;Add&#43;a&#43;good&#43;commit&#43;message&#43;at&#43;the&#43;bottom&#43;of&#43;the&#43;page&#43;%28%3C80&#43;characters%3B&#43;use&#43;the&#43;extended&#43;description&#43;field&#43;for&#43;more&#43;detail%29.%0A%2A&#43;Create&#43;a&#43;new&#43;branch&#43;so&#43;you&#43;can&#43;preview&#43;your&#43;new&#43;file&#43;and&#43;request&#43;a&#43;review&#43;via&#43;Pull&#43;Request.%0A" target="_blank"><i class="fa fa-edit fa-fw"></i> Create child page</a>
+    <a href="https://github.com/Altinity/betaknowledgebase/issues/new?title=/altinity-kb-schema-design/ingestion-performance-and-formats/" target="_blank"><i class="fab fa-github fa-fw"></i> Create documentation issue</a>
     
 
   
@@ -596,14 +593,14 @@
 
 
 <li class="breadcrumb-item" >
-	<a href="http://beta.kb.altinity.com/altinity-kb-queries-and-syntax/">Queries &amp; Syntax</a>
+	<a href="http://beta.kb.altinity.com/altinity-kb-schema-design/">Schema design</a>
 </li>
 
 
 
 
 <li class="breadcrumb-item active" aria-current="page">
-	<a href="http://beta.kb.altinity.com/altinity-kb-queries-and-syntax/state-and-merge-combinators/">-State &amp; -Merge combinators</a>
+	<a href="http://beta.kb.altinity.com/altinity-kb-schema-design/ingestion-performance-and-formats/">Ingestion performance and formats</a>
 </li>
 
 	</ol>
@@ -611,69 +608,59 @@
 
             
 <div class="td-content">
-	<h1>-State &amp; -Merge combinators</h1>
-    <div class="lead">-State &amp; -Merge combinators	
+	<h1>Ingestion performance and formats</h1>
+    <div class="lead">	
 	</div>
 	
 	       
-	<p>-State combinator doesn&rsquo;t actually store information about -If combinator, so aggregate functions with -If and without have the same serialized data.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#a40000">$</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">clickhouse</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#204a87;font-weight:bold">local</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic">--query &#34;SELECT maxIfState(number,number % 2) as x, maxState(number) as y FROM numbers(10) FORMAT RowBinary&#34; | clickhouse-local --input-format RowBinary --structure=&#34;x AggregateFunction(max,UInt64), y AggregateFunction(max,UInt64)&#34; --query &#34;SELECT maxMerge(x), maxMerge(y) FROM table&#34;
-</span><span style="color:#8f5902;font-style:italic"></span><span style="color:#0000cf;font-weight:bold">9</span><span style="color:#f8f8f8;text-decoration:underline">       </span><span style="color:#0000cf;font-weight:bold">9</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">$</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">clickhouse</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#204a87;font-weight:bold">local</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic">--query &#34;SELECT maxIfState(number,number % 2) as x, maxState(number) as y FROM numbers(11) FORMAT RowBinary&#34; | clickhouse-local --input-format RowBinary --structure=&#34;x AggregateFunction(max,UInt64), y AggregateFunction(max,UInt64)&#34; --query &#34;SELECT maxMerge(x), maxMerge(y) FROM table&#34;
-</span><span style="color:#8f5902;font-style:italic"></span><span style="color:#0000cf;font-weight:bold">9</span><span style="color:#f8f8f8;text-decoration:underline">       </span><span style="color:#0000cf;font-weight:bold">10</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></code></pre></div><p>-State combinator have the same serialized data footprint regardless of parameters used in definition of aggregate function. That&rsquo;s true for quantile* and sequenceMatch/sequenceCount functions.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#a40000">$</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">clickhouse</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#204a87;font-weight:bold">local</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic">--query &#34;SELECT quantilesTDigestIfState(0.1,0.9)(number,number % 2) FROM  numbers(1000000) FORMAT RowBinary&#34; | clickhouse-local --input-format RowBinary --structure=&#34;x AggregateFunction(quantileTDigestWeighted(0.5),UInt64,UInt8)&#34; --query &#34;SELECT quantileTDigestWeightedMerge(0.4)(x) FROM table&#34;
-</span><span style="color:#8f5902;font-style:italic"></span><span style="color:#0000cf;font-weight:bold">400000</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">$</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">clickhouse</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#204a87;font-weight:bold">local</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic">--query &#34;SELECT quantilesTDigestIfState(0.1,0.9)(number,number % 2) FROM  numbers(1000000) FORMAT RowBinary&#34; | clickhouse-local --input-format RowBinary --structure=&#34;x AggregateFunction(quantilesTDigestWeighted(0.5),UInt64,UInt8)&#34; --query &#34;SELECT quantilesTDigestWeightedMerge(0.4,0.8)(x) FROM table&#34;
-</span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000;font-weight:bold">[</span><span style="color:#0000cf;font-weight:bold">400000</span><span style="color:#000;font-weight:bold">,</span><span style="color:#0000cf;font-weight:bold">800000</span><span style="color:#000;font-weight:bold">]</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">SELECT</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">quantileMerge</span><span style="color:#000;font-weight:bold">(</span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">.</span><span style="color:#0000cf;font-weight:bold">9</span><span style="color:#000;font-weight:bold">)(</span><span style="color:#000">x</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">FROM</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000;font-weight:bold">(</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">SELECT</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">quantileState</span><span style="color:#000;font-weight:bold">(</span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">.</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">)(</span><span style="color:#204a87">number</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">AS</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">x</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">FROM</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">numbers</span><span style="color:#000;font-weight:bold">(</span><span style="color:#0000cf;font-weight:bold">1000</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">┌─</span><span style="color:#000">quantileMerge</span><span style="color:#000;font-weight:bold">(</span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">.</span><span style="color:#0000cf;font-weight:bold">9</span><span style="color:#000;font-weight:bold">)(</span><span style="color:#000">x</span><span style="color:#000;font-weight:bold">)</span><span style="color:#a40000">─┐</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline">                 </span><span style="color:#0000cf;font-weight:bold">899</span><span style="color:#000;font-weight:bold">.</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">└───────────────────────┘</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#204a87;font-weight:bold">SELECT</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#000">sequenceMatchMerge</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;(?2)(?3)&#39;</span><span style="color:#000;font-weight:bold">)(</span><span style="color:#000">x</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">AS</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">`</span><span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000">_3</span><span style="color:#ce5c00;font-weight:bold">`</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#000">sequenceMatchMerge</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;(?1)(?4)&#39;</span><span style="color:#000;font-weight:bold">)(</span><span style="color:#000">x</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">AS</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">`</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000">_4</span><span style="color:#ce5c00;font-weight:bold">`</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#000">sequenceMatchMerge</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;(?1)(?2)(?3)&#39;</span><span style="color:#000;font-weight:bold">)(</span><span style="color:#000">x</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">AS</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">`</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000">_2_3</span><span style="color:#ce5c00;font-weight:bold">`</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">FROM</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000;font-weight:bold">(</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">SELECT</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">sequenceMatchState</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;(?1)(?2)(?3)&#39;</span><span style="color:#000;font-weight:bold">)(</span><span style="color:#204a87">number</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87">number</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">8</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87">number</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">5</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87">number</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">6</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87">number</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">9</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">AS</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">x</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">FROM</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">numbers</span><span style="color:#000;font-weight:bold">(</span><span style="color:#0000cf;font-weight:bold">10</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">┌─</span><span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000">_3</span><span style="color:#a40000">─┬─</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000">_4</span><span style="color:#a40000">─┬─</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000">_2_3</span><span style="color:#a40000">─┐</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline">   </span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline">   </span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline">     </span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">└─────┴─────┴───────┘</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">SELECT</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#000">sequenceCountMerge</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;(?1)(?2)&#39;</span><span style="color:#000;font-weight:bold">)(</span><span style="color:#000">x</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">AS</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">`</span><span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000">_3</span><span style="color:#ce5c00;font-weight:bold">`</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#000">sequenceCountMerge</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;(?1)(?4)&#39;</span><span style="color:#000;font-weight:bold">)(</span><span style="color:#000">x</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">AS</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">`</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000">_4</span><span style="color:#ce5c00;font-weight:bold">`</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#000">sequenceCountMerge</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;(?1)(?2)(?3)&#39;</span><span style="color:#000;font-weight:bold">)(</span><span style="color:#000">x</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">AS</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">`</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000">_2_3</span><span style="color:#ce5c00;font-weight:bold">`</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">FROM</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000;font-weight:bold">(</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">WITH</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87">number</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">%</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">4</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">AS</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">cond</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">SELECT</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">sequenceCountState</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;(?1)(?2)(?3)&#39;</span><span style="color:#000;font-weight:bold">)(</span><span style="color:#204a87">number</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">cond</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">cond</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">cond</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">3</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">cond</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">5</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">AS</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">x</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">FROM</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">numbers</span><span style="color:#000;font-weight:bold">(</span><span style="color:#0000cf;font-weight:bold">11</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">┌─</span><span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000">_3</span><span style="color:#a40000">─┬─</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000">_4</span><span style="color:#a40000">─┬─</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000">_2_3</span><span style="color:#a40000">─┐</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline">   </span><span style="color:#0000cf;font-weight:bold">3</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline">   </span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline">     </span><span style="color:#0000cf;font-weight:bold">2</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">└─────┴─────┴───────┘</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></code></pre></div>
+	<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">clickhouse-client -q &#39;select toString(number) s, number n, number/1000 f from numbers(100000000) format TSV&#39; &gt; speed.tsv
+clickhouse-client -q &#39;select toString(number) s, number n, number/1000 f from numbers(100000000) format RowBinary&#39; &gt; speed.RowBinary
+clickhouse-client -q &#39;select toString(number) s, number n, number/1000 f from numbers(100000000) format Native&#39; &gt; speed.Native
+clickhouse-client -q &#39;select toString(number) s, number n, number/1000 f from numbers(100000000) format CSV&#39; &gt; speed.csv
+clickhouse-client -q &#39;select toString(number) s, number n, number/1000 f from numbers(100000000) format JSONEachRow&#39; &gt; speed.JSONEachRow
+clickhouse-client -q &#39;select toString(number) s, number n, number/1000 f from numbers(100000000) format Parquet&#39; &gt; speed.parquet
+clickhouse-client -q &#39;select toString(number) s, number n, number/1000 f from numbers(100000000) format Avro&#39; &gt; speed.avro
+
+-- Engine=Null does not have I/O / sorting overhead
+-- we test only formats parsing performace.
+
+create table n (s String, n UInt64, f Float64) Engine=Null
+
+
+-- clickhouse-client parses formats itself
+-- it allows to see user CPU time -- time is used in a multithreaded application
+-- another option is to disable parallelizm `--input_format_parallel_parsing=0`
+-- real -- wall / clock time.
+
+time clickhouse-client -t -q &#39;insert into n format TSV&#39; &lt; speed.tsv
+2.693  real	0m2.728s   user	0m14.066s
+
+time clickhouse-client -t -q &#39;insert into n format RowBinary&#39; &lt; speed.RowBinary
+3.744  real	0m3.773s   user	0m4.245s
+
+time clickhouse-client -t -q &#39;insert into n format Native&#39; &lt; speed.Native
+2.359  real	0m2.382s   user	0m1.945s
+
+time clickhouse-client -t -q &#39;insert into n format CSV&#39; &lt; speed.csv
+3.296  real	0m3.328s  user	0m18.145s
+
+time clickhouse-client -t -q &#39;insert into n format JSONEachRow&#39; &lt; speed.JSONEachRow
+8.872  real	0m8.899s  user	0m30.235s
+
+time clickhouse-client -t -q &#39;insert into n format Parquet&#39; &lt; speed.parquet
+4.905  real	0m4.929s   user	0m5.478s
+
+time clickhouse-client -t -q &#39;insert into n format Avro&#39; &lt; speed.avro
+11.491  real	0m11.519s  user	0m12.166s
+</code></pre></div><p>As you can see the JSONEachRow is the worst format  (user 0m30.235s) for this syntetic dataset. Native is the best (user 0m1.945s). TSV / CSV are good in wall time but spend a lot of CPU (user time).</p>
+
 	
 	
 	<div class="text-muted mt-5 pt-3 border-top">
 
     Last modified
-    2021.08.12
-    : <a  href="https://github.com/Altinity/betaknowledgebase/commit/5969b6886e2a31134118f644b6fd2463d98dcb80">General corrections and updates. (5969b68)</a>
+    2021.08.24
+    : <a  href="https://github.com/Altinity/betaknowledgebase/commit/4772355340a25ab33dd47ec9c30bd28b4a1ee634">Create ingestion-performance-and-formats.md (4772355)</a>
 
 </div>
 
