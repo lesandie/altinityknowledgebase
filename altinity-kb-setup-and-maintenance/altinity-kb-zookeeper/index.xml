@@ -25,7 +25,7 @@
         
         &lt;h1 id=&#34;zookeeper-monitoring&#34;&gt;ZooKeeper Monitoring&lt;/h1&gt;
 &lt;h2 id=&#34;zookeeper&#34;&gt;ZooKeeper&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;scrape metrics:&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&#34;scrape-metrics&#34;&gt;scrape metrics&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;embedded exporter since version 3.6.0
 &lt;ul&gt;
@@ -38,17 +38,17 @@
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;Install dashboards&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&#34;install-dashboards&#34;&gt;Install dashboards&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;embedded exporter &lt;a href=&#34;https://grafana.com/grafana/dashboards/10465&#34; target=&#34;_blank&#34;&gt;https://grafana.com/grafana/dashboards/10465&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;dabealu exporter &lt;a href=&#34;https://grafana.com/grafana/dashboards/11442&#34; target=&#34;_blank&#34;&gt;https://grafana.com/grafana/dashboards/11442&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;see also &lt;a href=&#34;https://grafana.com/grafana/dashboards?search=ZooKeeper&amp;amp;dataSource=prometheus&#34; target=&#34;_blank&#34;&gt;https://grafana.com/grafana/dashboards?search=ZooKeeper&amp;amp;amp;dataSource=prometheus&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;setup alert rules:&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&#34;setup-alert-rules&#34;&gt;setup alert rules&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;embedded exporter &lt;a href=&#34;https://github.com/Altinity/clickhouse-operator/blob/master/deploy/prometheus/prometheus-alert-rules.yaml#L480-L805&#34; target=&#34;_blank&#34;&gt;https://github.com/Altinity/clickhouse-operator/blob/master/deploy/prometheus/prometheus-alert-rules.yaml#L480-L805&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;See also&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&#34;see-also&#34;&gt;See also&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://blog.serverdensity.com/how-to-monitor-zookeeper/&#34; target=&#34;_blank&#34;&gt;https://blog.serverdensity.com/how-to-monitor-zookeeper/&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.datadoghq.com/blog/monitoring-kafka-performance-metrics/#zookeeper-metrics&#34; target=&#34;_blank&#34;&gt;https://www.datadoghq.com/blog/monitoring-kafka-performance-metrics/#zookeeper-metrics&lt;/a&gt;&lt;/li&gt;
@@ -58,7 +58,6 @@
 &lt;li&gt;&lt;a href=&#34;https://alex.dzyoba.com/blog/prometheus-alerts/&#34; target=&#34;_blank&#34;&gt;https://alex.dzyoba.com/blog/prometheus-alerts/&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://docs.datadoghq.com/integrations/zk/?tab=host&#34; target=&#34;_blank&#34;&gt;https://docs.datadoghq.com/integrations/zk/?tab=host&lt;/a&gt;�&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;© 2021 Altinity Inc. All rights reserved.&lt;/p&gt;
 
       </description>
     </item>
@@ -117,7 +116,7 @@
       <description>
         
         
-        &lt;h2 id=&#34;tldr-version&#34;&gt;&lt;strong&gt;TLDR version&lt;/strong&gt;:&lt;/h2&gt;
+        &lt;h2 id=&#34;tldr-version&#34;&gt;TLDR version&lt;/h2&gt;
 &lt;p&gt;use fresh Java version (11 or newer), disable swap and set up (for 4 Gb node):&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#000&#34;&gt;JAVA_OPTS&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;-Xms3G -Xmx3G -XX:+AlwaysPreTouch -Djute.maxbuffer=8388608 -XX:MaxGCPauseMillis=50&amp;#34;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;If you have a node with more RAM - change it accordingly, for example for 8Gb node:&lt;/p&gt;
@@ -125,7 +124,7 @@
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;details&#34;&gt;Details&lt;/h2&gt;
 &lt;ol&gt;
 &lt;li&gt;
-&lt;p&gt;ZooKeeper runs as in JVM. Depending on version different garbage collectors are avaliable.&lt;/p&gt;
+&lt;p&gt;ZooKeeper runs as in JVM. Depending on version different garbage collectors are available.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Recent JVM versions (starting from 10) use &lt;code&gt;G1&lt;/code&gt; garbage collector by default (should work fine).
@@ -137,7 +136,7 @@ On older JVM version (before 10) you may want to make some tuning to decrease pa
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;Set the Java heap size smaller than available RAM size on the node. This is very important to avoid swapping, which will seriously degrade ZooKeeper performance. Be conservative - use a maximum heap size of 3GB for a 4GB machine.&lt;/p&gt;
-&lt;ol start=&#34;3&#34;&gt;
+&lt;ol&gt;
 &lt;li&gt;
 &lt;p&gt;Set min (&lt;code&gt;Xms&lt;/code&gt;) and max (&lt;code&gt;Xmx&lt;/code&gt;) heap size to same value to avoid resizing. Add &lt;code&gt;XX:+AlwaysPreTouch&lt;/code&gt; flag as well to load the memory pages into memory at the start of the zookeeper.&lt;/p&gt;
 &lt;/li&gt;
@@ -197,11 +196,11 @@ On older JVM version (before 10) you may want to make some tuning to decrease pa
         
         
         &lt;h3 id=&#34;main-docs-article&#34;&gt;Main docs article&lt;/h3&gt;
-&lt;p&gt;[https://docs.altinity.com/operationsguide/clickhouse-zookeeper/zookeeper-installation/&amp;quot; caption=&amp;quot;](&lt;a href=&#34;https://docs.altinity.com/operationsguide/clickhouse-zookeeper/zookeeper-installation/%22&#34; target=&#34;_blank&#34;&gt;https://docs.altinity.com/operationsguide/clickhouse-zookeeper/zookeeper-installation/&amp;#34;&lt;/a&gt; caption=&amp;quot;)&lt;/p&gt;
-&lt;h3 id=&#34;hardware-requirements&#34;&gt;Hardware requirements:&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;https://docs.altinity.com/operationsguide/clickhouse-zookeeper/zookeeper-installation/&#34; target=&#34;_blank&#34;&gt;https://docs.altinity.com/operationsguide/clickhouse-zookeeper/zookeeper-installation/&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;hardware-requirements&#34;&gt;Hardware requirements&lt;/h3&gt;
 &lt;p&gt;TLDR version:&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;USE DEDICATED FAST DISKS for the transaction log! (crucial for performance due to write-ahead-log, NVMe is preferred for heavy load setup)&lt;/li&gt;
+&lt;li&gt;USE DEDICATED FAST DISKS for the transaction log! (crucial for performance due to write-ahead-log, NVMe is preferred for heavy load setup).&lt;/li&gt;
 &lt;li&gt;use 3 nodes (more nodes = slower quorum, less = no HA).&lt;/li&gt;
 &lt;li&gt;low network latency between zookeeper nodes is very important (latency, not bandwidth).&lt;/li&gt;
 &lt;li&gt;have at least 4Gb of RAM, disable swap, tune JVM sizes, and garbage collector settings.&lt;/li&gt;
@@ -229,7 +228,6 @@ in many cases, the slowness of the zookeeper is actually a symptom of some issue
 &lt;li&gt;&lt;em&gt;Publicly accessible deployment&lt;/em&gt; : A ZooKeeper ensemble is expected to operate in a trusted computing environment. It is thus recommended to deploy ZooKeeper behind a firewall.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/blockquote&gt;
-&lt;h2 id=&#34;heading&#34;&gt;&lt;/h2&gt;
 
       </description>
     </item>
@@ -409,7 +407,7 @@ ALTER TABLE table_repl ATTACH PARTITION 2 FROM table_repl_old;
         
         &lt;h2 id=&#34;metadata&#34;&gt;/metadata&lt;/h2&gt;
 &lt;p&gt;Table schema.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;date column -&amp;gt; legacy MergeTree partition expresison.
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;date column -&amp;gt; legacy MergeTree partition expression.
 sampling expression -&amp;gt; SAMPLE BY
 index granularity -&amp;gt; index_granularity
 mode -&amp;gt; &lt;span style=&#34;color:#204a87&#34;&gt;type&lt;/span&gt; of MergeTree table

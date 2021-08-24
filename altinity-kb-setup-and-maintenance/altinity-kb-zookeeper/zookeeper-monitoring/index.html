@@ -8,40 +8,28 @@
 <link rel="icon" href="/favicons/favicon.ico" >
 <title>Altinity Beta Knowledgebase</title>
 <meta name="description" content="Altinity Beta Knowledgebase"><meta property="og:title" content="" />
-<meta property="og:description" content="ZooKeeper Monitoring ZooKeeper scrape metrics:
- embedded exporter since version 3.6.0  https://zookeeper.apache.org/doc/r3.6.2/zookeeperMonitor.html   standalone exporter  https://github.com/dabealu/zookeeper-exporter    Install dashboards
- embedded exporter https://grafana.com/grafana/dashboards/10465 dabealu exporter https://grafana.com/grafana/dashboards/11442  see also https://grafana.com/grafana/dashboards?search=ZooKeeper&amp;amp;dataSource=prometheus
-setup alert rules:
- embedded exporter https://github.com/Altinity/clickhouse-operator/blob/master/deploy/prometheus/prometheus-alert-rules.yaml#L480-L805  See also
- https://blog.serverdensity.com/how-to-monitor-zookeeper/ https://www.datadoghq.com/blog/monitoring-kafka-performance-metrics/#zookeeper-metrics https://dzone.com/articles/monitoring-apache-zookeeper-servers https://docs.signalfx.com/en/latest/integrations/integrations-reference/integrations.zookeeper.html https://github.com/samber/awesome-prometheus-alerts/blob/c3ba0cf1997c7e952369a090aeb10343cdca4878/_data/rules.yml#L1146-L1170 (or https://awesome-prometheus-alerts.grep.to/rules.html#zookeeper ) https://alex.dzyoba.com/blog/prometheus-alerts/ https://docs.datadoghq.com/integrations/zk/?tab=host�  © 2021 Altinity Inc. All rights reserved." />
+<meta property="og:description" content="ZooKeeper Monitoring ZooKeeper scrape metrics  embedded exporter since version 3.6.0  https://zookeeper.apache.org/doc/r3.6.2/zookeeperMonitor.html   standalone exporter  https://github.com/dabealu/zookeeper-exporter    Install dashboards  embedded exporter https://grafana.com/grafana/dashboards/10465 dabealu exporter https://grafana.com/grafana/dashboards/11442  see also https://grafana.com/grafana/dashboards?search=ZooKeeper&amp;amp;dataSource=prometheus
+setup alert rules  embedded exporter https://github.com/Altinity/clickhouse-operator/blob/master/deploy/prometheus/prometheus-alert-rules.yaml#L480-L805  See also  https://blog.serverdensity.com/how-to-monitor-zookeeper/ https://www.datadoghq.com/blog/monitoring-kafka-performance-metrics/#zookeeper-metrics https://dzone.com/articles/monitoring-apache-zookeeper-servers https://docs.signalfx.com/en/latest/integrations/integrations-reference/integrations.zookeeper.html https://github.com/samber/awesome-prometheus-alerts/blob/c3ba0cf1997c7e952369a090aeb10343cdca4878/_data/rules.yml#L1146-L1170 (or https://awesome-prometheus-alerts.grep.to/rules.html#zookeeper ) https://alex.dzyoba.com/blog/prometheus-alerts/ https://docs.datadoghq.com/integrations/zk/?tab=host�  " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://beta.kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-zookeeper/zookeeper-monitoring/" /><meta property="article:section" content="altinity-kb-setup-and-maintenance" />
 
-<meta property="article:modified_time" content="2021-08-09T14:45:46-06:00" /><meta property="og:site_name" content="Altinity Beta Knowledgebase" />
+<meta property="article:modified_time" content="2021-08-24T12:59:49-06:00" /><meta property="og:site_name" content="Altinity Beta Knowledgebase" />
 
 <meta itemprop="name" content="">
-<meta itemprop="description" content="ZooKeeper Monitoring ZooKeeper scrape metrics:
- embedded exporter since version 3.6.0  https://zookeeper.apache.org/doc/r3.6.2/zookeeperMonitor.html   standalone exporter  https://github.com/dabealu/zookeeper-exporter    Install dashboards
- embedded exporter https://grafana.com/grafana/dashboards/10465 dabealu exporter https://grafana.com/grafana/dashboards/11442  see also https://grafana.com/grafana/dashboards?search=ZooKeeper&amp;amp;dataSource=prometheus
-setup alert rules:
- embedded exporter https://github.com/Altinity/clickhouse-operator/blob/master/deploy/prometheus/prometheus-alert-rules.yaml#L480-L805  See also
- https://blog.serverdensity.com/how-to-monitor-zookeeper/ https://www.datadoghq.com/blog/monitoring-kafka-performance-metrics/#zookeeper-metrics https://dzone.com/articles/monitoring-apache-zookeeper-servers https://docs.signalfx.com/en/latest/integrations/integrations-reference/integrations.zookeeper.html https://github.com/samber/awesome-prometheus-alerts/blob/c3ba0cf1997c7e952369a090aeb10343cdca4878/_data/rules.yml#L1146-L1170 (or https://awesome-prometheus-alerts.grep.to/rules.html#zookeeper ) https://alex.dzyoba.com/blog/prometheus-alerts/ https://docs.datadoghq.com/integrations/zk/?tab=host�  © 2021 Altinity Inc. All rights reserved.">
-<meta itemprop="dateModified" content="2021-08-09T14:45:46-06:00" />
-<meta itemprop="wordCount" content="50">
+<meta itemprop="description" content="ZooKeeper Monitoring ZooKeeper scrape metrics  embedded exporter since version 3.6.0  https://zookeeper.apache.org/doc/r3.6.2/zookeeperMonitor.html   standalone exporter  https://github.com/dabealu/zookeeper-exporter    Install dashboards  embedded exporter https://grafana.com/grafana/dashboards/10465 dabealu exporter https://grafana.com/grafana/dashboards/11442  see also https://grafana.com/grafana/dashboards?search=ZooKeeper&amp;amp;dataSource=prometheus
+setup alert rules  embedded exporter https://github.com/Altinity/clickhouse-operator/blob/master/deploy/prometheus/prometheus-alert-rules.yaml#L480-L805  See also  https://blog.serverdensity.com/how-to-monitor-zookeeper/ https://www.datadoghq.com/blog/monitoring-kafka-performance-metrics/#zookeeper-metrics https://dzone.com/articles/monitoring-apache-zookeeper-servers https://docs.signalfx.com/en/latest/integrations/integrations-reference/integrations.zookeeper.html https://github.com/samber/awesome-prometheus-alerts/blob/c3ba0cf1997c7e952369a090aeb10343cdca4878/_data/rules.yml#L1146-L1170 (or https://awesome-prometheus-alerts.grep.to/rules.html#zookeeper ) https://alex.dzyoba.com/blog/prometheus-alerts/ https://docs.datadoghq.com/integrations/zk/?tab=host�  ">
+<meta itemprop="dateModified" content="2021-08-24T12:59:49-06:00" />
+<meta itemprop="wordCount" content="43">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content=""/>
-<meta name="twitter:description" content="ZooKeeper Monitoring ZooKeeper scrape metrics:
- embedded exporter since version 3.6.0  https://zookeeper.apache.org/doc/r3.6.2/zookeeperMonitor.html   standalone exporter  https://github.com/dabealu/zookeeper-exporter    Install dashboards
- embedded exporter https://grafana.com/grafana/dashboards/10465 dabealu exporter https://grafana.com/grafana/dashboards/11442  see also https://grafana.com/grafana/dashboards?search=ZooKeeper&amp;amp;dataSource=prometheus
-setup alert rules:
- embedded exporter https://github.com/Altinity/clickhouse-operator/blob/master/deploy/prometheus/prometheus-alert-rules.yaml#L480-L805  See also
- https://blog.serverdensity.com/how-to-monitor-zookeeper/ https://www.datadoghq.com/blog/monitoring-kafka-performance-metrics/#zookeeper-metrics https://dzone.com/articles/monitoring-apache-zookeeper-servers https://docs.signalfx.com/en/latest/integrations/integrations-reference/integrations.zookeeper.html https://github.com/samber/awesome-prometheus-alerts/blob/c3ba0cf1997c7e952369a090aeb10343cdca4878/_data/rules.yml#L1146-L1170 (or https://awesome-prometheus-alerts.grep.to/rules.html#zookeeper ) https://alex.dzyoba.com/blog/prometheus-alerts/ https://docs.datadoghq.com/integrations/zk/?tab=host�  © 2021 Altinity Inc. All rights reserved."/>
+<meta name="twitter:description" content="ZooKeeper Monitoring ZooKeeper scrape metrics  embedded exporter since version 3.6.0  https://zookeeper.apache.org/doc/r3.6.2/zookeeperMonitor.html   standalone exporter  https://github.com/dabealu/zookeeper-exporter    Install dashboards  embedded exporter https://grafana.com/grafana/dashboards/10465 dabealu exporter https://grafana.com/grafana/dashboards/11442  see also https://grafana.com/grafana/dashboards?search=ZooKeeper&amp;amp;dataSource=prometheus
+setup alert rules  embedded exporter https://github.com/Altinity/clickhouse-operator/blob/master/deploy/prometheus/prometheus-alert-rules.yaml#L480-L805  See also  https://blog.serverdensity.com/how-to-monitor-zookeeper/ https://www.datadoghq.com/blog/monitoring-kafka-performance-metrics/#zookeeper-metrics https://dzone.com/articles/monitoring-apache-zookeeper-servers https://docs.signalfx.com/en/latest/integrations/integrations-reference/integrations.zookeeper.html https://github.com/samber/awesome-prometheus-alerts/blob/c3ba0cf1997c7e952369a090aeb10343cdca4878/_data/rules.yml#L1146-L1170 (or https://awesome-prometheus-alerts.grep.to/rules.html#zookeeper ) https://alex.dzyoba.com/blog/prometheus-alerts/ https://docs.datadoghq.com/integrations/zk/?tab=host�  "/>
 
 
 
 
-<link rel="preload" href="/scss/main.min.c04bf28046b567f18233286233294334f90f0b1a5cf40344212600704f1fbdbb.css" as="style">
-<link href="/scss/main.min.c04bf28046b567f18233286233294334f90f0b1a5cf40344212600704f1fbdbb.css" rel="stylesheet" integrity="">
+<link rel="preload" href="/scss/main.min.ec0d259783afc2c6841272db4924ae5f6ab47953b32356793cb392fb1f3c3e5d.css" as="style">
+<link href="/scss/main.min.ec0d259783afc2c6841272db4924ae5f6ab47953b32356793cb392fb1f3c3e5d.css" rel="stylesheet" integrity="">
 
 
 <script
@@ -90,7 +78,7 @@ setup alert rules:
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.0ad26b299322d378de0d7aa5bf1b6831.json"
+  data-offline-search-index-json-src="/offline-search-index.02f78d1988a688af5645807cfad52542.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -118,7 +106,7 @@ setup alert rules:
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.0ad26b299322d378de0d7aa5bf1b6831.json"
+  data-offline-search-index-json-src="/offline-search-index.02f78d1988a688af5645807cfad52542.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -251,9 +239,7 @@ setup alert rules:
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-altinity-kb-queries-and-syntax-li">
   <a href="/altinity-kb-queries-and-syntax/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-altinity-kb-queries-and-syntax"><span class="">Queries &amp; Syntax</span></a>
   <ul class="ul-2 foldable">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-queries-and-syntaxsampling-example-li">
-  <a href="/altinity-kb-queries-and-syntax/sampling-example/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-queries-and-syntaxsampling-example"><span class=""></span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-queries-and-syntaxstate-and-merge-combinators-li">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-queries-and-syntaxstate-and-merge-combinators-li">
   <a href="/altinity-kb-queries-and-syntax/state-and-merge-combinators/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-queries-and-syntaxstate-and-merge-combinators"><span class="">-State &amp; -Merge combinators</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-queries-and-syntaxaltinity-kb-alter-modify-column-is-stuck-the-column-is-inaccessible-li">
   <a href="/altinity-kb-queries-and-syntax/altinity-kb-alter-modify-column-is-stuck-the-column-is-inaccessible/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-queries-and-syntaxaltinity-kb-alter-modify-column-is-stuck-the-column-is-inaccessible"><span class="">ALTER MODIFY COLUMN is stuck, the column is inaccessible.</span></a>
@@ -308,6 +294,8 @@ setup alert rules:
   <a href="/altinity-kb-queries-and-syntax/roaring-bitmaps-for-calculating-retention/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-queries-and-syntaxroaring-bitmaps-for-calculating-retention"><span class="">Roaring bitmaps for calculating retention</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-queries-and-syntaxaltinity-kb-sample-by-li">
   <a href="/altinity-kb-queries-and-syntax/altinity-kb-sample-by/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-queries-and-syntaxaltinity-kb-sample-by"><span class="">SAMPLE by</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-queries-and-syntaxsampling-example-li">
+  <a href="/altinity-kb-queries-and-syntax/sampling-example/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-queries-and-syntaxsampling-example"><span class="">Sampling Example</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-queries-and-syntaxsimplestateif-or-ifstate-for-simple-aggregate-functions-li">
   <a href="/altinity-kb-queries-and-syntax/simplestateif-or-ifstate-for-simple-aggregate-functions/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-queries-and-syntaxsimplestateif-or-ifstate-for-simple-aggregate-functions"><span class="">Simple aggregate functions &amp; combinators</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child collapse" id="m-altinity-kb-queries-and-syntaxskip-indexes-li">
@@ -386,9 +374,7 @@ setup alert rules:
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-altinity-kb-setup-and-maintenance-li">
   <a href="/altinity-kb-setup-and-maintenance/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-altinity-kb-setup-and-maintenance"><span class="">Setup &amp; maintenance</span></a>
   <ul class="ul-2 foldable">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenanceclickhouse-backup-li">
-  <a href="/altinity-kb-setup-and-maintenance/clickhouse-backup/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenanceclickhouse-backup"><span class=""></span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenancelogging-li">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenancelogging-li">
   <a href="/altinity-kb-setup-and-maintenance/logging/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancelogging"><span class=""></span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenancealtinity-packaging-compatibility-greater-than-21x-and-earlier-li">
   <a href="/altinity-kb-setup-and-maintenance/altinity-packaging-compatibility-greater-than-21.x-and-earlier/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancealtinity-packaging-compatibility-greater-than-21x-and-earlier"><span class="">Altinity packaging compatibility &amp;gt;21.x and earlier</span></a>
@@ -396,8 +382,10 @@ setup alert rules:
   <a href="/altinity-kb-setup-and-maintenance/aws-ebs/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenanceaws-ebs"><span class="">AWS EBS</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenancealtinity-kb-clickhouse-in-docker-li">
   <a href="/altinity-kb-setup-and-maintenance/altinity-kb-clickhouse-in-docker/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancealtinity-kb-clickhouse-in-docker"><span class="">ClickHouse in Docker</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenanceuntitled-li">
-  <a href="/altinity-kb-setup-and-maintenance/untitled/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenanceuntitled"><span class="">ClickHouse versions</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenanceclickhouse-versions-li">
+  <a href="/altinity-kb-setup-and-maintenance/clickhouse-versions/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenanceclickhouse-versions"><span class="">ClickHouse versions</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenanceclickhouse-backup-li">
+  <a href="/altinity-kb-setup-and-maintenance/clickhouse-backup/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenanceclickhouse-backup"><span class="">clickhouse-backup</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenancealtinity-kb-converting-mergetree-to-replicated-li">
   <a href="/altinity-kb-setup-and-maintenance/altinity-kb-converting-mergetree-to-replicated/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancealtinity-kb-converting-mergetree-to-replicated"><span class="">Converting MergeTree to Replicated</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-altinity-kb-setup-and-maintenancealtinity-kb-data-migration-li">
@@ -570,6 +558,19 @@ setup alert rules:
             
 
 
+<div class="td-toc"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#zookeeper">ZooKeeper</a>
+      <ul>
+        <li><a href="#scrape-metrics">scrape metrics</a></li>
+        <li><a href="#install-dashboards">Install dashboards</a></li>
+        <li><a href="#setup-alert-rules">setup alert rules</a></li>
+        <li><a href="#see-also">See also</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+
 
 
             
@@ -640,7 +641,7 @@ setup alert rules:
 	       
 	<h1 id="zookeeper-monitoring">ZooKeeper Monitoring</h1>
 <h2 id="zookeeper">ZooKeeper</h2>
-<p><strong>scrape metrics:</strong></p>
+<h3 id="scrape-metrics">scrape metrics</h3>
 <ul>
 <li>embedded exporter since version 3.6.0
 <ul>
@@ -653,17 +654,17 @@ setup alert rules:
 </ul>
 </li>
 </ul>
-<p><strong>Install dashboards</strong></p>
+<h3 id="install-dashboards">Install dashboards</h3>
 <ul>
 <li>embedded exporter <a href="https://grafana.com/grafana/dashboards/10465" target="_blank">https://grafana.com/grafana/dashboards/10465</a></li>
 <li>dabealu exporter <a href="https://grafana.com/grafana/dashboards/11442" target="_blank">https://grafana.com/grafana/dashboards/11442</a></li>
 </ul>
 <p>see also <a href="https://grafana.com/grafana/dashboards?search=ZooKeeper&amp;dataSource=prometheus" target="_blank">https://grafana.com/grafana/dashboards?search=ZooKeeper&amp;amp;dataSource=prometheus</a></p>
-<p><strong>setup alert rules:</strong></p>
+<h3 id="setup-alert-rules">setup alert rules</h3>
 <ul>
 <li>embedded exporter <a href="https://github.com/Altinity/clickhouse-operator/blob/master/deploy/prometheus/prometheus-alert-rules.yaml#L480-L805" target="_blank">https://github.com/Altinity/clickhouse-operator/blob/master/deploy/prometheus/prometheus-alert-rules.yaml#L480-L805</a></li>
 </ul>
-<p><strong>See also</strong></p>
+<h3 id="see-also">See also</h3>
 <ul>
 <li><a href="https://blog.serverdensity.com/how-to-monitor-zookeeper/" target="_blank">https://blog.serverdensity.com/how-to-monitor-zookeeper/</a></li>
 <li><a href="https://www.datadoghq.com/blog/monitoring-kafka-performance-metrics/#zookeeper-metrics" target="_blank">https://www.datadoghq.com/blog/monitoring-kafka-performance-metrics/#zookeeper-metrics</a></li>
@@ -673,15 +674,14 @@ setup alert rules:
 <li><a href="https://alex.dzyoba.com/blog/prometheus-alerts/" target="_blank">https://alex.dzyoba.com/blog/prometheus-alerts/</a></li>
 <li><a href="https://docs.datadoghq.com/integrations/zk/?tab=host" target="_blank">https://docs.datadoghq.com/integrations/zk/?tab=host</a> </li>
 </ul>
-<p>© 2021 Altinity Inc. All rights reserved.</p>
 
 	
 	
 	<div class="text-muted mt-5 pt-3 border-top">
 
     Last modified
-    2021.08.09
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/de79091ec34ee6aa1e76479655e8224a5761b306">Initial transfer of the KB to Hugo. (de79091)</a>
+    2021.08.24
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/5cdec4106d860a1959fafa170ad6998be341a087">Format corrections and spell checks. (5cdec41)</a>
 
 </div>
 

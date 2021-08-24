@@ -29,14 +29,14 @@
 &lt;p&gt;If you need to construct a single partition from several sources - then the following approach may be the best.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;CREATE TABLE mv_import AS mv;
 INSERT INTO mv_import SELECT * FROM huge_table WHERE toYYYYMM(ts) = 202105;
-/* or other partition expresssion*/
+/* or other partition expression*/
 
 /* that insert select may take a lot of time, if something bad will happen
   during that - just truncate mv_import and restart the process */
 
 /* after successful loading of mv_import do*/
 ALTER TABLE mv ATTACH PARTITION ID &amp;#39;202105&amp;#39; FROM  mv_import;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;See also &lt;a href=&#34;https://clickhouse.tech/docs/en/sql-reference/statements/alter/partition/&#34; target=&#34;_blank&#34;&gt;https://clickhouse.tech/docs/en/sql-reference/statements/alter/partition/&lt;/a&gt;#alter_attach-partition-from&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;See also &lt;a href=&#34;https://clickhouse.tech/docs/en/sql-reference/statements/alter/partition/%5c#alter_attach-partition-from&#34; target=&#34;_blank&#34;&gt;https://clickhouse.tech/docs/en/sql-reference/statements/alter/partition/#alter_attach-partition-from&lt;/a&gt;.&lt;/p&gt;
 
       </description>
     </item>
