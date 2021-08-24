@@ -13,12 +13,12 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://beta.kb.altinity.com/engines/altinity-kb-atomic-database-engine/altinity-kb-how-to-convert-atomic-to-ordinary/" /><meta property="article:section" content="engines" />
 
-<meta property="article:modified_time" content="2021-08-24T12:59:49-06:00" /><meta property="og:site_name" content="Altinity Beta Knowledgebase" />
+<meta property="article:modified_time" content="2021-08-24T13:43:35-06:00" /><meta property="og:site_name" content="Altinity Beta Knowledgebase" />
 
 <meta itemprop="name" content="How to Convert Atomic to Ordinary">
 <meta itemprop="description" content="How to Convert Atomic to Ordinary
 ">
-<meta itemprop="dateModified" content="2021-08-24T12:59:49-06:00" />
+<meta itemprop="dateModified" content="2021-08-24T13:43:35-06:00" />
 <meta itemprop="wordCount" content="316">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="How to Convert Atomic to Ordinary"/>
@@ -78,7 +78,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.02f78d1988a688af5645807cfad52542.json"
+  data-offline-search-index-json-src="/offline-search-index.ff89a7689b57994dece560d6cc51b499.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -106,7 +106,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.02f78d1988a688af5645807cfad52542.json"
+  data-offline-search-index-json-src="/offline-search-index.ff89a7689b57994dece560d6cc51b499.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -731,7 +731,7 @@ mv /var/lib/clickhouse/data/ordinary_db /var/lib/clickhouse/data/atomic_db
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">SELECT</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">if</span><span style="color:#000;font-weight:bold">(</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">   </span><span style="color:#000">t</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">name</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">LIKE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;.inner_id.%&#39;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">   </span><span style="color:#000">replaceRegexpOne</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">mv</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">create_table_query</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;^CREATE MATERIALIZED VIEW ([^ ]+) \(.*? AS &#39;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;CREATE MATERIALIZED VIEW \\1 TO \\1_storage AS &#39;</span><span style="color:#000;font-weight:bold">),</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">   </span><span style="color:#000">replaceRegexpOne</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">mv</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">create_table_query</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;^CREATE MATERIALIZED VIEW ([^ ]+) (.*? AS &#39;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;CREATE MATERIALIZED VIEW \\1 TO \\1_storage AS &#39;</span><span style="color:#000;font-weight:bold">),</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">   </span><span style="color:#000">mv</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">create_table_query</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">FROM</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">system</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">tables</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">as</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">mv</span><span style="color:#f8f8f8;text-decoration:underline">
@@ -775,7 +775,7 @@ mv /var/lib/clickhouse/data/ordinary_db /var/lib/clickhouse/data/atomic_db
 
     Last modified
     2021.08.24
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/5cdec4106d860a1959fafa170ad6998be341a087">Format corrections and spell checks. (5cdec41)</a>
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/a6f7429410244d3e505a6637cb5764aa6ed86b80">Adjusted code. (a6f7429)</a>
 
 </div>
 
