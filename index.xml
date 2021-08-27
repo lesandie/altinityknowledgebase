@@ -1,8 +1,8 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Altinity Knowledge Base – Altinity Beta Knowledgebase</title>
+    <title>Altinity Knowledge Base – Altinity Knowledge Base</title>
     <link>http://kb.altinity.com/</link>
-    <description>Recent content in Altinity Beta Knowledgebase on Altinity Knowledge Base</description>
+    <description>Recent content on Altinity Knowledge Base</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     
