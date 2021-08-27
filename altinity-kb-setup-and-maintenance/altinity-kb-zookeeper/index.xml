@@ -1,12 +1,12 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Altinity Beta Knowledgebase – ZooKeeper</title>
-    <link>http://beta.kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-zookeeper/</link>
-    <description>Recent content in ZooKeeper on Altinity Beta Knowledgebase</description>
+    <title>Altinity Knowledgebase – ZooKeeper</title>
+    <link>http://kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-zookeeper/</link>
+    <description>Recent content in ZooKeeper on Altinity Knowledgebase</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     
-	  <atom:link href="http://beta.kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-zookeeper/index.xml" rel="self" type="application/rss+xml" />
+	  <atom:link href="http://kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-zookeeper/index.xml" rel="self" type="application/rss+xml" />
     
     
       
@@ -16,10 +16,10 @@
     
     <item>
       <title>Altinity-Kb-Setup-and-Maintenance: </title>
-      <link>http://beta.kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-zookeeper/zookeeper-monitoring/</link>
+      <link>http://kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-zookeeper/zookeeper-monitoring/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://beta.kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-zookeeper/zookeeper-monitoring/</guid>
+      <guid>http://kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-zookeeper/zookeeper-monitoring/</guid>
       <description>
         
         
@@ -64,10 +64,10 @@
     
     <item>
       <title>Altinity-Kb-Setup-and-Maintenance: clickhouse-keeper</title>
-      <link>http://beta.kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-zookeeper/clickhouse-keeper/</link>
+      <link>http://kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-zookeeper/clickhouse-keeper/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://beta.kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-zookeeper/clickhouse-keeper/</guid>
+      <guid>http://kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-zookeeper/clickhouse-keeper/</guid>
       <description>
         
         
@@ -86,10 +86,10 @@
     
     <item>
       <title>Altinity-Kb-Setup-and-Maintenance: How to check the list of watches</title>
-      <link>http://beta.kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-zookeeper/altinity-kb-how-to-check-the-list-of-watches/</link>
+      <link>http://kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-zookeeper/altinity-kb-how-to-check-the-list-of-watches/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://beta.kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-zookeeper/altinity-kb-how-to-check-the-list-of-watches/</guid>
+      <guid>http://kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-zookeeper/altinity-kb-how-to-check-the-list-of-watches/</guid>
       <description>
         
         
@@ -109,10 +109,10 @@
     
     <item>
       <title>Altinity-Kb-Setup-and-Maintenance: JVM sizes and garbage collector settings</title>
-      <link>http://beta.kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-zookeeper/jvm-sizes-and-garbage-collector-settings/</link>
+      <link>http://kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-zookeeper/jvm-sizes-and-garbage-collector-settings/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://beta.kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-zookeeper/jvm-sizes-and-garbage-collector-settings/</guid>
+      <guid>http://kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-zookeeper/jvm-sizes-and-garbage-collector-settings/</guid>
       <description>
         
         
@@ -188,10 +188,10 @@ On older JVM version (before 10) you may want to make some tuning to decrease pa
     
     <item>
       <title>Altinity-Kb-Setup-and-Maintenance: Proper setup</title>
-      <link>http://beta.kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-zookeeper/altinity-kb-proper-setup/</link>
+      <link>http://kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-zookeeper/altinity-kb-proper-setup/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://beta.kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-zookeeper/altinity-kb-proper-setup/</guid>
+      <guid>http://kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-zookeeper/altinity-kb-proper-setup/</guid>
       <description>
         
         
@@ -234,10 +234,10 @@ in many cases, the slowness of the zookeeper is actually a symptom of some issue
     
     <item>
       <title>Altinity-Kb-Setup-and-Maintenance: Recovering from complete metadata loss in ZooKeeper</title>
-      <link>http://beta.kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-zookeeper/altinity-kb-recovering-from-complete-metadata-loss-in-zookeeper/</link>
+      <link>http://kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-zookeeper/altinity-kb-recovering-from-complete-metadata-loss-in-zookeeper/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://beta.kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-zookeeper/altinity-kb-recovering-from-complete-metadata-loss-in-zookeeper/</guid>
+      <guid>http://kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-zookeeper/altinity-kb-recovering-from-complete-metadata-loss-in-zookeeper/</guid>
       <description>
         
         
@@ -339,10 +339,10 @@ in many cases, the slowness of the zookeeper is actually a symptom of some issue
     
     <item>
       <title>Altinity-Kb-Setup-and-Maintenance: ZooKeeper backup</title>
-      <link>http://beta.kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-zookeeper/altinity-kb-zookeeper-backup/</link>
+      <link>http://kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-zookeeper/altinity-kb-zookeeper-backup/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://beta.kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-zookeeper/altinity-kb-zookeeper-backup/</guid>
+      <guid>http://kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-zookeeper/altinity-kb-zookeeper-backup/</guid>
       <description>
         
         
@@ -366,10 +366,10 @@ in many cases, the slowness of the zookeeper is actually a symptom of some issue
     
     <item>
       <title>Altinity-Kb-Setup-and-Maintenance: ZooKeeper cluster migration</title>
-      <link>http://beta.kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-zookeeper/altinity-kb-zookeeper-cluster-migration/</link>
+      <link>http://kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-zookeeper/altinity-kb-zookeeper-cluster-migration/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://beta.kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-zookeeper/altinity-kb-zookeeper-cluster-migration/</guid>
+      <guid>http://kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-zookeeper/altinity-kb-zookeeper-cluster-migration/</guid>
       <description>
         
         
@@ -398,10 +398,10 @@ in many cases, the slowness of the zookeeper is actually a symptom of some issue
     
     <item>
       <title>Altinity-Kb-Setup-and-Maintenance: ZooKeeper schema</title>
-      <link>http://beta.kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-zookeeper/zookeeper-schema/</link>
+      <link>http://kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-zookeeper/zookeeper-schema/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://beta.kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-zookeeper/zookeeper-schema/</guid>
+      <guid>http://kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-zookeeper/zookeeper-schema/</guid>
       <description>
         
         

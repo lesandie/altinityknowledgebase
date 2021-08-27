@@ -1,12 +1,12 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Altinity Beta Knowledgebase – Data Migration</title>
-    <link>http://beta.kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-data-migration/</link>
-    <description>Recent content in Data Migration on Altinity Beta Knowledgebase</description>
+    <title>Altinity Knowledgebase – Data Migration</title>
+    <link>http://kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-data-migration/</link>
+    <description>Recent content in Data Migration on Altinity Knowledgebase</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     
-	  <atom:link href="http://beta.kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-data-migration/index.xml" rel="self" type="application/rss+xml" />
+	  <atom:link href="http://kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-data-migration/index.xml" rel="self" type="application/rss+xml" />
     
     
       
@@ -16,10 +16,10 @@
     
     <item>
       <title>Altinity-Kb-Setup-and-Maintenance: clickhouse-copier</title>
-      <link>http://beta.kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-data-migration/altinity-kb-clickhouse-copier/</link>
+      <link>http://kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-data-migration/altinity-kb-clickhouse-copier/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://beta.kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-data-migration/altinity-kb-clickhouse-copier/</guid>
+      <guid>http://kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-data-migration/altinity-kb-clickhouse-copier/</guid>
       <description>
         
         
@@ -50,10 +50,10 @@
     
     <item>
       <title>Altinity-Kb-Setup-and-Maintenance: Remote table function</title>
-      <link>http://beta.kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-data-migration/remote-table-function/</link>
+      <link>http://kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-data-migration/remote-table-function/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://beta.kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-data-migration/remote-table-function/</guid>
+      <guid>http://kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-data-migration/remote-table-function/</guid>
       <description>
         
         
@@ -102,10 +102,10 @@ So maximum memory usage can be calculated like this: &lt;code&gt;max_insert_thre
     
     <item>
       <title>Altinity-Kb-Setup-and-Maintenance: rsync</title>
-      <link>http://beta.kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-data-migration/rsync/</link>
+      <link>http://kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-data-migration/rsync/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://beta.kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-data-migration/rsync/</guid>
+      <guid>http://kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-data-migration/rsync/</guid>
       <description>
         
         

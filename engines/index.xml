@@ -1,12 +1,12 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Altinity Beta Knowledgebase – Engines</title>
-    <link>http://beta.kb.altinity.com/engines/</link>
-    <description>Recent content in Engines on Altinity Beta Knowledgebase</description>
+    <title>Altinity Knowledgebase – Engines</title>
+    <link>http://kb.altinity.com/engines/</link>
+    <description>Recent content in Engines on Altinity Knowledgebase</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     
-	  <atom:link href="http://beta.kb.altinity.com/engines/index.xml" rel="self" type="application/rss+xml" />
+	  <atom:link href="http://kb.altinity.com/engines/index.xml" rel="self" type="application/rss+xml" />
     
     
       

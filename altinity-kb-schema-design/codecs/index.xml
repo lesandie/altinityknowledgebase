@@ -1,12 +1,12 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Altinity Beta Knowledgebase – Codecs</title>
-    <link>http://beta.kb.altinity.com/altinity-kb-schema-design/codecs/</link>
-    <description>Recent content in Codecs on Altinity Beta Knowledgebase</description>
+    <title>Altinity Knowledgebase – Codecs</title>
+    <link>http://kb.altinity.com/altinity-kb-schema-design/codecs/</link>
+    <description>Recent content in Codecs on Altinity Knowledgebase</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     
-	  <atom:link href="http://beta.kb.altinity.com/altinity-kb-schema-design/codecs/index.xml" rel="self" type="application/rss+xml" />
+	  <atom:link href="http://kb.altinity.com/altinity-kb-schema-design/codecs/index.xml" rel="self" type="application/rss+xml" />
     
     
       
@@ -16,10 +16,10 @@
     
     <item>
       <title>Altinity-Kb-Schema-Design: Codecs on array columns</title>
-      <link>http://beta.kb.altinity.com/altinity-kb-schema-design/codecs/codecs-on-array-columns/</link>
+      <link>http://kb.altinity.com/altinity-kb-schema-design/codecs/codecs-on-array-columns/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://beta.kb.altinity.com/altinity-kb-schema-design/codecs/codecs-on-array-columns/</guid>
+      <guid>http://kb.altinity.com/altinity-kb-schema-design/codecs/codecs-on-array-columns/</guid>
       <description>
         
         
@@ -104,10 +104,10 @@
     
     <item>
       <title>Altinity-Kb-Schema-Design: Codecs speed</title>
-      <link>http://beta.kb.altinity.com/altinity-kb-schema-design/codecs/codecs-speed/</link>
+      <link>http://kb.altinity.com/altinity-kb-schema-design/codecs/codecs-speed/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://beta.kb.altinity.com/altinity-kb-schema-design/codecs/codecs-speed/</guid>
+      <guid>http://kb.altinity.com/altinity-kb-schema-design/codecs/codecs-speed/</guid>
       <description>
         
         
@@ -166,10 +166,10 @@
     
     <item>
       <title>Altinity-Kb-Schema-Design: How to test different compression codecs</title>
-      <link>http://beta.kb.altinity.com/altinity-kb-schema-design/codecs/altinity-kb-how-to-test-different-compression-codecs/</link>
+      <link>http://kb.altinity.com/altinity-kb-schema-design/codecs/altinity-kb-how-to-test-different-compression-codecs/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://beta.kb.altinity.com/altinity-kb-schema-design/codecs/altinity-kb-how-to-test-different-compression-codecs/</guid>
+      <guid>http://kb.altinity.com/altinity-kb-schema-design/codecs/altinity-kb-how-to-test-different-compression-codecs/</guid>
       <description>
         
         

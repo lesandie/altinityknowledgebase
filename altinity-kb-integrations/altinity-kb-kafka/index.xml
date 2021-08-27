@@ -1,12 +1,12 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Altinity Beta Knowledgebase – Kafka</title>
-    <link>http://beta.kb.altinity.com/altinity-kb-integrations/altinity-kb-kafka/</link>
-    <description>Recent content in Kafka on Altinity Beta Knowledgebase</description>
+    <title>Altinity Knowledgebase – Kafka</title>
+    <link>http://kb.altinity.com/altinity-kb-integrations/altinity-kb-kafka/</link>
+    <description>Recent content in Kafka on Altinity Knowledgebase</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     
-	  <atom:link href="http://beta.kb.altinity.com/altinity-kb-integrations/altinity-kb-kafka/index.xml" rel="self" type="application/rss+xml" />
+	  <atom:link href="http://kb.altinity.com/altinity-kb-integrations/altinity-kb-kafka/index.xml" rel="self" type="application/rss+xml" />
     
     
       
@@ -16,10 +16,10 @@
     
     <item>
       <title>Altinity-Kb-Integrations: Adjusting librdkafka settings</title>
-      <link>http://beta.kb.altinity.com/altinity-kb-integrations/altinity-kb-kafka/altinity-kb-adjusting-librdkafka-settings/</link>
+      <link>http://kb.altinity.com/altinity-kb-integrations/altinity-kb-kafka/altinity-kb-adjusting-librdkafka-settings/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://beta.kb.altinity.com/altinity-kb-integrations/altinity-kb-kafka/altinity-kb-adjusting-librdkafka-settings/</guid>
+      <guid>http://kb.altinity.com/altinity-kb-integrations/altinity-kb-kafka/altinity-kb-adjusting-librdkafka-settings/</guid>
       <description>
         
         
@@ -121,10 +121,10 @@
     
     <item>
       <title>Altinity-Kb-Integrations: Error handling</title>
-      <link>http://beta.kb.altinity.com/altinity-kb-integrations/altinity-kb-kafka/error-handling/</link>
+      <link>http://kb.altinity.com/altinity-kb-integrations/altinity-kb-kafka/error-handling/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://beta.kb.altinity.com/altinity-kb-integrations/altinity-kb-kafka/error-handling/</guid>
+      <guid>http://kb.altinity.com/altinity-kb-integrations/altinity-kb-kafka/error-handling/</guid>
       <description>
         
         
@@ -166,7 +166,7 @@
 &lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;_error&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;AS&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;error&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;FROM&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;default&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;kafka_engine&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;WHERE&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;length&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;_error&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;)&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;http://beta.kb.altinity.com/assets/Untitled-2021-08-05-1027.png&#34; alt=&#34;Table connections&#34;&gt;&lt;/p&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;http://kb.altinity.com/assets/Untitled-2021-08-05-1027.png&#34; alt=&#34;Table connections&#34;&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://github.com/ClickHouse/ClickHouse/pull/20249%5c#issuecomment-779054737&#34; target=&#34;_blank&#34;&gt;https://github.com/ClickHouse/ClickHouse/pull/20249#issuecomment-779054737&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://github.com/ClickHouse/ClickHouse/pull/21850&#34; target=&#34;_blank&#34;&gt;https://github.com/ClickHouse/ClickHouse/pull/21850&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://altinity.com/blog/clickhouse-kafka-engine-faq&#34; target=&#34;_blank&#34;&gt;https://altinity.com/blog/clickhouse-kafka-engine-faq&lt;/a&gt;&lt;/p&gt;
@@ -176,10 +176,10 @@
     
     <item>
       <title>Altinity-Kb-Integrations: Exactly once semantics</title>
-      <link>http://beta.kb.altinity.com/altinity-kb-integrations/altinity-kb-kafka/altinity-kb-exactly-once-semantics/</link>
+      <link>http://kb.altinity.com/altinity-kb-integrations/altinity-kb-kafka/altinity-kb-exactly-once-semantics/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://beta.kb.altinity.com/altinity-kb-integrations/altinity-kb-kafka/altinity-kb-exactly-once-semantics/</guid>
+      <guid>http://kb.altinity.com/altinity-kb-integrations/altinity-kb-kafka/altinity-kb-exactly-once-semantics/</guid>
       <description>
         
         
@@ -198,10 +198,10 @@
     
     <item>
       <title>Altinity-Kb-Integrations: Kafka main parsing loop</title>
-      <link>http://beta.kb.altinity.com/altinity-kb-integrations/altinity-kb-kafka/altinity-kb-kafka-main-parsing-loop/</link>
+      <link>http://kb.altinity.com/altinity-kb-integrations/altinity-kb-kafka/altinity-kb-kafka-main-parsing-loop/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://beta.kb.altinity.com/altinity-kb-integrations/altinity-kb-kafka/altinity-kb-kafka-main-parsing-loop/</guid>
+      <guid>http://kb.altinity.com/altinity-kb-integrations/altinity-kb-kafka/altinity-kb-kafka-main-parsing-loop/</guid>
       <description>
         
         
@@ -214,7 +214,7 @@
 &lt;li&gt;Do commit (commit after write = at-least-once).&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;On any error, during that process, Kafka client is restarted (leading to rebalancing - leave the group and get back in few seconds).&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://beta.kb.altinity.com/assets/128942286.png&#34; alt=&#34;Kafka batching&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://kb.altinity.com/assets/128942286.png&#34; alt=&#34;Kafka batching&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;important-settings&#34;&gt;Important settings&lt;/h2&gt;
 &lt;p&gt;These usually should not be adjusted:&lt;/p&gt;
 &lt;ul&gt;
@@ -234,10 +234,10 @@
     
     <item>
       <title>Altinity-Kb-Integrations: Kafka parallel consuming</title>
-      <link>http://beta.kb.altinity.com/altinity-kb-integrations/altinity-kb-kafka/altinity-kb-kafka-parallel-consuming/</link>
+      <link>http://kb.altinity.com/altinity-kb-integrations/altinity-kb-kafka/altinity-kb-kafka-parallel-consuming/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://beta.kb.altinity.com/altinity-kb-integrations/altinity-kb-kafka/altinity-kb-kafka-parallel-consuming/</guid>
+      <guid>http://kb.altinity.com/altinity-kb-integrations/altinity-kb-kafka/altinity-kb-kafka-parallel-consuming/</guid>
       <description>
         
         
@@ -256,10 +256,10 @@
     
     <item>
       <title>Altinity-Kb-Integrations: Rewind / fast-forward / replay</title>
-      <link>http://beta.kb.altinity.com/altinity-kb-integrations/altinity-kb-kafka/altinity-kb-rewind-fast-forward-replay/</link>
+      <link>http://kb.altinity.com/altinity-kb-integrations/altinity-kb-kafka/altinity-kb-rewind-fast-forward-replay/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://beta.kb.altinity.com/altinity-kb-integrations/altinity-kb-kafka/altinity-kb-rewind-fast-forward-replay/</guid>
+      <guid>http://kb.altinity.com/altinity-kb-integrations/altinity-kb-kafka/altinity-kb-rewind-fast-forward-replay/</guid>
       <description>
         
         
@@ -282,10 +282,10 @@
     
     <item>
       <title>Altinity-Kb-Integrations: SELECTs from engine=Kafka</title>
-      <link>http://beta.kb.altinity.com/altinity-kb-integrations/altinity-kb-kafka/altinity-kb-selects-from-engine-kafka/</link>
+      <link>http://kb.altinity.com/altinity-kb-integrations/altinity-kb-kafka/altinity-kb-selects-from-engine-kafka/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://beta.kb.altinity.com/altinity-kb-integrations/altinity-kb-kafka/altinity-kb-selects-from-engine-kafka/</guid>
+      <guid>http://kb.altinity.com/altinity-kb-integrations/altinity-kb-kafka/altinity-kb-selects-from-engine-kafka/</guid>
       <description>
         
         

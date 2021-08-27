@@ -1,12 +1,12 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Altinity Beta Knowledgebase – Production Cluster Configuration Guide</title>
-    <link>http://beta.kb.altinity.com/altinity-kb-setup-and-maintenance/cluster-production-configuration-guide/</link>
-    <description>Recent content in Production Cluster Configuration Guide on Altinity Beta Knowledgebase</description>
+    <title>Altinity Knowledgebase – Production Cluster Configuration Guide</title>
+    <link>http://kb.altinity.com/altinity-kb-setup-and-maintenance/cluster-production-configuration-guide/</link>
+    <description>Recent content in Production Cluster Configuration Guide on Altinity Knowledgebase</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     
-	  <atom:link href="http://beta.kb.altinity.com/altinity-kb-setup-and-maintenance/cluster-production-configuration-guide/index.xml" rel="self" type="application/rss+xml" />
+	  <atom:link href="http://kb.altinity.com/altinity-kb-setup-and-maintenance/cluster-production-configuration-guide/index.xml" rel="self" type="application/rss+xml" />
     
     
       
@@ -16,10 +16,10 @@
     
     <item>
       <title>Altinity-Kb-Setup-and-Maintenance: Backups</title>
-      <link>http://beta.kb.altinity.com/altinity-kb-setup-and-maintenance/cluster-production-configuration-guide/hardening-clickhouse-security/</link>
+      <link>http://kb.altinity.com/altinity-kb-setup-and-maintenance/cluster-production-configuration-guide/hardening-clickhouse-security/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://beta.kb.altinity.com/altinity-kb-setup-and-maintenance/cluster-production-configuration-guide/hardening-clickhouse-security/</guid>
+      <guid>http://kb.altinity.com/altinity-kb-setup-and-maintenance/cluster-production-configuration-guide/hardening-clickhouse-security/</guid>
       <description>
         
         
@@ -47,10 +47,10 @@
     
     <item>
       <title>Altinity-Kb-Setup-and-Maintenance: Cluster Configuration FAQ</title>
-      <link>http://beta.kb.altinity.com/altinity-kb-setup-and-maintenance/cluster-production-configuration-guide/cluster-configuration-faq/</link>
+      <link>http://kb.altinity.com/altinity-kb-setup-and-maintenance/cluster-production-configuration-guide/cluster-configuration-faq/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://beta.kb.altinity.com/altinity-kb-setup-and-maintenance/cluster-production-configuration-guide/cluster-configuration-faq/</guid>
+      <guid>http://kb.altinity.com/altinity-kb-setup-and-maintenance/cluster-production-configuration-guide/cluster-configuration-faq/</guid>
       <description>
         
         
@@ -59,7 +59,7 @@
 &lt;p&gt;tail -n 1000 /var/log/clickhouse-server/clickhouse-server.err.log | less
 tail -n 10000 /var/log/clickhouse-server/clickhouse-server.log | less&lt;/p&gt;
 &lt;h2 id=&#34;how-do-i-restrict-memory-usage&#34;&gt;How Do I Restrict Memory Usage?&lt;/h2&gt;
-&lt;p&gt;See &lt;a href=&#34;http://beta.kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-memory-configuration-settings/&#34;&gt;our knowledge base article&lt;/a&gt;  and &lt;a href=&#34;https://clickhouse.tech/docs/en/operations/settings/query-complexity/#settings_max_memory_usage&#34; target=&#34;_blank&#34;&gt;official documentation&lt;/a&gt; for more information.&lt;/p&gt;
+&lt;p&gt;See &lt;a href=&#34;http://kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-memory-configuration-settings/&#34;&gt;our knowledge base article&lt;/a&gt;  and &lt;a href=&#34;https://clickhouse.tech/docs/en/operations/settings/query-complexity/#settings_max_memory_usage&#34; target=&#34;_blank&#34;&gt;official documentation&lt;/a&gt; for more information.&lt;/p&gt;
 &lt;h2 id=&#34;clickhouse-died-during-big-query-execution&#34;&gt;ClickHouse died during big query execution&lt;/h2&gt;
 &lt;p&gt;Misconfigured clickhouse can try to allocate more RAM than is available on the system.&lt;/p&gt;
 &lt;p&gt;In that case an OS component called oomkiller can kill the clickhouse process.&lt;/p&gt;
@@ -68,7 +68,7 @@ tail -n 10000 /var/log/clickhouse-server/clickhouse-server.log | less&lt;/p&gt;
 &lt;p&gt;Enable on disk GROUP BY (it is slower, so is disabled by default)&lt;/p&gt;
 &lt;p&gt;Set &lt;a href=&#34;https://clickhouse.tech/docs/en/operations/settings/query-complexity/#settings-max_bytes_before_external_group_by&#34; target=&#34;_blank&#34;&gt;max_bytes_before_external_group_by&lt;/a&gt; to a value about 70-80% of your max_memory_usage value.&lt;/p&gt;
 &lt;h2 id=&#34;data-returned-in-chunks-by-clickhouse-client&#34;&gt;Data returned in chunks by clickhouse-client&lt;/h2&gt;
-&lt;p&gt;See &lt;a href=&#34;http://beta.kb.altinity.com/altinity-kb-interfaces/altinity-kb-clickhouse-client/&#34;&gt;altinity-kb-clickhouse-client&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;See &lt;a href=&#34;http://kb.altinity.com/altinity-kb-interfaces/altinity-kb-clickhouse-client/&#34;&gt;altinity-kb-clickhouse-client&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&#34;i-cant-connect-from-other-hosts--what-do-i-do&#34;&gt;I Can’t Connect From Other Hosts.  What do I do?&lt;/h2&gt;
 &lt;p&gt;Check the &amp;lt;listen&amp;gt; settings in config.xml. Verify that the connection can connect on both IPV4 and IPV6.&lt;/p&gt;
 
@@ -77,10 +77,10 @@ tail -n 10000 /var/log/clickhouse-server/clickhouse-server.log | less&lt;/p&gt;
     
     <item>
       <title>Altinity-Kb-Setup-and-Maintenance: Cluster Configuration Process</title>
-      <link>http://beta.kb.altinity.com/altinity-kb-setup-and-maintenance/cluster-production-configuration-guide/cluster-configuration-process/</link>
+      <link>http://kb.altinity.com/altinity-kb-setup-and-maintenance/cluster-production-configuration-guide/cluster-configuration-process/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://beta.kb.altinity.com/altinity-kb-setup-and-maintenance/cluster-production-configuration-guide/cluster-configuration-process/</guid>
+      <guid>http://kb.altinity.com/altinity-kb-setup-and-maintenance/cluster-production-configuration-guide/cluster-configuration-process/</guid>
       <description>
         
         
@@ -175,7 +175,7 @@ tail -n 10000 /var/log/clickhouse-server/clickhouse-server.log | less&lt;/p&gt;
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;hardening-clickhouse-security&#34;&gt;&lt;strong&gt;Hardening ClickHouse Security&lt;/strong&gt;&lt;/h4&gt;
 &lt;p&gt;&lt;strong&gt;See&lt;/strong&gt; &lt;a href=&#34;https://docs.altinity.com/operationsguide/security/clickhouse-hardening-guide/&#34; target=&#34;_blank&#34;&gt;https://docs.altinity.com/operationsguide/security/clickhouse-hardening-guide/&lt;/a&gt;&lt;/p&gt;
 &lt;h3 id=&#34;additional-settings&#34;&gt;Additional Settings&lt;/h3&gt;
-&lt;p&gt;See &lt;a href=&#34;http://beta.kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-settings-to-adjust/&#34;&gt;altinity-kb-settings-to-adjust&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;See &lt;a href=&#34;http://kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-settings-to-adjust/&#34;&gt;altinity-kb-settings-to-adjust&lt;/a&gt;&lt;/p&gt;
 &lt;h4 id=&#34;users&#34;&gt;Users&lt;/h4&gt;
 &lt;p&gt;Disable or add password for the default users default and readonly if your server is accessible from non-trusted networks.&lt;/p&gt;
 &lt;p&gt;If you add password to the default user, you will need to adjust cluster configuration, since the other servers need to know the default user’s should know the default user’s to connect to each other.&lt;/p&gt;
@@ -305,10 +305,10 @@ tail -n 10000 /var/log/clickhouse-server/clickhouse-server.log | less&lt;/p&gt;
     
     <item>
       <title>Altinity-Kb-Setup-and-Maintenance: Hardware Requirements</title>
-      <link>http://beta.kb.altinity.com/altinity-kb-setup-and-maintenance/cluster-production-configuration-guide/hardware-requirements/</link>
+      <link>http://kb.altinity.com/altinity-kb-setup-and-maintenance/cluster-production-configuration-guide/hardware-requirements/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://beta.kb.altinity.com/altinity-kb-setup-and-maintenance/cluster-production-configuration-guide/hardware-requirements/</guid>
+      <guid>http://kb.altinity.com/altinity-kb-setup-and-maintenance/cluster-production-configuration-guide/hardware-requirements/</guid>
       <description>
         
         
@@ -346,8 +346,8 @@ tail -n 10000 /var/log/clickhouse-server/clickhouse-server.log | less&lt;/p&gt;
 &lt;p&gt;See also:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://docs.altinity.com/operationsguide/clickhouse-zookeeper/&#34; target=&#34;_blank&#34;&gt;https://docs.altinity.com/operationsguide/clickhouse-zookeeper/&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://beta.kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-zookeeper/altinity-kb-proper-setup/&#34;&gt;altinity-kb-proper-setup&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://beta.kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-zookeeper/zookeeper-monitoring/&#34;&gt;zookeeper-monitoring&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-zookeeper/altinity-kb-proper-setup/&#34;&gt;altinity-kb-proper-setup&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-zookeeper/zookeeper-monitoring/&#34;&gt;zookeeper-monitoring&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h4 id=&#34;clickhouse-hardware-configuration&#34;&gt;ClickHouse Hardware Configuration&lt;/h4&gt;
 &lt;p&gt;Configure the servers according to those recommendations the &lt;a href=&#34;https://clickhouse.yandex/docs/en/operations/tips/&#34; target=&#34;_blank&#34;&gt;ClickHouse Usage Recommendations&lt;/a&gt;.&lt;/p&gt;
@@ -365,10 +365,10 @@ tail -n 10000 /var/log/clickhouse-server/clickhouse-server.log | less&lt;/p&gt;
     
     <item>
       <title>Altinity-Kb-Setup-and-Maintenance: Monitoring Considerations</title>
-      <link>http://beta.kb.altinity.com/altinity-kb-setup-and-maintenance/cluster-production-configuration-guide/monitoring-considerations/</link>
+      <link>http://kb.altinity.com/altinity-kb-setup-and-maintenance/cluster-production-configuration-guide/monitoring-considerations/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://beta.kb.altinity.com/altinity-kb-setup-and-maintenance/cluster-production-configuration-guide/monitoring-considerations/</guid>
+      <guid>http://kb.altinity.com/altinity-kb-setup-and-maintenance/cluster-production-configuration-guide/monitoring-considerations/</guid>
       <description>
         
         
@@ -572,7 +572,7 @@ tail -n 10000 /var/log/clickhouse-server/clickhouse-server.log | less&lt;/p&gt;
 &lt;/table&gt;
 &lt;h4 id=&#34;monitoring-references&#34;&gt;Monitoring References&lt;/h4&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://beta.kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-monitoring/&#34;&gt;altinity-kb-monitoring&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-monitoring/&#34;&gt;altinity-kb-monitoring&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://tech.marksblogg.com/clickhouse-prometheus-grafana.html&#34; target=&#34;_blank&#34;&gt;https://tech.marksblogg.com/clickhouse-prometheus-grafana.html&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://sematext.com/blog/clickhouse-monitoring-key-metrics/&#34; target=&#34;_blank&#34;&gt;Key Metrics for Monitoring ClickHouse&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://dzone.com/articles/clickhouse-monitoring-key-metrics-to-monitor-semat&#34; target=&#34;_blank&#34;&gt;ClickHouse Monitoring Key Metrics to Monitor&lt;/a&gt;&lt;/li&gt;
@@ -586,10 +586,10 @@ tail -n 10000 /var/log/clickhouse-server/clickhouse-server.log | less&lt;/p&gt;
     
     <item>
       <title>Altinity-Kb-Setup-and-Maintenance: Network Configuration</title>
-      <link>http://beta.kb.altinity.com/altinity-kb-setup-and-maintenance/cluster-production-configuration-guide/network-configuration/</link>
+      <link>http://kb.altinity.com/altinity-kb-setup-and-maintenance/cluster-production-configuration-guide/network-configuration/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://beta.kb.altinity.com/altinity-kb-setup-and-maintenance/cluster-production-configuration-guide/network-configuration/</guid>
+      <guid>http://kb.altinity.com/altinity-kb-setup-and-maintenance/cluster-production-configuration-guide/network-configuration/</guid>
       <description>
         
         
@@ -717,10 +717,10 @@ tail -n 10000 /var/log/clickhouse-server/clickhouse-server.log | less&lt;/p&gt;
     
     <item>
       <title>Altinity-Kb-Setup-and-Maintenance: Version Upgrades</title>
-      <link>http://beta.kb.altinity.com/altinity-kb-setup-and-maintenance/cluster-production-configuration-guide/version-upgrades/</link>
+      <link>http://kb.altinity.com/altinity-kb-setup-and-maintenance/cluster-production-configuration-guide/version-upgrades/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://beta.kb.altinity.com/altinity-kb-setup-and-maintenance/cluster-production-configuration-guide/version-upgrades/</guid>
+      <guid>http://kb.altinity.com/altinity-kb-setup-and-maintenance/cluster-production-configuration-guide/version-upgrades/</guid>
       <description>
         
         
