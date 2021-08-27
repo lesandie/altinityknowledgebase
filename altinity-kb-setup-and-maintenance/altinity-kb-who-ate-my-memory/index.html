@@ -13,13 +13,13 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-who-ate-my-memory/" /><meta property="article:section" content="altinity-kb-setup-and-maintenance" />
 
-<meta property="article:modified_time" content="2021-08-12T14:22:56-06:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
+<meta property="article:modified_time" content="2021-08-27T10:23:19-04:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
 
 <meta itemprop="name" content="Who ate my memory">
 <meta itemprop="description" content="Who ate my memory
 ">
-<meta itemprop="dateModified" content="2021-08-12T14:22:56-06:00" />
-<meta itemprop="wordCount" content="1">
+<meta itemprop="dateModified" content="2021-08-27T10:23:19-04:00" />
+<meta itemprop="wordCount" content="56">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Who ate my memory"/>
 <meta name="twitter:description" content="Who ate my memory
@@ -78,7 +78,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.5275199fb636a5b9b860aa63c530f4e4.json"
+  data-offline-search-index-json-src="/offline-search-index.91b3d612c0c54c421550fc2ad716120c.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -106,7 +106,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.5275199fb636a5b9b860aa63c530f4e4.json"
+  data-offline-search-index-json-src="/offline-search-index.91b3d612c0c54c421550fc2ad716120c.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -655,14 +655,24 @@
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">WHERE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">event_date</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">&gt;=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">today</span><span style="color:#000;font-weight:bold">())</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">AND</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">event_time</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">&gt;=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">now</span><span style="color:#000;font-weight:bold">()</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">7200</span><span style="color:#000;font-weight:bold">))</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">ORDER</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">BY</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">memory_usage</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">DESC</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">LIMIT</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">10</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></code></pre></div>
+</span></code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#204a87;font-weight:bold">for</span> i in <span style="color:#4e9a06">`</span>seq <span style="color:#0000cf;font-weight:bold">1</span> 600<span style="color:#4e9a06">`</span><span style="color:#000;font-weight:bold">;</span> <span style="color:#204a87;font-weight:bold">do</span> clickhouse-client --empty_result_for_aggregation_by_empty_set<span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">0</span> -q <span style="color:#4e9a06">&#34;select (select &#39;Merges: \
+</span><span style="color:#4e9a06">&#39;||formatReadableSize(sum(memory_usage)) from system.merges), (select \
+</span><span style="color:#4e9a06">&#39;Processes: &#39;||formatReadableSize(sum(memory_usage)) from system.processes)&#34;</span><span style="color:#000;font-weight:bold">;</span><span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>sleep 3<span style="color:#000;font-weight:bold">;</span>  <span style="color:#204a87;font-weight:bold">done</span> 
+
+Merges: 96.57 MiB	Processes: 41.98 MiB
+Merges: 82.24 MiB	Processes: 41.91 MiB
+Merges: 66.33 MiB	Processes: 41.91 MiB
+Merges: 66.49 MiB	Processes: 37.13 MiB
+Merges: 67.78 MiB	Processes: 37.13 MiB
+</code></pre></div>
 	
 	
 	<div class="text-muted mt-5 pt-3 border-top">
 
     Last modified
-    2021.08.12
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/5969b6886e2a31134118f644b6fd2463d98dcb80">General corrections and updates. (5969b688)</a>
+    2021.08.27
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/757d31ffc3df3d6b55f97a299fb6cbfdf29e8cfe">Update altinity-kb-who-ate-my-memory.md (757d31ff)</a>
 
 </div>
 
