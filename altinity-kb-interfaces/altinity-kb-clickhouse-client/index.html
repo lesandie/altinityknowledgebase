@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.87.0" /><META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
+<meta name="generator" content="Hugo 0.88.0" /><META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
 <link rel="shortcut icon" href="/favicons/favicon.ico" >
 <link rel="icon" href="/favicons/favicon.ico" >
 <title>clickhouse-client | Altinity Knowledge Base</title>
@@ -78,7 +78,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.c8d0b3dced22fae0b9090ba1bbf87d72.json"
+  data-offline-search-index-json-src="/offline-search-index.27690aab949ff9b96d99e281718a1ad7.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -106,7 +106,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.c8d0b3dced22fae0b9090ba1bbf87d72.json"
+  data-offline-search-index-json-src="/offline-search-index.27690aab949ff9b96d99e281718a1ad7.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -309,6 +309,8 @@
   </ul>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-queries-and-syntaxtime-zones-li">
   <a href="/altinity-kb-queries-and-syntax/time-zones/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-queries-and-syntaxtime-zones"><span class="">Time zones</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-queries-and-syntaxts-interpolation-li">
+  <a href="/altinity-kb-queries-and-syntax/ts-interpolation/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-queries-and-syntaxts-interpolation"><span class="">Time-series alignment with interpolation</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-queries-and-syntaxtop-n-and-remain-li">
   <a href="/altinity-kb-queries-and-syntax/top-n-and-remain/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-queries-and-syntaxtop-n-and-remain"><span class="">Top N &amp; Remain</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-queries-and-syntaxtroubleshooting-li">
@@ -627,7 +629,7 @@
 </ul>
 <p>Q. Сustomize client config</p>
 <p>A. you can change it globally (for all users of the workstation)</p>
-<pre><code class="language-markup" data-lang="markup">nano /etc/clickhouse-client/conf.d/user.xml
+<pre tabindex="0"><code class="language-markup" data-lang="markup">nano /etc/clickhouse-client/conf.d/user.xml
 
 &lt;config&gt;
     &lt;user&gt;default1&lt;/user&gt;
@@ -638,7 +640,7 @@
 &lt;/config&gt;
 See also https://github.com/ClickHouse/ClickHouse/blob/976dbe8077f9076387528e2f40b6174f6d8a8b90/programs/client/clickhouse-client.xml#L42
 </code></pre><p>or for particular users - by adjusting one of.</p>
-<pre><code class="language-markup" data-lang="markup">./clickhouse-client.xml
+<pre tabindex="0"><code class="language-markup" data-lang="markup">./clickhouse-client.xml
 ~/.clickhouse-client/config.xml
 </code></pre><p>Also, it’s possible to have several client config files and pass one of them to clickhouse-client command explicitly</p>
 <p>References:</p>

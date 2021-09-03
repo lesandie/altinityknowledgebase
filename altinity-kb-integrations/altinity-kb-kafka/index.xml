@@ -31,7 +31,7 @@
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Some random example:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-markup&#34; data-lang=&#34;markup&#34;&gt;&amp;lt;kafka&amp;gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-markup&#34; data-lang=&#34;markup&#34;&gt;&amp;lt;kafka&amp;gt;
     &amp;lt;max_poll_interval_ms&amp;gt;60000&amp;lt;/max_poll_interval_ms&amp;gt;
     &amp;lt;session_timeout_ms&amp;gt;60000&amp;lt;/session_timeout_ms&amp;gt;
     &amp;lt;heartbeat_interval_ms&amp;gt;10000&amp;lt;/heartbeat_interval_ms&amp;gt;
@@ -49,7 +49,7 @@
 &amp;lt;/kafka&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;authentication--connectivity&#34;&gt;Authentication / connectivity&lt;/h2&gt;
 &lt;h3 id=&#34;amazon-msk&#34;&gt;Amazon MSK&lt;/h3&gt;
-&lt;pre&gt;&lt;code class=&#34;language-markup&#34; data-lang=&#34;markup&#34;&gt;&amp;lt;yandex&amp;gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-markup&#34; data-lang=&#34;markup&#34;&gt;&amp;lt;yandex&amp;gt;
   &amp;lt;kafka&amp;gt;
     &amp;lt;security_protocol&amp;gt;sasl_ssl&amp;lt;/security_protocol&amp;gt;
     &amp;lt;sasl_username&amp;gt;root&amp;lt;/sasl_username&amp;gt;
@@ -61,7 +61,7 @@
 &lt;p&gt;To connect to some Kafka cloud services you may need to use certificates.&lt;/p&gt;
 &lt;p&gt;If needed they can be converted to pem format and inlined into ClickHouse config.&lt;/p&gt;
 &lt;p&gt;Example:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-markup&#34; data-lang=&#34;markup&#34;&gt;&amp;lt;kafka&amp;gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-markup&#34; data-lang=&#34;markup&#34;&gt;&amp;lt;kafka&amp;gt;
 &amp;lt;ssl_key_pem&amp;gt;&amp;lt;![CDATA[
   RSA Private-Key: (3072 bit, 2 primes)
     ....
@@ -85,7 +85,7 @@
 &lt;li&gt;&lt;a href=&#34;https://clickhouse.tech/docs/en/engines/table-engines/integrations/kafka/#kafka-kerberos-support&#34; target=&#34;_blank&#34;&gt;https://clickhouse.tech/docs/en/engines/table-engines/integrations/kafka/#kafka-kerberos-support&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://github.com/ClickHouse/ClickHouse/blob/master/tests/integration/test_storage_kerberized_kafka/configs/kafka.xml&#34; target=&#34;_blank&#34;&gt;https://github.com/ClickHouse/ClickHouse/blob/master/tests/integration/test_storage_kerberized_kafka/configs/kafka.xml&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;pre&gt;&lt;code class=&#34;language-markup&#34; data-lang=&#34;markup&#34;&gt;  &amp;lt;!-- Kerberos-aware Kafka --&amp;gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-markup&#34; data-lang=&#34;markup&#34;&gt;  &amp;lt;!-- Kerberos-aware Kafka --&amp;gt;
   &amp;lt;kafka&amp;gt;
     &amp;lt;security_protocol&amp;gt;SASL_PLAINTEXT&amp;lt;/security_protocol&amp;gt;
     &amp;lt;sasl_kerberos_keytab&amp;gt;/home/kafkauser/kafkauser.keytab&amp;lt;/sasl_kerberos_keytab&amp;gt;
@@ -273,7 +273,7 @@
 &lt;li&gt;Step: Attach Kafka tables back&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;See also these configuration settings:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-markup&#34; data-lang=&#34;markup&#34;&gt;&amp;lt;kafka&amp;gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-markup&#34; data-lang=&#34;markup&#34;&gt;&amp;lt;kafka&amp;gt;
   &amp;lt;auto_offset_reset&amp;gt;smallest&amp;lt;/auto_offset_reset&amp;gt;
 &amp;lt;/kafka&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;

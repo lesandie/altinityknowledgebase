@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.87.0" /><META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
+<meta name="generator" content="Hugo 0.88.0" /><META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
 <link rel="shortcut icon" href="/favicons/favicon.ico" >
 <link rel="icon" href="/favicons/favicon.ico" >
 <title>Server config files | Altinity Knowledge Base</title>
@@ -78,7 +78,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.c8d0b3dced22fae0b9090ba1bbf87d72.json"
+  data-offline-search-index-json-src="/offline-search-index.27690aab949ff9b96d99e281718a1ad7.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -106,7 +106,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.c8d0b3dced22fae0b9090ba1bbf87d72.json"
+  data-offline-search-index-json-src="/offline-search-index.27690aab949ff9b96d99e281718a1ad7.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -309,6 +309,8 @@
   </ul>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-queries-and-syntaxtime-zones-li">
   <a href="/altinity-kb-queries-and-syntax/time-zones/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-queries-and-syntaxtime-zones"><span class="">Time zones</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-queries-and-syntaxts-interpolation-li">
+  <a href="/altinity-kb-queries-and-syntax/ts-interpolation/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-queries-and-syntaxts-interpolation"><span class="">Time-series alignment with interpolation</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-queries-and-syntaxtop-n-and-remain-li">
   <a href="/altinity-kb-queries-and-syntax/top-n-and-remain/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-queries-and-syntaxtop-n-and-remain"><span class="">Top N &amp; Remain</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-queries-and-syntaxtroubleshooting-li">
@@ -642,7 +644,7 @@
 <p><strong>/etc/clickhouse-server/conf.d</strong> – sub-folder for any (both) settings.</p>
 <p>File names of your xml files can be arbitrary but they applied in alphabetical order.</p>
 <p>Examples:</p>
-<pre><code class="language-markup" data-lang="markup">$ cat /etc/clickhouse-server/config.d/macros.xml
+<pre tabindex="0"><code class="language-markup" data-lang="markup">$ cat /etc/clickhouse-server/config.d/macros.xml
 &lt;?xml version=&quot;1.0&quot; ?&gt;
 &lt;yandex&gt;
   &lt;macros&gt;
@@ -686,14 +688,14 @@ cat /etc/clickhouse-server/users.d/enable_access_management_for_user_default.xml
 </span><span style="color:#f8f8f8;text-decoration:underline">       </span><span style="color:#000;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">SELECT</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">getMacro</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;server_id&#39;</span><span style="color:#000;font-weight:bold">))</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">AS</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">server_key</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></code></pre></div><p>Settings can be appended to an XML tree (default behaviour) or replaced or removed.</p>
 <p>Example how to delete <strong>tcp_port</strong> &amp; <strong>http_port</strong> defined on higher level in the main config.xml (it disables open tcp &amp; http ports if you configured secure ssl):</p>
-<pre><code class="language-markup" data-lang="markup">cat /etc/clickhouse-server/config.d/disable_open_network.xml
+<pre tabindex="0"><code class="language-markup" data-lang="markup">cat /etc/clickhouse-server/config.d/disable_open_network.xml
 &lt;?xml version=&quot;1.0&quot;?&gt;
 &lt;yandex&gt;
   &lt;http_port remove=&quot;1&quot;/&gt;
   &lt;tcp_port remove=&quot;1&quot;/&gt;
 &lt;/yandex&gt;
 </code></pre><p>Example how to replace <strong>remote_servers</strong> section defined on higher level in the main config.xml (it allows to remove default test clusters.</p>
-<pre><code class="language-markup" data-lang="markup">&lt;?xml version=&quot;1.0&quot; ?&gt;
+<pre tabindex="0"><code class="language-markup" data-lang="markup">&lt;?xml version=&quot;1.0&quot; ?&gt;
 &lt;yandex&gt;
   &lt;remote_servers replace=&quot;1&quot;&gt;
     &lt;mycluster&gt;
@@ -711,7 +713,7 @@ cat /etc/clickhouse-server/users.d/enable_access_management_for_user_default.xml
 </ol>
 <h2 id="dictionaries">Dictionaries</h2>
 <p>We suggest to store each dictionary description in a separate (own) file in a <strong>/etc/clickhouse-server/dict</strong> sub-folder.</p>
-<pre><code class="language-markup" data-lang="markup">$ cat /etc/clickhouse-server/dict/country.xml
+<pre tabindex="0"><code class="language-markup" data-lang="markup">$ cat /etc/clickhouse-server/dict/country.xml
 &lt;?xml version=&quot;1.0&quot;?&gt;
 &lt;dictionaries&gt;
   &lt;dictionary&gt;
@@ -722,7 +724,7 @@ cat /etc/clickhouse-server/users.d/enable_access_management_for_user_default.xml
   &lt;/dictionary&gt;
 &lt;/dictionaries&gt;
 </code></pre><p>and add to the configuration</p>
-<pre><code class="language-markup" data-lang="markup">$ cat /etc/clickhouse-server/config.d/dictionaries.xml
+<pre tabindex="0"><code class="language-markup" data-lang="markup">$ cat /etc/clickhouse-server/config.d/dictionaries.xml
 &lt;?xml version=&quot;1.0&quot;?&gt;
 &lt;yandex&gt;
   &lt;dictionaries_config&gt;dict/*.xml&lt;/dictionaries_config&gt;
@@ -733,7 +735,7 @@ cat /etc/clickhouse-server/users.d/enable_access_management_for_user_default.xml
 <p><strong>incl</strong> attribute allows to include some XML section from a special <strong>include</strong> file multiple times.</p>
 <p>By default <strong>include</strong> file is <strong>/etc/metrika.xml</strong>. You can use many include files for each XML section.</p>
 <p>For example to avoid repetition of user/password for each dictionary you can create an XML file:</p>
-<pre><code class="language-markup" data-lang="markup">$ cat /etc/clickhouse-server/dict_sources.xml
+<pre tabindex="0"><code class="language-markup" data-lang="markup">$ cat /etc/clickhouse-server/dict_sources.xml
 &lt;?xml version=&quot;1.0&quot;?&gt;
 &lt;yandex&gt;
   &lt;mysql_config&gt;
@@ -748,14 +750,14 @@ cat /etc/clickhouse-server/users.d/enable_access_management_for_user_default.xml
   &lt;/mysql_config&gt;
 &lt;/yandex&gt;
 </code></pre><p>Include this file:</p>
-<pre><code class="language-markup" data-lang="markup">$ cat /etc/clickhouse-server/config.d/dictionaries.xml
+<pre tabindex="0"><code class="language-markup" data-lang="markup">$ cat /etc/clickhouse-server/config.d/dictionaries.xml
 &lt;?xml version=&quot;1.0&quot;?&gt;
 &lt;yandex&gt;
   ...
   &lt;include_from&gt;/etc/clickhouse-server/dict_sources.xml&lt;/include_from&gt;
 &lt;/yandex&gt;
 </code></pre><p>And use in dictionary descriptions (<strong>incl=&ldquo;mysql_config&rdquo;</strong>):</p>
-<pre><code class="language-markup" data-lang="markup">$ cat /etc/clickhouse-server/dict/country.xml
+<pre tabindex="0"><code class="language-markup" data-lang="markup">$ cat /etc/clickhouse-server/dict/country.xml
 &lt;?xml version=&quot;1.0&quot;?&gt;
 &lt;dictionaries&gt;
   &lt;dictionary&gt;

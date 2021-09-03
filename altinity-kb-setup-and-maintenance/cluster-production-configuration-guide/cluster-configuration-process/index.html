@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.87.0" /><META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
+<meta name="generator" content="Hugo 0.88.0" /><META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
 <link rel="shortcut icon" href="/favicons/favicon.ico" >
 <link rel="icon" href="/favicons/favicon.ico" >
 <title>Cluster Configuration Process | Altinity Knowledge Base</title>
@@ -78,7 +78,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.c8d0b3dced22fae0b9090ba1bbf87d72.json"
+  data-offline-search-index-json-src="/offline-search-index.27690aab949ff9b96d99e281718a1ad7.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -106,7 +106,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.c8d0b3dced22fae0b9090ba1bbf87d72.json"
+  data-offline-search-index-json-src="/offline-search-index.27690aab949ff9b96d99e281718a1ad7.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -309,6 +309,8 @@
   </ul>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-queries-and-syntaxtime-zones-li">
   <a href="/altinity-kb-queries-and-syntax/time-zones/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-queries-and-syntaxtime-zones"><span class="">Time zones</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-queries-and-syntaxts-interpolation-li">
+  <a href="/altinity-kb-queries-and-syntax/ts-interpolation/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-queries-and-syntaxts-interpolation"><span class="">Time-series alignment with interpolation</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-queries-and-syntaxtop-n-and-remain-li">
   <a href="/altinity-kb-queries-and-syntax/top-n-and-remain/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-queries-and-syntaxtop-n-and-remain"><span class="">Top N &amp; Remain</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-queries-and-syntaxtroubleshooting-li">
@@ -642,7 +644,7 @@
 <ol>
 <li>Configure ClickHouse access to Zookeeper by adding the file zookeeper.xml in /etc/clickhouse-server/config.d/ folder. This file must be placed on all ClickHouse servers.</li>
 </ol>
-<pre><code class="language-markup" data-lang="markup">&lt;yandex&gt;
+<pre tabindex="0"><code class="language-markup" data-lang="markup">&lt;yandex&gt;
     &lt;zookeeper&gt;
         &lt;node&gt;
             &lt;host&gt;zookeeper1&lt;/host&gt;
@@ -661,7 +663,7 @@
 </code></pre><ol>
 <li>On each server put the file macros.xml in <code>/etc/clickhouse-server/config.d/</code> folder.</li>
 </ol>
-<pre><code class="language-markup" data-lang="markup">&lt;yandex&gt;
+<pre tabindex="0"><code class="language-markup" data-lang="markup">&lt;yandex&gt;
     &lt;!--
         That macros are defined per server,
         and they can be used in DDL, to make the DB schema cluster/server neutral
@@ -675,7 +677,7 @@
 </code></pre><ol>
 <li>On each server place the file cluster.xml in /etc/clickhouse-server/config.d/ folder. Before 20.10  ClickHouse will use default user to connect to other nodes (configurable, other users can be used), since 20.10 we recommend to use passwordless intercluster authentication based on common secret (HMAC auth)</li>
 </ol>
-<pre><code class="language-markup" data-lang="markup">&lt;yandex&gt;
+<pre tabindex="0"><code class="language-markup" data-lang="markup">&lt;yandex&gt;
     &lt;remote_servers&gt;
         &lt;prod_cluster&gt; &lt;!-- you need to give a some name for a cluster --&gt;
 
@@ -760,14 +762,14 @@
 </ol>
 </li>
 </ol>
-<pre><code class="language-markup" data-lang="markup">&lt;?xml version=&quot;1.0&quot;?&gt;
+<pre tabindex="0"><code class="language-markup" data-lang="markup">&lt;?xml version=&quot;1.0&quot;?&gt;
 &lt;yandex&gt;
     &lt;listen_host replace=&quot;replace&quot;&gt;::&lt;/listen_host&gt;
 &lt;/yandex&gt;
 </code></pre><ol>
 <li>The same is true for users. For example, change the default profile by putting the file in users.d/profile_default.xml:</li>
 </ol>
-<pre><code class="language-markup" data-lang="markup">&lt;?xml version=&quot;1.0&quot;?&gt;
+<pre tabindex="0"><code class="language-markup" data-lang="markup">&lt;?xml version=&quot;1.0&quot;?&gt;
 &lt;yandex&gt;
     &lt;profiles&gt;
         &lt;default replace=&quot;replace&quot;&gt;
@@ -785,7 +787,7 @@
 </code></pre><ol>
 <li>Or you can create a user by putting a file users.d/user_xxx.xml (since 20.5 you can also use CREATE USER)</li>
 </ol>
-<pre><code class="language-markup" data-lang="markup">&lt;?xml version=&quot;1.0&quot;?&gt;
+<pre tabindex="0"><code class="language-markup" data-lang="markup">&lt;?xml version=&quot;1.0&quot;?&gt;
 &lt;yandex&gt;
     &lt;users&gt;
         &lt;xxx&gt;
@@ -801,7 +803,7 @@
 </code></pre><ol>
 <li>Some parts of configuration will contain repeated elements (like allowed ips for all the users). To avoid repeating that - use substitutions file. By default its /etc/metrika.xml, but you can change it for example to /etc/clickhouse-server/substitutions.xml with the &lt;include_from&gt; section of the main config. Put the repeated parts into substitutions file, like this:</li>
 </ol>
-<pre><code class="language-markup" data-lang="markup">&lt;?xml version=&quot;1.0&quot;?&gt;
+<pre tabindex="0"><code class="language-markup" data-lang="markup">&lt;?xml version=&quot;1.0&quot;?&gt;
 &lt;yandex&gt;
     &lt;networks&gt;
         &lt;ip&gt;::1&lt;/ip&gt;

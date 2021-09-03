@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.87.0" /><META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
+<meta name="generator" content="Hugo 0.88.0" /><META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
 <link rel="shortcut icon" href="/favicons/favicon.ico" >
 <link rel="icon" href="/favicons/favicon.ico" >
 <title>Settings to adjust | Altinity Knowledge Base</title>
@@ -78,7 +78,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.c8d0b3dced22fae0b9090ba1bbf87d72.json"
+  data-offline-search-index-json-src="/offline-search-index.27690aab949ff9b96d99e281718a1ad7.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -106,7 +106,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.c8d0b3dced22fae0b9090ba1bbf87d72.json"
+  data-offline-search-index-json-src="/offline-search-index.27690aab949ff9b96d99e281718a1ad7.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -309,6 +309,8 @@
   </ul>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-queries-and-syntaxtime-zones-li">
   <a href="/altinity-kb-queries-and-syntax/time-zones/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-queries-and-syntaxtime-zones"><span class="">Time zones</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-queries-and-syntaxts-interpolation-li">
+  <a href="/altinity-kb-queries-and-syntax/ts-interpolation/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-queries-and-syntaxts-interpolation"><span class="">Time-series alignment with interpolation</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-queries-and-syntaxtop-n-and-remain-li">
   <a href="/altinity-kb-queries-and-syntax/top-n-and-remain/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-queries-and-syntaxtop-n-and-remain"><span class="">Top N &amp; Remain</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-queries-and-syntaxtroubleshooting-li">
@@ -617,7 +619,7 @@
 	<ol>
 <li>
 <p><code>query_log</code> and other <code>_log</code> tables - set up TTL, or some other cleanup procedures.</p>
-<pre><code class="language-markup" data-lang="markup">cat /etc/clickhouse-server/config.d/query_log.xml
+<pre tabindex="0"><code class="language-markup" data-lang="markup">cat /etc/clickhouse-server/config.d/query_log.xml
 &lt;yandex&gt;
     &lt;query_log replace=&quot;1&quot;&gt;
         &lt;database&gt;system&lt;/database&gt;
@@ -635,7 +637,7 @@ SETTINGS ttl_only_drop_parts=1
 </code></pre></li>
 <li>
 <p><code>query_thread_log</code> - typically is not useful, you can disable it (or set up TTL).</p>
-<pre><code class="language-markup" data-lang="markup">cat /etc/clickhouse-server/config.d/disable_query_thread_log.xml
+<pre tabindex="0"><code class="language-markup" data-lang="markup">cat /etc/clickhouse-server/config.d/disable_query_thread_log.xml
 &lt;yandex&gt;
     &lt;query_thread_log remove=&quot;1&quot; /&gt;
     &lt;metric_log remove=&quot;1&quot; /&gt;
@@ -646,7 +648,7 @@ SETTINGS ttl_only_drop_parts=1
 </code></pre></li>
 <li>
 <p><code>part_log</code> - may be nice, especially at the beginning / during system tuning/analyze.</p>
-<pre><code class="language-markup" data-lang="markup">cat /etc/clickhouse-server/config.d/part_log.xml
+<pre tabindex="0"><code class="language-markup" data-lang="markup">cat /etc/clickhouse-server/config.d/part_log.xml
 &lt;yandex&gt;
     &lt;part_log replace=&quot;1&quot;&gt;
         &lt;database&gt;system&lt;/database&gt;
@@ -664,7 +666,7 @@ SETTINGS ttl_only_drop_parts=1
 </code></pre></li>
 <li>
 <p>on older versions <code>log_queries</code> is disabled by default, it&rsquo;s worth having it enabled always.</p>
-<pre><code class="language-markup" data-lang="markup">$ cat /etc/clickhouse-server/users.d/log_queries.xml
+<pre tabindex="0"><code class="language-markup" data-lang="markup">$ cat /etc/clickhouse-server/users.d/log_queries.xml
 &lt;yandex&gt;
     &lt;profiles&gt;
         &lt;default&gt;
@@ -675,7 +677,7 @@ SETTINGS ttl_only_drop_parts=1
 </code></pre></li>
 <li>
 <p>quite often you want to have on-disk group by / order by enabled (both disabled by default).</p>
-<pre><code class="language-markup" data-lang="markup">cat /etc/clickhouse-server/users.d/enable_on_disk_operations.xml
+<pre tabindex="0"><code class="language-markup" data-lang="markup">cat /etc/clickhouse-server/users.d/enable_on_disk_operations.xml
 &lt;yandex&gt;
     &lt;profiles&gt;
         &lt;default&gt;
