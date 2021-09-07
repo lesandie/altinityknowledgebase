@@ -8,9 +8,6 @@
     <loc>http://kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-zookeeper/zookeeper-monitoring/</loc>
     <lastmod>2021-08-24T12:59:49-06:00</lastmod>
   </url><url>
-    <loc>http://kb.altinity.com/altinity-kb-setup-and-maintenance/clickhouse-backup-diff/</loc>
-    <lastmod>2021-09-07T18:12:30+02:00</lastmod>
-  </url><url>
     <loc>http://kb.altinity.com/altinity-kb-setup-and-maintenance/logging/</loc>
     <lastmod>2021-08-24T12:59:49-06:00</lastmod>
   </url><url>
@@ -145,6 +142,9 @@
   </url><url>
     <loc>http://kb.altinity.com/altinity-kb-dictionaries/dictionary-on-top-tables/</loc>
     <lastmod>2021-08-12T14:22:56-06:00</lastmod>
+  </url><url>
+    <loc>http://kb.altinity.com/altinity-kb-setup-and-maintenance/clickhouse-backup-diff/</loc>
+    <lastmod>2021-09-07T18:15:56+02:00</lastmod>
   </url><url>
     <loc>http://kb.altinity.com/engines/altinity-kb-embeddedrocksdb-and-dictionary/</loc>
     <lastmod>2021-08-12T14:22:56-06:00</lastmod>

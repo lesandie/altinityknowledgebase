@@ -6,21 +6,24 @@
 <meta name="generator" content="Hugo 0.88.1" /><META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
 <link rel="shortcut icon" href="/favicons/favicon.ico" >
 <link rel="icon" href="/favicons/favicon.ico" >
-<title>Altinity Knowledge Base</title>
-<meta name="description" content="Altinity Knowledge Base"><meta property="og:title" content="" />
-<meta property="og:description" content="Download the latest clickhouse-backup for your platform https://github.com/AlexAkulov/clickhouse-backup/releases  # ubuntu / debian wget https://github.com/AlexAkulov/clickhouse-backup/releases/download/v1.0.0/clickhouse-backup_1.0.0_amd64.deb sudo dpkg -i clickhouse-backup_1.0.0_amd64.deb # centos / redhat / fedora  sudo yum install https://github.com/AlexAkulov/clickhouse-backup/releases/download/v1.0.0/clickhouse-backup-1.0.0-1.x86_64.rpm # other platforms wget https://github.com/AlexAkulov/clickhouse-backup/releases/download/v1.0.0/clickhouse-backup.tar.gz sudo mkdir /etc/clickhouse-backup/ sudo mv clickhouse-backup/config.yml /etc/clickhouse-backup/config.yml.example sudo mv clickhouse-backup/clickhouse-backup /usr/bin/ rm -rf clickhouse-backup clickhouse-backup.tar.gz Create a runner script for the crontab  mkdir /opt/clickhouse-backup-diff/ cat &lt;&lt; &#39;END&#39; &gt; /opt/clickhouse-backup-diff/clickhouse-backup-cron.sh #!/bin/bash set &#43;x command_line_argument=$1 backup_name=$(date &#43;%Y-%M-%d-%H-%M-%S) echo &#34;Creating local backup &#39;${backup_name}&#39; (full, using hardlinks)." />
+<title>differential backups using clickhouse-backup | Altinity Knowledge Base</title>
+<meta name="description" content="Altinity Knowledge Base"><meta property="og:title" content="differential backups using clickhouse-backup" />
+<meta property="og:description" content="differential backups using clickhouse-backup
+" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://kb.altinity.com/altinity-kb-setup-and-maintenance/clickhouse-backup-diff/" /><meta property="article:section" content="altinity-kb-setup-and-maintenance" />
 
-<meta property="article:modified_time" content="2021-09-07T18:12:30+02:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
+<meta property="article:modified_time" content="2021-09-07T18:15:56+02:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
 
-<meta itemprop="name" content="">
-<meta itemprop="description" content="Download the latest clickhouse-backup for your platform https://github.com/AlexAkulov/clickhouse-backup/releases  # ubuntu / debian wget https://github.com/AlexAkulov/clickhouse-backup/releases/download/v1.0.0/clickhouse-backup_1.0.0_amd64.deb sudo dpkg -i clickhouse-backup_1.0.0_amd64.deb # centos / redhat / fedora  sudo yum install https://github.com/AlexAkulov/clickhouse-backup/releases/download/v1.0.0/clickhouse-backup-1.0.0-1.x86_64.rpm # other platforms wget https://github.com/AlexAkulov/clickhouse-backup/releases/download/v1.0.0/clickhouse-backup.tar.gz sudo mkdir /etc/clickhouse-backup/ sudo mv clickhouse-backup/config.yml /etc/clickhouse-backup/config.yml.example sudo mv clickhouse-backup/clickhouse-backup /usr/bin/ rm -rf clickhouse-backup clickhouse-backup.tar.gz Create a runner script for the crontab  mkdir /opt/clickhouse-backup-diff/ cat &lt;&lt; &#39;END&#39; &gt; /opt/clickhouse-backup-diff/clickhouse-backup-cron.sh #!/bin/bash set &#43;x command_line_argument=$1 backup_name=$(date &#43;%Y-%M-%d-%H-%M-%S) echo &#34;Creating local backup &#39;${backup_name}&#39; (full, using hardlinks).">
-<meta itemprop="dateModified" content="2021-09-07T18:12:30+02:00" />
-<meta itemprop="wordCount" content="240">
+<meta itemprop="name" content="differential backups using clickhouse-backup">
+<meta itemprop="description" content="differential backups using clickhouse-backup
+">
+<meta itemprop="dateModified" content="2021-09-07T18:15:56+02:00" />
+<meta itemprop="wordCount" content="244">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content=""/>
-<meta name="twitter:description" content="Download the latest clickhouse-backup for your platform https://github.com/AlexAkulov/clickhouse-backup/releases  # ubuntu / debian wget https://github.com/AlexAkulov/clickhouse-backup/releases/download/v1.0.0/clickhouse-backup_1.0.0_amd64.deb sudo dpkg -i clickhouse-backup_1.0.0_amd64.deb # centos / redhat / fedora  sudo yum install https://github.com/AlexAkulov/clickhouse-backup/releases/download/v1.0.0/clickhouse-backup-1.0.0-1.x86_64.rpm # other platforms wget https://github.com/AlexAkulov/clickhouse-backup/releases/download/v1.0.0/clickhouse-backup.tar.gz sudo mkdir /etc/clickhouse-backup/ sudo mv clickhouse-backup/config.yml /etc/clickhouse-backup/config.yml.example sudo mv clickhouse-backup/clickhouse-backup /usr/bin/ rm -rf clickhouse-backup clickhouse-backup.tar.gz Create a runner script for the crontab  mkdir /opt/clickhouse-backup-diff/ cat &lt;&lt; &#39;END&#39; &gt; /opt/clickhouse-backup-diff/clickhouse-backup-cron.sh #!/bin/bash set &#43;x command_line_argument=$1 backup_name=$(date &#43;%Y-%M-%d-%H-%M-%S) echo &#34;Creating local backup &#39;${backup_name}&#39; (full, using hardlinks)."/>
+<meta name="twitter:title" content="differential backups using clickhouse-backup"/>
+<meta name="twitter:description" content="differential backups using clickhouse-backup
+"/>
 
 
 
@@ -75,7 +78,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.59c5027261cca3db9aec86e5fcbac061.json"
+  data-offline-search-index-json-src="/offline-search-index.f821dd4beea31536bd4e4a802f0a8fde.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -103,7 +106,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.59c5027261cca3db9aec86e5fcbac061.json"
+  data-offline-search-index-json-src="/offline-search-index.f821dd4beea31536bd4e4a802f0a8fde.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -373,9 +376,7 @@
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-altinity-kb-setup-and-maintenance-li">
   <a href="/altinity-kb-setup-and-maintenance/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-altinity-kb-setup-and-maintenance"><span class="">Setup &amp; maintenance</span></a>
   <ul class="ul-2 foldable">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-altinity-kb-setup-and-maintenanceclickhouse-backup-diff-li">
-  <a href="/altinity-kb-setup-and-maintenance/clickhouse-backup-diff/" class="align-left pl-0 active td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenanceclickhouse-backup-diff"><span class="td-sidebar-nav-active-item"></span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenancelogging-li">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenancelogging-li">
   <a href="/altinity-kb-setup-and-maintenance/logging/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancelogging"><span class=""></span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenancealtinity-packaging-compatibility-greater-than-21x-and-earlier-li">
   <a href="/altinity-kb-setup-and-maintenance/altinity-packaging-compatibility-greater-than-21.x-and-earlier/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancealtinity-packaging-compatibility-greater-than-21x-and-earlier"><span class="">Altinity packaging compatibility &gt;21.x and earlier</span></a>
@@ -414,6 +415,8 @@
   <a href="/altinity-kb-setup-and-maintenance/altinity-kb-ddlworker/there-are-n-unfinished-hosts-0-of-them-are-currently-active/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancealtinity-kb-ddlworkerthere-are-n-unfinished-hosts-0-of-them-are-currently-active"><span class="">There are N unfinished hosts (0 of them are currently active).</span></a>
 </li>
   </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-altinity-kb-setup-and-maintenanceclickhouse-backup-diff-li">
+  <a href="/altinity-kb-setup-and-maintenance/clickhouse-backup-diff/" class="align-left pl-0 active td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenanceclickhouse-backup-diff"><span class="td-sidebar-nav-active-item">differential backups using clickhouse-backup</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenancehigh-cpu-usage-li">
   <a href="/altinity-kb-setup-and-maintenance/high-cpu-usage/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancehigh-cpu-usage"><span class="">High CPU usage</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenanceload-balancers-li">
@@ -559,6 +562,16 @@
             
 
 
+<div class="td-toc"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#differential-backups-using-clickhouse-backup">differential backups using clickhouse-backup</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+
 
 
             
@@ -604,7 +617,7 @@
 
 
 <li class="breadcrumb-item active" aria-current="page">
-	<a href="http://kb.altinity.com/altinity-kb-setup-and-maintenance/clickhouse-backup-diff/"></a>
+	<a href="http://kb.altinity.com/altinity-kb-setup-and-maintenance/clickhouse-backup-diff/">differential backups using clickhouse-backup</a>
 </li>
 
 	</ol>
@@ -612,12 +625,13 @@
 
             
 <div class="td-content">
-	<h1></h1>
-    <div class="lead">	
+	<h1>differential backups using clickhouse-backup</h1>
+    <div class="lead">differential backups using clickhouse-backup	
 	</div>
 	
 	       
-	<ol>
+	<h3 id="differential-backups-using-clickhouse-backup">differential backups using clickhouse-backup</h3>
+<ol>
 <li>Download the latest clickhouse-backup for your platform <a href="https://github.com/AlexAkulov/clickhouse-backup/releases" target="_blank">https://github.com/AlexAkulov/clickhouse-backup/releases</a></li>
 </ol>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#8f5902;font-style:italic"># ubuntu / debian</span>
@@ -691,7 +705,7 @@ clickhouse-backup restore --rm <span style="color:#4e9a06">&#34;</span><span sty
 
     Last modified
     2021.09.07
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/d7a6bfe96b1512b9b2117a5d416ac5c09cda68b0">Create clickhouse-backup-diff.md (d7a6bfe9)</a>
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/29902df59e69b7b7b1d2352a67faa2b018bbfd9a">Update clickhouse-backup-diff.md (29902df5)</a>
 
 </div>
 
