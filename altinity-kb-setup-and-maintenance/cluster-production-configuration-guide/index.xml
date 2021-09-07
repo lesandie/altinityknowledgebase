@@ -70,7 +70,7 @@ tail -n 10000 /var/log/clickhouse-server/clickhouse-server.log | less&lt;/p&gt;
 &lt;h2 id=&#34;data-returned-in-chunks-by-clickhouse-client&#34;&gt;Data returned in chunks by clickhouse-client&lt;/h2&gt;
 &lt;p&gt;See &lt;a href=&#34;http://kb.altinity.com/altinity-kb-interfaces/altinity-kb-clickhouse-client/&#34;&gt;altinity-kb-clickhouse-client&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&#34;i-cant-connect-from-other-hosts--what-do-i-do&#34;&gt;I Can’t Connect From Other Hosts.  What do I do?&lt;/h2&gt;
-&lt;p&gt;Check the &amp;lt;listen&amp;gt; settings in config.xml. Verify that the connection can connect on both IPV4 and IPV6.&lt;/p&gt;
+&lt;p&gt;Check the &lt;listen&gt; settings in config.xml. Verify that the connection can connect on both IPV4 and IPV6.&lt;/p&gt;
 
       </description>
     </item>
@@ -263,8 +263,8 @@ tail -n 10000 /var/log/clickhouse-server/clickhouse-server.log | less&lt;/p&gt;
 &lt;h3 id=&#34;other-configuration-recommendations&#34;&gt;Other Configuration Recommendations&lt;/h3&gt;
 &lt;p&gt;Other configurations that should be evaluated:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&amp;lt;listen&amp;gt; in config.xml: Determines which IP addresses and ports the ClickHouse servers listen for incoming communications.&lt;/li&gt;
-&lt;li&gt;&amp;lt;max_memory_..&amp;gt; and &amp;lt;max_bytes_before_external_&amp;hellip;&amp;gt; in users.xml. These are part of the profile &amp;lt;default&amp;gt;.&lt;/li&gt;
+&lt;li&gt;&lt;listen&gt; in config.xml: Determines which IP addresses and ports the ClickHouse servers listen for incoming communications.&lt;/li&gt;
+&lt;li&gt;&amp;lt;max_memory_..&amp;gt; and &amp;lt;max_bytes_before_external_&amp;hellip;&amp;gt; in users.xml. These are part of the profile &lt;default&gt;.&lt;/li&gt;
 &lt;li&gt;&amp;lt;max_execution_time&amp;gt;&lt;/li&gt;
 &lt;li&gt;&amp;lt;log_queries&amp;gt;&lt;/li&gt;
 &lt;/ul&gt;
@@ -481,7 +481,7 @@ tail -n 10000 /var/log/clickhouse-server/clickhouse-server.log | less&lt;/p&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
       &lt;td style=&#34;text-align:left&#34;&gt;Some replication tasks are stuck&lt;/td&gt;
-      &lt;td style=&#34;text-align:left&#34;&gt;select count()from system.replication_queuewhere num_tries &amp;gt; 100&lt;/td&gt;
+      &lt;td style=&#34;text-align:left&#34;&gt;select count()from system.replication_queuewhere num_tries &gt; 100&lt;/td&gt;
       &lt;td
       style=&#34;text-align:left&#34;&gt;High&lt;/td&gt;
     &lt;/tr&gt;
