@@ -13,13 +13,13 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://kb.altinity.com/altinity-kb-setup-and-maintenance/clickhouse-backup-diff/" /><meta property="article:section" content="altinity-kb-setup-and-maintenance" />
 
-<meta property="article:modified_time" content="2021-09-07T18:15:56+02:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
+<meta property="article:modified_time" content="2021-09-07T18:21:30+02:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
 
 <meta itemprop="name" content="differential backups using clickhouse-backup">
 <meta itemprop="description" content="differential backups using clickhouse-backup
 ">
-<meta itemprop="dateModified" content="2021-09-07T18:15:56+02:00" />
-<meta itemprop="wordCount" content="244">
+<meta itemprop="dateModified" content="2021-09-07T18:21:30+02:00" />
+<meta itemprop="wordCount" content="247">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="differential backups using clickhouse-backup"/>
 <meta name="twitter:description" content="differential backups using clickhouse-backup
@@ -78,7 +78,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.f821dd4beea31536bd4e4a802f0a8fde.json"
+  data-offline-search-index-json-src="/offline-search-index.5a4543a8dc0011634251caeb223f378e.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -106,7 +106,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.f821dd4beea31536bd4e4a802f0a8fde.json"
+  data-offline-search-index-json-src="/offline-search-index.5a4543a8dc0011634251caeb223f378e.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -687,11 +687,11 @@ vim /etc/clickhouse-backup/config.yml
 <pre tabindex="0"><code>crontab -e
 
 # full backup at 0:00 Monday
-0 0 * * 1 clickhouse /bin/clickhouse-backup-cron.sh
+0 0 * * 1 clickhouse /opt/clickhouse-backup-diff/clickhouse-backup-cron.sh
 # differential backup every hour (except of 00:00) Monday 
-0 1-23 * * 1 clickhouse /bin/clickhouse-backup-cron.sh run_diff
+0 1-23 * * 1 clickhouse /opt/clickhouse-backup-diff/clickhouse-backup-cron.sh run_diff
 # differential backup every hour Sunday, Tuesday-Saturday
-0 */1 * * 0,2-6 
+0 */1 * * 0,2-6 clickhouse /opt/clickhouse-backup-diff/clickhouse-backup-cron.sh run_diff
 </code></pre><ol start="5">
 <li>Recover the last backup:</li>
 </ol>
@@ -705,7 +705,7 @@ clickhouse-backup restore --rm <span style="color:#4e9a06">&#34;</span><span sty
 
     Last modified
     2021.09.07
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/29902df59e69b7b7b1d2352a67faa2b018bbfd9a">Update clickhouse-backup-diff.md (29902df5)</a>
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/e41068d26f5562d5ed661a57f3b5a69fbc827e58">Update clickhouse-backup-diff.md (e41068d2)</a>
 
 </div>
 
