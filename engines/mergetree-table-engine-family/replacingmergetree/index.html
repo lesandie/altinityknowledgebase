@@ -74,7 +74,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.4d3e31f7afa6105e4e9c13de15758762.json"
+  data-offline-search-index-json-src="/offline-search-index.cd66f559498ba6533bd9eff64ecbe9d3.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -102,7 +102,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.4d3e31f7afa6105e4e9c13de15758762.json"
+  data-offline-search-index-json-src="/offline-search-index.cd66f559498ba6533bd9eff64ecbe9d3.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -738,7 +738,8 @@
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">rows</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">in</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">set</span><span style="color:#000;font-weight:bold">.</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Elapsed</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">6</span><span style="color:#000;font-weight:bold">.</span><span style="color:#0000cf;font-weight:bold">681</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">sec</span><span style="color:#000;font-weight:bold">.</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Processed</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">50</span><span style="color:#000;font-weight:bold">.</span><span style="color:#0000cf;font-weight:bold">00</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">million</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">rows</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">6</span><span style="color:#000;font-weight:bold">.</span><span style="color:#0000cf;font-weight:bold">40</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">GB</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">(</span><span style="color:#0000cf;font-weight:bold">7</span><span style="color:#000;font-weight:bold">.</span><span style="color:#0000cf;font-weight:bold">48</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">million</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">rows</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">s</span><span style="color:#000;font-weight:bold">.,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">958</span><span style="color:#000;font-weight:bold">.</span><span style="color:#0000cf;font-weight:bold">18</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">MB</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">s</span><span style="color:#000;font-weight:bold">.)</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></code></pre></div><h3 id="final">FINAL</h3>
 <p>Clickhouse merge parts only in scope of single partition, so if two rows with the same replacing key would land in different partitions, they would <strong>never</strong> be merged in single row. FINAL keyword works in other way, it merge all rows across all partitions. But that behavior can be changed via<code>do_not_merge_across_partitions_select_final</code> setting.</p>
-<p><a href="../../../altinity-kb-queries-and-syntax/altinity-kb-final-clause-speed.md">../../../altinity-kb-queries-and-syntax/altinity-kb-final-clause-speed.md</a></p>
+<p><a href="https://kb.altinity.com" target="_blank">https://kb.altinity.com</a></p>
+<p><a href="../../../altinity-kb-queries-and-syntax/altinity-kb-final-clause-speed/">FINAL clause speed</a></p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#204a87;font-weight:bold">CREATE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">TABLE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">repl_tbl_part</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000;font-weight:bold">(</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#ce5c00;font-weight:bold">`</span><span style="color:#204a87;font-weight:bold">key</span><span style="color:#ce5c00;font-weight:bold">`</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">UInt32</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline">
@@ -843,8 +844,8 @@
 	<div class="text-muted mt-5 pt-3 border-top">
 
     Last modified
-    2021.08.12
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/5969b6886e2a31134118f644b6fd2463d98dcb80">General corrections and updates. (5969b688)</a>
+    2021.09.09
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/b1d41d1de11c37c00cf25ed4a1ba153bd09e8459">Update _index.md (b1d41d1d)</a>
 
 </div>
 
