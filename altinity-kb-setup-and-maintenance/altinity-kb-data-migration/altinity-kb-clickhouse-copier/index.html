@@ -74,7 +74,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.5a4543a8dc0011634251caeb223f378e.json"
+  data-offline-search-index-json-src="/offline-search-index.4d3e31f7afa6105e4e9c13de15758762.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -102,7 +102,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.5a4543a8dc0011634251caeb223f378e.json"
+  data-offline-search-index-json-src="/offline-search-index.4d3e31f7afa6105e4e9c13de15758762.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -659,6 +659,17 @@
 <p><code>clickhouse-copier --daemon --base-dir=/opt/clickhouse-copier --config /opt/clickhouse-copier/zookeeper.xml --task-path /clickhouse/copier/task1</code></p>
 <p>The number of simultaneously running instances is controlled be the <code>max_workers</code> parameter in your task configuration file. If you run more workers superfluous workers will sleep and log messages like this:</p>
 <p><code>&lt;Debug&gt; ClusterCopier: Too many workers (1, maximum 1). Postpone processing</code></p>
+<h3 id="see-also">See also</h3>
+<ul>
+<li><a href="https://clickhouse.tech/docs/en/operations/utilities/clickhouse-copier/" target="_blank">https://clickhouse.tech/docs/en/operations/utilities/clickhouse-copier/</a></li>
+<li>Никита Михайлов. Кластер ClickHouse ctrl-с ctrl-v. HighLoad++ Весна 2021 <a href="https://raw.githubusercontent.com/ClickHouse/clickhouse-presentations/master/highload2021/copier.pdf" target="_blank">slides</a></li>
+<li>21.7 have a huge bulk of fixes / improvements. <a href="https://github.com/ClickHouse/ClickHouse/pull/23518" target="_blank">https://github.com/ClickHouse/ClickHouse/pull/23518</a></li>
+<li><a href="https://altinity.com/blog/2018/8/22/clickhouse-copier-in-practice" target="_blank">https://altinity.com/blog/2018/8/22/clickhouse-copier-in-practice</a></li>
+<li><a href="http://www.clickhouse.com.cn/topic/601fb322b06e5e0f21ba79e1" target="_blank">http://www.clickhouse.com.cn/topic/601fb322b06e5e0f21ba79e1</a></li>
+<li><a href="https://github.com/getsentry/snuba/blob/master/docs/clickhouse-copier.md" target="_blank">https://github.com/getsentry/snuba/blob/master/docs/clickhouse-copier.md</a></li>
+<li><a href="https://hughsite.com/post/clickhouse-copier-usage.html" target="_blank">https://hughsite.com/post/clickhouse-copier-usage.html</a></li>
+<li><a href="https://www.jianshu.com/p/c058edd664a6" target="_blank">https://www.jianshu.com/p/c058edd664a6</a></li>
+</ul>
 
         <div class="section-index">
     
@@ -800,8 +811,8 @@
 	<div class="text-muted mt-5 pt-3 border-top">
 
     Last modified
-    2021.08.12
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/5969b6886e2a31134118f644b6fd2463d98dcb80">General corrections and updates. (5969b688)</a>
+    2021.09.09
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/b49bf2155b8207ebe1c131dd2be7a453f0041db2">Update _index.md (b49bf215)</a>
 
 </div>
 

@@ -44,6 +44,17 @@
 &lt;p&gt;&lt;code&gt;clickhouse-copier --daemon --base-dir=/opt/clickhouse-copier --config /opt/clickhouse-copier/zookeeper.xml --task-path /clickhouse/copier/task1&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;The number of simultaneously running instances is controlled be the &lt;code&gt;max_workers&lt;/code&gt; parameter in your task configuration file. If you run more workers superfluous workers will sleep and log messages like this:&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;&amp;lt;Debug&amp;gt; ClusterCopier: Too many workers (1, maximum 1). Postpone processing&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;see-also&#34;&gt;See also&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://clickhouse.tech/docs/en/operations/utilities/clickhouse-copier/&#34; target=&#34;_blank&#34;&gt;https://clickhouse.tech/docs/en/operations/utilities/clickhouse-copier/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Никита Михайлов. Кластер ClickHouse ctrl-с ctrl-v. HighLoad++ Весна 2021 &lt;a href=&#34;https://raw.githubusercontent.com/ClickHouse/clickhouse-presentations/master/highload2021/copier.pdf&#34; target=&#34;_blank&#34;&gt;slides&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;21.7 have a huge bulk of fixes / improvements. &lt;a href=&#34;https://github.com/ClickHouse/ClickHouse/pull/23518&#34; target=&#34;_blank&#34;&gt;https://github.com/ClickHouse/ClickHouse/pull/23518&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://altinity.com/blog/2018/8/22/clickhouse-copier-in-practice&#34; target=&#34;_blank&#34;&gt;https://altinity.com/blog/2018/8/22/clickhouse-copier-in-practice&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.clickhouse.com.cn/topic/601fb322b06e5e0f21ba79e1&#34; target=&#34;_blank&#34;&gt;http://www.clickhouse.com.cn/topic/601fb322b06e5e0f21ba79e1&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/getsentry/snuba/blob/master/docs/clickhouse-copier.md&#34; target=&#34;_blank&#34;&gt;https://github.com/getsentry/snuba/blob/master/docs/clickhouse-copier.md&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://hughsite.com/post/clickhouse-copier-usage.html&#34; target=&#34;_blank&#34;&gt;https://hughsite.com/post/clickhouse-copier-usage.html&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.jianshu.com/p/c058edd664a6&#34; target=&#34;_blank&#34;&gt;https://www.jianshu.com/p/c058edd664a6&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 
       </description>
     </item>
