@@ -2,6 +2,36 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>http://kb.altinity.com/engines/</loc>
+    <lastmod>2021-09-09T12:34:27-06:00</lastmod>
+  </url><url>
+    <loc>http://kb.altinity.com/altinity-kb-queries-and-syntax/</loc>
+    <lastmod>2021-09-09T12:34:27-06:00</lastmod>
+  </url><url>
+    <loc>http://kb.altinity.com/altinity-kb-functions/</loc>
+    <lastmod>2021-09-09T12:34:27-06:00</lastmod>
+  </url><url>
+    <loc>http://kb.altinity.com/altinity-kb-integrations/</loc>
+    <lastmod>2021-09-09T12:34:27-06:00</lastmod>
+  </url><url>
+    <loc>http://kb.altinity.com/altinity-kb-setup-and-maintenance/</loc>
+    <lastmod>2021-09-09T12:34:27-06:00</lastmod>
+  </url><url>
+    <loc>http://kb.altinity.com/altinity-kb-useful-queries/</loc>
+    <lastmod>2021-09-09T12:34:27-06:00</lastmod>
+  </url><url>
+    <loc>http://kb.altinity.com/altinity-kb-schema-design/</loc>
+    <lastmod>2021-09-09T12:34:27-06:00</lastmod>
+  </url><url>
+    <loc>http://kb.altinity.com/altinity-kb-kubernetes/</loc>
+    <lastmod>2021-09-09T12:34:27-06:00</lastmod>
+  </url><url>
+    <loc>http://kb.altinity.com/altinity-kb-interfaces/</loc>
+    <lastmod>2021-09-09T12:34:27-06:00</lastmod>
+  </url><url>
+    <loc>http://kb.altinity.com/upgrade/</loc>
+    <lastmod>2021-09-09T12:34:27-06:00</lastmod>
+  </url><url>
     <loc>http://kb.altinity.com/altinity-kb-queries-and-syntax/literal-decimal-or-float/</loc>
     <lastmod>2021-09-07T17:03:55+03:00</lastmod>
   </url><url>
@@ -30,7 +60,7 @@
     <lastmod>2021-08-12T14:22:56-06:00</lastmod>
   </url><url>
     <loc>http://kb.altinity.com/</loc>
-    <lastmod>2021-08-27T10:06:52-04:00</lastmod>
+    <lastmod>2021-09-09T12:34:27-06:00</lastmod>
   </url><url>
     <loc>http://kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-packaging-compatibility-greater-than-21.x-and-earlier/</loc>
     <lastmod>2021-09-07T10:31:17-04:00</lastmod>
@@ -152,9 +182,6 @@
     <loc>http://kb.altinity.com/altinity-kb-functions/encrypt/</loc>
     <lastmod>2021-08-24T12:29:49-04:00</lastmod>
   </url><url>
-    <loc>http://kb.altinity.com/engines/</loc>
-    <lastmod>2021-08-24T12:59:49-06:00</lastmod>
-  </url><url>
     <loc>http://kb.altinity.com/altinity-kb-integrations/altinity-kb-kafka/error-handling/</loc>
     <lastmod>2021-08-12T14:22:56-06:00</lastmod>
   </url><url>
@@ -182,9 +209,6 @@
     <loc>http://kb.altinity.com/altinity-kb-schema-design/floats-vs-decimals/</loc>
     <lastmod>2021-08-24T14:08:13-06:00</lastmod>
   </url><url>
-    <loc>http://kb.altinity.com/altinity-kb-functions/</loc>
-    <lastmod>2021-08-11T10:03:50-06:00</lastmod>
-  </url><url>
     <loc>http://kb.altinity.com/altinity-kb-setup-and-maintenance/schema-migration-tools/golang-migrate/</loc>
     <lastmod>2021-08-12T14:22:56-06:00</lastmod>
   </url><url>
@@ -211,12 +235,6 @@
   </url><url>
     <loc>http://kb.altinity.com/altinity-kb-schema-design/ingestion-performance-and-formats/</loc>
     <lastmod>2021-08-24T13:51:49-06:00</lastmod>
-  </url><url>
-    <loc>http://kb.altinity.com/altinity-kb-integrations/</loc>
-    <lastmod>2021-08-11T10:03:50-06:00</lastmod>
-  </url><url>
-    <loc>http://kb.altinity.com/altinity-kb-interfaces/</loc>
-    <lastmod>2021-08-11T10:03:50-06:00</lastmod>
   </url><url>
     <loc>http://kb.altinity.com/altinity-kb-schema-design/how-to-store-ips/</loc>
     <lastmod>2021-08-12T14:22:56-06:00</lastmod>
@@ -250,9 +268,6 @@
   </url><url>
     <loc>http://kb.altinity.com/altinity-kb-queries-and-syntax/altinity-kb-kill-query/</loc>
     <lastmod>2021-08-24T12:59:49-06:00</lastmod>
-  </url><url>
-    <loc>http://kb.altinity.com/altinity-kb-kubernetes/</loc>
-    <lastmod>2021-08-12T14:22:56-06:00</lastmod>
   </url><url>
     <loc>http://kb.altinity.com/altinity-kb-queries-and-syntax/lag-lead/</loc>
     <lastmod>2021-08-12T14:22:56-06:00</lastmod>
@@ -332,9 +347,6 @@
     <loc>http://kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-zookeeper/altinity-kb-proper-setup/</loc>
     <lastmod>2021-08-24T12:59:49-06:00</lastmod>
   </url><url>
-    <loc>http://kb.altinity.com/altinity-kb-queries-and-syntax/</loc>
-    <lastmod>2021-08-12T14:22:56-06:00</lastmod>
-  </url><url>
     <loc>http://kb.altinity.com/altinity-kb-dictionaries/altinity-kb-range_hashed-example-open-intervals/</loc>
     <lastmod>2021-08-12T14:22:56-06:00</lastmod>
   </url><url>
@@ -371,9 +383,6 @@
     <loc>http://kb.altinity.com/altinity-kb-queries-and-syntax/sampling-example/</loc>
     <lastmod>2021-08-24T12:59:49-06:00</lastmod>
   </url><url>
-    <loc>http://kb.altinity.com/altinity-kb-schema-design/</loc>
-    <lastmod>2021-08-12T14:22:56-06:00</lastmod>
-  </url><url>
     <loc>http://kb.altinity.com/altinity-kb-setup-and-maintenance/schema-migration-tools/</loc>
     <lastmod>2021-08-12T14:22:56-06:00</lastmod>
   </url><url>
@@ -387,9 +396,6 @@
     <lastmod>2021-09-07T08:37:10-06:00</lastmod>
   </url><url>
     <loc>http://kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-settings-to-adjust/</loc>
-    <lastmod>2021-08-12T14:22:56-06:00</lastmod>
-  </url><url>
-    <loc>http://kb.altinity.com/altinity-kb-setup-and-maintenance/</loc>
     <lastmod>2021-08-12T14:22:56-06:00</lastmod>
   </url><url>
     <loc>http://kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-shutting-down-a-node/</loc>
@@ -451,12 +457,6 @@
   </url><url>
     <loc>http://kb.altinity.com/altinity-kb-queries-and-syntax/update-via-dictionary/</loc>
     <lastmod>2021-08-12T14:22:56-06:00</lastmod>
-  </url><url>
-    <loc>http://kb.altinity.com/upgrade/</loc>
-    <lastmod>2021-08-12T14:22:56-06:00</lastmod>
-  </url><url>
-    <loc>http://kb.altinity.com/altinity-kb-useful-queries/</loc>
-    <lastmod>2021-08-11T10:03:50-06:00</lastmod>
   </url><url>
     <loc>http://kb.altinity.com/altinity-kb-queries-and-syntax/values-mapping/</loc>
     <lastmod>2021-08-12T14:22:56-06:00</lastmod>
