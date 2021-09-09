@@ -32,6 +32,12 @@
     <loc>http://kb.altinity.com/upgrade/</loc>
     <lastmod>2021-09-09T12:34:27-06:00</lastmod>
   </url><url>
+    <loc>http://kb.altinity.com/altinity-kb-dictionaries/</loc>
+    <lastmod>2021-09-09T13:45:33-06:00</lastmod>
+  </url><url>
+    <loc>http://kb.altinity.com/using-this-knowledgebase/</loc>
+    <lastmod>2021-09-09T13:45:33-06:00</lastmod>
+  </url><url>
     <loc>http://kb.altinity.com/altinity-kb-queries-and-syntax/literal-decimal-or-float/</loc>
     <lastmod>2021-09-07T17:03:55+03:00</lastmod>
   </url><url>
@@ -160,9 +166,6 @@
   </url><url>
     <loc>http://kb.altinity.com/altinity-kb-queries-and-syntax/delete-via-tombstone-column/</loc>
     <lastmod>2021-08-12T14:22:56-06:00</lastmod>
-  </url><url>
-    <loc>http://kb.altinity.com/altinity-kb-dictionaries/</loc>
-    <lastmod>2021-08-10T10:53:19-06:00</lastmod>
   </url><url>
     <loc>http://kb.altinity.com/altinity-kb-dictionaries/dictionaries-and-arrays/</loc>
     <lastmod>2021-08-24T12:59:49-06:00</lastmod>
