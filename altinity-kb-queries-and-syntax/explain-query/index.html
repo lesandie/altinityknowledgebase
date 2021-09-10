@@ -13,13 +13,13 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://kb.altinity.com/altinity-kb-queries-and-syntax/explain-query/" /><meta property="article:section" content="altinity-kb-queries-and-syntax" />
 
-<meta property="article:modified_time" content="2021-08-12T14:22:56-06:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
+<meta property="article:modified_time" content="2021-09-10T11:39:26+02:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
 
 <meta itemprop="name" content="EXPLAIN query">
 <meta itemprop="description" content="EXPLAIN query
 ">
-<meta itemprop="dateModified" content="2021-08-12T14:22:56-06:00" />
-<meta itemprop="wordCount" content="2">
+<meta itemprop="dateModified" content="2021-09-10T11:39:26+02:00" />
+<meta itemprop="wordCount" content="34">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="EXPLAIN query"/>
 <meta name="twitter:description" content="EXPLAIN query
@@ -78,7 +78,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.a28ee1b7f68668b6b0c0db0f5f771a87.json"
+  data-offline-search-index-json-src="/offline-search-index.0aabe8c17c318e97679fa7ab5a3b27ff.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -106,7 +106,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.a28ee1b7f68668b6b0c0db0f5f771a87.json"
+  data-offline-search-index-json-src="/offline-search-index.0aabe8c17c318e97679fa7ab5a3b27ff.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -627,16 +627,38 @@
 	</div>
 	
 	       
-	<p><a href="https://github.com/ClickHouse/clickhouse-presentations/blob/master/meetup47/explain.pdf" target="_blank">https://github.com/ClickHouse/clickhouse-presentations/blob/master/meetup47/explain.pdf</a>
-<a href="https://github.com/ClickHouse/clickhouse-presentations/blob/master/meetup39/query-profiling.pdf" target="_blank">https://github.com/ClickHouse/clickhouse-presentations/blob/master/meetup39/query-profiling.pdf</a></p>
+	<h3 id="explain-types">EXPLAIN types</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#204a87;font-weight:bold">EXPLAIN</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">AST</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#000">SYNTAX</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#000">PLAN</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">header</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">             </span><span style="color:#000">description</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">             </span><span style="color:#000">actions</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">             </span><span style="color:#000">optimize</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#000">PIPELINE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">header</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">                 </span><span style="color:#000">graph</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">                 </span><span style="color:#000">compact</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#000">ESTIMATE</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">SELECT</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">...</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></code></pre></div><p>AST - abstract syntax tree
+SYNTAX - query text after AST-level optimizations
+PLAN - query execution plan
+PIPELINE - query execution pipeline
+ESTIMATE - <a href="https://github.com/ClickHouse/ClickHouse/pull/26131" target="_blank">https://github.com/ClickHouse/ClickHouse/pull/26131</a> (since 21.9)</p>
+<p>References</p>
+<ul>
+<li><a href="https://clickhouse.tech/docs/en/sql-reference/statements/explain/" target="_blank">https://clickhouse.tech/docs/en/sql-reference/statements/explain/</a></li>
+<li><a href="https://github.com/ClickHouse/clickhouse-presentations/blob/master/meetup47/explain.pdf" target="_blank">https://github.com/ClickHouse/clickhouse-presentations/blob/master/meetup47/explain.pdf</a></li>
+<li><a href="https://github.com/ClickHouse/clickhouse-presentations/blob/master/meetup39/query-profiling.pdf" target="_blank">https://github.com/ClickHouse/clickhouse-presentations/blob/master/meetup39/query-profiling.pdf</a></li>
+<li><a href="https://github.com/ClickHouse/ClickHouse/issues/28847" target="_blank">https://github.com/ClickHouse/ClickHouse/issues/28847</a></li>
+</ul>
 
 	
 	
 	<div class="text-muted mt-5 pt-3 border-top">
 
     Last modified
-    2021.08.12
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/5969b6886e2a31134118f644b6fd2463d98dcb80">General corrections and updates. (5969b688)</a>
+    2021.09.10
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/daf40bdf2c1238b4c1bdc11a9eb7575b4c2010b1">Update explain-query.md (daf40bdf)</a>
 
 </div>
 
