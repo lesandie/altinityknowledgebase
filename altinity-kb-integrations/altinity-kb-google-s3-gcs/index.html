@@ -13,13 +13,13 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://kb.altinity.com/altinity-kb-integrations/altinity-kb-google-s3-gcs/" /><meta property="article:section" content="altinity-kb-integrations" />
 
-<meta property="article:modified_time" content="2021-09-07T08:37:10-06:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
+<meta property="article:modified_time" content="2021-09-16T11:07:04+02:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
 
 <meta itemprop="name" content="Google S3 (GCS)">
 <meta itemprop="description" content="&#34;Google S3 GCS&#34;
 ">
-<meta itemprop="dateModified" content="2021-09-07T08:37:10-06:00" />
-<meta itemprop="wordCount" content="116">
+<meta itemprop="dateModified" content="2021-09-16T11:07:04+02:00" />
+<meta itemprop="wordCount" content="146">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Google S3 (GCS)"/>
 <meta name="twitter:description" content="&#34;Google S3 GCS&#34;
@@ -78,7 +78,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.90ed0c1f1d14a4fe0cea4e77868aae35.json"
+  data-offline-search-index-json-src="/offline-search-index.ba383635e216777078d86c24fb2674bd.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -106,7 +106,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.90ed0c1f1d14a4fe0cea4e77868aae35.json"
+  data-offline-search-index-json-src="/offline-search-index.ba383635e216777078d86c24fb2674bd.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -627,7 +627,7 @@
 	</div>
 	
 	       
-	<p>GCS with the table function - seems to work correctly!</p>
+	<p>GCS with the table function - seems to work correctly for simple scenarios.</p>
 <p>Essentially you can follow the steps from the <a href="https://cloud.google.com/storage/docs/migrating#migration-simple" target="_blank">Migrating from Amazon S3 to Cloud Storage</a>.</p>
 <ol>
 <li>Set up a GCS bucket.</li>
@@ -636,14 +636,15 @@
 <li>In ClickHouse, replace the S3 bucket endpoint with the GCS bucket endpoint This must be done with the path-style GCS endpoint: <code>https://storage.googleapis.com/BUCKET_NAME/OBJECT_NAME</code>.</li>
 <li>Replace the aws access key id and aws secret access key with the corresponding parts of the HMAC key.</li>
 </ol>
+<p>s3 Disk on the top of GCS and writing to GSC may be NOT working because GCS don&rsquo;t support some of bulk S3 API calls, see <a href="https://github.com/ClickHouse/ClickHouse/issues/24246" target="_blank">https://github.com/ClickHouse/ClickHouse/issues/24246</a></p>
 
 	
 	
 	<div class="text-muted mt-5 pt-3 border-top">
 
     Last modified
-    2021.09.07
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/465040d6a43faf6b440cb8e57d35a90d5d2accef">Replaced HTML code artifacts. (465040d6)</a>
+    2021.09.16
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/462c528d70c4aaa95430fa21a42ac01b9cf16477">Update altinity-kb-google-s3-gcs.md (462c528d)</a>
 
 </div>
 
