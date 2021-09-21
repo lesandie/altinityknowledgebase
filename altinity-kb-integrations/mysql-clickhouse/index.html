@@ -12,11 +12,11 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://kb.altinity.com/altinity-kb-integrations/mysql-clickhouse/" /><meta property="article:section" content="altinity-kb-integrations" />
 
-<meta property="article:modified_time" content="2021-09-21T11:02:37-03:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
+<meta property="article:modified_time" content="2021-09-21T11:11:14-03:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
 
 <meta itemprop="name" content="MySQL">
 <meta itemprop="description" content="Integration Clickhouse with MySQL">
-<meta itemprop="dateModified" content="2021-09-21T11:02:37-03:00" />
+<meta itemprop="dateModified" content="2021-09-21T11:11:14-03:00" />
 <meta itemprop="wordCount" content="347">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="MySQL"/>
@@ -75,7 +75,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.0dea2e27662c37f75e7b98675398c980.json"
+  data-offline-search-index-json-src="/offline-search-index.799ae5c486e4b2bdb233ccbcd1a2e6d4.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -103,7 +103,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.0dea2e27662c37f75e7b98675398c980.json"
+  data-offline-search-index-json-src="/offline-search-index.799ae5c486e4b2bdb233ccbcd1a2e6d4.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -571,7 +571,11 @@
 <div class="td-toc"><nav id="TableOfContents">
   <ul>
     <li><a href="#replication-using-materializemysql">Replication using MaterializeMySQL</a></li>
-    <li><a href="#replication-using-debezium--kafka">Replication using debezium + Kafka</a></li>
+    <li><a href="#replication-using-debezium--kafka">Replication using debezium + Kafka</a>
+      <ul>
+        <li><a href="#same-as-above-but-using-httpsmaxwells-daemonio-instead-of-debezium">Same as above but using <a href="https://maxwells-daemon.io/">https://maxwells-daemon.io/</a> instead of debezium.</a></li>
+      </ul>
+    </li>
     <li><a href="#replication-using-clickhouse-mysql">Replication using clickhouse-mysql</a></li>
     <li><a href="#accessing-mysql-data-via-integration-engines-from-inside-clickhouse">Accessing MySQL data via integration engines from inside clickhouse.</a></li>
     <li><a href="#there-are-also-mysql-dictionaries-which-can-be-very-nice-alternative-for-storing-some-dimensions-information-in-star-schema">There are also MySQL dictionaries, which can be very nice alternative for storing some dimensions information in star schema.</a></li>
@@ -637,16 +641,16 @@
 	
 	       
 	<h2 id="replication-using-materializemysql">Replication using MaterializeMySQL</h2>
-<p><a href="https://clickhouse.tech/docs/en/engines/database-engines/materialized-mysql/" target="_blank">https://clickhouse.tech/docs/en/engines/database-engines/materialized-mysql/</a>
-<a href="https://translate.google.com/translate?sl=auto&amp;tl=en&amp;u=https://www.jianshu.com/p/d0d4306411b3" target="_blank">https://translate.google.com/translate?sl=auto&amp;tl=en&amp;u=https://www.jianshu.com/p/d0d4306411b3</a>
-<a href="https://raw.githubusercontent.com/ClickHouse/clickhouse-presentations/master/meetup47/materialize_mysql.pdf" target="_blank">https://raw.githubusercontent.com/ClickHouse/clickhouse-presentations/master/meetup47/materialize_mysql.pdf</a></p>
+<p><a href="https://clickhouse.tech/docs/en/engines/database-engines/materialized-mysql/" target="_blank">https://clickhouse.tech/docs/en/engines/database-engines/materialized-mysql/</a></p>
+<p><a href="https://translate.google.com/translate?sl=auto&amp;tl=en&amp;u=https://www.jianshu.com/p/d0d4306411b3" target="_blank">https://translate.google.com/translate?sl=auto&amp;tl=en&amp;u=https://www.jianshu.com/p/d0d4306411b3</a></p>
+<p><a href="https://raw.githubusercontent.com/ClickHouse/clickhouse-presentations/master/meetup47/materialize_mysql.pdf" target="_blank">https://raw.githubusercontent.com/ClickHouse/clickhouse-presentations/master/meetup47/materialize_mysql.pdf</a></p>
 <p>It reads mysql binlog directly and transform queries into something which clickhouse can support. Supports updates and deletes (under the hood implemented via something like ReplacingMergeTree with enforced FINAL and &lsquo;deleted&rsquo; flag). Status is &lsquo;experimental&rsquo;, there are quite a lot of known limitations and issues, but some people use it. The original author of that went to another project, and the main team don&rsquo;t have a lot of resource to improve that for now (more important thing in the backlog)</p>
 <p>The replication happens on the mysql database level.</p>
 <h2 id="replication-using-debezium--kafka">Replication using debezium + Kafka</h2>
 <p>Debezium can read the binlog and transform it to Kafka messages. You can later capture the stream of message on ClickHouse side and process it as you like.
 Please remeber that currently Kafka engine supports only at-least-once delivery guarantees.</p>
 <p>It&rsquo;s used by several companies, quite nice &amp; flexible. But initial setup may require some efforts.</p>
-<p>2a.Same as above but using <a href="https://maxwells-daemon.io/" target="_blank">https://maxwells-daemon.io/</a> instead of debezium.</p>
+<h3 id="same-as-above-but-using-httpsmaxwells-daemonio-instead-of-debezium">Same as above but using <a href="https://maxwells-daemon.io/" target="_blank">https://maxwells-daemon.io/</a> instead of debezium.</h3>
 <p>Have no experience / feedback there, but should be very similar to debezium.</p>
 <h2 id="replication-using-clickhouse-mysql">Replication using clickhouse-mysql</h2>
 <p>See <a href="https://altinity.com/blog/2018/6/30/realtime-mysql-clickhouse-replication-in-practice" target="_blank">https://altinity.com/blog/2018/6/30/realtime-mysql-clickhouse-replication-in-practice</a></p>
@@ -667,7 +671,7 @@ We had webinar about that a year ago: <a href="https://www.youtube.com/watch?v=4
 
     Last modified
     2021.09.21
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/0776105ff42b77792e191b73e562f76d7cc70b64">Create mysql-clickhouse.md (0776105f)</a>
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/655e52d75b11d09d41d6b16005f8b017fbd43549">Update mysql-clickhouse.md (655e52d7)</a>
 
 </div>
 
