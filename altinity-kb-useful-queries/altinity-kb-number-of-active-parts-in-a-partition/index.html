@@ -13,13 +13,13 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://kb.altinity.com/altinity-kb-useful-queries/altinity-kb-number-of-active-parts-in-a-partition/" /><meta property="article:section" content="altinity-kb-useful-queries" />
 
-<meta property="article:modified_time" content="2021-08-24T12:59:49-06:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
+<meta property="article:modified_time" content="2021-09-25T23:54:51+03:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
 
 <meta itemprop="name" content="Number of active parts in a partition">
 <meta itemprop="description" content="Number of active parts in a partition
 ">
-<meta itemprop="dateModified" content="2021-08-24T12:59:49-06:00" />
-<meta itemprop="wordCount" content="92">
+<meta itemprop="dateModified" content="2021-09-25T23:54:51+03:00" />
+<meta itemprop="wordCount" content="105">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Number of active parts in a partition"/>
 <meta name="twitter:description" content="Number of active parts in a partition
@@ -78,7 +78,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.b7bc8727d1de84775f8a6609d870354d.json"
+  data-offline-search-index-json-src="/offline-search-index.b5e0f7010ba1e60ac688771fa1cdbb4f.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -106,7 +106,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.b7bc8727d1de84775f8a6609d870354d.json"
+  data-offline-search-index-json-src="/offline-search-index.b5e0f7010ba1e60ac688771fa1cdbb4f.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -306,8 +306,15 @@
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-altinity-kb-setup-and-maintenance-li">
   <a href="/altinity-kb-setup-and-maintenance/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-altinity-kb-setup-and-maintenance"><span class="">Setup &amp; maintenance</span></a>
   <ul class="ul-2 foldable">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-setup-and-maintenanceaws-s3-recipes-li">
-  <a href="/altinity-kb-setup-and-maintenance/aws-s3-recipes/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenanceaws-s3-recipes"><span class="">AWS S3 Recipes</span></a>
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child collapse" id="m-altinity-kb-setup-and-maintenancealtinity-kb-s3-object-storage-li">
+  <a href="/altinity-kb-setup-and-maintenance/altinity-kb-s3-object-storage/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-altinity-kb-setup-and-maintenancealtinity-kb-s3-object-storage"><span class="">S3 &amp; object storage</span></a>
+  <ul class="ul-3 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-setup-and-maintenancealtinity-kb-s3-object-storageaws-s3-recipes-li">
+  <a href="/altinity-kb-setup-and-maintenance/altinity-kb-s3-object-storage/aws-s3-recipes/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancealtinity-kb-s3-object-storageaws-s3-recipes"><span class="">AWS S3 Recipes</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-setup-and-maintenancealtinity-kb-s3-object-storages3disk-li">
+  <a href="/altinity-kb-setup-and-maintenance/altinity-kb-s3-object-storage/s3disk/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancealtinity-kb-s3-object-storages3disk"><span class="">S3Disk</span></a>
+</li>
+  </ul>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-setup-and-maintenancelogging-li">
   <a href="/altinity-kb-setup-and-maintenance/logging/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancelogging"><span class=""></span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-setup-and-maintenancealtinity-packaging-compatibility-greater-than-21x-and-earlier-li">
@@ -648,14 +655,15 @@
 <p>Merge scheduler selects parts by own algorithm based on the current node workload / number of parts / size of parts.</p>
 <p>CH merge scheduler balances between a big number of parts and a wasting resources on merges.</p>
 <p>Merges are CPU/DISK IO expensive. If CH will merge every new part then all resources will be spend on merges and will no resources remain on queries (selects ).</p>
+<p>CH will not merge parts with a combined size greater than 100 GB.</p>
 
 	
 	
 	<div class="text-muted mt-5 pt-3 border-top">
 
     Last modified
-    2021.08.24
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/5cdec4106d860a1959fafa170ad6998be341a087">Format corrections and spell checks. (5cdec410)</a>
+    2021.09.25
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/6023d6e3b54ded581ea1378df74a47fa9c713c79">fixes (6023d6e3)</a>
 
 </div>
 

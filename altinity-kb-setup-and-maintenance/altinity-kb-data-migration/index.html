@@ -74,7 +74,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.b7bc8727d1de84775f8a6609d870354d.json"
+  data-offline-search-index-json-src="/offline-search-index.b5e0f7010ba1e60ac688771fa1cdbb4f.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -102,7 +102,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.b7bc8727d1de84775f8a6609d870354d.json"
+  data-offline-search-index-json-src="/offline-search-index.b5e0f7010ba1e60ac688771fa1cdbb4f.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -302,8 +302,15 @@
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-altinity-kb-setup-and-maintenance-li">
   <a href="/altinity-kb-setup-and-maintenance/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-altinity-kb-setup-and-maintenance"><span class="">Setup &amp; maintenance</span></a>
   <ul class="ul-2 foldable">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenanceaws-s3-recipes-li">
-  <a href="/altinity-kb-setup-and-maintenance/aws-s3-recipes/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenanceaws-s3-recipes"><span class="">AWS S3 Recipes</span></a>
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-altinity-kb-setup-and-maintenancealtinity-kb-s3-object-storage-li">
+  <a href="/altinity-kb-setup-and-maintenance/altinity-kb-s3-object-storage/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-altinity-kb-setup-and-maintenancealtinity-kb-s3-object-storage"><span class="">S3 &amp; object storage</span></a>
+  <ul class="ul-3 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-setup-and-maintenancealtinity-kb-s3-object-storageaws-s3-recipes-li">
+  <a href="/altinity-kb-setup-and-maintenance/altinity-kb-s3-object-storage/aws-s3-recipes/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancealtinity-kb-s3-object-storageaws-s3-recipes"><span class="">AWS S3 Recipes</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-setup-and-maintenancealtinity-kb-s3-object-storages3disk-li">
+  <a href="/altinity-kb-setup-and-maintenance/altinity-kb-s3-object-storage/s3disk/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancealtinity-kb-s3-object-storages3disk"><span class="">S3Disk</span></a>
+</li>
+  </ul>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenancelogging-li">
   <a href="/altinity-kb-setup-and-maintenance/logging/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancelogging"><span class=""></span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenancealtinity-packaging-compatibility-greater-than-21x-and-earlier-li">
@@ -660,11 +667,14 @@
 		
 	</header>
 	<h2 id="export--import-into-common-data-formats">Export &amp; Import into common data formats</h2>
-<p>Pros and cons:
-<img src="/assets/add.png" alt="(plus)"> Data can be inserted into any DBMS.
-<img src="/assets/forbidden.png" alt="(minus)"> Decoding &amp; encoding of common data formats may be slower / require more CPU
-<img src="/assets/forbidden.png" alt="(minus)"> The data size is usually bigger than ClickHouse formats.
-<img src="/assets/forbidden.png" alt="(minus)"> Some of the common data formats have limitations.</p>
+<p>Pros:</p>
+<ul>
+<li>Data can be inserted into any DBMS.
+Cons:</li>
+<li>Decoding &amp; encoding of common data formats may be slower / require more CPU</li>
+<li>The data size is usually bigger than ClickHouse formats.</li>
+<li>Some of the common data formats have limitations.</li>
+</ul>
 
 
 <div class="alert alert-info" role="alert">
@@ -677,24 +687,30 @@
 </div>
 
 <h2 id="remoteremotesecure-or-clusterdistributed-table">remote/remoteSecure or cluster/Distributed table</h2>
-<p>Pros and cons:
-<img src="/assets/add.png" alt="(plus)"> Simple to run.
-<img src="/assets/add.png" alt="(plus)"> It’s possible to change the schema and distribution of data between shards.
-<img src="/assets/add.png" alt="(plus)"> It’s possible to copy only some subset of data
-<img src="/assets/add.png" alt="(plus)"> Needs only access to ClickHouse TCP port.
-<img src="/assets/forbidden.png" alt="(minus)"> Uses CPU / RAM (mostly on the receiver side)</p>
+<p>Pros:</p>
+<ul>
+<li>Simple to run.</li>
+<li>It’s possible to change the schema and distribution of data between shards.</li>
+<li>It’s possible to copy only some subset of data</li>
+<li>Needs only access to ClickHouse TCP port.
+Cons:</li>
+<li>Uses CPU / RAM (mostly on the receiver side)</li>
+</ul>
 <p>See details in:</p>
 <p><a href="http://kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-data-migration/remote-table-function/">remote-table-function.md</a></p>
 <h2 id="clickhouse-copier">clickhouse-copier</h2>
-<p>Pros and cons:</p>
-<p><img src="/assets/add.png" alt="(plus)"> Possible to do <strong>some</strong> changes schema.
-<img src="/assets/add.png" alt="(plus)"> Needs only access to ClickHouse TCP port.
-<img src="/assets/add.png" alt="(plus)"> It’s possible to change the distribution of data between shards.
-<img src="/assets/add.png" alt="(plus)"> Suitable for large clusters: many clickhouse-copier can execute the same task together.
-<img src="/assets/forbidden.png" alt="(minus)"> May create an inconsistent result if source cluster data is changing during the process
-<img src="/assets/forbidden.png" alt="(minus)"> Hard to setup.
-<img src="/assets/forbidden.png" alt="(minus)"> Requires zookeeper.
-<img src="/assets/forbidden.png" alt="(minus)"> Uses CPU / RAM (mostly on the clickhouse-copier and receiver side)</p>
+<p>Pros:</p>
+<ul>
+<li>Possible to do <strong>some</strong> changes schema.</li>
+<li>Needs only access to ClickHouse TCP port.</li>
+<li>It’s possible to change the distribution of data between shards.</li>
+<li>Suitable for large clusters: many clickhouse-copier can execute the same task together.
+Cons:</li>
+<li>May create an inconsistent result if source cluster data is changing during the process</li>
+<li>Hard to setup.</li>
+<li>Requires zookeeper.</li>
+<li>Uses CPU / RAM (mostly on the clickhouse-copier and receiver side)</li>
+</ul>
 
 
 <div class="alert alert-info" role="alert">
@@ -716,10 +732,13 @@
 <p>See details in:</p>
 <p><a href="http://kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-data-migration/altinity-kb-clickhouse-copier/">altinity-kb-clickhouse-copier</a></p>
 <h2 id="manual-parts-moving-freeze--rsync--attach">Manual parts moving: freeze / rsync / attach</h2>
-<p>Pros and cons:
-<img src="/assets/add.png" alt="(plus)"> Low CPU / RAM usage.
-<img src="/assets/forbidden.png" alt="(minus)"> Table schema should be the same.
-<img src="/assets/forbidden.png" alt="(minus)"> A lot of manual operations/scripting.</p>
+<p>Pros:</p>
+<ul>
+<li>Low CPU / RAM usage.
+Cons:</li>
+<li>Table schema should be the same.</li>
+<li>A lot of manual operations/scripting.</li>
+</ul>
 
 
 <div class="alert alert-info" role="alert">
@@ -732,29 +751,38 @@
 <p>See details in:</p>
 <p><a href="http://kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-data-migration/rsync/">rsync.md</a></p>
 <h2 id="clickhouse-backup">clickhouse-backup</h2>
-<p>Pros and cons:
-<img src="/assets/add.png" alt="(plus)"> Low CPU / RAM usage.
-<img src="/assets/add.png" alt="(plus)"> Suitable to recover both schema &amp; data for all tables at once.
-<img src="/assets/forbidden.png" alt="(minus)"> Table schema should be the same.</p>
+<p>Pros:</p>
+<ul>
+<li>Low CPU / RAM usage.</li>
+<li>Suitable to recover both schema &amp; data for all tables at once.
+Cons:</li>
+<li>Table schema should be the same.</li>
+</ul>
 <p>Just create the backup on server 1, upload it to server 2, and restore the backup.</p>
 <p>See <a href="https://github.com/AlexAkulov/clickhouse-backup" target="_blank">https://github.com/AlexAkulov/clickhouse-backup</a></p>
 <p><a href="%22https://altinity.com/blog/introduction-to-clickhouse-backups-and-clickhouse-backup%22">https://altinity.com/blog/introduction-to-clickhouse-backups-and-clickhouse-backup</a></p>
 <h2 id="fetch-from-zookeeper-path">Fetch from zookeeper path</h2>
-<p>Pros and cons:
-<img src="/assets/add.png" alt="(plus)"> Low CPU / RAM usage
-<img src="/assets/forbidden.png" alt="(minus)"> Table schema should be the same.
-<img src="/assets/forbidden.png" alt="(minus)"> Works only when the source and the destination clickhouse servers share the same zookeeper (without chroot)
-<img src="/assets/forbidden.png" alt="(minus)"> Needs to access zookeeper and ClickHouse replication ports: (<code>interserver_http_port</code> or <code>interserver_https_port</code>)</p>
+<p>Pros:</p>
+<ul>
+<li>Low CPU / RAM usage
+Cons:</li>
+<li>Table schema should be the same.</li>
+<li>Works only when the source and the destination clickhouse servers share the same zookeeper (without chroot)</li>
+<li>Needs to access zookeeper and ClickHouse replication ports: (<code>interserver_http_port</code> or <code>interserver_https_port</code>)</li>
+</ul>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#204a87;font-weight:bold">ALTER</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">TABLE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">table_name</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">FETCH</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">PARTITION</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">partition_expr</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">FROM</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;path-in-zookeeper&#39;</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></code></pre></div><h2 id="replication-protocol">Replication protocol</h2>
 <p>Just make one more replica in another place.</p>
-<p>Pros and cons:
-<img src="/assets/add.png" alt="(plus)"> Simple to setup
-<img src="/assets/add.png" alt="(plus)"> Data is consistent all the time automatically.
-<img src="/assets/add.png" alt="(plus)"> Low CPU and network usage.
-<img src="/assets/forbidden.png" alt="(minus)"> Needs to reach both zookeeper client (2181) and ClickHouse replication ports: (<code>interserver_http_port</code> or <code>interserver_https_port</code>)
-<img src="/assets/forbidden.png" alt="(minus)"> In case of cluster migration, zookeeper need’s to be migrated too.
-<img src="/assets/forbidden.png" alt="(minus)"> Replication works both ways.</p>
+<p>Pros:</p>
+<ul>
+<li>Simple to setup</li>
+<li>Data is consistent all the time automatically.</li>
+<li>Low CPU and network usage.
+Cons:</li>
+<li>Needs to reach both zookeeper client (2181) and ClickHouse replication ports: (<code>interserver_http_port</code> or <code>interserver_https_port</code>)</li>
+<li>In case of cluster migration, zookeeper need’s to be migrated too.</li>
+<li>Replication works both ways.</li>
+</ul>
 <p><a href="../altinity-kb-zookeeper/altinity-kb-zookeeper-cluster-migration.md">../altinity-kb-zookeeper/altinity-kb-zookeeper-cluster-migration.md</a></p>
 <h2 id="see-also">See also</h2>
 <h3 id="github-issues">Github issues</h3>
@@ -771,6 +799,10 @@
     
     
     <hr class="panel-line">
+        
+            
+        
+            
         
             
         
@@ -916,8 +948,8 @@
 	<div class="text-muted mt-5 pt-3 border-top">
 
     Last modified
-    2021.08.24
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/6fe6a9e5c054b468bc6eee26241652ee5ee65288">Code format corrections. (6fe6a9e5)</a>
+    2021.09.25
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/b196692062c5f78a5a625ac6ff9db4bb9cf1ac8b">fixes (b1966920)</a>
 
 </div>
 

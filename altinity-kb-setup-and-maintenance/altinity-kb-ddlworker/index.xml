@@ -74,7 +74,7 @@ cat /etc/hostname
 &lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;SYSTEM&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;STOP&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;REPLICATION&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;QUEUES&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;SYSTEM&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;START&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;REPLICATION&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;QUEUES&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;a href=&#34;https://clickhouse.tech/docs/en/sql-reference/statements/system/%5c#query_language-system-drop-replica&#34; target=&#34;_blank&#34;&gt;https://clickhouse.tech/docs/en/sql-reference/statements/system/#query_language-system-drop-replica&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Task were removed from DDL queue but left it Replicated*MergeTree table queue.&lt;/p&gt;
+&lt;p&gt;Task were removed from DDL queue, but left in Replicated*MergeTree table queue.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;grep -C &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;40&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;ddl_entry&amp;#34;&lt;/span&gt; /var/log/clickhouse-server/clickhouse-server*.log
 
 /var/log/clickhouse-server/clickhouse-server.log:2021.05.04 12:41:28.956888 &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt; &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;599&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;{}&lt;/span&gt; &amp;lt;Debug&amp;gt; DDLWorker: Processing task query-0000211211 &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;ALTER TABLE db.table_local ON CLUSTER &lt;span style=&#34;color:#4e9a06&#34;&gt;`&lt;/span&gt;all-replicated&lt;span style=&#34;color:#4e9a06&#34;&gt;`&lt;/span&gt; DELETE WHERE &lt;span style=&#34;color:#000&#34;&gt;id&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt; 1&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
@@ -94,11 +94,17 @@ cat /etc/hostname
 /var/log/clickhouse-server/clickhouse-server.log-11. __clone @ 0x122293 in /usr/lib/x86_64-linux-gnu/libc-2.31.so
 /var/log/clickhouse-server/clickhouse-server.log- &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;version 21.1.8.30 &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;official build&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;))&lt;/span&gt;
 /var/log/clickhouse-server/clickhouse-server.log:2021.05.04 12:41:29.053951 &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt; &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;599&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;{}&lt;/span&gt; &amp;lt;Debug&amp;gt; DDLWorker: Processing task query-0000211211 &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;ALTER TABLE db.table_local ON CLUSTER &lt;span style=&#34;color:#4e9a06&#34;&gt;`&lt;/span&gt;all-replicated&lt;span style=&#34;color:#4e9a06&#34;&gt;`&lt;/span&gt; DELETE WHERE &lt;span style=&#34;color:#000&#34;&gt;id&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt; 1&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;So context of this problem is:
-Constant pressure of cheap ON CLUSTER DELETE queries.
-One replica was down for certain amount of time.
-Because of constant pressure on DDL queue, it purge old records due &lt;code&gt;task_max_lifetime&lt;/code&gt; setting.
-When lagging replica&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Context of this problem is:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Constant pressure of cheap ON CLUSTER DELETE queries.&lt;/li&gt;
+&lt;li&gt;One replica was down for a long amount of time (multiple days).&lt;/li&gt;
+&lt;li&gt;Because of pressure on the DDL queue, it purged old records due to the &lt;code&gt;task_max_lifetime&lt;/code&gt; setting.&lt;/li&gt;
+&lt;li&gt;When a lagging replica comes up, it&amp;rsquo;s fail&amp;rsquo;s execute old queries from DDL queue, because at this point they were purged from it.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Solution:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Reload/Restore this replica from scratch.&lt;/li&gt;
+&lt;/ul&gt;
 
       </description>
     </item>

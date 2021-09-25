@@ -13,12 +13,12 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://kb.altinity.com/altinity-kb-schema-design/lowcardinality/" /><meta property="article:section" content="altinity-kb-schema-design" />
 
-<meta property="article:modified_time" content="2021-08-24T12:59:49-06:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
+<meta property="article:modified_time" content="2021-09-25T23:04:58+03:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
 
 <meta itemprop="name" content="LowCardinality">
 <meta itemprop="description" content="LowCardinality
 ">
-<meta itemprop="dateModified" content="2021-08-24T12:59:49-06:00" />
+<meta itemprop="dateModified" content="2021-09-25T23:04:58+03:00" />
 <meta itemprop="wordCount" content="101">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="LowCardinality"/>
@@ -78,7 +78,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.b7bc8727d1de84775f8a6609d870354d.json"
+  data-offline-search-index-json-src="/offline-search-index.b5e0f7010ba1e60ac688771fa1cdbb4f.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -106,7 +106,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.b7bc8727d1de84775f8a6609d870354d.json"
+  data-offline-search-index-json-src="/offline-search-index.b5e0f7010ba1e60ac688771fa1cdbb4f.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -306,8 +306,15 @@
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-altinity-kb-setup-and-maintenance-li">
   <a href="/altinity-kb-setup-and-maintenance/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-altinity-kb-setup-and-maintenance"><span class="">Setup &amp; maintenance</span></a>
   <ul class="ul-2 foldable">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-setup-and-maintenanceaws-s3-recipes-li">
-  <a href="/altinity-kb-setup-and-maintenance/aws-s3-recipes/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenanceaws-s3-recipes"><span class="">AWS S3 Recipes</span></a>
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child collapse" id="m-altinity-kb-setup-and-maintenancealtinity-kb-s3-object-storage-li">
+  <a href="/altinity-kb-setup-and-maintenance/altinity-kb-s3-object-storage/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-altinity-kb-setup-and-maintenancealtinity-kb-s3-object-storage"><span class="">S3 &amp; object storage</span></a>
+  <ul class="ul-3 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-setup-and-maintenancealtinity-kb-s3-object-storageaws-s3-recipes-li">
+  <a href="/altinity-kb-setup-and-maintenance/altinity-kb-s3-object-storage/aws-s3-recipes/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancealtinity-kb-s3-object-storageaws-s3-recipes"><span class="">AWS S3 Recipes</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-setup-and-maintenancealtinity-kb-s3-object-storages3disk-li">
+  <a href="/altinity-kb-setup-and-maintenance/altinity-kb-s3-object-storage/s3disk/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancealtinity-kb-s3-object-storages3disk"><span class="">S3Disk</span></a>
+</li>
+  </ul>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-setup-and-maintenancelogging-li">
   <a href="/altinity-kb-setup-and-maintenance/logging/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancelogging"><span class=""></span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-setup-and-maintenancealtinity-packaging-compatibility-greater-than-21x-and-earlier-li">
@@ -575,16 +582,6 @@
             
 
 
-<div class="td-toc"><nav id="TableOfContents">
-  <ul>
-    <li><a href="#settings">Settings</a>
-      <ul>
-        <li><a href="#allow_suspicious_low_cardinality_types">allow_suspicious_low_cardinality_types</a></li>
-      </ul>
-    </li>
-  </ul>
-</nav></div>
-
 
 
             
@@ -644,7 +641,7 @@
 	
 	       
 	<h2 id="settings">Settings</h2>
-<h3 id="allow_suspicious_low_cardinality_types">allow_suspicious_low_cardinality_types</h3>
+<h4 id="allow_suspicious_low_cardinality_types">allow_suspicious_low_cardinality_types</h4>
 <p>In CREATE TABLE statement allows specifying LowCardinality modifier for types of small fixed size (8 or less). Enabling this may increase merge times and memory consumption.</p>
 <h4 id="low_cardinality_max_dictionary_size">low_cardinality_max_dictionary_size</h4>
 <p>default - 8192</p>
@@ -661,8 +658,8 @@
 	<div class="text-muted mt-5 pt-3 border-top">
 
     Last modified
-    2021.08.24
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/5cdec4106d860a1959fafa170ad6998be341a087">Format corrections and spell checks. (5cdec410)</a>
+    2021.09.25
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/b196692062c5f78a5a625ac6ff9db4bb9cf1ac8b">fixes (b1966920)</a>
 
 </div>
 

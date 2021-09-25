@@ -13,13 +13,13 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://kb.altinity.com/altinity-kb-setup-and-maintenance/aws-ebs/" /><meta property="article:section" content="altinity-kb-setup-and-maintenance" />
 
-<meta property="article:modified_time" content="2021-08-24T12:59:49-06:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
+<meta property="article:modified_time" content="2021-09-25T22:39:03+03:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
 
 <meta itemprop="name" content="AWS EBS">
 <meta itemprop="description" content="AWS EBS
 ">
-<meta itemprop="dateModified" content="2021-08-24T12:59:49-06:00" />
-<meta itemprop="wordCount" content="229">
+<meta itemprop="dateModified" content="2021-09-25T22:39:03+03:00" />
+<meta itemprop="wordCount" content="293">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="AWS EBS"/>
 <meta name="twitter:description" content="AWS EBS
@@ -78,7 +78,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.b7bc8727d1de84775f8a6609d870354d.json"
+  data-offline-search-index-json-src="/offline-search-index.b5e0f7010ba1e60ac688771fa1cdbb4f.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -106,7 +106,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.b7bc8727d1de84775f8a6609d870354d.json"
+  data-offline-search-index-json-src="/offline-search-index.b5e0f7010ba1e60ac688771fa1cdbb4f.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -306,8 +306,15 @@
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-altinity-kb-setup-and-maintenance-li">
   <a href="/altinity-kb-setup-and-maintenance/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-altinity-kb-setup-and-maintenance"><span class="">Setup &amp; maintenance</span></a>
   <ul class="ul-2 foldable">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenanceaws-s3-recipes-li">
-  <a href="/altinity-kb-setup-and-maintenance/aws-s3-recipes/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenanceaws-s3-recipes"><span class="">AWS S3 Recipes</span></a>
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-altinity-kb-setup-and-maintenancealtinity-kb-s3-object-storage-li">
+  <a href="/altinity-kb-setup-and-maintenance/altinity-kb-s3-object-storage/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-altinity-kb-setup-and-maintenancealtinity-kb-s3-object-storage"><span class="">S3 &amp; object storage</span></a>
+  <ul class="ul-3 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-setup-and-maintenancealtinity-kb-s3-object-storageaws-s3-recipes-li">
+  <a href="/altinity-kb-setup-and-maintenance/altinity-kb-s3-object-storage/aws-s3-recipes/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancealtinity-kb-s3-object-storageaws-s3-recipes"><span class="">AWS S3 Recipes</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-setup-and-maintenancealtinity-kb-s3-object-storages3disk-li">
+  <a href="/altinity-kb-setup-and-maintenance/altinity-kb-s3-object-storage/s3disk/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancealtinity-kb-s3-object-storages3disk"><span class="">S3Disk</span></a>
+</li>
+  </ul>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenancelogging-li">
   <a href="/altinity-kb-setup-and-maintenance/logging/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancelogging"><span class=""></span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenancealtinity-packaging-compatibility-greater-than-21x-and-earlier-li">
@@ -664,12 +671,17 @@
   </tbody>
 </table>
 <h3 id="gp2">GP2</h3>
-<p>In usual conditions ClickHouse being limited by throughput of volumes only and amount of provided IOPS doesn&rsquo;t make any big difference for performance. So the most native choice for clickhouse is gp2 and gp3 volumes.</p>
+<p>In usual conditions ClickHouse being limited by throughput of volumes and amount of provided IOPS doesn&rsquo;t make any big difference for performance starting from a certain number. So the most native choice for clickhouse is gp2 and gp3 volumes.</p>
 <p>‌Because gp2 volumes have a hard limit of 250 MiB/s per volume (for volumes bigger than 334 GB), it usually makes sense to split one big volume in multiple smaller volumes larger than 334GB in order to have maximum possible throughput.</p>
 <p>‌EC2 instances also have an EBS throughput limit, it depends on the size of the EC2 instance. That means if you would attach multiple volumes which would have high potential throughput, you would be limited by your EC2 instance, so usually there is no reason to have more than 4-5 volumes per node.</p>
 <p>It&rsquo;s pretty straightforward to set up a ClickHouse for using multiple EBS volumes with storage_policies.</p>
 <h3 id="gp3">GP3</h3>
-<p>It&rsquo;s a new type of volume, which is 20% cheaper than gp2 per GB-month and has lower free throughput: only 125 MB/s vs 250 MB/s. But you can buy additional throughput for volume and gp3 pricing became comparable with multiple gp2 volumes starting from 1000-1500GB size.</p>
+<p>It&rsquo;s a new type of volume, which is 20% cheaper than gp2 per GB-month and has lower free throughput: only 125 MB/s vs 250 MB/s. But you can buy additional throughput for volume and gp3 pricing became comparable with multiple gp2 volumes starting from 1000-1500GB size. It also works better if most of your queries read only one or several parts, because in that case you are not being limited by performance of a single ebs disk, as parts can be located only on one disk at once.</p>
+<p>For best performance, it&rsquo;s suggested to buy:</p>
+<ul>
+<li>7000 IOPS</li>
+<li>Throughput up to the limit of your EC2 instance</li>
+</ul>
 <p><a href="https://altinity.com/blog/2019/11/27/amplifying-clickhouse-capacity-with-multi-volume-storage-part-1" target="_blank">https://altinity.com/blog/2019/11/27/amplifying-clickhouse-capacity-with-multi-volume-storage-part-1</a></p>
 <p><a href="https://altinity.com/blog/2019/11/29/amplifying-clickhouse-capacity-with-multi-volume-storage-part-2" target="_blank">https://altinity.com/blog/2019/11/29/amplifying-clickhouse-capacity-with-multi-volume-storage-part-2</a></p>
 <p><a href="https://calculator.aws/%5c#/createCalculator/EBS?nc2=h_ql_pr_calc" target="_blank">https://calculator.aws/#/createCalculator/EBS?nc2=h_ql_pr_calc</a></p>
@@ -682,8 +694,8 @@
 	<div class="text-muted mt-5 pt-3 border-top">
 
     Last modified
-    2021.08.24
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/5cdec4106d860a1959fafa170ad6998be341a087">Format corrections and spell checks. (5cdec410)</a>
+    2021.09.25
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/7882c86eff0eff0b0ed279a7b1343391cbbc7a53">ebs (7882c86e)</a>
 
 </div>
 

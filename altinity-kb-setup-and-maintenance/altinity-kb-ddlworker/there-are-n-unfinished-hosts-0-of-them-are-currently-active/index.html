@@ -13,13 +13,13 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-ddlworker/there-are-n-unfinished-hosts-0-of-them-are-currently-active/" /><meta property="article:section" content="altinity-kb-setup-and-maintenance" />
 
-<meta property="article:modified_time" content="2021-08-24T12:59:49-06:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
+<meta property="article:modified_time" content="2021-09-25T22:46:21+03:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
 
 <meta itemprop="name" content="There are N unfinished hosts (0 of them are currently active).">
 <meta itemprop="description" content="&#34;There are N unfinished hosts (0 of them are currently active).&#34;
 ">
-<meta itemprop="dateModified" content="2021-08-24T12:59:49-06:00" />
-<meta itemprop="wordCount" content="466">
+<meta itemprop="dateModified" content="2021-09-25T22:46:21+03:00" />
+<meta itemprop="wordCount" content="496">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="There are N unfinished hosts (0 of them are currently active)."/>
 <meta name="twitter:description" content="&#34;There are N unfinished hosts (0 of them are currently active).&#34;
@@ -78,7 +78,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.b7bc8727d1de84775f8a6609d870354d.json"
+  data-offline-search-index-json-src="/offline-search-index.b5e0f7010ba1e60ac688771fa1cdbb4f.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -106,7 +106,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.b7bc8727d1de84775f8a6609d870354d.json"
+  data-offline-search-index-json-src="/offline-search-index.b5e0f7010ba1e60ac688771fa1cdbb4f.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -306,8 +306,15 @@
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-altinity-kb-setup-and-maintenance-li">
   <a href="/altinity-kb-setup-and-maintenance/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-altinity-kb-setup-and-maintenance"><span class="">Setup &amp; maintenance</span></a>
   <ul class="ul-2 foldable">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenanceaws-s3-recipes-li">
-  <a href="/altinity-kb-setup-and-maintenance/aws-s3-recipes/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenanceaws-s3-recipes"><span class="">AWS S3 Recipes</span></a>
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-altinity-kb-setup-and-maintenancealtinity-kb-s3-object-storage-li">
+  <a href="/altinity-kb-setup-and-maintenance/altinity-kb-s3-object-storage/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-altinity-kb-setup-and-maintenancealtinity-kb-s3-object-storage"><span class="">S3 &amp; object storage</span></a>
+  <ul class="ul-3 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-setup-and-maintenancealtinity-kb-s3-object-storageaws-s3-recipes-li">
+  <a href="/altinity-kb-setup-and-maintenance/altinity-kb-s3-object-storage/aws-s3-recipes/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancealtinity-kb-s3-object-storageaws-s3-recipes"><span class="">AWS S3 Recipes</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-setup-and-maintenancealtinity-kb-s3-object-storages3disk-li">
+  <a href="/altinity-kb-setup-and-maintenance/altinity-kb-s3-object-storage/s3disk/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancealtinity-kb-s3-object-storages3disk"><span class="">S3Disk</span></a>
+</li>
+  </ul>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenancelogging-li">
   <a href="/altinity-kb-setup-and-maintenance/logging/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancelogging"><span class=""></span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenancealtinity-packaging-compatibility-greater-than-21x-and-earlier-li">
@@ -706,7 +713,7 @@ cat /etc/hostname
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">SYSTEM</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">STOP</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">REPLICATION</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">QUEUES</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">SYSTEM</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">START</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">REPLICATION</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">QUEUES</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></code></pre></div><p><a href="https://clickhouse.tech/docs/en/sql-reference/statements/system/%5c#query_language-system-drop-replica" target="_blank">https://clickhouse.tech/docs/en/sql-reference/statements/system/#query_language-system-drop-replica</a></p>
-<p>Task were removed from DDL queue but left it Replicated*MergeTree table queue.</p>
+<p>Task were removed from DDL queue, but left in Replicated*MergeTree table queue.</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">grep -C <span style="color:#0000cf;font-weight:bold">40</span> <span style="color:#4e9a06">&#34;ddl_entry&#34;</span> /var/log/clickhouse-server/clickhouse-server*.log
 
 /var/log/clickhouse-server/clickhouse-server.log:2021.05.04 12:41:28.956888 <span style="color:#ce5c00;font-weight:bold">[</span> <span style="color:#0000cf;font-weight:bold">599</span> <span style="color:#ce5c00;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">{}</span> &lt;Debug&gt; DDLWorker: Processing task query-0000211211 <span style="color:#ce5c00;font-weight:bold">(</span>ALTER TABLE db.table_local ON CLUSTER <span style="color:#4e9a06">`</span>all-replicated<span style="color:#4e9a06">`</span> DELETE WHERE <span style="color:#000">id</span> <span style="color:#ce5c00;font-weight:bold">=</span> 1<span style="color:#ce5c00;font-weight:bold">)</span>
@@ -726,19 +733,25 @@ cat /etc/hostname
 /var/log/clickhouse-server/clickhouse-server.log-11. __clone @ 0x122293 in /usr/lib/x86_64-linux-gnu/libc-2.31.so
 /var/log/clickhouse-server/clickhouse-server.log- <span style="color:#ce5c00;font-weight:bold">(</span>version 21.1.8.30 <span style="color:#ce5c00;font-weight:bold">(</span>official build<span style="color:#ce5c00;font-weight:bold">))</span>
 /var/log/clickhouse-server/clickhouse-server.log:2021.05.04 12:41:29.053951 <span style="color:#ce5c00;font-weight:bold">[</span> <span style="color:#0000cf;font-weight:bold">599</span> <span style="color:#ce5c00;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">{}</span> &lt;Debug&gt; DDLWorker: Processing task query-0000211211 <span style="color:#ce5c00;font-weight:bold">(</span>ALTER TABLE db.table_local ON CLUSTER <span style="color:#4e9a06">`</span>all-replicated<span style="color:#4e9a06">`</span> DELETE WHERE <span style="color:#000">id</span> <span style="color:#ce5c00;font-weight:bold">=</span> 1<span style="color:#ce5c00;font-weight:bold">)</span>
-</code></pre></div><p>So context of this problem is:
-Constant pressure of cheap ON CLUSTER DELETE queries.
-One replica was down for certain amount of time.
-Because of constant pressure on DDL queue, it purge old records due <code>task_max_lifetime</code> setting.
-When lagging replica</p>
+</code></pre></div><p>Context of this problem is:</p>
+<ul>
+<li>Constant pressure of cheap ON CLUSTER DELETE queries.</li>
+<li>One replica was down for a long amount of time (multiple days).</li>
+<li>Because of pressure on the DDL queue, it purged old records due to the <code>task_max_lifetime</code> setting.</li>
+<li>When a lagging replica comes up, it&rsquo;s fail&rsquo;s execute old queries from DDL queue, because at this point they were purged from it.</li>
+</ul>
+<p>Solution:</p>
+<ul>
+<li>Reload/Restore this replica from scratch.</li>
+</ul>
 
 	
 	
 	<div class="text-muted mt-5 pt-3 border-top">
 
     Last modified
-    2021.08.24
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/5cdec4106d860a1959fafa170ad6998be341a087">Format corrections and spell checks. (5cdec410)</a>
+    2021.09.25
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/64364e0bd7117f14ebacfd65a15a60887eca802f">ddl_queue (64364e0b)</a>
 
 </div>
 

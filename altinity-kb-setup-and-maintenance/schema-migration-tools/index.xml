@@ -133,7 +133,7 @@ description: &amp;gt;
 There is 2 possible solutions:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;You can build your own golang-migrate image from official with tzdata package.&lt;/li&gt;
-&lt;li&gt;If you using it as part of your CI you can add installing tzdata package as one of step in ci before using golang-migrate.&lt;/li&gt;
+&lt;li&gt;If you using it as part of your CI you can add installing tzdata package as one of step in CI before using golang-migrate.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;Related GitHub issues:
 &lt;a href=&#34;https://github.com/golang-migrate/migrate/issues/494&#34; target=&#34;_blank&#34;&gt;https://github.com/golang-migrate/migrate/issues/494&lt;/a&gt;
