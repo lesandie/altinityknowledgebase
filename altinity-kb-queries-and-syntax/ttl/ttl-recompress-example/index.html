@@ -13,13 +13,13 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://kb.altinity.com/altinity-kb-queries-and-syntax/ttl/ttl-recompress-example/" /><meta property="article:section" content="altinity-kb-queries-and-syntax" />
 
-<meta property="article:modified_time" content="2021-09-26T21:24:39-03:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
+<meta property="article:modified_time" content="2021-09-26T21:27:18-03:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
 
 <meta itemprop="name" content="TTL Recompress example">
 <meta itemprop="description" content="TTL Recompress example
 ">
-<meta itemprop="dateModified" content="2021-09-26T21:24:39-03:00" />
-<meta itemprop="wordCount" content="63">
+<meta itemprop="dateModified" content="2021-09-26T21:27:18-03:00" />
+<meta itemprop="wordCount" content="80">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="TTL Recompress example"/>
 <meta name="twitter:description" content="TTL Recompress example
@@ -78,7 +78,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.139066f28f06b7cbc7ed21efdbf0e0d7.json"
+  data-offline-search-index-json-src="/offline-search-index.0a0cee6f024f36b276b0cce636f7b74f.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -106,7 +106,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.139066f28f06b7cbc7ed21efdbf0e0d7.json"
+  data-offline-search-index-json-src="/offline-search-index.0a0cee6f024f36b276b0cce636f7b74f.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -582,6 +582,13 @@
             
 
 
+<div class="td-toc"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#example-how-to-create-a-table-and-define-recompression-rules">Example how to create a table and define recompression rules</a></li>
+    <li><a href="#example-how-to-define-recompression-rules-for-an-existing-table">Example how to define recompression rules for an existing table</a></li>
+  </ul>
+</nav></div>
+
 
 
             
@@ -650,7 +657,8 @@
 	</div>
 	
 	       
-	<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#204a87;font-weight:bold">CREATE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">TABLE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">hits</span><span style="color:#f8f8f8;text-decoration:underline">
+	<h2 id="example-how-to-create-a-table-and-define-recompression-rules">Example how to create a table and define recompression rules</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#204a87;font-weight:bold">CREATE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">TABLE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">hits</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000;font-weight:bold">(</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#ce5c00;font-weight:bold">`</span><span style="color:#000">banner_id</span><span style="color:#ce5c00;font-weight:bold">`</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">UInt64</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#ce5c00;font-weight:bold">`</span><span style="color:#000">event_time</span><span style="color:#ce5c00;font-weight:bold">`</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">DateTime</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">CODEC</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">Delta</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">Default</span><span style="color:#000;font-weight:bold">),</span><span style="color:#f8f8f8;text-decoration:underline">
@@ -665,7 +673,7 @@
 </span></code></pre></div><p>Default comression is LZ4 <a href="https://clickhouse.tech/docs/en/operations/server-configuration-parameters/settings/#server-settings-compression" target="_blank">https://clickhouse.tech/docs/en/operations/server-configuration-parameters/settings/#server-settings-compression</a></p>
 <p>These TTL rules recompress data after 1 and 6 months.</p>
 <p>CODEC(Delta, Default) &ndash; <strong>Default</strong> means to use default compression (LZ4 -&gt; ZSTD1 -&gt; ZSTD6) in this case.</p>
-<h1 id="change-existing-table">Change existing table</h1>
+<h2 id="example-how-to-define-recompression-rules-for-an-existing-table">Example how to define recompression rules for an existing table</h2>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#204a87;font-weight:bold">CREATE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">TABLE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">hits</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000;font-weight:bold">(</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#ce5c00;font-weight:bold">`</span><span style="color:#000">banner_id</span><span style="color:#ce5c00;font-weight:bold">`</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">UInt64</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline">
@@ -689,7 +697,7 @@
 
     Last modified
     2021.09.26
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/d36494a2c0364f2d082648954a4a3a6892cd7e28">Update ttl-recompress-example.md (d36494a2)</a>
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/41fc7ccb10bdcfb6d73526c0871e2e670383c1e6">Update ttl-recompress-example.md (41fc7ccb)</a>
 
 </div>
 
