@@ -13,13 +13,13 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://kb.altinity.com/altinity-kb-queries-and-syntax/ttl/ttl-recompress-example/" /><meta property="article:section" content="altinity-kb-queries-and-syntax" />
 
-<meta property="article:modified_time" content="2021-09-26T21:24:12-03:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
+<meta property="article:modified_time" content="2021-09-26T21:24:39-03:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
 
 <meta itemprop="name" content="TTL Recompress example">
 <meta itemprop="description" content="TTL Recompress example
 ">
-<meta itemprop="dateModified" content="2021-09-26T21:24:12-03:00" />
-<meta itemprop="wordCount" content="50">
+<meta itemprop="dateModified" content="2021-09-26T21:24:39-03:00" />
+<meta itemprop="wordCount" content="63">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="TTL Recompress example"/>
 <meta name="twitter:description" content="TTL Recompress example
@@ -78,7 +78,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.c3daa8fc9ee225de1e1c2687450cd78b.json"
+  data-offline-search-index-json-src="/offline-search-index.139066f28f06b7cbc7ed21efdbf0e0d7.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -106,7 +106,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.c3daa8fc9ee225de1e1c2687450cd78b.json"
+  data-offline-search-index-json-src="/offline-search-index.139066f28f06b7cbc7ed21efdbf0e0d7.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -681,17 +681,15 @@
 </span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">modify</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">column</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">event_time</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">DateTime</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">CODEC</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">Delta</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">Default</span><span style="color:#000;font-weight:bold">),</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">modify</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">TTL</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">event_time</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">+</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">toIntervalMonth</span><span style="color:#000;font-weight:bold">(</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">RECOMPRESS</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">CODEC</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">ZSTD</span><span style="color:#000;font-weight:bold">(</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">)),</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">       </span><span style="color:#000">event_time</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">+</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">toIntervalMonth</span><span style="color:#000;font-weight:bold">(</span><span style="color:#0000cf;font-weight:bold">6</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">RECOMPRESS</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">CODEC</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">ZSTD</span><span style="color:#000;font-weight:bold">(</span><span style="color:#0000cf;font-weight:bold">6</span><span style="color:#000;font-weight:bold">));</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#ce5c00;font-weight:bold">```</span><span style="color:#204a87;font-weight:bold">sql</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">All</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">columns</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">have</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">implicite</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">default</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">compression</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">from</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">server</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">config</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">except</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">`</span><span style="color:#000">event_time</span><span style="color:#ce5c00;font-weight:bold">`</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">that</span><span style="color:#4e9a06">&#39;s why need to change to compression to `Default` for this column otherwise it won&#39;</span><span style="color:#000">t</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">be</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">recompressed</span><span style="color:#000;font-weight:bold">.</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></code></pre></div>
+</span></code></pre></div><p>All columns have implicite default compression from server config, except <code>event_time</code>, that&rsquo;s why need to change to compression to <code>Default</code> for this column otherwise it won&rsquo;t be recompressed.</p>
+
 	
 	
 	<div class="text-muted mt-5 pt-3 border-top">
 
     Last modified
     2021.09.26
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/b6353f05c18596e357810aaefaecbbb344c5d275">Update ttl-recompress-example.md (b6353f05)</a>
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/d36494a2c0364f2d082648954a4a3a6892cd7e28">Update ttl-recompress-example.md (d36494a2)</a>
 
 </div>
 
