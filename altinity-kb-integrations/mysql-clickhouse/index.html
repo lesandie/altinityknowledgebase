@@ -12,12 +12,12 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://kb.altinity.com/altinity-kb-integrations/mysql-clickhouse/" /><meta property="article:section" content="altinity-kb-integrations" />
 
-<meta property="article:modified_time" content="2021-09-21T11:11:14-03:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
+<meta property="article:modified_time" content="2021-09-27T16:53:50+02:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
 
 <meta itemprop="name" content="MySQL">
 <meta itemprop="description" content="Integration Clickhouse with MySQL">
-<meta itemprop="dateModified" content="2021-09-21T11:11:14-03:00" />
-<meta itemprop="wordCount" content="347">
+<meta itemprop="dateModified" content="2021-09-27T16:53:50+02:00" />
+<meta itemprop="wordCount" content="358">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="MySQL"/>
 <meta name="twitter:description" content="Integration Clickhouse with MySQL"/>
@@ -75,7 +75,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.0a0cee6f024f36b276b0cce636f7b74f.json"
+  data-offline-search-index-json-src="/offline-search-index.0b86074ebdcd0c12a542819ad1715d02.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -103,7 +103,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.0a0cee6f024f36b276b0cce636f7b74f.json"
+  data-offline-search-index-json-src="/offline-search-index.0b86074ebdcd0c12a542819ad1715d02.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -581,15 +581,15 @@
 
 <div class="td-toc"><nav id="TableOfContents">
   <ul>
-    <li><a href="#replication-using-materializemysql">Replication using MaterializeMySQL</a></li>
-    <li><a href="#replication-using-debezium--kafka">Replication using debezium + Kafka</a>
+    <li>
       <ul>
-        <li><a href="#same-as-above-but-using-httpsmaxwells-daemonio-instead-of-debezium">Same as above but using <a href="https://maxwells-daemon.io/">https://maxwells-daemon.io/</a> instead of debezium.</a></li>
+        <li><a href="#replication-using-materializemysql">Replication using MaterializeMySQL</a></li>
+        <li><a href="#replication-using-debezium--kafka">Replication using debezium + Kafka</a></li>
+        <li><a href="#replication-using-clickhouse-mysql">Replication using clickhouse-mysql</a></li>
+        <li><a href="#accessing-mysql-data-via-integration-engines-from-inside-clickhouse">Accessing MySQL data via integration engines from inside clickhouse.</a></li>
+        <li><a href="#mysql-dictionaries">MySQL dictionaries</a></li>
       </ul>
     </li>
-    <li><a href="#replication-using-clickhouse-mysql">Replication using clickhouse-mysql</a></li>
-    <li><a href="#accessing-mysql-data-via-integration-engines-from-inside-clickhouse">Accessing MySQL data via integration engines from inside clickhouse.</a></li>
-    <li><a href="#there-are-also-mysql-dictionaries-which-can-be-very-nice-alternative-for-storing-some-dimensions-information-in-star-schema">There are also MySQL dictionaries, which can be very nice alternative for storing some dimensions information in star schema.</a></li>
   </ul>
 </nav></div>
 
@@ -651,38 +651,46 @@
 	</div>
 	
 	       
-	<h2 id="replication-using-materializemysql">Replication using MaterializeMySQL</h2>
-<p><a href="https://clickhouse.tech/docs/en/engines/database-engines/materialized-mysql/" target="_blank">https://clickhouse.tech/docs/en/engines/database-engines/materialized-mysql/</a></p>
-<p><a href="https://translate.google.com/translate?sl=auto&amp;tl=en&amp;u=https://www.jianshu.com/p/d0d4306411b3" target="_blank">https://translate.google.com/translate?sl=auto&amp;tl=en&amp;u=https://www.jianshu.com/p/d0d4306411b3</a></p>
-<p><a href="https://raw.githubusercontent.com/ClickHouse/clickhouse-presentations/master/meetup47/materialize_mysql.pdf" target="_blank">https://raw.githubusercontent.com/ClickHouse/clickhouse-presentations/master/meetup47/materialize_mysql.pdf</a></p>
+	<h3 id="replication-using-materializemysql">Replication using MaterializeMySQL</h3>
+<ul>
+<li><a href="https://clickhouse.tech/docs/en/engines/database-engines/materialized-mysql/" target="_blank">https://clickhouse.tech/docs/en/engines/database-engines/materialized-mysql/</a></li>
+<li><a href="https://translate.google.com/translate?sl=auto&amp;tl=en&amp;u=https://www.jianshu.com/p/d0d4306411b3" target="_blank">https://translate.google.com/translate?sl=auto&amp;tl=en&amp;u=https://www.jianshu.com/p/d0d4306411b3</a></li>
+<li><a href="https://raw.githubusercontent.com/ClickHouse/clickhouse-presentations/master/meetup47/materialize_mysql.pdf" target="_blank">https://raw.githubusercontent.com/ClickHouse/clickhouse-presentations/master/meetup47/materialize_mysql.pdf</a></li>
+</ul>
 <p>It reads mysql binlog directly and transform queries into something which clickhouse can support. Supports updates and deletes (under the hood implemented via something like ReplacingMergeTree with enforced FINAL and &lsquo;deleted&rsquo; flag). Status is &lsquo;experimental&rsquo;, there are quite a lot of known limitations and issues, but some people use it. The original author of that went to another project, and the main team don&rsquo;t have a lot of resource to improve that for now (more important thing in the backlog)</p>
 <p>The replication happens on the mysql database level.</p>
-<h2 id="replication-using-debezium--kafka">Replication using debezium + Kafka</h2>
+<h3 id="replication-using-debezium--kafka">Replication using debezium + Kafka</h3>
 <p>Debezium can read the binlog and transform it to Kafka messages. You can later capture the stream of message on ClickHouse side and process it as you like.
 Please remeber that currently Kafka engine supports only at-least-once delivery guarantees.</p>
 <p>It&rsquo;s used by several companies, quite nice &amp; flexible. But initial setup may require some efforts.</p>
-<h3 id="same-as-above-but-using-httpsmaxwells-daemonio-instead-of-debezium">Same as above but using <a href="https://maxwells-daemon.io/" target="_blank">https://maxwells-daemon.io/</a> instead of debezium.</h3>
+<h4 id="same-as-above-but-using-httpsmaxwells-daemonio-instead-of-debezium">Same as above but using <a href="https://maxwells-daemon.io/" target="_blank">https://maxwells-daemon.io/</a> instead of debezium.</h4>
 <p>Have no experience / feedback there, but should be very similar to debezium.</p>
-<h2 id="replication-using-clickhouse-mysql">Replication using clickhouse-mysql</h2>
+<h3 id="replication-using-clickhouse-mysql">Replication using clickhouse-mysql</h3>
 <p>See <a href="https://altinity.com/blog/2018/6/30/realtime-mysql-clickhouse-replication-in-practice" target="_blank">https://altinity.com/blog/2018/6/30/realtime-mysql-clickhouse-replication-in-practice</a></p>
 <p>That was done long time ago in altinity for one use-case, and it seem like it was never used outside of that.
 It&rsquo;s a python application with lot of switches which can copy a schema or read binlog from mysql and put it to clickhouse.
 Not supported currently. But it&rsquo;s just a python, so maybe can be adjusted to different needs.</p>
-<h2 id="accessing-mysql-data-via-integration-engines-from-inside-clickhouse">Accessing MySQL data via integration engines from inside clickhouse.</h2>
-<p>MySQL table engine / table function, or MySQL database engine - clickhouse just connects to mysql server as a client, and can do normal selects.
-We had webinar about that a year ago: <a href="https://www.youtube.com/watch?v=44kO3UzIDLI" target="_blank">https://www.youtube.com/watch?v=44kO3UzIDLI</a></p>
+<h3 id="accessing-mysql-data-via-integration-engines-from-inside-clickhouse">Accessing MySQL data via integration engines from inside clickhouse.</h3>
+<p>MySQL <a href="https://clickhouse.com/docs/en/engines/table-engines/integrations/mysql/" target="_blank">table engine</a> / <a href="https://clickhouse.com/docs/en/sql-reference/table-functions/mysql/" target="_blank">table function</a>, or <a href="https://clickhouse.com/docs/en/engines/database-engines/mysql/" target="_blank">MySQL database engine</a> - clickhouse just connects to mysql server as a client, and can do normal selects.</p>
+<p>We had webinar about that a year ago: <a href="https://www.youtube.com/watch?v=44kO3UzIDLI" target="_blank">https://www.youtube.com/watch?v=44kO3UzIDLI</a></p>
 <p>Using that you can easily create some ETL script which will copy the data from mysql to clickhouse regularly, i.e. something like</p>
-<p>INSERT INTO clickhouse_table SELECT * FROM mysql_table WHERE id &gt; &hellip;</p>
-<p>Works great if you have append only table in MySQL.</p>
-<h2 id="there-are-also-mysql-dictionaries-which-can-be-very-nice-alternative-for-storing-some-dimensions-information-in-star-schema">There are also MySQL dictionaries, which can be very nice alternative for storing some dimensions information in star schema.</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#204a87;font-weight:bold">INSERT</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">INTO</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">clickhouse_table</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">SELECT</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">FROM</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">mysql_table</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">WHERE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">id</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">&gt;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">...</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></code></pre></div><p>Works great if you have append only table in MySQL.</p>
+<p>In newer clickhouse versions you can query this was also sharded / replicated MySQL cluster - see <a href="https://clickhouse.com/docs/en/engines/table-engines/integrations/ExternalDistributed/" target="_blank">ExternalDistributed</a></p>
+<h3 id="mysql-dictionaries">MySQL dictionaries</h3>
+<p>There are also MySQL dictionaries, which can be very nice alternative for storing some dimensions information in star schema.</p>
+<ul>
+<li><a href="https://clickhouse.com/docs/en/sql-reference/dictionaries/external-dictionaries/external-dicts-dict-sources/#dicts-external_dicts_dict_sources-mysql" target="_blank">https://clickhouse.com/docs/en/sql-reference/dictionaries/external-dictionaries/external-dicts-dict-sources/#dicts-external_dicts_dict_sources-mysql</a></li>
+<li><a href="https://github.com/ClickHouse/ClickHouse/blob/9f5cd35a6963cc556a51218b46b0754dcac7306a/tests/testflows/aes_encryption/tests/compatibility/mysql/dictionary.py#L35-L51" target="_blank">https://github.com/ClickHouse/ClickHouse/blob/9f5cd35a6963cc556a51218b46b0754dcac7306a/tests/testflows/aes_encryption/tests/compatibility/mysql/dictionary.py#L35-L51</a></li>
+</ul>
 
 	
 	
 	<div class="text-muted mt-5 pt-3 border-top">
 
     Last modified
-    2021.09.21
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/655e52d75b11d09d41d6b16005f8b017fbd43549">Update mysql-clickhouse.md (655e52d7)</a>
+    2021.09.27
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/06943d1dbe702a26c81d79ce0a440d2f1e8eb501">Update mysql-clickhouse.md (06943d1d)</a>
 
 </div>
 
