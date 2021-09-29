@@ -56,6 +56,9 @@
     <loc>http://kb.altinity.com/altinity-kb-integrations/mysql-clickhouse/</loc>
     <lastmod>2021-09-27T16:53:50+02:00</lastmod>
   </url><url>
+    <loc>http://kb.altinity.com/altinity-kb-setup-and-maintenance/logging/</loc>
+    <lastmod>2021-09-29T15:42:39+02:00</lastmod>
+  </url><url>
     <loc>http://kb.altinity.com/altinity-kb-integrations/clickhouse-odbc/</loc>
     <lastmod>2021-09-24T19:01:22+02:00</lastmod>
   </url><url>
@@ -63,9 +66,6 @@
     <lastmod>2021-09-25T22:32:04+03:00</lastmod>
   </url><url>
     <loc>http://kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-zookeeper/zookeeper-monitoring/</loc>
-    <lastmod>2021-08-24T12:59:49-06:00</lastmod>
-  </url><url>
-    <loc>http://kb.altinity.com/altinity-kb-setup-and-maintenance/logging/</loc>
     <lastmod>2021-08-24T12:59:49-06:00</lastmod>
   </url><url>
     <loc>http://kb.altinity.com/search/</loc>

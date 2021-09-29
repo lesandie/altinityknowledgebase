@@ -6,24 +6,21 @@
 <meta name="generator" content="Hugo 0.88.1" /><META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
 <link rel="shortcut icon" href="/favicons/favicon.ico" >
 <link rel="icon" href="/favicons/favicon.ico" >
-<title>Altinity Knowledge Base</title>
-<meta name="description" content="Altinity Knowledge Base"><meta property="og:title" content="" />
-<meta property="og:description" content="Logging Q. I get errors:
-File not found: /var/log/clickhouse-server/clickhouse-server.log.0. File not found: /var/log/clickhouse-server/clickhouse-server.log.8.gz. ... File not found: /var/log/clickhouse-server/clickhouse-server.err.log.0, Stack trace (when copying this message, always include the lines below): 0. Poco::FileImpl::handleLastErrorImpl(std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt; &gt; const&amp;) @ 0x11c2b345 in /usr/bin/clickhouse 1. Poco::PurgeOneFileStrategy::purge(std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt; &gt; const&amp;) @ 0x11c84618 in /usr/bin/clickhouse 2. Poco::FileChannel::log(Poco::Message const&amp;) @ 0x11c314cc in /usr/bin/clickhouse 3. DB::OwnFormattingChannel::logExtended(DB::ExtendedLogMessage const&amp;) @ 0x8681402 in /usr/bin/clickhouse 4. DB::OwnSplitChannel::logSplit(Poco::Message const&amp;) @ 0x8682fa8 in /usr/bin/clickhouse 5." />
+<title>Logging | Altinity Knowledge Base</title>
+<meta name="description" content="Altinity Knowledge Base"><meta property="og:title" content="Logging" />
+<meta property="og:description" content="Logging configuration and issues" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://kb.altinity.com/altinity-kb-setup-and-maintenance/logging/" /><meta property="article:section" content="altinity-kb-setup-and-maintenance" />
 
-<meta property="article:modified_time" content="2021-08-24T12:59:49-06:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
+<meta property="article:modified_time" content="2021-09-29T15:42:39+02:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
 
-<meta itemprop="name" content="">
-<meta itemprop="description" content="Logging Q. I get errors:
-File not found: /var/log/clickhouse-server/clickhouse-server.log.0. File not found: /var/log/clickhouse-server/clickhouse-server.log.8.gz. ... File not found: /var/log/clickhouse-server/clickhouse-server.err.log.0, Stack trace (when copying this message, always include the lines below): 0. Poco::FileImpl::handleLastErrorImpl(std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt; &gt; const&amp;) @ 0x11c2b345 in /usr/bin/clickhouse 1. Poco::PurgeOneFileStrategy::purge(std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt; &gt; const&amp;) @ 0x11c84618 in /usr/bin/clickhouse 2. Poco::FileChannel::log(Poco::Message const&amp;) @ 0x11c314cc in /usr/bin/clickhouse 3. DB::OwnFormattingChannel::logExtended(DB::ExtendedLogMessage const&amp;) @ 0x8681402 in /usr/bin/clickhouse 4. DB::OwnSplitChannel::logSplit(Poco::Message const&amp;) @ 0x8682fa8 in /usr/bin/clickhouse 5.">
-<meta itemprop="dateModified" content="2021-08-24T12:59:49-06:00" />
+<meta itemprop="name" content="Logging">
+<meta itemprop="description" content="Logging configuration and issues">
+<meta itemprop="dateModified" content="2021-09-29T15:42:39+02:00" />
 <meta itemprop="wordCount" content="120">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content=""/>
-<meta name="twitter:description" content="Logging Q. I get errors:
-File not found: /var/log/clickhouse-server/clickhouse-server.log.0. File not found: /var/log/clickhouse-server/clickhouse-server.log.8.gz. ... File not found: /var/log/clickhouse-server/clickhouse-server.err.log.0, Stack trace (when copying this message, always include the lines below): 0. Poco::FileImpl::handleLastErrorImpl(std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt; &gt; const&amp;) @ 0x11c2b345 in /usr/bin/clickhouse 1. Poco::PurgeOneFileStrategy::purge(std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt; &gt; const&amp;) @ 0x11c84618 in /usr/bin/clickhouse 2. Poco::FileChannel::log(Poco::Message const&amp;) @ 0x11c314cc in /usr/bin/clickhouse 3. DB::OwnFormattingChannel::logExtended(DB::ExtendedLogMessage const&amp;) @ 0x8681402 in /usr/bin/clickhouse 4. DB::OwnSplitChannel::logSplit(Poco::Message const&amp;) @ 0x8682fa8 in /usr/bin/clickhouse 5."/>
+<meta name="twitter:title" content="Logging"/>
+<meta name="twitter:description" content="Logging configuration and issues"/>
 
 
 
@@ -78,7 +75,7 @@ File not found: /var/log/clickhouse-server/clickhouse-server.log.0. File not fou
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.c7d38eb707f9e9ff340da6202bc8459f.json"
+  data-offline-search-index-json-src="/offline-search-index.1369930964a7aa8fcdce424ef029c01e.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -106,7 +103,7 @@ File not found: /var/log/clickhouse-server/clickhouse-server.log.0. File not fou
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.c7d38eb707f9e9ff340da6202bc8459f.json"
+  data-offline-search-index-json-src="/offline-search-index.1369930964a7aa8fcdce424ef029c01e.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -318,7 +315,7 @@ File not found: /var/log/clickhouse-server/clickhouse-server.log.0. File not fou
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenancecustom_settings-li">
   <a href="/altinity-kb-setup-and-maintenance/custom_settings/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancecustom_settings"><span class="">Custom Settings</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-altinity-kb-setup-and-maintenancelogging-li">
-  <a href="/altinity-kb-setup-and-maintenance/logging/" class="align-left pl-0 active td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancelogging"><span class="td-sidebar-nav-active-item"></span></a>
+  <a href="/altinity-kb-setup-and-maintenance/logging/" class="align-left pl-0 active td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancelogging"><span class="td-sidebar-nav-active-item">Logging</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenancealtinity-packaging-compatibility-greater-than-21x-and-earlier-li">
   <a href="/altinity-kb-setup-and-maintenance/altinity-packaging-compatibility-greater-than-21.x-and-earlier/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancealtinity-packaging-compatibility-greater-than-21x-and-earlier"><span class="">Altinity packaging compatibility &gt;21.x and earlier</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenanceaws-ebs-li">
@@ -629,7 +626,7 @@ File not found: /var/log/clickhouse-server/clickhouse-server.log.0. File not fou
 
 
 <li class="breadcrumb-item active" aria-current="page">
-	<a href="http://kb.altinity.com/altinity-kb-setup-and-maintenance/logging/"></a>
+	<a href="http://kb.altinity.com/altinity-kb-setup-and-maintenance/logging/">Logging</a>
 </li>
 
 	</ol>
@@ -637,8 +634,8 @@ File not found: /var/log/clickhouse-server/clickhouse-server.log.0. File not fou
 
             
 <div class="td-content">
-	<h1></h1>
-    <div class="lead">
+	<h1>Logging</h1>
+    <div class="lead">Logging configuration and issues
 	</div>
 	
 	       
@@ -656,11 +653,11 @@ File not found: /var/log/clickhouse-server/clickhouse-server.log.8.gz.
 3. DB::OwnFormattingChannel::logExtended<span style="color:#ce5c00;font-weight:bold">(</span>DB::ExtendedLogMessage const<span style="color:#000;font-weight:bold">&amp;</span><span style="color:#ce5c00;font-weight:bold">)</span> @ 0x8681402 in /usr/bin/clickhouse
 4. DB::OwnSplitChannel::logSplit<span style="color:#ce5c00;font-weight:bold">(</span>Poco::Message const<span style="color:#000;font-weight:bold">&amp;</span><span style="color:#ce5c00;font-weight:bold">)</span> @ 0x8682fa8 in /usr/bin/clickhouse
 5. DB::OwnSplitChannel::log<span style="color:#ce5c00;font-weight:bold">(</span>Poco::Message const<span style="color:#000;font-weight:bold">&amp;</span><span style="color:#ce5c00;font-weight:bold">)</span> @ 0x8682e41 in /usr/bin/clickhouse
-</code></pre></div><p> A. Check if you have proper permission to a log files folder, and enough disk space (&amp; inode numbers) on the block device used for logging.</p>
+</code></pre></div><p>�A. Check if you have proper permission to a log files folder, and enough disk space (&amp; inode numbers) on the block device used for logging.</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ls -la /var/log/clickhouse-server/
 df -Th
 df -Thi
-</code></pre></div><p> Q. How to configure logging in clickhouse?</p>
+</code></pre></div><p>�Q. How to configure logging in clickhouse?</p>
 <p>A. See <a href="https://github.com/ClickHouse/ClickHouse/blob/ceaf6d57b7f00e1925b85754298cf958a278289a/programs/server/config.xml#L9-L62" target="_blank">https://github.com/ClickHouse/ClickHouse/blob/ceaf6d57b7f00e1925b85754298cf958a278289a/programs/server/config.xml#L9-L62</a></p>
 
 	
@@ -668,8 +665,8 @@ df -Thi
 	<div class="text-muted mt-5 pt-3 border-top">
 
     Last modified
-    2021.08.24
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/5cdec4106d860a1959fafa170ad6998be341a087">Format corrections and spell checks. (5cdec410)</a>
+    2021.09.29
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/fd5883db3ff0d954205932716cc4a441f81e8cdf">Update logging.md (fd5883db)</a>
 
 </div>
 
