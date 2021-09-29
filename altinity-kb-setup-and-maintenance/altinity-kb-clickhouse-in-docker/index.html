@@ -13,13 +13,13 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-clickhouse-in-docker/" /><meta property="article:section" content="altinity-kb-setup-and-maintenance" />
 
-<meta property="article:modified_time" content="2021-08-24T12:59:49-06:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
+<meta property="article:modified_time" content="2021-09-29T12:44:43+02:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
 
 <meta itemprop="name" content="ClickHouse in Docker">
 <meta itemprop="description" content="ClickHouse in Docker
 ">
-<meta itemprop="dateModified" content="2021-08-24T12:59:49-06:00" />
-<meta itemprop="wordCount" content="169">
+<meta itemprop="dateModified" content="2021-09-29T12:44:43+02:00" />
+<meta itemprop="wordCount" content="183">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="ClickHouse in Docker"/>
 <meta name="twitter:description" content="ClickHouse in Docker
@@ -78,7 +78,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.7b1d99c283f236d9ce8595d2048c3421.json"
+  data-offline-search-index-json-src="/offline-search-index.64df448346e3415b8af891c03b244936.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -106,7 +106,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.7b1d99c283f236d9ce8595d2048c3421.json"
+  data-offline-search-index-json-src="/offline-search-index.64df448346e3415b8af891c03b244936.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -661,6 +661,7 @@
 <li><code>--ulimit nofile=262144:262144</code></li>
 <li>You can also set on some linux capabilities to enable some of extra features of ClickHouse (not obligatory): <code>SYS_PTRACE NET_ADMIN IPC_LOCK SYS_NICE</code></li>
 <li>you may also mount in the folder <code>/docker-entrypoint-initdb.d/</code> - all SQL or bash scripts there will be executed during container startup.</li>
+<li>if you use cgroup limits - it may misbehave <a href="https://github.com/ClickHouse/ClickHouse/issues/2261" target="_blank">https://github.com/ClickHouse/ClickHouse/issues/2261</a> (set up <code>&lt;max_server_memory_usage&gt;</code> manually)</li>
 <li>there are several ENV switches, see: <a href="https://github.com/ClickHouse/ClickHouse/blob/master/docker/server/entrypoint.sh" target="_blank">https://github.com/ClickHouse/ClickHouse/blob/master/docker/server/entrypoint.sh</a></li>
 </ul>
 <p>TLDR version: use it as a starting point:</p>
@@ -685,8 +686,8 @@ docker <span style="color:#204a87">exec</span> -it some-clickhouse-server bash
 	<div class="text-muted mt-5 pt-3 border-top">
 
     Last modified
-    2021.08.24
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/5cdec4106d860a1959fafa170ad6998be341a087">Format corrections and spell checks. (5cdec410)</a>
+    2021.09.29
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/0750503501677470be1167afceeb722f3cde53e5">Update altinity-kb-clickhouse-in-docker.md (07505035)</a>
 
 </div>
 
