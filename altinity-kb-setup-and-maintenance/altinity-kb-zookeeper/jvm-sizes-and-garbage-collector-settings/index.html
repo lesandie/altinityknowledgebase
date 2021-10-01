@@ -13,13 +13,13 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-zookeeper/jvm-sizes-and-garbage-collector-settings/" /><meta property="article:section" content="altinity-kb-setup-and-maintenance" />
 
-<meta property="article:modified_time" content="2021-09-07T08:37:10-06:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
+<meta property="article:modified_time" content="2021-10-01T14:37:58+02:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
 
 <meta itemprop="name" content="JVM sizes and garbage collector settings">
 <meta itemprop="description" content="JVM sizes and garbage collector settings
 ">
-<meta itemprop="dateModified" content="2021-09-07T08:37:10-06:00" />
-<meta itemprop="wordCount" content="375">
+<meta itemprop="dateModified" content="2021-10-01T14:37:58+02:00" />
+<meta itemprop="wordCount" content="407">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="JVM sizes and garbage collector settings"/>
 <meta name="twitter:description" content="JVM sizes and garbage collector settings
@@ -78,7 +78,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.c25fabc520ca8537604f1539281d21d9.json"
+  data-offline-search-index-json-src="/offline-search-index.d1b762db4c791910af4851f61a33f6a3.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -106,7 +106,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.c25fabc520ca8537604f1539281d21d9.json"
+  data-offline-search-index-json-src="/offline-search-index.d1b762db4c791910af4851f61a33f6a3.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -663,9 +663,9 @@
 	       
 	<h2 id="tldr-version">TLDR version</h2>
 <p>use fresh Java version (11 or newer), disable swap and set up (for 4 Gb node):</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#000">JAVA_OPTS</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;-Xms3G -Xmx3G -XX:+AlwaysPreTouch -Djute.maxbuffer=8388608 -XX:MaxGCPauseMillis=50&#34;</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#000">JAVA_OPTS</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;-Xms512m -Xmx3G -XX:+AlwaysPreTouch -Djute.maxbuffer=8388608 -XX:MaxGCPauseMillis=50&#34;</span>
 </code></pre></div><p>If you have a node with more RAM - change it accordingly, for example for 8Gb node:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#000">JAVA_OPTS</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;-Xms7G -Xmx7G -XX:+AlwaysPreTouch -Djute.maxbuffer=8388608 -XX:MaxGCPauseMillis=50&#34;</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#000">JAVA_OPTS</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;-Xms512m -Xmx7G -XX:+AlwaysPreTouch -Djute.maxbuffer=8388608 -XX:MaxGCPauseMillis=50&#34;</span>
 </code></pre></div><h2 id="details">Details</h2>
 <ol>
 <li>
@@ -683,7 +683,10 @@ On older JVM version (before 10) you may want to make some tuning to decrease pa
 <p>Set the Java heap size smaller than available RAM size on the node. This is very important to avoid swapping, which will seriously degrade ZooKeeper performance. Be conservative - use a maximum heap size of 3GB for a 4GB machine.</p>
 <ol>
 <li>
-<p>Set min (<code>Xms</code>) and max (<code>Xmx</code>) heap size to same value to avoid resizing. Add <code>XX:+AlwaysPreTouch</code> flag as well to load the memory pages into memory at the start of the zookeeper.</p>
+<p>Add <code>XX:+AlwaysPreTouch</code> flag as well to load the memory pages into memory at the start of the zookeeper.</p>
+</li>
+<li>
+<p>Set min (<code>Xms</code>) heap size to the values like 512Mb, or even to the same value as max (<code>Xmx</code>) to avoid resizing and returning the RAM to OS. Add <code>XX:+AlwaysPreTouch</code> flag as well to load the memory pages into memory at the start of the zookeeper.</p>
 </li>
 <li>
 <p><code>MaxGCPauseMillis=50</code> (by default 200) - the &lsquo;target&rsquo; acceptable pause for garbage collection (milliseconds)</p>
@@ -733,8 +736,8 @@ On older JVM version (before 10) you may want to make some tuning to decrease pa
 	<div class="text-muted mt-5 pt-3 border-top">
 
     Last modified
-    2021.09.07
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/465040d6a43faf6b440cb8e57d35a90d5d2accef">Replaced HTML code artifacts. (465040d6)</a>
+    2021.10.01
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/4c7b847bbfa3fab94a42e0a6f4c7e1d439980110">Update jvm-sizes-and-garbage-collector-settings.md (4c7b847b)</a>
 
 </div>
 
