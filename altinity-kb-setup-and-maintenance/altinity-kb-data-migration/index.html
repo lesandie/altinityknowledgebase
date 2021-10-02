@@ -74,7 +74,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.d1b762db4c791910af4851f61a33f6a3.json"
+  data-offline-search-index-json-src="/offline-search-index.67a3e828a5176b89c4caa1d8370a1ca3.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -102,7 +102,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.d1b762db4c791910af4851f61a33f6a3.json"
+  data-offline-search-index-json-src="/offline-search-index.67a3e828a5176b89c4caa1d8370a1ca3.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -671,8 +671,10 @@
 	<h2 id="export--import-into-common-data-formats">Export &amp; Import into common data formats</h2>
 <p>Pros:</p>
 <ul>
-<li>Data can be inserted into any DBMS.
-Cons:</li>
+<li>Data can be inserted into any DBMS.</li>
+</ul>
+<p>Cons:</p>
+<ul>
 <li>Decoding &amp; encoding of common data formats may be slower / require more CPU</li>
 <li>The data size is usually bigger than ClickHouse formats.</li>
 <li>Some of the common data formats have limitations.</li>
@@ -693,9 +695,11 @@ Cons:</li>
 <ul>
 <li>Simple to run.</li>
 <li>It’s possible to change the schema and distribution of data between shards.</li>
-<li>It’s possible to copy only some subset of data</li>
-<li>Needs only access to ClickHouse TCP port.
-Cons:</li>
+<li>It’s possible to copy only some subset of data.</li>
+<li>Needs only access to ClickHouse TCP port.</li>
+</ul>
+<p>Cons:</p>
+<ul>
 <li>Uses CPU / RAM (mostly on the receiver side)</li>
 </ul>
 <p>See details in:</p>
@@ -706,9 +710,11 @@ Cons:</li>
 <li>Possible to do <strong>some</strong> changes in schema.</li>
 <li>Needs only access to ClickHouse TCP port.</li>
 <li>It’s possible to change the distribution of data between shards.</li>
-<li>Suitable for large clusters: many clickhouse-copier can execute the same task together.
-Cons:</li>
-<li>May create an inconsistent result if source cluster data is changing during the process</li>
+<li>Suitable for large clusters: many clickhouse-copier can execute the same task together.</li>
+</ul>
+<p>Cons:</p>
+<ul>
+<li>May create an inconsistent result if source cluster data is changing during the process.</li>
 <li>Hard to setup.</li>
 <li>Requires zookeeper.</li>
 <li>Uses CPU / RAM (mostly on the clickhouse-copier and receiver side)</li>
@@ -736,8 +742,10 @@ Cons:</li>
 <h2 id="manual-parts-moving-freeze--rsync--attach">Manual parts moving: freeze / rsync / attach</h2>
 <p>Pros:</p>
 <ul>
-<li>Low CPU / RAM usage.
-Cons:</li>
+<li>Low CPU / RAM usage.</li>
+</ul>
+<p>Cons:</p>
+<ul>
 <li>Table schema should be the same.</li>
 <li>A lot of manual operations/scripting.</li>
 </ul>
@@ -756,8 +764,10 @@ Cons:</li>
 <p>Pros:</p>
 <ul>
 <li>Low CPU / RAM usage.</li>
-<li>Suitable to recover both schema &amp; data for all tables at once.
-Cons:</li>
+<li>Suitable to recover both schema &amp; data for all tables at once.</li>
+</ul>
+<p>Cons:</p>
+<ul>
 <li>Table schema should be the same.</li>
 </ul>
 <p>Just create the backup on server 1, upload it to server 2, and restore the backup.</p>
@@ -766,8 +776,10 @@ Cons:</li>
 <h2 id="fetch-from-zookeeper-path">Fetch from zookeeper path</h2>
 <p>Pros:</p>
 <ul>
-<li>Low CPU / RAM usage
-Cons:</li>
+<li>Low CPU / RAM usage.</li>
+</ul>
+<p>Cons:</p>
+<ul>
 <li>Table schema should be the same.</li>
 <li>Works only when the source and the destination clickhouse servers share the same zookeeper (without chroot)</li>
 <li>Needs to access zookeeper and ClickHouse replication ports: (<code>interserver_http_port</code> or <code>interserver_https_port</code>)</li>
@@ -779,8 +791,10 @@ Cons:</li>
 <ul>
 <li>Simple to setup</li>
 <li>Data is consistent all the time automatically.</li>
-<li>Low CPU and network usage.
-Cons:</li>
+<li>Low CPU and network usage.</li>
+</ul>
+<p>Cons:</p>
+<ul>
 <li>Needs to reach both zookeeper client (2181) and ClickHouse replication ports: (<code>interserver_http_port</code> or <code>interserver_https_port</code>)</li>
 <li>In case of cluster migration, zookeeper need’s to be migrated too.</li>
 <li>Replication works both ways.</li>
@@ -952,8 +966,8 @@ Cons:</li>
 	<div class="text-muted mt-5 pt-3 border-top">
 
     Last modified
-    2021.09.26
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/1ec67f618b7c25c06262c4050565344bda7a8224">grammar fix (1ec67f61)</a>
+    2021.10.02
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/4bff222d198cde868dc4a67ebf231deb0034532b">Update _index.md (4bff222d)</a>
 
 </div>
 
