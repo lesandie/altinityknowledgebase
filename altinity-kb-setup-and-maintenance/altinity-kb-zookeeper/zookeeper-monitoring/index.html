@@ -8,22 +8,22 @@
 <link rel="icon" href="/favicons/favicon.ico" >
 <title>Altinity Knowledge Base</title>
 <meta name="description" content="Altinity Knowledge Base"><meta property="og:title" content="" />
-<meta property="og:description" content="ZooKeeper Monitoring ZooKeeper scrape metrics  embedded exporter since version 3.6.0  https://zookeeper.apache.org/doc/r3.6.2/zookeeperMonitor.html   standalone exporter  https://github.com/dabealu/zookeeper-exporter    Install dashboards  embedded exporter https://grafana.com/grafana/dashboards/10465 dabealu exporter https://grafana.com/grafana/dashboards/11442  see also https://grafana.com/grafana/dashboards?search=ZooKeeper&amp;amp;dataSource=prometheus
-setup alert rules  embedded exporter https://github.com/Altinity/clickhouse-operator/blob/master/deploy/prometheus/prometheus-alert-rules.yaml#L480-L805  See also  https://blog.serverdensity.com/how-to-monitor-zookeeper/ https://www.datadoghq.com/blog/monitoring-kafka-performance-metrics/#zookeeper-metrics https://dzone.com/articles/monitoring-apache-zookeeper-servers https://docs.signalfx.com/en/latest/integrations/integrations-reference/integrations.zookeeper.html https://github.com/samber/awesome-prometheus-alerts/blob/c3ba0cf1997c7e952369a090aeb10343cdca4878/_data/rules.yml#L1146-L1170 (or https://awesome-prometheus-alerts.grep.to/rules.html#zookeeper ) https://alex.dzyoba.com/blog/prometheus-alerts/ https://docs.datadoghq.com/integrations/zk/?tab=host�  " />
+<meta property="og:description" content="ZooKeeper Monitoring ZooKeeper scrape metrics  embedded exporter since version 3.6.0  https://zookeeper.apache.org/doc/r3.6.2/zookeeperMonitor.html   standalone exporter  https://github.com/dabealu/zookeeper-exporter    Install dashboards  embedded exporter https://grafana.com/grafana/dashboards/10465 dabealu exporter https://grafana.com/grafana/dashboards/11442  See also https://grafana.com/grafana/dashboards?search=ZooKeeper&amp;amp;dataSource=prometheus
+setup alert rules  embedded exporter https://github.com/Altinity/clickhouse-operator/blob/master/deploy/prometheus/prometheus-alert-rules.yaml#L480-L805  See also  https://blog.serverdensity.com/how-to-monitor-zookeeper/ https://www.datadoghq.com/blog/monitoring-kafka-performance-metrics/#zookeeper-metrics https://dzone.com/articles/monitoring-apache-zookeeper-servers https://docs.signalfx.com/en/latest/integrations/integrations-reference/integrations.zookeeper.html https://github.com/samber/awesome-prometheus-alerts/blob/c3ba0cf1997c7e952369a090aeb10343cdca4878/_data/rules.yml#L1146-L1170 (or https://awesome-prometheus-alerts.grep.to/rules.html#zookeeper ) https://alex.dzyoba.com/blog/prometheus-alerts/ https://docs.datadoghq.com/integrations/zk/?tab=host  " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-zookeeper/zookeeper-monitoring/" /><meta property="article:section" content="altinity-kb-setup-and-maintenance" />
 
-<meta property="article:modified_time" content="2021-08-24T12:59:49-06:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
+<meta property="article:modified_time" content="2021-10-04T09:05:24-06:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
 
 <meta itemprop="name" content="">
-<meta itemprop="description" content="ZooKeeper Monitoring ZooKeeper scrape metrics  embedded exporter since version 3.6.0  https://zookeeper.apache.org/doc/r3.6.2/zookeeperMonitor.html   standalone exporter  https://github.com/dabealu/zookeeper-exporter    Install dashboards  embedded exporter https://grafana.com/grafana/dashboards/10465 dabealu exporter https://grafana.com/grafana/dashboards/11442  see also https://grafana.com/grafana/dashboards?search=ZooKeeper&amp;amp;dataSource=prometheus
-setup alert rules  embedded exporter https://github.com/Altinity/clickhouse-operator/blob/master/deploy/prometheus/prometheus-alert-rules.yaml#L480-L805  See also  https://blog.serverdensity.com/how-to-monitor-zookeeper/ https://www.datadoghq.com/blog/monitoring-kafka-performance-metrics/#zookeeper-metrics https://dzone.com/articles/monitoring-apache-zookeeper-servers https://docs.signalfx.com/en/latest/integrations/integrations-reference/integrations.zookeeper.html https://github.com/samber/awesome-prometheus-alerts/blob/c3ba0cf1997c7e952369a090aeb10343cdca4878/_data/rules.yml#L1146-L1170 (or https://awesome-prometheus-alerts.grep.to/rules.html#zookeeper ) https://alex.dzyoba.com/blog/prometheus-alerts/ https://docs.datadoghq.com/integrations/zk/?tab=host�  ">
-<meta itemprop="dateModified" content="2021-08-24T12:59:49-06:00" />
+<meta itemprop="description" content="ZooKeeper Monitoring ZooKeeper scrape metrics  embedded exporter since version 3.6.0  https://zookeeper.apache.org/doc/r3.6.2/zookeeperMonitor.html   standalone exporter  https://github.com/dabealu/zookeeper-exporter    Install dashboards  embedded exporter https://grafana.com/grafana/dashboards/10465 dabealu exporter https://grafana.com/grafana/dashboards/11442  See also https://grafana.com/grafana/dashboards?search=ZooKeeper&amp;amp;dataSource=prometheus
+setup alert rules  embedded exporter https://github.com/Altinity/clickhouse-operator/blob/master/deploy/prometheus/prometheus-alert-rules.yaml#L480-L805  See also  https://blog.serverdensity.com/how-to-monitor-zookeeper/ https://www.datadoghq.com/blog/monitoring-kafka-performance-metrics/#zookeeper-metrics https://dzone.com/articles/monitoring-apache-zookeeper-servers https://docs.signalfx.com/en/latest/integrations/integrations-reference/integrations.zookeeper.html https://github.com/samber/awesome-prometheus-alerts/blob/c3ba0cf1997c7e952369a090aeb10343cdca4878/_data/rules.yml#L1146-L1170 (or https://awesome-prometheus-alerts.grep.to/rules.html#zookeeper ) https://alex.dzyoba.com/blog/prometheus-alerts/ https://docs.datadoghq.com/integrations/zk/?tab=host  ">
+<meta itemprop="dateModified" content="2021-10-04T09:05:24-06:00" />
 <meta itemprop="wordCount" content="43">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content=""/>
-<meta name="twitter:description" content="ZooKeeper Monitoring ZooKeeper scrape metrics  embedded exporter since version 3.6.0  https://zookeeper.apache.org/doc/r3.6.2/zookeeperMonitor.html   standalone exporter  https://github.com/dabealu/zookeeper-exporter    Install dashboards  embedded exporter https://grafana.com/grafana/dashboards/10465 dabealu exporter https://grafana.com/grafana/dashboards/11442  see also https://grafana.com/grafana/dashboards?search=ZooKeeper&amp;amp;dataSource=prometheus
-setup alert rules  embedded exporter https://github.com/Altinity/clickhouse-operator/blob/master/deploy/prometheus/prometheus-alert-rules.yaml#L480-L805  See also  https://blog.serverdensity.com/how-to-monitor-zookeeper/ https://www.datadoghq.com/blog/monitoring-kafka-performance-metrics/#zookeeper-metrics https://dzone.com/articles/monitoring-apache-zookeeper-servers https://docs.signalfx.com/en/latest/integrations/integrations-reference/integrations.zookeeper.html https://github.com/samber/awesome-prometheus-alerts/blob/c3ba0cf1997c7e952369a090aeb10343cdca4878/_data/rules.yml#L1146-L1170 (or https://awesome-prometheus-alerts.grep.to/rules.html#zookeeper ) https://alex.dzyoba.com/blog/prometheus-alerts/ https://docs.datadoghq.com/integrations/zk/?tab=host�  "/>
+<meta name="twitter:description" content="ZooKeeper Monitoring ZooKeeper scrape metrics  embedded exporter since version 3.6.0  https://zookeeper.apache.org/doc/r3.6.2/zookeeperMonitor.html   standalone exporter  https://github.com/dabealu/zookeeper-exporter    Install dashboards  embedded exporter https://grafana.com/grafana/dashboards/10465 dabealu exporter https://grafana.com/grafana/dashboards/11442  See also https://grafana.com/grafana/dashboards?search=ZooKeeper&amp;amp;dataSource=prometheus
+setup alert rules  embedded exporter https://github.com/Altinity/clickhouse-operator/blob/master/deploy/prometheus/prometheus-alert-rules.yaml#L480-L805  See also  https://blog.serverdensity.com/how-to-monitor-zookeeper/ https://www.datadoghq.com/blog/monitoring-kafka-performance-metrics/#zookeeper-metrics https://dzone.com/articles/monitoring-apache-zookeeper-servers https://docs.signalfx.com/en/latest/integrations/integrations-reference/integrations.zookeeper.html https://github.com/samber/awesome-prometheus-alerts/blob/c3ba0cf1997c7e952369a090aeb10343cdca4878/_data/rules.yml#L1146-L1170 (or https://awesome-prometheus-alerts.grep.to/rules.html#zookeeper ) https://alex.dzyoba.com/blog/prometheus-alerts/ https://docs.datadoghq.com/integrations/zk/?tab=host  "/>
 
 
 
@@ -78,7 +78,7 @@ setup alert rules  embedded exporter https://github.com/Altinity/clickhouse-oper
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.67a3e828a5176b89c4caa1d8370a1ca3.json"
+  data-offline-search-index-json-src="/offline-search-index.a2d05cf3e4d8906fb90d86884e803d84.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -106,7 +106,7 @@ setup alert rules  embedded exporter https://github.com/Altinity/clickhouse-oper
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.67a3e828a5176b89c4caa1d8370a1ca3.json"
+  data-offline-search-index-json-src="/offline-search-index.a2d05cf3e4d8906fb90d86884e803d84.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -685,7 +685,7 @@ setup alert rules  embedded exporter https://github.com/Altinity/clickhouse-oper
 <li>embedded exporter <a href="https://grafana.com/grafana/dashboards/10465" target="_blank">https://grafana.com/grafana/dashboards/10465</a></li>
 <li>dabealu exporter <a href="https://grafana.com/grafana/dashboards/11442" target="_blank">https://grafana.com/grafana/dashboards/11442</a></li>
 </ul>
-<p>see also <a href="https://grafana.com/grafana/dashboards?search=ZooKeeper&amp;dataSource=prometheus" target="_blank">https://grafana.com/grafana/dashboards?search=ZooKeeper&amp;amp;dataSource=prometheus</a></p>
+<p>See also <a href="https://grafana.com/grafana/dashboards?search=ZooKeeper&amp;dataSource=prometheus" target="_blank">https://grafana.com/grafana/dashboards?search=ZooKeeper&amp;amp;dataSource=prometheus</a></p>
 <h3 id="setup-alert-rules">setup alert rules</h3>
 <ul>
 <li>embedded exporter <a href="https://github.com/Altinity/clickhouse-operator/blob/master/deploy/prometheus/prometheus-alert-rules.yaml#L480-L805" target="_blank">https://github.com/Altinity/clickhouse-operator/blob/master/deploy/prometheus/prometheus-alert-rules.yaml#L480-L805</a></li>
@@ -698,7 +698,7 @@ setup alert rules  embedded exporter https://github.com/Altinity/clickhouse-oper
 <li><a href="https://docs.signalfx.com/en/latest/integrations/integrations-reference/integrations.zookeeper.html" target="_blank">https://docs.signalfx.com/en/latest/integrations/integrations-reference/integrations.zookeeper.html</a></li>
 <li><a href="https://github.com/samber/awesome-prometheus-alerts/blob/c3ba0cf1997c7e952369a090aeb10343cdca4878/_data/rules.yml#L1146-L1170" target="_blank">https://github.com/samber/awesome-prometheus-alerts/blob/c3ba0cf1997c7e952369a090aeb10343cdca4878/_data/rules.yml#L1146-L1170</a> (or <a href="https://awesome-prometheus-alerts.grep.to/rules.html#zookeeper" target="_blank">https://awesome-prometheus-alerts.grep.to/rules.html#zookeeper</a> )</li>
 <li><a href="https://alex.dzyoba.com/blog/prometheus-alerts/" target="_blank">https://alex.dzyoba.com/blog/prometheus-alerts/</a></li>
-<li><a href="https://docs.datadoghq.com/integrations/zk/?tab=host" target="_blank">https://docs.datadoghq.com/integrations/zk/?tab=host</a> </li>
+<li><a href="https://docs.datadoghq.com/integrations/zk/?tab=host" target="_blank">https://docs.datadoghq.com/integrations/zk/?tab=host</a></li>
 </ul>
 
 	
@@ -706,8 +706,8 @@ setup alert rules  embedded exporter https://github.com/Altinity/clickhouse-oper
 	<div class="text-muted mt-5 pt-3 border-top">
 
     Last modified
-    2021.08.24
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/5cdec4106d860a1959fafa170ad6998be341a087">Format corrections and spell checks. (5cdec410)</a>
+    2021.10.04
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/f1b97ce8ec9741e0d0d702c266bebbc75db50a56">Update zookeeper-monitoring.md (f1b97ce8)</a>
 
 </div>
 

@@ -43,7 +43,7 @@
 &lt;li&gt;embedded exporter &lt;a href=&#34;https://grafana.com/grafana/dashboards/10465&#34; target=&#34;_blank&#34;&gt;https://grafana.com/grafana/dashboards/10465&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;dabealu exporter &lt;a href=&#34;https://grafana.com/grafana/dashboards/11442&#34; target=&#34;_blank&#34;&gt;https://grafana.com/grafana/dashboards/11442&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;see also &lt;a href=&#34;https://grafana.com/grafana/dashboards?search=ZooKeeper&amp;amp;dataSource=prometheus&#34; target=&#34;_blank&#34;&gt;https://grafana.com/grafana/dashboards?search=ZooKeeper&amp;amp;amp;dataSource=prometheus&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;See also &lt;a href=&#34;https://grafana.com/grafana/dashboards?search=ZooKeeper&amp;amp;dataSource=prometheus&#34; target=&#34;_blank&#34;&gt;https://grafana.com/grafana/dashboards?search=ZooKeeper&amp;amp;amp;dataSource=prometheus&lt;/a&gt;&lt;/p&gt;
 &lt;h3 id=&#34;setup-alert-rules&#34;&gt;setup alert rules&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;embedded exporter &lt;a href=&#34;https://github.com/Altinity/clickhouse-operator/blob/master/deploy/prometheus/prometheus-alert-rules.yaml#L480-L805&#34; target=&#34;_blank&#34;&gt;https://github.com/Altinity/clickhouse-operator/blob/master/deploy/prometheus/prometheus-alert-rules.yaml#L480-L805&lt;/a&gt;&lt;/li&gt;
@@ -56,7 +56,7 @@
 &lt;li&gt;&lt;a href=&#34;https://docs.signalfx.com/en/latest/integrations/integrations-reference/integrations.zookeeper.html&#34; target=&#34;_blank&#34;&gt;https://docs.signalfx.com/en/latest/integrations/integrations-reference/integrations.zookeeper.html&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://github.com/samber/awesome-prometheus-alerts/blob/c3ba0cf1997c7e952369a090aeb10343cdca4878/_data/rules.yml#L1146-L1170&#34; target=&#34;_blank&#34;&gt;https://github.com/samber/awesome-prometheus-alerts/blob/c3ba0cf1997c7e952369a090aeb10343cdca4878/_data/rules.yml#L1146-L1170&lt;/a&gt; (or &lt;a href=&#34;https://awesome-prometheus-alerts.grep.to/rules.html#zookeeper&#34; target=&#34;_blank&#34;&gt;https://awesome-prometheus-alerts.grep.to/rules.html#zookeeper&lt;/a&gt; )&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://alex.dzyoba.com/blog/prometheus-alerts/&#34; target=&#34;_blank&#34;&gt;https://alex.dzyoba.com/blog/prometheus-alerts/&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://docs.datadoghq.com/integrations/zk/?tab=host&#34; target=&#34;_blank&#34;&gt;https://docs.datadoghq.com/integrations/zk/?tab=host&lt;/a&gt;�&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.datadoghq.com/integrations/zk/?tab=host&#34; target=&#34;_blank&#34;&gt;https://docs.datadoghq.com/integrations/zk/?tab=host&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
       </description>
