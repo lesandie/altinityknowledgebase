@@ -13,13 +13,13 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://kb.altinity.com/altinity-kb-queries-and-syntax/atomic-insert/" /><meta property="article:section" content="altinity-kb-queries-and-syntax" />
 
-<meta property="article:modified_time" content="2021-09-07T08:37:10-06:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
+<meta property="article:modified_time" content="2021-10-08T13:14:02+02:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
 
 <meta itemprop="name" content="Atomic insert">
 <meta itemprop="description" content="Atomic insert
 ">
-<meta itemprop="dateModified" content="2021-09-07T08:37:10-06:00" />
-<meta itemprop="wordCount" content="46">
+<meta itemprop="dateModified" content="2021-10-08T13:14:02+02:00" />
+<meta itemprop="wordCount" content="49">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Atomic insert"/>
 <meta name="twitter:description" content="Atomic insert
@@ -78,7 +78,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.a2d05cf3e4d8906fb90d86884e803d84.json"
+  data-offline-search-index-json-src="/offline-search-index.546e223b87114a860f55c4e57404acf9.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -106,7 +106,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.a2d05cf3e4d8906fb90d86884e803d84.json"
+  data-offline-search-index-json-src="/offline-search-index.546e223b87114a860f55c4e57404acf9.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -645,7 +645,7 @@
 	<p>Insert would be atomic only if those conditions met:</p>
 <ul>
 <li>Insert data only in single partition.</li>
-<li>Numbers of rows is less than <code>max_insert_block_size</code>.</li>
+<li>Numbers of rows is less than <code>max_insert_block_size</code> (default is <code>1048545</code>)</li>
 <li>Table doesn&rsquo;t have Materialized Views (there is no atomicity Table &lt;&gt; MV)</li>
 <li>For TSV, TKSV, CSV, and JSONEachRow formats, setting <code>input_format_parallel_parsing=0</code> is set.</li>
 </ul>
@@ -656,8 +656,8 @@
 	<div class="text-muted mt-5 pt-3 border-top">
 
     Last modified
-    2021.09.07
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/465040d6a43faf6b440cb8e57d35a90d5d2accef">Replaced HTML code artifacts. (465040d6)</a>
+    2021.10.08
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/3a4be04436bcf310b7d8494c7649bd8d6b152625">Update atomic-insert.md (3a4be044)</a>
 
 </div>
 
