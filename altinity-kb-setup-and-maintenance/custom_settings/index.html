@@ -12,12 +12,12 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://kb.altinity.com/altinity-kb-setup-and-maintenance/custom_settings/" /><meta property="article:section" content="altinity-kb-setup-and-maintenance" />
 
-<meta property="article:modified_time" content="2021-09-29T15:38:07+02:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
+<meta property="article:modified_time" content="2021-10-08T14:04:05+02:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
 
 <meta itemprop="name" content="Custom Settings">
 <meta itemprop="description" content="Using custom settings">
-<meta itemprop="dateModified" content="2021-09-29T15:38:07+02:00" />
-<meta itemprop="wordCount" content="300">
+<meta itemprop="dateModified" content="2021-10-08T14:04:05+02:00" />
+<meta itemprop="wordCount" content="314">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Custom Settings"/>
 <meta name="twitter:description" content="Using custom settings"/>
@@ -75,7 +75,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.546e223b87114a860f55c4e57404acf9.json"
+  data-offline-search-index-json-src="/offline-search-index.a6e797b2ae18263c7bbe05eb7849d65b.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -103,7 +103,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.546e223b87114a860f55c4e57404acf9.json"
+  data-offline-search-index-json-src="/offline-search-index.a6e797b2ae18263c7bbe05eb7849d65b.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -641,16 +641,16 @@
 	       
 	<h2 id="using-custom-settings-in-config">Using custom settings in config</h2>
 <p>You can not use the cutsom settings in config file &lsquo;as is&rsquo;, because clickhouse don&rsquo;t know which datatype should be used to parse it.</p>
-<pre tabindex="0"><code>cat /etc/clickhouse-server/users.d/default_profile.xml 
-&lt;?xml version=&quot;1.0&quot;?&gt;
-&lt;yandex&gt;
-    &lt;profiles&gt;
-        &lt;default&gt;
-     	     &lt;custom_data_version&gt;1&lt;/custom_data_version&gt; &lt;!-- will not work! --&gt;
-        &lt;/default&gt;
-    &lt;/profiles&gt;
-&lt;/yandex&gt;
-</code></pre><p>That will end up with the following error:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml">cat /etc/clickhouse-server/users.d/default_profile.xml 
+<span style="color:#8f5902;font-style:italic">&lt;?xml version=&#34;1.0&#34;?&gt;</span>
+<span style="color:#204a87;font-weight:bold">&lt;yandex&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;profiles&gt;</span>
+        <span style="color:#204a87;font-weight:bold">&lt;default&gt;</span>
+     	     <span style="color:#204a87;font-weight:bold">&lt;custom_data_version&gt;</span>1<span style="color:#204a87;font-weight:bold">&lt;/custom_data_version&gt;</span> <span style="color:#8f5902;font-style:italic">&lt;!-- will not work! see below --&gt;</span>
+        <span style="color:#204a87;font-weight:bold">&lt;/default&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;/profiles&gt;</span>
+<span style="color:#204a87;font-weight:bold">&lt;/yandex&gt;</span>
+</code></pre></div><p>That will end up with the following error:</p>
 <pre tabindex="0"><code>2021.09.24 12:50:37.369259 [ 264905 ] {} &lt;Error&gt; ConfigReloader: Error updating configuration from '/etc/clickhouse-server/users.xml' config.: Code: 536. DB::Exception: Couldn't restore Field from dump: 1: while parsing value '1' for setting 'custom_data_version'. (CANNOT_RESTORE_FROM_FIELD_DUMP), Stack trace (when copying this message, always include the lines below):
 
 0. DB::Exception::Exception(std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt; &gt; const&amp;, int, bool) @ 0x9440eba in /usr/lib/debug/.build-id/ba/25f6646c3be7aa95f452ec85461e96178aa365.debug
@@ -671,24 +671,34 @@
 
 2021.09.29 11:36:07.722213 [ 2090 ] {} &lt;Error&gt; Application: DB::Exception: Couldn't restore Field from dump: 1: while parsing value '1' for setting 'custom_data_version'
 </code></pre><p>To make it work you need to change it an the following way:</p>
-<pre tabindex="0"><code>cat /etc/clickhouse-server/users.d/default_profile.xml 
-&lt;?xml version=&quot;1.0&quot;?&gt;
-&lt;yandex&gt;
-    &lt;profiles&gt;
-        &lt;default&gt;
-            &lt;custom_data_version&gt;UInt64_1&lt;/custom_data_version&gt;
-        &lt;/default&gt;
-    &lt;/profiles&gt;
-&lt;/yandex&gt;
-</code></pre><p>The list of recognized prefixes is in the sources: <a href="https://github.com/ClickHouse/ClickHouse/blob/ea13a8b562edbc422c07b5b4ecce353f79b6cb63/src/Core/Field.cpp#L253-L270" target="_blank">https://github.com/ClickHouse/ClickHouse/blob/ea13a8b562edbc422c07b5b4ecce353f79b6cb63/src/Core/Field.cpp#L253-L270</a></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml">cat /etc/clickhouse-server/users.d/default_profile.xml 
+<span style="color:#8f5902;font-style:italic">&lt;?xml version=&#34;1.0&#34;?&gt;</span>
+<span style="color:#204a87;font-weight:bold">&lt;yandex&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;profiles&gt;</span>
+        <span style="color:#204a87;font-weight:bold">&lt;default&gt;</span>
+            <span style="color:#204a87;font-weight:bold">&lt;custom_data_version&gt;</span>UInt64_1<span style="color:#204a87;font-weight:bold">&lt;/custom_data_version&gt;</span>
+        <span style="color:#204a87;font-weight:bold">&lt;/default&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;/profiles&gt;</span>
+<span style="color:#204a87;font-weight:bold">&lt;/yandex&gt;</span>
+</code></pre></div><p>or</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml">cat /etc/clickhouse-server/users.d/default_profile.xml 
+<span style="color:#8f5902;font-style:italic">&lt;?xml version=&#34;1.0&#34;?&gt;</span>
+<span style="color:#204a87;font-weight:bold">&lt;yandex&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;profiles&gt;</span>
+        <span style="color:#204a87;font-weight:bold">&lt;default&gt;</span>
+            <span style="color:#204a87;font-weight:bold">&lt;custom_data_version&gt;</span>&#39;1&#39;<span style="color:#204a87;font-weight:bold">&lt;/custom_data_version&gt;</span>
+        <span style="color:#204a87;font-weight:bold">&lt;/default&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;/profiles&gt;</span>
+<span style="color:#204a87;font-weight:bold">&lt;/yandex&gt;</span>
+</code></pre></div><p>The list of recognized prefixes is in the sources: <a href="https://github.com/ClickHouse/ClickHouse/blob/ea13a8b562edbc422c07b5b4ecce353f79b6cb63/src/Core/Field.cpp#L253-L270" target="_blank">https://github.com/ClickHouse/ClickHouse/blob/ea13a8b562edbc422c07b5b4ecce353f79b6cb63/src/Core/Field.cpp#L253-L270</a></p>
 
 	
 	
 	<div class="text-muted mt-5 pt-3 border-top">
 
     Last modified
-    2021.09.29
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/9412aa058ba1b216b791863652a43490599e599b">Create custom_settings.md (9412aa05)</a>
+    2021.10.08
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/58375decf0212a0e28a95c7072974c62ff758c93">Update custom_settings.md (58375dec)</a>
 
 </div>
 
