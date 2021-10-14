@@ -13,13 +13,13 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-server-config-files/" /><meta property="article:section" content="altinity-kb-setup-and-maintenance" />
 
-<meta property="article:modified_time" content="2021-09-07T08:37:10-06:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
+<meta property="article:modified_time" content="2021-10-14T17:22:46-03:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
 
 <meta itemprop="name" content="Server config files">
 <meta itemprop="description" content="How to manage server config files in Clickhouse
 ">
-<meta itemprop="dateModified" content="2021-09-07T08:37:10-06:00" />
-<meta itemprop="wordCount" content="713">
+<meta itemprop="dateModified" content="2021-10-14T17:22:46-03:00" />
+<meta itemprop="wordCount" content="694">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Server config files"/>
 <meta name="twitter:description" content="How to manage server config files in Clickhouse
@@ -78,7 +78,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.d57ab2fd342883cd11e6c477d6fc7556.json"
+  data-offline-search-index-json-src="/offline-search-index.4a687a3633a20dff4eeadd57cff4729e.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -106,7 +106,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.d57ab2fd342883cd11e6c477d6fc7556.json"
+  data-offline-search-index-json-src="/offline-search-index.4a687a3633a20dff4eeadd57cff4729e.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -655,15 +655,7 @@
 	</div>
 	
 	       
-	<ul>
-<li><a href="altinity-kb-server-config-files.md#Serverconfigfiles-%d0%a1onfigmanagement%28recommendedstructure%29">Сonfig management (recommended structure)</a></li>
-<li><a href="altinity-kb-server-config-files.md#Serverconfigfiles-Settings&amp;restart">Settings &amp;amp; restart</a></li>
-<li><a href="altinity-kb-server-config-files.md#Serverconfigfiles-Dictionaries">Dictionaries</a></li>
-<li><a href="altinity-kb-server-config-files.md#Serverconfigfiles-inclattribute&amp;metrica.xml">incl attribute &amp;amp; metrica.xml</a></li>
-<li><a href="altinity-kb-server-config-files.md#Serverconfigfiles-MultipleClickhouseinstancesatonehost">Multiple Clickhouse instances at one host</a></li>
-<li><a href="altinity-kb-server-config-files.md#Serverconfigfiles-preprocessed_configs">preprocessed_configs</a></li>
-</ul>
-<h2 id="сonfig-management-recommended-structure">Сonfig management (recommended structure)</h2>
+	<h2 id="сonfig-management-recommended-structure">Сonfig management (recommended structure)</h2>
 <p>Clickhouse server config consists of two parts server settings (config.xml) and users settings (users.xml).</p>
 <p>By default they are stored in the folder <strong>/etc/clickhouse-server/</strong> in two files config.xml &amp; users.xml.</p>
 <p>We suggest never change vendor config files and place your changes into separate .xml files in sub-folders. This way is easier to maintain and ease Clickhouse upgrades.</p>
@@ -845,8 +837,8 @@ cat /etc/clickhouse-server/users.d/enable_access_management_for_user_default.xml
 	<div class="text-muted mt-5 pt-3 border-top">
 
     Last modified
-    2021.09.07
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/465040d6a43faf6b440cb8e57d35a90d5d2accef">Replaced HTML code artifacts. (465040d6)</a>
+    2021.10.14
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/eaca4bb5f9cf8996fb53a41f54ac74f585739cca">Update altinity-kb-server-config-files.md (eaca4bb5)</a>
 
 </div>
 
