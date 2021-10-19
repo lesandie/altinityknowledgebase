@@ -61,7 +61,55 @@
 &lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#a40000&#34;&gt;┌─&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;a&lt;/span&gt;&lt;span style=&#34;color:#a40000&#34;&gt;─┬─&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;b&lt;/span&gt;&lt;span style=&#34;color:#a40000&#34;&gt;─┬─&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;c&lt;/span&gt;&lt;span style=&#34;color:#a40000&#34;&gt;─┐&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#a40000&#34;&gt;│&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;a&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#a40000&#34;&gt;│&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#a40000&#34;&gt;│&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;3&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#a40000&#34;&gt;│&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#a40000&#34;&gt;└───┴───┴───┘&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;last-non-null-value-for-each-column&#34;&gt;Last non-null value for each column&lt;/h2&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;CREATE TABLE test_last
+(
+    `col1` Int32,
+    `col2` SimpleAggregateFunction(anyLast, Nullable(DateTime)),
+    `col3` SimpleAggregateFunction(anyLast, Nullable(DateTime))
+)
+ENGINE = AggregatingMergeTree
+ORDER BY col1
+
+Ok.
+
+0 rows in set. Elapsed: 0.003 sec.
+
+INSERT INTO test_last (col1, col2) VALUES (1, now());
+
+Ok.
+
+1 rows in set. Elapsed: 0.014 sec.
+
+INSERT INTO test_last (col1, col3) VALUES (1, now())
+
+Ok.
+
+1 rows in set. Elapsed: 0.006 sec.
+
+SELECT
+    col1,
+    anyLast(col2),
+    anyLast(col3)
+FROM test_last
+GROUP BY col1
+
+┌─col1─┬───────anyLast(col2)─┬───────anyLast(col3)─┐
+│    1 │ 2020-01-16 20:57:46 │ 2020-01-16 20:57:51 │
+└──────┴─────────────────────┴─────────────────────┘
+
+1 rows in set. Elapsed: 0.005 sec.
+
+SELECT *
+FROM test_last
+FINAL
+
+┌─col1─┬────────────────col2─┬────────────────col3─┐
+│    1 │ 2020-01-16 20:57:46 │ 2020-01-16 20:57:51 │
+└──────┴─────────────────────┴─────────────────────┘
+
+1 rows in set. Elapsed: 0.003 sec. 
+&lt;/code&gt;&lt;/pre&gt;
       </description>
     </item>
     

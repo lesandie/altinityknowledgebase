@@ -13,13 +13,13 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://kb.altinity.com/engines/mergetree-table-engine-family/aggregatingmergetree/" /><meta property="article:section" content="engines" />
 
-<meta property="article:modified_time" content="2021-08-12T14:22:56-06:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
+<meta property="article:modified_time" content="2021-10-19T14:09:42+03:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
 
 <meta itemprop="name" content="AggregatingMergeTree">
 <meta itemprop="description" content="AggregatingMergeTree
 ">
-<meta itemprop="dateModified" content="2021-08-12T14:22:56-06:00" />
-<meta itemprop="wordCount" content="30">
+<meta itemprop="dateModified" content="2021-10-19T14:09:42+03:00" />
+<meta itemprop="wordCount" content="144">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="AggregatingMergeTree"/>
 <meta name="twitter:description" content="AggregatingMergeTree
@@ -78,7 +78,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.16f93d17974ad6dcc2026cd677c22f19.json"
+  data-offline-search-index-json-src="/offline-search-index.7c509af4b349ee72b62ed71bf49175c9.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -106,7 +106,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.16f93d17974ad6dcc2026cd677c22f19.json"
+  data-offline-search-index-json-src="/offline-search-index.7c509af4b349ee72b62ed71bf49175c9.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -709,14 +709,62 @@
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">┌─</span><span style="color:#000">a</span><span style="color:#a40000">─┬─</span><span style="color:#000">b</span><span style="color:#a40000">─┬─</span><span style="color:#204a87;font-weight:bold">c</span><span style="color:#a40000">─┐</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">a</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">3</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">└───┴───┴───┘</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></code></pre></div>
+</span></code></pre></div><h2 id="last-non-null-value-for-each-column">Last non-null value for each column</h2>
+<pre tabindex="0"><code>CREATE TABLE test_last
+(
+    `col1` Int32,
+    `col2` SimpleAggregateFunction(anyLast, Nullable(DateTime)),
+    `col3` SimpleAggregateFunction(anyLast, Nullable(DateTime))
+)
+ENGINE = AggregatingMergeTree
+ORDER BY col1
+
+Ok.
+
+0 rows in set. Elapsed: 0.003 sec.
+
+INSERT INTO test_last (col1, col2) VALUES (1, now());
+
+Ok.
+
+1 rows in set. Elapsed: 0.014 sec.
+
+INSERT INTO test_last (col1, col3) VALUES (1, now())
+
+Ok.
+
+1 rows in set. Elapsed: 0.006 sec.
+
+SELECT
+    col1,
+    anyLast(col2),
+    anyLast(col3)
+FROM test_last
+GROUP BY col1
+
+┌─col1─┬───────anyLast(col2)─┬───────anyLast(col3)─┐
+│    1 │ 2020-01-16 20:57:46 │ 2020-01-16 20:57:51 │
+└──────┴─────────────────────┴─────────────────────┘
+
+1 rows in set. Elapsed: 0.005 sec.
+
+SELECT *
+FROM test_last
+FINAL
+
+┌─col1─┬────────────────col2─┬────────────────col3─┐
+│    1 │ 2020-01-16 20:57:46 │ 2020-01-16 20:57:51 │
+└──────┴─────────────────────┴─────────────────────┘
+
+1 rows in set. Elapsed: 0.003 sec. 
+</code></pre>
 	
 	
 	<div class="text-muted mt-5 pt-3 border-top">
 
     Last modified
-    2021.08.12
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/5969b6886e2a31134118f644b6fd2463d98dcb80">General corrections and updates. (5969b688)</a>
+    2021.10.19
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/f96c6c81507f40d5e2a4227bc556b90ba32fd219">Update aggregatingmergetree.md (f96c6c81)</a>
 
 </div>
 
