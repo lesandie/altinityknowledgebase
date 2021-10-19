@@ -6,24 +6,21 @@
 <meta name="generator" content="Hugo 0.88.1" /><META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
 <link rel="shortcut icon" href="/favicons/favicon.ico" >
 <link rel="icon" href="/favicons/favicon.ico" >
-<title>Dictionaries vs LowCardinality | Altinity Knowledge Base</title>
-<meta name="description" content="Altinity Knowledge Base"><meta property="og:title" content="Dictionaries vs LowCardinality" />
-<meta property="og:description" content="Dictionaries vs LowCardinality
-" />
+<title>Install standalone Zookeeper for ClickHouse on Ubuntu / Debian | Altinity Knowledge Base</title>
+<meta name="description" content="Altinity Knowledge Base"><meta property="og:title" content="Install standalone Zookeeper for ClickHouse on Ubuntu / Debian" />
+<meta property="og:description" content="Install standalone Zookeeper for ClickHouse on Ubuntu / Debian." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://kb.altinity.com/altinity-kb-schema-design/altinity-kb-dictionaries-vs-lowcardinality/" /><meta property="article:section" content="altinity-kb-schema-design" />
+<meta property="og:url" content="http://kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-zookeeper/install_ubuntu/" /><meta property="article:section" content="altinity-kb-setup-and-maintenance" />
 
-<meta property="article:modified_time" content="2021-08-12T14:22:56-06:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
+<meta property="article:modified_time" content="2021-10-19T10:58:30+02:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
 
-<meta itemprop="name" content="Dictionaries vs LowCardinality">
-<meta itemprop="description" content="Dictionaries vs LowCardinality
-">
-<meta itemprop="dateModified" content="2021-08-12T14:22:56-06:00" />
-<meta itemprop="wordCount" content="241">
+<meta itemprop="name" content="Install standalone Zookeeper for ClickHouse on Ubuntu / Debian">
+<meta itemprop="description" content="Install standalone Zookeeper for ClickHouse on Ubuntu / Debian.">
+<meta itemprop="dateModified" content="2021-10-19T10:58:30+02:00" />
+<meta itemprop="wordCount" content="273">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Dictionaries vs LowCardinality"/>
-<meta name="twitter:description" content="Dictionaries vs LowCardinality
-"/>
+<meta name="twitter:title" content="Install standalone Zookeeper for ClickHouse on Ubuntu / Debian"/>
+<meta name="twitter:description" content="Install standalone Zookeeper for ClickHouse on Ubuntu / Debian."/>
 
 
 
@@ -307,10 +304,10 @@
   </ul>
 </li>
   </ul>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-altinity-kb-setup-and-maintenance-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-altinity-kb-setup-and-maintenance-li">
   <a href="/altinity-kb-setup-and-maintenance/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-altinity-kb-setup-and-maintenance"><span class="">Setup &amp; maintenance</span></a>
   <ul class="ul-2 foldable">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child collapse" id="m-altinity-kb-setup-and-maintenancealtinity-kb-s3-object-storage-li">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-altinity-kb-setup-and-maintenancealtinity-kb-s3-object-storage-li">
   <a href="/altinity-kb-setup-and-maintenance/altinity-kb-s3-object-storage/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-altinity-kb-setup-and-maintenancealtinity-kb-s3-object-storage"><span class="">S3 &amp; object storage</span></a>
   <ul class="ul-3 foldable">
     <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-setup-and-maintenancealtinity-kb-s3-object-storageaws-s3-recipes-li">
@@ -319,23 +316,23 @@
   <a href="/altinity-kb-setup-and-maintenance/altinity-kb-s3-object-storage/s3disk/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancealtinity-kb-s3-object-storages3disk"><span class="">S3Disk</span></a>
 </li>
   </ul>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-setup-and-maintenancecustom_settings-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenancecustom_settings-li">
   <a href="/altinity-kb-setup-and-maintenance/custom_settings/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancecustom_settings"><span class="">Custom Settings</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-setup-and-maintenancelogging-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenancelogging-li">
   <a href="/altinity-kb-setup-and-maintenance/logging/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancelogging"><span class="">Logging</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-setup-and-maintenancealtinity-packaging-compatibility-greater-than-21x-and-earlier-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenancealtinity-packaging-compatibility-greater-than-21x-and-earlier-li">
   <a href="/altinity-kb-setup-and-maintenance/altinity-packaging-compatibility-greater-than-21.x-and-earlier/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancealtinity-packaging-compatibility-greater-than-21x-and-earlier"><span class="">Altinity packaging compatibility &gt;21.x and earlier</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-setup-and-maintenanceaws-ebs-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenanceaws-ebs-li">
   <a href="/altinity-kb-setup-and-maintenance/aws-ebs/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenanceaws-ebs"><span class="">AWS EBS</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-setup-and-maintenancealtinity-kb-clickhouse-in-docker-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenancealtinity-kb-clickhouse-in-docker-li">
   <a href="/altinity-kb-setup-and-maintenance/altinity-kb-clickhouse-in-docker/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancealtinity-kb-clickhouse-in-docker"><span class="">ClickHouse in Docker</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-setup-and-maintenanceclickhouse-versions-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenanceclickhouse-versions-li">
   <a href="/altinity-kb-setup-and-maintenance/clickhouse-versions/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenanceclickhouse-versions"><span class="">ClickHouse versions</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-setup-and-maintenanceclickhouse-backup-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenanceclickhouse-backup-li">
   <a href="/altinity-kb-setup-and-maintenance/clickhouse-backup/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenanceclickhouse-backup"><span class="">clickhouse-backup</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-setup-and-maintenancealtinity-kb-converting-mergetree-to-replicated-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenancealtinity-kb-converting-mergetree-to-replicated-li">
   <a href="/altinity-kb-setup-and-maintenance/altinity-kb-converting-mergetree-to-replicated/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancealtinity-kb-converting-mergetree-to-replicated"><span class="">Converting MergeTree to Replicated</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child collapse" id="m-altinity-kb-setup-and-maintenancealtinity-kb-data-migration-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-altinity-kb-setup-and-maintenancealtinity-kb-data-migration-li">
   <a href="/altinity-kb-setup-and-maintenance/altinity-kb-data-migration/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-altinity-kb-setup-and-maintenancealtinity-kb-data-migration"><span class="">Data Migration</span></a>
   <ul class="ul-3 foldable">
     <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child collapse" id="m-altinity-kb-setup-and-maintenancealtinity-kb-data-migrationaltinity-kb-clickhouse-copier-li">
@@ -353,28 +350,28 @@
   <a href="/altinity-kb-setup-and-maintenance/altinity-kb-data-migration/rsync/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancealtinity-kb-data-migrationrsync"><span class="">rsync</span></a>
 </li>
   </ul>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child collapse" id="m-altinity-kb-setup-and-maintenancealtinity-kb-ddlworker-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-altinity-kb-setup-and-maintenancealtinity-kb-ddlworker-li">
   <a href="/altinity-kb-setup-and-maintenance/altinity-kb-ddlworker/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-altinity-kb-setup-and-maintenancealtinity-kb-ddlworker"><span class="">DDLWorker</span></a>
   <ul class="ul-3 foldable">
     <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-setup-and-maintenancealtinity-kb-ddlworkerthere-are-n-unfinished-hosts-0-of-them-are-currently-active-li">
   <a href="/altinity-kb-setup-and-maintenance/altinity-kb-ddlworker/there-are-n-unfinished-hosts-0-of-them-are-currently-active/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancealtinity-kb-ddlworkerthere-are-n-unfinished-hosts-0-of-them-are-currently-active"><span class="">There are N unfinished hosts (0 of them are currently active).</span></a>
 </li>
   </ul>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-setup-and-maintenanceclickhouse-backup-diff-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenanceclickhouse-backup-diff-li">
   <a href="/altinity-kb-setup-and-maintenance/clickhouse-backup-diff/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenanceclickhouse-backup-diff"><span class="">differential backups using clickhouse-backup</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-setup-and-maintenancehigh-cpu-usage-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenancehigh-cpu-usage-li">
   <a href="/altinity-kb-setup-and-maintenance/high-cpu-usage/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancehigh-cpu-usage"><span class="">High CPU usage</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-setup-and-maintenanceload-balancers-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenanceload-balancers-li">
   <a href="/altinity-kb-setup-and-maintenance/load-balancers/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenanceload-balancers"><span class="">Load balancers</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-setup-and-maintenancealtinity-kb-memory-configuration-settings-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenancealtinity-kb-memory-configuration-settings-li">
   <a href="/altinity-kb-setup-and-maintenance/altinity-kb-memory-configuration-settings/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancealtinity-kb-memory-configuration-settings"><span class="">memory configuration settings</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-setup-and-maintenancealtinity-kb-monitoring-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenancealtinity-kb-monitoring-li">
   <a href="/altinity-kb-setup-and-maintenance/altinity-kb-monitoring/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancealtinity-kb-monitoring"><span class="">Monitoring</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-setup-and-maintenancealtinity-kb-moving-table-to-another-device-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenancealtinity-kb-moving-table-to-another-device-li">
   <a href="/altinity-kb-setup-and-maintenance/altinity-kb-moving-table-to-another-device./" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancealtinity-kb-moving-table-to-another-device"><span class="">Moving table to another device.</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-setup-and-maintenancealtinity-kb-object-consistency-in-a-cluster-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenancealtinity-kb-object-consistency-in-a-cluster-li">
   <a href="/altinity-kb-setup-and-maintenance/altinity-kb-object-consistency-in-a-cluster/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancealtinity-kb-object-consistency-in-a-cluster"><span class="">Object consistency in a cluster</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child collapse" id="m-altinity-kb-setup-and-maintenancecluster-production-configuration-guide-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-altinity-kb-setup-and-maintenancecluster-production-configuration-guide-li">
   <a href="/altinity-kb-setup-and-maintenance/cluster-production-configuration-guide/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-altinity-kb-setup-and-maintenancecluster-production-configuration-guide"><span class="">Production Cluster Configuration Guide</span></a>
   <ul class="ul-3 foldable">
     <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-setup-and-maintenancecluster-production-configuration-guidehardening-clickhouse-security-li">
@@ -393,53 +390,53 @@
   <a href="/altinity-kb-setup-and-maintenance/cluster-production-configuration-guide/version-upgrades/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancecluster-production-configuration-guideversion-upgrades"><span class="">Version Upgrades</span></a>
 </li>
   </ul>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-setup-and-maintenancealtinity-kb-replication-queue-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenancealtinity-kb-replication-queue-li">
   <a href="/altinity-kb-setup-and-maintenance/altinity-kb-replication-queue/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancealtinity-kb-replication-queue"><span class="">Replication queue</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child collapse" id="m-altinity-kb-setup-and-maintenanceschema-migration-tools-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-altinity-kb-setup-and-maintenanceschema-migration-tools-li">
   <a href="/altinity-kb-setup-and-maintenance/schema-migration-tools/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-altinity-kb-setup-and-maintenanceschema-migration-tools"><span class="">Schema migration tools for ClickHouse</span></a>
   <ul class="ul-3 foldable">
     <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-setup-and-maintenanceschema-migration-toolsgolang-migrate-li">
   <a href="/altinity-kb-setup-and-maintenance/schema-migration-tools/golang-migrate/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenanceschema-migration-toolsgolang-migrate"><span class="">golang-migrate</span></a>
 </li>
   </ul>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-setup-and-maintenancealtinity-kb-server-config-files-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenancealtinity-kb-server-config-files-li">
   <a href="/altinity-kb-setup-and-maintenance/altinity-kb-server-config-files/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancealtinity-kb-server-config-files"><span class="">Server config files</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-setup-and-maintenancealtinity-kb-settings-to-adjust-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenancealtinity-kb-settings-to-adjust-li">
   <a href="/altinity-kb-setup-and-maintenance/altinity-kb-settings-to-adjust/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancealtinity-kb-settings-to-adjust"><span class="">Settings to adjust</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-setup-and-maintenancealtinity-kb-shutting-down-a-node-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenancealtinity-kb-shutting-down-a-node-li">
   <a href="/altinity-kb-setup-and-maintenance/altinity-kb-shutting-down-a-node/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancealtinity-kb-shutting-down-a-node"><span class="">Shutting down a node</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-setup-and-maintenancessl-connection-unexpectedly-closed-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenancessl-connection-unexpectedly-closed-li">
   <a href="/altinity-kb-setup-and-maintenance/ssl-connection-unexpectedly-closed/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancessl-connection-unexpectedly-closed"><span class="">SSL connection unexpectedly closed</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-setup-and-maintenancealtinity-kb-system-tables-eat-my-disk-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenancealtinity-kb-system-tables-eat-my-disk-li">
   <a href="/altinity-kb-setup-and-maintenance/altinity-kb-system-tables-eat-my-disk/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancealtinity-kb-system-tables-eat-my-disk"><span class="">System tables eat my disk</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-setup-and-maintenancealtinity-kb-threads-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenancealtinity-kb-threads-li">
   <a href="/altinity-kb-setup-and-maintenance/altinity-kb-threads/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancealtinity-kb-threads"><span class="">Threads</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-setup-and-maintenancealtinity-kb-who-ate-my-memory-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenancealtinity-kb-who-ate-my-memory-li">
   <a href="/altinity-kb-setup-and-maintenance/altinity-kb-who-ate-my-memory/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancealtinity-kb-who-ate-my-memory"><span class="">Who ate my memory</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-setup-and-maintenancex-rows-of-y-total-rows-in-filesystem-are-suspicious-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenancex-rows-of-y-total-rows-in-filesystem-are-suspicious-li">
   <a href="/altinity-kb-setup-and-maintenance/x-rows-of-y-total-rows-in-filesystem-are-suspicious/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancex-rows-of-y-total-rows-in-filesystem-are-suspicious"><span class="">X rows of Y total rows in filesystem are suspicious</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child collapse" id="m-altinity-kb-setup-and-maintenancealtinity-kb-zookeeper-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-altinity-kb-setup-and-maintenancealtinity-kb-zookeeper-li">
   <a href="/altinity-kb-setup-and-maintenance/altinity-kb-zookeeper/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-altinity-kb-setup-and-maintenancealtinity-kb-zookeeper"><span class="">ZooKeeper</span></a>
   <ul class="ul-3 foldable">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-setup-and-maintenancealtinity-kb-zookeeperinstall_ubuntu-li">
-  <a href="/altinity-kb-setup-and-maintenance/altinity-kb-zookeeper/install_ubuntu/" title="Install standalone Zookeeper for ClickHouse on Ubuntu / Debian" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancealtinity-kb-zookeeperinstall_ubuntu"><span class="">Zookeeper install on Ubuntu</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-setup-and-maintenancealtinity-kb-zookeeperzookeeper-monitoring-li">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-altinity-kb-setup-and-maintenancealtinity-kb-zookeeperinstall_ubuntu-li">
+  <a href="/altinity-kb-setup-and-maintenance/altinity-kb-zookeeper/install_ubuntu/" title="Install standalone Zookeeper for ClickHouse on Ubuntu / Debian" class="align-left pl-0 active td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancealtinity-kb-zookeeperinstall_ubuntu"><span class="td-sidebar-nav-active-item">Zookeeper install on Ubuntu</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenancealtinity-kb-zookeeperzookeeper-monitoring-li">
   <a href="/altinity-kb-setup-and-maintenance/altinity-kb-zookeeper/zookeeper-monitoring/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancealtinity-kb-zookeeperzookeeper-monitoring"><span class=""></span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-setup-and-maintenancealtinity-kb-zookeeperclickhouse-keeper-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenancealtinity-kb-zookeeperclickhouse-keeper-li">
   <a href="/altinity-kb-setup-and-maintenance/altinity-kb-zookeeper/clickhouse-keeper/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancealtinity-kb-zookeeperclickhouse-keeper"><span class="">clickhouse-keeper</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-setup-and-maintenancealtinity-kb-zookeeperaltinity-kb-how-to-check-the-list-of-watches-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenancealtinity-kb-zookeeperaltinity-kb-how-to-check-the-list-of-watches-li">
   <a href="/altinity-kb-setup-and-maintenance/altinity-kb-zookeeper/altinity-kb-how-to-check-the-list-of-watches/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancealtinity-kb-zookeeperaltinity-kb-how-to-check-the-list-of-watches"><span class="">How to check the list of watches</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-setup-and-maintenancealtinity-kb-zookeeperjvm-sizes-and-garbage-collector-settings-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenancealtinity-kb-zookeeperjvm-sizes-and-garbage-collector-settings-li">
   <a href="/altinity-kb-setup-and-maintenance/altinity-kb-zookeeper/jvm-sizes-and-garbage-collector-settings/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancealtinity-kb-zookeeperjvm-sizes-and-garbage-collector-settings"><span class="">JVM sizes and garbage collector settings</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-setup-and-maintenancealtinity-kb-zookeeperaltinity-kb-proper-setup-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenancealtinity-kb-zookeeperaltinity-kb-proper-setup-li">
   <a href="/altinity-kb-setup-and-maintenance/altinity-kb-zookeeper/altinity-kb-proper-setup/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancealtinity-kb-zookeeperaltinity-kb-proper-setup"><span class="">Proper setup</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-setup-and-maintenancealtinity-kb-zookeeperaltinity-kb-recovering-from-complete-metadata-loss-in-zookeeper-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenancealtinity-kb-zookeeperaltinity-kb-recovering-from-complete-metadata-loss-in-zookeeper-li">
   <a href="/altinity-kb-setup-and-maintenance/altinity-kb-zookeeper/altinity-kb-recovering-from-complete-metadata-loss-in-zookeeper/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancealtinity-kb-zookeeperaltinity-kb-recovering-from-complete-metadata-loss-in-zookeeper"><span class="">Recovering from complete metadata loss in ZooKeeper</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-setup-and-maintenancealtinity-kb-zookeeperaltinity-kb-zookeeper-backup-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenancealtinity-kb-zookeeperaltinity-kb-zookeeper-backup-li">
   <a href="/altinity-kb-setup-and-maintenance/altinity-kb-zookeeper/altinity-kb-zookeeper-backup/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancealtinity-kb-zookeeperaltinity-kb-zookeeper-backup"><span class="">ZooKeeper backup</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-setup-and-maintenancealtinity-kb-zookeeperaltinity-kb-zookeeper-cluster-migration-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenancealtinity-kb-zookeeperaltinity-kb-zookeeper-cluster-migration-li">
   <a href="/altinity-kb-setup-and-maintenance/altinity-kb-zookeeper/altinity-kb-zookeeper-cluster-migration/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancealtinity-kb-zookeeperaltinity-kb-zookeeper-cluster-migration"><span class="">ZooKeeper cluster migration</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-setup-and-maintenancealtinity-kb-zookeeperzookeeper-schema-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenancealtinity-kb-zookeeperzookeeper-schema-li">
   <a href="/altinity-kb-setup-and-maintenance/altinity-kb-zookeeper/zookeeper-schema/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancealtinity-kb-zookeeperzookeeper-schema"><span class="">ZooKeeper schema</span></a>
 </li>
   </ul>
@@ -460,12 +457,12 @@
   <a href="/altinity-kb-useful-queries/parts-consistency/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-useful-queriesparts-consistency"><span class="">Parts consistency</span></a>
 </li>
   </ul>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-altinity-kb-schema-design-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-altinity-kb-schema-design-li">
   <a href="/altinity-kb-schema-design/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-altinity-kb-schema-design"><span class="">Schema design</span></a>
   <ul class="ul-2 foldable">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-schema-designbest-schema-for-storing-many-metrics-registered-from-the-single-source-li">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-schema-designbest-schema-for-storing-many-metrics-registered-from-the-single-source-li">
   <a href="/altinity-kb-schema-design/best-schema-for-storing-many-metrics-registered-from-the-single-source/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-schema-designbest-schema-for-storing-many-metrics-registered-from-the-single-source"><span class="">Best schema for storing many metrics registered from the single source</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-altinity-kb-schema-designcodecs-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child collapse" id="m-altinity-kb-schema-designcodecs-li">
   <a href="/altinity-kb-schema-design/codecs/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-altinity-kb-schema-designcodecs"><span class="">Codecs</span></a>
   <ul class="ul-3 foldable">
     <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-schema-designcodecscodecs-on-array-columns-li">
@@ -476,21 +473,21 @@
   <a href="/altinity-kb-schema-design/codecs/altinity-kb-how-to-test-different-compression-codecs/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-schema-designcodecsaltinity-kb-how-to-test-different-compression-codecs"><span class="">How to test different compression codecs</span></a>
 </li>
   </ul>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-altinity-kb-schema-designaltinity-kb-dictionaries-vs-lowcardinality-li">
-  <a href="/altinity-kb-schema-design/altinity-kb-dictionaries-vs-lowcardinality/" class="align-left pl-0 active td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-schema-designaltinity-kb-dictionaries-vs-lowcardinality"><span class="td-sidebar-nav-active-item">Dictionaries vs LowCardinality</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-schema-designflattened-table-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-schema-designaltinity-kb-dictionaries-vs-lowcardinality-li">
+  <a href="/altinity-kb-schema-design/altinity-kb-dictionaries-vs-lowcardinality/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-schema-designaltinity-kb-dictionaries-vs-lowcardinality"><span class="">Dictionaries vs LowCardinality</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-schema-designflattened-table-li">
   <a href="/altinity-kb-schema-design/flattened-table/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-schema-designflattened-table"><span class="">Flattened table</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-schema-designfloats-vs-decimals-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-schema-designfloats-vs-decimals-li">
   <a href="/altinity-kb-schema-design/floats-vs-decimals/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-schema-designfloats-vs-decimals"><span class="">Floats vs Decimals</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-schema-designingestion-performance-and-formats-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-schema-designingestion-performance-and-formats-li">
   <a href="/altinity-kb-schema-design/ingestion-performance-and-formats/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-schema-designingestion-performance-and-formats"><span class="">Ingestion performance and formats</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-schema-designhow-to-store-ips-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-schema-designhow-to-store-ips-li">
   <a href="/altinity-kb-schema-design/how-to-store-ips/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-schema-designhow-to-store-ips"><span class="">IPs/masks</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-schema-designaltinity-kb-jsonasstring-and-mat-view-as-json-parser-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-schema-designaltinity-kb-jsonasstring-and-mat-view-as-json-parser-li">
   <a href="/altinity-kb-schema-design/altinity-kb-jsonasstring-and-mat.-view-as-json-parser/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-schema-designaltinity-kb-jsonasstring-and-mat-view-as-json-parser"><span class="">JSONAsString and Mat. View as JSON parser</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-schema-designlowcardinality-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-schema-designlowcardinality-li">
   <a href="/altinity-kb-schema-design/lowcardinality/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-schema-designlowcardinality"><span class="">LowCardinality</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-altinity-kb-schema-designmaterialized-views-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child collapse" id="m-altinity-kb-schema-designmaterialized-views-li">
   <a href="/altinity-kb-schema-design/materialized-views/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-altinity-kb-schema-designmaterialized-views"><span class="">MATERIALIZED VIEWS</span></a>
   <ul class="ul-3 foldable">
     <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-schema-designmaterialized-viewsbackfill-populate-mv-in-a-controlled-manner-li">
@@ -577,9 +574,9 @@
     
     
 
-    <a href="https://github.com/Altinity/altinityknowledgebase/edit/main/content/en/altinity-kb-schema-design/altinity-kb-dictionaries-vs-lowcardinality.md" target="_blank"><i class="fa fa-edit fa-fw"></i> Edit this page</a>
-    <a href="https://github.com/Altinity/altinityknowledgebase/new/main/content/en/altinity-kb-schema-design/altinity-kb-dictionaries-vs-lowcardinality.md?filename=change-me.md&amp;value=---%0Atitle%3A&#43;%22Long&#43;Page&#43;Title%22%0AlinkTitle%3A&#43;%22Short&#43;Nav&#43;Title%22%0Aweight%3A&#43;100%0Adescription%3A&#43;%3E-%0A&#43;&#43;&#43;&#43;&#43;Page&#43;description&#43;for&#43;heading&#43;and&#43;indexes.%0A---%0A%0A%23%23&#43;Heading%0A%0AEdit&#43;this&#43;template&#43;to&#43;create&#43;your&#43;new&#43;page.%0A%0A%2A&#43;Give&#43;it&#43;a&#43;good&#43;name%2C&#43;ending&#43;in&#43;%60.md%60&#43;-&#43;e.g.&#43;%60getting-started.md%60%0A%2A&#43;Edit&#43;the&#43;%22front&#43;matter%22&#43;section&#43;at&#43;the&#43;top&#43;of&#43;the&#43;page&#43;%28weight&#43;controls&#43;how&#43;its&#43;ordered&#43;amongst&#43;other&#43;pages&#43;in&#43;the&#43;same&#43;directory%3B&#43;lowest&#43;number&#43;first%29.%0A%2A&#43;Add&#43;a&#43;good&#43;commit&#43;message&#43;at&#43;the&#43;bottom&#43;of&#43;the&#43;page&#43;%28%3C80&#43;characters%3B&#43;use&#43;the&#43;extended&#43;description&#43;field&#43;for&#43;more&#43;detail%29.%0A%2A&#43;Create&#43;a&#43;new&#43;branch&#43;so&#43;you&#43;can&#43;preview&#43;your&#43;new&#43;file&#43;and&#43;request&#43;a&#43;review&#43;via&#43;Pull&#43;Request.%0A" target="_blank"><i class="fa fa-edit fa-fw"></i> Create child page</a>
-    <a href="https://github.com/Altinity/altinityknowledgebase/issues/new?title=/altinity-kb-schema-design/altinity-kb-dictionaries-vs-lowcardinality/" target="_blank"><i class="fab fa-github fa-fw"></i> Create documentation issue</a>
+    <a href="https://github.com/Altinity/altinityknowledgebase/edit/main/content/en/altinity-kb-setup-and-maintenance/altinity-kb-zookeeper/install_ubuntu.md" target="_blank"><i class="fa fa-edit fa-fw"></i> Edit this page</a>
+    <a href="https://github.com/Altinity/altinityknowledgebase/new/main/content/en/altinity-kb-setup-and-maintenance/altinity-kb-zookeeper/install_ubuntu.md?filename=change-me.md&amp;value=---%0Atitle%3A&#43;%22Long&#43;Page&#43;Title%22%0AlinkTitle%3A&#43;%22Short&#43;Nav&#43;Title%22%0Aweight%3A&#43;100%0Adescription%3A&#43;%3E-%0A&#43;&#43;&#43;&#43;&#43;Page&#43;description&#43;for&#43;heading&#43;and&#43;indexes.%0A---%0A%0A%23%23&#43;Heading%0A%0AEdit&#43;this&#43;template&#43;to&#43;create&#43;your&#43;new&#43;page.%0A%0A%2A&#43;Give&#43;it&#43;a&#43;good&#43;name%2C&#43;ending&#43;in&#43;%60.md%60&#43;-&#43;e.g.&#43;%60getting-started.md%60%0A%2A&#43;Edit&#43;the&#43;%22front&#43;matter%22&#43;section&#43;at&#43;the&#43;top&#43;of&#43;the&#43;page&#43;%28weight&#43;controls&#43;how&#43;its&#43;ordered&#43;amongst&#43;other&#43;pages&#43;in&#43;the&#43;same&#43;directory%3B&#43;lowest&#43;number&#43;first%29.%0A%2A&#43;Add&#43;a&#43;good&#43;commit&#43;message&#43;at&#43;the&#43;bottom&#43;of&#43;the&#43;page&#43;%28%3C80&#43;characters%3B&#43;use&#43;the&#43;extended&#43;description&#43;field&#43;for&#43;more&#43;detail%29.%0A%2A&#43;Create&#43;a&#43;new&#43;branch&#43;so&#43;you&#43;can&#43;preview&#43;your&#43;new&#43;file&#43;and&#43;request&#43;a&#43;review&#43;via&#43;Pull&#43;Request.%0A" target="_blank"><i class="fa fa-edit fa-fw"></i> Create child page</a>
+    <a href="https://github.com/Altinity/altinityknowledgebase/issues/new?title=/altinity-kb-setup-and-maintenance/altinity-kb-zookeeper/install_ubuntu/" target="_blank"><i class="fab fa-github fa-fw"></i> Create documentation issue</a>
     
 
   
@@ -590,6 +587,12 @@
             
 
 
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#reference-script-to-install-standalone-zookeeper-for-ubuntu--debian">Reference script to install standalone Zookeeper for Ubuntu / Debian</a></li>
+  </ul>
+</nav>
+
 
 
 
@@ -599,9 +602,9 @@
   <p>&nbsp;</p>
   <p>Share on Social Media:</p>
   <span style="display:flex; flex-direction: row; justify-content: space-between; align-items: flex-start; padding-left: 10px; padding-right: 75px;">
-    <a href="https://twitter.com/intent/tweet?text=Dictionaries%20vs%20LowCardinality&amp;url=http://kb.altinity.com/altinity-kb-schema-design/altinity-kb-dictionaries-vs-lowcardinality/" target="_blank" class="fab fa-twitter"></a>
-    <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://kb.altinity.com/altinity-kb-schema-design/altinity-kb-dictionaries-vs-lowcardinality/" target="_blank" class="fab fa-facebook"></a>
-    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http://kb.altinity.com/altinity-kb-schema-design/altinity-kb-dictionaries-vs-lowcardinality/&amp;title=Dictionaries%20vs%20LowCardinality"target="_blank" class="fab fa-linkedin"></a>
+    <a href="https://twitter.com/intent/tweet?text=Install%20standalone%20Zookeeper%20for%20ClickHouse%20on%20Ubuntu%20/%20Debian&amp;url=http://kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-zookeeper/install_ubuntu/" target="_blank" class="fab fa-twitter"></a>
+    <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-zookeeper/install_ubuntu/" target="_blank" class="fab fa-facebook"></a>
+    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http://kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-zookeeper/install_ubuntu/&amp;title=Install%20standalone%20Zookeeper%20for%20ClickHouse%20on%20Ubuntu%20/%20Debian"target="_blank" class="fab fa-linkedin"></a>
   </span>
 </div>
 
@@ -640,15 +643,25 @@
 
 
 
+
+
+
 <li class="breadcrumb-item" >
-	<a href="http://kb.altinity.com/altinity-kb-schema-design/">Schema design</a>
+	<a href="http://kb.altinity.com/altinity-kb-setup-and-maintenance/">Setup &amp; maintenance</a>
+</li>
+
+
+
+
+<li class="breadcrumb-item" >
+	<a href="http://kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-zookeeper/">ZooKeeper</a>
 </li>
 
 
 
 
 <li class="breadcrumb-item active" aria-current="page">
-	<a href="http://kb.altinity.com/altinity-kb-schema-design/altinity-kb-dictionaries-vs-lowcardinality/">Dictionaries vs LowCardinality</a>
+	<a href="http://kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-zookeeper/install_ubuntu/">Zookeeper install on Ubuntu</a>
 </li>
 
 	</ol>
@@ -656,26 +669,100 @@
 
             
 <div class="td-content">
-	<h1>Dictionaries vs LowCardinality</h1>
-    <div class="lead">
+	<h1>Install standalone Zookeeper for ClickHouse on Ubuntu / Debian</h1>
+    <div class="lead">Install standalone Zookeeper for ClickHouse on Ubuntu / Debian.
 	</div>
 	
 	       
-	<p>Q. I think I&rsquo;m still trying to understand how de-normalized is okay - with my relational mindset, I want to move repeated string fields into their own table, but I&rsquo;m not sure to what extent this is necessary</p>
-<p>I will look at LowCardinality in more detail - I think it may work well here</p>
-<p>A. If it&rsquo;s a simple repetition, which you don&rsquo;t need to manipulate/change in future - LowCardinality works great, and you usually don&rsquo;t need to increase the system complexity by introducing dicts.</p>
-<p>For example: name of team &lsquo;Manchester United&rsquo; will rather not be changed, and even if it will you can keep the historical records with historical name. So normalization here (with some dicts) is very optional, and de-normalized approach with LowCardinality is good &amp; simpler alternative.</p>
-<p>From the other hand: if data can be changed in future, and that change should impact the reports, then normalization may be a big advantage.</p>
-<p>For example if you need to change the used currency rare every day- it would be quite stupid to update all historical records to apply the newest exchange rate. And putting it to dict will allow to do calculations with latest exchange rate at select time.</p>
-<p>For dictionary it&rsquo;s possible to mark some of the attributes as injective. An attribute is called injective if different attribute values correspond to different keys. It would allow ClickHouse to replace dictGet call in GROUP BY with cheap dict key.</p>
+	<h2 id="reference-script-to-install-standalone-zookeeper-for-ubuntu--debian">Reference script to install standalone Zookeeper for Ubuntu / Debian</h2>
+<p>Tested on Ubuntu 20.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#8f5902;font-style:italic"># install java runtime environment</span>
+sudo apt install default-jre
 
+<span style="color:#8f5902;font-style:italic"># download and install files </span>
+sudo mkdir -p /var/lib/zookeeper/data /var/lib/zookeeper/logs /etc/zookeeper /var/log/zookeeper /opt 
+
+wget https://dlcdn.apache.org/zookeeper/zookeeper-3.6.3/apache-zookeeper-3.6.3-bin.tar.gz -O /tmp/apache-zookeeper-3.6.3-bin.tar.gz
+sudo tar -xvf /tmp/apache-zookeeper-3.6.3-bin.tar.gz -C /opt
+rm -rf /tmp/apache-zookeeper-3.6.3-bin.tar.gz
+
+<span style="color:#8f5902;font-style:italic"># create the user </span>
+sudo groupadd -r zookeeper
+sudo useradd -r -g zookeeper --home-dir<span style="color:#ce5c00;font-weight:bold">=</span>/var/lib/zookeeper --shell<span style="color:#ce5c00;font-weight:bold">=</span>/bin/false zookeeper
+
+<span style="color:#8f5902;font-style:italic"># symlink pointing to the used version of zookeeper distibution</span>
+sudo ln -s /opt/apache-zookeeper-3.6.3-bin /opt/zookeeper 
+sudo chown -R zookeeper:zookeeper /var/lib/zookeeper /var/log/zookeeper /etc/zookeeper /opt/apache-zookeeper-3.6.3-bin
+sudo chown -h zookeeper:zookeeper /opt/zookeeper
+
+<span style="color:#8f5902;font-style:italic"># shortcuts in /usr/local/bin/</span>
+<span style="color:#204a87">echo</span> -e <span style="color:#4e9a06">&#39;#!/usr/bin/env bash\n/opt/zookeeper/bin/zkCli.sh &#34;$@&#34;&#39;</span>             <span style="color:#000;font-weight:bold">|</span> sudo tee /usr/local/bin/zkCli
+<span style="color:#204a87">echo</span> -e <span style="color:#4e9a06">&#39;#!/usr/bin/env bash\n/opt/zookeeper/bin/zkServer.sh &#34;$@&#34;&#39;</span>          <span style="color:#000;font-weight:bold">|</span> sudo tee /usr/local/bin/zkServer
+<span style="color:#204a87">echo</span> -e <span style="color:#4e9a06">&#39;#!/usr/bin/env bash\n/opt/zookeeper/bin/zkCleanup.sh &#34;$@&#34;&#39;</span>         <span style="color:#000;font-weight:bold">|</span> sudo tee /usr/local/bin/zkCleanup
+<span style="color:#204a87">echo</span> -e <span style="color:#4e9a06">&#39;#!/usr/bin/env bash\n/opt/zookeeper/bin/zkSnapShotToolkit.sh &#34;$@&#34;&#39;</span> <span style="color:#000;font-weight:bold">|</span> sudo tee /usr/local/bin/zkSnapShotToolkit
+<span style="color:#204a87">echo</span> -e <span style="color:#4e9a06">&#39;#!/usr/bin/env bash\n/opt/zookeeper/bin/zkTxnLogToolkit.sh &#34;$@&#34;&#39;</span>   <span style="color:#000;font-weight:bold">|</span> sudo tee /usr/local/bin/zkTxnLogToolkit
+sudo chmod +x /usr/local/bin/zkCli /usr/local/bin/zkServer /usr/local/bin/zkCleanup /usr/local/bin/zkSnapShotToolkit /usr/local/bin/zkTxnLogToolkit
+
+<span style="color:#8f5902;font-style:italic"># put in the config</span>
+sudo cp opt/zookeeper/conf/* /etc/zookeeper
+cat <span style="color:#4e9a06">&lt;&lt;EOF | sudo tee /etc/zookeeper/zoo.cfg
+</span><span style="color:#4e9a06">syncLimit=10
+</span><span style="color:#4e9a06">maxSessionTimeout=60000000
+</span><span style="color:#4e9a06">maxClientCnxns=2000
+</span><span style="color:#4e9a06">preAllocSize=131072
+</span><span style="color:#4e9a06">snapCount=3000000
+</span><span style="color:#4e9a06">dataDir=/var/lib/zookeeper/data
+</span><span style="color:#4e9a06">dataLogDir=/var/lib/zookeeper/logs
+</span><span style="color:#4e9a06">clientPort=2181
+</span><span style="color:#4e9a06">#clientPortAddress=nthk-zoo1.localdomain
+</span><span style="color:#4e9a06">autopurge.snapRetainCount=10
+</span><span style="color:#4e9a06">autopurge.purgeInterval=1
+</span><span style="color:#4e9a06">4lw.commands.whitelist=*
+</span><span style="color:#4e9a06">EOF</span>
+sudo chown -R zookeeper:zookeeper /etc/zookeeper
+
+<span style="color:#8f5902;font-style:italic"># create systemd service file</span>
+cat <span style="color:#4e9a06">&lt;&lt;EOF | sudo tee /etc/systemd/system/zookeeper.service
+</span><span style="color:#4e9a06">[Unit]
+</span><span style="color:#4e9a06">Description=Zookeeper Daemon
+</span><span style="color:#4e9a06">Documentation=http://zookeeper.apache.org
+</span><span style="color:#4e9a06">Requires=network.target
+</span><span style="color:#4e9a06">After=network.target
+</span><span style="color:#4e9a06">
+</span><span style="color:#4e9a06">[Service]
+</span><span style="color:#4e9a06">Type=forking
+</span><span style="color:#4e9a06">WorkingDirectory=/var/lib/zookeeper
+</span><span style="color:#4e9a06">User=zookeeper
+</span><span style="color:#4e9a06">Group=zookeeper
+</span><span style="color:#4e9a06">Environment=ZK_SERVER_HEAP=1536 # in megabytes, adjust to ~ 80-90% of avaliable RAM (more than 8Gb is rather overkill)
+</span><span style="color:#4e9a06">Environment=SERVER_JVMFLAGS=&#34;-Xms256m -XX:+AlwaysPreTouch -Djute.maxbuffer=8388608 -XX:MaxGCPauseMillis=50&#34;
+</span><span style="color:#4e9a06">Environment=ZOO_LOG_DIR=/var/log/zookeeper
+</span><span style="color:#4e9a06">ExecStart=/opt/zookeeper/bin/zkServer.sh start /etc/zookeeper/zoo.cfg
+</span><span style="color:#4e9a06">ExecStop=/opt/zookeeper/bin/zkServer.sh stop /etc/zookeeper/zoo.cfg
+</span><span style="color:#4e9a06">ExecReload=/opt/zookeeper/bin/zkServer.sh restart /etc/zookeeper/zoo.cfg
+</span><span style="color:#4e9a06">TimeoutSec=30
+</span><span style="color:#4e9a06">Restart=on-failure
+</span><span style="color:#4e9a06">
+</span><span style="color:#4e9a06">[Install]
+</span><span style="color:#4e9a06">WantedBy=default.target
+</span><span style="color:#4e9a06">EOF</span>
+
+<span style="color:#8f5902;font-style:italic"># start zookeeper</span>
+sudo systemctl daemon-reload
+sudo systemctl start zookeeper.service 
+
+<span style="color:#8f5902;font-style:italic"># check status etc.</span>
+<span style="color:#204a87">echo</span> stat <span style="color:#000;font-weight:bold">|</span> nc localhost <span style="color:#0000cf;font-weight:bold">2181</span>
+<span style="color:#204a87">echo</span> ruok <span style="color:#000;font-weight:bold">|</span> nc localhost <span style="color:#0000cf;font-weight:bold">2181</span>
+<span style="color:#204a87">echo</span> mntr <span style="color:#000;font-weight:bold">|</span> nc localhost <span style="color:#0000cf;font-weight:bold">2181</span>
+</code></pre></div>
 	
 	
 	<div class="text-muted mt-5 pt-3 border-top">
 
     Last modified
-    2021.08.12
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/5969b6886e2a31134118f644b6fd2463d98dcb80">General corrections and updates. (5969b688)</a>
+    2021.10.19
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/7c6406d7cb56549949337a0a3d82be87fde56567">Create install_ubuntu.md (7c6406d7)</a>
 
 </div>
 
