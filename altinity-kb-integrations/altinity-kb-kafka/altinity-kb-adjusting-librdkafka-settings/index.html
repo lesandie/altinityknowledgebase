@@ -13,13 +13,13 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://kb.altinity.com/altinity-kb-integrations/altinity-kb-kafka/altinity-kb-adjusting-librdkafka-settings/" /><meta property="article:section" content="altinity-kb-integrations" />
 
-<meta property="article:modified_time" content="2021-08-24T14:08:13-06:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
+<meta property="article:modified_time" content="2021-10-20T17:16:42-03:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
 
 <meta itemprop="name" content="Adjusting librdkafka settings">
 <meta itemprop="description" content="Adjusting librdkafka settings
 ">
-<meta itemprop="dateModified" content="2021-08-24T14:08:13-06:00" />
-<meta itemprop="wordCount" content="201">
+<meta itemprop="dateModified" content="2021-10-20T17:16:42-03:00" />
+<meta itemprop="wordCount" content="210">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Adjusting librdkafka settings"/>
 <meta name="twitter:description" content="Adjusting librdkafka settings
@@ -78,7 +78,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.2d855711c7a00f2d201854cae20e5c99.json"
+  data-offline-search-index-json-src="/offline-search-index.3890c5b171c939a245181d73fa0fa395.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -106,7 +106,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.2d855711c7a00f2d201854cae20e5c99.json"
+  data-offline-search-index-json-src="/offline-search-index.3890c5b171c939a245181d73fa0fa395.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -595,6 +595,7 @@
     <li><a href="#authentication--connectivity">Authentication / connectivity</a>
       <ul>
         <li><a href="#amazon-msk">Amazon MSK</a></li>
+        <li><a href="#saslscram">SASL/SCRAM</a></li>
         <li><a href="#inline-kafka-certs">Inline Kafka certs</a></li>
         <li><a href="#azure-event-hub">Azure Event Hub</a></li>
         <li><a href="#kerberos">Kerberos</a></li>
@@ -719,6 +720,15 @@
     &lt;sasl_password&gt;toor&lt;/sasl_password&gt;
   &lt;/kafka&gt;
 &lt;/yandex&gt;
+</code></pre><h3 id="saslscram">SASL/SCRAM</h3>
+<pre tabindex="0"><code class="language-markup" data-lang="markup">&lt;yandex&gt;
+  &lt;kafka&gt;
+    &lt;security_protocol&gt;sasl_ssl&lt;/security_protocol&gt;
+    &lt;sasl_mechanism&gt;SCRAM-SHA-512&lt;/sasl_mechanism&gt;
+    &lt;sasl_username&gt;root&lt;/sasl_username&gt;
+    &lt;sasl_password&gt;toor&lt;/sasl_password&gt;
+  &lt;/kafka&gt;
+&lt;/yandex&gt;
 </code></pre><p><a href="https://leftjoin.ru/all/clickhouse-as-a-consumer-to-amazon-msk/" target="_blank">https://leftjoin.ru/all/clickhouse-as-a-consumer-to-amazon-msk/</a></p>
 <h3 id="inline-kafka-certs">Inline Kafka certs</h3>
 <p>To connect to some Kafka cloud services you may need to use certificates.</p>
@@ -784,8 +794,8 @@
 	<div class="text-muted mt-5 pt-3 border-top">
 
     Last modified
-    2021.08.24
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/6fe6a9e5c054b468bc6eee26241652ee5ee65288">Code format corrections. (6fe6a9e5)</a>
+    2021.10.20
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/36a2dd02e72de06c8828b9bb135f7368983a53cf">Update altinity-kb-adjusting-librdkafka-settings.md (36a2dd02)</a>
 
 </div>
 

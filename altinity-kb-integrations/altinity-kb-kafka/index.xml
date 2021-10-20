@@ -56,6 +56,15 @@
     &amp;lt;sasl_password&amp;gt;toor&amp;lt;/sasl_password&amp;gt;
   &amp;lt;/kafka&amp;gt;
 &amp;lt;/yandex&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;saslscram&#34;&gt;SASL/SCRAM&lt;/h3&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-markup&#34; data-lang=&#34;markup&#34;&gt;&amp;lt;yandex&amp;gt;
+  &amp;lt;kafka&amp;gt;
+    &amp;lt;security_protocol&amp;gt;sasl_ssl&amp;lt;/security_protocol&amp;gt;
+    &amp;lt;sasl_mechanism&amp;gt;SCRAM-SHA-512&amp;lt;/sasl_mechanism&amp;gt;
+    &amp;lt;sasl_username&amp;gt;root&amp;lt;/sasl_username&amp;gt;
+    &amp;lt;sasl_password&amp;gt;toor&amp;lt;/sasl_password&amp;gt;
+  &amp;lt;/kafka&amp;gt;
+&amp;lt;/yandex&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;a href=&#34;https://leftjoin.ru/all/clickhouse-as-a-consumer-to-amazon-msk/&#34; target=&#34;_blank&#34;&gt;https://leftjoin.ru/all/clickhouse-as-a-consumer-to-amazon-msk/&lt;/a&gt;&lt;/p&gt;
 &lt;h3 id=&#34;inline-kafka-certs&#34;&gt;Inline Kafka certs&lt;/h3&gt;
 &lt;p&gt;To connect to some Kafka cloud services you may need to use certificates.&lt;/p&gt;
