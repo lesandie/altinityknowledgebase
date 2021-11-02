@@ -13,13 +13,13 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://kb.altinity.com/altinity-kb-useful-queries/altinity-kb-database-size-table-column-size/" /><meta property="article:section" content="altinity-kb-useful-queries" />
 
-<meta property="article:modified_time" content="2021-08-12T14:22:56-06:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
+<meta property="article:modified_time" content="2021-11-02T11:35:07+01:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
 
 <meta itemprop="name" content="Database Size - Table - Column size">
 <meta itemprop="description" content="Database Size - Table - Column size
 ">
-<meta itemprop="dateModified" content="2021-08-12T14:22:56-06:00" />
-<meta itemprop="wordCount" content="12">
+<meta itemprop="dateModified" content="2021-11-02T11:35:07+01:00" />
+<meta itemprop="wordCount" content="156">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Database Size - Table - Column size"/>
 <meta name="twitter:description" content="Database Size - Table - Column size
@@ -78,7 +78,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.9ac7099a6cde0f70f4a3d8f4e3f1343e.json"
+  data-offline-search-index-json-src="/offline-search-index.f946a42c42d068d21d8bfbc49eaa7b7b.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -106,7 +106,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.9ac7099a6cde0f70f4a3d8f4e3f1343e.json"
+  data-offline-search-index-json-src="/offline-search-index.f946a42c42d068d21d8bfbc49eaa7b7b.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -604,6 +604,9 @@
         <li><a href="#projection-column-size">Projection column size</a></li>
       </ul>
     </li>
+    <li><a href="#understanding-the-columns-data-properties">Understanding the columns data properties:</a></li>
+    <li><a href="#understanding-the-ingest-pattern">Understanding the ingest pattern:</a></li>
+    <li><a href="#understanding-the-partitioning">Understanding the partitioning</a></li>
   </ul>
 </nav>
 
@@ -742,14 +745,69 @@
 </span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">table</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">column</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">ORDER</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">BY</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">size</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">DESC</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></code></pre></div>
+</span></code></pre></div><h2 id="understanding-the-columns-data-properties">Understanding the columns data properties:</h2>
+<pre tabindex="0"><code>SELECT count(), * APPLY (uniq), * APPLY (max), * APPLY (min), * APPLY(topK(5)) FROM table_name FORMAT Vertical;
+
+# also you can add * APPLY (entropy) to show entropy (i.e. 'randomness' of the column).
+</code></pre><h2 id="understanding-the-ingest-pattern">Understanding the ingest pattern:</h2>
+<pre tabindex="0"><code>SELECT
+    database,
+    table,
+    median(rows),
+    median(bytes_on_disk),
+    sum(rows),
+    max(bytes_on_disk),
+    min(bytes_on_disk),
+    round(quantile(0.95)(bytes_on_disk), 0),
+    sum(bytes_on_disk),
+    count(),
+    countIf(NOT active),
+    uniqExact(partition)
+FROM system.parts
+WHERE (modification_time &gt; (now() - 480)) AND (level = 0)
+GROUP BY
+    database,
+    table
+ORDER BY count() DESC
+</code></pre><h2 id="understanding-the-partitioning">Understanding the partitioning</h2>
+<pre tabindex="0"><code>SELECT
+    database,
+    table,
+    count(),
+    topK(5)(partition),
+    COLUMNS('metric.*') APPLY(quantiles(0.005, 0.05, 0.10, 0.25, 0.5, 0.75, 0.9, 0.95, 0.995))
+FROM
+(
+    SELECT
+        database,
+        table,
+        partition,
+        sum(bytes_on_disk) AS metric_bytes,
+        sum(data_uncompressed_bytes) AS metric_uncompressed_bytes,
+        sum(rows) AS metric_rows,
+        sum(primary_key_bytes_in_memory) AS metric_pk_size,
+        count() AS metric_count,
+        countIf(part_type = 'Wide') AS metric_wide_count,
+        countIf(part_type = 'Compact') AS metric_compact_count,
+        countIf(part_type = 'Memory') AS metric_memory_count
+    FROM system.parts
+    GROUP BY
+        database,
+        table,
+        partition
+)
+GROUP BY
+    database,
+    table
+FORMAT Vertical
+</code></pre>
 	
 	
 	<div class="text-muted mt-5 pt-3 border-top">
 
     Last modified
-    2021.08.12
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/5969b6886e2a31134118f644b6fd2463d98dcb80">General corrections and updates. (5969b688)</a>
+    2021.11.02
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/c8e72c8c7fa45285d5409a76e964a30b6f884b1f">Update altinity-kb-database-size-table-column-size.md (c8e72c8c)</a>
 
 </div>
 
