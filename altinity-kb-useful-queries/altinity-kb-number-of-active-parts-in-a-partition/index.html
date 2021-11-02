@@ -13,13 +13,13 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://kb.altinity.com/altinity-kb-useful-queries/altinity-kb-number-of-active-parts-in-a-partition/" /><meta property="article:section" content="altinity-kb-useful-queries" />
 
-<meta property="article:modified_time" content="2021-09-25T23:54:51+03:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
+<meta property="article:modified_time" content="2021-11-02T15:01:14-03:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
 
 <meta itemprop="name" content="Number of active parts in a partition">
 <meta itemprop="description" content="Number of active parts in a partition
 ">
-<meta itemprop="dateModified" content="2021-09-25T23:54:51+03:00" />
-<meta itemprop="wordCount" content="105">
+<meta itemprop="dateModified" content="2021-11-02T15:01:14-03:00" />
+<meta itemprop="wordCount" content="140">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Number of active parts in a partition"/>
 <meta name="twitter:description" content="Number of active parts in a partition
@@ -78,7 +78,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.06f320afdedc49dd181cbc212f2c4a65.json"
+  data-offline-search-index-json-src="/offline-search-index.dc43b98e67cc1c56227b0541568188f3.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -106,7 +106,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.06f320afdedc49dd181cbc212f2c4a65.json"
+  data-offline-search-index-json-src="/offline-search-index.dc43b98e67cc1c56227b0541568188f3.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -677,14 +677,28 @@
 <p>CH merge scheduler balances between a big number of parts and a wasting resources on merges.</p>
 <p>Merges are CPU/DISK IO expensive. If CH will merge every new part then all resources will be spend on merges and will no resources remain on queries (selects ).</p>
 <p>CH will not merge parts with a combined size greater than 100 GB.</p>
-
+<pre tabindex="0"><code>SELECT
+    database,
+    table,
+    partition,
+    sum(rows) AS rows,
+    count() AS part_count
+FROM system.parts
+WHERE (active = 1) AND (table LIKE '%') AND (database LIKE '%')
+GROUP BY
+    database,
+    table,
+    partition
+ORDER BY part_count DESC
+limit 20
+</code></pre>
 	
 	
 	<div class="text-muted mt-5 pt-3 border-top">
 
     Last modified
-    2021.09.25
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/6023d6e3b54ded581ea1378df74a47fa9c713c79">fixes (6023d6e3)</a>
+    2021.11.02
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/e2a1932c3613e4aae608b1f841218d5628551ad0">Update altinity-kb-number-of-active-parts-in-a-partition.md (e2a1932c)</a>
 
 </div>
 
