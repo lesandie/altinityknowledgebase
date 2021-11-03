@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.88.1" /><META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
+<meta name="generator" content="Hugo 0.89.0" /><META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
 <link rel="shortcut icon" href="/favicons/favicon.ico" >
 <link rel="icon" href="/favicons/favicon.ico" >
 <title>High CPU usage | Altinity Knowledge Base</title>
@@ -19,7 +19,7 @@
 <meta itemprop="description" content="High CPU usage
 ">
 <meta itemprop="dateModified" content="2021-08-24T12:59:49-06:00" />
-<meta itemprop="wordCount" content="449">
+<meta itemprop="wordCount" content="425">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="High CPU usage"/>
 <meta name="twitter:description" content="High CPU usage
@@ -78,7 +78,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.dc43b98e67cc1c56227b0541568188f3.json"
+  data-offline-search-index-json-src="/offline-search-index.7159fc86410372702bb25f7c9ff6f8aa.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -106,7 +106,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.dc43b98e67cc1c56227b0541568188f3.json"
+  data-offline-search-index-json-src="/offline-search-index.7159fc86410372702bb25f7c9ff6f8aa.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -679,7 +679,7 @@ If it is acceptable for you - please check the following options for limiting th
 <p>by specifying them when connecting a client, for example</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">clickhouse-client --os_thread_priority <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#0000cf;font-weight:bold">19</span> -q <span style="color:#4e9a06">&#39;SELECT max (number) from numbers (100000000)&#39;</span>
 
-<span style="color:#204a87">echo</span> <span style="color:#4e9a06">&#39;SELECT max (number) from numbers (100000000)&#39;</span> <span style="color:#000;font-weight:bold">|</span> curl <span style="color:#4e9a06">&#39;http://localhost:8123/?os_thread_priority=19&#39;</span> --data-binary @-
+
 </code></pre></div></li>
 <li>
 <p>via dedicated API / connection parameters in client libraries</p>
@@ -697,13 +697,13 @@ If it is acceptable for you - please check the following options for limiting th
         ...
         <span style="color:#204a87;font-weight:bold">&lt;/default&gt;</span>
 
-        <span style="color:#204a87;font-weight:bold">&lt;lowcpu&gt;</span>
+
             <span style="color:#204a87;font-weight:bold">&lt;os_thread_priority&gt;</span>19<span style="color:#204a87;font-weight:bold">&lt;/os_thread_priority&gt;</span>
             <span style="color:#204a87;font-weight:bold">&lt;max_threads&gt;</span>4<span style="color:#204a87;font-weight:bold">&lt;/max_threads&gt;</span>
         <span style="color:#204a87;font-weight:bold">&lt;/lowcpu&gt;</span>
     <span style="color:#204a87;font-weight:bold">&lt;/profiles&gt;</span>
 
-    <span style="color:#8f5902;font-style:italic">&lt;!-- Users and ACL. --&gt;</span>
+
     <span style="color:#204a87;font-weight:bold">&lt;users&gt;</span>
         <span style="color:#8f5902;font-style:italic">&lt;!-- If user name was not specified, &#39;default&#39; user is used. --&gt;</span>
         <span style="color:#204a87;font-weight:bold">&lt;limited_user&gt;</span>
@@ -713,12 +713,12 @@ If it is acceptable for you - please check the following options for limiting th
             <span style="color:#204a87;font-weight:bold">&lt;/networks&gt;</span>
             <span style="color:#204a87;font-weight:bold">&lt;profile&gt;</span>lowcpu<span style="color:#204a87;font-weight:bold">&lt;/profile&gt;</span>
 
-            <span style="color:#8f5902;font-style:italic">&lt;!-- Quota for user. --&gt;</span>
+
             <span style="color:#204a87;font-weight:bold">&lt;quota&gt;</span>default<span style="color:#204a87;font-weight:bold">&lt;/quota&gt;</span>
         <span style="color:#204a87;font-weight:bold">&lt;/limited_user&gt;</span>
     <span style="color:#204a87;font-weight:bold">&lt;/users&gt;</span>
 
-<span style="color:#204a87;font-weight:bold">&lt;/yandex&gt;</span>
+
 </code></pre></div></li>
 </ol>
 <p>There are also plans to introduce a system of more flexible control over the assignment of resources to different requests.</p>
