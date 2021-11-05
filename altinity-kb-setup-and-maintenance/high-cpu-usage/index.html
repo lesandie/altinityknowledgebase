@@ -13,13 +13,13 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://kb.altinity.com/altinity-kb-setup-and-maintenance/high-cpu-usage/" /><meta property="article:section" content="altinity-kb-setup-and-maintenance" />
 
-<meta property="article:modified_time" content="2021-08-24T12:59:49-06:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
+<meta property="article:modified_time" content="2021-11-05T10:29:43+01:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
 
 <meta itemprop="name" content="High CPU usage">
 <meta itemprop="description" content="High CPU usage
 ">
-<meta itemprop="dateModified" content="2021-08-24T12:59:49-06:00" />
-<meta itemprop="wordCount" content="425">
+<meta itemprop="dateModified" content="2021-11-05T10:29:43+01:00" />
+<meta itemprop="wordCount" content="423">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="High CPU usage"/>
 <meta name="twitter:description" content="High CPU usage
@@ -78,7 +78,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.7159fc86410372702bb25f7c9ff6f8aa.json"
+  data-offline-search-index-json-src="/offline-search-index.e47d266fd40dc867786a6228dcb99762.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -106,7 +106,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.7159fc86410372702bb25f7c9ff6f8aa.json"
+  data-offline-search-index-json-src="/offline-search-index.e47d266fd40dc867786a6228dcb99762.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -677,7 +677,7 @@ If it is acceptable for you - please check the following options for limiting th
 <ol>
 <li>
 <p>by specifying them when connecting a client, for example</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">clickhouse-client --os_thread_priority <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#0000cf;font-weight:bold">19</span> -q <span style="color:#4e9a06">&#39;SELECT max (number) from numbers (100000000)&#39;</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">clickhouse-client --os_thread_priority<span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">19</span> -q <span style="color:#4e9a06">&#39;SELECT max (number) from numbers (100000000)&#39;</span>
 
 
 </code></pre></div></li>
@@ -686,7 +686,8 @@ If it is acceptable for you - please check the following options for limiting th
 </li>
 <li>
 <p>using the SQL command SET (works only within the session)</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#204a87;font-weight:bold">SET</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">os_thread_priority</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">19</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">SELECT</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">max</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">(</span><span style="color:#204a87">number</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">from</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">numbers</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">(</span><span style="color:#0000cf;font-weight:bold">100000000</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline">
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#204a87;font-weight:bold">SET</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">os_thread_priority</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">19</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">SELECT</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">max</span><span style="color:#000;font-weight:bold">(</span><span style="color:#204a87">number</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">from</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">numbers</span><span style="color:#000;font-weight:bold">(</span><span style="color:#0000cf;font-weight:bold">100000000</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></code></pre></div></li>
 <li>
 <p>using different profiles of settings for different users. Something like</p>
@@ -730,8 +731,8 @@ If it is acceptable for you - please check the following options for limiting th
 	<div class="text-muted mt-5 pt-3 border-top">
 
     Last modified
-    2021.08.24
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/5cdec4106d860a1959fafa170ad6998be341a087">Format corrections and spell checks. (5cdec410)</a>
+    2021.11.05
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/49ce363f234a82efe4f4db090e114f317939f4f7">Update high-cpu-usage.md (49ce363f)</a>
 
 </div>
 
