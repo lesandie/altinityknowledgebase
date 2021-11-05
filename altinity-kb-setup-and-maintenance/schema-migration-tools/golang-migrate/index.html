@@ -13,13 +13,13 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://kb.altinity.com/altinity-kb-setup-and-maintenance/schema-migration-tools/golang-migrate/" /><meta property="article:section" content="altinity-kb-setup-and-maintenance" />
 
-<meta property="article:modified_time" content="2021-09-25T23:54:51+03:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
+<meta property="article:modified_time" content="2021-11-05T14:58:30+01:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
 
 <meta itemprop="name" content="golang-migrate">
 <meta itemprop="description" content="golang-migrate
 ">
-<meta itemprop="dateModified" content="2021-09-25T23:54:51+03:00" />
-<meta itemprop="wordCount" content="537">
+<meta itemprop="dateModified" content="2021-11-05T14:58:30+01:00" />
+<meta itemprop="wordCount" content="422">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="golang-migrate"/>
 <meta name="twitter:description" content="golang-migrate
@@ -78,7 +78,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.e47d266fd40dc867786a6228dcb99762.json"
+  data-offline-search-index-json-src="/offline-search-index.681872ba0009938534862c6f038897e2.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -106,7 +106,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.e47d266fd40dc867786a6228dcb99762.json"
+  data-offline-search-index-json-src="/offline-search-index.681872ba0009938534862c6f038897e2.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -677,13 +677,7 @@
 <p>To store information about migrations state <code>migrate</code> creates one additional table in target database, by default that table is called <code>schema_migrations</code>.</p>
 <h4 id="install">Install</h4>
 <p><a href="https://github.com/golang-migrate/migrate/releases" target="_blank">download</a> the <code>migrate</code> executable for your platform and put it to the folder listed in your %PATH.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">---
-title: <span style="color:#4e9a06">&#34;on Linux:&#34;</span>
-linkTitle: <span style="color:#4e9a06">&#34;on Linux:&#34;</span>
-description: &gt;
-    on Linux:
----
-<span style="color:#8f5902;font-style:italic">#wget https://github.com/golang-migrate/migrate/releases/download/v3.2.0/migrate.linux-amd64.tar.gz</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#8f5902;font-style:italic">#wget https://github.com/golang-migrate/migrate/releases/download/v3.2.0/migrate.linux-amd64.tar.gz</span>
 wget https://github.com/golang-migrate/migrate/releases/download/v4.14.1/migrate.linux-amd64.tar.gz
 tar -xzf migrate.linux-amd64.tar.gz
 mkdir -p ~/bin
@@ -694,36 +688,18 @@ rm migrate.linux-amd64.tar.gz
 <span style="color:#204a87">echo</span> <span style="color:#4e9a06">&#39;create table test(id UInt8) Engine = Memory;&#39;</span> &gt; migrations/000001_my_database_init.up.sql
 <span style="color:#204a87">echo</span> <span style="color:#4e9a06">&#39;DROP TABLE test;&#39;</span> &gt; migrations/000001_my_database_init.down.sql
 
----
-title: <span style="color:#4e9a06">&#34;you can also auto-create file with new migrations with automatic numbering like that:&#34;</span>
-linkTitle: <span style="color:#4e9a06">&#34;you can also auto-create file with new migrations with automatic numbering like that:&#34;</span>
-description: &gt;
-    you can also auto-create file with new migrations with automatic numbering like that:
----
----
-title: <span style="color:#4e9a06">&#34;&gt; migrate create -dir migrations -seq -digits 6 -ext sql my_database_init&#34;</span>
-linkTitle: <span style="color:#4e9a06">&#34;&gt; migrate create -dir migrations -seq -digits 6 -ext sql my_database_init&#34;</span>
-description: &gt;
-    &gt; migrate create -dir migrations -seq -digits <span style="color:#0000cf;font-weight:bold">6</span> -ext sql my_database_init
----
----
-title: <span style="color:#4e9a06">&#34;edit migrations/000001_my_database_init.up.sql &amp; migrations/000001_my_database_init.down.sql&#34;</span>
-linkTitle: <span style="color:#4e9a06">&#34;edit migrations/000001_my_database_init.up.sql &amp; migrations/000001_my_database_init.down.sql&#34;</span>
-description: &gt;
-    edit migrations/000001_my_database_init.up.sql <span style="color:#000;font-weight:bold">&amp;</span> migrations/000001_my_database_init.down.sql
----
-➜ migrate -database <span style="color:#4e9a06">&#39;clickhouse://localhost:9000&#39;</span> -path ./migrations up
+<span style="color:#8f5902;font-style:italic"># you can also auto-create file with new migrations with automatic numbering like that:</span>
+migrate create -dir migrations -seq -digits <span style="color:#0000cf;font-weight:bold">6</span> -ext sql my_database_init
+
+edit migrations/000001_my_database_init.up.sql <span style="color:#000;font-weight:bold">&amp;</span> migrations/000001_my_database_init.down.sql
+
+migrate -database <span style="color:#4e9a06">&#39;clickhouse://localhost:9000&#39;</span> -path ./migrations up
 1/u my_database_init <span style="color:#ce5c00;font-weight:bold">(</span>6.502974ms<span style="color:#ce5c00;font-weight:bold">)</span>
 
-➜ migrate -database <span style="color:#4e9a06">&#39;clickhouse://localhost:9000&#39;</span> -path ./migrations down
+migrate -database <span style="color:#4e9a06">&#39;clickhouse://localhost:9000&#39;</span> -path ./migrations down
 1/d my_database_init <span style="color:#ce5c00;font-weight:bold">(</span>2.164394ms<span style="color:#ce5c00;font-weight:bold">)</span>
 
----
-title: <span style="color:#4e9a06">&#34;clears the database (use carefully - will not ask any confirmations)&#34;</span>
-linkTitle: <span style="color:#4e9a06">&#34;clears the database (use carefully - will not ask any confirmations)&#34;</span>
-description: &gt;
-    clears the database <span style="color:#ce5c00;font-weight:bold">(</span>use carefully - will not ask any confirmations<span style="color:#ce5c00;font-weight:bold">)</span>
----
+<span style="color:#8f5902;font-style:italic"># clears the database (use carefully - will not ask any confirmations)</span>
 ➜ migrate -database <span style="color:#4e9a06">&#39;clickhouse://localhost:9000&#39;</span> -path ./migrations drop
 </code></pre></div><h4 id="connection-string-format">Connection string format</h4>
 <p><code>clickhouse://host:port?username=user&amp;password=qwerty&amp;database=clicks</code></p>
@@ -797,8 +773,8 @@ There is 2 possible solutions:</p>
 	<div class="text-muted mt-5 pt-3 border-top">
 
     Last modified
-    2021.09.25
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/6023d6e3b54ded581ea1378df74a47fa9c713c79">fixes (6023d6e3)</a>
+    2021.11.05
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/a5d654d90b6e3cda82045466aca0a3e60e629824">Update golang-migrate.md (a5d654d9)</a>
 
 </div>
 

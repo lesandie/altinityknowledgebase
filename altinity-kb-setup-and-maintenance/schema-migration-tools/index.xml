@@ -29,13 +29,7 @@
 &lt;p&gt;To store information about migrations state &lt;code&gt;migrate&lt;/code&gt; creates one additional table in target database, by default that table is called &lt;code&gt;schema_migrations&lt;/code&gt;.&lt;/p&gt;
 &lt;h4 id=&#34;install&#34;&gt;Install&lt;/h4&gt;
 &lt;p&gt;&lt;a href=&#34;https://github.com/golang-migrate/migrate/releases&#34; target=&#34;_blank&#34;&gt;download&lt;/a&gt; the &lt;code&gt;migrate&lt;/code&gt; executable for your platform and put it to the folder listed in your %PATH.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;---
-title: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;on Linux:&amp;#34;&lt;/span&gt;
-linkTitle: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;on Linux:&amp;#34;&lt;/span&gt;
-description: &amp;gt;
-    on Linux:
----
-&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;#wget https://github.com/golang-migrate/migrate/releases/download/v3.2.0/migrate.linux-amd64.tar.gz&lt;/span&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;#wget https://github.com/golang-migrate/migrate/releases/download/v3.2.0/migrate.linux-amd64.tar.gz&lt;/span&gt;
 wget https://github.com/golang-migrate/migrate/releases/download/v4.14.1/migrate.linux-amd64.tar.gz
 tar -xzf migrate.linux-amd64.tar.gz
 mkdir -p ~/bin
@@ -46,36 +40,18 @@ rm migrate.linux-amd64.tar.gz
 &lt;span style=&#34;color:#204a87&#34;&gt;echo&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;create table test(id UInt8) Engine = Memory;&amp;#39;&lt;/span&gt; &amp;gt; migrations/000001_my_database_init.up.sql
 &lt;span style=&#34;color:#204a87&#34;&gt;echo&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;DROP TABLE test;&amp;#39;&lt;/span&gt; &amp;gt; migrations/000001_my_database_init.down.sql
 
----
-title: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;you can also auto-create file with new migrations with automatic numbering like that:&amp;#34;&lt;/span&gt;
-linkTitle: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;you can also auto-create file with new migrations with automatic numbering like that:&amp;#34;&lt;/span&gt;
-description: &amp;gt;
-    you can also auto-create file with new migrations with automatic numbering like that:
----
----
-title: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;&amp;gt; migrate create -dir migrations -seq -digits 6 -ext sql my_database_init&amp;#34;&lt;/span&gt;
-linkTitle: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;&amp;gt; migrate create -dir migrations -seq -digits 6 -ext sql my_database_init&amp;#34;&lt;/span&gt;
-description: &amp;gt;
-    &amp;gt; migrate create -dir migrations -seq -digits &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;6&lt;/span&gt; -ext sql my_database_init
----
----
-title: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;edit migrations/000001_my_database_init.up.sql &amp;amp; migrations/000001_my_database_init.down.sql&amp;#34;&lt;/span&gt;
-linkTitle: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;edit migrations/000001_my_database_init.up.sql &amp;amp; migrations/000001_my_database_init.down.sql&amp;#34;&lt;/span&gt;
-description: &amp;gt;
-    edit migrations/000001_my_database_init.up.sql &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;&amp;amp;&lt;/span&gt; migrations/000001_my_database_init.down.sql
----
-➜ migrate -database &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;clickhouse://localhost:9000&amp;#39;&lt;/span&gt; -path ./migrations up
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# you can also auto-create file with new migrations with automatic numbering like that:&lt;/span&gt;
+migrate create -dir migrations -seq -digits &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;6&lt;/span&gt; -ext sql my_database_init
+
+edit migrations/000001_my_database_init.up.sql &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;&amp;amp;&lt;/span&gt; migrations/000001_my_database_init.down.sql
+
+migrate -database &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;clickhouse://localhost:9000&amp;#39;&lt;/span&gt; -path ./migrations up
 1/u my_database_init &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;6.502974ms&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
 
-➜ migrate -database &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;clickhouse://localhost:9000&amp;#39;&lt;/span&gt; -path ./migrations down
+migrate -database &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;clickhouse://localhost:9000&amp;#39;&lt;/span&gt; -path ./migrations down
 1/d my_database_init &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;2.164394ms&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
 
----
-title: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;clears the database (use carefully - will not ask any confirmations)&amp;#34;&lt;/span&gt;
-linkTitle: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;clears the database (use carefully - will not ask any confirmations)&amp;#34;&lt;/span&gt;
-description: &amp;gt;
-    clears the database &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;use carefully - will not ask any confirmations&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
----
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# clears the database (use carefully - will not ask any confirmations)&lt;/span&gt;
 ➜ migrate -database &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;clickhouse://localhost:9000&amp;#39;&lt;/span&gt; -path ./migrations drop
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;connection-string-format&#34;&gt;Connection string format&lt;/h4&gt;
 &lt;p&gt;&lt;code&gt;clickhouse://host:port?username=user&amp;amp;password=qwerty&amp;amp;database=clicks&lt;/code&gt;&lt;/p&gt;
