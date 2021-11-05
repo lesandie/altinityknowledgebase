@@ -13,13 +13,13 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://kb.altinity.com/altinity-kb-queries-and-syntax/atomic-insert/" /><meta property="article:section" content="altinity-kb-queries-and-syntax" />
 
-<meta property="article:modified_time" content="2021-10-08T13:51:35+02:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
+<meta property="article:modified_time" content="2021-11-05T18:29:50-03:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
 
 <meta itemprop="name" content="Atomic insert">
 <meta itemprop="description" content="Atomic insert
 ">
-<meta itemprop="dateModified" content="2021-10-08T13:51:35+02:00" />
-<meta itemprop="wordCount" content="49">
+<meta itemprop="dateModified" content="2021-11-05T18:29:50-03:00" />
+<meta itemprop="wordCount" content="89">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Atomic insert"/>
 <meta name="twitter:description" content="Atomic insert
@@ -78,7 +78,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.681872ba0009938534862c6f038897e2.json"
+  data-offline-search-index-json-src="/offline-search-index.9762da27b173aebbc6a61e675fb81a02.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -106,7 +106,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.681872ba0009938534862c6f038897e2.json"
+  data-offline-search-index-json-src="/offline-search-index.9762da27b173aebbc6a61e675fb81a02.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -661,22 +661,34 @@
 	</div>
 	
 	       
-	<p>Insert would be atomic only if those conditions met:</p>
+	<p>An insert is atomic if it creates only one part.</p>
+<p>An insert will create one part if:</p>
 <ul>
-<li>Insert data only in single partition.</li>
+<li>Data is inserted directly into a MergeTree table</li>
+<li>The MergeTree table doesn&rsquo;t have Materialized Views (there is no atomicity Table &lt;&gt; MV)</li>
+<li>Data is inserted into a single partition.</li>
+<li>For INSERT FORMAT:
+<ul>
 <li>Numbers of rows is less than <code>max_insert_block_size</code> (default is <code>1048545</code>)</li>
-<li>Table doesn&rsquo;t have Materialized Views (there is no atomicity Table &lt;&gt; MV)</li>
-<li>For TSV, TKSV, CSV, and JSONEachRow formats, setting <code>input_format_parallel_parsing=0</code> is set.</li>
+<li>Parallel formatting is disabled (For TSV, TKSV, CSV, and JSONEachRow formats setting <code>input_format_parallel_parsing=0</code> is set).</li>
 </ul>
-<p><a href="https://github.com/ClickHouse/ClickHouse/issues/9195%5c#issuecomment-587500824" target="_blank">https://github.com/ClickHouse/ClickHouse/issues/9195#issuecomment-587500824</a></p>
+</li>
+<li>For INSERT SELECT:
+<ul>
+<li>Numbers of rows is less than <code>max_block_size</code>, <code>min_insert_block_size_rows</code> and <code>min_insert_block_size_bytes</code></li>
+</ul>
+</li>
+</ul>
+<p><a href="https://github.com/ClickHouse/ClickHouse/issues/9195#issuecomment-587500824" target="_blank">https://github.com/ClickHouse/ClickHouse/issues/9195#issuecomment-587500824</a>
+<a href="https://github.com/ClickHouse/ClickHouse/issues/5148#issuecomment-487757235" target="_blank">https://github.com/ClickHouse/ClickHouse/issues/5148#issuecomment-487757235</a></p>
 
 	
 	
 	<div class="text-muted mt-5 pt-3 border-top">
 
     Last modified
-    2021.10.08
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/01a97d9fff921b5c4b6bd6fdbeedb9be9914a419">Update atomic-insert.md (01a97d9f)</a>
+    2021.11.05
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/093eeb7de3ea2ef3f7c93fbcc1ad451a6fb54399">Update atomic-insert.md (093eeb7d)</a>
 
 </div>
 
