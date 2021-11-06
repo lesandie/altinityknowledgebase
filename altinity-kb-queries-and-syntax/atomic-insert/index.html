@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.89.0" /><META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
+<meta name="generator" content="Hugo 0.89.1" /><META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
 <link rel="shortcut icon" href="/favicons/favicon.ico" >
 <link rel="icon" href="/favicons/favicon.ico" >
 <title>Atomic insert | Altinity Knowledge Base</title>
@@ -13,13 +13,13 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://kb.altinity.com/altinity-kb-queries-and-syntax/atomic-insert/" /><meta property="article:section" content="altinity-kb-queries-and-syntax" />
 
-<meta property="article:modified_time" content="2021-11-05T18:57:59-03:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
+<meta property="article:modified_time" content="2021-11-06T10:40:34-03:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
 
 <meta itemprop="name" content="Atomic insert">
 <meta itemprop="description" content="Atomic insert
 ">
-<meta itemprop="dateModified" content="2021-11-05T18:57:59-03:00" />
-<meta itemprop="wordCount" content="89">
+<meta itemprop="dateModified" content="2021-11-06T10:40:34-03:00" />
+<meta itemprop="wordCount" content="100">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Atomic insert"/>
 <meta name="twitter:description" content="Atomic insert
@@ -78,7 +78,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.03cb6b647a1e991fad0671ee3b894298.json"
+  data-offline-search-index-json-src="/offline-search-index.855d66069d88b048435d23150bb23a4b.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -106,7 +106,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.03cb6b647a1e991fad0671ee3b894298.json"
+  data-offline-search-index-json-src="/offline-search-index.855d66069d88b048435d23150bb23a4b.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -675,9 +675,10 @@
 </li>
 <li>For INSERT SELECT:
 <ul>
-<li>Number of rows is less than <code>max_block_size</code>, <code>min_insert_block_size_rows</code> and <code>min_insert_block_size_bytes</code></li>
+<li>Number of rows is less than <code>max_block_size</code></li>
 </ul>
 </li>
+<li>Smaller blocks are properly squashed up to the configured block size (<code>min_insert_block_size_rows</code> and <code>min_insert_block_size_bytes</code>)</li>
 </ul>
 <p><a href="https://github.com/ClickHouse/ClickHouse/issues/9195#issuecomment-587500824" target="_blank">https://github.com/ClickHouse/ClickHouse/issues/9195#issuecomment-587500824</a>
 <a href="https://github.com/ClickHouse/ClickHouse/issues/5148#issuecomment-487757235" target="_blank">https://github.com/ClickHouse/ClickHouse/issues/5148#issuecomment-487757235</a></p>
@@ -687,8 +688,8 @@
 	<div class="text-muted mt-5 pt-3 border-top">
 
     Last modified
-    2021.11.05
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/95046d3eb55434ba8ec88c7c1b70f565e78295dd">Update atomic-insert.md (95046d3e)</a>
+    2021.11.06
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/214344bad445311e435ebb2e3807d62760e3f013">Update atomic-insert.md (214344ba)</a>
 
 </div>
 
