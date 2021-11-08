@@ -12,12 +12,12 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://kb.altinity.com/altinity-kb-queries-and-syntax/trace_log/" /><meta property="article:section" content="altinity-kb-queries-and-syntax" />
 
-<meta property="article:modified_time" content="2021-11-08T15:29:37+01:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
+<meta property="article:modified_time" content="2021-11-08T15:32:45+01:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
 
 <meta itemprop="name" content="Collecting query execution flamegraphs using system.trace_log">
 <meta itemprop="description" content="Collecting query execution flamegraph using trace_log">
-<meta itemprop="dateModified" content="2021-11-08T15:29:37+01:00" />
-<meta itemprop="wordCount" content="435">
+<meta itemprop="dateModified" content="2021-11-08T15:32:45+01:00" />
+<meta itemprop="wordCount" content="436">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Collecting query execution flamegraphs using system.trace_log"/>
 <meta name="twitter:description" content="Collecting query execution flamegraph using trace_log"/>
@@ -75,7 +75,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.630a57aec946cface71da892afc86e31.json"
+  data-offline-search-index-json-src="/offline-search-index.2e4955ccd6b6845c2ba748bffa180350.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -103,7 +103,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.630a57aec946cface71da892afc86e31.json"
+  data-offline-search-index-json-src="/offline-search-index.2e4955ccd6b6845c2ba748bffa180350.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -729,6 +729,7 @@ perf record -F 99 -p $(pidof clickhouse) -G
 perf script &gt; /tmp/out.perf
 /opt/flamegraph/stackcollapse-perf.pl /tmp/out.perf | /opt/flamegraph/flamegraph.pl &gt; /tmp/flamegraph.svg
 </code></pre><h3 id="also">also</h3>
+<p><a href="https://kb.altinity.com/altinity-kb-queries-and-syntax/troubleshooting/#flamegraph" target="_blank">https://kb.altinity.com/altinity-kb-queries-and-syntax/troubleshooting/#flamegraph</a></p>
 <p><a href="https://github.com/samber/grafana-flamegraph-panel/pull/2" target="_blank">https://github.com/samber/grafana-flamegraph-panel/pull/2</a></p>
 
 	
@@ -737,7 +738,7 @@ perf script &gt; /tmp/out.perf
 
     Last modified
     2021.11.08
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/5c2649a363e11639c8ffb9e9cad74d1202307e1f">Create trace_log.md (5c2649a3)</a>
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/073fe5734443432270670a41607608cf6e981178">Update trace_log.md (073fe573)</a>
 
 </div>
 
