@@ -174,7 +174,148 @@ sudo systemctl start zookeeper.service
 &lt;a href=&#34;https://github.com/ClickHouse/ClickHouse/blob/master/tests/config/config.d/zookeeper.xml&#34; target=&#34;_blank&#34;&gt;https://github.com/ClickHouse/ClickHouse/blob/master/tests/config/config.d/zookeeper.xml&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;And point all the clickhouses (zookeeper config secton) to those nodes / ports.&lt;/p&gt;
 &lt;p&gt;Latest testing version is recommended. We will be thankful for any feedback.&lt;/p&gt;
+&lt;h2 id=&#34;example-of-a-simple-cluster-with-2-nodes-of-clickhouse-using-built-in-keeper&#34;&gt;Example of a simple cluster with 2 nodes of Clickhouse using built-in keeper&lt;/h2&gt;
+&lt;p&gt;For example you can start two Clikhouse nodes (hostname1, hostname2)&lt;/p&gt;
+&lt;h3 id=&#34;hostname1&#34;&gt;hostname1&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-xml&#34; data-lang=&#34;xml&#34;&gt;$ cat /etc/clickhouse-server/config.d/keeper.xml
 
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;&amp;lt;?xml version=&amp;#34;1.0&amp;#34; ?&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;yandex&amp;gt;&lt;/span&gt;
+    &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;keeper_server&amp;gt;&lt;/span&gt;
+        &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;tcp_port&amp;gt;&lt;/span&gt;2181&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/tcp_port&amp;gt;&lt;/span&gt;
+        &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;server_id&amp;gt;&lt;/span&gt;1&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/server_id&amp;gt;&lt;/span&gt;
+        &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;log_storage_path&amp;gt;&lt;/span&gt;/var/lib/clickhouse/coordination/log&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/log_storage_path&amp;gt;&lt;/span&gt;
+        &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;snapshot_storage_path&amp;gt;&lt;/span&gt;/var/lib/clickhouse/coordination/snapshots&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/snapshot_storage_path&amp;gt;&lt;/span&gt;
+
+        &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;coordination_settings&amp;gt;&lt;/span&gt;
+            &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;operation_timeout_ms&amp;gt;&lt;/span&gt;10000&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/operation_timeout_ms&amp;gt;&lt;/span&gt;
+            &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;session_timeout_ms&amp;gt;&lt;/span&gt;30000&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/session_timeout_ms&amp;gt;&lt;/span&gt;
+            &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;raft_logs_level&amp;gt;&lt;/span&gt;trace&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/raft_logs_level&amp;gt;&lt;/span&gt;
+              &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;rotate_log_storage_interval&amp;gt;&lt;/span&gt;10000&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/rotate_log_storage_interval&amp;gt;&lt;/span&gt;
+        &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/coordination_settings&amp;gt;&lt;/span&gt;
+
+      &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;raft_configuration&amp;gt;&lt;/span&gt;
+            &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;server&amp;gt;&lt;/span&gt;
+               &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;id&amp;gt;&lt;/span&gt;1&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/id&amp;gt;&lt;/span&gt;
+                 &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;hostname&amp;gt;&lt;/span&gt;hostname1&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/hostname&amp;gt;&lt;/span&gt;
+               &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;port&amp;gt;&lt;/span&gt;9444&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/port&amp;gt;&lt;/span&gt;
+          &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/server&amp;gt;&lt;/span&gt;
+          &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;server&amp;gt;&lt;/span&gt;
+               &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;id&amp;gt;&lt;/span&gt;2&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/id&amp;gt;&lt;/span&gt;
+                 &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;hostname&amp;gt;&lt;/span&gt;hostname2&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/hostname&amp;gt;&lt;/span&gt;
+               &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;port&amp;gt;&lt;/span&gt;9444&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/port&amp;gt;&lt;/span&gt;
+          &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/server&amp;gt;&lt;/span&gt;
+      &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/raft_configuration&amp;gt;&lt;/span&gt;
+
+    &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/keeper_server&amp;gt;&lt;/span&gt;
+
+    &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;zookeeper&amp;gt;&lt;/span&gt;
+        &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;node&amp;gt;&lt;/span&gt;
+            &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;host&amp;gt;&lt;/span&gt;localhost&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/host&amp;gt;&lt;/span&gt;
+            &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;port&amp;gt;&lt;/span&gt;2181&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/port&amp;gt;&lt;/span&gt;
+        &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/node&amp;gt;&lt;/span&gt;
+    &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/zookeeper&amp;gt;&lt;/span&gt;
+
+    &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;distributed_ddl&amp;gt;&lt;/span&gt;
+        &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;path&amp;gt;&lt;/span&gt;/clickhouse/int/task_queue/ddl&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/path&amp;gt;&lt;/span&gt;
+    &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/distributed_ddl&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/yandex&amp;gt;&lt;/span&gt;
+
+$ cat /etc/clickhouse-server/config.d/macros.xml
+
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;&amp;lt;?xml version=&amp;#34;1.0&amp;#34; ?&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;yandex&amp;gt;&lt;/span&gt;
+    &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;macros&amp;gt;&lt;/span&gt;
+        &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;cluster&amp;gt;&lt;/span&gt;testcluster&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/cluster&amp;gt;&lt;/span&gt;
+        &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;replica&amp;gt;&lt;/span&gt;replica1&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/replica&amp;gt;&lt;/span&gt;
+        &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;shard&amp;gt;&lt;/span&gt;1&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/shard&amp;gt;&lt;/span&gt;
+    &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/macros&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/yandex&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;hostname2&#34;&gt;hostname2&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-xml&#34; data-lang=&#34;xml&#34;&gt;$ cat /etc/clickhouse-server/config.d/keeper.xml
+
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;&amp;lt;?xml version=&amp;#34;1.0&amp;#34; ?&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;yandex&amp;gt;&lt;/span&gt;
+    &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;keeper_server&amp;gt;&lt;/span&gt;
+        &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;tcp_port&amp;gt;&lt;/span&gt;2181&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/tcp_port&amp;gt;&lt;/span&gt;
+        &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;server_id&amp;gt;&lt;/span&gt;2&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/server_id&amp;gt;&lt;/span&gt;
+        &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;log_storage_path&amp;gt;&lt;/span&gt;/var/lib/clickhouse/coordination/log&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/log_storage_path&amp;gt;&lt;/span&gt;
+        &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;snapshot_storage_path&amp;gt;&lt;/span&gt;/var/lib/clickhouse/coordination/snapshots&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/snapshot_storage_path&amp;gt;&lt;/span&gt;
+
+        &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;coordination_settings&amp;gt;&lt;/span&gt;
+            &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;operation_timeout_ms&amp;gt;&lt;/span&gt;10000&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/operation_timeout_ms&amp;gt;&lt;/span&gt;
+            &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;session_timeout_ms&amp;gt;&lt;/span&gt;30000&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/session_timeout_ms&amp;gt;&lt;/span&gt;
+            &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;raft_logs_level&amp;gt;&lt;/span&gt;trace&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/raft_logs_level&amp;gt;&lt;/span&gt;
+              &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;rotate_log_storage_interval&amp;gt;&lt;/span&gt;10000&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/rotate_log_storage_interval&amp;gt;&lt;/span&gt;
+        &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/coordination_settings&amp;gt;&lt;/span&gt;
+
+      &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;raft_configuration&amp;gt;&lt;/span&gt;
+            &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;server&amp;gt;&lt;/span&gt;
+               &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;id&amp;gt;&lt;/span&gt;1&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/id&amp;gt;&lt;/span&gt;
+                 &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;hostname&amp;gt;&lt;/span&gt;hostname1&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/hostname&amp;gt;&lt;/span&gt;
+               &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;port&amp;gt;&lt;/span&gt;9444&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/port&amp;gt;&lt;/span&gt;
+          &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/server&amp;gt;&lt;/span&gt;
+          &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;server&amp;gt;&lt;/span&gt;
+               &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;id&amp;gt;&lt;/span&gt;2&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/id&amp;gt;&lt;/span&gt;
+                 &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;hostname&amp;gt;&lt;/span&gt;hostname2&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/hostname&amp;gt;&lt;/span&gt;
+               &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;port&amp;gt;&lt;/span&gt;9444&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/port&amp;gt;&lt;/span&gt;
+          &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/server&amp;gt;&lt;/span&gt;
+      &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/raft_configuration&amp;gt;&lt;/span&gt;
+
+    &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/keeper_server&amp;gt;&lt;/span&gt;
+
+    &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;zookeeper&amp;gt;&lt;/span&gt;
+        &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;node&amp;gt;&lt;/span&gt;
+            &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;host&amp;gt;&lt;/span&gt;localhost&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/host&amp;gt;&lt;/span&gt;
+            &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;port&amp;gt;&lt;/span&gt;2181&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/port&amp;gt;&lt;/span&gt;
+        &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/node&amp;gt;&lt;/span&gt;
+    &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/zookeeper&amp;gt;&lt;/span&gt;
+
+    &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;distributed_ddl&amp;gt;&lt;/span&gt;
+        &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;path&amp;gt;&lt;/span&gt;/clickhouse/int/task_queue/ddl&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/path&amp;gt;&lt;/span&gt;
+    &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/distributed_ddl&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/yandex&amp;gt;&lt;/span&gt;
+
+$ cat /etc/clickhouse-server/config.d/macros.xml
+
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;&amp;lt;?xml version=&amp;#34;1.0&amp;#34; ?&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;yandex&amp;gt;&lt;/span&gt;
+    &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;macros&amp;gt;&lt;/span&gt;
+        &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;cluster&amp;gt;&lt;/span&gt;testcluster&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/cluster&amp;gt;&lt;/span&gt;
+        &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;replica&amp;gt;&lt;/span&gt;replica2&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/replica&amp;gt;&lt;/span&gt;
+        &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;shard&amp;gt;&lt;/span&gt;1&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/shard&amp;gt;&lt;/span&gt;
+    &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/macros&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/yandex&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;on-both&#34;&gt;on both&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-xml&#34; data-lang=&#34;xml&#34;&gt;$ cat /etc/clickhouse-server/config.d/clusters.xml
+
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;&amp;lt;?xml version=&amp;#34;1.0&amp;#34; ?&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;yandex&amp;gt;&lt;/span&gt;
+    &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;remote_servers&amp;gt;&lt;/span&gt;
+        &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;testcluster&amp;gt;&lt;/span&gt;
+            &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;shard&amp;gt;&lt;/span&gt;
+                &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;replica&amp;gt;&lt;/span&gt;
+                    &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;host&amp;gt;&lt;/span&gt;hostname1&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/host&amp;gt;&lt;/span&gt;
+                    &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;port&amp;gt;&lt;/span&gt;9000&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/port&amp;gt;&lt;/span&gt;
+                &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/replica&amp;gt;&lt;/span&gt;
+                &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;replica&amp;gt;&lt;/span&gt;
+                    &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;host&amp;gt;&lt;/span&gt;hostname2&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/host&amp;gt;&lt;/span&gt;
+                    &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;port&amp;gt;&lt;/span&gt;9000&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/port&amp;gt;&lt;/span&gt;
+                &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/replica&amp;gt;&lt;/span&gt;
+            &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/shard&amp;gt;&lt;/span&gt;
+        &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/testcluster&amp;gt;&lt;/span&gt;
+    &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/remote_servers&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/yandex&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Then create a table&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;create&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;table&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;test&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;on&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;{cluster}&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;   &lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;A&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;Int64&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;S&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;String&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;)&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;Engine&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;ReplicatedMergeTree&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;/clickhouse/{cluster}/tables/{database}/{table}&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;{replica}&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;)&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;Order&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;by&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;A&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;insert&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;into&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;test&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;select&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#204a87&#34;&gt;number&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;from&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;numbers&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;100000000&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;);&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;-- on both nodes:
+&lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;select&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;count&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;()&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;from&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;test&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
       </description>
     </item>
     
