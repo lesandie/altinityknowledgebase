@@ -217,7 +217,7 @@ sudo systemctl start zookeeper.service
     &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/zookeeper&amp;gt;&lt;/span&gt;
 
     &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;distributed_ddl&amp;gt;&lt;/span&gt;
-        &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;path&amp;gt;&lt;/span&gt;/clickhouse/int/task_queue/ddl&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/path&amp;gt;&lt;/span&gt;
+        &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;path&amp;gt;&lt;/span&gt;/clickhouse/testcluster/task_queue/ddl&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/path&amp;gt;&lt;/span&gt;
     &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/distributed_ddl&amp;gt;&lt;/span&gt;
 &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/yandex&amp;gt;&lt;/span&gt;
 
@@ -272,7 +272,7 @@ $ cat /etc/clickhouse-server/config.d/macros.xml
     &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/zookeeper&amp;gt;&lt;/span&gt;
 
     &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;distributed_ddl&amp;gt;&lt;/span&gt;
-        &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;path&amp;gt;&lt;/span&gt;/clickhouse/int/task_queue/ddl&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/path&amp;gt;&lt;/span&gt;
+        &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;path&amp;gt;&lt;/span&gt;/clickhouse/testcluster/task_queue/ddl&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/path&amp;gt;&lt;/span&gt;
     &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/distributed_ddl&amp;gt;&lt;/span&gt;
 &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;lt;/yandex&amp;gt;&lt;/span&gt;
 
