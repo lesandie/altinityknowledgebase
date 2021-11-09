@@ -45,7 +45,7 @@
 &lt;td style=&#34;text-align:left&#34;&gt;+ support deletes&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td style=&#34;text-align:left&#34;&gt;- w/o FINAL - you can can always see duplicates, you need always to put FINAL performance penalty&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;- w/o FINAL - you can can always see duplicates, you need always to &amp;lsquo;pay&amp;rsquo; FINAL performance penalty&lt;/td&gt;
 &lt;td style=&#34;text-align:left&#34;&gt;+ properly crafted query can give correct results without final (i.e. &lt;code&gt;sum(amount * sign)&lt;/code&gt; will be correct, no matter of you have duplicated or not)&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
