@@ -15,6 +15,50 @@
     
     
     <item>
+      <title>Engines: CollapsingMergeTree vs ReplacingMergeTree</title>
+      <link>http://kb.altinity.com/engines/mergetree-table-engine-family/collapsing-vs-replacing/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://kb.altinity.com/engines/mergetree-table-engine-family/collapsing-vs-replacing/</guid>
+      <description>
+        
+        
+        &lt;h2 id=&#34;collapsingmergetree-vs-replacingmergetree&#34;&gt;CollapsingMergeTree vs ReplacingMergeTree&lt;/h2&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;ReplacingMergeTree&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;CollapsingMergeTree&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;+ very easy to use (always replace)&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;- more complex (accounting-alike, put &amp;lsquo;rollback&amp;rsquo; records to fix something)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;+ you don&amp;rsquo;t need to store the previous state of the row&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;- you need to the store (somewhere) the previous state of the row, OR extract it from the table itself (point queries is not nice for ClickHouse)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;- no deletes&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;+ support deletes&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;- w/o FINAL - you can can always see duplicates, you need always to put FINAL performance penalty&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;+ properly crafted query can give correct results without final (i.e. &lt;code&gt;sum(amount * sign)&lt;/code&gt; will be correct, no matter of you have duplicated or not)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;- only &lt;code&gt;uniq()&lt;/code&gt;-alike things can be calculated in materialied views&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;+ you can do basic counts &amp;amp; sums in materialized views&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+      </description>
+    </item>
+    
+    <item>
       <title>Engines: AggregatingMergeTree</title>
       <link>http://kb.altinity.com/engines/mergetree-table-engine-family/aggregatingmergetree/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
