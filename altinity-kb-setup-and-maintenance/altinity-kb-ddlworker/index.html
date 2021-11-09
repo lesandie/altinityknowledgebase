@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.89.1" /><link rel="alternate" type="application/rss&#43;xml" href="http://kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-ddlworker/index.xml">
+<meta name="generator" content="Hugo 0.89.2" /><link rel="alternate" type="application/rss&#43;xml" href="http://kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-ddlworker/index.xml">
 <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
 <link rel="shortcut icon" href="/favicons/favicon.ico" >
 <link rel="icon" href="/favicons/favicon.ico" >
@@ -74,7 +74,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.e623d7e22ea6226c2c757f99aeaa655c.json"
+  data-offline-search-index-json-src="/offline-search-index.7ca34e0146b282a18080d77659d5f98f.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -102,7 +102,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.e623d7e22ea6226c2c757f99aeaa655c.json"
+  data-offline-search-index-json-src="/offline-search-index.7ca34e0146b282a18080d77659d5f98f.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -678,21 +678,11 @@
 <p>So a node initiator puts tasks for a host named Host1. But the Host1 thinks about own name as localhost or <strong>xdgt634678d</strong> (internal docker hostname) and never sees tasks for the Host1 because is looking tasks for <strong>xdgt634678d.</strong> The same with internal VS external IP addresses.</p>
 <p>Another issue that sometimes DDLWorker thread can crash then ClickHouse node stops to execute <code>ON CLUSTER</code> tasks.</p>
 <p>Check that DDLWorker is alive:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">---
-title: <span style="color:#4e9a06">&#34;ps -eL|grep DDL&#34;</span>
-linkTitle: <span style="color:#4e9a06">&#34;ps -eL|grep DDL&#34;</span>
-description: &gt;
-    ps -eL<span style="color:#000;font-weight:bold">|</span>grep DDL
----
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ps -eL<span style="color:#000;font-weight:bold">|</span>grep DDL
 <span style="color:#0000cf;font-weight:bold">18829</span> <span style="color:#0000cf;font-weight:bold">18876</span> ?        00:00:00 DDLWorkerClnr
 <span style="color:#0000cf;font-weight:bold">18829</span> <span style="color:#0000cf;font-weight:bold">18879</span> ?        00:00:00 DDLWorker
 
----
-title: <span style="color:#4e9a06">&#34;ps -ef|grep 18829|grep -v grep&#34;</span>
-linkTitle: <span style="color:#4e9a06">&#34;ps -ef|grep 18829|grep -v grep&#34;</span>
-description: &gt;
-    ps -ef<span style="color:#000;font-weight:bold">|</span>grep 18829<span style="color:#000;font-weight:bold">|</span>grep -v grep
----
+ps -ef<span style="color:#000;font-weight:bold">|</span>grep 18829<span style="color:#000;font-weight:bold">|</span>grep -v grep
 clickho+ <span style="color:#0000cf;font-weight:bold">18829</span> <span style="color:#0000cf;font-weight:bold">18828</span>  <span style="color:#0000cf;font-weight:bold">1</span> Feb09 ?        00:55:00 /usr/bin/clickhouse-server --con...
 </code></pre></div><p>As you can see there are two threads: <code>DDLWorker</code> and <code>DDLWorkerClnr</code>.</p>
 <p>The second thread – <code>DDLWorkerCleaner</code> cleans old tasks from <code>task_queue</code>. You can configure how many recent tasks to store:</p>
@@ -850,8 +840,8 @@ clickho+ <span style="color:#0000cf;font-weight:bold">18829</span> <span style="
 	<div class="text-muted mt-5 pt-3 border-top">
 
     Last modified
-    2021.08.12
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/5969b6886e2a31134118f644b6fd2463d98dcb80">General corrections and updates. (5969b688)</a>
+    2021.11.08
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/19abd87a9fd8fdb1ec601338f8f6cea257ed962c">Update _index.md (19abd87a)</a>
 
 </div>
 
