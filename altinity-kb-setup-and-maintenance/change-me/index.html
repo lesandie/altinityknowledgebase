@@ -12,12 +12,12 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://kb.altinity.com/altinity-kb-setup-and-maintenance/change-me/" /><meta property="article:section" content="altinity-kb-setup-and-maintenance" />
 
-<meta property="article:modified_time" content="2021-11-09T14:57:07+01:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
+<meta property="article:modified_time" content="2021-11-09T15:00:35+01:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
 
 <meta itemprop="name" content="ZooKeeper session has expired">
 <meta itemprop="description" content="ZooKeeper session has expired.">
-<meta itemprop="dateModified" content="2021-11-09T14:57:07+01:00" />
-<meta itemprop="wordCount" content="532">
+<meta itemprop="dateModified" content="2021-11-09T15:00:35+01:00" />
+<meta itemprop="wordCount" content="609">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="ZooKeeper session has expired"/>
 <meta name="twitter:description" content="ZooKeeper session has expired."/>
@@ -75,7 +75,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.9246a1275070e6768125ec3be5a3022c.json"
+  data-offline-search-index-json-src="/offline-search-index.9cfd0fb132f0730ca266cd4a34eaeb97.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -103,7 +103,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.9246a1275070e6768125ec3be5a3022c.json"
+  data-offline-search-index-json-src="/offline-search-index.9cfd0fb132f0730ca266cd4a34eaeb97.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -665,6 +665,12 @@
 	
 	       
 	<blockquote>
+<p>**Q. I get &ldquo;ZooKeeper session has expired&rdquo; once. What should i do? Should I worry? **</p>
+</blockquote>
+<p>Getting exceptions or lack of acknolegment in distributed system from time to time is a normal situation.
+Your client should do the retry. If that happened once and your client do retries correctly - nothing to worry about.</p>
+<p>It it happens often, or with every retry - it may be a sign of some misconfiguration / issue in cluster (see below).</p>
+<blockquote>
 <p><strong>Q. we see a lot of these: ZooKeeper session has expired. Switching to a new session</strong></p>
 </blockquote>
 <p>A. There is a single zookeeper session per server. But there are many threads that can use zookeeper simultaneously.
@@ -700,7 +706,7 @@ know &amp; print to logs the real reason, while all &lsquo;user&rsquo; threads j
 
     Last modified
     2021.11.09
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/b3d3371723086840dca363a3eab4048a939de2e6">Update change-me.md (b3d33717)</a>
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/472f84a241ed0f2b6693761a446362f5f28c4a6e">Update change-me.md (472f84a2)</a>
 
 </div>
 
