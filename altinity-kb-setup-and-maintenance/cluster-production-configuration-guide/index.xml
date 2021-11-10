@@ -436,7 +436,7 @@ tail -n 10000 /var/log/clickhouse-server/clickhouse-server.log | less&lt;/p&gt;
 &lt;h3 id=&#34;monitor-and-alerts&#34;&gt;Monitor and Alerts&lt;/h3&gt;
 &lt;p&gt;Configure the notifications for events and thresholds based on the following table:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://localhost:1313/csv/clickhouse_kubernetes_monitoring_and_alerts.csv&#34; target=&#34;_blank&#34;&gt;Monitor and Alerts&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.google.com/spreadsheets/d/1K92yZr5slVQEvDglfZ88k_7bfsAKqahY9RPp_2tSdVU/edit#gid=521173956&#34; target=&#34;_blank&#34;&gt;Monitor and Alerts&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h4 id=&#34;health-checks&#34;&gt;Health Checks&lt;/h4&gt;
 &lt;p&gt;The following health checks should be monitored:&lt;/p&gt;
