@@ -13,13 +13,13 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://kb.altinity.com/altinity-kb-queries-and-syntax/atomic-insert/" /><meta property="article:section" content="altinity-kb-queries-and-syntax" />
 
-<meta property="article:modified_time" content="2021-11-12T17:29:19+01:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
+<meta property="article:modified_time" content="2021-11-12T17:38:48+01:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
 
 <meta itemprop="name" content="Atomic insert">
 <meta itemprop="description" content="Atomic insert
 ">
-<meta itemprop="dateModified" content="2021-11-12T17:29:19+01:00" />
-<meta itemprop="wordCount" content="257">
+<meta itemprop="dateModified" content="2021-11-12T17:38:48+01:00" />
+<meta itemprop="wordCount" content="269">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Atomic insert"/>
 <meta name="twitter:description" content="Atomic insert
@@ -78,7 +78,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.e65f5dadb8e96456556f80029bfc84c9.json"
+  data-offline-search-index-json-src="/offline-search-index.2f11cf3f36e5930ff056ee8a842329ff.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -106,7 +106,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.e65f5dadb8e96456556f80029bfc84c9.json"
+  data-offline-search-index-json-src="/offline-search-index.2f11cf3f36e5930ff056ee8a842329ff.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -707,10 +707,18 @@ clickhouse-client --input_format_parallel_parsing<span style="color:#ce5c00;font
 </span><span style="color:#4e9a06"></span>                  -q <span style="color:#4e9a06">&#39;insert into trg format Native&#39;</span> &lt;t.native
 
 -- Check that only one part is created
-<span style="color:#204a87;font-weight:bold">select</span> count<span style="color:#ce5c00;font-weight:bold">()</span>, min<span style="color:#ce5c00;font-weight:bold">(</span>rows<span style="color:#ce5c00;font-weight:bold">)</span>, max<span style="color:#ce5c00;font-weight:bold">(</span>rows<span style="color:#ce5c00;font-weight:bold">)</span> from system.parts where <span style="color:#000">level</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">0</span> and <span style="color:#000">table</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#39;trg&#39;</span>　<span style="color:#000;font-weight:bold">;</span>
-┌─count<span style="color:#ce5c00;font-weight:bold">()</span>─┬─min<span style="color:#ce5c00;font-weight:bold">(</span>rows<span style="color:#ce5c00;font-weight:bold">)</span>─┬─max<span style="color:#ce5c00;font-weight:bold">(</span>rows<span style="color:#ce5c00;font-weight:bold">)</span>─┐
-│       <span style="color:#0000cf;font-weight:bold">1</span> │ <span style="color:#0000cf;font-weight:bold">100000000</span> │ <span style="color:#0000cf;font-weight:bold">100000000</span> │
-└─────────┴───────────┴───────────┘
+SELECT 
+    count<span style="color:#ce5c00;font-weight:bold">()</span>,
+    min<span style="color:#ce5c00;font-weight:bold">(</span>rows<span style="color:#ce5c00;font-weight:bold">)</span>,
+    max<span style="color:#ce5c00;font-weight:bold">(</span>rows<span style="color:#ce5c00;font-weight:bold">)</span>,
+    sum<span style="color:#ce5c00;font-weight:bold">(</span>rows<span style="color:#ce5c00;font-weight:bold">)</span>
+FROM system.parts
+WHERE <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">level</span> <span style="color:#ce5c00;font-weight:bold">=</span> 0<span style="color:#ce5c00;font-weight:bold">)</span> AND <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">table</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">&#39;trg&#39;</span><span style="color:#ce5c00;font-weight:bold">)</span>
+
+┌─count<span style="color:#ce5c00;font-weight:bold">()</span>─┬─min<span style="color:#ce5c00;font-weight:bold">(</span>rows<span style="color:#ce5c00;font-weight:bold">)</span>─┬─max<span style="color:#ce5c00;font-weight:bold">(</span>rows<span style="color:#ce5c00;font-weight:bold">)</span>─┬─sum<span style="color:#ce5c00;font-weight:bold">(</span>rows<span style="color:#ce5c00;font-weight:bold">)</span>─┐
+│       <span style="color:#0000cf;font-weight:bold">1</span> │ <span style="color:#0000cf;font-weight:bold">100000000</span> │ <span style="color:#0000cf;font-weight:bold">100000000</span> │ <span style="color:#0000cf;font-weight:bold">100000000</span> │
+└─────────┴───────────┴───────────┴───────────┘
+
 
 truncate table trg　<span style="color:#000;font-weight:bold">;</span>
 
@@ -722,10 +730,18 @@ clickhouse-client --input_format_parallel_parsing<span style="color:#ce5c00;font
 </span><span style="color:#4e9a06"></span>                  -q <span style="color:#4e9a06">&#39;insert into trg format TSV&#39;</span> &lt;t.tsv
 
 -- Check that only one part is created
-<span style="color:#204a87;font-weight:bold">select</span> count<span style="color:#ce5c00;font-weight:bold">()</span>, min<span style="color:#ce5c00;font-weight:bold">(</span>rows<span style="color:#ce5c00;font-weight:bold">)</span>, max<span style="color:#ce5c00;font-weight:bold">(</span>rows<span style="color:#ce5c00;font-weight:bold">)</span> from system.parts where <span style="color:#000">level</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">0</span> and <span style="color:#000">table</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#39;trg&#39;</span>　<span style="color:#000;font-weight:bold">;</span> 
-┌─count<span style="color:#ce5c00;font-weight:bold">()</span>─┬─min<span style="color:#ce5c00;font-weight:bold">(</span>rows<span style="color:#ce5c00;font-weight:bold">)</span>─┬─max<span style="color:#ce5c00;font-weight:bold">(</span>rows<span style="color:#ce5c00;font-weight:bold">)</span>─┐
-│       <span style="color:#0000cf;font-weight:bold">1</span> │ <span style="color:#0000cf;font-weight:bold">100000000</span> │ <span style="color:#0000cf;font-weight:bold">100000000</span> │
-└─────────┴───────────┴───────────┘
+SELECT 
+    count<span style="color:#ce5c00;font-weight:bold">()</span>,
+    min<span style="color:#ce5c00;font-weight:bold">(</span>rows<span style="color:#ce5c00;font-weight:bold">)</span>,
+    max<span style="color:#ce5c00;font-weight:bold">(</span>rows<span style="color:#ce5c00;font-weight:bold">)</span>,
+    sum<span style="color:#ce5c00;font-weight:bold">(</span>rows<span style="color:#ce5c00;font-weight:bold">)</span>
+FROM system.parts
+WHERE <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">level</span> <span style="color:#ce5c00;font-weight:bold">=</span> 0<span style="color:#ce5c00;font-weight:bold">)</span> AND <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">table</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">&#39;trg&#39;</span><span style="color:#ce5c00;font-weight:bold">)</span>
+
+┌─count<span style="color:#ce5c00;font-weight:bold">()</span>─┬─min<span style="color:#ce5c00;font-weight:bold">(</span>rows<span style="color:#ce5c00;font-weight:bold">)</span>─┬─max<span style="color:#ce5c00;font-weight:bold">(</span>rows<span style="color:#ce5c00;font-weight:bold">)</span>─┬─sum<span style="color:#ce5c00;font-weight:bold">(</span>rows<span style="color:#ce5c00;font-weight:bold">)</span>─┐
+│       <span style="color:#0000cf;font-weight:bold">1</span> │ <span style="color:#0000cf;font-weight:bold">100000000</span> │ <span style="color:#0000cf;font-weight:bold">100000000</span> │ <span style="color:#0000cf;font-weight:bold">100000000</span> │
+└─────────┴───────────┴───────────┴───────────┘
+
 </code></pre></div>
 	
 	
@@ -733,7 +749,7 @@ clickhouse-client --input_format_parallel_parsing<span style="color:#ce5c00;font
 
     Last modified
     2021.11.12
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/67aeaa195b1fd5efe6de56ba14ace4bdb75046f4">Update atomic-insert.md (67aeaa19)</a>
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/ab859fc3784d58bf398ea5d446edfc1b138e5e58">Update atomic-insert.md (ab859fc3)</a>
 
 </div>
 
