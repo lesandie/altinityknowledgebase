@@ -13,12 +13,12 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://kb.altinity.com/altinity-kb-queries-and-syntax/atomic-insert/" /><meta property="article:section" content="altinity-kb-queries-and-syntax" />
 
-<meta property="article:modified_time" content="2021-11-06T11:27:47-03:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
+<meta property="article:modified_time" content="2021-11-12T17:29:19+01:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
 
 <meta itemprop="name" content="Atomic insert">
 <meta itemprop="description" content="Atomic insert
 ">
-<meta itemprop="dateModified" content="2021-11-06T11:27:47-03:00" />
+<meta itemprop="dateModified" content="2021-11-12T17:29:19+01:00" />
 <meta itemprop="wordCount" content="257">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Atomic insert"/>
@@ -78,7 +78,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.0e6e6b00a4e7137f7ae27754cbaa7a18.json"
+  data-offline-search-index-json-src="/offline-search-index.e65f5dadb8e96456556f80029bfc84c9.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -106,7 +106,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.0e6e6b00a4e7137f7ae27754cbaa7a18.json"
+  data-offline-search-index-json-src="/offline-search-index.e65f5dadb8e96456556f80029bfc84c9.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -707,7 +707,7 @@ clickhouse-client --input_format_parallel_parsing<span style="color:#ce5c00;font
 </span><span style="color:#4e9a06"></span>                  -q <span style="color:#4e9a06">&#39;insert into trg format Native&#39;</span> &lt;t.native
 
 -- Check that only one part is created
-<span style="color:#204a87;font-weight:bold">select</span> count<span style="color:#ce5c00;font-weight:bold">()</span>, min<span style="color:#ce5c00;font-weight:bold">(</span>rows<span style="color:#ce5c00;font-weight:bold">)</span>, max<span style="color:#ce5c00;font-weight:bold">(</span>rows<span style="color:#ce5c00;font-weight:bold">)</span> from system.parts where active and <span style="color:#000">table</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#39;trg&#39;</span>　<span style="color:#000;font-weight:bold">;</span>
+<span style="color:#204a87;font-weight:bold">select</span> count<span style="color:#ce5c00;font-weight:bold">()</span>, min<span style="color:#ce5c00;font-weight:bold">(</span>rows<span style="color:#ce5c00;font-weight:bold">)</span>, max<span style="color:#ce5c00;font-weight:bold">(</span>rows<span style="color:#ce5c00;font-weight:bold">)</span> from system.parts where <span style="color:#000">level</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">0</span> and <span style="color:#000">table</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#39;trg&#39;</span>　<span style="color:#000;font-weight:bold">;</span>
 ┌─count<span style="color:#ce5c00;font-weight:bold">()</span>─┬─min<span style="color:#ce5c00;font-weight:bold">(</span>rows<span style="color:#ce5c00;font-weight:bold">)</span>─┬─max<span style="color:#ce5c00;font-weight:bold">(</span>rows<span style="color:#ce5c00;font-weight:bold">)</span>─┐
 │       <span style="color:#0000cf;font-weight:bold">1</span> │ <span style="color:#0000cf;font-weight:bold">100000000</span> │ <span style="color:#0000cf;font-weight:bold">100000000</span> │
 └─────────┴───────────┴───────────┘
@@ -722,7 +722,7 @@ clickhouse-client --input_format_parallel_parsing<span style="color:#ce5c00;font
 </span><span style="color:#4e9a06"></span>                  -q <span style="color:#4e9a06">&#39;insert into trg format TSV&#39;</span> &lt;t.tsv
 
 -- Check that only one part is created
-<span style="color:#204a87;font-weight:bold">select</span> count<span style="color:#ce5c00;font-weight:bold">()</span>, min<span style="color:#ce5c00;font-weight:bold">(</span>rows<span style="color:#ce5c00;font-weight:bold">)</span>, max<span style="color:#ce5c00;font-weight:bold">(</span>rows<span style="color:#ce5c00;font-weight:bold">)</span> from system.parts where active and <span style="color:#000">table</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#39;trg&#39;</span>　<span style="color:#000;font-weight:bold">;</span>
+<span style="color:#204a87;font-weight:bold">select</span> count<span style="color:#ce5c00;font-weight:bold">()</span>, min<span style="color:#ce5c00;font-weight:bold">(</span>rows<span style="color:#ce5c00;font-weight:bold">)</span>, max<span style="color:#ce5c00;font-weight:bold">(</span>rows<span style="color:#ce5c00;font-weight:bold">)</span> from system.parts where <span style="color:#000">level</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">0</span> and <span style="color:#000">table</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#39;trg&#39;</span>　<span style="color:#000;font-weight:bold">;</span> 
 ┌─count<span style="color:#ce5c00;font-weight:bold">()</span>─┬─min<span style="color:#ce5c00;font-weight:bold">(</span>rows<span style="color:#ce5c00;font-weight:bold">)</span>─┬─max<span style="color:#ce5c00;font-weight:bold">(</span>rows<span style="color:#ce5c00;font-weight:bold">)</span>─┐
 │       <span style="color:#0000cf;font-weight:bold">1</span> │ <span style="color:#0000cf;font-weight:bold">100000000</span> │ <span style="color:#0000cf;font-weight:bold">100000000</span> │
 └─────────┴───────────┴───────────┘
@@ -732,8 +732,8 @@ clickhouse-client --input_format_parallel_parsing<span style="color:#ce5c00;font
 	<div class="text-muted mt-5 pt-3 border-top">
 
     Last modified
-    2021.11.06
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/bbcd8b992605045e71116c06882a7cc3a1191476">Update atomic-insert.md (bbcd8b99)</a>
+    2021.11.12
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/67aeaa195b1fd5efe6de56ba14ace4bdb75046f4">Update atomic-insert.md (67aeaa19)</a>
 
 </div>
 
