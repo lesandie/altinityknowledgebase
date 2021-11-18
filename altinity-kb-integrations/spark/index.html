@@ -12,12 +12,12 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://kb.altinity.com/altinity-kb-integrations/spark/" /><meta property="article:section" content="altinity-kb-integrations" />
 
-<meta property="article:modified_time" content="2021-11-18T17:51:03+01:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
+<meta property="article:modified_time" content="2021-11-18T08:58:57-08:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
 
 <meta itemprop="name" content="ClickHouse &#43; Spark">
 <meta itemprop="description" content="Spark">
-<meta itemprop="dateModified" content="2021-11-18T17:51:03+01:00" />
-<meta itemprop="wordCount" content="395">
+<meta itemprop="dateModified" content="2021-11-18T08:58:57-08:00" />
+<meta itemprop="wordCount" content="394">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="ClickHouse &#43; Spark"/>
 <meta name="twitter:description" content="Spark"/>
@@ -75,7 +75,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.1be74bbac32d2ddd1544c9467dcce9f4.json"
+  data-offline-search-index-json-src="/offline-search-index.1dac32c3776681e96db52ff9082794bb.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -103,7 +103,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.1be74bbac32d2ddd1544c9467dcce9f4.json"
+  data-offline-search-index-json-src="/offline-search-index.1dac32c3776681e96db52ff9082794bb.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -610,7 +610,7 @@
         <li><a href="#do-you-really-need-spark-">do you really need Spark? :)</a></li>
       </ul>
     </li>
-    <li><a href="#more-info--some-unordered-links-mostly-in-chineese--russian">More info + some unordered links (mostly in Chineese / Russian)</a></li>
+    <li><a href="#more-info--some-unordered-links-mostly-in-chinese--russian">More info + some unordered links (mostly in Chinese / Russian)</a></li>
   </ul>
 </nav>
 
@@ -687,12 +687,12 @@
 	       
 	<h2 id="clickhouse--spark">ClickHouse + Spark</h2>
 <h3 id="jdbc">jdbc</h3>
-<p>The trivial &amp; natural way to talk to ClickHouse from Spark there is using jdbc. There are 2 jdbc drivers:</p>
+<p>The trivial &amp; natural way to talk to ClickHouse from Spark is using jdbc. There are 2 jdbc drivers:</p>
 <ul>
 <li><a href="https://github.com/ClickHouse/clickhouse-jdbc/" target="_blank">https://github.com/ClickHouse/clickhouse-jdbc/</a></li>
 <li><a href="https://github.com/housepower/ClickHouse-Native-JDBC#integration-with-spark" target="_blank">https://github.com/housepower/ClickHouse-Native-JDBC#integration-with-spark</a></li>
 </ul>
-<p>ClickHouse-Native-JDBC have some hints about integration with Spark even in the main README file.</p>
+<p>ClickHouse-Native-JDBC has some hints about integration with Spark even in the main README file.</p>
 <p>&lsquo;Official&rsquo; driver does support some conversion of complex data types (Roarring bitmaps) for Spark-Clickhouse integration: <a href="https://github.com/ClickHouse/clickhouse-jdbc/pull/596" target="_blank">https://github.com/ClickHouse/clickhouse-jdbc/pull/596</a></p>
 <p>But proper partitioning of the data (to spark partitions) may be tricky with jdbc.</p>
 <p>Some example snippets:</p>
@@ -718,7 +718,7 @@ later process the data from hdfs by spark and do the same in reverse direction.<
 <h3 id="do-you-really-need-spark-">do you really need Spark? :)</h3>
 <p>In many cases you can do everything inside ClickHouse without Spark help :)
 Arrays, Higher-order functions, machine learning, integration with lot of different things including the possibility to run some external code using executable dictionaries or UDF.</p>
-<h2 id="more-info--some-unordered-links-mostly-in-chineese--russian">More info + some unordered links (mostly in Chineese / Russian)</h2>
+<h2 id="more-info--some-unordered-links-mostly-in-chinese--russian">More info + some unordered links (mostly in Chinese / Russian)</h2>
 <ul>
 <li>Spark + ClickHouse: not a fight, but a symbiosis <a href="https://github.com/ClickHouse/clickhouse-presentations/blob/master/meetup28/spark_and_clickhouse.pdf" target="_blank">https://github.com/ClickHouse/clickhouse-presentations/blob/master/meetup28/spark_and_clickhouse.pdf</a> (russian)</li>
 <li>Using a bunch of ClickHouse and Spark in MFI Soft <a href="https://www.youtube.com/watch?v=ID8eTnmag0s" target="_blank">https://www.youtube.com/watch?v=ID8eTnmag0s</a> (russian)</li>
@@ -727,8 +727,8 @@ Arrays, Higher-order functions, machine learning, integration with lot of differ
 <li>Spark JDBC write clickhouse operation summary <a href="https://www.jianshu.com/p/43f78c8a025b?hmsr=toutiao.io&amp;utm_campaign=toutiao.io&amp;utm_medium=toutiao.io&amp;utm_source=toutiao.io" target="_blank">https://www.jianshu.com/p/43f78c8a025b?hmsr=toutiao.io&amp;utm_campaign=toutiao.io&amp;utm_medium=toutiao.io&amp;utm_source=toutiao.io</a>  <a href="https://toutiao.io/posts/m63yw89/preview" target="_blank">https://toutiao.io/posts/m63yw89/preview</a></li>
 <li>Spark-sql is based on Clickhouse&rsquo;s DataSourceV2 data source extension (russian)
 <a href="https://www.cnblogs.com/mengyao/p/4689866.html" target="_blank">https://www.cnblogs.com/mengyao/p/4689866.html</a></li>
-<li>alibaba integration instructions <a href="https://www.alibabacloud.com/help/doc-detail/191192.htm" target="_blank">https://www.alibabacloud.com/help/doc-detail/191192.htm</a></li>
-<li>tencent integration instructions <a href="https://intl.cloud.tencent.com/document/product/1026/35884" target="_blank">https://intl.cloud.tencent.com/document/product/1026/35884</a></li>
+<li>Alibaba integration instructions <a href="https://www.alibabacloud.com/help/doc-detail/191192.htm" target="_blank">https://www.alibabacloud.com/help/doc-detail/191192.htm</a></li>
+<li>Tencent integration instructions <a href="https://intl.cloud.tencent.com/document/product/1026/35884" target="_blank">https://intl.cloud.tencent.com/document/product/1026/35884</a></li>
 <li>Yandex DataProc demo: loading files from S3 to ClickHouse with Spark <a href="https://www.youtube.com/watch?v=N3bZW0_rRzI" target="_blank">https://www.youtube.com/watch?v=N3bZW0_rRzI</a></li>
 <li>Clickhouse official documentation_Spark JDBC writes some pits of ClickHouse  <a href="https://blog.csdn.net/weixin_39615984/article/details/111206050" target="_blank">https://blog.csdn.net/weixin_39615984/article/details/111206050</a></li>
 <li>ClickHouse data import (Flink, Spark, Kafka, MySQL, Hive) <a href="https://zhuanlan.zhihu.com/p/299094269" target="_blank">https://zhuanlan.zhihu.com/p/299094269</a></li>
@@ -746,7 +746,7 @@ Arrays, Higher-order functions, machine learning, integration with lot of differ
 
     Last modified
     2021.11.18
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/9e52a0e22eab7ae9d4a183cc506004381eb5dfd0">Update Spark.md (9e52a0e2)</a>
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/6e18c4802f4e301446138e17111611a73c563442">Fixes to minor typos on Spark.md (6e18c480)</a>
 
 </div>
 
