@@ -12,12 +12,12 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://kb.altinity.com/altinity-kb-integrations/spark/" /><meta property="article:section" content="altinity-kb-integrations" />
 
-<meta property="article:modified_time" content="2021-11-18T17:07:16+01:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
+<meta property="article:modified_time" content="2021-11-18T17:50:02+01:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
 
 <meta itemprop="name" content="Spark">
 <meta itemprop="description" content="Spark">
-<meta itemprop="dateModified" content="2021-11-18T17:07:16+01:00" />
-<meta itemprop="wordCount" content="165">
+<meta itemprop="dateModified" content="2021-11-18T17:50:02+01:00" />
+<meta itemprop="wordCount" content="395">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Spark"/>
 <meta name="twitter:description" content="Spark"/>
@@ -75,7 +75,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.1b508ffb6db36dce4b2836f7a3f18164.json"
+  data-offline-search-index-json-src="/offline-search-index.aefb9378fff2393ff05b81c433f65eea.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -103,7 +103,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.1b508ffb6db36dce4b2836f7a3f18164.json"
+  data-offline-search-index-json-src="/offline-search-index.aefb9378fff2393ff05b81c433f65eea.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -603,11 +603,14 @@
       <ul>
         <li><a href="#jdbc">jdbc</a></li>
         <li><a href="#connectors">Connectors</a></li>
+        <li><a href="#via-kafka">via Kafka</a></li>
+        <li><a href="#via-hdfs">via hdfs</a></li>
+        <li><a href="#via-s3">via s3</a></li>
+        <li><a href="#via-shell-calls">via shell calls</a></li>
+        <li><a href="#do-you-really-need-spark-">do you really need Spark? :)</a></li>
       </ul>
     </li>
-    <li><a href="#via-kafka">via Kafka</a></li>
-    <li><a href="#via-hdfs">via hdfs</a></li>
-    <li><a href="#via-shell-calls">via shell calls</a></li>
+    <li><a href="#more-info--some-unordered-links-mostly-in-chineese--russian">More info + some unordered links (mostly in Chineese / Russian)</a></li>
   </ul>
 </nav>
 
@@ -703,13 +706,39 @@
 <li><a href="https://github.com/VaBezruchko/spark-clickhouse-connector" target="_blank">https://github.com/VaBezruchko/spark-clickhouse-connector</a> (is not actively maintained).</li>
 <li><a href="https://github.com/housepower/spark-clickhouse-connector" target="_blank">https://github.com/housepower/spark-clickhouse-connector</a>  (actively developing connector from housepower - same guys as authors of ClickHouse-Native-JDBC)</li>
 </ul>
-<h2 id="via-kafka">via Kafka</h2>
+<h3 id="via-kafka">via Kafka</h3>
 <p>ClickHouse can produce / consume data from/to Kafka to exchange data with Spark.</p>
-<h2 id="via-hdfs">via hdfs</h2>
+<h3 id="via-hdfs">via hdfs</h3>
 <p>You can load data into hadoop/hdfs using sequence of statements like <code>INSERT INTO FUNCTION hdfs(...) SELECT ... FROM clickhouse_table</code>
 later process the data from hdfs by spark and do the same in reverse direction.</p>
-<h2 id="via-shell-calls">via shell calls</h2>
+<h3 id="via-s3">via s3</h3>
+<p>Similar to above but using s3.</p>
+<h3 id="via-shell-calls">via shell calls</h3>
 <p>You can call other commands from Spark. Those commands can be <code>clickhouse-client</code> and/or <code>clickhouse-local</code>.</p>
+<h3 id="do-you-really-need-spark-">do you really need Spark? :)</h3>
+<p>In many cases you can do everything inside ClickHouse without Spark help :)
+Arrays, Higher-order functions, machine learning, integration with lot of different things including the possibility to run some external code using executable dictionaries or UDF.</p>
+<h2 id="more-info--some-unordered-links-mostly-in-chineese--russian">More info + some unordered links (mostly in Chineese / Russian)</h2>
+<ul>
+<li>Spark + ClickHouse: not a fight, but a symbiosis <a href="https://github.com/ClickHouse/clickhouse-presentations/blob/master/meetup28/spark_and_clickhouse.pdf" target="_blank">https://github.com/ClickHouse/clickhouse-presentations/blob/master/meetup28/spark_and_clickhouse.pdf</a> (russian)</li>
+<li>Using a bunch of ClickHouse and Spark in MFI Soft <a href="https://www.youtube.com/watch?v=ID8eTnmag0s" target="_blank">https://www.youtube.com/watch?v=ID8eTnmag0s</a> (russian)</li>
+<li>Spark read and write ClickHouse <a href="https://yerias.github.io/2020/12/08/clickhouse/9/#Jdbc%E6%93%8D%E4%BD%9Cclickhouse" target="_blank">https://yerias.github.io/2020/12/08/clickhouse/9/#Jdbc%E6%93%8D%E4%BD%9Cclickhouse</a></li>
+<li>Spark reads and writes ClickHouse through jdbc <a href="https://blog.katastros.com/a?ID=01800-e40e1b3c-5fa4-4ea0-a3a8-f5e89ef0ce14" target="_blank">https://blog.katastros.com/a?ID=01800-e40e1b3c-5fa4-4ea0-a3a8-f5e89ef0ce14</a></li>
+<li>Spark JDBC write clickhouse operation summary <a href="https://www.jianshu.com/p/43f78c8a025b?hmsr=toutiao.io&amp;utm_campaign=toutiao.io&amp;utm_medium=toutiao.io&amp;utm_source=toutiao.io" target="_blank">https://www.jianshu.com/p/43f78c8a025b?hmsr=toutiao.io&amp;utm_campaign=toutiao.io&amp;utm_medium=toutiao.io&amp;utm_source=toutiao.io</a>  <a href="https://toutiao.io/posts/m63yw89/preview" target="_blank">https://toutiao.io/posts/m63yw89/preview</a></li>
+<li>Spark-sql is based on Clickhouse&rsquo;s DataSourceV2 data source extension (russian)
+<a href="https://www.cnblogs.com/mengyao/p/4689866.html" target="_blank">https://www.cnblogs.com/mengyao/p/4689866.html</a></li>
+<li>alibaba integration instructions <a href="https://www.alibabacloud.com/help/doc-detail/191192.htm" target="_blank">https://www.alibabacloud.com/help/doc-detail/191192.htm</a></li>
+<li>tencent integration instructions <a href="https://intl.cloud.tencent.com/document/product/1026/35884" target="_blank">https://intl.cloud.tencent.com/document/product/1026/35884</a></li>
+<li>Yandex DataProc demo: loading files from S3 to ClickHouse with Spark <a href="https://www.youtube.com/watch?v=N3bZW0_rRzI" target="_blank">https://www.youtube.com/watch?v=N3bZW0_rRzI</a></li>
+<li>Clickhouse official documentation_Spark JDBC writes some pits of ClickHouse  <a href="https://blog.csdn.net/weixin_39615984/article/details/111206050" target="_blank">https://blog.csdn.net/weixin_39615984/article/details/111206050</a></li>
+<li>ClickHouse data import (Flink, Spark, Kafka, MySQL, Hive) <a href="https://zhuanlan.zhihu.com/p/299094269" target="_blank">https://zhuanlan.zhihu.com/p/299094269</a></li>
+<li>Baifendian Big Data Technical Team: Practice of ClickHouse data synchronization solutionbased on multiple Spark tasks. <a href="https://www.6aiq.com/article/1635461873075" target="_blank">https://www.6aiq.com/article/1635461873075</a></li>
+<li>SPARK-CLICKHOUSE-ES REAL-TIME PROJECT EIGHTH DAY-PRECISE ONE-TIME CONSUMPTION SAVE OFFSET. <a href="https://www.freesion.com/article/71421322524/" target="_blank">https://www.freesion.com/article/71421322524/</a></li>
+<li>Still struggling with real-time data warehouse selection, Spark + ClickHouse makes yoamazing! <a href="https://dbaplus.cn/news-73-3806-1.html" target="_blank">https://dbaplus.cn/news-73-3806-1.html</a></li>
+<li>HDFS+ClickHouse+Spark: A lightweight big data analysis system from 0 to 1. <a href="https://juejin.cn/post/6850418114962653198" target="_blank">https://juejin.cn/post/6850418114962653198</a></li>
+<li>ClickHouse Clustering for Spark Developer <a href="http://blog.madhukaraphatak.com/clickouse-clustering-spark-developer/" target="_blank">http://blog.madhukaraphatak.com/clickouse-clustering-spark-developer/</a></li>
+<li>«Иногда приходится заглядывать в код Spark»: Александр Морозов (SEMrush) об использовании Scala, Spark и ClickHouse.  <a href="https://habr.com/ru/company/jugru/blog/341288/" target="_blank">https://habr.com/ru/company/jugru/blog/341288/</a></li>
+</ul>
 
 	
 	
@@ -717,7 +746,7 @@ later process the data from hdfs by spark and do the same in reverse direction.<
 
     Last modified
     2021.11.18
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/e07f5e0264b54973e018b159658280528ffa44c8">Create Spark.md (e07f5e02)</a>
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/d9a8c3345f68812a91308a8fda651135cba0838a">Update Spark.md (d9a8c334)</a>
 
 </div>
 
