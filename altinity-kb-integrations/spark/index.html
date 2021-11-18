@@ -6,21 +6,21 @@
 <meta name="generator" content="Hugo 0.89.4" /><META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
 <link rel="shortcut icon" href="/favicons/favicon.ico" >
 <link rel="icon" href="/favicons/favicon.ico" >
-<title>Ingestion performance and formats | Altinity Knowledge Base</title>
-<meta name="description" content="Altinity Knowledge Base"><meta property="og:title" content="Ingestion performance and formats" />
-<meta property="og:description" content="clickhouse-client-q&#39;select toString(number) s, number n, number/1000 f from numbers(100000000) format TSV&#39;&gt;speed.tsvclickhouse-client-q&#39;select toString(number) s, number n, number/1000 f from numbers(100000000) format RowBinary&#39;&gt;speed.RowBinaryclickhouse-client-q&#39;select toString(number) s, number n, number/1000 f from numbers(100000000) format Native&#39;&gt;speed.Nativeclickhouse-client-q&#39;select toString(number) s, number n, number/1000 f from numbers(100000000) format CSV&#39;&gt;speed.csvclickhouse-client-q&#39;select toString(number) s, number n, number/1000 f from numbers(100000000) format JSONEachRow&#39;&gt;speed.JSONEachRowclickhouse-client-q&#39;select toString(number) s, number n, number/1000 f from numbers(100000000) format Parquet&#39;&gt;speed.parquetclickhouse-client-q&#39;select toString(number) s, number n, number/1000 f from numbers(100000000) format Avro&#39;&gt;speed." />
+<title>Spark | Altinity Knowledge Base</title>
+<meta name="description" content="Altinity Knowledge Base"><meta property="og:title" content="Spark" />
+<meta property="og:description" content="Spark" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://kb.altinity.com/altinity-kb-schema-design/ingestion-performance-and-formats/" /><meta property="article:section" content="altinity-kb-schema-design" />
+<meta property="og:url" content="http://kb.altinity.com/altinity-kb-integrations/spark/" /><meta property="article:section" content="altinity-kb-integrations" />
 
-<meta property="article:modified_time" content="2021-08-24T13:51:49-06:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
+<meta property="article:modified_time" content="2021-11-18T17:07:16+01:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
 
-<meta itemprop="name" content="Ingestion performance and formats">
-<meta itemprop="description" content="clickhouse-client-q&#39;select toString(number) s, number n, number/1000 f from numbers(100000000) format TSV&#39;&gt;speed.tsvclickhouse-client-q&#39;select toString(number) s, number n, number/1000 f from numbers(100000000) format RowBinary&#39;&gt;speed.RowBinaryclickhouse-client-q&#39;select toString(number) s, number n, number/1000 f from numbers(100000000) format Native&#39;&gt;speed.Nativeclickhouse-client-q&#39;select toString(number) s, number n, number/1000 f from numbers(100000000) format CSV&#39;&gt;speed.csvclickhouse-client-q&#39;select toString(number) s, number n, number/1000 f from numbers(100000000) format JSONEachRow&#39;&gt;speed.JSONEachRowclickhouse-client-q&#39;select toString(number) s, number n, number/1000 f from numbers(100000000) format Parquet&#39;&gt;speed.parquetclickhouse-client-q&#39;select toString(number) s, number n, number/1000 f from numbers(100000000) format Avro&#39;&gt;speed.">
-<meta itemprop="dateModified" content="2021-08-24T13:51:49-06:00" />
-<meta itemprop="wordCount" content="188">
+<meta itemprop="name" content="Spark">
+<meta itemprop="description" content="Spark">
+<meta itemprop="dateModified" content="2021-11-18T17:07:16+01:00" />
+<meta itemprop="wordCount" content="165">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Ingestion performance and formats"/>
-<meta name="twitter:description" content="clickhouse-client-q&#39;select toString(number) s, number n, number/1000 f from numbers(100000000) format TSV&#39;&gt;speed.tsvclickhouse-client-q&#39;select toString(number) s, number n, number/1000 f from numbers(100000000) format RowBinary&#39;&gt;speed.RowBinaryclickhouse-client-q&#39;select toString(number) s, number n, number/1000 f from numbers(100000000) format Native&#39;&gt;speed.Nativeclickhouse-client-q&#39;select toString(number) s, number n, number/1000 f from numbers(100000000) format CSV&#39;&gt;speed.csvclickhouse-client-q&#39;select toString(number) s, number n, number/1000 f from numbers(100000000) format JSONEachRow&#39;&gt;speed.JSONEachRowclickhouse-client-q&#39;select toString(number) s, number n, number/1000 f from numbers(100000000) format Parquet&#39;&gt;speed.parquetclickhouse-client-q&#39;select toString(number) s, number n, number/1000 f from numbers(100000000) format Avro&#39;&gt;speed."/>
+<meta name="twitter:title" content="Spark"/>
+<meta name="twitter:description" content="Spark"/>
 
 
 
@@ -274,22 +274,22 @@
   <a href="/altinity-kb-functions/altinity-kb-sequencematch/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-functionsaltinity-kb-sequencematch"><span class="">sequenceMatch</span></a>
 </li>
   </ul>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-altinity-kb-integrations-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-altinity-kb-integrations-li">
   <a href="/altinity-kb-integrations/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-altinity-kb-integrations"><span class="">Integrations</span></a>
   <ul class="ul-2 foldable">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-integrationsmysql-clickhouse-li">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-integrationsmysql-clickhouse-li">
   <a href="/altinity-kb-integrations/mysql-clickhouse/" title="MySQL" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-integrationsmysql-clickhouse"><span class="">Integration Clickhouse with MySQL</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-integrationsclickhouse-odbc-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-integrationsclickhouse-odbc-li">
   <a href="/altinity-kb-integrations/clickhouse-odbc/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-integrationsclickhouse-odbc"><span class="">ODBC Driver for ClickHouse</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-integrationsspark-li">
-  <a href="/altinity-kb-integrations/spark/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-integrationsspark"><span class="">Spark</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-integrationsbi-tools-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-altinity-kb-integrationsspark-li">
+  <a href="/altinity-kb-integrations/spark/" class="align-left pl-0 active td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-integrationsspark"><span class="td-sidebar-nav-active-item">Spark</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-integrationsbi-tools-li">
   <a href="/altinity-kb-integrations/bi-tools/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-integrationsbi-tools"><span class="">BI Tools</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-integrationscatboost-mindsdb-fastai-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-integrationscatboost-mindsdb-fastai-li">
   <a href="/altinity-kb-integrations/catboost-mindsdb-fast.ai/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-integrationscatboost-mindsdb-fastai"><span class="">CatBoost / MindsDB /  Fast.ai</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-integrationsaltinity-kb-google-s3-gcs-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-integrationsaltinity-kb-google-s3-gcs-li">
   <a href="/altinity-kb-integrations/altinity-kb-google-s3-gcs/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-integrationsaltinity-kb-google-s3-gcs"><span class="">Google S3 (GCS)</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child collapse" id="m-altinity-kb-integrationsaltinity-kb-kafka-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-altinity-kb-integrationsaltinity-kb-kafka-li">
   <a href="/altinity-kb-integrations/altinity-kb-kafka/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-altinity-kb-integrationsaltinity-kb-kafka"><span class="">Kafka</span></a>
   <ul class="ul-3 foldable">
     <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-integrationsaltinity-kb-kafkaaltinity-kb-adjusting-librdkafka-settings-li">
@@ -467,12 +467,12 @@
   <a href="/altinity-kb-useful-queries/parts-consistency/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-useful-queriesparts-consistency"><span class="">Parts consistency</span></a>
 </li>
   </ul>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-altinity-kb-schema-design-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-altinity-kb-schema-design-li">
   <a href="/altinity-kb-schema-design/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-altinity-kb-schema-design"><span class="">Schema design</span></a>
   <ul class="ul-2 foldable">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-schema-designbest-schema-for-storing-many-metrics-registered-from-the-single-source-li">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-schema-designbest-schema-for-storing-many-metrics-registered-from-the-single-source-li">
   <a href="/altinity-kb-schema-design/best-schema-for-storing-many-metrics-registered-from-the-single-source/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-schema-designbest-schema-for-storing-many-metrics-registered-from-the-single-source"><span class="">Best schema for storing many metrics registered from the single source</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-altinity-kb-schema-designcodecs-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child collapse" id="m-altinity-kb-schema-designcodecs-li">
   <a href="/altinity-kb-schema-design/codecs/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-altinity-kb-schema-designcodecs"><span class="">Codecs</span></a>
   <ul class="ul-3 foldable">
     <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-schema-designcodecscodecs-on-array-columns-li">
@@ -483,21 +483,21 @@
   <a href="/altinity-kb-schema-design/codecs/altinity-kb-how-to-test-different-compression-codecs/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-schema-designcodecsaltinity-kb-how-to-test-different-compression-codecs"><span class="">How to test different compression codecs</span></a>
 </li>
   </ul>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-schema-designaltinity-kb-dictionaries-vs-lowcardinality-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-schema-designaltinity-kb-dictionaries-vs-lowcardinality-li">
   <a href="/altinity-kb-schema-design/altinity-kb-dictionaries-vs-lowcardinality/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-schema-designaltinity-kb-dictionaries-vs-lowcardinality"><span class="">Dictionaries vs LowCardinality</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-schema-designflattened-table-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-schema-designflattened-table-li">
   <a href="/altinity-kb-schema-design/flattened-table/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-schema-designflattened-table"><span class="">Flattened table</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-schema-designfloats-vs-decimals-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-schema-designfloats-vs-decimals-li">
   <a href="/altinity-kb-schema-design/floats-vs-decimals/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-schema-designfloats-vs-decimals"><span class="">Floats vs Decimals</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-altinity-kb-schema-designingestion-performance-and-formats-li">
-  <a href="/altinity-kb-schema-design/ingestion-performance-and-formats/" class="align-left pl-0 active td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-schema-designingestion-performance-and-formats"><span class="td-sidebar-nav-active-item">Ingestion performance and formats</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-schema-designhow-to-store-ips-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-schema-designingestion-performance-and-formats-li">
+  <a href="/altinity-kb-schema-design/ingestion-performance-and-formats/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-schema-designingestion-performance-and-formats"><span class="">Ingestion performance and formats</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-schema-designhow-to-store-ips-li">
   <a href="/altinity-kb-schema-design/how-to-store-ips/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-schema-designhow-to-store-ips"><span class="">IPs/masks</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-schema-designaltinity-kb-jsonasstring-and-mat-view-as-json-parser-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-schema-designaltinity-kb-jsonasstring-and-mat-view-as-json-parser-li">
   <a href="/altinity-kb-schema-design/altinity-kb-jsonasstring-and-mat.-view-as-json-parser/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-schema-designaltinity-kb-jsonasstring-and-mat-view-as-json-parser"><span class="">JSONAsString and Mat. View as JSON parser</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-schema-designlowcardinality-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-schema-designlowcardinality-li">
   <a href="/altinity-kb-schema-design/lowcardinality/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-schema-designlowcardinality"><span class="">LowCardinality</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-altinity-kb-schema-designmaterialized-views-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child collapse" id="m-altinity-kb-schema-designmaterialized-views-li">
   <a href="/altinity-kb-schema-design/materialized-views/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-altinity-kb-schema-designmaterialized-views"><span class="">MATERIALIZED VIEWS</span></a>
   <ul class="ul-3 foldable">
     <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-schema-designmaterialized-viewsbackfill-populate-mv-in-a-controlled-manner-li">
@@ -584,9 +584,9 @@
     
     
 
-    <a href="https://github.com/Altinity/altinityknowledgebase/edit/main/content/en/altinity-kb-schema-design/ingestion-performance-and-formats.md" target="_blank"><i class="fa fa-edit fa-fw"></i> Edit this page</a>
-    <a href="https://github.com/Altinity/altinityknowledgebase/new/main/content/en/altinity-kb-schema-design/ingestion-performance-and-formats.md?filename=change-me.md&amp;value=---%0Atitle%3A&#43;%22Long&#43;Page&#43;Title%22%0AlinkTitle%3A&#43;%22Short&#43;Nav&#43;Title%22%0Aweight%3A&#43;100%0Adescription%3A&#43;%3E-%0A&#43;&#43;&#43;&#43;&#43;Page&#43;description&#43;for&#43;heading&#43;and&#43;indexes.%0A---%0A%0A%23%23&#43;Heading%0A%0AEdit&#43;this&#43;template&#43;to&#43;create&#43;your&#43;new&#43;page.%0A%0A%2A&#43;Give&#43;it&#43;a&#43;good&#43;name%2C&#43;ending&#43;in&#43;%60.md%60&#43;-&#43;e.g.&#43;%60getting-started.md%60%0A%2A&#43;Edit&#43;the&#43;%22front&#43;matter%22&#43;section&#43;at&#43;the&#43;top&#43;of&#43;the&#43;page&#43;%28weight&#43;controls&#43;how&#43;its&#43;ordered&#43;amongst&#43;other&#43;pages&#43;in&#43;the&#43;same&#43;directory%3B&#43;lowest&#43;number&#43;first%29.%0A%2A&#43;Add&#43;a&#43;good&#43;commit&#43;message&#43;at&#43;the&#43;bottom&#43;of&#43;the&#43;page&#43;%28%3C80&#43;characters%3B&#43;use&#43;the&#43;extended&#43;description&#43;field&#43;for&#43;more&#43;detail%29.%0A%2A&#43;Create&#43;a&#43;new&#43;branch&#43;so&#43;you&#43;can&#43;preview&#43;your&#43;new&#43;file&#43;and&#43;request&#43;a&#43;review&#43;via&#43;Pull&#43;Request.%0A" target="_blank"><i class="fa fa-edit fa-fw"></i> Create child page</a>
-    <a href="https://github.com/Altinity/altinityknowledgebase/issues/new?title=/altinity-kb-schema-design/ingestion-performance-and-formats/" target="_blank"><i class="fab fa-github fa-fw"></i> Create documentation issue</a>
+    <a href="https://github.com/Altinity/altinityknowledgebase/edit/main/content/en/altinity-kb-integrations/Spark.md" target="_blank"><i class="fa fa-edit fa-fw"></i> Edit this page</a>
+    <a href="https://github.com/Altinity/altinityknowledgebase/new/main/content/en/altinity-kb-integrations/Spark.md?filename=change-me.md&amp;value=---%0Atitle%3A&#43;%22Long&#43;Page&#43;Title%22%0AlinkTitle%3A&#43;%22Short&#43;Nav&#43;Title%22%0Aweight%3A&#43;100%0Adescription%3A&#43;%3E-%0A&#43;&#43;&#43;&#43;&#43;Page&#43;description&#43;for&#43;heading&#43;and&#43;indexes.%0A---%0A%0A%23%23&#43;Heading%0A%0AEdit&#43;this&#43;template&#43;to&#43;create&#43;your&#43;new&#43;page.%0A%0A%2A&#43;Give&#43;it&#43;a&#43;good&#43;name%2C&#43;ending&#43;in&#43;%60.md%60&#43;-&#43;e.g.&#43;%60getting-started.md%60%0A%2A&#43;Edit&#43;the&#43;%22front&#43;matter%22&#43;section&#43;at&#43;the&#43;top&#43;of&#43;the&#43;page&#43;%28weight&#43;controls&#43;how&#43;its&#43;ordered&#43;amongst&#43;other&#43;pages&#43;in&#43;the&#43;same&#43;directory%3B&#43;lowest&#43;number&#43;first%29.%0A%2A&#43;Add&#43;a&#43;good&#43;commit&#43;message&#43;at&#43;the&#43;bottom&#43;of&#43;the&#43;page&#43;%28%3C80&#43;characters%3B&#43;use&#43;the&#43;extended&#43;description&#43;field&#43;for&#43;more&#43;detail%29.%0A%2A&#43;Create&#43;a&#43;new&#43;branch&#43;so&#43;you&#43;can&#43;preview&#43;your&#43;new&#43;file&#43;and&#43;request&#43;a&#43;review&#43;via&#43;Pull&#43;Request.%0A" target="_blank"><i class="fa fa-edit fa-fw"></i> Create child page</a>
+    <a href="https://github.com/Altinity/altinityknowledgebase/issues/new?title=/altinity-kb-integrations/spark/" target="_blank"><i class="fab fa-github fa-fw"></i> Create documentation issue</a>
     
 
   
@@ -597,6 +597,20 @@
             
 
 
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#clickhouse--spark">ClickHouse + Spark</a>
+      <ul>
+        <li><a href="#jdbc">jdbc</a></li>
+        <li><a href="#connectors">Connectors</a></li>
+      </ul>
+    </li>
+    <li><a href="#via-kafka">via Kafka</a></li>
+    <li><a href="#via-hdfs">via hdfs</a></li>
+    <li><a href="#via-shell-calls">via shell calls</a></li>
+  </ul>
+</nav>
+
 
 
 
@@ -606,9 +620,9 @@
   <p>&nbsp;</p>
   <p>Share on Social Media:</p>
   <span style="display:flex; flex-direction: row; justify-content: space-between; align-items: flex-start; padding-left: 10px; padding-right: 75px;">
-    <a href="https://twitter.com/intent/tweet?text=Ingestion%20performance%20and%20formats&amp;url=http://kb.altinity.com/altinity-kb-schema-design/ingestion-performance-and-formats/" target="_blank" class="fab fa-twitter"></a>
-    <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://kb.altinity.com/altinity-kb-schema-design/ingestion-performance-and-formats/" target="_blank" class="fab fa-facebook"></a>
-    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http://kb.altinity.com/altinity-kb-schema-design/ingestion-performance-and-formats/&amp;title=Ingestion%20performance%20and%20formats"target="_blank" class="fab fa-linkedin"></a>
+    <a href="https://twitter.com/intent/tweet?text=Spark&amp;url=http://kb.altinity.com/altinity-kb-integrations/spark/" target="_blank" class="fab fa-twitter"></a>
+    <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://kb.altinity.com/altinity-kb-integrations/spark/" target="_blank" class="fab fa-facebook"></a>
+    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http://kb.altinity.com/altinity-kb-integrations/spark/&amp;title=Spark"target="_blank" class="fab fa-linkedin"></a>
   </span>
 </div>
 
@@ -648,14 +662,14 @@
 
 
 <li class="breadcrumb-item" >
-	<a href="http://kb.altinity.com/altinity-kb-schema-design/">Schema design</a>
+	<a href="http://kb.altinity.com/altinity-kb-integrations/">Integrations</a>
 </li>
 
 
 
 
 <li class="breadcrumb-item active" aria-current="page">
-	<a href="http://kb.altinity.com/altinity-kb-schema-design/ingestion-performance-and-formats/">Ingestion performance and formats</a>
+	<a href="http://kb.altinity.com/altinity-kb-integrations/spark/">Spark</a>
 </li>
 
 	</ol>
@@ -663,59 +677,47 @@
 
             
 <div class="td-content">
-	<h1>Ingestion performance and formats</h1>
+	<h1>Spark</h1>
     <div class="lead">
 	</div>
 	
 	       
-	<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000">clickhouse</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">client</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">q</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;select toString(number) s, number n, number/1000 f from numbers(100000000) format TSV&#39;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">&gt;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">speed</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">tsv</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">clickhouse</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">client</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">q</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;select toString(number) s, number n, number/1000 f from numbers(100000000) format RowBinary&#39;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">&gt;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">speed</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">RowBinary</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">clickhouse</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">client</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">q</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;select toString(number) s, number n, number/1000 f from numbers(100000000) format Native&#39;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">&gt;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">speed</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">Native</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">clickhouse</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">client</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">q</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;select toString(number) s, number n, number/1000 f from numbers(100000000) format CSV&#39;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">&gt;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">speed</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">csv</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">clickhouse</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">client</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">q</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;select toString(number) s, number n, number/1000 f from numbers(100000000) format JSONEachRow&#39;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">&gt;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">speed</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">JSONEachRow</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">clickhouse</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">client</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">q</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;select toString(number) s, number n, number/1000 f from numbers(100000000) format Parquet&#39;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">&gt;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">speed</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">parquet</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">clickhouse</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">client</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">q</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;select toString(number) s, number n, number/1000 f from numbers(100000000) format Avro&#39;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">&gt;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">speed</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">avro</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#8f5902;font-style:italic">-- Engine=Null does not have I/O / sorting overhead
-</span><span style="color:#8f5902;font-style:italic">-- we test only formats parsing performance.
-</span><span style="color:#8f5902;font-style:italic"></span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">create</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">table</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">n</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">s</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">String</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">n</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">UInt64</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">f</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Float64</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Engine</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#204a87;font-weight:bold">Null</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#8f5902;font-style:italic">-- clickhouse-client parses formats itself
-</span><span style="color:#8f5902;font-style:italic">-- it allows to see user CPU time -- time is used in a multithreaded application
-</span><span style="color:#8f5902;font-style:italic">-- another option is to disable parallelism `--input_format_parallel_parsing=0`
-</span><span style="color:#8f5902;font-style:italic">-- real -- wall / clock time.
-</span><span style="color:#8f5902;font-style:italic"></span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">time</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">clickhouse</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">client</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">t</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">q</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;insert into n format TSV&#39;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">speed</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">tsv</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">.</span><span style="color:#0000cf;font-weight:bold">693</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87">real</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000">m2</span><span style="color:#000;font-weight:bold">.</span><span style="color:#0000cf;font-weight:bold">728</span><span style="color:#000">s</span><span style="color:#f8f8f8;text-decoration:underline">   </span><span style="color:#204a87;font-weight:bold">user</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000">m14</span><span style="color:#000;font-weight:bold">.</span><span style="color:#0000cf;font-weight:bold">066</span><span style="color:#000">s</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">time</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">clickhouse</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">client</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">t</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">q</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;insert into n format RowBinary&#39;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">speed</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">RowBinary</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#0000cf;font-weight:bold">3</span><span style="color:#000;font-weight:bold">.</span><span style="color:#0000cf;font-weight:bold">744</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87">real</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000">m3</span><span style="color:#000;font-weight:bold">.</span><span style="color:#0000cf;font-weight:bold">773</span><span style="color:#000">s</span><span style="color:#f8f8f8;text-decoration:underline">   </span><span style="color:#204a87;font-weight:bold">user</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000">m4</span><span style="color:#000;font-weight:bold">.</span><span style="color:#0000cf;font-weight:bold">245</span><span style="color:#000">s</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">time</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">clickhouse</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">client</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">t</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">q</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;insert into n format Native&#39;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">speed</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">Native</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">.</span><span style="color:#0000cf;font-weight:bold">359</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87">real</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000">m2</span><span style="color:#000;font-weight:bold">.</span><span style="color:#0000cf;font-weight:bold">382</span><span style="color:#000">s</span><span style="color:#f8f8f8;text-decoration:underline">   </span><span style="color:#204a87;font-weight:bold">user</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000">m1</span><span style="color:#000;font-weight:bold">.</span><span style="color:#0000cf;font-weight:bold">945</span><span style="color:#000">s</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">time</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">clickhouse</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">client</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">t</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">q</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;insert into n format CSV&#39;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">speed</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">csv</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#0000cf;font-weight:bold">3</span><span style="color:#000;font-weight:bold">.</span><span style="color:#0000cf;font-weight:bold">296</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87">real</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000">m3</span><span style="color:#000;font-weight:bold">.</span><span style="color:#0000cf;font-weight:bold">328</span><span style="color:#000">s</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">user</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000">m18</span><span style="color:#000;font-weight:bold">.</span><span style="color:#0000cf;font-weight:bold">145</span><span style="color:#000">s</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">time</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">clickhouse</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">client</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">t</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">q</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;insert into n format JSONEachRow&#39;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">speed</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">JSONEachRow</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#0000cf;font-weight:bold">8</span><span style="color:#000;font-weight:bold">.</span><span style="color:#0000cf;font-weight:bold">872</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87">real</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000">m8</span><span style="color:#000;font-weight:bold">.</span><span style="color:#0000cf;font-weight:bold">899</span><span style="color:#000">s</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">user</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000">m30</span><span style="color:#000;font-weight:bold">.</span><span style="color:#0000cf;font-weight:bold">235</span><span style="color:#000">s</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">time</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">clickhouse</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">client</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">t</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">q</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;insert into n format Parquet&#39;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">speed</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">parquet</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#0000cf;font-weight:bold">4</span><span style="color:#000;font-weight:bold">.</span><span style="color:#0000cf;font-weight:bold">905</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87">real</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000">m4</span><span style="color:#000;font-weight:bold">.</span><span style="color:#0000cf;font-weight:bold">929</span><span style="color:#000">s</span><span style="color:#f8f8f8;text-decoration:underline">   </span><span style="color:#204a87;font-weight:bold">user</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000">m5</span><span style="color:#000;font-weight:bold">.</span><span style="color:#0000cf;font-weight:bold">478</span><span style="color:#000">s</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">time</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">clickhouse</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">client</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">t</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#000">q</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;insert into n format Avro&#39;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">speed</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">avro</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#0000cf;font-weight:bold">11</span><span style="color:#000;font-weight:bold">.</span><span style="color:#0000cf;font-weight:bold">491</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87">real</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000">m11</span><span style="color:#000;font-weight:bold">.</span><span style="color:#0000cf;font-weight:bold">519</span><span style="color:#000">s</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">user</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000">m12</span><span style="color:#000;font-weight:bold">.</span><span style="color:#0000cf;font-weight:bold">166</span><span style="color:#000">s</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></code></pre></div><p>As you can see the JSONEachRow is the worst format  (user 0m30.235s) for this synthetic dataset. Native is the best (user 0m1.945s). TSV / CSV are good in wall time but spend a lot of CPU (user time).</p>
+	<h2 id="clickhouse--spark">ClickHouse + Spark</h2>
+<h3 id="jdbc">jdbc</h3>
+<p>The trivial &amp; natural way to talk to ClickHouse from Spark there is using jdbc. There are 2 jdbc drivers:</p>
+<ul>
+<li><a href="https://github.com/ClickHouse/clickhouse-jdbc/" target="_blank">https://github.com/ClickHouse/clickhouse-jdbc/</a></li>
+<li><a href="https://github.com/housepower/ClickHouse-Native-JDBC#integration-with-spark" target="_blank">https://github.com/housepower/ClickHouse-Native-JDBC#integration-with-spark</a></li>
+</ul>
+<p>ClickHouse-Native-JDBC have some hints about integration with Spark even in the main README file.</p>
+<p>&lsquo;Official&rsquo; driver does support some conversion of complex data types (Roarring bitmaps) for Spark-Clickhouse integration: <a href="https://github.com/ClickHouse/clickhouse-jdbc/pull/596" target="_blank">https://github.com/ClickHouse/clickhouse-jdbc/pull/596</a></p>
+<p>But proper partitioning of the data (to spark partitions) may be tricky with jdbc.</p>
+<p>Some example snippets:</p>
+<ul>
+<li><a href="https://markelic.de/how-to-access-your-clickhouse-database-with-spark-in-python/" target="_blank">https://markelic.de/how-to-access-your-clickhouse-database-with-spark-in-python/</a></li>
+<li><a href="https://stackoverflow.com/questions/60448877/how-can-i-write-spark-dataframe-to-clickhouse" target="_blank">https://stackoverflow.com/questions/60448877/how-can-i-write-spark-dataframe-to-clickhouse</a></li>
+</ul>
+<h3 id="connectors">Connectors</h3>
+<ul>
+<li><a href="https://github.com/DmitryBe/spark-clickhouse" target="_blank">https://github.com/DmitryBe/spark-clickhouse</a> (looks dead)</li>
+<li><a href="https://github.com/VaBezruchko/spark-clickhouse-connector" target="_blank">https://github.com/VaBezruchko/spark-clickhouse-connector</a> (is not actively maintained).</li>
+<li><a href="https://github.com/housepower/spark-clickhouse-connector" target="_blank">https://github.com/housepower/spark-clickhouse-connector</a>  (actively developing connector from housepower - same guys as authors of ClickHouse-Native-JDBC)</li>
+</ul>
+<h2 id="via-kafka">via Kafka</h2>
+<p>ClickHouse can produce / consume data from/to Kafka to exchange data with Spark.</p>
+<h2 id="via-hdfs">via hdfs</h2>
+<p>You can load data into hadoop/hdfs using sequence of statements like <code>INSERT INTO FUNCTION hdfs(...) SELECT ... FROM clickhouse_table</code>
+later process the data from hdfs by spark and do the same in reverse direction.</p>
+<h2 id="via-shell-calls">via shell calls</h2>
+<p>You can call other commands from Spark. Those commands can be <code>clickhouse-client</code> and/or <code>clickhouse-local</code>.</p>
 
 	
 	
 	<div class="text-muted mt-5 pt-3 border-top">
 
     Last modified
-    2021.08.24
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/50094874f79eac15f7d6e29ea11d1e2c66f9f397">Corrected spelling. (50094874)</a>
+    2021.11.18
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/e07f5e0264b54973e018b159658280528ffa44c8">Create Spark.md (e07f5e02)</a>
 
 </div>
 
