@@ -13,13 +13,13 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-server-config-files/" /><meta property="article:section" content="altinity-kb-setup-and-maintenance" />
 
-<meta property="article:modified_time" content="2021-10-14T17:22:46-03:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
+<meta property="article:modified_time" content="2021-11-19T23:53:23+01:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
 
 <meta itemprop="name" content="Server config files">
 <meta itemprop="description" content="How to manage server config files in Clickhouse
 ">
-<meta itemprop="dateModified" content="2021-10-14T17:22:46-03:00" />
-<meta itemprop="wordCount" content="694">
+<meta itemprop="dateModified" content="2021-11-19T23:53:23+01:00" />
+<meta itemprop="wordCount" content="825">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Server config files"/>
 <meta name="twitter:description" content="How to manage server config files in Clickhouse
@@ -78,7 +78,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.993aa7a67ff08a0b4ea090e5058fac9b.json"
+  data-offline-search-index-json-src="/offline-search-index.e1d7a64538dedd8cc0e67ebfa498bf3d.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -106,7 +106,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.993aa7a67ff08a0b4ea090e5058fac9b.json"
+  data-offline-search-index-json-src="/offline-search-index.e1d7a64538dedd8cc0e67ebfa498bf3d.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -603,7 +603,12 @@
 <nav id="TableOfContents">
   <ul>
     <li><a href="#сonfig-management-recommended-structure">Сonfig management (recommended structure)</a></li>
-    <li><a href="#settings--restart">Settings &amp; restart</a></li>
+    <li><a href="#settings--restart">Settings &amp; restart</a>
+      <ul>
+        <li><a href="#server-config-configxml-sections-which-dont-require-resart">Server config (config.xml) sections which don&rsquo;t require resart</a></li>
+      </ul>
+    </li>
+    <li><a href="#user-settings-which-require-restart">User settings which require restart.</a></li>
     <li><a href="#dictionaries">Dictionaries</a></li>
     <li><a href="#incl-attribute--metricaxml">incl attribute &amp; metrica.xml</a></li>
     <li><a href="#multiple-clickhouse-instances-at-one-host">Multiple Clickhouse instances at one host</a></li>
@@ -751,13 +756,42 @@ cat /etc/clickhouse-server/users.d/enable_access_management_for_user_default.xml
   &lt;/remote_servers&gt;
 &lt;/yandex&gt;
 </code></pre><h2 id="settings--restart">Settings &amp; restart</h2>
-<p>All users settings don’t need server restart but applied on connect. User need to reconnect to Clickhouse server.</p>
-<p>Most of server settings applied only on a server start, except sections:</p>
-<ol>
-<li>&lt;remote_servers&gt; (cluster config)</li>
-<li><dictionaries> (ext.dictionaries)</li>
-<li>&lt;max_table_size_to_drop&gt; &amp; &lt;max_partition_size_to_drop&gt;</li>
-</ol>
+<p>General &lsquo;rule of thumb&rsquo;: config.xml and config.d changes require restart, while <code>users.xml</code> and <code>users.d</code> setting don’t need server restart.</p>
+<p>But there are exceptions from those rules.</p>
+<h3 id="server-config-configxml-sections-which-dont-require-resart">Server config (config.xml) sections which don&rsquo;t require resart</h3>
+<ul>
+<li>max_server_memory_usage / max_server_memory_usage_to_ram_ratio</li>
+<li>max_table_size_to_drop / max_partition_size_to_drop / max_concurrent_queries</li>
+<li>macros</li>
+<li>remote_servers</li>
+<li>dictionaries_config / dictionaries</li>
+<li>user_defined_executable_functions_config / functions</li>
+<li>models_config / models</li>
+<li>keeper_server / zookeeper</li>
+<li>storage_configuration</li>
+<li>user_directories / access_control_path</li>
+<li>encryption_codecs</li>
+</ul>
+<p>See also <a href="https://github.com/ClickHouse/ClickHouse/blob/445b0ba7cc6b82e69fef28296981fbddc64cd634/programs/server/Server.cpp#L809-L883" target="_blank">https://github.com/ClickHouse/ClickHouse/blob/445b0ba7cc6b82e69fef28296981fbddc64cd634/programs/server/Server.cpp#L809-L883</a></p>
+<h2 id="user-settings-which-require-restart">User settings which require restart.</h2>
+<p>Most of user setting changes don&rsquo;t require restart, but they get applied at the connect time, so existing connection may still use old user-level settings.
+That means that that new setting will be applied to new sessions / after reconnect.</p>
+<p>The list of user setting which require server restart:</p>
+<ul>
+<li>background_buffer_flush_schedule_pool_size</li>
+<li>background_pool_size</li>
+<li>background_merges_mutations_concurrency_ratio</li>
+<li>background_move_pool_size</li>
+<li>background_fetches_pool_size</li>
+<li>background_common_pool_size</li>
+<li>background_schedule_pool_size</li>
+<li>background_message_broker_schedule_pool_size</li>
+<li>background_distributed_schedule_pool_size</li>
+<li>max_replicated_fetches_network_bandwidth_for_server</li>
+<li>max_replicated_sends_network_bandwidth_for_server</li>
+</ul>
+<p>See also <code>select * from system.settings where description ilike '%start%'</code></p>
+<p>Also there are several &lsquo;long-running&rsquo; user sessions which are almost never restarted and can keep the setting from the server start (it&rsquo;s DDLWorker, Kafka, and some other service things).</p>
 <h2 id="dictionaries">Dictionaries</h2>
 <p>We suggest to store each dictionary description in a separate (own) file in a <strong>/etc/clickhouse-server/dict</strong> sub-folder.</p>
 <pre tabindex="0"><code class="language-markup" data-lang="markup">$ cat /etc/clickhouse-server/dict/country.xml
@@ -864,8 +898,8 @@ cat /etc/clickhouse-server/users.d/enable_access_management_for_user_default.xml
 	<div class="text-muted mt-5 pt-3 border-top">
 
     Last modified
-    2021.10.14
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/eaca4bb5f9cf8996fb53a41f54ac74f585739cca">Update altinity-kb-server-config-files.md (eaca4bb5)</a>
+    2021.11.19
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/3987bb828fc3c56a88aafe2a8c63abdb026110f2">Update altinity-kb-server-config-files.md (3987bb82)</a>
 
 </div>
 
