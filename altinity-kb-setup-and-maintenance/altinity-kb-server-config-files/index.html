@@ -13,13 +13,13 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-server-config-files/" /><meta property="article:section" content="altinity-kb-setup-and-maintenance" />
 
-<meta property="article:modified_time" content="2021-11-19T23:53:23+01:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
+<meta property="article:modified_time" content="2021-11-19T23:58:42+01:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
 
 <meta itemprop="name" content="Server config files">
 <meta itemprop="description" content="How to manage server config files in Clickhouse
 ">
-<meta itemprop="dateModified" content="2021-11-19T23:53:23+01:00" />
-<meta itemprop="wordCount" content="825">
+<meta itemprop="dateModified" content="2021-11-19T23:58:42+01:00" />
+<meta itemprop="wordCount" content="828">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Server config files"/>
 <meta name="twitter:description" content="How to manage server config files in Clickhouse
@@ -78,7 +78,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.e1d7a64538dedd8cc0e67ebfa498bf3d.json"
+  data-offline-search-index-json-src="/offline-search-index.42f39cee55326fb8046c64d5b3507e2b.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -106,7 +106,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.e1d7a64538dedd8cc0e67ebfa498bf3d.json"
+  data-offline-search-index-json-src="/offline-search-index.42f39cee55326fb8046c64d5b3507e2b.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -606,9 +606,9 @@
     <li><a href="#settings--restart">Settings &amp; restart</a>
       <ul>
         <li><a href="#server-config-configxml-sections-which-dont-require-resart">Server config (config.xml) sections which don&rsquo;t require resart</a></li>
+        <li><a href="#user-settings-which-require-restart">User settings which require restart.</a></li>
       </ul>
     </li>
-    <li><a href="#user-settings-which-require-restart">User settings which require restart.</a></li>
     <li><a href="#dictionaries">Dictionaries</a></li>
     <li><a href="#incl-attribute--metricaxml">incl attribute &amp; metrica.xml</a></li>
     <li><a href="#multiple-clickhouse-instances-at-one-host">Multiple Clickhouse instances at one host</a></li>
@@ -771,9 +771,10 @@ cat /etc/clickhouse-server/users.d/enable_access_management_for_user_default.xml
 <li>storage_configuration</li>
 <li>user_directories / access_control_path</li>
 <li>encryption_codecs</li>
+<li>logger (since 21.11)</li>
 </ul>
 <p>See also <a href="https://github.com/ClickHouse/ClickHouse/blob/445b0ba7cc6b82e69fef28296981fbddc64cd634/programs/server/Server.cpp#L809-L883" target="_blank">https://github.com/ClickHouse/ClickHouse/blob/445b0ba7cc6b82e69fef28296981fbddc64cd634/programs/server/Server.cpp#L809-L883</a></p>
-<h2 id="user-settings-which-require-restart">User settings which require restart.</h2>
+<h3 id="user-settings-which-require-restart">User settings which require restart.</h3>
 <p>Most of user setting changes don&rsquo;t require restart, but they get applied at the connect time, so existing connection may still use old user-level settings.
 That means that that new setting will be applied to new sessions / after reconnect.</p>
 <p>The list of user setting which require server restart:</p>
@@ -899,7 +900,7 @@ That means that that new setting will be applied to new sessions / after reconne
 
     Last modified
     2021.11.19
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/3987bb828fc3c56a88aafe2a8c63abdb026110f2">Update altinity-kb-server-config-files.md (3987bb82)</a>
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/d749078086689b9c60db222011c759f7a7842c08">Update altinity-kb-server-config-files.md (d7490780)</a>
 
 </div>
 
