@@ -59,6 +59,72 @@
     </item>
     
     <item>
+      <title>Engines: How to pick an ORDER BY / PRIMARY KEY / PARTITION BY for the MergeTree-family table</title>
+      <link>http://kb.altinity.com/engines/mergetree-table-engine-family/pick-keys/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://kb.altinity.com/engines/mergetree-table-engine-family/pick-keys/</guid>
+      <description>
+        
+        
+        &lt;h2 id=&#34;how-to-pick-an-order-by--primary-key&#34;&gt;How to pick an ORDER BY / PRIMARY KEY&lt;/h2&gt;
+&lt;p&gt;good order by usually have 3 to 5 columns, from lowest cardinal on the left (and the most important for filtering) to highest cardinal (and less important for filtering).&lt;/p&gt;
+&lt;p&gt;Practical approach to create an good ORDER BY for a table:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Pick the columns you use in filtering always&lt;/li&gt;
+&lt;li&gt;The most important for filtering and the lowest cardinal should be the left-most. Typically it&amp;rsquo;s something like &lt;code&gt;tenant_id&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Next column is more cardinal, less important. It can be rounded time sometimes, or &lt;code&gt;site_id&lt;/code&gt;, or &lt;code&gt;source_id&lt;/code&gt;, or &lt;code&gt;group_id&lt;/code&gt; or something similar.&lt;/li&gt;
+&lt;li&gt;repeat p.3 once again (or few times)&lt;/li&gt;
+&lt;li&gt;if you added already all columns important for filtering and you still not addressing a single row with you pk - you can add more columns which can help to put similar records close to each other (to improve the compression)&lt;/li&gt;
+&lt;li&gt;if you have something like hierarchy / tree-like relations between the columns - put there the records from &amp;lsquo;root&amp;rsquo; to &amp;lsquo;leaves&amp;rsquo; for example (continent, country, cityname). This way clickhouse can do lookup by country / city even if continent is not specified (it will just &amp;lsquo;check all continents&amp;rsquo;)
+special variants of MergeTree may require special ORDER BY to make the record unique etc.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Some examples or good order by&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;ORDER BY (tenantid, site_id, utm_source, clientid, timestamp)
+&lt;/code&gt;&lt;/pre&gt;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;ORDER BY (site_id, toStartOfHour(timestamp), sessionid, timestamp )
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;for-summing--aggregating&#34;&gt;For Summing / Aggregating&lt;/h3&gt;
+&lt;p&gt;All dimentions go to ORDER BY, all metrics - outside of that.&lt;/p&gt;
+&lt;p&gt;The most important for filtering columns with the lowest cardinality should be the left most.&lt;/p&gt;
+&lt;p&gt;If number of dimentions is high it&amp;rsquo;s typically make sense to use a prefix of ORDER BY as a PRIMARY KEY to avoid polluting sparse index.&lt;/p&gt;
+&lt;p&gt;Examples:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;ORDER BY (tenant_id, hour, country_code, team_id, group_id, source_id)
+PRIMARY KEY (tenant_id, hour, country_code, team_id)
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;for-replacing--collapsing&#34;&gt;For Replacing / Collapsing&lt;/h3&gt;
+&lt;p&gt;You need to keep all &amp;lsquo;mutable&amp;rsquo; columns outside of ORDER BY, and have some unique id (a base to collapse duplicates) inside.
+Typically the right-most column is some row identifier. And it&amp;rsquo;s often not needed in sparse index (so PRIMARY KEY can be a prefix of ORDER BY)
+The rest consideration are the same.&lt;/p&gt;
+&lt;p&gt;Examples:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;ORDER BY (tenantid, site_id, eventid) --  utm_source is mutable, while tenantid, site_id is not
+PRIMARY KEY (tenantid, site_id) -- eventid is not used for filtering, needed only for collapsing duplicates
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;partition-by&#34;&gt;PARTITION BY&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Good size for single partition is something like 1-300Gb.&lt;/li&gt;
+&lt;li&gt;For Summing/Replacing a but smaller (400Mb-40Gb)&lt;/li&gt;
+&lt;li&gt;Better to avoid touching more that few dozens of partitions with typical SELECT query.&lt;/li&gt;
+&lt;li&gt;Single insert should bring data to one or few partitions.&lt;/li&gt;
+&lt;li&gt;The number of partitons in table - dozen or hundreds, not thousands.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The size of partitions you can check in system.parts table.&lt;/p&gt;
+&lt;p&gt;Examples:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;-- for time-series:
+PARTITION BY toYYYY(timestamp)          -- long retention, not too much data
+PARTITION BY toYYYYMM(timestamp)        --  
+PARTITION BY toMonday(timestamp)        -- 
+PARTITION BY toDate(timestamp)          --
+PARTITION BY toStartOfHour(timestamp)   -- short retention, lot of data
+
+-- for table with some incremental (non time-bounded) counter
+
+PARTITION BY intDiv(transaction_id, 1000000)
+
+-- for some dimention tables (always requested with WHERE userid)
+PARTITION BY userid % 16
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;For the small tables (smaller than few gigabytes) partitioning is usually not needed at all (just skip &lt;code&gt;PARTITION BY&lt;/code&gt; expresssion when you create the table).&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
       <title>Engines: AggregatingMergeTree</title>
       <link>http://kb.altinity.com/engines/mergetree-table-engine-family/aggregatingmergetree/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
