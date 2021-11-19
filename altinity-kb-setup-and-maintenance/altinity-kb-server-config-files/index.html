@@ -13,13 +13,13 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-server-config-files/" /><meta property="article:section" content="altinity-kb-setup-and-maintenance" />
 
-<meta property="article:modified_time" content="2021-11-19T23:58:42+01:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
+<meta property="article:modified_time" content="2021-11-20T00:05:14+01:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
 
 <meta itemprop="name" content="Server config files">
 <meta itemprop="description" content="How to manage server config files in Clickhouse
 ">
-<meta itemprop="dateModified" content="2021-11-19T23:58:42+01:00" />
-<meta itemprop="wordCount" content="828">
+<meta itemprop="dateModified" content="2021-11-20T00:05:14+01:00" />
+<meta itemprop="wordCount" content="835">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Server config files"/>
 <meta name="twitter:description" content="How to manage server config files in Clickhouse
@@ -78,7 +78,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.42f39cee55326fb8046c64d5b3507e2b.json"
+  data-offline-search-index-json-src="/offline-search-index.49c1259e84723f66846b1a8b5c268429.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -106,7 +106,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.42f39cee55326fb8046c64d5b3507e2b.json"
+  data-offline-search-index-json-src="/offline-search-index.49c1259e84723f66846b1a8b5c268429.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -756,22 +756,37 @@ cat /etc/clickhouse-server/users.d/enable_access_management_for_user_default.xml
   &lt;/remote_servers&gt;
 &lt;/yandex&gt;
 </code></pre><h2 id="settings--restart">Settings &amp; restart</h2>
-<p>General &lsquo;rule of thumb&rsquo;: config.xml and config.d changes require restart, while <code>users.xml</code> and <code>users.d</code> setting don’t need server restart.</p>
-<p>But there are exceptions from those rules.</p>
+<p>General &lsquo;rule of thumb&rsquo;:</p>
+<ul>
+<li><strong>server</strong> settings (<code>config.xml</code> and <code>config.d</code>) changes <strong>require restart</strong>;</li>
+<li><strong>user</strong> settings (<code>users.xml</code> and <code>users.d</code>) changes <strong>don&rsquo;t require restart</strong>.</li>
+</ul>
+<p>But there are <strong>exceptions</strong> from those rules (see below).</p>
 <h3 id="server-config-configxml-sections-which-dont-require-resart">Server config (config.xml) sections which don&rsquo;t require resart</h3>
 <ul>
-<li>max_server_memory_usage / max_server_memory_usage_to_ram_ratio</li>
-<li>max_table_size_to_drop / max_partition_size_to_drop / max_concurrent_queries</li>
-<li>macros</li>
-<li>remote_servers</li>
-<li>dictionaries_config / dictionaries</li>
-<li>user_defined_executable_functions_config / functions</li>
-<li>models_config / models</li>
-<li>keeper_server / zookeeper</li>
-<li>storage_configuration</li>
-<li>user_directories / access_control_path</li>
-<li>encryption_codecs</li>
-<li>logger (since 21.11)</li>
+<li><code>&lt;max_server_memory_usage&gt;</code></li>
+<li><code>&lt;max_server_memory_usage_to_ram_ratio&gt;</code></li>
+<li><code>&lt;max_table_size_to_drop&gt;</code></li>
+<li><code>&lt;max_partition_size_to_drop&gt;</code></li>
+<li><code>&lt;max_concurrent_queries&gt;</code></li>
+<li><code>&lt;macros&gt;</code></li>
+<li><code>&lt;remote_servers&gt;</code></li>
+<li><code>&lt;dictionaries_config&gt;</code></li>
+<li><code>&lt;user_defined_executable_functions_config&gt;</code></li>
+<li><code>&lt;models_config&gt;</code></li>
+<li><code>&lt;keeper_server&gt;</code></li>
+<li><code>&lt;zookeeper&gt;</code> (but reconnect don&rsquo;t happen automatically)</li>
+<li><code>&lt;storage_configuration&gt;</code></li>
+<li><code>&lt;user_directories&gt;</code></li>
+<li><code>&lt;access_control_path&gt;</code></li>
+<li><code>&lt;encryption_codecs&gt;</code></li>
+<li><code>&lt;logger&gt;</code> (since 21.11)</li>
+</ul>
+<p>Those sections (live in separate files):</p>
+<ul>
+<li><code>&lt;dictionaries&gt;</code></li>
+<li><code>&lt;functions&gt;</code></li>
+<li><code>&lt;models&gt;</code></li>
 </ul>
 <p>See also <a href="https://github.com/ClickHouse/ClickHouse/blob/445b0ba7cc6b82e69fef28296981fbddc64cd634/programs/server/Server.cpp#L809-L883" target="_blank">https://github.com/ClickHouse/ClickHouse/blob/445b0ba7cc6b82e69fef28296981fbddc64cd634/programs/server/Server.cpp#L809-L883</a></p>
 <h3 id="user-settings-which-require-restart">User settings which require restart.</h3>
@@ -779,17 +794,17 @@ cat /etc/clickhouse-server/users.d/enable_access_management_for_user_default.xml
 That means that that new setting will be applied to new sessions / after reconnect.</p>
 <p>The list of user setting which require server restart:</p>
 <ul>
-<li>background_buffer_flush_schedule_pool_size</li>
-<li>background_pool_size</li>
-<li>background_merges_mutations_concurrency_ratio</li>
-<li>background_move_pool_size</li>
-<li>background_fetches_pool_size</li>
-<li>background_common_pool_size</li>
-<li>background_schedule_pool_size</li>
-<li>background_message_broker_schedule_pool_size</li>
-<li>background_distributed_schedule_pool_size</li>
-<li>max_replicated_fetches_network_bandwidth_for_server</li>
-<li>max_replicated_sends_network_bandwidth_for_server</li>
+<li><code>&lt;background_buffer_flush_schedule_pool_size&gt;</code></li>
+<li><code>&lt;background_pool_size&gt;</code></li>
+<li><code>&lt;background_merges_mutations_concurrency_ratio&gt;</code></li>
+<li><code>&lt;background_move_pool_size&gt;</code></li>
+<li><code>&lt;background_fetches_pool_size&gt;</code></li>
+<li><code>&lt;background_common_pool_size&gt;</code></li>
+<li><code>&lt;background_schedule_pool_size&gt;</code></li>
+<li><code>&lt;background_message_broker_schedule_pool_size&gt;</code></li>
+<li><code>&lt;background_distributed_schedule_pool_size&gt;</code></li>
+<li><code>&lt;max_replicated_fetches_network_bandwidth_for_server&gt;</code></li>
+<li><code>&lt;max_replicated_sends_network_bandwidth_for_server&gt;</code></li>
 </ul>
 <p>See also <code>select * from system.settings where description ilike '%start%'</code></p>
 <p>Also there are several &lsquo;long-running&rsquo; user sessions which are almost never restarted and can keep the setting from the server start (it&rsquo;s DDLWorker, Kafka, and some other service things).</p>
@@ -899,8 +914,8 @@ That means that that new setting will be applied to new sessions / after reconne
 	<div class="text-muted mt-5 pt-3 border-top">
 
     Last modified
-    2021.11.19
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/d749078086689b9c60db222011c759f7a7842c08">Update altinity-kb-server-config-files.md (d7490780)</a>
+    2021.11.20
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/6a8bc2b8ef64fff22508fea1e636b5387eb499ae">Update altinity-kb-server-config-files.md (6a8bc2b8)</a>
 
 </div>
 
