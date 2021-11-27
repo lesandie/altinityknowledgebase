@@ -13,12 +13,12 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://kb.altinity.com/altinity-kb-setup-and-maintenance/x-rows-of-y-total-rows-in-filesystem-are-suspicious/" /><meta property="article:section" content="altinity-kb-setup-and-maintenance" />
 
-<meta property="article:modified_time" content="2021-11-22T20:56:20+03:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
+<meta property="article:modified_time" content="2021-11-27T05:39:55+03:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
 
 <meta itemprop="name" content="X rows of Y total rows in filesystem are suspicious">
 <meta itemprop="description" content="X rows of Y total rows in filesystem are suspicious
 ">
-<meta itemprop="dateModified" content="2021-11-22T20:56:20+03:00" />
+<meta itemprop="dateModified" content="2021-11-27T05:39:55+03:00" />
 <meta itemprop="wordCount" content="487">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="X rows of Y total rows in filesystem are suspicious"/>
@@ -78,7 +78,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.7bc5147b1a8679a3034e3cc8b6cf5c41.json"
+  data-offline-search-index-json-src="/offline-search-index.b34fdabf22b3ad632c42dc1e71f425c4.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -106,7 +106,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.7bc5147b1a8679a3034e3cc8b6cf5c41.json"
+  data-offline-search-index-json-src="/offline-search-index.b34fdabf22b3ad632c42dc1e71f425c4.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -708,8 +708,16 @@
 <p>When storage policy changes (one disk was removed from it), ClickHouse compared parts on disk and this replica state in ZooKeeper and found out that a lot of parts (from removed disk) disappeared. So ClickHouse removed them from the replica state in ZooKeeper and scheduled to fetch them from other replicas.</p>
 <p>After we add the removed disk to storage_policy back, ClickHouse finds missing parts, but at this moment they are not registered for that replica.
 ClickHouse produce error message like this:</p>
-<pre tabindex="0"><code>&lt;Error&gt; Application: DB::Exception: The local set of parts of table default.tbl doesn't look like the set of parts in ZooKeeper: 14.96 billion rows of 16.24 billion total rows in filesystem are suspicious. There are 45 unexpected parts with 14960302620 rows (43 of them is not just-written with 14959824636 rows), 0 missing parts (with 0 blocks).: Cannot attach table `default`.`tbl` from metadata file /var/lib/clickhouse/metadata/default/tbl.sql from query ATTACH TABLE default.tbl ... ENGINE=ReplicatedMergeTree('/clickhouse/tables/0/default/tbl', 'replica-0')... SETTINGS index_granularity = 1024, storage_policy = 'ebs_hot_and_cold': while loading database `default` from path /var/lib/clickhouse/metadata/data
-</code></pre><p>At this point, it&rsquo;s possible to either tune setting <code>replicated_max_ratio_of_wrong_parts</code> or do force restore, but it will end up downloading all &ldquo;missing&rdquo; parts from other replicas, which can take a lot of time for big tables.</p>
+
+
+<div class="alert alert-warning" role="alert">
+<h4 class="alert-heading">Warning</h4>
+
+    <Error> Application: DB::Exception: The local set of parts of table default.tbl doesn&rsquo;t look like the set of parts in ZooKeeper: 14.96 billion rows of 16.24 billion total rows in filesystem are suspicious. There are 45 unexpected parts with 14960302620 rows (43 of them is not just-written with 14959824636 rows), 0 missing parts (with 0 blocks).: Cannot attach table <code>default</code>.<code>tbl</code> from metadata file /var/lib/clickhouse/metadata/default/tbl.sql from query ATTACH TABLE default.tbl &hellip; ENGINE=ReplicatedMergeTree('/clickhouse/tables/0/default/tbl', &lsquo;replica-0&rsquo;)&hellip; SETTINGS index_granularity = 1024, storage_policy = &lsquo;ebs_hot_and_cold&rsquo;: while loading database <code>default</code> from path /var/lib/clickhouse/metadata/data
+
+</div>
+
+<p>At this point, it&rsquo;s possible to either tune setting <code>replicated_max_ratio_of_wrong_parts</code> or do force restore, but it will end up downloading all &ldquo;missing&rdquo; parts from other replicas, which can take a lot of time for big tables.</p>
 <h3 id="clickhouse-217">ClickHouse 21.7+</h3>
 <ol>
 <li>Rename table SQL attach script in order to prevent ClickHouse from attaching it at startup.</li>
@@ -748,8 +756,8 @@ SELECT * FROM system.zookeeper WHERE path = '/clickhouse/tables/0/default/tbl/re
 	<div class="text-muted mt-5 pt-3 border-top">
 
     Last modified
-    2021.11.22
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/f7948126aef22d0988c02bc4b473a23c5e32a1c9">Update x-rows-of-y-total-rows-in-filesystem-are-suspicious.md (f7948126)</a>
+    2021.11.27
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/89a947d2463659d94e9eee733e69b3b88132fd26">Update x-rows-of-y-total-rows-in-filesystem-are-suspicious.md (89a947d2)</a>
 
 </div>
 
