@@ -32,8 +32,7 @@ hostname --fqdn
 
 cat /etc/hosts
 cat /etc/hostname
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;a href=&#34;./&#34;&gt;./&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&#34;debian--ubuntu&#34;&gt;Debian / Ubuntu&lt;/h3&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;debian--ubuntu&#34;&gt;Debian / Ubuntu&lt;/h3&gt;
 &lt;p&gt;There is an issue in Debian based images, when hostname being mapped to 127.0.1.1 address which doesn&amp;rsquo;t literally match network interface and clickhouse fails to detect this address as local.&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://github.com/ClickHouse/ClickHouse/issues/23504&#34; target=&#34;_blank&#34;&gt;https://github.com/ClickHouse/ClickHouse/issues/23504&lt;/a&gt;&lt;/p&gt;
 &lt;h4 id=&#34;previous-task-is-being-executed-and-taking-some-time&#34;&gt;Previous task is being executed and taking some time&lt;/h4&gt;
