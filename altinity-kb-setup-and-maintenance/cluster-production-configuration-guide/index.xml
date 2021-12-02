@@ -441,134 +441,196 @@ tail -n 10000 /var/log/clickhouse-server/clickhouse-server.log | less&lt;/p&gt;
 &lt;h4 id=&#34;health-checks&#34;&gt;Health Checks&lt;/h4&gt;
 &lt;p&gt;The following health checks should be monitored:&lt;/p&gt;
 &lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th style=&#34;text-align:left&#34;&gt;Check Name&lt;/th&gt;
-      &lt;th style=&#34;text-align:left&#34;&gt;Shell or SQL command&lt;/th&gt;
-      &lt;th style=&#34;text-align:left&#34;&gt;Severity&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td style=&#34;text-align:left&#34;&gt;ClickHouse status&lt;/td&gt;
-      &lt;td style=&#34;text-align:left&#34;&gt;$ curl &amp;apos;http://localhost:8123/&amp;apos;Ok.&lt;/td&gt;
-      &lt;td style=&#34;text-align:left&#34;&gt;Critical&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&#34;text-align:left&#34;&gt;Too many simultaneous queries. Maximum: 100&lt;/td&gt;
-      &lt;td style=&#34;text-align:left&#34;&gt;select value from system.metrics where metric=&amp;apos;Query&amp;apos;&lt;/td&gt;
-      &lt;td
-      style=&#34;text-align:left&#34;&gt;Critical&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&#34;text-align:left&#34;&gt;Replication status&lt;/td&gt;
-      &lt;td style=&#34;text-align:left&#34;&gt;$ curl &amp;apos;http://localhost:8123/replicas_status&amp;apos;Ok.&lt;/td&gt;
-      &lt;td style=&#34;text-align:left&#34;&gt;High&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&#34;text-align:left&#34;&gt;Read only replicas (reflected by replicas_status as well)&lt;/td&gt;
-      &lt;td style=&#34;text-align:left&#34;&gt;select value from system.metrics where metric=&amp;apos;ReadonlyReplica&amp;#x2019;&lt;/td&gt;
-      &lt;td
-      style=&#34;text-align:left&#34;&gt;High&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&#34;text-align:left&#34;&gt;ReplicaPartialShutdown (not reflected by replicas_status, but seems to
-        correlate with ZooKeeperHardwareExceptions)&lt;/td&gt;
-      &lt;td style=&#34;text-align:left&#34;&gt;select value from system.events where event=&amp;apos;ReplicaPartialShutdown&amp;apos;&lt;/td&gt;
-      &lt;td
-      style=&#34;text-align:left&#34;&gt;HighI turned this one off. It almost always correlates with ZooKeeperHardwareExceptions,
-        and when it&amp;#x2019;s not, then there is nothing bad happening&amp;#x2026;&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&#34;text-align:left&#34;&gt;Some replication tasks are stuck&lt;/td&gt;
-      &lt;td style=&#34;text-align:left&#34;&gt;select count()from system.replication_queuewhere num_tries &gt; 100&lt;/td&gt;
-      &lt;td
-      style=&#34;text-align:left&#34;&gt;High&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&#34;text-align:left&#34;&gt;ZooKeeper is available&lt;/td&gt;
-      &lt;td style=&#34;text-align:left&#34;&gt;select count() from system.zookeeper where path=&amp;apos;/&amp;apos;&lt;/td&gt;
-      &lt;td
-      style=&#34;text-align:left&#34;&gt;Critical for writes&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&#34;text-align:left&#34;&gt;ZooKeeper exceptions&lt;/td&gt;
-      &lt;td style=&#34;text-align:left&#34;&gt;select value from system.events where event=&amp;apos;ZooKeeperHardwareExceptions&amp;apos;&lt;/td&gt;
-      &lt;td
-      style=&#34;text-align:left&#34;&gt;Medium&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&#34;text-align:left&#34;&gt;Other CH nodes are available&lt;/td&gt;
-      &lt;td style=&#34;text-align:left&#34;&gt;$ for node in `echo &amp;quot;select distinct host_address from system.clusters
-        where host_name !=&amp;apos;localhost&amp;apos;&amp;quot;&lt;/td&gt;
-      &lt;td style=&#34;text-align:left&#34;&gt;curl &amp;apos;http://localhost:8123/&amp;apos; &amp;#x2013;silent &amp;#x2013;data-binary
-        @-`; do curl &amp;quot;http://$node:8123/&amp;quot; &amp;#x2013;silent ; done&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&#34;text-align:left&#34;&gt;All CH clusters are available (i.e. every configured cluster has enough
-        replicas to serve queries)&lt;/td&gt;
-      &lt;td style=&#34;text-align:left&#34;&gt;for cluster in `echo &amp;quot;select distinct cluster from system.clusters
-        where host_name !=&amp;apos;localhost&amp;apos;&amp;quot;&lt;/td&gt;
-      &lt;td style=&#34;text-align:left&#34;&gt;curl &amp;apos;http://localhost:8123/&amp;apos; &amp;#x2013;silent &amp;#x2013;data-binary
-        @-` ; do clickhouse-client &amp;#x2013;query=&amp;quot;select &amp;apos;$cluster&amp;apos;,
-        &amp;apos;OK&amp;apos; from cluster(&amp;apos;$cluster&amp;apos;, system, one)&amp;quot; ;
-        done&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&#34;text-align:left&#34;&gt;There are files in &amp;apos;detached&amp;apos; folders&lt;/td&gt;
-      &lt;td style=&#34;text-align:left&#34;&gt;$ find /var/lib/clickhouse/data///detached/* -type d&lt;/td&gt;
-      &lt;td style=&#34;text-align:left&#34;&gt;
-        &lt;p&gt;wc -l;&lt;/p&gt;
-        &lt;p&gt;19.8+select count() from system.detached_parts&lt;/p&gt;
-      &lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&#34;text-align:left&#34;&gt;
-        &lt;p&gt;Too many parts:&lt;/p&gt;
-        &lt;p&gt;Number of parts is growing;&lt;/p&gt;
-        &lt;p&gt;Inserts are being delayed;&lt;/p&gt;
-        &lt;p&gt;Inserts are being rejected&lt;/p&gt;
-      &lt;/td&gt;
-      &lt;td style=&#34;text-align:left&#34;&gt;
-        &lt;p&gt;select value from system.asynchronous_metrics where metric=&amp;apos;MaxPartCountForPartition&amp;apos;;select
-          value from system.events/system.metrics where event/metric=&amp;apos;DelayedInserts&amp;apos;;&lt;/p&gt;
-        &lt;p&gt;select value from system.events where event=&amp;apos;RejectedInserts&amp;apos;&lt;/p&gt;
-      &lt;/td&gt;
-      &lt;td style=&#34;text-align:left&#34;&gt;Critical&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&#34;text-align:left&#34;&gt;Dictionaries: exception&lt;/td&gt;
-      &lt;td style=&#34;text-align:left&#34;&gt;select concat(name,&amp;apos;: &amp;apos;,last_exception) from system.dictionarieswhere
-        last_exception != &amp;apos;&amp;apos;&lt;/td&gt;
-      &lt;td style=&#34;text-align:left&#34;&gt;Medium&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&#34;text-align:left&#34;&gt;ClickHouse has been restarted&lt;/td&gt;
-      &lt;td style=&#34;text-align:left&#34;&gt;select uptime();select value from system.asynchronous_metrics where metric=&amp;apos;Uptime&amp;apos;&lt;/td&gt;
-      &lt;td
-      style=&#34;text-align:left&#34;&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&#34;text-align:left&#34;&gt;DistributedFilesToInsert should not be always increasing&lt;/td&gt;
-      &lt;td style=&#34;text-align:left&#34;&gt;select value from system.metrics where metric=&amp;apos;DistributedFilesToInsert&amp;apos;&lt;/td&gt;
-      &lt;td
-      style=&#34;text-align:left&#34;&gt;Medium&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&#34;text-align:left&#34;&gt;A data part was lost&lt;/td&gt;
-      &lt;td style=&#34;text-align:left&#34;&gt;select value from system.events where event=&amp;apos;ReplicatedDataLoss&amp;apos;&lt;/td&gt;
-      &lt;td
-      style=&#34;text-align:left&#34;&gt;High&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&#34;text-align:left&#34;&gt;Data parts are not the same on different replicas&lt;/td&gt;
-      &lt;td style=&#34;text-align:left&#34;&gt;
-        &lt;p&gt;select value from system.events where event=&amp;apos;DataAfterMergeDiffersFromReplica&amp;apos;;&lt;/p&gt;
-        &lt;p&gt;select value from system.events where event=&amp;apos;DataAfterMutationDiffersFromReplica&amp;apos;&lt;/p&gt;
-      &lt;/td&gt;
-      &lt;td style=&#34;text-align:left&#34;&gt;Medium&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
+  &lt;tr&gt;
+   &lt;td&gt;&lt;strong&gt;Check Name&lt;/strong&gt;
+   &lt;/td&gt;
+   &lt;td&gt;&lt;strong&gt;&lt;code&gt;Shell or SQL command&lt;/code&gt;&lt;/strong&gt;
+   &lt;/td&gt;
+   &lt;td&gt;&lt;strong&gt;&lt;code&gt;Severity&lt;/code&gt;&lt;/strong&gt;
+   &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;ClickHouse status
+   &lt;/td&gt;
+   &lt;td&gt;&lt;code&gt;$ curl &#39;http://localhost:8123/&#39;&lt;/code&gt;
+&lt;p&gt;
+&lt;code&gt;Ok.&lt;/code&gt;
+   &lt;/td&gt;
+   &lt;td&gt;&lt;code&gt;Critical&lt;/code&gt;
+   &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;Too many simultaneous queries. Maximum: 100 (by default)
+   &lt;/td&gt;
+   &lt;td&gt;&lt;code&gt;select value from system.metrics &lt;/code&gt;
+&lt;p&gt;
+&lt;code&gt;where metric=&#39;Query&#39;&lt;/code&gt;
+   &lt;/td&gt;
+   &lt;td&gt;&lt;code&gt;Critical&lt;/code&gt;
+   &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;Replication status
+   &lt;/td&gt;
+   &lt;td&gt;&lt;code&gt;$ curl &#39;http://localhost:8123/replicas_status&#39;&lt;/code&gt;
+&lt;p&gt;
+&lt;code&gt;Ok.&lt;/code&gt;
+   &lt;/td&gt;
+   &lt;td&gt;&lt;code&gt;High&lt;/code&gt;
+   &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;Read only replicas (reflected by &lt;code&gt;replicas_status&lt;/code&gt; as well)
+   &lt;/td&gt;
+   &lt;td&gt;&lt;code&gt;select value from system.metrics &lt;/code&gt;
+&lt;p&gt;
+&lt;code&gt;where metric=&#39;ReadonlyReplica&#39;&lt;/code&gt;
+   &lt;/td&gt;
+   &lt;td&gt;&lt;code&gt;High&lt;/code&gt;
+   &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;Some replication tasks are stuck
+   &lt;/td&gt;
+   &lt;td&gt;&lt;code&gt;select count()&lt;/code&gt;
+&lt;p&gt;
+&lt;code&gt;from system.replication_queue&lt;/code&gt;
+&lt;p&gt;
+&lt;code&gt;where num_tries &gt; 100 or num_postponed &gt; 1000&lt;/code&gt;
+   &lt;/td&gt;
+   &lt;td&gt;&lt;code&gt;High&lt;/code&gt;
+   &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;ZooKeeper is available
+   &lt;/td&gt;
+   &lt;td&gt;&lt;code&gt;select count() from system.zookeeper &lt;/code&gt;
+&lt;p&gt;
+&lt;code&gt;where path=&#39;/&#39;&lt;/code&gt;
+   &lt;/td&gt;
+   &lt;td&gt;&lt;code&gt;Critical for writes&lt;/code&gt;
+   &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;ZooKeeper exceptions
+   &lt;/td&gt;
+   &lt;td&gt;&lt;code&gt;select value from system.events &lt;/code&gt;
+&lt;p&gt;
+&lt;code&gt;where event=&#39;ZooKeeperHardwareExceptions&#39;&lt;/code&gt;
+   &lt;/td&gt;
+   &lt;td&gt;&lt;code&gt;Medium&lt;/code&gt;
+   &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;Other CH nodes are available
+   &lt;/td&gt;
+   &lt;td&gt;&lt;code&gt;$ for node in `echo &#34;select distinct host_address from system.clusters where host_name !=&#39;localhost&#39;&#34; | curl &#39;http://localhost:8123/&#39; --silent --data-binary @-`; do curl &#34;http://$node:8123/&#34; --silent ; done | sort -u&lt;/code&gt;
+&lt;p&gt;
+&lt;code&gt;Ok.&lt;/code&gt;
+   &lt;/td&gt;
+   &lt;td&gt;&lt;code&gt;High&lt;/code&gt;
+   &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;All CH clusters are available (i.e. every configured cluster has enough replicas to serve queries)
+   &lt;/td&gt;
+   &lt;td&gt;&lt;code&gt;for cluster in `echo &#34;select distinct cluster from system.clusters where host_name !=&#39;localhost&#39;&#34; | curl &#39;http://localhost:8123/&#39; --silent --data-binary @-` ; do clickhouse-client --query=&#34;select &#39;$cluster&#39;, &#39;OK&#39; from cluster(&#39;$cluster&#39;, system, one)&#34; ; done &lt;/code&gt;
+   &lt;/td&gt;
+   &lt;td&gt;&lt;code&gt;Critical&lt;/code&gt;
+   &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;There are files in &#39;detached&#39; folders
+   &lt;/td&gt;
+   &lt;td&gt;&lt;code&gt;$ find /var/lib/clickhouse/data/*/*/detached/* -type d | wc -l; \
+19.8+&lt;/code&gt;
+&lt;p&gt;
+&lt;code&gt;select count() from system.detached_parts&lt;/code&gt;
+   &lt;/td&gt;
+   &lt;td&gt;&lt;code&gt;Medium&lt;/code&gt;
+   &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;Too many parts: \
+Number of parts is growing; \
+Inserts are being delayed; \
+Inserts are being rejected
+   &lt;/td&gt;
+   &lt;td&gt;&lt;code&gt;select value from system.asynchronous_metrics &lt;/code&gt;
+&lt;p&gt;
+&lt;code&gt;where metric=&#39;MaxPartCountForPartition&#39;;&lt;/code&gt;
+&lt;p&gt;
+&lt;code&gt;select value from system.events/system.metrics &lt;/code&gt;
+&lt;p&gt;
+&lt;code&gt;where event/metric=&#39;DelayedInserts&#39;; \
+select value from system.events &lt;/code&gt;
+&lt;p&gt;
+&lt;code&gt;where event=&#39;RejectedInserts&#39;&lt;/code&gt;
+   &lt;/td&gt;
+   &lt;td&gt;&lt;code&gt;Critical&lt;/code&gt;
+   &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;Dictionaries: exception
+   &lt;/td&gt;
+   &lt;td&gt;&lt;code&gt;select concat(name,&#39;: &#39;,last_exception) &lt;/code&gt;
+&lt;p&gt;
+&lt;code&gt;from system.dictionaries&lt;/code&gt;
+&lt;p&gt;
+&lt;code&gt;where last_exception != &#39;&#39;&lt;/code&gt;
+   &lt;/td&gt;
+   &lt;td&gt;&lt;code&gt;Medium&lt;/code&gt;
+   &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;ClickHouse has been restarted
+   &lt;/td&gt;
+   &lt;td&gt;&lt;code&gt;select uptime();&lt;/code&gt;
+&lt;p&gt;
+&lt;code&gt;select value from system.asynchronous_metrics &lt;/code&gt;
+&lt;p&gt;
+&lt;code&gt;where metric=&#39;Uptime&#39;&lt;/code&gt;
+   &lt;/td&gt;
+   &lt;td&gt;
+   &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;DistributedFilesToInsert should not be always increasing
+   &lt;/td&gt;
+   &lt;td&gt;&lt;code&gt;select value from system.metrics &lt;/code&gt;
+&lt;p&gt;
+&lt;code&gt;where metric=&#39;DistributedFilesToInsert&#39;&lt;/code&gt;
+   &lt;/td&gt;
+   &lt;td&gt;&lt;code&gt;Medium&lt;/code&gt;
+   &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;A data part was lost
+   &lt;/td&gt;
+   &lt;td&gt;&lt;code&gt;select value from system.events &lt;/code&gt;
+&lt;p&gt;
+&lt;code&gt;where event=&#39;ReplicatedDataLoss&#39;&lt;/code&gt;
+   &lt;/td&gt;
+   &lt;td&gt;&lt;code&gt;High&lt;/code&gt;
+   &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;Data parts are not the same on different replicas
+   &lt;/td&gt;
+   &lt;td&gt;&lt;code&gt;select value from system.events where event=&#39;DataAfterMergeDiffersFromReplica&#39;; \
+select value from system.events where event=&#39;DataAfterMutationDiffersFromReplica&#39;&lt;/code&gt;
+   &lt;/td&gt;
+   &lt;td&gt;&lt;code&gt;Medium&lt;/code&gt;
+   &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td&gt;
+   &lt;/td&gt;
+   &lt;td&gt;
+   &lt;/td&gt;
+   &lt;td&gt;
+   &lt;/td&gt;
+  &lt;/tr&gt;
 &lt;/table&gt;
 &lt;h4 id=&#34;monitoring-references&#34;&gt;Monitoring References&lt;/h4&gt;
 &lt;ul&gt;
