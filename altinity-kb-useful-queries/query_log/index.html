@@ -12,12 +12,12 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://kb.altinity.com/altinity-kb-useful-queries/query_log/" /><meta property="article:section" content="altinity-kb-useful-queries" />
 
-<meta property="article:modified_time" content="2021-12-14T14:15:13+01:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
+<meta property="article:modified_time" content="2021-12-14T14:20:10+01:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
 
 <meta itemprop="name" content="Handy queries for a system.query_log">
 <meta itemprop="description" content="Handy queries for a system.query_log.">
-<meta itemprop="dateModified" content="2021-12-14T14:15:13+01:00" />
-<meta itemprop="wordCount" content="11">
+<meta itemprop="dateModified" content="2021-12-14T14:20:10+01:00" />
+<meta itemprop="wordCount" content="53">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Handy queries for a system.query_log"/>
 <meta name="twitter:description" content="Handy queries for a system.query_log."/>
@@ -75,7 +75,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.55b16c1f33af8d540c3393eeb3427447.json"
+  data-offline-search-index-json-src="/offline-search-index.9089fcb224ba46ce2677043dbde00f12.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -103,7 +103,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.55b16c1f33af8d540c3393eeb3427447.json"
+  data-offline-search-index-json-src="/offline-search-index.9089fcb224ba46ce2677043dbde00f12.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -607,6 +607,13 @@
             
 
 
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#the-most-cpu--write--read-intensive-queries-from-query_log">The most cpu / write / read-intensive queries from query_log</a></li>
+    <li><a href="#find-queries-which-were-started-but-not-finished-at-some-moment-in-time">Find queries which were started but not finished at some moment in time</a></li>
+  </ul>
+</nav>
+
 
 
 
@@ -708,14 +715,24 @@
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">ORDER</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">BY</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">UserTime</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">DESC</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">LIMIT</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">30</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">FORMAT</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Vertical</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></code></pre></div>
+</span></code></pre></div><h2 id="find-queries-which-were-started-but-not-finished-at-some-moment-in-time">Find queries which were started but not finished at some moment in time</h2>
+<pre tabindex="0"><code>SELECT
+  query_id,
+  min(event_time) t,
+  any(query)
+FROM system.query_log
+where event_date = today() and event_time &gt; '2021-11-25 02:29:12'
+GROUP BY query_id
+HAVING countIf(type='QueryFinish') = 0 OR sum(query_duration_ms) &gt; 100000
+order by t;
+</code></pre>
 	
 	
 	<div class="text-muted mt-5 pt-3 border-top">
 
     Last modified
     2021.12.14
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/8312d17caad6fbb10f2157b977c4b89695f64f3b">Create query_log.md (8312d17c)</a>
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/17924c1ab5fc1ed6112aea9b5b1bc944b075db4d">Update query_log.md (17924c1a)</a>
 
 </div>
 
