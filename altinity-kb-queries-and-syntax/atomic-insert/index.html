@@ -13,12 +13,12 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://kb.altinity.com/altinity-kb-queries-and-syntax/atomic-insert/" /><meta property="article:section" content="altinity-kb-queries-and-syntax" />
 
-<meta property="article:modified_time" content="2021-11-12T17:13:39-04:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
+<meta property="article:modified_time" content="2021-12-14T03:17:47-08:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
 
 <meta itemprop="name" content="Atomic insert">
 <meta itemprop="description" content="Atomic insert
 ">
-<meta itemprop="dateModified" content="2021-11-12T17:13:39-04:00" />
+<meta itemprop="dateModified" content="2021-12-14T03:17:47-08:00" />
 <meta itemprop="wordCount" content="481">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Atomic insert"/>
@@ -78,7 +78,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.f08598d01948be2e17ea6b24b83121ce.json"
+  data-offline-search-index-json-src="/offline-search-index.415c06058850708a96be994f493cf9f7.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -106,7 +106,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.f08598d01948be2e17ea6b24b83121ce.json"
+  data-offline-search-index-json-src="/offline-search-index.415c06058850708a96be994f493cf9f7.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -610,7 +610,7 @@
 
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#example-how-to-make-a-large-insert-atomicaly">Example how to make a large insert atomicaly</a>
+    <li><a href="#example-how-to-make-a-large-insert-atomically">Example how to make a large insert atomically</a>
       <ul>
         <li><a href="#generate-test-data-in-native-and-tsv-format--100-millions-rows-">Generate test data in Native and TSV format ( 100 millions rows )</a></li>
         <li><a href="#insert-with-default-settings-not-atomic">Insert with default settings (not atomic)</a></li>
@@ -712,7 +712,7 @@
 </ul>
 <p><a href="https://github.com/ClickHouse/ClickHouse/issues/9195#issuecomment-587500824" target="_blank">https://github.com/ClickHouse/ClickHouse/issues/9195#issuecomment-587500824</a>
 <a href="https://github.com/ClickHouse/ClickHouse/issues/5148#issuecomment-487757235" target="_blank">https://github.com/ClickHouse/ClickHouse/issues/5148#issuecomment-487757235</a></p>
-<h2 id="example-how-to-make-a-large-insert-atomicaly">Example how to make a large insert atomicaly</h2>
+<h2 id="example-how-to-make-a-large-insert-atomically">Example how to make a large insert atomically</h2>
 <h3 id="generate-test-data-in-native-and-tsv-format--100-millions-rows-">Generate test data in Native and TSV format ( 100 millions rows )</h3>
 <p>Text formats and Native format requier different set of settings, here I want to find / demonstrate mandatory minumum of settings for any case.</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">clickhouse-client -q <span style="color:#4e9a06">\
@@ -817,8 +817,8 @@ WHERE <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#0
 	<div class="text-muted mt-5 pt-3 border-top">
 
     Last modified
-    2021.11.12
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/141ad4c39044eb67a27fd55b063f0fef4f538d0f">Update atomic-insert.md (141ad4c3)</a>
+    2021.12.14
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/1be73c1faeba9b9cfdbfe16aa02e88022781b29a">Update atomic-insert.md (1be73c1f)</a>
 
 </div>
 
