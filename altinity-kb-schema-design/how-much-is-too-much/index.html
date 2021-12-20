@@ -12,12 +12,12 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://kb.altinity.com/altinity-kb-schema-design/how-much-is-too-much/" /><meta property="article:section" content="altinity-kb-schema-design" />
 
-<meta property="article:modified_time" content="2021-12-20T12:27:36+01:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
+<meta property="article:modified_time" content="2021-12-20T12:29:49+01:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
 
 <meta itemprop="name" content="How much is too much?">
 <meta itemprop="description" content="ClickHouse Limitations.">
-<meta itemprop="dateModified" content="2021-12-20T12:27:36+01:00" />
-<meta itemprop="wordCount" content="395">
+<meta itemprop="dateModified" content="2021-12-20T12:29:49+01:00" />
+<meta itemprop="wordCount" content="412">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="How much is too much?"/>
 <meta name="twitter:description" content="ClickHouse Limitations."/>
@@ -75,7 +75,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.d94ebb5bad9960b75bfcda6a70caa05b.json"
+  data-offline-search-index-json-src="/offline-search-index.7a013dba8a214b4343b1830bfa3bad9d.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -103,7 +103,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.d94ebb5bad9960b75bfcda6a70caa05b.json"
+  data-offline-search-index-json-src="/offline-search-index.7a013dba8a214b4343b1830bfa3bad9d.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -729,7 +729,7 @@
 <li>6-8 is still ok. If you have more - it can impact the zookeeper traffic.</li>
 </ul>
 <h2 id="number-of-zookeeper-nodes-in-the-ensemble">Number of zookeeper nodes in the ensemble</h2>
-<p>3 (Three) for most of the cases is enough (you can loose one node).</p>
+<p>3 (Three) for most of the cases is enough (you can loose one node). Using more nodes allows to scale up read throughput for zookeeper, but don&rsquo;t improve writes at all.</p>
 
 	
 	
@@ -737,7 +737,7 @@
 
     Last modified
     2021.12.20
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/dff1a0eacb66fb7aa30db35f6069848459691980">Update how-much-is-too-much.md (dff1a0ea)</a>
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/603d037d873d1047a9b592b3c1cf34bccde2582b">Update how-much-is-too-much.md (603d037d8)</a>
 
 </div>
 
