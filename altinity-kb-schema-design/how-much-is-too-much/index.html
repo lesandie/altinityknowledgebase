@@ -12,12 +12,12 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://kb.altinity.com/altinity-kb-schema-design/how-much-is-too-much/" /><meta property="article:section" content="altinity-kb-schema-design" />
 
-<meta property="article:modified_time" content="2021-12-20T12:14:42+01:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
+<meta property="article:modified_time" content="2021-12-20T12:27:36+01:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
 
 <meta itemprop="name" content="How much is too much?">
 <meta itemprop="description" content="ClickHouse Limitations.">
-<meta itemprop="dateModified" content="2021-12-20T12:14:42+01:00" />
-<meta itemprop="wordCount" content="329">
+<meta itemprop="dateModified" content="2021-12-20T12:27:36+01:00" />
+<meta itemprop="wordCount" content="395">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="How much is too much?"/>
 <meta name="twitter:description" content="ClickHouse Limitations."/>
@@ -75,7 +75,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.0fdd324be1f9e3cee4e8544a425807fe.json"
+  data-offline-search-index-json-src="/offline-search-index.d94ebb5bad9960b75bfcda6a70caa05b.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -103,7 +103,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.0fdd324be1f9e3cee4e8544a425807fe.json"
+  data-offline-search-index-json-src="/offline-search-index.d94ebb5bad9960b75bfcda6a70caa05b.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -618,7 +618,7 @@
         <li><a href="#number-of-columns-in-the-table">Number of columns in the table</a></li>
         <li><a href="#clickhouse-instances-on-a-single-node--vm">ClickHouse instances on a single node / VM</a></li>
         <li><a href="#number-of-parts--partitions-system-wide-across-all-databases">Number of parts / partitions (system-wide, across all databases)</a></li>
-        <li><a href="#number-of-partitions-touched-by-a-single-insert">Number of partitions touched by a single insert</a></li>
+        <li><a href="#number-of-tables--partitions-touched-by-a-single-insert">Number of tables &amp; partitions touched by a single insert</a></li>
         <li><a href="#disk-size-per-shard">Disk size per shard</a></li>
         <li><a href="#number-of-shards">Number of shards</a></li>
         <li><a href="#number-of-replicas-in-a-single-shard">Number of replicas in a single shard</a></li>
@@ -700,8 +700,9 @@
 	
 	       
 	<h2 id="how-much-is-too-much">How much is too much?</h2>
-<p>In most of the cases clickhouse don&rsquo;t have any hard limits in most of scenarios. So theoretically there are almost no limits.
-But at the same time there are some practical barriers which make using clickhouse after reaching some number problematic.</p>
+<p>In most of the cases clickhouse don&rsquo;t have any hard limits. But obsiously there there are some practical limitation / barriers for different things - often they are caused by some system / network / filesystem limitation.</p>
+<p>So after reaching some limits you can get different kind of problems, usually it never a failures / errors, but different kinds of degradations (slower queries / high cpu/memory usage, extra load on the network / zookeeper etc).</p>
+<p>While those numbers can vary a lot depending on your hardware &amp; settings there is some safe &lsquo;Goldilocks&rsquo; zone where ClickHouse work the best with default settings &amp; usual hardware.</p>
 <h3 id="number-of-tables-system-wide-across-all-databases">Number of tables (system-wide, across all databases)</h3>
 <ul>
 <li>non-replicated MergeTree-family tables = few thousands is still acceptable, if you don&rsquo;t do realtime inserts in more that few dozens of them. See <a href="https://github.com/ClickHouse/ClickHouse/issues/32259" target="_blank">32259</a></li>
@@ -716,7 +717,7 @@ But at the same time there are some practical barriers which make using clickhou
 <p>One is enough. Single ClickHouse can use resources of the node very efficiently, and it may require some complicated tuning to run several instances on a single node.</p>
 <h3 id="number-of-parts--partitions-system-wide-across-all-databases">Number of parts / partitions (system-wide, across all databases)</h3>
 <p>More than several dozens thousands may lead to performance degradation.</p>
-<h3 id="number-of-partitions-touched-by-a-single-insert">Number of partitions touched by a single insert</h3>
+<h3 id="number-of-tables--partitions-touched-by-a-single-insert">Number of tables &amp; partitions touched by a single insert</h3>
 <p>If you have realtime / frequent inserts no more than few.</p>
 <p>For the inserts are rare - up to couple of dozens.</p>
 <h3 id="disk-size-per-shard">Disk size per shard</h3>
@@ -736,7 +737,7 @@ But at the same time there are some practical barriers which make using clickhou
 
     Last modified
     2021.12.20
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/18aa6d8ccecc7495b3da4cb6a24d35788e5e8620">Update how-much-is-too-much.md (18aa6d8c)</a>
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/dff1a0eacb66fb7aa30db35f6069848459691980">Update how-much-is-too-much.md (dff1a0ea)</a>
 
 </div>
 
