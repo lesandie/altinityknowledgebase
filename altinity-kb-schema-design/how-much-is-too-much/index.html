@@ -12,12 +12,12 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://kb.altinity.com/altinity-kb-schema-design/how-much-is-too-much/" /><meta property="article:section" content="altinity-kb-schema-design" />
 
-<meta property="article:modified_time" content="2021-12-16T16:13:52+01:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
+<meta property="article:modified_time" content="2021-12-20T12:14:42+01:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
 
 <meta itemprop="name" content="How much is too much?">
 <meta itemprop="description" content="ClickHouse Limitations.">
-<meta itemprop="dateModified" content="2021-12-16T16:13:52+01:00" />
-<meta itemprop="wordCount" content="324">
+<meta itemprop="dateModified" content="2021-12-20T12:14:42+01:00" />
+<meta itemprop="wordCount" content="329">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="How much is too much?"/>
 <meta name="twitter:description" content="ClickHouse Limitations."/>
@@ -75,7 +75,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.d8ccc4629cbbac3033801c75dc3f766e.json"
+  data-offline-search-index-json-src="/offline-search-index.0fdd324be1f9e3cee4e8544a425807fe.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -103,7 +103,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.d8ccc4629cbbac3033801c75dc3f766e.json"
+  data-offline-search-index-json-src="/offline-search-index.0fdd324be1f9e3cee4e8544a425807fe.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -700,8 +700,7 @@
 	
 	       
 	<h2 id="how-much-is-too-much">How much is too much?</h2>
-<p>In most of the cases clickhouse don&rsquo;t have any hard limits in most of scen
-[zookeeper@hdp1 ~] ecarios. So theoretically there are almost no limits.
+<p>In most of the cases clickhouse don&rsquo;t have any hard limits in most of scenarios. So theoretically there are almost no limits.
 But at the same time there are some practical barriers which make using clickhouse after reaching some number problematic.</p>
 <h3 id="number-of-tables-system-wide-across-all-databases">Number of tables (system-wide, across all databases)</h3>
 <ul>
@@ -710,7 +709,7 @@ But at the same time there are some practical barriers which make using clickhou
 <li>Log family table = even dozens of thousands is still ok, especially if database engine = Lazy is used.</li>
 </ul>
 <h3 id="number-of-databases">Number of databases</h3>
-<p>Less than number of tables.</p>
+<p>Fewer than number of tables (above). Dozens / hundreds is usually still acceptable.</p>
 <h3 id="number-of-columns-in-the-table">Number of columns in the table</h3>
 <p>Up to a few hundreds. With thousands of columns the inserts / background merges may become slower / require more of RAM. See for example <a href="https://github.com/ClickHouse/ClickHouse/issues/6943" target="_blank">https://github.com/ClickHouse/ClickHouse/issues/6943</a></p>
 <h3 id="clickhouse-instances-on-a-single-node--vm">ClickHouse instances on a single node / VM</h3>
@@ -736,8 +735,8 @@ But at the same time there are some practical barriers which make using clickhou
 	<div class="text-muted mt-5 pt-3 border-top">
 
     Last modified
-    2021.12.16
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/246bd5a1bef1b0bd48ce8406391ab45ed5697104">Create how-much-is-too-much.md (246bd5a1)</a>
+    2021.12.20
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/18aa6d8ccecc7495b3da4cb6a24d35788e5e8620">Update how-much-is-too-much.md (18aa6d8c)</a>
 
 </div>
 
