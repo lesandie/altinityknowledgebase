@@ -12,12 +12,12 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://kb.altinity.com/altinity-kb-schema-design/how-much-is-too-much/" /><meta property="article:section" content="altinity-kb-schema-design" />
 
-<meta property="article:modified_time" content="2021-12-20T12:35:35+01:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
+<meta property="article:modified_time" content="2021-12-20T12:35:55+01:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
 
 <meta itemprop="name" content="How much is too much?">
 <meta itemprop="description" content="ClickHouse Limitations.">
-<meta itemprop="dateModified" content="2021-12-20T12:35:35+01:00" />
-<meta itemprop="wordCount" content="419">
+<meta itemprop="dateModified" content="2021-12-20T12:35:55+01:00" />
+<meta itemprop="wordCount" content="424">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="How much is too much?"/>
 <meta name="twitter:description" content="ClickHouse Limitations."/>
@@ -75,7 +75,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.ef8a9b306cbe31bec36515982e60482c.json"
+  data-offline-search-index-json-src="/offline-search-index.06fdffd39960e2373ed7691f6518ce6f.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -103,7 +103,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.ef8a9b306cbe31bec36515982e60482c.json"
+  data-offline-search-index-json-src="/offline-search-index.06fdffd39960e2373ed7691f6518ce6f.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -725,7 +725,7 @@
 <h3 id="number-of-shards">Number of shards</h3>
 <p>Dozens is still ok. More may require having more complex (non-flat) routing.</p>
 <h3 id="number-of-replicas-in-a-single-shard">Number of replicas in a single shard</h3>
-<p>3 is a &lsquo;golden standard&rsquo;. Up to 6-8 is still ok. If you have more - it can impact the zookeeper traffic.</p>
+<p>2 is minimum for HA. 3 is a &lsquo;golden standard&rsquo;. Up to 6-8 is still ok. If you have more - it can impact the zookeeper traffic.</p>
 <h2 id="number-of-zookeeper-nodes-in-the-ensemble">Number of zookeeper nodes in the ensemble</h2>
 <p>3 (Three) for most of the cases is enough (you can loose one node). Using more nodes allows to scale up read throughput for zookeeper, but don&rsquo;t improve writes at all.</p>
 
@@ -735,7 +735,7 @@
 
     Last modified
     2021.12.20
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/c69a4ef0cee19c22954bb6f75981e2830b8ec485">Update how-much-is-too-much.md (c69a4ef0c)</a>
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/58313c71638c6695d4ca1a58ee65e34e3e392352">Update how-much-is-too-much.md (58313c716)</a>
 
 </div>
 
