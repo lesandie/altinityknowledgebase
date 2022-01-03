@@ -13,13 +13,13 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://kb.altinity.com/altinity-kb-setup-and-maintenance/high-cpu-usage/" /><meta property="article:section" content="altinity-kb-setup-and-maintenance" />
 
-<meta property="article:modified_time" content="2021-11-05T10:29:43+01:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
+<meta property="article:modified_time" content="2022-01-03T15:19:04+01:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
 
 <meta itemprop="name" content="High CPU usage">
 <meta itemprop="description" content="High CPU usage
 ">
-<meta itemprop="dateModified" content="2021-11-05T10:29:43+01:00" />
-<meta itemprop="wordCount" content="445">
+<meta itemprop="dateModified" content="2022-01-03T15:19:04+01:00" />
+<meta itemprop="wordCount" content="446">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="High CPU usage"/>
 <meta name="twitter:description" content="High CPU usage
@@ -78,7 +78,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.57dc7ef49687ca4ea31cedbb8d1d0e7b.json"
+  data-offline-search-index-json-src="/offline-search-index.fca4f7fa39738fad9e21c0c309d0d86e.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -106,7 +106,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.57dc7ef49687ca4ea31cedbb8d1d0e7b.json"
+  data-offline-search-index-json-src="/offline-search-index.fca4f7fa39738fad9e21c0c309d0d86e.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -616,6 +616,16 @@
             
 
 
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#how-to-slow-down-queries-to-reduce-the-cpu-usage">How to slow down queries to reduce the CPU usage</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
 
 
 
@@ -688,9 +698,10 @@
 	
 	       
 	<p>In general, it is a NORMAL situation for clickhouse that while processing a huge dataset it can use a lot of (or all of) the server resources. It is &lsquo;by design&rsquo; - just to make the answers faster.</p>
-<p>The main directions to reduce the CPU usage <strong>is to review the schema / queries t</strong>o limit the amount of the data which need to be processed, and to plan the resources in a way when single running query will not impact the others.</p>
-<p>Any attempts to reduce the CPU usage will end up with slower queries!
-If it is acceptable for you - please check the following options for limiting the CPU usage:</p>
+<p>The main directions to reduce the CPU usage <strong>is to review the schema / queries</strong> to limit the amount of the data which need to be processed, and to plan the resources in a way when single running query will not impact the others.</p>
+<p>Any attempts to reduce the CPU usage will end up with slower queries!</p>
+<h3 id="how-to-slow-down-queries-to-reduce-the-cpu-usage">How to slow down queries to reduce the CPU usage</h3>
+<p>If it is acceptable for you - please check the following options for limiting the CPU usage:</p>
 <ol>
 <li>
 <p>setting <code>max_threads</code>: reducing the number of threads that are allowed to use one request. Fewer threads = more free cores for other requests.  By default, it&rsquo;s allowed to take half of the available CPU cores, adjust only when needed. So if if you have 10 cores then <code>max_threads = 10</code> will work about twice faster than <code>max_threads=5</code>, but will take 100% or CPU. (max_threads=5 will use half of CPUs so 50%).</p>
@@ -750,15 +761,15 @@ If it is acceptable for you - please check the following options for limiting th
 </ol>
 <p>There are also plans to introduce a system of more flexible control over the assignment of resources to different requests.</p>
 <p>Also, if these are manually created queries, then you can try to discipline users by adding quotas to them (they can be formulated as &ldquo;you can read no more than 100GB of data per hour&rdquo; or &ldquo;no more than 10 queries&rdquo;, etc.)</p>
-<p>If these are automatically generated queries, it may make sense to check if there is no way to write them in a more efficient way. Still, a few minutes for KX is a lot.</p>
+<p>If these are automatically generated queries, it may make sense to check if there is no way to write them in a more efficient way.</p>
 
 	
 	
 	<div class="text-muted mt-5 pt-3 border-top">
 
     Last modified
-    2021.11.05
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/49ce363f234a82efe4f4db090e114f317939f4f7">Update high-cpu-usage.md (49ce363f2)</a>
+    2022.01.03
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/edac53c711ccbd5f66e1eff1d524eac07fb7aefc">Update high-cpu-usage.md (edac53c71)</a>
 
 </div>
 
