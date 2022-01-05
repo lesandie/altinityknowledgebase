@@ -6,24 +6,27 @@
 <meta name="generator" content="Hugo 0.91.2" /><META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
 <link rel="shortcut icon" href="/favicons/favicon.ico" >
 <link rel="icon" href="/favicons/favicon.ico" >
-<title>Monitoring Considerations | Altinity Knowledge Base</title>
-<meta name="description" content="Altinity Knowledge Base"><meta property="og:title" content="Monitoring Considerations" />
-<meta property="og:description" content="Monitoring Considerations
-" />
+<title>Altinity Knowledge Base</title>
+<meta name="description" content="Altinity Knowledge Base"><meta property="og:title" content="" />
+<meta property="og:description" content="set max_suspicious_broken_parts to solve Suspiciously many broken parts to remove exception.  Reproduce the exception:   Create table  create table t111(A UInt32) Engine=MergeTree order by A settings max_suspicious_broken_parts=1; insert into t111 select number from numbers(100000); Detach the table and make Data corruption  detach table t111; cd /var/lib/clickhouse/data/default/t111/all_*** make data file corruption:
+&gt; data.bin repeat for 2 or more data files.
+Attach the table:  attach table t111; Received exception from server (version 21." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://kb.altinity.com/altinity-kb-setup-and-maintenance/cluster-production-configuration-guide/monitoring-considerations/" /><meta property="article:section" content="altinity-kb-setup-and-maintenance" />
+<meta property="og:url" content="http://kb.altinity.com/altinity-kb-setup-and-maintenance/suspicious_broken_parts/" /><meta property="article:section" content="altinity-kb-setup-and-maintenance" />
 
-<meta property="article:modified_time" content="2021-12-02T10:55:01-07:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
+<meta property="article:modified_time" content="2022-01-05T00:24:51-06:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
 
-<meta itemprop="name" content="Monitoring Considerations">
-<meta itemprop="description" content="Monitoring Considerations
-">
-<meta itemprop="dateModified" content="2021-12-02T10:55:01-07:00" />
-<meta itemprop="wordCount" content="566">
+<meta itemprop="name" content="">
+<meta itemprop="description" content="set max_suspicious_broken_parts to solve Suspiciously many broken parts to remove exception.  Reproduce the exception:   Create table  create table t111(A UInt32) Engine=MergeTree order by A settings max_suspicious_broken_parts=1; insert into t111 select number from numbers(100000); Detach the table and make Data corruption  detach table t111; cd /var/lib/clickhouse/data/default/t111/all_*** make data file corruption:
+&gt; data.bin repeat for 2 or more data files.
+Attach the table:  attach table t111; Received exception from server (version 21.">
+<meta itemprop="dateModified" content="2022-01-05T00:24:51-06:00" />
+<meta itemprop="wordCount" content="186">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Monitoring Considerations"/>
-<meta name="twitter:description" content="Monitoring Considerations
-"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="set max_suspicious_broken_parts to solve Suspiciously many broken parts to remove exception.  Reproduce the exception:   Create table  create table t111(A UInt32) Engine=MergeTree order by A settings max_suspicious_broken_parts=1; insert into t111 select number from numbers(100000); Detach the table and make Data corruption  detach table t111; cd /var/lib/clickhouse/data/default/t111/all_*** make data file corruption:
+&gt; data.bin repeat for 2 or more data files.
+Attach the table:  attach table t111; Received exception from server (version 21."/>
 
 
 
@@ -341,8 +344,8 @@
   <a href="/altinity-kb-setup-and-maintenance/rbac/" title="Access Control and Account Management example (RBAC)" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancerbac"><span class="">RBAC example</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenancezookeeper-session-expired-li">
   <a href="/altinity-kb-setup-and-maintenance/zookeeper-session-expired/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancezookeeper-session-expired"><span class="">ZooKeeper session has expired</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenancesuspicious_broken_parts-li">
-  <a href="/altinity-kb-setup-and-maintenance/suspicious_broken_parts/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancesuspicious_broken_parts"><span class=""></span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-altinity-kb-setup-and-maintenancesuspicious_broken_parts-li">
+  <a href="/altinity-kb-setup-and-maintenance/suspicious_broken_parts/" class="align-left pl-0 active td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancesuspicious_broken_parts"><span class="td-sidebar-nav-active-item"></span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenancealtinity-packaging-compatibility-greater-than-21x-and-earlier-li">
   <a href="/altinity-kb-setup-and-maintenance/altinity-packaging-compatibility-greater-than-21.x-and-earlier/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancealtinity-packaging-compatibility-greater-than-21x-and-earlier"><span class="">Altinity packaging compatibility &gt;21.x and earlier</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenanceaws-ebs-li">
@@ -394,22 +397,22 @@
   <a href="/altinity-kb-setup-and-maintenance/altinity-kb-moving-table-to-another-device./" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancealtinity-kb-moving-table-to-another-device"><span class="">Moving table to another device.</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenancealtinity-kb-object-consistency-in-a-cluster-li">
   <a href="/altinity-kb-setup-and-maintenance/altinity-kb-object-consistency-in-a-cluster/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancealtinity-kb-object-consistency-in-a-cluster"><span class="">Object consistency in a cluster</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-altinity-kb-setup-and-maintenancecluster-production-configuration-guide-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-altinity-kb-setup-and-maintenancecluster-production-configuration-guide-li">
   <a href="/altinity-kb-setup-and-maintenance/cluster-production-configuration-guide/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-altinity-kb-setup-and-maintenancecluster-production-configuration-guide"><span class="">Production Cluster Configuration Guide</span></a>
   <ul class="ul-3 foldable">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenancecluster-production-configuration-guidehardening-clickhouse-security-li">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-setup-and-maintenancecluster-production-configuration-guidehardening-clickhouse-security-li">
   <a href="/altinity-kb-setup-and-maintenance/cluster-production-configuration-guide/hardening-clickhouse-security/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancecluster-production-configuration-guidehardening-clickhouse-security"><span class="">Backups</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenancecluster-production-configuration-guidecluster-configuration-faq-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-setup-and-maintenancecluster-production-configuration-guidecluster-configuration-faq-li">
   <a href="/altinity-kb-setup-and-maintenance/cluster-production-configuration-guide/cluster-configuration-faq/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancecluster-production-configuration-guidecluster-configuration-faq"><span class="">Cluster Configuration FAQ</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenancecluster-production-configuration-guidecluster-configuration-process-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-setup-and-maintenancecluster-production-configuration-guidecluster-configuration-process-li">
   <a href="/altinity-kb-setup-and-maintenance/cluster-production-configuration-guide/cluster-configuration-process/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancecluster-production-configuration-guidecluster-configuration-process"><span class="">Cluster Configuration Process</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenancecluster-production-configuration-guidehardware-requirements-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-setup-and-maintenancecluster-production-configuration-guidehardware-requirements-li">
   <a href="/altinity-kb-setup-and-maintenance/cluster-production-configuration-guide/hardware-requirements/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancecluster-production-configuration-guidehardware-requirements"><span class="">Hardware Requirements</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-altinity-kb-setup-and-maintenancecluster-production-configuration-guidemonitoring-considerations-li">
-  <a href="/altinity-kb-setup-and-maintenance/cluster-production-configuration-guide/monitoring-considerations/" class="align-left pl-0 active td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancecluster-production-configuration-guidemonitoring-considerations"><span class="td-sidebar-nav-active-item">Monitoring Considerations</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenancecluster-production-configuration-guidenetwork-configuration-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-setup-and-maintenancecluster-production-configuration-guidemonitoring-considerations-li">
+  <a href="/altinity-kb-setup-and-maintenance/cluster-production-configuration-guide/monitoring-considerations/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancecluster-production-configuration-guidemonitoring-considerations"><span class="">Monitoring Considerations</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-setup-and-maintenancecluster-production-configuration-guidenetwork-configuration-li">
   <a href="/altinity-kb-setup-and-maintenance/cluster-production-configuration-guide/network-configuration/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancecluster-production-configuration-guidenetwork-configuration"><span class="">Network Configuration</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenancecluster-production-configuration-guideversion-upgrades-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-setup-and-maintenancecluster-production-configuration-guideversion-upgrades-li">
   <a href="/altinity-kb-setup-and-maintenance/cluster-production-configuration-guide/version-upgrades/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancecluster-production-configuration-guideversion-upgrades"><span class="">Version Upgrades</span></a>
 </li>
   </ul>
@@ -605,9 +608,9 @@
     
     
 
-    <a href="https://github.com/Altinity/altinityknowledgebase/edit/main/content/en/altinity-kb-setup-and-maintenance/cluster-production-configuration-guide/monitoring-considerations.md" target="_blank"><i class="fa fa-edit fa-fw"></i> Edit this page</a>
-    <a href="https://github.com/Altinity/altinityknowledgebase/new/main/content/en/altinity-kb-setup-and-maintenance/cluster-production-configuration-guide/monitoring-considerations.md?filename=change-me.md&amp;value=---%0Atitle%3A&#43;%22Long&#43;Page&#43;Title%22%0AlinkTitle%3A&#43;%22Short&#43;Nav&#43;Title%22%0Aweight%3A&#43;100%0Adescription%3A&#43;%3E-%0A&#43;&#43;&#43;&#43;&#43;Page&#43;description&#43;for&#43;heading&#43;and&#43;indexes.%0A---%0A%0A%23%23&#43;Heading%0A%0AEdit&#43;this&#43;template&#43;to&#43;create&#43;your&#43;new&#43;page.%0A%0A%2A&#43;Give&#43;it&#43;a&#43;good&#43;name%2C&#43;ending&#43;in&#43;%60.md%60&#43;-&#43;e.g.&#43;%60getting-started.md%60%0A%2A&#43;Edit&#43;the&#43;%22front&#43;matter%22&#43;section&#43;at&#43;the&#43;top&#43;of&#43;the&#43;page&#43;%28weight&#43;controls&#43;how&#43;its&#43;ordered&#43;amongst&#43;other&#43;pages&#43;in&#43;the&#43;same&#43;directory%3B&#43;lowest&#43;number&#43;first%29.%0A%2A&#43;Add&#43;a&#43;good&#43;commit&#43;message&#43;at&#43;the&#43;bottom&#43;of&#43;the&#43;page&#43;%28%3C80&#43;characters%3B&#43;use&#43;the&#43;extended&#43;description&#43;field&#43;for&#43;more&#43;detail%29.%0A%2A&#43;Create&#43;a&#43;new&#43;branch&#43;so&#43;you&#43;can&#43;preview&#43;your&#43;new&#43;file&#43;and&#43;request&#43;a&#43;review&#43;via&#43;Pull&#43;Request.%0A" target="_blank"><i class="fa fa-edit fa-fw"></i> Create child page</a>
-    <a href="https://github.com/Altinity/altinityknowledgebase/issues/new?title=/altinity-kb-setup-and-maintenance/cluster-production-configuration-guide/monitoring-considerations/" target="_blank"><i class="fab fa-github fa-fw"></i> Create documentation issue</a>
+    <a href="https://github.com/Altinity/altinityknowledgebase/edit/main/content/en/altinity-kb-setup-and-maintenance/suspicious_broken_parts.md" target="_blank"><i class="fa fa-edit fa-fw"></i> Edit this page</a>
+    <a href="https://github.com/Altinity/altinityknowledgebase/new/main/content/en/altinity-kb-setup-and-maintenance/suspicious_broken_parts.md?filename=change-me.md&amp;value=---%0Atitle%3A&#43;%22Long&#43;Page&#43;Title%22%0AlinkTitle%3A&#43;%22Short&#43;Nav&#43;Title%22%0Aweight%3A&#43;100%0Adescription%3A&#43;%3E-%0A&#43;&#43;&#43;&#43;&#43;Page&#43;description&#43;for&#43;heading&#43;and&#43;indexes.%0A---%0A%0A%23%23&#43;Heading%0A%0AEdit&#43;this&#43;template&#43;to&#43;create&#43;your&#43;new&#43;page.%0A%0A%2A&#43;Give&#43;it&#43;a&#43;good&#43;name%2C&#43;ending&#43;in&#43;%60.md%60&#43;-&#43;e.g.&#43;%60getting-started.md%60%0A%2A&#43;Edit&#43;the&#43;%22front&#43;matter%22&#43;section&#43;at&#43;the&#43;top&#43;of&#43;the&#43;page&#43;%28weight&#43;controls&#43;how&#43;its&#43;ordered&#43;amongst&#43;other&#43;pages&#43;in&#43;the&#43;same&#43;directory%3B&#43;lowest&#43;number&#43;first%29.%0A%2A&#43;Add&#43;a&#43;good&#43;commit&#43;message&#43;at&#43;the&#43;bottom&#43;of&#43;the&#43;page&#43;%28%3C80&#43;characters%3B&#43;use&#43;the&#43;extended&#43;description&#43;field&#43;for&#43;more&#43;detail%29.%0A%2A&#43;Create&#43;a&#43;new&#43;branch&#43;so&#43;you&#43;can&#43;preview&#43;your&#43;new&#43;file&#43;and&#43;request&#43;a&#43;review&#43;via&#43;Pull&#43;Request.%0A" target="_blank"><i class="fa fa-edit fa-fw"></i> Create child page</a>
+    <a href="https://github.com/Altinity/altinityknowledgebase/issues/new?title=/altinity-kb-setup-and-maintenance/suspicious_broken_parts/" target="_blank"><i class="fab fa-github fa-fw"></i> Create documentation issue</a>
     
 
   
@@ -618,17 +621,6 @@
             
 
 
-<nav id="TableOfContents">
-  <ul>
-    <li>
-      <ul>
-        <li><a href="#external-monitoring">External Monitoring</a></li>
-        <li><a href="#monitor-and-alerts">Monitor and Alerts</a></li>
-      </ul>
-    </li>
-  </ul>
-</nav>
-
 
 
 
@@ -638,9 +630,9 @@
   <p>&nbsp;</p>
   <p>Share on Social Media:</p>
   <span style="display:flex; flex-direction: row; justify-content: space-between; align-items: flex-start; padding-left: 10px; padding-right: 75px;">
-    <a href="https://twitter.com/intent/tweet?text=Monitoring%20Considerations&amp;url=http://kb.altinity.com/altinity-kb-setup-and-maintenance/cluster-production-configuration-guide/monitoring-considerations/" target="_blank" class="fab fa-twitter"></a>
-    <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://kb.altinity.com/altinity-kb-setup-and-maintenance/cluster-production-configuration-guide/monitoring-considerations/" target="_blank" class="fab fa-facebook"></a>
-    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http://kb.altinity.com/altinity-kb-setup-and-maintenance/cluster-production-configuration-guide/monitoring-considerations/&amp;title=Monitoring%20Considerations"target="_blank" class="fab fa-linkedin"></a>
+    <a href="https://twitter.com/intent/tweet?text=&amp;url=http://kb.altinity.com/altinity-kb-setup-and-maintenance/suspicious_broken_parts/" target="_blank" class="fab fa-twitter"></a>
+    <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://kb.altinity.com/altinity-kb-setup-and-maintenance/suspicious_broken_parts/" target="_blank" class="fab fa-facebook"></a>
+    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http://kb.altinity.com/altinity-kb-setup-and-maintenance/suspicious_broken_parts/&amp;title="target="_blank" class="fab fa-linkedin"></a>
   </span>
 </div>
 
@@ -679,9 +671,6 @@
 
 
 
-
-
-
 <li class="breadcrumb-item" >
 	<a href="http://kb.altinity.com/altinity-kb-setup-and-maintenance/">Setup &amp; maintenance</a>
 </li>
@@ -689,15 +678,8 @@
 
 
 
-<li class="breadcrumb-item" >
-	<a href="http://kb.altinity.com/altinity-kb-setup-and-maintenance/cluster-production-configuration-guide/">Production Cluster Configuration Guide</a>
-</li>
-
-
-
-
 <li class="breadcrumb-item active" aria-current="page">
-	<a href="http://kb.altinity.com/altinity-kb-setup-and-maintenance/cluster-production-configuration-guide/monitoring-considerations/">Monitoring Considerations</a>
+	<a href="http://kb.altinity.com/altinity-kb-setup-and-maintenance/suspicious_broken_parts/"></a>
 </li>
 
 	</ol>
@@ -705,289 +687,72 @@
 
             
 <div class="td-content">
-	<h1>Monitoring Considerations</h1>
+	<h1></h1>
     <div class="lead">
 	</div>
 	
 	       
-	<p>Monitoring helps to track potential issues in your cluster before they cause a critical error.</p>
-<h3 id="external-monitoring">External Monitoring</h3>
-<p>External monitoring collects data from the ClickHouse cluster and uses it for analysis and review.  Recommended external monitoring systems include:</p>
+	<h1 id="set-max_suspicious_broken_parts-to-solve-suspiciously-many-broken-parts-to-remove-exception">set max_suspicious_broken_parts to solve Suspiciously many broken parts to remove exception.</h1>
 <ul>
-<li><strong>Prometheus</strong>: Use embedded exporter or <a href="https://github.com/f1yegor/clickhouse_exporter" target="_blank">clickhouse-exporter</a></li>
-<li><strong>Graphite</strong>: Use the embedded exporter. See config.xml.</li>
-<li><strong>InfluxDB</strong>: Use the embedded exporter, plus Telegraf. For more information, see <a href="https://docs.influxdata.com/influxdb/v1.7/supported_protocols/graphite/" target="_blank">Graphite protocol support in InfluxDB</a>.</li>
+<li>Reproduce the exception:</li>
 </ul>
-<p>ClickHouse can collect the recording of metrics internally by enabling <code>system.metric_log</code> in <code>config.xml</code>.</p>
-<p>For dashboard system:</p>
+<ol>
+<li>Create table</li>
+</ol>
+<pre tabindex="0"><code>create table t111(A UInt32) Engine=MergeTree order by A settings max_suspicious_broken_parts=1;
+
+insert into t111 select number from numbers(100000);
+
+</code></pre><ol start="2">
+<li>Detach the table and make Data corruption</li>
+</ol>
+<pre tabindex="0"><code>detach table t111;
+
+</code></pre><p>cd /var/lib/clickhouse/data/default/t111/all_***
+make data file corruption:</p>
+<pre tabindex="0"><code>&gt; data.bin
+
+</code></pre><p>repeat for 2 or more data files.</p>
+<ol start="3">
+<li>Attach the table:</li>
+</ol>
+<pre tabindex="0"><code>attach table t111;
+ 
+Received exception from server (version 21.12.3):
+Code: 231. DB::Exception: Received from localhost:9000. DB::Exception: Suspiciously many (2) broken parts to remove.. (TOO_MANY_UNEXPEC
+</code></pre><ul>
+<li>Reason</li>
+</ul>
+<p>This exception is because the data files have been corrupted or the files/folders have been moved.</p>
 <ul>
-<li><a href="https://grafana.com/" target="_blank">Grafana</a> is recommended for graphs, reports, alerts, dashboard, etc.</li>
-<li>Other options are <a href="https://www.nagios.com/" target="_blank">Nagios</a> or <a href="https://www.zabbix.com/" target="_blank">Zabbix</a>.</li>
+<li>Solution</li>
 </ul>
-<p>The following metrics should be collected:</p>
-<ul>
-<li>For Host Machine:
-<ul>
-<li>CPU</li>
-<li>Memory</li>
-<li>Network (bytes/packets)</li>
-<li>Storage (iops)</li>
-<li>Disk Space (free / used)</li>
-</ul>
-</li>
-<li>For ClickHouse:
-<ul>
-<li>Connections (count)</li>
-<li>RWLocks</li>
-<li>Read / Write / Return (bytes)</li>
-<li>Read / Write / Return (rows)</li>
-<li>Zookeeper operations (count)</li>
-<li>Absolute delay</li>
-<li>Query duration (optional)</li>
-<li>Replication parts and queue (count)</li>
-</ul>
-</li>
-<li>For Zookeeper:
-<ul>
-<li>See <a href="https://sematext.com/docs/integration/zookeeper/" target="_blank">ZooKeeper Monitoring Integration</a>.</li>
-</ul>
-</li>
-</ul>
-<p>The following queries are recommended to be included in monitoring:</p>
-<ul>
-<li>SELECT * FROM system.replicas
-<ul>
-<li>For more information, see the ClickHouse guide on <a href="https://clickhouse.tech/docs/en/operations/system_tables/#system_tables-replicas" target="_blank">System Tables</a></li>
-</ul>
-</li>
-<li>SELECT * FROM system.merges
-<ul>
-<li>Checks on the speed and progress of currently executed merges.</li>
-</ul>
-</li>
-<li>SELECT * FROM system.mutations
-<ul>
-<li>This is the source of information on the speed and progress of currently executed merges.</li>
-</ul>
-</li>
-</ul>
-<h3 id="monitor-and-alerts">Monitor and Alerts</h3>
-<p>Configure the notifications for events and thresholds based on the following table:</p>
-<ul>
-<li><a href="https://docs.google.com/spreadsheets/d/1K92yZr5slVQEvDglfZ88k_7bfsAKqahY9RPp_2tSdVU/edit#gid=521173956" target="_blank">Monitor and Alerts</a></li>
-</ul>
-<h4 id="health-checks">Health Checks</h4>
-<p>The following health checks should be monitored:</p>
-<table>
-  <tr>
-   <td><strong>Check Name</strong>
-   </td>
-   <td><strong><code>Shell or SQL command</code></strong>
-   </td>
-   <td><strong><code>Severity</code></strong>
-   </td>
-  </tr>
-  <tr>
-   <td>ClickHouse status
-   </td>
-   <td><code>$ curl 'http://localhost:8123/'</code>
-<p>
-<code>Ok.</code>
-   </td>
-   <td><code>Critical</code>
-   </td>
-  </tr>
-  <tr>
-   <td>Too many simultaneous queries. Maximum: 100 (by default)
-   </td>
-   <td><code>select value from system.metrics </code>
-<p>
-<code>where metric='Query'</code>
-   </td>
-   <td><code>Critical</code>
-   </td>
-  </tr>
-  <tr>
-   <td>Replication status
-   </td>
-   <td><code>$ curl 'http://localhost:8123/replicas_status'</code>
-<p>
-<code>Ok.</code>
-   </td>
-   <td><code>High</code>
-   </td>
-  </tr>
-  <tr>
-   <td>Read only replicas (reflected by <code>replicas_status</code> as well)
-   </td>
-   <td><code>select value from system.metrics </code>
-<p>
-<code>where metric='ReadonlyReplica'</code>
-   </td>
-   <td><code>High</code>
-   </td>
-  </tr>
-  <tr>
-   <td>Some replication tasks are stuck
-   </td>
-   <td><code>select count()</code>
-<p>
-<code>from system.replication_queue</code>
-<p>
-<code>where num_tries > 100 or num_postponed > 1000</code>
-   </td>
-   <td><code>High</code>
-   </td>
-  </tr>
-  <tr>
-   <td>ZooKeeper is available
-   </td>
-   <td><code>select count() from system.zookeeper </code>
-<p>
-<code>where path='/'</code>
-   </td>
-   <td><code>Critical for writes</code>
-   </td>
-  </tr>
-  <tr>
-   <td>ZooKeeper exceptions
-   </td>
-   <td><code>select value from system.events </code>
-<p>
-<code>where event='ZooKeeperHardwareExceptions'</code>
-   </td>
-   <td><code>Medium</code>
-   </td>
-  </tr>
-  <tr>
-   <td>Other CH nodes are available
-   </td>
-   <td><code>$ for node in `echo "select distinct host_address from system.clusters where host_name !='localhost'" | curl 'http://localhost:8123/' --silent --data-binary @-`; do curl "http://$node:8123/" --silent ; done | sort -u</code>
-<p>
-<code>Ok.</code>
-   </td>
-   <td><code>High</code>
-   </td>
-  </tr>
-  <tr>
-   <td>All CH clusters are available (i.e. every configured cluster has enough replicas to serve queries)
-   </td>
-   <td><code>for cluster in `echo "select distinct cluster from system.clusters where host_name !='localhost'" | curl 'http://localhost:8123/' --silent --data-binary @-` ; do clickhouse-client --query="select '$cluster', 'OK' from cluster('$cluster', system, one)" ; done </code>
-   </td>
-   <td><code>Critical</code>
-   </td>
-  </tr>
-  <tr>
-   <td>There are files in 'detached' folders
-   </td>
-   <td><code>$ find /var/lib/clickhouse/data/*/*/detached/* -type d | wc -l; \
-19.8+</code>
-<p>
-<code>select count() from system.detached_parts</code>
-   </td>
-   <td><code>Medium</code>
-   </td>
-  </tr>
-  <tr>
-   <td>Too many parts: \
-Number of parts is growing; \
-Inserts are being delayed; \
-Inserts are being rejected
-   </td>
-   <td><code>select value from system.asynchronous_metrics </code>
-<p>
-<code>where metric='MaxPartCountForPartition';</code>
-<p>
-<code>select value from system.events/system.metrics </code>
-<p>
-<code>where event/metric='DelayedInserts'; \
-select value from system.events </code>
-<p>
-<code>where event='RejectedInserts'</code>
-   </td>
-   <td><code>Critical</code>
-   </td>
-  </tr>
-  <tr>
-   <td>Dictionaries: exception
-   </td>
-   <td><code>select concat(name,': ',last_exception) </code>
-<p>
-<code>from system.dictionaries</code>
-<p>
-<code>where last_exception != ''</code>
-   </td>
-   <td><code>Medium</code>
-   </td>
-  </tr>
-  <tr>
-   <td>ClickHouse has been restarted
-   </td>
-   <td><code>select uptime();</code>
-<p>
-<code>select value from system.asynchronous_metrics </code>
-<p>
-<code>where metric='Uptime'</code>
-   </td>
-   <td>
-   </td>
-  </tr>
-  <tr>
-   <td>DistributedFilesToInsert should not be always increasing
-   </td>
-   <td><code>select value from system.metrics </code>
-<p>
-<code>where metric='DistributedFilesToInsert'</code>
-   </td>
-   <td><code>Medium</code>
-   </td>
-  </tr>
-  <tr>
-   <td>A data part was lost
-   </td>
-   <td><code>select value from system.events </code>
-<p>
-<code>where event='ReplicatedDataLoss'</code>
-   </td>
-   <td><code>High</code>
-   </td>
-  </tr>
-  <tr>
-   <td>Data parts are not the same on different replicas
-   </td>
-   <td><code>select value from system.events where event='DataAfterMergeDiffersFromReplica'; \
-select value from system.events where event='DataAfterMutationDiffersFromReplica'</code>
-   </td>
-   <td><code>Medium</code>
-   </td>
-  </tr>
-  <tr>
-   <td>
-   </td>
-   <td>
-   </td>
-   <td>
-   </td>
-  </tr>
-</table>
-<h4 id="monitoring-references">Monitoring References</h4>
-<ul>
-<li><a href="http://kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-monitoring/">altinity-kb-monitoring</a></li>
-<li><a href="https://tech.marksblogg.com/clickhouse-prometheus-grafana.html" target="_blank">https://tech.marksblogg.com/clickhouse-prometheus-grafana.html</a></li>
-<li><a href="https://sematext.com/blog/clickhouse-monitoring-key-metrics/" target="_blank">Key Metrics for Monitoring ClickHouse</a></li>
-<li><a href="https://dzone.com/articles/clickhouse-monitoring-key-metrics-to-monitor-semat" target="_blank">ClickHouse Monitoring Key Metrics to Monitor</a></li>
-<li><a href="https://dzone.com/articles/clickhouse-monitoring-tools-five-tools-to-consider" target="_blank">ClickHouse Monitoring Tools: Five Tools to Consider</a></li>
-<li><a href="https://docs.instana.io/ecosystem/clickhouse/" target="_blank">Monitoring ClickHouse</a></li>
-<li><a href="https://www.datadoghq.com/blog/monitor-clickhouse/" target="_blank">Monitor ClickHouse with Datadog</a></li>
-</ul>
+<p><code>sudo -u clickhouse touch /var/lib/clickhouse/flags/force_restore_data</code> does not work</p>
+<p>Change the max_suspicious_broken_parts parameter will work, this limit is set to 10 by default, we can set bigger value(50 or 100 or more), but the data will lose because the corruption.</p>
+<pre tabindex="0"><code>cat /etc/clickhouse-server/config.d/max_suspicious_broken_parts.xml
+&lt;?xml version=&quot;1.0&quot;?&gt;
+&lt;yandex&gt;
+     &lt;merge_tree&gt;
+         &lt;max_suspicious_broken_parts&gt;50&lt;/max_suspicious_broken_parts&gt;
+     &lt;/merge_tree&gt;
+&lt;/yandex&gt;
+</code></pre><p><a href="https://clickhouse.com/docs/en/operations/settings/merge-tree-settings/" target="_blank">https://clickhouse.com/docs/en/operations/settings/merge-tree-settings/</a></p>
+<blockquote>
+<p>This setting is for all the tables, we can set on the table&rsquo;s metadata:
+cd /var/lib/clickhouse/metadata/default
+add max_suspicious_broken_parts after the table structure in the t111.sql:</p>
+<pre tabindex="0"><code>SETTINGS max_suspicious_broken_parts = 10
+</code></pre><p>then :</p>
+<pre tabindex="0"><code>Attach table t111;
+</code></pre></blockquote>
 
 	
 	
 	<div class="text-muted mt-5 pt-3 border-top">
 
     Last modified
-    2021.12.02
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/2f100fa61cd29639a65049c3d6387d4ddd6a34a5">Updating table to match Google Docs. (2f100fa61)</a>
+    2022.01.05
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/8ecda3359839b4c52ffed50e702322f4228dbb74">Create suspicious_broken_parts.md (8ecda3359)</a>
 
 </div>
 
