@@ -9,30 +9,30 @@
 <title>Altinity Knowledge Base</title>
 <meta name="description" content="Altinity Knowledge Base"><meta property="og:title" content="" />
 <meta property="og:description" content="Symptom: clickhouse don&rsquo;t start with a message DB::Exception: Suspiciously many broken parts to remove.
-Cause: Why has this exception? Because CH safeguard / circuit braker check found lot of broken parts。
-why parts are considered broken? bad checksum because some data was currupted on the disk.
-Why data was corrupted?
-1.most probably is the system has hard restart and data was not flushed to disk, because ClickHouse is not durable (in terms of ACID), it uses Linux file cache without fsync." />
+Cause: That exception is just a safeguard check/circuit breaker, triggered when clickhouse detects a lot of broken parts during server startup.
+Parts are considered broken if they have bad checksums or some files are missing or malformed. Usually, that means the data was corrupted on the disk.
+Why data could be corrupted?
+  the most often reason is a hard restart of the system, leading to a loss of the data which was not fully flushed to disk from the system page cache." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://kb.altinity.com/altinity-kb-setup-and-maintenance/suspiciously_many_broken_parts/" /><meta property="article:section" content="altinity-kb-setup-and-maintenance" />
 
-<meta property="article:modified_time" content="2022-01-05T14:08:16-06:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
+<meta property="article:modified_time" content="2022-01-06T10:38:43+01:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
 
 <meta itemprop="name" content="">
 <meta itemprop="description" content="Symptom: clickhouse don&rsquo;t start with a message DB::Exception: Suspiciously many broken parts to remove.
-Cause: Why has this exception? Because CH safeguard / circuit braker check found lot of broken parts。
-why parts are considered broken? bad checksum because some data was currupted on the disk.
-Why data was corrupted?
-1.most probably is the system has hard restart and data was not flushed to disk, because ClickHouse is not durable (in terms of ACID), it uses Linux file cache without fsync.">
-<meta itemprop="dateModified" content="2022-01-05T14:08:16-06:00" />
-<meta itemprop="wordCount" content="324">
+Cause: That exception is just a safeguard check/circuit breaker, triggered when clickhouse detects a lot of broken parts during server startup.
+Parts are considered broken if they have bad checksums or some files are missing or malformed. Usually, that means the data was corrupted on the disk.
+Why data could be corrupted?
+  the most often reason is a hard restart of the system, leading to a loss of the data which was not fully flushed to disk from the system page cache.">
+<meta itemprop="dateModified" content="2022-01-06T10:38:43+01:00" />
+<meta itemprop="wordCount" content="471">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content=""/>
 <meta name="twitter:description" content="Symptom: clickhouse don&rsquo;t start with a message DB::Exception: Suspiciously many broken parts to remove.
-Cause: Why has this exception? Because CH safeguard / circuit braker check found lot of broken parts。
-why parts are considered broken? bad checksum because some data was currupted on the disk.
-Why data was corrupted?
-1.most probably is the system has hard restart and data was not flushed to disk, because ClickHouse is not durable (in terms of ACID), it uses Linux file cache without fsync."/>
+Cause: That exception is just a safeguard check/circuit breaker, triggered when clickhouse detects a lot of broken parts during server startup.
+Parts are considered broken if they have bad checksums or some files are missing or malformed. Usually, that means the data was corrupted on the disk.
+Why data could be corrupted?
+  the most often reason is a hard restart of the system, leading to a loss of the data which was not fully flushed to disk from the system page cache."/>
 
 
 
@@ -87,7 +87,7 @@ Why data was corrupted?
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.a90875da981930916fd556503e661b61.json"
+  data-offline-search-index-json-src="/offline-search-index.df28f97c6e3d72e02ea4de6f82f439b3.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -115,7 +115,7 @@ Why data was corrupted?
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.a90875da981930916fd556503e661b61.json"
+  data-offline-search-index-json-src="/offline-search-index.df28f97c6e3d72e02ea4de6f82f439b3.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -634,7 +634,7 @@ Why data was corrupted?
     <li><a href="#symptom">Symptom:</a></li>
     <li><a href="#cause">Cause:</a></li>
     <li><a href="#action">Action:</a></li>
-    <li><a href="#scenario-illustrating--testing">scenario illustrating / testing</a></li>
+    <li><a href="#scenario-illustrating--testing">Scenario illustrating / testing</a></li>
   </ul>
 </nav>
 
@@ -712,17 +712,27 @@ Why data was corrupted?
 	<h2 id="symptom">Symptom:</h2>
 <p>clickhouse don&rsquo;t start with a message <code>DB::Exception: Suspiciously many broken parts to remove.</code></p>
 <h2 id="cause">Cause:</h2>
-<p>Why has this exception? Because CH safeguard / circuit braker check found lot of broken parts。</p>
-<p>why parts are considered broken? bad checksum because some data was currupted on the disk.</p>
-<p>Why data was corrupted?</p>
-<p>1.most probably is the system has hard restart and data was not flushed to disk, because ClickHouse is not durable (in terms of ACID), it uses Linux file cache without fsync.</p>
-<p>2.disk failure, maybe there are Bad Sectors or Bad Blocks on Hard Disk.</p>
-<p>3.other reasons: manual intervention / bugs etc, for example, the data files or folders are removed by mistake or move to other folder.</p>
+<p>That exception is just a safeguard check/circuit breaker, triggered when clickhouse detects a lot of broken parts during server startup.</p>
+<p>Parts are considered broken if they have bad checksums or some files are missing or malformed. Usually, that means the data was corrupted on the disk.</p>
+<p>Why data could be corrupted?</p>
+<ol>
+<li>
+<p>the most often reason is a hard restart of the system, leading to a loss of the data which was not fully flushed to disk from the system page cache. Please be aware that by default ClickHouse doesn&rsquo;t do fsync, so data is considered inserted after it was passed to the Linux page cache. See fsync-related settings in ClickHouse.</p>
+</li>
+<li>
+<p>it can also be caused by disk failures, maybe there are bad blocks on hard disk, or logical problems, or some raid issue. Check system journals, use <code>fsck</code> / <code>mdadm</code> and other standard tools to diagnose the disk problem.</p>
+</li>
+<li>
+<p>other reasons: manual intervention/bugs etc, for example, the data files or folders are removed by mistake or moved to another folder.</p>
+</li>
+</ol>
 <h2 id="action">Action:</h2>
-<p>1.If you ok to accept the data loss: setup force_restrore_data flag and clickhouse will move the parts to detached.</p>
-<p><code>sudo -u clickhouse touch /var/lib/clickhouse/flags/force_restore_data</code></p>
-<p>then restart clickhouse, the table will be attached, and the broken parts will be detached, that means the data on those parts will loss.</p>
-<p>or you can config the max_suspicious_broken_parts setting:</p>
+<ol>
+<li>
+<p>If you ok to accept the data loss: set up <code>force_restrore_data</code> flag and clickhouse will move the parts to detached.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo -u clickhouse touch /var/lib/clickhouse/flags/force_restore_data
+</code></pre></div><p>then restart clickhouse, the table will be attached, and the broken parts will be detached, which means the data from those parts will not be available for the selects. You can see the list of those parts in the <code>system.detached_parts</code> table and drop them if needed using <code>ALTER TABLE ...  DROP DETACHED PART ...</code> commands.</p>
+<p>If you are ok to tolerate bigger losses automatically you can change that safeguard configuration to be less sensitive by increasing <code>max_suspicious_broken_parts</code> setting:</p>
 <pre tabindex="0"><code>cat /etc/clickhouse-server/config.d/max_suspicious_broken_parts.xml
 &lt;?xml version=&quot;1.0&quot;?&gt;
 &lt;yandex&gt;
@@ -730,10 +740,16 @@ Why data was corrupted?
          &lt;max_suspicious_broken_parts&gt;50&lt;/max_suspicious_broken_parts&gt;
      &lt;/merge_tree&gt;
 &lt;/yandex&gt;
-</code></pre><p><a href="https://clickhouse.com/docs/en/operations/settings/merge-tree-settings/" target="_blank">https://clickhouse.com/docs/en/operations/settings/merge-tree-settings/</a></p>
-<p>this limit is set to 10 by default, we can set bigger value(50 or 100 or more), but the data will lose because the corruption.</p>
-<p>2.If you can&rsquo;t accept the data loss - recover data from backups / re-insert it once again /etc</p>
-<h2 id="scenario-illustrating--testing">scenario illustrating / testing</h2>
+</code></pre><p>this limit is set to 10 by default, we can set a bigger value (50 or 100 or more), but the data will lose because of the corruption.</p>
+<p>Check also a similar setting <code>max_suspicious_broken_parts_bytes</code>.<br>
+See <a href="https://clickhouse.com/docs/en/operations/settings/merge-tree-settings/" target="_blank">https://clickhouse.com/docs/en/operations/settings/merge-tree-settings/</a></p>
+</li>
+<li>
+<p>If you can&rsquo;t accept the data loss - you should recover data from backups / re-insert it once again etc.</p>
+<p>If you don&rsquo;t want to tolerate automatic detaching of broken parts, you can set <code>max_suspicious_broken_parts_bytes</code> and <code>max_suspicious_broken_parts</code> to 0.</p>
+</li>
+</ol>
+<h2 id="scenario-illustrating--testing">Scenario illustrating / testing</h2>
 <ol>
 <li>Create table</li>
 </ol>
@@ -766,8 +782,8 @@ sudo service clickhouse-server restart
 	<div class="text-muted mt-5 pt-3 border-top">
 
     Last modified
-    2022.01.05
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/d9e496134895d6209faf9da39db07aa16020ea60">Create  Suspiciously_many_broken_parts.md (d9e496134)</a>
+    2022.01.06
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/169126f03c4f12e6d7a983998ac7f407ec0b00c2">Update Suspiciously_many_broken_parts.md (169126f03)</a>
 
 </div>
 
