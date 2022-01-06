@@ -6,33 +6,24 @@
 <meta name="generator" content="Hugo 0.91.2" /><META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
 <link rel="shortcut icon" href="/favicons/favicon.ico" >
 <link rel="icon" href="/favicons/favicon.ico" >
-<title>Altinity Knowledge Base</title>
-<meta name="description" content="Altinity Knowledge Base"><meta property="og:title" content="" />
-<meta property="og:description" content="Symptom: clickhouse don&rsquo;t start with a message DB::Exception: Suspiciously many broken parts to remove.
-Cause: That exception is just a safeguard check/circuit breaker, triggered when clickhouse detects a lot of broken parts during server startup.
-Parts are considered broken if they have bad checksums or some files are missing or malformed. Usually, that means the data was corrupted on the disk.
-Why data could be corrupted?
-  the most often reason is a hard restart of the system, leading to a loss of the data which was not fully flushed to disk from the system page cache." />
+<title>Suspiciously many broken parts | Altinity Knowledge Base</title>
+<meta name="description" content="Altinity Knowledge Base"><meta property="og:title" content="Suspiciously many broken parts" />
+<meta property="og:description" content="Suspiciously many broken parts error during the server startup.
+" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://kb.altinity.com/altinity-kb-setup-and-maintenance/suspiciously_many_broken_parts/" /><meta property="article:section" content="altinity-kb-setup-and-maintenance" />
+<meta property="og:url" content="http://kb.altinity.com/altinity-kb-setup-and-maintenance/suspiciously-many-broken-parts/" /><meta property="article:section" content="altinity-kb-setup-and-maintenance" />
 
-<meta property="article:modified_time" content="2022-01-06T10:38:43+01:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
+<meta property="article:modified_time" content="2022-01-06T10:41:21+01:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
 
-<meta itemprop="name" content="">
-<meta itemprop="description" content="Symptom: clickhouse don&rsquo;t start with a message DB::Exception: Suspiciously many broken parts to remove.
-Cause: That exception is just a safeguard check/circuit breaker, triggered when clickhouse detects a lot of broken parts during server startup.
-Parts are considered broken if they have bad checksums or some files are missing or malformed. Usually, that means the data was corrupted on the disk.
-Why data could be corrupted?
-  the most often reason is a hard restart of the system, leading to a loss of the data which was not fully flushed to disk from the system page cache.">
-<meta itemprop="dateModified" content="2022-01-06T10:38:43+01:00" />
+<meta itemprop="name" content="Suspiciously many broken parts">
+<meta itemprop="description" content="Suspiciously many broken parts error during the server startup.
+">
+<meta itemprop="dateModified" content="2022-01-06T10:41:21+01:00" />
 <meta itemprop="wordCount" content="471">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content=""/>
-<meta name="twitter:description" content="Symptom: clickhouse don&rsquo;t start with a message DB::Exception: Suspiciously many broken parts to remove.
-Cause: That exception is just a safeguard check/circuit breaker, triggered when clickhouse detects a lot of broken parts during server startup.
-Parts are considered broken if they have bad checksums or some files are missing or malformed. Usually, that means the data was corrupted on the disk.
-Why data could be corrupted?
-  the most often reason is a hard restart of the system, leading to a loss of the data which was not fully flushed to disk from the system page cache."/>
+<meta name="twitter:title" content="Suspiciously many broken parts"/>
+<meta name="twitter:description" content="Suspiciously many broken parts error during the server startup.
+"/>
 
 
 
@@ -87,7 +78,7 @@ Why data could be corrupted?
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.f89fe56d02bdb17ad881ec0da8a87d84.json"
+  data-offline-search-index-json-src="/offline-search-index.e24d80afe1941e683c7009bb874d8b04.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -115,7 +106,7 @@ Why data could be corrupted?
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.f89fe56d02bdb17ad881ec0da8a87d84.json"
+  data-offline-search-index-json-src="/offline-search-index.e24d80afe1941e683c7009bb874d8b04.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -350,8 +341,6 @@ Why data could be corrupted?
   <a href="/altinity-kb-setup-and-maintenance/rbac/" title="Access Control and Account Management example (RBAC)" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancerbac"><span class="">RBAC example</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenancezookeeper-session-expired-li">
   <a href="/altinity-kb-setup-and-maintenance/zookeeper-session-expired/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancezookeeper-session-expired"><span class="">ZooKeeper session has expired</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-altinity-kb-setup-and-maintenancesuspiciously_many_broken_parts-li">
-  <a href="/altinity-kb-setup-and-maintenance/suspiciously_many_broken_parts/" class="align-left pl-0 active td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancesuspiciously_many_broken_parts"><span class="td-sidebar-nav-active-item"></span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenancealtinity-packaging-compatibility-greater-than-21x-and-earlier-li">
   <a href="/altinity-kb-setup-and-maintenance/altinity-packaging-compatibility-greater-than-21.x-and-earlier/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancealtinity-packaging-compatibility-greater-than-21x-and-earlier"><span class="">Altinity packaging compatibility &gt;21.x and earlier</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenanceaws-ebs-li">
@@ -439,6 +428,8 @@ Why data could be corrupted?
   <a href="/altinity-kb-setup-and-maintenance/altinity-kb-shutting-down-a-node/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancealtinity-kb-shutting-down-a-node"><span class="">Shutting down a node</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenancessl-connection-unexpectedly-closed-li">
   <a href="/altinity-kb-setup-and-maintenance/ssl-connection-unexpectedly-closed/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancessl-connection-unexpectedly-closed"><span class="">SSL connection unexpectedly closed</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-altinity-kb-setup-and-maintenancesuspiciously-many-broken-parts-li">
+  <a href="/altinity-kb-setup-and-maintenance/suspiciously-many-broken-parts/" class="align-left pl-0 active td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancesuspiciously-many-broken-parts"><span class="td-sidebar-nav-active-item">Suspiciously many broken parts</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenancealtinity-kb-system-tables-eat-my-disk-li">
   <a href="/altinity-kb-setup-and-maintenance/altinity-kb-system-tables-eat-my-disk/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancealtinity-kb-system-tables-eat-my-disk"><span class="">System tables eat my disk</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenancealtinity-kb-threads-li">
@@ -614,9 +605,9 @@ Why data could be corrupted?
     
     
 
-    <a href="https://github.com/Altinity/altinityknowledgebase/edit/main/content/en/altinity-kb-setup-and-maintenance/Suspiciously_many_broken_parts.md" target="_blank"><i class="fa fa-edit fa-fw"></i> Edit this page</a>
-    <a href="https://github.com/Altinity/altinityknowledgebase/new/main/content/en/altinity-kb-setup-and-maintenance/Suspiciously_many_broken_parts.md?filename=change-me.md&amp;value=---%0Atitle%3A&#43;%22Long&#43;Page&#43;Title%22%0AlinkTitle%3A&#43;%22Short&#43;Nav&#43;Title%22%0Aweight%3A&#43;100%0Adescription%3A&#43;%3E-%0A&#43;&#43;&#43;&#43;&#43;Page&#43;description&#43;for&#43;heading&#43;and&#43;indexes.%0A---%0A%0A%23%23&#43;Heading%0A%0AEdit&#43;this&#43;template&#43;to&#43;create&#43;your&#43;new&#43;page.%0A%0A%2A&#43;Give&#43;it&#43;a&#43;good&#43;name%2C&#43;ending&#43;in&#43;%60.md%60&#43;-&#43;e.g.&#43;%60getting-started.md%60%0A%2A&#43;Edit&#43;the&#43;%22front&#43;matter%22&#43;section&#43;at&#43;the&#43;top&#43;of&#43;the&#43;page&#43;%28weight&#43;controls&#43;how&#43;its&#43;ordered&#43;amongst&#43;other&#43;pages&#43;in&#43;the&#43;same&#43;directory%3B&#43;lowest&#43;number&#43;first%29.%0A%2A&#43;Add&#43;a&#43;good&#43;commit&#43;message&#43;at&#43;the&#43;bottom&#43;of&#43;the&#43;page&#43;%28%3C80&#43;characters%3B&#43;use&#43;the&#43;extended&#43;description&#43;field&#43;for&#43;more&#43;detail%29.%0A%2A&#43;Create&#43;a&#43;new&#43;branch&#43;so&#43;you&#43;can&#43;preview&#43;your&#43;new&#43;file&#43;and&#43;request&#43;a&#43;review&#43;via&#43;Pull&#43;Request.%0A" target="_blank"><i class="fa fa-edit fa-fw"></i> Create child page</a>
-    <a href="https://github.com/Altinity/altinityknowledgebase/issues/new?title=/altinity-kb-setup-and-maintenance/suspiciously_many_broken_parts/" target="_blank"><i class="fab fa-github fa-fw"></i> Create documentation issue</a>
+    <a href="https://github.com/Altinity/altinityknowledgebase/edit/main/content/en/altinity-kb-setup-and-maintenance/suspiciously-many-broken-parts.md" target="_blank"><i class="fa fa-edit fa-fw"></i> Edit this page</a>
+    <a href="https://github.com/Altinity/altinityknowledgebase/new/main/content/en/altinity-kb-setup-and-maintenance/suspiciously-many-broken-parts.md?filename=change-me.md&amp;value=---%0Atitle%3A&#43;%22Long&#43;Page&#43;Title%22%0AlinkTitle%3A&#43;%22Short&#43;Nav&#43;Title%22%0Aweight%3A&#43;100%0Adescription%3A&#43;%3E-%0A&#43;&#43;&#43;&#43;&#43;Page&#43;description&#43;for&#43;heading&#43;and&#43;indexes.%0A---%0A%0A%23%23&#43;Heading%0A%0AEdit&#43;this&#43;template&#43;to&#43;create&#43;your&#43;new&#43;page.%0A%0A%2A&#43;Give&#43;it&#43;a&#43;good&#43;name%2C&#43;ending&#43;in&#43;%60.md%60&#43;-&#43;e.g.&#43;%60getting-started.md%60%0A%2A&#43;Edit&#43;the&#43;%22front&#43;matter%22&#43;section&#43;at&#43;the&#43;top&#43;of&#43;the&#43;page&#43;%28weight&#43;controls&#43;how&#43;its&#43;ordered&#43;amongst&#43;other&#43;pages&#43;in&#43;the&#43;same&#43;directory%3B&#43;lowest&#43;number&#43;first%29.%0A%2A&#43;Add&#43;a&#43;good&#43;commit&#43;message&#43;at&#43;the&#43;bottom&#43;of&#43;the&#43;page&#43;%28%3C80&#43;characters%3B&#43;use&#43;the&#43;extended&#43;description&#43;field&#43;for&#43;more&#43;detail%29.%0A%2A&#43;Create&#43;a&#43;new&#43;branch&#43;so&#43;you&#43;can&#43;preview&#43;your&#43;new&#43;file&#43;and&#43;request&#43;a&#43;review&#43;via&#43;Pull&#43;Request.%0A" target="_blank"><i class="fa fa-edit fa-fw"></i> Create child page</a>
+    <a href="https://github.com/Altinity/altinityknowledgebase/issues/new?title=/altinity-kb-setup-and-maintenance/suspiciously-many-broken-parts/" target="_blank"><i class="fab fa-github fa-fw"></i> Create documentation issue</a>
     
 
   
@@ -645,9 +636,9 @@ Why data could be corrupted?
   <p>&nbsp;</p>
   <p>Share on Social Media:</p>
   <span style="display:flex; flex-direction: row; justify-content: space-between; align-items: flex-start; padding-left: 10px; padding-right: 75px;">
-    <a href="https://twitter.com/intent/tweet?text=&amp;url=http://kb.altinity.com/altinity-kb-setup-and-maintenance/suspiciously_many_broken_parts/" target="_blank" class="fab fa-twitter"></a>
-    <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://kb.altinity.com/altinity-kb-setup-and-maintenance/suspiciously_many_broken_parts/" target="_blank" class="fab fa-facebook"></a>
-    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http://kb.altinity.com/altinity-kb-setup-and-maintenance/suspiciously_many_broken_parts/&amp;title="target="_blank" class="fab fa-linkedin"></a>
+    <a href="https://twitter.com/intent/tweet?text=Suspiciously%20many%20broken%20parts&amp;url=http://kb.altinity.com/altinity-kb-setup-and-maintenance/suspiciously-many-broken-parts/" target="_blank" class="fab fa-twitter"></a>
+    <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://kb.altinity.com/altinity-kb-setup-and-maintenance/suspiciously-many-broken-parts/" target="_blank" class="fab fa-facebook"></a>
+    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http://kb.altinity.com/altinity-kb-setup-and-maintenance/suspiciously-many-broken-parts/&amp;title=Suspiciously%20many%20broken%20parts"target="_blank" class="fab fa-linkedin"></a>
   </span>
 </div>
 
@@ -694,7 +685,7 @@ Why data could be corrupted?
 
 
 <li class="breadcrumb-item active" aria-current="page">
-	<a href="http://kb.altinity.com/altinity-kb-setup-and-maintenance/suspiciously_many_broken_parts/"></a>
+	<a href="http://kb.altinity.com/altinity-kb-setup-and-maintenance/suspiciously-many-broken-parts/">Suspiciously many broken parts</a>
 </li>
 
 	</ol>
@@ -702,8 +693,8 @@ Why data could be corrupted?
 
             
 <div class="td-content">
-	<h1></h1>
-    <div class="lead">
+	<h1>Suspiciously many broken parts</h1>
+    <div class="lead">Suspiciously many broken parts error during the server startup.
 	</div>
 	
 	       
@@ -781,7 +772,7 @@ sudo service clickhouse-server restart
 
     Last modified
     2022.01.06
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/169126f03c4f12e6d7a983998ac7f407ec0b00c2">Update Suspiciously_many_broken_parts.md (169126f03)</a>
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/b7ea9fd025a1a0a759b96732d76a648fec569d57">Update and rename Suspiciously_many_broken_parts.md to suspiciously-many-broken-parts.md (b7ea9fd02)</a>
 
 </div>
 
