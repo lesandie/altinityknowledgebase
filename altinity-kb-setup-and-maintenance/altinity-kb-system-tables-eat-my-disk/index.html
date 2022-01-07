@@ -13,13 +13,13 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-system-tables-eat-my-disk/" /><meta property="article:section" content="altinity-kb-setup-and-maintenance" />
 
-<meta property="article:modified_time" content="2022-01-07T18:12:33-04:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
+<meta property="article:modified_time" content="2022-01-07T18:15:23-04:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
 
 <meta itemprop="name" content="System tables eat my disk">
 <meta itemprop="description" content="System tables eat my disk
 ">
-<meta itemprop="dateModified" content="2022-01-07T18:12:33-04:00" />
-<meta itemprop="wordCount" content="674">
+<meta itemprop="dateModified" content="2022-01-07T18:15:23-04:00" />
+<meta itemprop="wordCount" content="684">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="System tables eat my disk"/>
 <meta name="twitter:description" content="System tables eat my disk
@@ -78,7 +78,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.c00293e87d96eec836914a269a4194c6.json"
+  data-offline-search-index-json-src="/offline-search-index.40048895f5b6f96a726cb2e44ebfc5c9.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -106,7 +106,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.c00293e87d96eec836914a269a4194c6.json"
+  data-offline-search-index-json-src="/offline-search-index.40048895f5b6f96a726cb2e44ebfc5c9.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -744,6 +744,7 @@ log_queries_min_query_duration_ms | 0           | Minimal time for the query to 
 log_queries_cut_to_length         | 100000      | If query length is greater than specified threshold (in bytes), then cut query when writing to query log. Also limit length of printed query in ordinary text log.
 log_profile_events                | 1           | Log query performance statistics into the query_log and query_thread_log.
 log_query_settings                | 1           | Log query settings into the query_log.
+log_queries_probability           | 1           | Log queries with the specified probabality.
 </code></pre><h2 id="you-can-configure-ttl">You can configure TTL</h2>
 <p>Example for <code>query_log</code>. It drops partitions with data older than 14 days:</p>
 <pre tabindex="0"><code class="language-markup" data-lang="markup">$ cat /etc/clickhouse-server/config.d/query_log_ttl.xml
@@ -801,7 +802,7 @@ log_query_settings                | 1           | Log query settings into the qu
 
     Last modified
     2022.01.07
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/ce422903faa91aa910579918985f39ade3a5d385">Update altinity-kb-system-tables-eat-my-disk.md (ce422903f)</a>
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/c71542491bbedcc40b89b4a935b66e4dc846e061">Update altinity-kb-system-tables-eat-my-disk.md (c71542491)</a>
 
 </div>
 
