@@ -12,12 +12,12 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://kb.altinity.com/altinity-kb-schema-design/materialized-views/idempotent_inserts_mv/" /><meta property="article:section" content="altinity-kb-schema-design" />
 
-<meta property="article:modified_time" content="2022-01-09T20:51:19-04:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
+<meta property="article:modified_time" content="2022-01-09T20:56:54-04:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
 
 <meta itemprop="name" content="Idempotent inserts into a materialized view">
 <meta itemprop="description" content="How to make idempotent inserts into a materialized view&#34;.">
-<meta itemprop="dateModified" content="2022-01-09T20:51:19-04:00" />
-<meta itemprop="wordCount" content="488">
+<meta itemprop="dateModified" content="2022-01-09T20:56:54-04:00" />
+<meta itemprop="wordCount" content="499">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Idempotent inserts into a materialized view"/>
 <meta name="twitter:description" content="How to make idempotent inserts into a materialized view&#34;."/>
@@ -75,7 +75,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.5937dc37dc0b79880f55f2881172b3f4.json"
+  data-offline-search-index-json-src="/offline-search-index.3e078985ad0dff89f1b91d55eef6d550.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -103,7 +103,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.5937dc37dc0b79880f55f2881172b3f4.json"
+  data-offline-search-index-json-src="/offline-search-index.3e078985ad0dff89f1b91d55eef6d550.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -711,12 +711,11 @@
 	       
 	<h2 id="why-inserts-into-materialized-views-are-not-idempotent">Why inserts into materialized views are not idempotent?</h2>
 <p>ClickHouse still does not have transactions. They will be implemented around 2022Q2.</p>
-<p>So an insert into a table and an insert into a subordinate materialized view, it&rsquo;s two inserts and they are not atomic alltogether.
-Insert into a materialized view may fail after the succesful insert into the table.
-In case of any failure a client gets the error about failed insertion.
-You may enable insert_deduptication (it&rsquo;s enabled by default for Replciated engines) and repeate the insert with idea to achive idempotate insertion,
+<p>Because of Clickhouse materialized view is a trigger. And an insert into a table and an insert into a subordinate materialized view it&rsquo;s two different inserts so they are not atomic alltogether.</p>
+<p>And insert into a materialized view may fail after the succesful insert into the table. In case of any failure a client gets the error about failed insertion.
+You may enable insert_deduplication (it&rsquo;s enabled by default for Replciated engines) and repeate the insert with an idea to achive idempotate insertion,
 and insertion will be skipped into the source table becase of deduplication but it will be skipped for materialized view as well because
-by default materialized views inherite deduplication from the source table.
+by default materialized view inherites deduplication from the source table.
 It&rsquo;s controlled by a parameter <code>deduplicate_blocks_in_dependent_materialized_views</code> <a href="https://clickhouse.com/docs/en/operations/settings/settings/#settings-deduplicate-blocks-in-dependent-materialized-views" target="_blank">https://clickhouse.com/docs/en/operations/settings/settings/#settings-deduplicate-blocks-in-dependent-materialized-views</a></p>
 <p>If your materialized view is wide enought and always have enought data for constistent deduplication then you can enable <code>deduplicate_blocks_in_dependent_materialized_views</code>.
 Or you may add information for deduplication (some unique information / insert identifier).</p>
@@ -842,7 +841,7 @@ select sum(CNT) from test_mv;
 
     Last modified
     2022.01.09
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/3660409f47ba0317f00243f2a60d4d2731228ab1">Update idempotent_inserts_mv.md (3660409f4)</a>
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/db94fc9b259ed05e22d1ea2ee8f50f20f0d992f8">Update idempotent_inserts_mv.md (db94fc9b2)</a>
 
 </div>
 
