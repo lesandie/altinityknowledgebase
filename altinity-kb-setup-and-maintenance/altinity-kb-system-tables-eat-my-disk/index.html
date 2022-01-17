@@ -13,12 +13,12 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-system-tables-eat-my-disk/" /><meta property="article:section" content="altinity-kb-setup-and-maintenance" />
 
-<meta property="article:modified_time" content="2022-01-07T19:12:25-04:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
+<meta property="article:modified_time" content="2022-01-17T10:36:13-04:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
 
 <meta itemprop="name" content="System tables eat my disk">
 <meta itemprop="description" content="System tables eat my disk
 ">
-<meta itemprop="dateModified" content="2022-01-07T19:12:25-04:00" />
+<meta itemprop="dateModified" content="2022-01-17T10:36:13-04:00" />
 <meta itemprop="wordCount" content="678">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="System tables eat my disk"/>
@@ -727,7 +727,7 @@
 &lt;yandex&gt;
     &lt;asynchronous_metric_log remove=&quot;1&quot;/&gt;
     &lt;metric_log remove=&quot;1&quot;/&gt;
-    &lt;query_thread_log remove=&quot;1&quot; /&gt;
+    &lt;query_thread_log remove=&quot;1&quot; /&gt;  
     &lt;query_log remove=&quot;1&quot; /&gt;
     &lt;query_views_log remove=&quot;1&quot; /&gt;
     &lt;part_log remove=&quot;1&quot;/&gt;
@@ -735,7 +735,7 @@
     &lt;text_log remove=&quot;1&quot; /&gt;
     &lt;trace_log remove=&quot;1&quot;/&gt;
 &lt;/yandex&gt;
-</code></pre><p>We do not recommend removing <code>query_log</code> and <code>query_thread_log</code> as queries' logging can be easily turned off without a restart through user profiles:</p>
+</code></pre><p><strong>We do not recommend removing <code>query_log</code> and <code>query_thread_log</code> as queries' logging can be easily turned off without a restart through user profiles:</strong></p>
 <pre tabindex="0"><code class="language-markup" data-lang="markup">$ cat /etc/clickhouse-server/users.d/z_log_queries.xml
 &lt;yandex&gt;
     &lt;profiles&gt;
@@ -811,8 +811,8 @@ log_queries_probability           | 1           | Log queries with the specified
 	<div class="text-muted mt-5 pt-3 border-top">
 
     Last modified
-    2022.01.07
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/a5b5c40b37031cbfb5f248210bb02942b0ff4d69">Update altinity-kb-system-tables-eat-my-disk.md (a5b5c40b3)</a>
+    2022.01.17
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/a81bdd4e73f7bb8b6f3aa6c28fc81785b9f8cc43">Update altinity-kb-system-tables-eat-my-disk.md (a81bdd4e7)</a>
 
 </div>
 

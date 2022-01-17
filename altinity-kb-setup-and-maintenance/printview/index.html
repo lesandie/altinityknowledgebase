@@ -4994,7 +4994,7 @@ sudo service clickhouse-server restart
 &lt;yandex&gt;
     &lt;asynchronous_metric_log remove=&quot;1&quot;/&gt;
     &lt;metric_log remove=&quot;1&quot;/&gt;
-    &lt;query_thread_log remove=&quot;1&quot; /&gt;
+    &lt;query_thread_log remove=&quot;1&quot; /&gt;  
     &lt;query_log remove=&quot;1&quot; /&gt;
     &lt;query_views_log remove=&quot;1&quot; /&gt;
     &lt;part_log remove=&quot;1&quot;/&gt;
@@ -5002,7 +5002,7 @@ sudo service clickhouse-server restart
     &lt;text_log remove=&quot;1&quot; /&gt;
     &lt;trace_log remove=&quot;1&quot;/&gt;
 &lt;/yandex&gt;
-</code></pre><p>We do not recommend removing <code>query_log</code> and <code>query_thread_log</code> as queries' logging can be easily turned off without a restart through user profiles:</p>
+</code></pre><p><strong>We do not recommend removing <code>query_log</code> and <code>query_thread_log</code> as queries' logging can be easily turned off without a restart through user profiles:</strong></p>
 <pre tabindex="0"><code class="language-markup" data-lang="markup">$ cat /etc/clickhouse-server/users.d/z_log_queries.xml
 &lt;yandex&gt;
     &lt;profiles&gt;
