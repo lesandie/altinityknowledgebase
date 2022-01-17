@@ -13,13 +13,13 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-system-tables-eat-my-disk/" /><meta property="article:section" content="altinity-kb-setup-and-maintenance" />
 
-<meta property="article:modified_time" content="2022-01-17T10:39:17-04:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
+<meta property="article:modified_time" content="2022-01-17T10:41:08-04:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
 
 <meta itemprop="name" content="System tables eat my disk">
 <meta itemprop="description" content="System tables eat my disk
 ">
-<meta itemprop="dateModified" content="2022-01-17T10:39:17-04:00" />
-<meta itemprop="wordCount" content="678">
+<meta itemprop="dateModified" content="2022-01-17T10:41:08-04:00" />
+<meta itemprop="wordCount" content="686">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="System tables eat my disk"/>
 <meta name="twitter:description" content="System tables eat my disk
@@ -78,7 +78,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.5449761960b2170818cc2b5d5233e14e.json"
+  data-offline-search-index-json-src="/offline-search-index.b80fae6bb27a62f7c98e0fcb8316ac99.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -106,7 +106,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.5449761960b2170818cc2b5d5233e14e.json"
+  data-offline-search-index-json-src="/offline-search-index.b80fae6bb27a62f7c98e0fcb8316ac99.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -735,7 +735,7 @@
     &lt;text_log remove=&quot;1&quot; /&gt;
     &lt;trace_log remove=&quot;1&quot;/&gt;
 &lt;/yandex&gt;
-</code></pre><p><strong>We do not recommend removing <code>query_log</code> and <code>query_thread_log</code> as queries' logging can be easily turned off without a restart through user profiles:</strong></p>
+</code></pre><p><strong>We do not recommend removing <code>query_log</code> and <code>query_thread_log</code> as queries' (they have very useful information for debugging), and logging can be easily turned off without a restart through user profiles:</strong></p>
 <pre tabindex="0"><code class="language-markup" data-lang="markup">$ cat /etc/clickhouse-server/users.d/z_log_queries.xml
 &lt;yandex&gt;
     &lt;profiles&gt;
@@ -812,7 +812,7 @@ log_queries_probability           | 1           | Log queries with the specified
 
     Last modified
     2022.01.17
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/df57c090098dc7a5b2a3522fda7f979a73414f58">Update altinity-kb-system-tables-eat-my-disk.md (df57c0900)</a>
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/c157282c5e4c91e1c845d523958952117a645836">Update altinity-kb-system-tables-eat-my-disk.md (c157282c5)</a>
 
 </div>
 
