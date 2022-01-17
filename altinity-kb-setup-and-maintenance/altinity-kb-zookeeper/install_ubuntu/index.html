@@ -12,12 +12,12 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-zookeeper/install_ubuntu/" /><meta property="article:section" content="altinity-kb-setup-and-maintenance" />
 
-<meta property="article:modified_time" content="2021-10-19T10:58:30+02:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
+<meta property="article:modified_time" content="2022-01-17T11:48:11+01:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
 
 <meta itemprop="name" content="Install standalone Zookeeper for ClickHouse on Ubuntu / Debian">
 <meta itemprop="description" content="Install standalone Zookeeper for ClickHouse on Ubuntu / Debian.">
-<meta itemprop="dateModified" content="2021-10-19T10:58:30+02:00" />
-<meta itemprop="wordCount" content="273">
+<meta itemprop="dateModified" content="2022-01-17T11:48:11+01:00" />
+<meta itemprop="wordCount" content="293">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Install standalone Zookeeper for ClickHouse on Ubuntu / Debian"/>
 <meta name="twitter:description" content="Install standalone Zookeeper for ClickHouse on Ubuntu / Debian."/>
@@ -75,7 +75,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.20148227e4c79834b47ea3cb033bd5f5.json"
+  data-offline-search-index-json-src="/offline-search-index.25c3e25f530f904eb426df4c305687c9.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -103,7 +103,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.20148227e4c79834b47ea3cb033bd5f5.json"
+  data-offline-search-index-json-src="/offline-search-index.25c3e25f530f904eb426df4c305687c9.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -718,22 +718,25 @@
 	<h2 id="reference-script-to-install-standalone-zookeeper-for-ubuntu--debian">Reference script to install standalone Zookeeper for Ubuntu / Debian</h2>
 <p>Tested on Ubuntu 20.</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#8f5902;font-style:italic"># install java runtime environment</span>
+sudo apt-get update
 sudo apt install default-jre
 
-<span style="color:#8f5902;font-style:italic"># download and install files </span>
+<span style="color:#8f5902;font-style:italic"># prepare folders, logs folder should be on the low-latency disk.</span>
 sudo mkdir -p /var/lib/zookeeper/data /var/lib/zookeeper/logs /etc/zookeeper /var/log/zookeeper /opt 
 
-wget https://dlcdn.apache.org/zookeeper/zookeeper-3.6.3/apache-zookeeper-3.6.3-bin.tar.gz -O /tmp/apache-zookeeper-3.6.3-bin.tar.gz
-sudo tar -xvf /tmp/apache-zookeeper-3.6.3-bin.tar.gz -C /opt
-rm -rf /tmp/apache-zookeeper-3.6.3-bin.tar.gz
+<span style="color:#8f5902;font-style:italic"># download and install files </span>
+<span style="color:#204a87">export</span> <span style="color:#000">ZOOKEEPER_VERSION</span><span style="color:#ce5c00;font-weight:bold">=</span>3.6.3
+wget https://dlcdn.apache.org/zookeeper/zookeeper-<span style="color:#4e9a06">${</span><span style="color:#000">ZOOKEEPER_VERSION</span><span style="color:#4e9a06">}</span>/apache-zookeeper-<span style="color:#4e9a06">${</span><span style="color:#000">ZOOKEEPER_VERSION</span><span style="color:#4e9a06">}</span>-bin.tar.gz -O /tmp/apache-zookeeper-<span style="color:#4e9a06">${</span><span style="color:#000">ZOOKEEPER_VERSION</span><span style="color:#4e9a06">}</span>-bin.tar.gz
+sudo tar -xvf /tmp/apache-zookeeper-<span style="color:#4e9a06">${</span><span style="color:#000">ZOOKEEPER_VERSION</span><span style="color:#4e9a06">}</span>-bin.tar.gz -C /opt
+rm -rf /tmp/apache-zookeeper-<span style="color:#4e9a06">${</span><span style="color:#000">ZOOKEEPER_VERSION</span><span style="color:#4e9a06">}</span>-bin.tar.gz
 
 <span style="color:#8f5902;font-style:italic"># create the user </span>
 sudo groupadd -r zookeeper
 sudo useradd -r -g zookeeper --home-dir<span style="color:#ce5c00;font-weight:bold">=</span>/var/lib/zookeeper --shell<span style="color:#ce5c00;font-weight:bold">=</span>/bin/false zookeeper
 
 <span style="color:#8f5902;font-style:italic"># symlink pointing to the used version of zookeeper distibution</span>
-sudo ln -s /opt/apache-zookeeper-3.6.3-bin /opt/zookeeper 
-sudo chown -R zookeeper:zookeeper /var/lib/zookeeper /var/log/zookeeper /etc/zookeeper /opt/apache-zookeeper-3.6.3-bin
+sudo ln -s /opt/apache-zookeeper-<span style="color:#4e9a06">${</span><span style="color:#000">ZOOKEEPER_VERSION</span><span style="color:#4e9a06">}</span>-bin /opt/zookeeper 
+sudo chown -R zookeeper:zookeeper /var/lib/zookeeper /var/log/zookeeper /etc/zookeeper /opt/apache-zookeeper-<span style="color:#4e9a06">${</span><span style="color:#000">ZOOKEEPER_VERSION</span><span style="color:#4e9a06">}</span>-bin
 sudo chown -h zookeeper:zookeeper /opt/zookeeper
 
 <span style="color:#8f5902;font-style:italic"># shortcuts in /usr/local/bin/</span>
@@ -753,7 +756,7 @@ cat <span style="color:#4e9a06">&lt;&lt;EOF | sudo tee /etc/zookeeper/zoo.cfg
 </span><span style="color:#4e9a06">preAllocSize=131072
 </span><span style="color:#4e9a06">snapCount=3000000
 </span><span style="color:#4e9a06">dataDir=/var/lib/zookeeper/data
-</span><span style="color:#4e9a06">dataLogDir=/var/lib/zookeeper/logs
+</span><span style="color:#4e9a06">dataLogDir=/var/lib/zookeeper/logs # use low-latency disk!
 </span><span style="color:#4e9a06">clientPort=2181
 </span><span style="color:#4e9a06">#clientPortAddress=nthk-zoo1.localdomain
 </span><span style="color:#4e9a06">autopurge.snapRetainCount=10
@@ -802,8 +805,8 @@ sudo systemctl start zookeeper.service
 	<div class="text-muted mt-5 pt-3 border-top">
 
     Last modified
-    2021.10.19
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/7c6406d7cb56549949337a0a3d82be87fde56567">Create install_ubuntu.md (7c6406d7c)</a>
+    2022.01.17
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/07509e680ca793309e09c60dc40181311dd4454d">Update install_ubuntu.md (07509e680)</a>
 
 </div>
 
