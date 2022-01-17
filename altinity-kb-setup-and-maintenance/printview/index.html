@@ -74,7 +74,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.1c09ed217a1d7e86a87fada358ec6316.json"
+  data-offline-search-index-json-src="/offline-search-index.5449761960b2170818cc2b5d5233e14e.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -4985,7 +4985,7 @@ sudo service clickhouse-server restart
 <p>You can drop / rename / truncate *<strong>_log</strong> tables at any time. ClickHouse will recreate them in about 7 seconds (flush period).</p>
 </blockquote>
 <blockquote>
-<p><strong>Note 2:</strong> Log tables with numeric postfixes (_1 / 2 / 3 &hellip;) <code>query_log_1 query_thread_log_3</code> are results of Clickhouse upgrades. When a new version of Clickhouse starts and discovers that a system log table&rsquo;s schema is incompatible with a new schema, then Clickhouse renames the old query_log table to the name with the prefix and creates a table with the new schema. You can drop such tables if you don&rsquo;t need such historic data.</p>
+<p><strong>Note 2:</strong> Log tables with numeric postfixes (_1 / 2 / 3 &hellip;) <code>query_log_1 query_thread_log_3</code> are results of Clickhouse upgrades. When a new version of Clickhouse starts and discovers that a system log table&rsquo;s schema is incompatible with a new schema, then Clickhouse renames the old *_log table to the name with the prefix and creates a table with the new schema. You can drop such tables if you don&rsquo;t need such historic data.</p>
 </blockquote>
 <h2 id="you-can-disable-all--any-of-them">You can disable all / any of them</h2>
 <p>Do not create log tables at all (a restart is needed for these changes to take effect).</p>

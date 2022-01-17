@@ -13,12 +13,12 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-system-tables-eat-my-disk/" /><meta property="article:section" content="altinity-kb-setup-and-maintenance" />
 
-<meta property="article:modified_time" content="2022-01-17T10:36:13-04:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
+<meta property="article:modified_time" content="2022-01-17T10:39:17-04:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
 
 <meta itemprop="name" content="System tables eat my disk">
 <meta itemprop="description" content="System tables eat my disk
 ">
-<meta itemprop="dateModified" content="2022-01-17T10:36:13-04:00" />
+<meta itemprop="dateModified" content="2022-01-17T10:39:17-04:00" />
 <meta itemprop="wordCount" content="678">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="System tables eat my disk"/>
@@ -78,7 +78,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.1c09ed217a1d7e86a87fada358ec6316.json"
+  data-offline-search-index-json-src="/offline-search-index.5449761960b2170818cc2b5d5233e14e.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -106,7 +106,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.1c09ed217a1d7e86a87fada358ec6316.json"
+  data-offline-search-index-json-src="/offline-search-index.5449761960b2170818cc2b5d5233e14e.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -718,7 +718,7 @@
 <p>You can drop / rename / truncate *<strong>_log</strong> tables at any time. ClickHouse will recreate them in about 7 seconds (flush period).</p>
 </blockquote>
 <blockquote>
-<p><strong>Note 2:</strong> Log tables with numeric postfixes (_1 / 2 / 3 &hellip;) <code>query_log_1 query_thread_log_3</code> are results of Clickhouse upgrades. When a new version of Clickhouse starts and discovers that a system log table&rsquo;s schema is incompatible with a new schema, then Clickhouse renames the old query_log table to the name with the prefix and creates a table with the new schema. You can drop such tables if you don&rsquo;t need such historic data.</p>
+<p><strong>Note 2:</strong> Log tables with numeric postfixes (_1 / 2 / 3 &hellip;) <code>query_log_1 query_thread_log_3</code> are results of Clickhouse upgrades. When a new version of Clickhouse starts and discovers that a system log table&rsquo;s schema is incompatible with a new schema, then Clickhouse renames the old *_log table to the name with the prefix and creates a table with the new schema. You can drop such tables if you don&rsquo;t need such historic data.</p>
 </blockquote>
 <h2 id="you-can-disable-all--any-of-them">You can disable all / any of them</h2>
 <p>Do not create log tables at all (a restart is needed for these changes to take effect).</p>
@@ -812,7 +812,7 @@ log_queries_probability           | 1           | Log queries with the specified
 
     Last modified
     2022.01.17
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/a81bdd4e73f7bb8b6f3aa6c28fc81785b9f8cc43">Update altinity-kb-system-tables-eat-my-disk.md (a81bdd4e7)</a>
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/df57c090098dc7a5b2a3522fda7f979a73414f58">Update altinity-kb-system-tables-eat-my-disk.md (df57c0900)</a>
 
 </div>
 
