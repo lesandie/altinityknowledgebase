@@ -74,7 +74,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.022625b61dcf5bc4214ab3bac7bec567.json"
+  data-offline-search-index-json-src="/offline-search-index.86462653054b20ff86cd90e90b10d000.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -410,7 +410,18 @@ select sum(CNT) from test_mv;
 │      300 │  -- No inconsistency! Insert was not deduplicated.
 └──────────┘
 </code></pre><p>Idea how to fix it in Clickhouse source code <a href="https://github.com/ClickHouse/ClickHouse/issues/30240" target="_blank">https://github.com/ClickHouse/ClickHouse/issues/30240</a></p>
-
+<h3 id="fake-unused-metric-to-add-uniqueness">Fake (unused) metric to add uniqueness.</h3>
+<pre tabindex="0"><code>create materialized view test_mv
+   Engine = ReplicatedSummingMergeTree('/clickhouse/{cluster}/tables/{table}','{replica}') 
+   partition by D
+   order by D
+  as
+   select
+     D,
+     count() CNT,
+     sum( cityHash(*) ) insert_id
+  from test group by D;
+</code></pre>
 </div>
 
 

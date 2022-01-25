@@ -12,12 +12,12 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://kb.altinity.com/altinity-kb-schema-design/materialized-views/idempotent_inserts_mv/" /><meta property="article:section" content="altinity-kb-schema-design" />
 
-<meta property="article:modified_time" content="2022-01-09T20:58:24-04:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
+<meta property="article:modified_time" content="2022-01-25T19:13:01+01:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
 
 <meta itemprop="name" content="Idempotent inserts into a materialized view">
 <meta itemprop="description" content="How to make idempotent inserts into a materialized view&#34;.">
-<meta itemprop="dateModified" content="2022-01-09T20:58:24-04:00" />
-<meta itemprop="wordCount" content="499">
+<meta itemprop="dateModified" content="2022-01-25T19:13:01+01:00" />
+<meta itemprop="wordCount" content="532">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Idempotent inserts into a materialized view"/>
 <meta name="twitter:description" content="How to make idempotent inserts into a materialized view&#34;."/>
@@ -75,7 +75,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.022625b61dcf5bc4214ab3bac7bec567.json"
+  data-offline-search-index-json-src="/offline-search-index.86462653054b20ff86cd90e90b10d000.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -103,7 +103,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.022625b61dcf5bc4214ab3bac7bec567.json"
+  data-offline-search-index-json-src="/offline-search-index.86462653054b20ff86cd90e90b10d000.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -639,6 +639,7 @@
         <li><a href="#example-1-inconsistency-with-deduplicate_blocks_in_dependent_materialized_views-0">Example 1. Inconsistency with deduplicate_blocks_in_dependent_materialized_views 0</a></li>
         <li><a href="#example-2-inconsistency-with-deduplicate_blocks_in_dependent_materialized_views-1">Example 2. Inconsistency with deduplicate_blocks_in_dependent_materialized_views 1</a></li>
         <li><a href="#example-3-solution-no-inconsistency-with-deduplicate_blocks_in_dependent_materialized_views-1">Example 3. Solution: no inconsistency with deduplicate_blocks_in_dependent_materialized_views 1</a></li>
+        <li><a href="#fake-unused-metric-to-add-uniqueness">Fake (unused) metric to add uniqueness.</a></li>
       </ul>
     </li>
   </ul>
@@ -850,14 +851,25 @@ select sum(CNT) from test_mv;
 │      300 │  -- No inconsistency! Insert was not deduplicated.
 └──────────┘
 </code></pre><p>Idea how to fix it in Clickhouse source code <a href="https://github.com/ClickHouse/ClickHouse/issues/30240" target="_blank">https://github.com/ClickHouse/ClickHouse/issues/30240</a></p>
-
+<h3 id="fake-unused-metric-to-add-uniqueness">Fake (unused) metric to add uniqueness.</h3>
+<pre tabindex="0"><code>create materialized view test_mv
+   Engine = ReplicatedSummingMergeTree('/clickhouse/{cluster}/tables/{table}','{replica}') 
+   partition by D
+   order by D
+  as
+   select
+     D,
+     count() CNT,
+     sum( cityHash(*) ) insert_id
+  from test group by D;
+</code></pre>
 	
 	
 	<div class="text-muted mt-5 pt-3 border-top">
 
     Last modified
-    2022.01.09
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/d7663f1ef7c03281c6b90c0d4c99fc479f796091">Update idempotent_inserts_mv.md (d7663f1ef)</a>
+    2022.01.25
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/ac55ad3a470da37977b9d553206cf30d1f7caa30">Update idempotent_inserts_mv.md (ac55ad3a4)</a>
 
 </div>
 
