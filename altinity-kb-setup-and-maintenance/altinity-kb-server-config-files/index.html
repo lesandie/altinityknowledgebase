@@ -13,12 +13,12 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-server-config-files/" /><meta property="article:section" content="altinity-kb-setup-and-maintenance" />
 
-<meta property="article:modified_time" content="2021-11-20T00:05:14+01:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
+<meta property="article:modified_time" content="2022-01-25T09:55:11-07:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
 
 <meta itemprop="name" content="Server config files">
 <meta itemprop="description" content="How to manage server config files in Clickhouse
 ">
-<meta itemprop="dateModified" content="2021-11-20T00:05:14+01:00" />
+<meta itemprop="dateModified" content="2022-01-25T09:55:11-07:00" />
 <meta itemprop="wordCount" content="835">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Server config files"/>
@@ -78,7 +78,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.31af47fca575aec00bfc7c0cad656585.json"
+  data-offline-search-index-json-src="/offline-search-index.3c9aca73a5e36fec16eb439c9caa7190.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -106,7 +106,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.31af47fca575aec00bfc7c0cad656585.json"
+  data-offline-search-index-json-src="/offline-search-index.3c9aca73a5e36fec16eb439c9caa7190.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -638,7 +638,7 @@
     <li><a href="#сonfig-management-recommended-structure">Сonfig management (recommended structure)</a></li>
     <li><a href="#settings--restart">Settings &amp; restart</a>
       <ul>
-        <li><a href="#server-config-configxml-sections-which-dont-require-resart">Server config (config.xml) sections which don&rsquo;t require resart</a></li>
+        <li><a href="#server-config-configxml-sections-which-dont-require-restart">Server config (config.xml) sections which don&rsquo;t require restart</a></li>
         <li><a href="#user-settings-which-require-restart">User settings which require restart.</a></li>
       </ul>
     </li>
@@ -795,7 +795,7 @@ cat /etc/clickhouse-server/users.d/enable_access_management_for_user_default.xml
 <li><strong>user</strong> settings (<code>users.xml</code> and <code>users.d</code>) changes <strong>don&rsquo;t require restart</strong>.</li>
 </ul>
 <p>But there are <strong>exceptions</strong> from those rules (see below).</p>
-<h3 id="server-config-configxml-sections-which-dont-require-resart">Server config (config.xml) sections which don&rsquo;t require resart</h3>
+<h3 id="server-config-configxml-sections-which-dont-require-restart">Server config (config.xml) sections which don&rsquo;t require restart</h3>
 <ul>
 <li><code>&lt;max_server_memory_usage&gt;</code></li>
 <li><code>&lt;max_server_memory_usage_to_ram_ratio&gt;</code></li>
@@ -947,8 +947,8 @@ That means that that new setting will be applied to new sessions / after reconne
 	<div class="text-muted mt-5 pt-3 border-top">
 
     Last modified
-    2021.11.20
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/6a8bc2b8ef64fff22508fea1e636b5387eb499ae">Update altinity-kb-server-config-files.md (6a8bc2b8e)</a>
+    2022.01.25
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/7b21c0eaff00b0d3b75ab95b0de4a1229bfcbad7">Update altinity-kb-server-config-files.md (7b21c0eaf)</a>
 
 </div>
 
