@@ -59,6 +59,9 @@
     <loc>http://kb.altinity.com/altinity-kb-useful-queries/table-meta-in-zookeeper/</loc>
     <lastmod>2022-01-03T14:32:39+01:00</lastmod>
   </url><url>
+    <loc>http://kb.altinity.com/altinity-kb-schema-design/row-level-deduplication/</loc>
+    <lastmod>2022-01-25T19:06:24+01:00</lastmod>
+  </url><url>
     <loc>http://kb.altinity.com/engines/mergetree-table-engine-family/collapsing-vs-replacing/</loc>
     <lastmod>2021-11-09T17:47:53+01:00</lastmod>
   </url><url>

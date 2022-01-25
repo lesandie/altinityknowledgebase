@@ -6,21 +6,21 @@
 <meta name="generator" content="Hugo 0.92.0" /><META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
 <link rel="shortcut icon" href="/favicons/favicon.ico" >
 <link rel="icon" href="/favicons/favicon.ico" >
-<title>CollapsingMergeTree vs ReplacingMergeTree | Altinity Knowledge Base</title>
-<meta name="description" content="Altinity Knowledge Base"><meta property="og:title" content="CollapsingMergeTree vs ReplacingMergeTree" />
-<meta property="og:description" content="CollapsingMergeTree vs ReplacingMergeTree." />
+<title>ClickHouse row-level deduplication | Altinity Knowledge Base</title>
+<meta name="description" content="Altinity Knowledge Base"><meta property="og:title" content="ClickHouse row-level deduplication" />
+<meta property="og:description" content="ClickHouse row-level deduplication." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://kb.altinity.com/engines/mergetree-table-engine-family/collapsing-vs-replacing/" /><meta property="article:section" content="engines" />
+<meta property="og:url" content="http://kb.altinity.com/altinity-kb-schema-design/row-level-deduplication/" /><meta property="article:section" content="altinity-kb-schema-design" />
 
-<meta property="article:modified_time" content="2021-11-09T17:47:53+01:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
+<meta property="article:modified_time" content="2022-01-25T19:06:24+01:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
 
-<meta itemprop="name" content="CollapsingMergeTree vs ReplacingMergeTree">
-<meta itemprop="description" content="CollapsingMergeTree vs ReplacingMergeTree.">
-<meta itemprop="dateModified" content="2021-11-09T17:47:53+01:00" />
-<meta itemprop="wordCount" content="131">
+<meta itemprop="name" content="ClickHouse row-level deduplication">
+<meta itemprop="description" content="ClickHouse row-level deduplication.">
+<meta itemprop="dateModified" content="2022-01-25T19:06:24+01:00" />
+<meta itemprop="wordCount" content="596">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="CollapsingMergeTree vs ReplacingMergeTree"/>
-<meta name="twitter:description" content="CollapsingMergeTree vs ReplacingMergeTree."/>
+<meta name="twitter:title" content="ClickHouse row-level deduplication"/>
+<meta name="twitter:description" content="ClickHouse row-level deduplication."/>
 
 
 
@@ -119,10 +119,10 @@
       <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m--li">
   <a href="/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section tree-root" id="m-"><span class="">Altinity Knowledge Base</span></a>
   <ul class="ul-1">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-engines-li">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-engines-li">
   <a href="/engines/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-engines"><span class="">Engines</span></a>
   <ul class="ul-2 foldable">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-enginesaltinity-kb-atomic-database-engine-li">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child collapse" id="m-enginesaltinity-kb-atomic-database-engine-li">
   <a href="/engines/altinity-kb-atomic-database-engine/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-enginesaltinity-kb-atomic-database-engine"><span class="">Atomic Database Engine</span></a>
   <ul class="ul-3 foldable">
     <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-enginesaltinity-kb-atomic-database-enginehow-to-convert-ordinary-to-atomic-li">
@@ -131,31 +131,31 @@
   <a href="/engines/altinity-kb-atomic-database-engine/altinity-kb-how-to-convert-atomic-to-ordinary/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-enginesaltinity-kb-atomic-database-enginealtinity-kb-how-to-convert-atomic-to-ordinary"><span class="">How to Convert Atomic to Ordinary</span></a>
 </li>
   </ul>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-enginesaltinity-kb-embeddedrocksdb-and-dictionary-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-enginesaltinity-kb-embeddedrocksdb-and-dictionary-li">
   <a href="/engines/altinity-kb-embeddedrocksdb-and-dictionary/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-enginesaltinity-kb-embeddedrocksdb-and-dictionary"><span class="">EmbeddedRocksDB &amp; dictionary</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-enginesmergetree-table-engine-family-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child collapse" id="m-enginesmergetree-table-engine-family-li">
   <a href="/engines/mergetree-table-engine-family/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-enginesmergetree-table-engine-family"><span class="">MergeTree table engine family</span></a>
   <ul class="ul-3 foldable">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-enginesmergetree-table-engine-familycollapsing-vs-replacing-li">
-  <a href="/engines/mergetree-table-engine-family/collapsing-vs-replacing/" class="align-left pl-0 active td-sidebar-link td-sidebar-link__page" id="m-enginesmergetree-table-engine-familycollapsing-vs-replacing"><span class="td-sidebar-nav-active-item">CollapsingMergeTree vs ReplacingMergeTree</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-enginesmergetree-table-engine-familypick-keys-li">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-enginesmergetree-table-engine-familycollapsing-vs-replacing-li">
+  <a href="/engines/mergetree-table-engine-family/collapsing-vs-replacing/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-enginesmergetree-table-engine-familycollapsing-vs-replacing"><span class="">CollapsingMergeTree vs ReplacingMergeTree</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-enginesmergetree-table-engine-familypick-keys-li">
   <a href="/engines/mergetree-table-engine-family/pick-keys/" title="How to pick an ORDER BY / PRIMARY KEY / PARTITION BY for the MergeTree-family table" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-enginesmergetree-table-engine-familypick-keys"><span class="">Proper ordering and partitioning the MergeTree tables</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-enginesmergetree-table-engine-familyaggregatingmergetree-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-enginesmergetree-table-engine-familyaggregatingmergetree-li">
   <a href="/engines/mergetree-table-engine-family/aggregatingmergetree/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-enginesmergetree-table-engine-familyaggregatingmergetree"><span class="">AggregatingMergeTree</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-enginesmergetree-table-engine-familyindex-and-column-files-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-enginesmergetree-table-engine-familyindex-and-column-files-li">
   <a href="/engines/mergetree-table-engine-family/index-and-column-files/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-enginesmergetree-table-engine-familyindex-and-column-files"><span class="">index &amp; column files</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-enginesmergetree-table-engine-familyaltinity-kb-nulls-in-order-by-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-enginesmergetree-table-engine-familyaltinity-kb-nulls-in-order-by-li">
   <a href="/engines/mergetree-table-engine-family/altinity-kb-nulls-in-order-by/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-enginesmergetree-table-engine-familyaltinity-kb-nulls-in-order-by"><span class="">Nulls in order by</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-enginesmergetree-table-engine-familyreplacingmergetree-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child collapse" id="m-enginesmergetree-table-engine-familyreplacingmergetree-li">
   <a href="/engines/mergetree-table-engine-family/replacingmergetree/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-enginesmergetree-table-engine-familyreplacingmergetree"><span class="">ReplacingMergeTree</span></a>
   <ul class="ul-4 foldable">
     <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-enginesmergetree-table-engine-familyreplacingmergetreealtinity-kb-replacingmergetree-does-not-collapse-duplicates-li">
   <a href="/engines/mergetree-table-engine-family/replacingmergetree/altinity-kb-replacingmergetree-does-not-collapse-duplicates/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-enginesmergetree-table-engine-familyreplacingmergetreealtinity-kb-replacingmergetree-does-not-collapse-duplicates"><span class="">ReplacingMergeTree does not collapse duplicates</span></a>
 </li>
   </ul>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-enginesmergetree-table-engine-familyskip-index-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-enginesmergetree-table-engine-familyskip-index-li">
   <a href="/engines/mergetree-table-engine-family/skip-index/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-enginesmergetree-table-engine-familyskip-index"><span class="">Skip index</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-enginesmergetree-table-engine-familysummingmergetree-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-enginesmergetree-table-engine-familysummingmergetree-li">
   <a href="/engines/mergetree-table-engine-family/summingmergetree/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-enginesmergetree-table-engine-familysummingmergetree"><span class="">SummingMergeTree</span></a>
 </li>
   </ul>
@@ -492,16 +492,16 @@
   <a href="/altinity-kb-useful-queries/parts-consistency/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-useful-queriesparts-consistency"><span class="">Parts consistency</span></a>
 </li>
   </ul>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-altinity-kb-schema-design-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-altinity-kb-schema-design-li">
   <a href="/altinity-kb-schema-design/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-altinity-kb-schema-design"><span class="">Schema design</span></a>
   <ul class="ul-2 foldable">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-schema-designrow-level-deduplication-li">
-  <a href="/altinity-kb-schema-design/row-level-deduplication/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-schema-designrow-level-deduplication"><span class="">ClickHouse row-level deduplication</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-schema-designhow-much-is-too-much-li">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-altinity-kb-schema-designrow-level-deduplication-li">
+  <a href="/altinity-kb-schema-design/row-level-deduplication/" class="align-left pl-0 active td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-schema-designrow-level-deduplication"><span class="td-sidebar-nav-active-item">ClickHouse row-level deduplication</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-schema-designhow-much-is-too-much-li">
   <a href="/altinity-kb-schema-design/how-much-is-too-much/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-schema-designhow-much-is-too-much"><span class="">How much is too much?</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-schema-designbest-schema-for-storing-many-metrics-registered-from-the-single-source-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-schema-designbest-schema-for-storing-many-metrics-registered-from-the-single-source-li">
   <a href="/altinity-kb-schema-design/best-schema-for-storing-many-metrics-registered-from-the-single-source/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-schema-designbest-schema-for-storing-many-metrics-registered-from-the-single-source"><span class="">Best schema for storing many metrics registered from the single source</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child collapse" id="m-altinity-kb-schema-designcodecs-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-altinity-kb-schema-designcodecs-li">
   <a href="/altinity-kb-schema-design/codecs/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-altinity-kb-schema-designcodecs"><span class="">Codecs</span></a>
   <ul class="ul-3 foldable">
     <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-schema-designcodecscodecs-on-array-columns-li">
@@ -512,21 +512,21 @@
   <a href="/altinity-kb-schema-design/codecs/altinity-kb-how-to-test-different-compression-codecs/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-schema-designcodecsaltinity-kb-how-to-test-different-compression-codecs"><span class="">How to test different compression codecs</span></a>
 </li>
   </ul>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-schema-designaltinity-kb-dictionaries-vs-lowcardinality-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-schema-designaltinity-kb-dictionaries-vs-lowcardinality-li">
   <a href="/altinity-kb-schema-design/altinity-kb-dictionaries-vs-lowcardinality/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-schema-designaltinity-kb-dictionaries-vs-lowcardinality"><span class="">Dictionaries vs LowCardinality</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-schema-designflattened-table-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-schema-designflattened-table-li">
   <a href="/altinity-kb-schema-design/flattened-table/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-schema-designflattened-table"><span class="">Flattened table</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-schema-designfloats-vs-decimals-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-schema-designfloats-vs-decimals-li">
   <a href="/altinity-kb-schema-design/floats-vs-decimals/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-schema-designfloats-vs-decimals"><span class="">Floats vs Decimals</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-schema-designingestion-performance-and-formats-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-schema-designingestion-performance-and-formats-li">
   <a href="/altinity-kb-schema-design/ingestion-performance-and-formats/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-schema-designingestion-performance-and-formats"><span class="">Ingestion performance and formats</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-schema-designhow-to-store-ips-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-schema-designhow-to-store-ips-li">
   <a href="/altinity-kb-schema-design/how-to-store-ips/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-schema-designhow-to-store-ips"><span class="">IPs/masks</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-schema-designaltinity-kb-jsonasstring-and-mat-view-as-json-parser-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-schema-designaltinity-kb-jsonasstring-and-mat-view-as-json-parser-li">
   <a href="/altinity-kb-schema-design/altinity-kb-jsonasstring-and-mat.-view-as-json-parser/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-schema-designaltinity-kb-jsonasstring-and-mat-view-as-json-parser"><span class="">JSONAsString and Mat. View as JSON parser</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-schema-designlowcardinality-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-schema-designlowcardinality-li">
   <a href="/altinity-kb-schema-design/lowcardinality/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-schema-designlowcardinality"><span class="">LowCardinality</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child collapse" id="m-altinity-kb-schema-designmaterialized-views-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-altinity-kb-schema-designmaterialized-views-li">
   <a href="/altinity-kb-schema-design/materialized-views/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-altinity-kb-schema-designmaterialized-views"><span class="">MATERIALIZED VIEWS</span></a>
   <ul class="ul-3 foldable">
     <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-schema-designmaterialized-viewsidempotent_inserts_mv-li">
@@ -617,14 +617,14 @@
     
     
 
-    <a href="https://github.com/Altinity/altinityknowledgebase/edit/main/content/en/engines/mergetree-table-engine-family/collapsing-vs-replacing.md" target="_blank"><i class="fa fa-edit fa-fw"></i> Edit this page</a>
-    <a href="https://github.com/Altinity/altinityknowledgebase/new/main/content/en/engines/mergetree-table-engine-family/collapsing-vs-replacing.md?filename=change-me.md&amp;value=---%0Atitle%3A&#43;%22Long&#43;Page&#43;Title%22%0AlinkTitle%3A&#43;%22Short&#43;Nav&#43;Title%22%0Aweight%3A&#43;100%0Adescription%3A&#43;%3E-%0A&#43;&#43;&#43;&#43;&#43;Page&#43;description&#43;for&#43;heading&#43;and&#43;indexes.%0A---%0A%0A%23%23&#43;Heading%0A%0AEdit&#43;this&#43;template&#43;to&#43;create&#43;your&#43;new&#43;page.%0A%0A%2A&#43;Give&#43;it&#43;a&#43;good&#43;name%2C&#43;ending&#43;in&#43;%60.md%60&#43;-&#43;e.g.&#43;%60getting-started.md%60%0A%2A&#43;Edit&#43;the&#43;%22front&#43;matter%22&#43;section&#43;at&#43;the&#43;top&#43;of&#43;the&#43;page&#43;%28weight&#43;controls&#43;how&#43;its&#43;ordered&#43;amongst&#43;other&#43;pages&#43;in&#43;the&#43;same&#43;directory%3B&#43;lowest&#43;number&#43;first%29.%0A%2A&#43;Add&#43;a&#43;good&#43;commit&#43;message&#43;at&#43;the&#43;bottom&#43;of&#43;the&#43;page&#43;%28%3C80&#43;characters%3B&#43;use&#43;the&#43;extended&#43;description&#43;field&#43;for&#43;more&#43;detail%29.%0A%2A&#43;Create&#43;a&#43;new&#43;branch&#43;so&#43;you&#43;can&#43;preview&#43;your&#43;new&#43;file&#43;and&#43;request&#43;a&#43;review&#43;via&#43;Pull&#43;Request.%0A" target="_blank"><i class="fa fa-edit fa-fw"></i> Create child page</a>
-    <a href="https://github.com/Altinity/altinityknowledgebase/issues/new?title=/engines/mergetree-table-engine-family/collapsing-vs-replacing/" target="_blank"><i class="fab fa-github fa-fw"></i> Create documentation issue</a>
+    <a href="https://github.com/Altinity/altinityknowledgebase/edit/main/content/en/altinity-kb-schema-design/row-level-deduplication.md" target="_blank"><i class="fa fa-edit fa-fw"></i> Edit this page</a>
+    <a href="https://github.com/Altinity/altinityknowledgebase/new/main/content/en/altinity-kb-schema-design/row-level-deduplication.md?filename=change-me.md&amp;value=---%0Atitle%3A&#43;%22Long&#43;Page&#43;Title%22%0AlinkTitle%3A&#43;%22Short&#43;Nav&#43;Title%22%0Aweight%3A&#43;100%0Adescription%3A&#43;%3E-%0A&#43;&#43;&#43;&#43;&#43;Page&#43;description&#43;for&#43;heading&#43;and&#43;indexes.%0A---%0A%0A%23%23&#43;Heading%0A%0AEdit&#43;this&#43;template&#43;to&#43;create&#43;your&#43;new&#43;page.%0A%0A%2A&#43;Give&#43;it&#43;a&#43;good&#43;name%2C&#43;ending&#43;in&#43;%60.md%60&#43;-&#43;e.g.&#43;%60getting-started.md%60%0A%2A&#43;Edit&#43;the&#43;%22front&#43;matter%22&#43;section&#43;at&#43;the&#43;top&#43;of&#43;the&#43;page&#43;%28weight&#43;controls&#43;how&#43;its&#43;ordered&#43;amongst&#43;other&#43;pages&#43;in&#43;the&#43;same&#43;directory%3B&#43;lowest&#43;number&#43;first%29.%0A%2A&#43;Add&#43;a&#43;good&#43;commit&#43;message&#43;at&#43;the&#43;bottom&#43;of&#43;the&#43;page&#43;%28%3C80&#43;characters%3B&#43;use&#43;the&#43;extended&#43;description&#43;field&#43;for&#43;more&#43;detail%29.%0A%2A&#43;Create&#43;a&#43;new&#43;branch&#43;so&#43;you&#43;can&#43;preview&#43;your&#43;new&#43;file&#43;and&#43;request&#43;a&#43;review&#43;via&#43;Pull&#43;Request.%0A" target="_blank"><i class="fa fa-edit fa-fw"></i> Create child page</a>
+    <a href="https://github.com/Altinity/altinityknowledgebase/issues/new?title=/altinity-kb-schema-design/row-level-deduplication/" target="_blank"><i class="fab fa-github fa-fw"></i> Create documentation issue</a>
     
 
   
   
-    <a id="print" href="http://kb.altinity.com/engines/mergetree-table-engine-family/printview/"><i class="fa fa-print fa-fw"></i> Print entire section</a>
+    <a id="print" href="http://kb.altinity.com/altinity-kb-schema-design/printview/"><i class="fa fa-print fa-fw"></i> Print entire section</a>
   
   </div>
 
@@ -641,9 +641,9 @@
   <p>&nbsp;</p>
   <p>Share on Social Media:</p>
   <span style="display:flex; flex-direction: row; justify-content: space-between; align-items: flex-start; padding-left: 10px; padding-right: 75px;">
-    <a href="https://twitter.com/intent/tweet?text=CollapsingMergeTree%20vs%20ReplacingMergeTree&amp;url=http://kb.altinity.com/engines/mergetree-table-engine-family/collapsing-vs-replacing/" target="_blank" class="fab fa-twitter"></a>
-    <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://kb.altinity.com/engines/mergetree-table-engine-family/collapsing-vs-replacing/" target="_blank" class="fab fa-facebook"></a>
-    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http://kb.altinity.com/engines/mergetree-table-engine-family/collapsing-vs-replacing/&amp;title=CollapsingMergeTree%20vs%20ReplacingMergeTree"target="_blank" class="fab fa-linkedin"></a>
+    <a href="https://twitter.com/intent/tweet?text=ClickHouse%20row-level%20deduplication&amp;url=http://kb.altinity.com/altinity-kb-schema-design/row-level-deduplication/" target="_blank" class="fab fa-twitter"></a>
+    <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://kb.altinity.com/altinity-kb-schema-design/row-level-deduplication/" target="_blank" class="fab fa-facebook"></a>
+    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http://kb.altinity.com/altinity-kb-schema-design/row-level-deduplication/&amp;title=ClickHouse%20row-level%20deduplication"target="_blank" class="fab fa-linkedin"></a>
   </span>
 </div>
 
@@ -682,25 +682,15 @@
 
 
 
-
-
-
 <li class="breadcrumb-item" >
-	<a href="http://kb.altinity.com/engines/">Engines</a>
-</li>
-
-
-
-
-<li class="breadcrumb-item" >
-	<a href="http://kb.altinity.com/engines/mergetree-table-engine-family/">MergeTree table engine family</a>
+	<a href="http://kb.altinity.com/altinity-kb-schema-design/">Schema design</a>
 </li>
 
 
 
 
 <li class="breadcrumb-item active" aria-current="page">
-	<a href="http://kb.altinity.com/engines/mergetree-table-engine-family/collapsing-vs-replacing/">CollapsingMergeTree vs ReplacingMergeTree</a>
+	<a href="http://kb.altinity.com/altinity-kb-schema-design/row-level-deduplication/">ClickHouse row-level deduplication</a>
 </li>
 
 	</ol>
@@ -708,50 +698,108 @@
 
             
 <div class="td-content">
-	<h1>CollapsingMergeTree vs ReplacingMergeTree</h1>
-    <div class="lead">CollapsingMergeTree vs ReplacingMergeTree.
+	<h1>ClickHouse row-level deduplication</h1>
+    <div class="lead">ClickHouse row-level deduplication.
 	</div>
 	
 	       
-	<h2 id="collapsingmergetree-vs-replacingmergetree">CollapsingMergeTree vs ReplacingMergeTree</h2>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">ReplacingMergeTree</th>
-<th style="text-align:left">CollapsingMergeTree</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">+ very easy to use (always replace)</td>
-<td style="text-align:left">- more complex (accounting-alike, put &lsquo;rollback&rsquo; records to fix something)</td>
-</tr>
-<tr>
-<td style="text-align:left">+ you don&rsquo;t need to store the previous state of the row</td>
-<td style="text-align:left">- you need to the store (somewhere) the previous state of the row, OR extract it from the table itself (point queries is not nice for ClickHouse)</td>
-</tr>
-<tr>
-<td style="text-align:left">- no deletes</td>
-<td style="text-align:left">+ support deletes</td>
-</tr>
-<tr>
-<td style="text-align:left">- w/o FINAL - you can can always see duplicates, you need always to &lsquo;pay&rsquo; FINAL performance penalty</td>
-<td style="text-align:left">+ properly crafted query can give correct results without final (i.e. <code>sum(amount * sign)</code> will be correct, no matter of you have duplicated or not)</td>
-</tr>
-<tr>
-<td style="text-align:left">- only <code>uniq()</code>-alike things can be calculated in materialied views</td>
-<td style="text-align:left">+ you can do basic counts &amp; sums in materialized views</td>
-</tr>
-</tbody>
-</table>
+	<h2 id="clickhouse-row-level-deduplication">ClickHouse row-level deduplication.</h2>
+<p>(Block level deduplication exists in Replicated tables, and is not the subject of that article).</p>
+<p>There is quite common requirement to do deduplication on a record level in ClickHouse.</p>
+<ul>
+<li>Sometimes duplicates are appear naturally on collector side.</li>
+<li>Sometime they appear due the the fact that message queue system (Kafka/Rabbit/etc) offers at-least-once guarantees.</li>
+<li>Sometimes you just expect insert idempotency on row level.</li>
+</ul>
+<p>For now that problem has no good solution in general case using ClickHouse only.</p>
+<p>The reason in simple: to check if the row already exists you need to do some lookup (key-value) alike (ClickHouse is bad for key-value lookups),
+in general case - across the whole huge table (which can be terabyte/petabyte size).</p>
+<p>But there many usecase when you can archive something like row-level deduplication in ClickHouse:</p>
+<p>Approach 0. Make deduplication before ingesting data to ClickHouse</p>
+<ul>
+<li>you have full control</li>
+</ul>
+<ul>
+<li>extra coding and &lsquo;moving parts&rsquo;, storing some ids somewhere</li>
+</ul>
+<ul>
+<li>clean and simple schema and selects in ClickHouse
+! check if row exists in clickhouse before insert can give non-satisfing results if you use ClickHouse cluster (i.e. Replicated / Distributed tables) - due to eventual consistency.</li>
+</ul>
+<p>Approach 1. Allow duplicates during ingestion. Remove them on SELECT level (by things like GROUP BY)</p>
+<ul>
+<li>simple inserts</li>
+</ul>
+<ul>
+<li>complicate selects</li>
+<li>all selects will be significantly slower</li>
+</ul>
+<p>Approach 2. Eventual deduplication using Replacing</p>
+<ul>
+<li>simple</li>
+</ul>
+<ul>
+<li>can force you to use suboptimal primary key (which will guarantee record uniqueness)</li>
+<li>deduplication is eventual - you never know when it will happen, and you will get some duplicates if you don&rsquo;t use FINAL clause</li>
+<li>selects with FINAL clause (<code>select * from table_name FINAL</code>) are much slower
+<ul>
+<li>and may require tricky manual optimization <a href="https://github.com/ClickHouse/ClickHouse/issues/31411" target="_blank">https://github.com/ClickHouse/ClickHouse/issues/31411</a></li>
+<li>can work with acceptable speed in some special conditions: <a href="https://kb.altinity.com/altinity-kb-queries-and-syntax/altinity-kb-final-clause-speed/" target="_blank">https://kb.altinity.com/altinity-kb-queries-and-syntax/altinity-kb-final-clause-speed/</a></li>
+</ul>
+</li>
+</ul>
+<p>Approach 3. Eventual deduplication using Collapsing</p>
+<ul>
+<li>complicated</li>
+<li>can force you to use suboptimal primary key (which will guarantee record uniqueness)</li>
+<li>you need to store previous state of the record somewhere, or extract it before ingestion from clickhouse</li>
+<li>deduplication is eventual (same as with Replacing)
+<ul>
+<li>you can make the proper aggregations of last state w/o FINAL (bookkeeping-alike sums, counts etc)</li>
+</ul>
+</li>
+</ul>
+<p>Approach 4. Eventual deduplication using Summing with SimpleAggregateFunction( anyLast, &hellip;), Aggregating with argMax etc.</p>
+<ul>
+<li>quite complicated</li>
+<li>can force you to use suboptimal primary key (which will guarantee record uniqueness)</li>
+<li>deduplication is eventual (same as with Replacing)
+<ul>
+<li>but you can finish deduplication with GROUP BY instead if FINAL (it&rsquo;s faster)</li>
+</ul>
+</li>
+</ul>
+<p>Approach 5. Keep data fragment where duplicates are possible isolated. Usually you can expect the duplicates only in some time window (like 5 minutes, or one hour, or something like that).
+You can put that &lsquo;dirty&rsquo; data in separate place, and put it to final MergeTree table after deduplication window timeout.
+For example - you insert data in some tiny tables (Engine=StripeLog) with minute suffix, and move data from tinytable older that X minutes to target MergeTree (with some external queries).
+In the meanwhile you can see realtime data using Engine=Merge / VIEWs etc.</p>
+<ul>
+<li>quite complicated</li>
+</ul>
+<ul>
+<li>good control</li>
+<li>no duplicated in target table</li>
+<li>perfect ingestion speed</li>
+</ul>
+<p>Approach 6. Deduplication using MV pipeline. You insert into some temporary table (even with Engine=Null) and MV do join or subselect
+(which will check the existence of arrived rows in some time frame of target table) and copy new only rows to destination table.</p>
+<ul>
+<li>don&rsquo;t impact the select speed</li>
+</ul>
+<ul>
+<li>complicated</li>
+<li>for clusters can be inaccurate due to eventual consistency</li>
+<li>slow down inserts significantly (every insert will need to do lookup in target table first)</li>
+</ul>
+<p>In all case: due to eventual consistency of ClickHouse replication you can still get duplicates if you insert into different replicas/shards.</p>
 
 	
 	
 	<div class="text-muted mt-5 pt-3 border-top">
 
     Last modified
-    2021.11.09
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/b3a0bcab9e1ccc28e143462fddc00a830c223991">Update collapsing-vs-replacing.md (b3a0bcab9)</a>
+    2022.01.25
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/18e2f5fc2c2f99e5c7f189ebeee64eee40d7e0ec">Create row-level-deduplication.md (18e2f5fc2)</a>
 
 </div>
 
