@@ -13,13 +13,13 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://kb.altinity.com/altinity-kb-integrations/altinity-cloud/altinity-cloud-access-management/" /><meta property="article:section" content="altinity-kb-integrations" />
 
-<meta property="article:modified_time" content="2022-01-11T20:13:27-04:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
+<meta property="article:modified_time" content="2022-01-26T20:18:27+03:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
 
 <meta itemprop="name" content="Altinity Cloud Access Management">
 <meta itemprop="description" content="Enabling access_management for Altinity.Cloud databases.
 ">
-<meta itemprop="dateModified" content="2022-01-11T20:13:27-04:00" />
-<meta itemprop="wordCount" content="191">
+<meta itemprop="dateModified" content="2022-01-26T20:18:27+03:00" />
+<meta itemprop="wordCount" content="243">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Altinity Cloud Access Management"/>
 <meta name="twitter:description" content="Enabling access_management for Altinity.Cloud databases.
@@ -78,7 +78,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.566f9381647ae182bb2d8885b80945dc.json"
+  data-offline-search-index-json-src="/offline-search-index.2cebd07fe041f4a1920b1a237a691aae.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -106,7 +106,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.566f9381647ae182bb2d8885b80945dc.json"
+  data-offline-search-index-json-src="/offline-search-index.2cebd07fe041f4a1920b1a237a691aae.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -779,6 +779,30 @@
 <li>
 <p>Select <strong>OK</strong>.  The cluster will restart, and users can now be created in the cluster that can be granted administrative access.</p>
 </li>
+<li>
+<p>If you are running ClickHouse 21.9 and above you can enable storing access management in ZooKeeper. in this case it will be automatically propagated to the cluster. This requires yet another configuration file:</p>
+<ol>
+<li>
+<p><strong>Setting Type</strong>: Select <strong>config.d file</strong></p>
+</li>
+<li>
+<p><strong>Filename</strong>: <code>user_directories.xml</code></p>
+</li>
+<li>
+<p><strong>Contents</strong>:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#204a87;font-weight:bold">&lt;yandex&gt;</span>
+  <span style="color:#204a87;font-weight:bold">&lt;user_directories</span> <span style="color:#c4a000">replace=</span><span style="color:#4e9a06">&#34;replace&#34;</span><span style="color:#204a87;font-weight:bold">&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;users_xml&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;path&gt;</span>/etc/clickhouse-server/users.xml<span style="color:#204a87;font-weight:bold">&lt;/path&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;/users_xml&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;replicated&gt;</span>
+      <span style="color:#204a87;font-weight:bold">&lt;zookeeper_path&gt;</span>/clickhouse/access/<span style="color:#204a87;font-weight:bold">&lt;/zookeeper_path&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;/replicated&gt;</span>
+  <span style="color:#204a87;font-weight:bold">&lt;/user_directories&gt;</span>
+<span style="color:#204a87;font-weight:bold">&lt;/yandex&gt;</span>
+</code></pre></div></li>
+</ol>
+</li>
 </ol>
 
 	
@@ -786,8 +810,8 @@
 	<div class="text-muted mt-5 pt-3 border-top">
 
     Last modified
-    2022.01.11
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/ee6859dc296ec50f3d1d112b5c1598b1847fe43e">Update altinity-cloud-access-management.md (ee6859dc2)</a>
+    2022.01.26
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/85222320f522986b8f9355e178392615073ea223">Added access management in ZooKeeper hint (85222320f)</a>
 
 </div>
 
