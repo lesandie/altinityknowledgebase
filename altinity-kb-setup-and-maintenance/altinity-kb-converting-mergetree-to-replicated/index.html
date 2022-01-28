@@ -13,12 +13,12 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-converting-mergetree-to-replicated/" /><meta property="article:section" content="altinity-kb-setup-and-maintenance" />
 
-<meta property="article:modified_time" content="2022-01-28T14:55:18-04:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
+<meta property="article:modified_time" content="2022-01-28T15:16:31-04:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
 
 <meta itemprop="name" content="Converting MergeTree to Replicated">
 <meta itemprop="description" content="Converting MergeTree to Replicated
 ">
-<meta itemprop="dateModified" content="2022-01-28T14:55:18-04:00" />
+<meta itemprop="dateModified" content="2022-01-28T15:16:31-04:00" />
 <meta itemprop="wordCount" content="231">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Converting MergeTree to Replicated"/>
@@ -78,7 +78,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.508ca4b8c36fcd3707826714abc1fda3.json"
+  data-offline-search-index-json-src="/offline-search-index.f276eb27d682c152129882c47d07d959.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -106,7 +106,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.508ca4b8c36fcd3707826714abc1fda3.json"
+  data-offline-search-index-json-src="/offline-search-index.f276eb27d682c152129882c47d07d959.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -729,7 +729,7 @@
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">└───────────┘</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">create</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">table</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">foo_replicated</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">as</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">foo</span><span style="color:#f8f8f8;text-decoration:underline"> 
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">Engine</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">ReplicatedMergeTree</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;/clickhouse/{cluster}/tables/{database}/{shard}/{table}&#39;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#4e9a06">&#39;{replica}&#39;</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">Engine</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">ReplicatedMergeTree</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;/clickhouse/{cluster}/tables/{database}/{table}/{shard}&#39;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#4e9a06">&#39;{replica}&#39;</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">partition</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">by</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">toYYYYMM</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">D</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">order</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">by</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">A</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">SELECT</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">DISTINCT</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;ALTER TABLE foo_replicated ATTACH PARTITION ID \&#39;&#39; || partition_id || &#39;</span><span style="color:#a40000">\</span><span style="color:#4e9a06">&#39; FROM foo;&#39;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">from</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">system</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">parts</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">WHERE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">table</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;foo&#39;</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
@@ -756,7 +756,7 @@
 
     Last modified
     2022.01.28
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/a5dc5c2e42597db03cf04f87c7b1ccb1e2e3ddcd">Update altinity-kb-converting-mergetree-to-replicated.md (a5dc5c2e4)</a>
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/3667c8da578432485769fed5185ca5d833fac49b">Update altinity-kb-converting-mergetree-to-replicated.md (3667c8da5)</a>
 
 </div>
 
