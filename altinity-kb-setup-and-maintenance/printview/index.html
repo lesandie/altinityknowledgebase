@@ -74,7 +74,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.38352549a0059ac6c2a489b32e954ea0.json"
+  data-offline-search-index-json-src="/offline-search-index.508ca4b8c36fcd3707826714abc1fda3.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -2193,6 +2193,8 @@ $ sudo ./clickhouse-backup delete remote bkp01 -c config.yml
 </span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">rename</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">table</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">foo</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">to</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">foo_old</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">foo_replicated</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">to</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">foo</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#8f5902;font-style:italic">-- you can drop foo_old any time later, it&#39;s kinda a cheap backup, 
+</span><span style="color:#8f5902;font-style:italic">-- it cost nothing until you insert a lot of additional data into foo_replicated
 </span></code></pre></div>
 </div>
 
