@@ -74,7 +74,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.b0661c2f73aec7875de7ea647f959ccb.json"
+  data-offline-search-index-json-src="/offline-search-index.f64982474521f26d72ec39c5d0aedeb0.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -548,7 +548,8 @@ You can combine many columns into a single index and this index will work for an
     <span style="color:#a40000">&lt;</span>/profile
 <span style="color:#204a87;font-weight:bold">&lt;/yandex&gt;</span>    
 </code></pre></div><p>Deduplication checksums are stored in Zookeeper in <code>/blocks</code> table&rsquo;s znode for each partition separatly, so when you drop partition, they could be identified and removed for this partition.
-(withing <code>alter table delete</code> it&rsquo;s impossible to match checksum, that&rsquo;s why checksums stay in Zookeeper)</p>
+(withing <code>alter table delete</code> it&rsquo;s impossible to match checksum, that&rsquo;s why checksums stay in Zookeeper).</p>
+<p>Other related settings: <a href="https://clickhouse.com/docs/en/operations/settings/merge-tree-settings/#replicated-deduplication-window" target="_blank">replicated_deduplication_window</a>, <a href="https://clickhouse.com/docs/en/operations/settings/merge-tree-settings/#replicated-deduplication-window-seconds" target="_blank">replicated_deduplication_window_seconds</a></p>
 <p>More info: <a href="https://github.com/ClickHouse/ClickHouse/issues/16037" target="_blank">https://github.com/ClickHouse/ClickHouse/issues/16037</a> <a href="https://github.com/ClickHouse/ClickHouse/issues/3322" target="_blank">https://github.com/ClickHouse/ClickHouse/issues/3322</a></p>
 <h2 id="not-replicated-mergetree-tables">Not replicated MergeTree tables</h2>
 <p>By default insert deduplication is disabled for not replicated tables (for backward compatibility).</p>
