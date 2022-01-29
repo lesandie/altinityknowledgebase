@@ -12,11 +12,11 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://kb.altinity.com/altinity-kb-schema-design/insert_deduplication/" /><meta property="article:section" content="altinity-kb-schema-design" />
 
-<meta property="article:modified_time" content="2022-01-29T14:19:12-04:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
+<meta property="article:modified_time" content="2022-01-29T14:25:34-04:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
 
 <meta itemprop="name" content="Insert Deduplication / Insert idempotency">
 <meta itemprop="description" content="Insert Deduplication / Insert idempotency , insert_deduplicate setting.">
-<meta itemprop="dateModified" content="2022-01-29T14:19:12-04:00" />
+<meta itemprop="dateModified" content="2022-01-29T14:25:34-04:00" />
 <meta itemprop="wordCount" content="453">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Insert Deduplication / Insert idempotency"/>
@@ -75,7 +75,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.59ea8b03c2a902edc4f69a12af89303e.json"
+  data-offline-search-index-json-src="/offline-search-index.bc10230cbfe5c8c080957ceeee7b7a64.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -103,7 +103,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.59ea8b03c2a902edc4f69a12af89303e.json"
+  data-offline-search-index-json-src="/offline-search-index.bc10230cbfe5c8c080957ceeee7b7a64.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -719,7 +719,7 @@
 <em>Data blocks are deduplicated. For multiple writes of the same data block (data blocks of the same size containing the same rows in the same order), the block is only written once. The reason for this is in case of network failures when the client application does not know if the data was written to the DB, so the INSERT query can simply be repeated. It does not matter which replica INSERTs were sent to with identical data. INSERTs are idempotent. Deduplication parameters are controlled by merge_tree server settings.</em></p>
 <h2 id="example">Example</h2>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#204a87;font-weight:bold">create</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">table</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">test_insert</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">(</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">A</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Int64</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline"> 
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">Engine</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000">ReplicatedMergeTree</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;/clickhouse/{cluster}/tables/test&#39;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#4e9a06">&#39;{replica}&#39;</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline"> 
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">Engine</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000">ReplicatedMergeTree</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;/clickhouse/cluster_test/tables/{table}&#39;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#4e9a06">&#39;{replica}&#39;</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline"> 
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">order</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">by</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">A</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"> 
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">insert</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">into</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">test_insert</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">values</span><span style="color:#000;font-weight:bold">(</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">);</span><span style="color:#f8f8f8;text-decoration:underline">
@@ -750,7 +750,7 @@
 (withing <code>alter table delete</code> it&rsquo;s impossible to match checksum, that&rsquo;s why checksums stay in Zookeeper).</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#204a87;font-weight:bold">SELECT</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">name</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">value</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">FROM</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">system</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">zookeeper</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">WHERE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">path</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;/clickhouse/LT/tables/test/blocks&#39;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">WHERE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">path</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;/clickhouse/cluster_test/tables/test_insert/blocks&#39;</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">┌─</span><span style="color:#000">name</span><span style="color:#a40000">───────────────────────────────────────┬─</span><span style="color:#000">value</span><span style="color:#a40000">─────┐</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">all_7615936253566048997_747463735222236827</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">all_0_0_0</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">└────────────────────────────────────────────┴───────────┘</span><span style="color:#f8f8f8;text-decoration:underline">
@@ -826,7 +826,7 @@ select * from test_insert format PrettyCompactMonoBlock;
 
     Last modified
     2022.01.29
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/925ae98ce1600fd4613bae1e35ab9368115e0535">Update insert_deduplication.md (925ae98ce)</a>
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/9fd7cc8236180466d192e668921af246d8d46567">Update insert_deduplication.md (9fd7cc823)</a>
 
 </div>
 
