@@ -12,12 +12,12 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://kb.altinity.com/altinity-kb-schema-design/insert_deduplication/" /><meta property="article:section" content="altinity-kb-schema-design" />
 
-<meta property="article:modified_time" content="2022-01-29T13:42:32-04:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
+<meta property="article:modified_time" content="2022-01-29T13:47:16-04:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
 
 <meta itemprop="name" content="Insert Deduplication / Insert idempotency">
 <meta itemprop="description" content="Insert Deduplication / Insert idempotency , insert_deduplicate setting.">
-<meta itemprop="dateModified" content="2022-01-29T13:42:32-04:00" />
-<meta itemprop="wordCount" content="359">
+<meta itemprop="dateModified" content="2022-01-29T13:47:16-04:00" />
+<meta itemprop="wordCount" content="377">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Insert Deduplication / Insert idempotency"/>
 <meta name="twitter:description" content="Insert Deduplication / Insert idempotency , insert_deduplicate setting."/>
@@ -75,7 +75,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.f64982474521f26d72ec39c5d0aedeb0.json"
+  data-offline-search-index-json-src="/offline-search-index.d3900cd8866bb42a342aa17f9147625b.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -103,7 +103,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.f64982474521f26d72ec39c5d0aedeb0.json"
+  data-offline-search-index-json-src="/offline-search-index.d3900cd8866bb42a342aa17f9147625b.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -729,21 +729,22 @@
 </span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">select</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">from</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">test_insert</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">┌─</span><span style="color:#000">A</span><span style="color:#a40000">─┐</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#8f5902;font-style:italic">-- only one row has been inserted, other were deduplicated
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline">                                       </span><span style="color:#8f5902;font-style:italic">-- only one row has been inserted, other were deduplicated
 </span><span style="color:#8f5902;font-style:italic"></span><span style="color:#a40000">└───┘</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">alter</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">table</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">test_insert</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">delete</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">where</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#8f5902;font-style:italic">-- that single row was removed
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">alter</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">table</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">test_insert</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">delete</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">where</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#8f5902;font-style:italic">-- that single row was removed
 </span><span style="color:#8f5902;font-style:italic"></span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">insert</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">into</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">test_insert</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">values</span><span style="color:#000;font-weight:bold">(</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">);</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">select</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">from</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">test_insert</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">rows</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">in</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">set</span><span style="color:#000;font-weight:bold">.</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Elapsed</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">.</span><span style="color:#0000cf;font-weight:bold">001</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">sec</span><span style="color:#000;font-weight:bold">.</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#8f5902;font-style:italic">-- the last insert was deduplicated again, 
-</span><span style="color:#8f5902;font-style:italic"></span><span style="color:#f8f8f8;text-decoration:underline">                                    </span><span style="color:#8f5902;font-style:italic">-- because `alter ... delete` does not clear deduplication checksums
-</span><span style="color:#8f5902;font-style:italic"></span><span style="color:#f8f8f8;text-decoration:underline">                                    </span><span style="color:#8f5902;font-style:italic">-- but `alter table drop partition` and `truncate` clear checksums
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">rows</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">in</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">set</span><span style="color:#000;font-weight:bold">.</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Elapsed</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">.</span><span style="color:#0000cf;font-weight:bold">001</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">sec</span><span style="color:#000;font-weight:bold">.</span><span style="color:#f8f8f8;text-decoration:underline">         </span><span style="color:#8f5902;font-style:italic">-- the last insert was deduplicated again, 
+</span><span style="color:#8f5902;font-style:italic"></span><span style="color:#f8f8f8;text-decoration:underline">                                           </span><span style="color:#8f5902;font-style:italic">-- because `alter ... delete` does not clear deduplication checksums
+</span><span style="color:#8f5902;font-style:italic"></span><span style="color:#f8f8f8;text-decoration:underline">                                           </span><span style="color:#8f5902;font-style:italic">-- but `alter table drop partition` and `truncate` clear checksums
 </span></code></pre></div><h2 id="insert_deduplicate-setting">insert_deduplicate setting</h2>
 <p>Insert deduplication is controled by <a href="https://clickhouse.com/docs/en/operations/settings/settings/#settings-insert-deduplicate" target="_blank">insert_deduplicate</a> setting</p>
 <p>Let&rsquo;s disable it:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#204a87;font-weight:bold">set</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">insert_deduplicate</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#204a87;font-weight:bold">set</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">insert_deduplicate</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">              </span><span style="color:#8f5902;font-style:italic">-- insert_deduplicate now disabled in this session
+</span><span style="color:#8f5902;font-style:italic"></span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">insert</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">into</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">test_insert</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">values</span><span style="color:#000;font-weight:bold">(</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">);</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">insert</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">into</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">test_insert</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">values</span><span style="color:#000;font-weight:bold">(</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">);</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">insert</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">into</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">test_insert</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">values</span><span style="color:#000;font-weight:bold">(</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">);</span><span style="color:#f8f8f8;text-decoration:underline">
@@ -756,8 +757,8 @@
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">└───┘</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">┌─</span><span style="color:#000">A</span><span style="color:#a40000">─┐</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">└───┘</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline">                                   </span><span style="color:#8f5902;font-style:italic">-- all 3 insterted rows are in the table
+</span><span style="color:#8f5902;font-style:italic"></span><span style="color:#a40000">└───┘</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">alter</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">table</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">test_insert</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">delete</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">where</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">
@@ -773,7 +774,7 @@
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">└───┘</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></code></pre></div><p>Insert deduplication is a user-level setting, it can be disabled in a session or in user&rsquo;s profile (insert_deduplicate=0).</p>
 <p><code>clickhouse-client --insert_deduplicate=0 ....</code></p>
-<p>Disable insert_deduplicate by default for all queries</p>
+<p>How to disable insert_deduplicate by default for all queries:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"># cat /etc/clickhouse-server/users.d/insert_deduplicate.xml
 <span style="color:#8f5902;font-style:italic">&lt;?xml version=&#34;1.0&#34;?&gt;</span>
 <span style="color:#204a87;font-weight:bold">&lt;yandex&gt;</span>
@@ -794,11 +795,12 @@
 <pre tabindex="0"><code>create table test_insert ( A Int64 ) 
 Engine=MergeTree 
 order by A
-settings non_replicated_deduplication_window = 100; -- 100 - how many last checksums to store
+settings non_replicated_deduplication_window = 100;          -- 100 - how many last checksums to store
  
 insert into test_insert values(1);
 insert into test_insert values(1);
 insert into test_insert values(1);
+
 insert into test_insert values(2);
 insert into test_insert values(2);
 
@@ -820,7 +822,7 @@ select * from test_insert;
 
     Last modified
     2022.01.29
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/1d7ca8e097b9756862e90da39dd944d3e2eebf2a">Update insert_deduplication.md (1d7ca8e09)</a>
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/d2331d0635e711eda913c4e713d47d79d5249256">Update insert_deduplication.md (d2331d063)</a>
 
 </div>
 
