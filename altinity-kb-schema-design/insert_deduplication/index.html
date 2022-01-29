@@ -12,12 +12,12 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://kb.altinity.com/altinity-kb-schema-design/insert_deduplication/" /><meta property="article:section" content="altinity-kb-schema-design" />
 
-<meta property="article:modified_time" content="2022-01-29T13:47:16-04:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
+<meta property="article:modified_time" content="2022-01-29T13:57:47-04:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
 
 <meta itemprop="name" content="Insert Deduplication / Insert idempotency">
 <meta itemprop="description" content="Insert Deduplication / Insert idempotency , insert_deduplicate setting.">
-<meta itemprop="dateModified" content="2022-01-29T13:47:16-04:00" />
-<meta itemprop="wordCount" content="377">
+<meta itemprop="dateModified" content="2022-01-29T13:57:47-04:00" />
+<meta itemprop="wordCount" content="453">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Insert Deduplication / Insert idempotency"/>
 <meta name="twitter:description" content="Insert Deduplication / Insert idempotency , insert_deduplicate setting."/>
@@ -75,7 +75,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.d3900cd8866bb42a342aa17f9147625b.json"
+  data-offline-search-index-json-src="/offline-search-index.0615d820626ba2f723b750e71d6a0a89.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -103,7 +103,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.d3900cd8866bb42a342aa17f9147625b.json"
+  data-offline-search-index-json-src="/offline-search-index.0615d820626ba2f723b750e71d6a0a89.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -740,7 +740,13 @@
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">rows</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">in</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">set</span><span style="color:#000;font-weight:bold">.</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Elapsed</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">.</span><span style="color:#0000cf;font-weight:bold">001</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">sec</span><span style="color:#000;font-weight:bold">.</span><span style="color:#f8f8f8;text-decoration:underline">         </span><span style="color:#8f5902;font-style:italic">-- the last insert was deduplicated again, 
 </span><span style="color:#8f5902;font-style:italic"></span><span style="color:#f8f8f8;text-decoration:underline">                                           </span><span style="color:#8f5902;font-style:italic">-- because `alter ... delete` does not clear deduplication checksums
 </span><span style="color:#8f5902;font-style:italic"></span><span style="color:#f8f8f8;text-decoration:underline">                                           </span><span style="color:#8f5902;font-style:italic">-- but `alter table drop partition` and `truncate` clear checksums
-</span></code></pre></div><h2 id="insert_deduplicate-setting">insert_deduplicate setting</h2>
+</span></code></pre></div><p>In <code>clickhouse-server.log</code> you may see trace messages <code>Block with ID ... already exists locally as part ... ignoring it</code></p>
+<pre tabindex="0"><code># cat /var/log/clickhouse-server/clickhouse-server.log|grep test_insert|grep Block
+..17:52:45.064974.. Block with ID all_7615936253566048997_747463735222236827 already exists locally as part all_0_0_0; ignoring it.
+..17:52:45.068979.. Block with ID all_7615936253566048997_747463735222236827 already exists locally as part all_0_0_0; ignoring it.
+..17:52:45.072883.. Block with ID all_7615936253566048997_747463735222236827 already exists locally as part all_0_0_0; ignoring it.
+..17:52:45.076738.. Block with ID all_7615936253566048997_747463735222236827 already exists locally as part all_0_0_0; ignoring it.
+</code></pre><h2 id="insert_deduplicate-setting">insert_deduplicate setting</h2>
 <p>Insert deduplication is controled by <a href="https://clickhouse.com/docs/en/operations/settings/settings/#settings-insert-deduplicate" target="_blank">insert_deduplicate</a> setting</p>
 <p>Let&rsquo;s disable it:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#204a87;font-weight:bold">set</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">insert_deduplicate</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">              </span><span style="color:#8f5902;font-style:italic">-- insert_deduplicate now disabled in this session
@@ -822,7 +828,7 @@ select * from test_insert;
 
     Last modified
     2022.01.29
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/d2331d0635e711eda913c4e713d47d79d5249256">Update insert_deduplication.md (d2331d063)</a>
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/546124c6e46851404d96f3ac411a2839c0be06ab">Update insert_deduplication.md (546124c6e)</a>
 
 </div>
 
