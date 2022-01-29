@@ -12,11 +12,11 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://kb.altinity.com/altinity-kb-schema-design/insert_deduplication/" /><meta property="article:section" content="altinity-kb-schema-design" />
 
-<meta property="article:modified_time" content="2022-01-29T13:57:47-04:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
+<meta property="article:modified_time" content="2022-01-29T14:05:05-04:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
 
 <meta itemprop="name" content="Insert Deduplication / Insert idempotency">
 <meta itemprop="description" content="Insert Deduplication / Insert idempotency , insert_deduplicate setting.">
-<meta itemprop="dateModified" content="2022-01-29T13:57:47-04:00" />
+<meta itemprop="dateModified" content="2022-01-29T14:05:05-04:00" />
 <meta itemprop="wordCount" content="453">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Insert Deduplication / Insert idempotency"/>
@@ -75,7 +75,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.0615d820626ba2f723b750e71d6a0a89.json"
+  data-offline-search-index-json-src="/offline-search-index.66cc466513111068379905edb7e668b3.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -103,7 +103,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.0615d820626ba2f723b750e71d6a0a89.json"
+  data-offline-search-index-json-src="/offline-search-index.66cc466513111068379905edb7e668b3.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -746,7 +746,15 @@
 ..17:52:45.068979.. Block with ID all_7615936253566048997_747463735222236827 already exists locally as part all_0_0_0; ignoring it.
 ..17:52:45.072883.. Block with ID all_7615936253566048997_747463735222236827 already exists locally as part all_0_0_0; ignoring it.
 ..17:52:45.076738.. Block with ID all_7615936253566048997_747463735222236827 already exists locally as part all_0_0_0; ignoring it.
-</code></pre><h2 id="insert_deduplicate-setting">insert_deduplicate setting</h2>
+</code></pre><p>Deduplication checksums are stored in Zookeeper in <code>/blocks</code> table&rsquo;s znode for each partition separatly, so when you drop partition, they could be identified and removed for this partition.
+(withing <code>alter table delete</code> it&rsquo;s impossible to match checksum, that&rsquo;s why checksums stay in Zookeeper).</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#204a87;font-weight:bold">SELECT</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">name</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">value</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">FROM</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">system</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">zookeeper</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">WHERE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">path</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;/clickhouse/LT/tables/test/blocks&#39;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">┌─</span><span style="color:#000">name</span><span style="color:#a40000">───────────────────────────────────────┬─</span><span style="color:#000">value</span><span style="color:#a40000">─────┐</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">all_7615936253566048997_747463735222236827</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">all_0_0_0</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">└────────────────────────────────────────────┴───────────┘</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></code></pre></div><h2 id="insert_deduplicate-setting">insert_deduplicate setting</h2>
 <p>Insert deduplication is controled by <a href="https://clickhouse.com/docs/en/operations/settings/settings/#settings-insert-deduplicate" target="_blank">insert_deduplicate</a> setting</p>
 <p>Let&rsquo;s disable it:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#204a87;font-weight:bold">set</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">insert_deduplicate</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">              </span><span style="color:#8f5902;font-style:italic">-- insert_deduplicate now disabled in this session
@@ -790,9 +798,7 @@
         <span style="color:#204a87;font-weight:bold">&lt;/default&gt;</span>
     <span style="color:#a40000">&lt;</span>/profile
 <span style="color:#204a87;font-weight:bold">&lt;/yandex&gt;</span>    
-</code></pre></div><p>Deduplication checksums are stored in Zookeeper in <code>/blocks</code> table&rsquo;s znode for each partition separatly, so when you drop partition, they could be identified and removed for this partition.
-(withing <code>alter table delete</code> it&rsquo;s impossible to match checksum, that&rsquo;s why checksums stay in Zookeeper).</p>
-<p>Other related settings: <a href="https://clickhouse.com/docs/en/operations/settings/merge-tree-settings/#replicated-deduplication-window" target="_blank">replicated_deduplication_window</a>, <a href="https://clickhouse.com/docs/en/operations/settings/merge-tree-settings/#replicated-deduplication-window-seconds" target="_blank">replicated_deduplication_window_seconds</a></p>
+</code></pre></div><p>Other related settings: <a href="https://clickhouse.com/docs/en/operations/settings/merge-tree-settings/#replicated-deduplication-window" target="_blank">replicated_deduplication_window</a>, <a href="https://clickhouse.com/docs/en/operations/settings/merge-tree-settings/#replicated-deduplication-window-seconds" target="_blank">replicated_deduplication_window_seconds</a></p>
 <p>More info: <a href="https://github.com/ClickHouse/ClickHouse/issues/16037" target="_blank">https://github.com/ClickHouse/ClickHouse/issues/16037</a> <a href="https://github.com/ClickHouse/ClickHouse/issues/3322" target="_blank">https://github.com/ClickHouse/ClickHouse/issues/3322</a></p>
 <h2 id="not-replicated-mergetree-tables">Not replicated MergeTree tables</h2>
 <p>By default insert deduplication is disabled for not replicated tables (for backward compatibility).</p>
@@ -828,7 +834,7 @@ select * from test_insert;
 
     Last modified
     2022.01.29
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/546124c6e46851404d96f3ac411a2839c0be06ab">Update insert_deduplication.md (546124c6e)</a>
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/f1dbae2b19f1915f80d07b3e137e14f3d7655a44">Update insert_deduplication.md (f1dbae2b1)</a>
 
 </div>
 
