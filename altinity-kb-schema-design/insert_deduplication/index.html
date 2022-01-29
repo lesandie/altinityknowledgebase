@@ -3,23 +3,24 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.92.1" /><link rel="alternate" type="text/html" href="http://kb.altinity.com/altinity-kb-schema-design/printview/">
-<META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
+<meta name="generator" content="Hugo 0.92.1" /><META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
 <link rel="shortcut icon" href="/favicons/favicon.ico" >
 <link rel="icon" href="/favicons/favicon.ico" >
-<title>Schema design | Altinity Knowledge Base</title>
-<meta name="description" content="Altinity Knowledge Base"><meta property="og:title" content="Schema design" />
-<meta property="og:description" content="Schema design
-" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="http://kb.altinity.com/altinity-kb-schema-design/" /><meta property="og:site_name" content="Altinity Knowledge Base" />
+<title>Insert Deduplication / Insert idempotency | Altinity Knowledge Base</title>
+<meta name="description" content="Altinity Knowledge Base"><meta property="og:title" content="Insert Deduplication / Insert idempotency" />
+<meta property="og:description" content="Insert Deduplication / Insert idempotency , insert_deduplicate setting." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://kb.altinity.com/altinity-kb-schema-design/insert_deduplication/" /><meta property="article:section" content="altinity-kb-schema-design" />
 
-<meta itemprop="name" content="Schema design">
-<meta itemprop="description" content="Schema design
-"><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Schema design"/>
-<meta name="twitter:description" content="Schema design
-"/>
+<meta property="article:modified_time" content="2022-01-29T13:34:33-04:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
+
+<meta itemprop="name" content="Insert Deduplication / Insert idempotency">
+<meta itemprop="description" content="Insert Deduplication / Insert idempotency , insert_deduplicate setting.">
+<meta itemprop="dateModified" content="2022-01-29T13:34:33-04:00" />
+<meta itemprop="wordCount" content="354">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Insert Deduplication / Insert idempotency"/>
+<meta name="twitter:description" content="Insert Deduplication / Insert idempotency , insert_deduplicate setting."/>
 
 
 
@@ -48,7 +49,7 @@
 
 
   </head>
-  <body class="td-section">
+  <body class="td-page">
     <header>
       
 <nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
@@ -492,14 +493,14 @@
 </li>
   </ul>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-altinity-kb-schema-design-li">
-  <a href="/altinity-kb-schema-design/" class="align-left pl-0 active td-sidebar-link td-sidebar-link__section" id="m-altinity-kb-schema-design"><span class="td-sidebar-nav-active-item">Schema design</span></a>
+  <a href="/altinity-kb-schema-design/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-altinity-kb-schema-design"><span class="">Schema design</span></a>
   <ul class="ul-2 foldable">
     <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-schema-designrow-level-deduplication-li">
   <a href="/altinity-kb-schema-design/row-level-deduplication/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-schema-designrow-level-deduplication"><span class="">ClickHouse row-level deduplication</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-schema-designhow-much-is-too-much-li">
   <a href="/altinity-kb-schema-design/how-much-is-too-much/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-schema-designhow-much-is-too-much"><span class="">How much is too much?</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-schema-designinsert_deduplication-li">
-  <a href="/altinity-kb-schema-design/insert_deduplication/" title="Insert Deduplication / Insert idempotency" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-schema-designinsert_deduplication"><span class="">insert deduplication</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-altinity-kb-schema-designinsert_deduplication-li">
+  <a href="/altinity-kb-schema-design/insert_deduplication/" title="Insert Deduplication / Insert idempotency" class="align-left pl-0 active td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-schema-designinsert_deduplication"><span class="td-sidebar-nav-active-item">insert deduplication</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-schema-designbest-schema-for-storing-many-metrics-registered-from-the-single-source-li">
   <a href="/altinity-kb-schema-design/best-schema-for-storing-many-metrics-registered-from-the-single-source/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-schema-designbest-schema-for-storing-many-metrics-registered-from-the-single-source"><span class="">Best schema for storing many metrics registered from the single source</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-altinity-kb-schema-designcodecs-li">
@@ -618,9 +619,9 @@
     
     
 
-    <a href="https://github.com/Altinity/altinityknowledgebase/edit/main/content/en/altinity-kb-schema-design/_index.md" target="_blank"><i class="fa fa-edit fa-fw"></i> Edit this page</a>
-    <a href="https://github.com/Altinity/altinityknowledgebase/new/main/content/en/altinity-kb-schema-design/_index.md?filename=change-me.md&amp;value=---%0Atitle%3A&#43;%22Long&#43;Page&#43;Title%22%0AlinkTitle%3A&#43;%22Short&#43;Nav&#43;Title%22%0Aweight%3A&#43;100%0Adescription%3A&#43;%3E-%0A&#43;&#43;&#43;&#43;&#43;Page&#43;description&#43;for&#43;heading&#43;and&#43;indexes.%0A---%0A%0A%23%23&#43;Heading%0A%0AEdit&#43;this&#43;template&#43;to&#43;create&#43;your&#43;new&#43;page.%0A%0A%2A&#43;Give&#43;it&#43;a&#43;good&#43;name%2C&#43;ending&#43;in&#43;%60.md%60&#43;-&#43;e.g.&#43;%60getting-started.md%60%0A%2A&#43;Edit&#43;the&#43;%22front&#43;matter%22&#43;section&#43;at&#43;the&#43;top&#43;of&#43;the&#43;page&#43;%28weight&#43;controls&#43;how&#43;its&#43;ordered&#43;amongst&#43;other&#43;pages&#43;in&#43;the&#43;same&#43;directory%3B&#43;lowest&#43;number&#43;first%29.%0A%2A&#43;Add&#43;a&#43;good&#43;commit&#43;message&#43;at&#43;the&#43;bottom&#43;of&#43;the&#43;page&#43;%28%3C80&#43;characters%3B&#43;use&#43;the&#43;extended&#43;description&#43;field&#43;for&#43;more&#43;detail%29.%0A%2A&#43;Create&#43;a&#43;new&#43;branch&#43;so&#43;you&#43;can&#43;preview&#43;your&#43;new&#43;file&#43;and&#43;request&#43;a&#43;review&#43;via&#43;Pull&#43;Request.%0A" target="_blank"><i class="fa fa-edit fa-fw"></i> Create child page</a>
-    <a href="https://github.com/Altinity/altinityknowledgebase/issues/new?title=/altinity-kb-schema-design/" target="_blank"><i class="fab fa-github fa-fw"></i> Create documentation issue</a>
+    <a href="https://github.com/Altinity/altinityknowledgebase/edit/main/content/en/altinity-kb-schema-design/insert_deduplication.md" target="_blank"><i class="fa fa-edit fa-fw"></i> Edit this page</a>
+    <a href="https://github.com/Altinity/altinityknowledgebase/new/main/content/en/altinity-kb-schema-design/insert_deduplication.md?filename=change-me.md&amp;value=---%0Atitle%3A&#43;%22Long&#43;Page&#43;Title%22%0AlinkTitle%3A&#43;%22Short&#43;Nav&#43;Title%22%0Aweight%3A&#43;100%0Adescription%3A&#43;%3E-%0A&#43;&#43;&#43;&#43;&#43;Page&#43;description&#43;for&#43;heading&#43;and&#43;indexes.%0A---%0A%0A%23%23&#43;Heading%0A%0AEdit&#43;this&#43;template&#43;to&#43;create&#43;your&#43;new&#43;page.%0A%0A%2A&#43;Give&#43;it&#43;a&#43;good&#43;name%2C&#43;ending&#43;in&#43;%60.md%60&#43;-&#43;e.g.&#43;%60getting-started.md%60%0A%2A&#43;Edit&#43;the&#43;%22front&#43;matter%22&#43;section&#43;at&#43;the&#43;top&#43;of&#43;the&#43;page&#43;%28weight&#43;controls&#43;how&#43;its&#43;ordered&#43;amongst&#43;other&#43;pages&#43;in&#43;the&#43;same&#43;directory%3B&#43;lowest&#43;number&#43;first%29.%0A%2A&#43;Add&#43;a&#43;good&#43;commit&#43;message&#43;at&#43;the&#43;bottom&#43;of&#43;the&#43;page&#43;%28%3C80&#43;characters%3B&#43;use&#43;the&#43;extended&#43;description&#43;field&#43;for&#43;more&#43;detail%29.%0A%2A&#43;Create&#43;a&#43;new&#43;branch&#43;so&#43;you&#43;can&#43;preview&#43;your&#43;new&#43;file&#43;and&#43;request&#43;a&#43;review&#43;via&#43;Pull&#43;Request.%0A" target="_blank"><i class="fa fa-edit fa-fw"></i> Create child page</a>
+    <a href="https://github.com/Altinity/altinityknowledgebase/issues/new?title=/altinity-kb-schema-design/insert_deduplication/" target="_blank"><i class="fab fa-github fa-fw"></i> Create documentation issue</a>
     
 
   
@@ -633,6 +634,14 @@
             
 
 
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#example">Example</a></li>
+    <li><a href="#insert_deduplicate-setting">insert_deduplicate setting</a></li>
+    <li><a href="#not-replicated-mergetree-tables">Not replicated MergeTree tables</a></li>
+  </ul>
+</nav>
+
 
 
 
@@ -642,9 +651,9 @@
   <p>&nbsp;</p>
   <p>Share on Social Media:</p>
   <span style="display:flex; flex-direction: row; justify-content: space-between; align-items: flex-start; padding-left: 10px; padding-right: 75px;">
-    <a href="https://twitter.com/intent/tweet?text=Schema%20design&amp;url=http://kb.altinity.com/altinity-kb-schema-design/" target="_blank" class="fab fa-twitter"></a>
-    <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://kb.altinity.com/altinity-kb-schema-design/" target="_blank" class="fab fa-facebook"></a>
-    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http://kb.altinity.com/altinity-kb-schema-design/&amp;title=Schema%20design"target="_blank" class="fab fa-linkedin"></a>
+    <a href="https://twitter.com/intent/tweet?text=Insert%20Deduplication%20/%20Insert%20idempotency&amp;url=http://kb.altinity.com/altinity-kb-schema-design/insert_deduplication/" target="_blank" class="fab fa-twitter"></a>
+    <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://kb.altinity.com/altinity-kb-schema-design/insert_deduplication/" target="_blank" class="fab fa-facebook"></a>
+    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http://kb.altinity.com/altinity-kb-schema-design/insert_deduplication/&amp;title=Insert%20Deduplication%20/%20Insert%20idempotency"target="_blank" class="fab fa-linkedin"></a>
   </span>
 </div>
 
@@ -680,8 +689,18 @@
 
 
 
-<li class="breadcrumb-item active" aria-current="page">
+
+
+
+<li class="breadcrumb-item" >
 	<a href="http://kb.altinity.com/altinity-kb-schema-design/">Schema design</a>
+</li>
+
+
+
+
+<li class="breadcrumb-item active" aria-current="page">
+	<a href="http://kb.altinity.com/altinity-kb-schema-design/insert_deduplication/">insert deduplication</a>
 </li>
 
 	</ol>
@@ -689,214 +708,120 @@
 
             
 <div class="td-content">
-	<h1>Schema design</h1>
-    
-	<header class="article-meta">
-		
-		
-			
-				
-
-
-			
-				
-
-
-			
-		
-		
-	</header>
+	<h1>Insert Deduplication / Insert idempotency</h1>
+    <div class="lead">Insert Deduplication / Insert idempotency , insert_deduplicate setting.
+	</div>
 	
-        <div class="section-index">
-    
-    
-    
-    
-    
-    <hr class="panel-line">
-        
-            
-        
-            
-                <div class="entry">
-                    <h5>
-                        <a href="/altinity-kb-schema-design/row-level-deduplication/">ClickHouse row-level deduplication</a>
-                    </h5>
-                    <p>ClickHouse row-level deduplication.
-                        
-                        
-                    </p>
-                </div>
-            
-        
-            
-                <div class="entry">
-                    <h5>
-                        <a href="/altinity-kb-schema-design/how-much-is-too-much/">How much is too much?</a>
-                    </h5>
-                    <p>ClickHouse Limitations.
-                        
-                        
-                    </p>
-                </div>
-            
-        
-            
-        
-            
-                <div class="entry">
-                    <h5>
-                        <a href="/altinity-kb-schema-design/insert_deduplication/">Insert Deduplication / Insert idempotency</a>
-                    </h5>
-                    <p>Insert Deduplication / Insert idempotency , insert_deduplicate setting.
-                        
-                        
-                    </p>
-                </div>
-            
-        
-            
-        
-            
-                <div class="entry">
-                    <h5>
-                        <a href="/altinity-kb-schema-design/best-schema-for-storing-many-metrics-registered-from-the-single-source/">Best schema for storing many metrics registered from the single source</a>
-                    </h5>
-                    <p>
-                        
-                        
-                    </p>
-                </div>
-            
-        
-            
-                <div class="entry">
-                    <h5>
-                        <a href="/altinity-kb-schema-design/codecs/">Codecs</a>
-                    </h5>
-                    <p>
-                        
-                        
-                    </p>
-                </div>
-            
-        
-            
-        
-            
-        
-            
-                <div class="entry">
-                    <h5>
-                        <a href="/altinity-kb-schema-design/altinity-kb-dictionaries-vs-lowcardinality/">Dictionaries vs LowCardinality</a>
-                    </h5>
-                    <p>
-                        
-                        
-                    </p>
-                </div>
-            
-        
-            
-                <div class="entry">
-                    <h5>
-                        <a href="/altinity-kb-schema-design/flattened-table/">Flattened table</a>
-                    </h5>
-                    <p>
-                        
-                        
-                    </p>
-                </div>
-            
-        
-            
-                <div class="entry">
-                    <h5>
-                        <a href="/altinity-kb-schema-design/floats-vs-decimals/">Floats vs Decimals</a>
-                    </h5>
-                    <p>
-                        
-                        
-                    </p>
-                </div>
-            
-        
-            
-        
-            
-                <div class="entry">
-                    <h5>
-                        <a href="/altinity-kb-schema-design/ingestion-performance-and-formats/">Ingestion performance and formats</a>
-                    </h5>
-                    <p>
-                        
-                        
-                    </p>
-                </div>
-            
-        
-            
-                <div class="entry">
-                    <h5>
-                        <a href="/altinity-kb-schema-design/how-to-store-ips/">IPs/masks</a>
-                    </h5>
-                    <p>
-                        
-                        
-                    </p>
-                </div>
-            
-        
-            
-                <div class="entry">
-                    <h5>
-                        <a href="/altinity-kb-schema-design/altinity-kb-jsonasstring-and-mat.-view-as-json-parser/">JSONAsString and Mat. View as JSON parser</a>
-                    </h5>
-                    <p>
-                        
-                        
-                    </p>
-                </div>
-            
-        
-            
-                <div class="entry">
-                    <h5>
-                        <a href="/altinity-kb-schema-design/lowcardinality/">LowCardinality</a>
-                    </h5>
-                    <p>
-                        
-                        
-                    </p>
-                </div>
-            
-        
-            
-                <div class="entry">
-                    <h5>
-                        <a href="/altinity-kb-schema-design/materialized-views/">MATERIALIZED VIEWS</a>
-                    </h5>
-                    <p>
-                        
-                        
-                    </p>
-                </div>
-            
-        
-    
-</div>
+	       
+	<h1 id="insert-deduplication">Insert Deduplication</h1>
+<p>Replicated tables have a special feature insert deduplication (enabled by default).</p>
+<p><a href="https://clickhouse.com/docs/en/engines/table-engines/mergetree-family/replication/" target="_blank">Documentation:</a>
+<em>Data blocks are deduplicated. For multiple writes of the same data block (data blocks of the same size containing the same rows in the same order), the block is only written once. The reason for this is in case of network failures when the client application does not know if the data was written to the DB, so the INSERT query can simply be repeated. It does not matter which replica INSERTs were sent to with identical data. INSERTs are idempotent. Deduplication parameters are controlled by merge_tree server settings.</em></p>
+<h2 id="example">Example</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#204a87;font-weight:bold">create</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">table</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">test_insert</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">(</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">A</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Int64</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline"> 
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">Engine</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000">ReplicatedMergeTree</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;/clickhouse/{cluster}/tables/test&#39;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#4e9a06">&#39;{replica}&#39;</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">order</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">by</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">A</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"> 
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">insert</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">into</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">test_insert</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">values</span><span style="color:#000;font-weight:bold">(</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">);</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">insert</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">into</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">test_insert</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">values</span><span style="color:#000;font-weight:bold">(</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">);</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">insert</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">into</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">test_insert</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">values</span><span style="color:#000;font-weight:bold">(</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">);</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">insert</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">into</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">test_insert</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">values</span><span style="color:#000;font-weight:bold">(</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">);</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">select</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">from</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">test_insert</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">┌─</span><span style="color:#000">A</span><span style="color:#a40000">─┐</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#8f5902;font-style:italic">-- only one row has been inserted, other were deduplicated
+</span><span style="color:#8f5902;font-style:italic"></span><span style="color:#a40000">└───┘</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">alter</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">table</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">test_insert</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">delete</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">where</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#8f5902;font-style:italic">-- that single row was removed
+</span><span style="color:#8f5902;font-style:italic"></span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">insert</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">into</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">test_insert</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">values</span><span style="color:#000;font-weight:bold">(</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">);</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">select</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">from</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">test_insert</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">rows</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">in</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">set</span><span style="color:#000;font-weight:bold">.</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Elapsed</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">.</span><span style="color:#0000cf;font-weight:bold">001</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">sec</span><span style="color:#000;font-weight:bold">.</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#8f5902;font-style:italic">-- the last insert was deduplicated again, 
+</span><span style="color:#8f5902;font-style:italic"></span><span style="color:#f8f8f8;text-decoration:underline">                                    </span><span style="color:#8f5902;font-style:italic">-- because `alter ... delete` does not clear deduplication checksums
+</span><span style="color:#8f5902;font-style:italic"></span><span style="color:#f8f8f8;text-decoration:underline">                                    </span><span style="color:#8f5902;font-style:italic">-- but `alter table drop partition` and `truncate` clear checksums
+</span></code></pre></div><h2 id="insert_deduplicate-setting">insert_deduplicate setting</h2>
+<p>Insert deduplication is controled by <a href="https://clickhouse.com/docs/en/operations/settings/settings/#settings-insert-deduplicate" target="_blank">insert_deduplicate</a> setting</p>
+<p>Let&rsquo;s disable it:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#204a87;font-weight:bold">set</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">insert_deduplicate</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">insert</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">into</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">test_insert</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">values</span><span style="color:#000;font-weight:bold">(</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">);</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">insert</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">into</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">test_insert</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">values</span><span style="color:#000;font-weight:bold">(</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">);</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">insert</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">into</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">test_insert</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">values</span><span style="color:#000;font-weight:bold">(</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">);</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">select</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">from</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">test_insert</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">┌─</span><span style="color:#000">A</span><span style="color:#a40000">─┐</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">└───┘</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">┌─</span><span style="color:#000">A</span><span style="color:#a40000">─┐</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">└───┘</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">┌─</span><span style="color:#000">A</span><span style="color:#a40000">─┐</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">└───┘</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">alter</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">table</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">test_insert</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">delete</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">where</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">insert</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">into</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">test_insert</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">values</span><span style="color:#000;font-weight:bold">(</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">);</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">insert</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">into</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">test_insert</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">values</span><span style="color:#000;font-weight:bold">(</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">);</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">select</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">from</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">test_insert</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">┌─</span><span style="color:#000">A</span><span style="color:#a40000">─┐</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">└───┘</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">┌─</span><span style="color:#000">A</span><span style="color:#a40000">─┐</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">└───┘</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></code></pre></div><p>Insert deduplication is a user-level setting, it can be disabled in a session or in user&rsquo;s profile (insert_deduplicate=0).</p>
+<p><code>clickhouse-client --insert_deduplicate=0 ....</code></p>
+<p>Disable insert_deduplicate by default for all queries</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"># cat /etc/clickhouse-server/users.d/insert_deduplicate.xml
+<span style="color:#8f5902;font-style:italic">&lt;?xml version=&#34;1.0&#34;?&gt;</span>
+<span style="color:#204a87;font-weight:bold">&lt;yandex&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;profiles&gt;</span>
+        <span style="color:#204a87;font-weight:bold">&lt;default&gt;</span>
+            <span style="color:#204a87;font-weight:bold">&lt;insert_deduplicate&gt;</span>0<span style="color:#204a87;font-weight:bold">&lt;/insert_deduplicate&gt;</span>
+        <span style="color:#204a87;font-weight:bold">&lt;/default&gt;</span>
+    <span style="color:#a40000">&lt;</span>/profile
+<span style="color:#204a87;font-weight:bold">&lt;/yandex&gt;</span>    
+</code></pre></div><p>Deduplication checksums are stored in Zookeeper in <code>/blocks</code> table&rsquo;s znode for each partition separatly, so when you drop partition, they could be identified and removed for this partition.
+(withing <code>alter table delete</code> it&rsquo;s impossible to match checksum, that&rsquo;s why checksums stay in Zookeeper)</p>
+<p>More info: <a href="https://github.com/ClickHouse/ClickHouse/issues/16037" target="_blank">https://github.com/ClickHouse/ClickHouse/issues/16037</a> <a href="https://github.com/ClickHouse/ClickHouse/issues/3322" target="_blank">https://github.com/ClickHouse/ClickHouse/issues/3322</a></p>
+<h2 id="not-replicated-mergetree-tables">Not replicated MergeTree tables</h2>
+<p>By default insert deduplication is disabled for not replicated tables (for backward compatibility).</p>
+<p>It can be enabled by the <a href="https://clickhouse.com/docs/en/operations/settings/merge-tree-settings/#merge-tree-settings" target="_blank">merge_tree</a> setting <a href="https://clickhouse.com/docs/en/operations/settings/merge-tree-settings/#non-replicated-deduplication-window" target="_blank">non_replicated_deduplication_window</a>.</p>
+<p>Example:</p>
+<pre tabindex="0"><code>create table test_insert ( A Int64 ) Engine=MergeTree order by A
+settings non_replicated_deduplication_window = 100; -- 100 - how many last checksums to store
+ 
+insert into test_insert values(1);
+insert into test_insert values(1);
+insert into test_insert values(1);
+insert into test_insert values(2);
+insert into test_insert values(2);
 
+select * from test_insert;
+┌─A─┐
+│ 2 │
+└───┘
+┌─A─┐
+│ 1 │
+└───┘
+</code></pre><p>In case of not replicated tables, deduplication checksums are stored in files in table&rsquo;s folder:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cat /var/lib/clickhouse/data/dw/test_insert/deduplication_logs/deduplication_log_1.txt
+1	all_1_1_0	all_7615936253566048997_747463735222236827
+1	all_4_4_0	all_636943575226146954_4277555262323907666
+</code></pre></div>
 	
 	
 	<div class="text-muted mt-5 pt-3 border-top">
 
     Last modified
-    2021.09.09
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/873353b41ac8898ef2b5ca2ab70a2a0d6a90d557">Added license and weights. (873353b41)</a>
+    2022.01.29
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/c827991cc367d6b1e4c2533a2ac1db45cf61d611">Create insert_deduplication.md (c827991cc)</a>
 
 </div>
 
 </div>
+
 
           </main>
         </div>
