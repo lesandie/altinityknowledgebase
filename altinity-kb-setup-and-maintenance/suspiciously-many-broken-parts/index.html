@@ -13,13 +13,13 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://kb.altinity.com/altinity-kb-setup-and-maintenance/suspiciously-many-broken-parts/" /><meta property="article:section" content="altinity-kb-setup-and-maintenance" />
 
-<meta property="article:modified_time" content="2022-01-06T10:41:21+01:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
+<meta property="article:modified_time" content="2022-01-31T14:26:37-04:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
 
 <meta itemprop="name" content="Suspiciously many broken parts">
 <meta itemprop="description" content="Suspiciously many broken parts error during the server startup.
 ">
-<meta itemprop="dateModified" content="2022-01-06T10:41:21+01:00" />
-<meta itemprop="wordCount" content="471">
+<meta itemprop="dateModified" content="2022-01-31T14:26:37-04:00" />
+<meta itemprop="wordCount" content="401">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Suspiciously many broken parts"/>
 <meta name="twitter:description" content="Suspiciously many broken parts error during the server startup.
@@ -78,7 +78,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.d4a8598e4c0a3c1d14162cac4914c42c.json"
+  data-offline-search-index-json-src="/offline-search-index.3f1b150f7ad0a0137ae551a47e6346bb.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -106,7 +106,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.d4a8598e4c0a3c1d14162cac4914c42c.json"
+  data-offline-search-index-json-src="/offline-search-index.3f1b150f7ad0a0137ae551a47e6346bb.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -739,23 +739,22 @@
 </li>
 </ol>
 <h2 id="action">Action:</h2>
-<ol>
-<li>
-<p>If you ok to accept the data loss: set up <code>force_restrore_data</code> flag and clickhouse will move the parts to detached.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo -u clickhouse touch /var/lib/clickhouse/flags/force_restore_data
-</code></pre></div><p>then restart clickhouse, the table will be attached, and the broken parts will be detached, which means the data from those parts will not be available for the selects. You can see the list of those parts in the <code>system.detached_parts</code> table and drop them if needed using <code>ALTER TABLE ...  DROP DETACHED PART ...</code> commands.</p>
-<p>If you are ok to tolerate bigger losses automatically you can change that safeguard configuration to be less sensitive by increasing <code>max_suspicious_broken_parts</code> setting:</p>
-<pre tabindex="0"><code>cat /etc/clickhouse-server/config.d/max_suspicious_broken_parts.xml
+<p>If you are ok to tolerate bigger losses automatically you can change that safeguard configuration to be less sensitive by increasing <code>max_suspicious_broken_parts</code> setting (otherwise you need to clean broken parts manually):</p>
+<pre><code>```
+cat /etc/clickhouse-server/config.d/max_suspicious_broken_parts.xml
 &lt;?xml version=&quot;1.0&quot;?&gt;
 &lt;yandex&gt;
      &lt;merge_tree&gt;
          &lt;max_suspicious_broken_parts&gt;50&lt;/max_suspicious_broken_parts&gt;
      &lt;/merge_tree&gt;
 &lt;/yandex&gt;
-</code></pre><p>this limit is set to 10 by default, we can set a bigger value (50 or 100 or more), but the data will lose because of the corruption.</p>
-<p>Check also a similar setting <code>max_suspicious_broken_parts_bytes</code>.<br>
-See <a href="https://clickhouse.com/docs/en/operations/settings/merge-tree-settings/" target="_blank">https://clickhouse.com/docs/en/operations/settings/merge-tree-settings/</a></p>
-</li>
+```
+this limit is set to 10 by default, we can set a bigger value (50 or 100 or more), but the data will lose because of the corruption.
+
+Check also a similar setting `max_suspicious_broken_parts_bytes`.  
+See https://clickhouse.com/docs/en/operations/settings/merge-tree-settings/
+</code></pre>
+<ol start="2">
 <li>
 <p>If you can&rsquo;t accept the data loss - you should recover data from backups / re-insert it once again etc.</p>
 <p>If you don&rsquo;t want to tolerate automatic detaching of broken parts, you can set <code>max_suspicious_broken_parts_bytes</code> and <code>max_suspicious_broken_parts</code> to 0.</p>
@@ -794,8 +793,8 @@ sudo service clickhouse-server restart
 	<div class="text-muted mt-5 pt-3 border-top">
 
     Last modified
-    2022.01.06
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/b7ea9fd025a1a0a759b96732d76a648fec569d57">Update and rename Suspiciously_many_broken_parts.md to suspiciously-many-broken-parts.md (b7ea9fd02)</a>
+    2022.01.31
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/5301bccd25b01cb252c1c015072e0472ffa37a15">Update suspiciously-many-broken-parts.md (5301bccd2)</a>
 
 </div>
 
