@@ -12,11 +12,11 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://kb.altinity.com/altinity-kb-schema-design/insert_deduplication/" /><meta property="article:section" content="altinity-kb-schema-design" />
 
-<meta property="article:modified_time" content="2022-01-31T11:48:00-04:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
+<meta property="article:modified_time" content="2022-01-31T11:51:46-04:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
 
 <meta itemprop="name" content="Insert Deduplication / Insert idempotency">
 <meta itemprop="description" content="Insert Deduplication / Insert idempotency , insert_deduplicate setting.">
-<meta itemprop="dateModified" content="2022-01-31T11:48:00-04:00" />
+<meta itemprop="dateModified" content="2022-01-31T11:51:46-04:00" />
 <meta itemprop="wordCount" content="603">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Insert Deduplication / Insert idempotency"/>
@@ -75,7 +75,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.7e4d4693fc7bbd67e4197620fd504256.json"
+  data-offline-search-index-json-src="/offline-search-index.110e6fafc1dc0d71f878cc19772821c8.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -103,7 +103,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.7e4d4693fc7bbd67e4197620fd504256.json"
+  data-offline-search-index-json-src="/offline-search-index.110e6fafc1dc0d71f878cc19772821c8.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -823,9 +823,9 @@ select * from test_insert format PrettyCompactMonoBlock;
 1	all_1_1_0	all_7615936253566048997_747463735222236827
 1	all_4_4_0	all_636943575226146954_4277555262323907666
 </code></pre></div><h2 id="checksums-calculation">Checksums calculation</h2>
-<p>Checksums are calculated not from the inserted data but from a formed part.
-The insert is separated to parts by table&rsquo;s partitioning.
-Parts contain rows sorted by table <code>order by</code> and all values of functions (i.e. <code>now()</code>) or Default/Materialized columns are expanded.</p>
+<p>Checksums are calculated not from the inserted data but from a formed part.</p>
+<p>Insert data is separated to parts by table&rsquo;s partitioning.</p>
+<p>Parts contain rows sorted by table <code>order by</code> and all values of functions (i.e. <code>now()</code>) or Default/Materialized columns are expanded.</p>
 <p>Example with parial insert because of partitioning.</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#204a87;font-weight:bold">create</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">table</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">test_insert</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">(</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">A</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Int64</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">B</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Int64</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline"> 
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">Engine</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000">MergeTree</span><span style="color:#f8f8f8;text-decoration:underline"> 
@@ -909,7 +909,7 @@ select * from test_insert format PrettyCompactMonoBlock;
 
     Last modified
     2022.01.31
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/23d06befcc3c9f4ee5e1ec40b5a0dc37a31d6db4">Update insert_deduplication.md (23d06befc)</a>
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/89ed17b7a7813c277d9ca161f48187e5cccbd77b">Update insert_deduplication.md (89ed17b7a)</a>
 
 </div>
 

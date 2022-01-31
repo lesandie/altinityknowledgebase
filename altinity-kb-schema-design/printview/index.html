@@ -74,7 +74,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.7e4d4693fc7bbd67e4197620fd504256.json"
+  data-offline-search-index-json-src="/offline-search-index.110e6fafc1dc0d71f878cc19772821c8.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -585,9 +585,9 @@ select * from test_insert format PrettyCompactMonoBlock;
 1	all_1_1_0	all_7615936253566048997_747463735222236827
 1	all_4_4_0	all_636943575226146954_4277555262323907666
 </code></pre></div><h2 id="checksums-calculation">Checksums calculation</h2>
-<p>Checksums are calculated not from the inserted data but from a formed part.
-The insert is separated to parts by table&rsquo;s partitioning.
-Parts contain rows sorted by table <code>order by</code> and all values of functions (i.e. <code>now()</code>) or Default/Materialized columns are expanded.</p>
+<p>Checksums are calculated not from the inserted data but from a formed part.</p>
+<p>Insert data is separated to parts by table&rsquo;s partitioning.</p>
+<p>Parts contain rows sorted by table <code>order by</code> and all values of functions (i.e. <code>now()</code>) or Default/Materialized columns are expanded.</p>
 <p>Example with parial insert because of partitioning.</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#204a87;font-weight:bold">create</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">table</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">test_insert</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">(</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">A</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Int64</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">B</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Int64</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline"> 
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">Engine</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000">MergeTree</span><span style="color:#f8f8f8;text-decoration:underline"> 
