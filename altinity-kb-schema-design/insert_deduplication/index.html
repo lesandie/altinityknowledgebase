@@ -12,12 +12,12 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://kb.altinity.com/altinity-kb-schema-design/insert_deduplication/" /><meta property="article:section" content="altinity-kb-schema-design" />
 
-<meta property="article:modified_time" content="2022-01-31T11:44:31-04:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
+<meta property="article:modified_time" content="2022-01-31T11:48:00-04:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
 
 <meta itemprop="name" content="Insert Deduplication / Insert idempotency">
 <meta itemprop="description" content="Insert Deduplication / Insert idempotency , insert_deduplicate setting.">
-<meta itemprop="dateModified" content="2022-01-31T11:44:31-04:00" />
-<meta itemprop="wordCount" content="602">
+<meta itemprop="dateModified" content="2022-01-31T11:48:00-04:00" />
+<meta itemprop="wordCount" content="603">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Insert Deduplication / Insert idempotency"/>
 <meta name="twitter:description" content="Insert Deduplication / Insert idempotency , insert_deduplicate setting."/>
@@ -75,7 +75,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.628736d69ea19103345b318cf4f81b5d.json"
+  data-offline-search-index-json-src="/offline-search-index.7e4d4693fc7bbd67e4197620fd504256.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -103,7 +103,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.628736d69ea19103345b318cf4f81b5d.json"
+  data-offline-search-index-json-src="/offline-search-index.7e4d4693fc7bbd67e4197620fd504256.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -824,7 +824,7 @@ select * from test_insert format PrettyCompactMonoBlock;
 1	all_4_4_0	all_636943575226146954_4277555262323907666
 </code></pre></div><h2 id="checksums-calculation">Checksums calculation</h2>
 <p>Checksums are calculated not from the inserted data but from a formed part.
-The insert is sepparated to parts by partitioning.
+The insert is separated to parts by table&rsquo;s partitioning.
 Parts contain rows sorted by table <code>order by</code> and all values of functions (i.e. <code>now()</code>) or Default/Materialized columns are expanded.</p>
 <p>Example with parial insert because of partitioning.</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#204a87;font-weight:bold">create</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">table</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">test_insert</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">(</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">A</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Int64</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">B</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Int64</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline"> 
@@ -909,7 +909,7 @@ select * from test_insert format PrettyCompactMonoBlock;
 
     Last modified
     2022.01.31
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/477e1a9f1eedbb194a91c782fe2b97a342edaee2">Update insert_deduplication.md (477e1a9f1)</a>
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/23d06befcc3c9f4ee5e1ec40b5a0dc37a31d6db4">Update insert_deduplication.md (23d06befc)</a>
 
 </div>
 
