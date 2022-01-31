@@ -13,13 +13,13 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-settings-to-adjust/" /><meta property="article:section" content="altinity-kb-setup-and-maintenance" />
 
-<meta property="article:modified_time" content="2021-08-12T14:22:56-06:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
+<meta property="article:modified_time" content="2022-01-31T16:41:36+01:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
 
 <meta itemprop="name" content="Settings to adjust">
 <meta itemprop="description" content="Settings to adjust
 ">
-<meta itemprop="dateModified" content="2021-08-12T14:22:56-06:00" />
-<meta itemprop="wordCount" content="313">
+<meta itemprop="dateModified" content="2022-01-31T16:41:36+01:00" />
+<meta itemprop="wordCount" content="360">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Settings to adjust"/>
 <meta name="twitter:description" content="Settings to adjust
@@ -78,7 +78,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.326259898bb2cb28923fc8269e98fc26.json"
+  data-offline-search-index-json-src="/offline-search-index.27825ba586056e0fcc6d698d3adbbcfa.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -106,7 +106,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.326259898bb2cb28923fc8269e98fc26.json"
+  data-offline-search-index-json-src="/offline-search-index.27825ba586056e0fcc6d698d3adbbcfa.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -728,21 +728,39 @@ SETTINGS ttl_only_drop_parts=1
         &lt;/engine&gt;
     &lt;/query_log&gt;
 &lt;/yandex&gt;
-</code></pre></li>
+</code></pre><p>&lt;query_views_log remove=&ldquo;1&rdquo; /&gt;
+&lt;part_log remove=&ldquo;1&rdquo;/&gt;
+&lt;session_log remove=&ldquo;1&rdquo;/&gt;
+&lt;text_log remove=&ldquo;1&rdquo; /&gt;
+&lt;trace_log remove=&ldquo;1&rdquo;/&gt;</p>
+</li>
 <li>
-<p><code>query_thread_log</code> - typically is not useful, you can disable it (or set up TTL).</p>
+<p><code>query_thread_log</code> - typically is not too useful for end users, you can disable it (or set up TTL).</p>
 <pre tabindex="0"><code class="language-markup" data-lang="markup">cat /etc/clickhouse-server/config.d/disable_query_thread_log.xml
 &lt;yandex&gt;
     &lt;query_thread_log remove=&quot;1&quot; /&gt;
-    &lt;metric_log remove=&quot;1&quot; /&gt;
+
+&lt;metric_log remove=&quot;1&quot; /&gt;
     &lt;asynchronous_metric_log remove=&quot;1&quot; /&gt;
     &lt;!-- if you have a good monitoring outside you don't need to store metrics
     in ClickHouse too --&gt;
 &lt;/yandex&gt;
 </code></pre></li>
 <li>
-<p><code>part_log</code> - may be nice, especially at the beginning / during system tuning/analyze.</p>
-<pre tabindex="0"><code class="language-markup" data-lang="markup">cat /etc/clickhouse-server/config.d/part_log.xml
+<p>If you have a good monitoring outside ClickHouse you don&rsquo;t need to store the history of metrics in ClickHouse</p>
+<pre tabindex="0"><code class="language-markup" data-lang="markup">cat /etc/clickhouse-server/config.d/disable_metric_logs.xml
+&lt;yandex&gt;
+    &lt;metric_log remove=&quot;1&quot; /&gt;
+    &lt;asynchronous_metric_log remove=&quot;1&quot; /&gt;
+</code></pre></li>
+</ol>
+<p>]   </yandex></p>
+<pre tabindex="0"><code>
+
+3. `part_log` - may be nice, especially at the beginning / during system tuning/analyze.
+
+```markup
+cat /etc/clickhouse-server/config.d/part_log.xml
 &lt;yandex&gt;
     &lt;part_log replace=&quot;1&quot;&gt;
         &lt;database&gt;system&lt;/database&gt;
@@ -757,7 +775,7 @@ SETTINGS ttl_only_drop_parts=1
         &lt;/engine&gt;
     &lt;/part_log&gt;
 &lt;/yandex&gt;
-</code></pre></li>
+</code></pre><ol start="4">
 <li>
 <p>on older versions <code>log_queries</code> is disabled by default, it&rsquo;s worth having it enabled always.</p>
 <pre tabindex="0"><code class="language-markup" data-lang="markup">$ cat /etc/clickhouse-server/users.d/log_queries.xml
@@ -807,8 +825,8 @@ Also, force_index_by_date + force_primary_key can be a nice idea to avoid querie
 	<div class="text-muted mt-5 pt-3 border-top">
 
     Last modified
-    2021.08.12
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/5969b6886e2a31134118f644b6fd2463d98dcb80">General corrections and updates. (5969b6886)</a>
+    2022.01.31
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/4e9652f74f7de34595036ec73c55a0072ae1fe4f">Update altinity-kb-settings-to-adjust.md (4e9652f74)</a>
 
 </div>
 
