@@ -13,13 +13,13 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://kb.altinity.com/altinity-kb-integrations/altinity-kb-kafka/altinity-kb-adjusting-librdkafka-settings/" /><meta property="article:section" content="altinity-kb-integrations" />
 
-<meta property="article:modified_time" content="2021-10-20T17:16:42-03:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
+<meta property="article:modified_time" content="2022-02-07T19:31:43+01:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
 
 <meta itemprop="name" content="Adjusting librdkafka settings">
 <meta itemprop="description" content="Adjusting librdkafka settings
 ">
-<meta itemprop="dateModified" content="2021-10-20T17:16:42-03:00" />
-<meta itemprop="wordCount" content="210">
+<meta itemprop="dateModified" content="2022-02-07T19:31:43+01:00" />
+<meta itemprop="wordCount" content="300">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Adjusting librdkafka settings"/>
 <meta name="twitter:description" content="Adjusting librdkafka settings
@@ -78,7 +78,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.3fa576be8bc7a8f9c44cdac95777aaa0.json"
+  data-offline-search-index-json-src="/offline-search-index.2c84fe8366addca9bea833252fc66490.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -106,7 +106,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.3fa576be8bc7a8f9c44cdac95777aaa0.json"
+  data-offline-search-index-json-src="/offline-search-index.2c84fe8366addca9bea833252fc66490.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -839,14 +839,37 @@
 </span><span style="color:#4e9a06"></span>   -X sasl.username<span style="color:#ce5c00;font-weight:bold">=</span>uerName <span style="color:#4e9a06">\
 </span><span style="color:#4e9a06"></span>   -X sasl.password<span style="color:#ce5c00;font-weight:bold">=</span>Password
 
-</code></pre></div>
+</code></pre></div><h1 id="different-configurations-for-different-tables">Different configurations for different tables?</h1>
+<blockquote>
+<p>Is there some more documentation how to use this multiconfiguration for Kafka ?</p>
+</blockquote>
+<p>The whole logic is here:
+<a href="https://github.com/ClickHouse/ClickHouse/blob/da4856a2be035260708fe2ba3ffb9e437d9b7fef/src/Storages/Kafka/StorageKafka.cpp#L466-L475" target="_blank">https://github.com/ClickHouse/ClickHouse/blob/da4856a2be035260708fe2ba3ffb9e437d9b7fef/src/Storages/Kafka/StorageKafka.cpp#L466-L475</a></p>
+<p>So it load the main config first, after that it load (with overwrites) the configs for all topics,  <strong>listed in <code>kafka_topic_list</code> of the table</strong>.</p>
+<p>Also since v21.12 it&rsquo;s possible to use more straght-forward way using named_collections:
+<a href="https://github.com/ClickHouse/ClickHouse/pull/31691" target="_blank">https://github.com/ClickHouse/ClickHouse/pull/31691</a></p>
+<p>So you can say something like</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#204a87;font-weight:bold">CREATE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">TABLE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">test</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">kafka</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">key</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">UInt64</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">value</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">UInt64</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">ENGINE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Kafka</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">kafka1</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">kafka_format</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#39;CSV&#39;</span><span style="color:#000;font-weight:bold">);</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></code></pre></div><p>And after that in configuration:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#204a87;font-weight:bold">&lt;clickhouse&gt;</span>
+ <span style="color:#204a87;font-weight:bold">&lt;named_collections&gt;</span>
+  <span style="color:#204a87;font-weight:bold">&lt;kafka1&gt;</span>
+   <span style="color:#204a87;font-weight:bold">&lt;kafka_broker_list&gt;</span>kafka1:19092<span style="color:#204a87;font-weight:bold">&lt;/kafka_broker_list&gt;</span>
+   <span style="color:#204a87;font-weight:bold">&lt;kafka_topic_list&gt;</span>conf<span style="color:#204a87;font-weight:bold">&lt;/kafka_topic_list&gt;</span>
+   <span style="color:#204a87;font-weight:bold">&lt;kafka_group_name&gt;</span>conf<span style="color:#204a87;font-weight:bold">&lt;/kafka_group_name&gt;</span>
+  <span style="color:#204a87;font-weight:bold">&lt;/kafka1&gt;</span>
+ <span style="color:#204a87;font-weight:bold">&lt;/named_collections&gt;</span>
+<span style="color:#204a87;font-weight:bold">&lt;/clickhouse&gt;</span>
+</code></pre></div><p>The same fragment of code in newer versions:
+<a href="https://github.com/ClickHouse/ClickHouse/blob/d19e24f530c30f002488bc136da78f5fb55aedab/src/Storages/Kafka/StorageKafka.cpp#L474-L496" target="_blank">https://github.com/ClickHouse/ClickHouse/blob/d19e24f530c30f002488bc136da78f5fb55aedab/src/Storages/Kafka/StorageKafka.cpp#L474-L496</a></p>
+
 	
 	
 	<div class="text-muted mt-5 pt-3 border-top">
 
     Last modified
-    2021.10.20
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/36a2dd02e72de06c8828b9bb135f7368983a53cf">Update altinity-kb-adjusting-librdkafka-settings.md (36a2dd02e)</a>
+    2022.02.07
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/27376d3dc8713359421ddec11bcf437437f42424">Update altinity-kb-adjusting-librdkafka-settings.md (27376d3dc)</a>
 
 </div>
 

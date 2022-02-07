@@ -74,7 +74,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.3fa576be8bc7a8f9c44cdac95777aaa0.json"
+  data-offline-search-index-json-src="/offline-search-index.2c84fe8366addca9bea833252fc66490.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -362,7 +362,30 @@ This the multi-page printable view of this section.
 </span><span style="color:#4e9a06"></span>   -X sasl.username<span style="color:#ce5c00;font-weight:bold">=</span>uerName <span style="color:#4e9a06">\
 </span><span style="color:#4e9a06"></span>   -X sasl.password<span style="color:#ce5c00;font-weight:bold">=</span>Password
 
-</code></pre></div>
+</code></pre></div><h1 id="different-configurations-for-different-tables">Different configurations for different tables?</h1>
+<blockquote>
+<p>Is there some more documentation how to use this multiconfiguration for Kafka ?</p>
+</blockquote>
+<p>The whole logic is here:
+<a href="https://github.com/ClickHouse/ClickHouse/blob/da4856a2be035260708fe2ba3ffb9e437d9b7fef/src/Storages/Kafka/StorageKafka.cpp#L466-L475" target="_blank">https://github.com/ClickHouse/ClickHouse/blob/da4856a2be035260708fe2ba3ffb9e437d9b7fef/src/Storages/Kafka/StorageKafka.cpp#L466-L475</a></p>
+<p>So it load the main config first, after that it load (with overwrites) the configs for all topics,  <strong>listed in <code>kafka_topic_list</code> of the table</strong>.</p>
+<p>Also since v21.12 it&rsquo;s possible to use more straght-forward way using named_collections:
+<a href="https://github.com/ClickHouse/ClickHouse/pull/31691" target="_blank">https://github.com/ClickHouse/ClickHouse/pull/31691</a></p>
+<p>So you can say something like</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#204a87;font-weight:bold">CREATE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">TABLE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">test</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">kafka</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">key</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">UInt64</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">value</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">UInt64</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">ENGINE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Kafka</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">kafka1</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">kafka_format</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#39;CSV&#39;</span><span style="color:#000;font-weight:bold">);</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></code></pre></div><p>And after that in configuration:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#204a87;font-weight:bold">&lt;clickhouse&gt;</span>
+ <span style="color:#204a87;font-weight:bold">&lt;named_collections&gt;</span>
+  <span style="color:#204a87;font-weight:bold">&lt;kafka1&gt;</span>
+   <span style="color:#204a87;font-weight:bold">&lt;kafka_broker_list&gt;</span>kafka1:19092<span style="color:#204a87;font-weight:bold">&lt;/kafka_broker_list&gt;</span>
+   <span style="color:#204a87;font-weight:bold">&lt;kafka_topic_list&gt;</span>conf<span style="color:#204a87;font-weight:bold">&lt;/kafka_topic_list&gt;</span>
+   <span style="color:#204a87;font-weight:bold">&lt;kafka_group_name&gt;</span>conf<span style="color:#204a87;font-weight:bold">&lt;/kafka_group_name&gt;</span>
+  <span style="color:#204a87;font-weight:bold">&lt;/kafka1&gt;</span>
+ <span style="color:#204a87;font-weight:bold">&lt;/named_collections&gt;</span>
+<span style="color:#204a87;font-weight:bold">&lt;/clickhouse&gt;</span>
+</code></pre></div><p>The same fragment of code in newer versions:
+<a href="https://github.com/ClickHouse/ClickHouse/blob/d19e24f530c30f002488bc136da78f5fb55aedab/src/Storages/Kafka/StorageKafka.cpp#L474-L496" target="_blank">https://github.com/ClickHouse/ClickHouse/blob/d19e24f530c30f002488bc136da78f5fb55aedab/src/Storages/Kafka/StorageKafka.cpp#L474-L496</a></p>
+
 </div>
 
 
