@@ -74,7 +74,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.2c84fe8366addca9bea833252fc66490.json"
+  data-offline-search-index-json-src="/offline-search-index.dfd9fb44687e48adc4506c5a3ce8da52.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -269,60 +269,60 @@ This the multi-page printable view of this section.
 </li>
 </ul>
 <p>Some random example:</p>
-<pre tabindex="0"><code class="language-markup" data-lang="markup">&lt;kafka&gt;
-    &lt;max_poll_interval_ms&gt;60000&lt;/max_poll_interval_ms&gt;
-    &lt;session_timeout_ms&gt;60000&lt;/session_timeout_ms&gt;
-    &lt;heartbeat_interval_ms&gt;10000&lt;/heartbeat_interval_ms&gt;
-    &lt;reconnect_backoff_ms&gt;5000&lt;/reconnect_backoff_ms&gt;
-    &lt;reconnect_backoff_max_ms&gt;60000&lt;/reconnect_backoff_max_ms&gt;
-    &lt;request_timeout_ms&gt;20000&lt;/request_timeout_ms&gt;
-    &lt;retry_backoff_ms&gt;500&lt;/retry_backoff_ms&gt;
-    &lt;message_max_bytes&gt;20971520&lt;/message_max_bytes&gt;
-    &lt;debug&gt;all&lt;/debug&gt;&lt;!-- only to get the errors --&gt;
-    &lt;security_protocol&gt;SSL&lt;/security_protocol&gt;
-    &lt;ssl_ca_location&gt;/etc/clickhouse-server/ssl/kafka-ca-qa.crt&lt;/ssl_ca_location&gt;
-    &lt;ssl_certificate_location&gt;/etc/clickhouse-server/ssl/client_clickhouse_client.pem&lt;/ssl_certificate_location&gt;
-    &lt;ssl_key_location&gt;/etc/clickhouse-server/ssl/client_clickhouse_client.key&lt;/ssl_key_location&gt;
-    &lt;ssl_key_password&gt;pass&lt;/ssl_key_password&gt;
-&lt;/kafka&gt;
-</code></pre><h2 id="authentication--connectivity">Authentication / connectivity</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#204a87;font-weight:bold">&lt;kafka&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;max_poll_interval_ms&gt;</span>60000<span style="color:#204a87;font-weight:bold">&lt;/max_poll_interval_ms&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;session_timeout_ms&gt;</span>60000<span style="color:#204a87;font-weight:bold">&lt;/session_timeout_ms&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;heartbeat_interval_ms&gt;</span>10000<span style="color:#204a87;font-weight:bold">&lt;/heartbeat_interval_ms&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;reconnect_backoff_ms&gt;</span>5000<span style="color:#204a87;font-weight:bold">&lt;/reconnect_backoff_ms&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;reconnect_backoff_max_ms&gt;</span>60000<span style="color:#204a87;font-weight:bold">&lt;/reconnect_backoff_max_ms&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;request_timeout_ms&gt;</span>20000<span style="color:#204a87;font-weight:bold">&lt;/request_timeout_ms&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;retry_backoff_ms&gt;</span>500<span style="color:#204a87;font-weight:bold">&lt;/retry_backoff_ms&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;message_max_bytes&gt;</span>20971520<span style="color:#204a87;font-weight:bold">&lt;/message_max_bytes&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;debug&gt;</span>all<span style="color:#204a87;font-weight:bold">&lt;/debug&gt;</span><span style="color:#8f5902;font-style:italic">&lt;!-- only to get the errors --&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;security_protocol&gt;</span>SSL<span style="color:#204a87;font-weight:bold">&lt;/security_protocol&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;ssl_ca_location&gt;</span>/etc/clickhouse-server/ssl/kafka-ca-qa.crt<span style="color:#204a87;font-weight:bold">&lt;/ssl_ca_location&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;ssl_certificate_location&gt;</span>/etc/clickhouse-server/ssl/client_clickhouse_client.pem<span style="color:#204a87;font-weight:bold">&lt;/ssl_certificate_location&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;ssl_key_location&gt;</span>/etc/clickhouse-server/ssl/client_clickhouse_client.key<span style="color:#204a87;font-weight:bold">&lt;/ssl_key_location&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;ssl_key_password&gt;</span>pass<span style="color:#204a87;font-weight:bold">&lt;/ssl_key_password&gt;</span>
+<span style="color:#204a87;font-weight:bold">&lt;/kafka&gt;</span>
+</code></pre></div><h2 id="authentication--connectivity">Authentication / connectivity</h2>
 <h3 id="amazon-msk">Amazon MSK</h3>
-<pre tabindex="0"><code class="language-markup" data-lang="markup">&lt;yandex&gt;
-  &lt;kafka&gt;
-    &lt;security_protocol&gt;sasl_ssl&lt;/security_protocol&gt;
-    &lt;sasl_username&gt;root&lt;/sasl_username&gt;
-    &lt;sasl_password&gt;toor&lt;/sasl_password&gt;
-  &lt;/kafka&gt;
-&lt;/yandex&gt;
-</code></pre><h3 id="saslscram">SASL/SCRAM</h3>
-<pre tabindex="0"><code class="language-markup" data-lang="markup">&lt;yandex&gt;
-  &lt;kafka&gt;
-    &lt;security_protocol&gt;sasl_ssl&lt;/security_protocol&gt;
-    &lt;sasl_mechanism&gt;SCRAM-SHA-512&lt;/sasl_mechanism&gt;
-    &lt;sasl_username&gt;root&lt;/sasl_username&gt;
-    &lt;sasl_password&gt;toor&lt;/sasl_password&gt;
-  &lt;/kafka&gt;
-&lt;/yandex&gt;
-</code></pre><p><a href="https://leftjoin.ru/all/clickhouse-as-a-consumer-to-amazon-msk/" target="_blank">https://leftjoin.ru/all/clickhouse-as-a-consumer-to-amazon-msk/</a></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#204a87;font-weight:bold">&lt;yandex&gt;</span>
+  <span style="color:#204a87;font-weight:bold">&lt;kafka&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;security_protocol&gt;</span>sasl_ssl<span style="color:#204a87;font-weight:bold">&lt;/security_protocol&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;sasl_username&gt;</span>root<span style="color:#204a87;font-weight:bold">&lt;/sasl_username&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;sasl_password&gt;</span>toor<span style="color:#204a87;font-weight:bold">&lt;/sasl_password&gt;</span>
+  <span style="color:#204a87;font-weight:bold">&lt;/kafka&gt;</span>
+<span style="color:#204a87;font-weight:bold">&lt;/yandex&gt;</span>
+</code></pre></div><h3 id="saslscram">SASL/SCRAM</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#204a87;font-weight:bold">&lt;yandex&gt;</span>
+  <span style="color:#204a87;font-weight:bold">&lt;kafka&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;security_protocol&gt;</span>sasl_ssl<span style="color:#204a87;font-weight:bold">&lt;/security_protocol&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;sasl_mechanism&gt;</span>SCRAM-SHA-512<span style="color:#204a87;font-weight:bold">&lt;/sasl_mechanism&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;sasl_username&gt;</span>root<span style="color:#204a87;font-weight:bold">&lt;/sasl_username&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;sasl_password&gt;</span>toor<span style="color:#204a87;font-weight:bold">&lt;/sasl_password&gt;</span>
+  <span style="color:#204a87;font-weight:bold">&lt;/kafka&gt;</span>
+<span style="color:#204a87;font-weight:bold">&lt;/yandex&gt;</span>
+</code></pre></div><p><a href="https://leftjoin.ru/all/clickhouse-as-a-consumer-to-amazon-msk/" target="_blank">https://leftjoin.ru/all/clickhouse-as-a-consumer-to-amazon-msk/</a></p>
 <h3 id="inline-kafka-certs">Inline Kafka certs</h3>
 <p>To connect to some Kafka cloud services you may need to use certificates.</p>
-<p>If needed they can be converted to pem format and inlined into ClickHouse config.</p>
-<p>Example:</p>
-<pre tabindex="0"><code class="language-markup" data-lang="markup">&lt;kafka&gt;
-&lt;ssl_key_pem&gt;&lt;![CDATA[
-  RSA Private-Key: (3072 bit, 2 primes)
-    ....
------BEGIN RSA PRIVATE KEY-----
-...
------END RSA PRIVATE KEY-----
-]]&gt;&lt;/ssl_key_pem&gt;
-&lt;ssl_certificate_pem&gt;&lt;![CDATA[
------BEGIN CERTIFICATE-----
-...
------END CERTIFICATE-----
-]]&gt;&lt;/ssl_certificate_pem&gt;
-&lt;/kafka&gt;
-</code></pre><p>See also</p>
+<p>If needed they can be converted to pem format and inlined into ClickHouse config.xml
+Example:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#204a87;font-weight:bold">&lt;kafka&gt;</span>
+<span style="color:#204a87;font-weight:bold">&lt;ssl_key_pem&gt;</span><span style="color:#8f5902;font-style:italic">&lt;![CDATA[
+</span><span style="color:#8f5902;font-style:italic">  RSA Private-Key: (3072 bit, 2 primes)
+</span><span style="color:#8f5902;font-style:italic">    ....
+</span><span style="color:#8f5902;font-style:italic">-----BEGIN RSA PRIVATE KEY-----
+</span><span style="color:#8f5902;font-style:italic">...
+</span><span style="color:#8f5902;font-style:italic">-----END RSA PRIVATE KEY-----
+</span><span style="color:#8f5902;font-style:italic">]]&gt;</span><span style="color:#204a87;font-weight:bold">&lt;/ssl_key_pem&gt;</span>
+<span style="color:#204a87;font-weight:bold">&lt;ssl_certificate_pem&gt;</span><span style="color:#8f5902;font-style:italic">&lt;![CDATA[
+</span><span style="color:#8f5902;font-style:italic">-----BEGIN CERTIFICATE-----
+</span><span style="color:#8f5902;font-style:italic">...
+</span><span style="color:#8f5902;font-style:italic">-----END CERTIFICATE-----
+</span><span style="color:#8f5902;font-style:italic">]]&gt;</span><span style="color:#204a87;font-weight:bold">&lt;/ssl_certificate_pem&gt;</span>
+<span style="color:#204a87;font-weight:bold">&lt;/kafka&gt;</span>
+</code></pre></div><p>See xml</p>
 <p><a href="https://help.aiven.io/en/articles/489572-getting-started-with-aiven-kafka" target="_blank">https://help.aiven.io/en/articles/489572-getting-started-with-aiven-kafka</a></p>
 <p><a href="https://stackoverflow.com/questions/991758/how-to-get-pem-file-from-key-and-crt-files" target="_blank">https://stackoverflow.com/questions/991758/how-to-get-pem-file-from-key-and-crt-files</a></p>
 <h3 id="azure-event-hub">Azure Event Hub</h3>
@@ -332,20 +332,20 @@ This the multi-page printable view of this section.
 <li><a href="https://clickhouse.tech/docs/en/engines/table-engines/integrations/kafka/#kafka-kerberos-support" target="_blank">https://clickhouse.tech/docs/en/engines/table-engines/integrations/kafka/#kafka-kerberos-support</a></li>
 <li><a href="https://github.com/ClickHouse/ClickHouse/blob/master/tests/integration/test_storage_kerberized_kafka/configs/kafka.xml" target="_blank">https://github.com/ClickHouse/ClickHouse/blob/master/tests/integration/test_storage_kerberized_kafka/configs/kafka.xml</a></li>
 </ul>
-<pre tabindex="0"><code class="language-markup" data-lang="markup">  &lt;!-- Kerberos-aware Kafka --&gt;
-  &lt;kafka&gt;
-    &lt;security_protocol&gt;SASL_PLAINTEXT&lt;/security_protocol&gt;
-    &lt;sasl_kerberos_keytab&gt;/home/kafkauser/kafkauser.keytab&lt;/sasl_kerberos_keytab&gt;
-    &lt;sasl_kerberos_principal&gt;kafkauser/kafkahost@EXAMPLE.COM&lt;/sasl_kerberos_principal&gt;
-  &lt;/kafka&gt;
-</code></pre><h3 id="confluent-cloud">confluent cloud</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml">  <span style="color:#8f5902;font-style:italic">&lt;!-- Kerberos-aware Kafka --&gt;</span>
+  <span style="color:#204a87;font-weight:bold">&lt;kafka&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;security_protocol&gt;</span>SASL_PLAINTEXT<span style="color:#204a87;font-weight:bold">&lt;/security_protocol&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;sasl_kerberos_keytab&gt;</span>/home/kafkauser/kafkauser.keytab<span style="color:#204a87;font-weight:bold">&lt;/sasl_kerberos_keytab&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;sasl_kerberos_principal&gt;</span>kafkauser/kafkahost@EXAMPLE.COM<span style="color:#204a87;font-weight:bold">&lt;/sasl_kerberos_principal&gt;</span>
+  <span style="color:#204a87;font-weight:bold">&lt;/kafka&gt;</span>
+</code></pre></div><h3 id="confluent-cloud">confluent cloud</h3>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml">    <span style="color:#204a87;font-weight:bold">&lt;yandex&gt;</span>
         <span style="color:#204a87;font-weight:bold">&lt;kafka&gt;</span>
         <span style="color:#204a87;font-weight:bold">&lt;auto_offset_reset&gt;</span>smallest<span style="color:#204a87;font-weight:bold">&lt;/auto_offset_reset&gt;</span>
         <span style="color:#204a87;font-weight:bold">&lt;security_protocol&gt;</span>SASL_SSL<span style="color:#204a87;font-weight:bold">&lt;/security_protocol&gt;</span>
         <span style="color:#204a87;font-weight:bold">&lt;ssl_endpoint_identification_algorithm&gt;</span>https<span style="color:#204a87;font-weight:bold">&lt;/ssl_endpoint_identification_algorithm&gt;</span>
         <span style="color:#204a87;font-weight:bold">&lt;sasl_mechanism&gt;</span>PLAIN<span style="color:#204a87;font-weight:bold">&lt;/sasl_mechanism&gt;</span>
-        <span style="color:#204a87;font-weight:bold">&lt;sasl_username&gt;</span>username<span style="color:#204a87;font-weight:bold">&lt;/sasl_username&gt;</span>
+xml<span style="color:#204a87;font-weight:bold">&lt;sasl_username&gt;</span>username<span style="color:#204a87;font-weight:bold">&lt;/sasl_username&gt;</span>
         <span style="color:#204a87;font-weight:bold">&lt;sasl_password&gt;</span>password<span style="color:#204a87;font-weight:bold">&lt;/sasl_password&gt;</span>
         <span style="color:#204a87;font-weight:bold">&lt;ssl_ca_location&gt;</span>probe<span style="color:#204a87;font-weight:bold">&lt;/ssl_ca_location&gt;</span>
         <span style="color:#8f5902;font-style:italic">&lt;!--
