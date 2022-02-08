@@ -74,7 +74,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.cbf454d7e6ef5e61a8b5e0c47a2267d7.json"
+  data-offline-search-index-json-src="/offline-search-index.b22e189591f19337dcf439b3f0728753.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -4806,22 +4806,12 @@ SETTINGS ttl_only_drop_parts=1
         &lt;/engine&gt;
     &lt;/query_log&gt;
 &lt;/yandex&gt;
-</code></pre><p>&lt;query_views_log remove=&ldquo;1&rdquo; /&gt;
-&lt;part_log remove=&ldquo;1&rdquo;/&gt;
-&lt;session_log remove=&ldquo;1&rdquo;/&gt;
-&lt;text_log remove=&ldquo;1&rdquo; /&gt;
-&lt;trace_log remove=&ldquo;1&rdquo;/&gt;</p>
-</li>
+</code></pre></li>
 <li>
 <p><code>query_thread_log</code> - typically is not too useful for end users, you can disable it (or set up TTL).</p>
 <pre tabindex="0"><code class="language-markup" data-lang="markup">cat /etc/clickhouse-server/config.d/disable_query_thread_log.xml
 &lt;yandex&gt;
     &lt;query_thread_log remove=&quot;1&quot; /&gt;
-
-&lt;metric_log remove=&quot;1&quot; /&gt;
-    &lt;asynchronous_metric_log remove=&quot;1&quot; /&gt;
-    &lt;!-- if you have a good monitoring outside you don't need to store metrics
-    in ClickHouse too --&gt;
 &lt;/yandex&gt;
 </code></pre></li>
 <li>
