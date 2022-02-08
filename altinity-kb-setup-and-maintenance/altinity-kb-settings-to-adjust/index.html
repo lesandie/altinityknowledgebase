@@ -13,13 +13,13 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-settings-to-adjust/" /><meta property="article:section" content="altinity-kb-setup-and-maintenance" />
 
-<meta property="article:modified_time" content="2022-01-31T16:41:36+01:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
+<meta property="article:modified_time" content="2022-02-08T10:50:39+01:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
 
 <meta itemprop="name" content="Settings to adjust">
 <meta itemprop="description" content="Settings to adjust
 ">
-<meta itemprop="dateModified" content="2022-01-31T16:41:36+01:00" />
-<meta itemprop="wordCount" content="360">
+<meta itemprop="dateModified" content="2022-02-08T10:50:39+01:00" />
+<meta itemprop="wordCount" content="358">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Settings to adjust"/>
 <meta name="twitter:description" content="Settings to adjust
@@ -78,7 +78,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.dfd9fb44687e48adc4506c5a3ce8da52.json"
+  data-offline-search-index-json-src="/offline-search-index.cbf454d7e6ef5e61a8b5e0c47a2267d7.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -106,7 +106,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.dfd9fb44687e48adc4506c5a3ce8da52.json"
+  data-offline-search-index-json-src="/offline-search-index.cbf454d7e6ef5e61a8b5e0c47a2267d7.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -754,15 +754,11 @@ SETTINGS ttl_only_drop_parts=1
 &lt;yandex&gt;
     &lt;metric_log remove=&quot;1&quot; /&gt;
     &lt;asynchronous_metric_log remove=&quot;1&quot; /&gt;
+&lt;/yandex&gt;
 </code></pre></li>
-</ol>
-<p>]   </yandex></p>
-<pre tabindex="0"><code>
-
-3. `part_log` - may be nice, especially at the beginning / during system tuning/analyze.
-
-```markup
-cat /etc/clickhouse-server/config.d/part_log.xml
+<li>
+<p><code>part_log</code> - may be nice, especially at the beginning / during system tuning/analyze.</p>
+<pre tabindex="0"><code class="language-markup" data-lang="markup">cat /etc/clickhouse-server/config.d/part_log.xml
 &lt;yandex&gt;
     &lt;part_log replace=&quot;1&quot;&gt;
         &lt;database&gt;system&lt;/database&gt;
@@ -777,7 +773,7 @@ SETTINGS ttl_only_drop_parts=1
         &lt;/engine&gt;
     &lt;/part_log&gt;
 &lt;/yandex&gt;
-</code></pre><ol start="4">
+</code></pre></li>
 <li>
 <p>on older versions <code>log_queries</code> is disabled by default, it&rsquo;s worth having it enabled always.</p>
 <pre tabindex="0"><code class="language-markup" data-lang="markup">$ cat /etc/clickhouse-server/users.d/log_queries.xml
@@ -827,8 +823,8 @@ Also, force_index_by_date + force_primary_key can be a nice idea to avoid querie
 	<div class="text-muted mt-5 pt-3 border-top">
 
     Last modified
-    2022.01.31
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/4e9652f74f7de34595036ec73c55a0072ae1fe4f">Update altinity-kb-settings-to-adjust.md (4e9652f74)</a>
+    2022.02.08
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/f1662ba8d06c9fde3497999d7a9ac591f1d61f0d">Update altinity-kb-settings-to-adjust.md (f1662ba8d)</a>
 
 </div>
 

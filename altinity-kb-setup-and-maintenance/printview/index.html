@@ -74,7 +74,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.dfd9fb44687e48adc4506c5a3ce8da52.json"
+  data-offline-search-index-json-src="/offline-search-index.cbf454d7e6ef5e61a8b5e0c47a2267d7.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -4830,15 +4830,11 @@ SETTINGS ttl_only_drop_parts=1
 &lt;yandex&gt;
     &lt;metric_log remove=&quot;1&quot; /&gt;
     &lt;asynchronous_metric_log remove=&quot;1&quot; /&gt;
+&lt;/yandex&gt;
 </code></pre></li>
-</ol>
-<p>]   </yandex></p>
-<pre tabindex="0"><code>
-
-3. `part_log` - may be nice, especially at the beginning / during system tuning/analyze.
-
-```markup
-cat /etc/clickhouse-server/config.d/part_log.xml
+<li>
+<p><code>part_log</code> - may be nice, especially at the beginning / during system tuning/analyze.</p>
+<pre tabindex="0"><code class="language-markup" data-lang="markup">cat /etc/clickhouse-server/config.d/part_log.xml
 &lt;yandex&gt;
     &lt;part_log replace=&quot;1&quot;&gt;
         &lt;database&gt;system&lt;/database&gt;
@@ -4853,7 +4849,7 @@ SETTINGS ttl_only_drop_parts=1
         &lt;/engine&gt;
     &lt;/part_log&gt;
 &lt;/yandex&gt;
-</code></pre><ol start="4">
+</code></pre></li>
 <li>
 <p>on older versions <code>log_queries</code> is disabled by default, it&rsquo;s worth having it enabled always.</p>
 <pre tabindex="0"><code class="language-markup" data-lang="markup">$ cat /etc/clickhouse-server/users.d/log_queries.xml
