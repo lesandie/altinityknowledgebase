@@ -74,7 +74,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.b22e189591f19337dcf439b3f0728753.json"
+  data-offline-search-index-json-src="/offline-search-index.7da7cab425760b1a523547dcde35bf34.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -1340,9 +1340,8 @@ xml<span style="color:#204a87;font-weight:bold">&lt;sasl_username&gt;</span>user
 <li><a href="https://github.com/edenhill/librdkafka/commit/6b2a1552ac2a4ea09d915015183f268dd2df96e6" target="_blank">edenhill/librdkafka@6b2a155</a></li>
 <li><a href="https://github.com/ClickHouse/ClickHouse/commit/9de5dffb5c97eb93545ae25eaf87ec195a590148" target="_blank">9de5dff</a></li>
 </ul>
-<p>There was a report recently that it was giving some duplicates <a href="https://github.com/ClickHouse/ClickHouse/issues/18668" target="_blank">#18668</a> and in should be fixed in 21.2.</p>
 <p>BUT: while EOS semantics will guarantee you that no duplicates will happen on the Kafka side (i.e. even if you produce the same messages few times it will be consumed once), but ClickHouse as a Kafka client can currently guarantee only at-least-once. And in some corner cases (connection lost etc) you can get duplicates.</p>
-<p>We need to have something like transactions on ClickHouse side to be able to avoid that. Adding something like simple transactions is in plans for Y2021.</p>
+<p>We need to have something like transactions on ClickHouse side to be able to avoid that. Adding something like simple transactions is in plans for Y2022.</p>
 <h2 id="block-aggregator-by-ebay">block-aggregator by eBay</h2>
 <p>Block Aggregator is a data loader that subscribes to Kafka topics, aggregates the Kafka messages into blocks that follow the Clickhouse’s table schemas, and then inserts the blocks into ClickHouse. Block Aggregator provides exactly-once delivery guarantee to load data from Kafka to ClickHouse. Block Aggregator utilizes Kafka’s metadata to keep track of blocks that are intended to send to ClickHouse, and later uses this metadata information to deterministically re-produce ClickHouse blocks for re-tries in case of failures. The identical blocks are guaranteed to be deduplicated by ClickHouse.</p>
 <p><a href="https://github.com/eBay/block-aggregator" target="_blank">eBay/block-aggregator</a></p>
