@@ -30,7 +30,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.4f4a4f4b81fa34b87a9503392a365712.json"
+  data-offline-search-index-json-src="/offline-search-index.a1019f9c0e38224bbd06ab39cf85410c.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -104,7 +104,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.4f4a4f4b81fa34b87a9503392a365712.json"
+  data-offline-search-index-json-src="/offline-search-index.a1019f9c0e38224bbd06ab39cf85410c.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -2326,6 +2326,15 @@ select value from system.events where event='DataAfterMutationDiffersFromReplica
 </ul>
 </li>
 </ul>
+<h2 id="logs-monitoring">Logs monitoring</h2>
+<p>ClickHouse logs can be another important source of information. There are 2 logs enabled by default</p>
+<ul>
+<li>/var/log/clickhouse-server/clickhouse-server.err.log (error &amp; warning, you may want to keep an eye on that or send it to some monitoring system)</li>
+<li>/var/log/clickhouse-server/clickhouse-server.log (trace logs,  very detailed, useful for debugging, usually too verbose to monitor).</li>
+</ul>
+<p>You can additionally enable system.text_log table to have an access to the logs from clickhouse sql queries.</p>
+<h2 id="opentelemetry-support">OpenTelemetry support</h2>
+<p>See <a href="https://clickhouse.com/docs/en/operations/opentelemetry/" target="_blank">https://clickhouse.com/docs/en/operations/opentelemetry/</a></p>
 <h2 id="other-sources">Other sources</h2>
 <ul>
 <li><a href="https://tech.marksblogg.com/clickhouse-prometheus-grafana.html" target="_blank">https://tech.marksblogg.com/clickhouse-prometheus-grafana.html</a></li>
