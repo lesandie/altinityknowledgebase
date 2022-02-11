@@ -29,7 +29,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.628f02e73145560c149dc9786bf9baf8.json"
+  data-offline-search-index-json-src="/offline-search-index.6913f947ff4f80be5fbe6b80fee57200.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -53,13 +53,13 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://kb.altinity.com/altinity-kb-setup-and-maintenance/cluster-production-configuration-guide/monitoring-considerations/" /><meta property="article:section" content="altinity-kb-setup-and-maintenance" />
 
-<meta property="article:modified_time" content="2021-12-02T10:55:01-07:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
+<meta property="article:modified_time" content="2022-02-11T13:10:42+01:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
 
 <meta itemprop="name" content="Monitoring Considerations">
 <meta itemprop="description" content="Monitoring Considerations
 ">
-<meta itemprop="dateModified" content="2021-12-02T10:55:01-07:00" />
-<meta itemprop="wordCount" content="566">
+<meta itemprop="dateModified" content="2022-02-11T13:10:42+01:00" />
+<meta itemprop="wordCount" content="2">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Monitoring Considerations"/>
 <meta name="twitter:description" content="Monitoring Considerations
@@ -108,7 +108,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.628f02e73145560c149dc9786bf9baf8.json"
+  data-offline-search-index-json-src="/offline-search-index.6913f947ff4f80be5fbe6b80fee57200.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -136,7 +136,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.628f02e73145560c149dc9786bf9baf8.json"
+  data-offline-search-index-json-src="/offline-search-index.6913f947ff4f80be5fbe6b80fee57200.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -390,6 +390,8 @@
   <a href="/altinity-kb-setup-and-maintenance/aws-ebs/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenanceaws-ebs"><span class="">AWS EBS</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenancealtinity-kb-clickhouse-in-docker-li">
   <a href="/altinity-kb-setup-and-maintenance/altinity-kb-clickhouse-in-docker/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancealtinity-kb-clickhouse-in-docker"><span class="">ClickHouse in Docker</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenancealtinity-kb-monitoring-li">
+  <a href="/altinity-kb-setup-and-maintenance/altinity-kb-monitoring/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancealtinity-kb-monitoring"><span class="">ClickHouse Monitoring</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenanceclickhouse-versions-li">
   <a href="/altinity-kb-setup-and-maintenance/clickhouse-versions/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenanceclickhouse-versions"><span class="">ClickHouse versions</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenanceclickhouse-backup-li">
@@ -429,8 +431,6 @@
   <a href="/altinity-kb-setup-and-maintenance/load-balancers/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenanceload-balancers"><span class="">Load balancers</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenancealtinity-kb-memory-configuration-settings-li">
   <a href="/altinity-kb-setup-and-maintenance/altinity-kb-memory-configuration-settings/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancealtinity-kb-memory-configuration-settings"><span class="">memory configuration settings</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenancealtinity-kb-monitoring-li">
-  <a href="/altinity-kb-setup-and-maintenance/altinity-kb-monitoring/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancealtinity-kb-monitoring"><span class="">Monitoring</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenancealtinity-kb-moving-table-to-another-device-li">
   <a href="/altinity-kb-setup-and-maintenance/altinity-kb-moving-table-to-another-device./" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancealtinity-kb-moving-table-to-another-device"><span class="">Moving table to another device.</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenancealtinity-kb-object-consistency-in-a-cluster-li">
@@ -671,17 +671,6 @@
             
 
 
-<nav id="TableOfContents">
-  <ul>
-    <li>
-      <ul>
-        <li><a href="#external-monitoring">External Monitoring</a></li>
-        <li><a href="#monitor-and-alerts">Monitor and Alerts</a></li>
-      </ul>
-    </li>
-  </ul>
-</nav>
-
 
 
 
@@ -763,284 +752,15 @@
 	</div>
 	
 	       
-	<p>Monitoring helps to track potential issues in your cluster before they cause a critical error.</p>
-<h3 id="external-monitoring">External Monitoring</h3>
-<p>External monitoring collects data from the ClickHouse cluster and uses it for analysis and review.  Recommended external monitoring systems include:</p>
-<ul>
-<li><strong>Prometheus</strong>: Use embedded exporter or <a href="https://github.com/f1yegor/clickhouse_exporter" target="_blank">clickhouse-exporter</a></li>
-<li><strong>Graphite</strong>: Use the embedded exporter. See config.xml.</li>
-<li><strong>InfluxDB</strong>: Use the embedded exporter, plus Telegraf. For more information, see <a href="https://docs.influxdata.com/influxdb/v1.7/supported_protocols/graphite/" target="_blank">Graphite protocol support in InfluxDB</a>.</li>
-</ul>
-<p>ClickHouse can collect the recording of metrics internally by enabling <code>system.metric_log</code> in <code>config.xml</code>.</p>
-<p>For dashboard system:</p>
-<ul>
-<li><a href="https://grafana.com/" target="_blank">Grafana</a> is recommended for graphs, reports, alerts, dashboard, etc.</li>
-<li>Other options are <a href="https://www.nagios.com/" target="_blank">Nagios</a> or <a href="https://www.zabbix.com/" target="_blank">Zabbix</a>.</li>
-</ul>
-<p>The following metrics should be collected:</p>
-<ul>
-<li>For Host Machine:
-<ul>
-<li>CPU</li>
-<li>Memory</li>
-<li>Network (bytes/packets)</li>
-<li>Storage (iops)</li>
-<li>Disk Space (free / used)</li>
-</ul>
-</li>
-<li>For ClickHouse:
-<ul>
-<li>Connections (count)</li>
-<li>RWLocks</li>
-<li>Read / Write / Return (bytes)</li>
-<li>Read / Write / Return (rows)</li>
-<li>Zookeeper operations (count)</li>
-<li>Absolute delay</li>
-<li>Query duration (optional)</li>
-<li>Replication parts and queue (count)</li>
-</ul>
-</li>
-<li>For Zookeeper:
-<ul>
-<li>See <a href="https://sematext.com/docs/integration/zookeeper/" target="_blank">ZooKeeper Monitoring Integration</a>.</li>
-</ul>
-</li>
-</ul>
-<p>The following queries are recommended to be included in monitoring:</p>
-<ul>
-<li>SELECT * FROM system.replicas
-<ul>
-<li>For more information, see the ClickHouse guide on <a href="https://clickhouse.tech/docs/en/operations/system_tables/#system_tables-replicas" target="_blank">System Tables</a></li>
-</ul>
-</li>
-<li>SELECT * FROM system.merges
-<ul>
-<li>Checks on the speed and progress of currently executed merges.</li>
-</ul>
-</li>
-<li>SELECT * FROM system.mutations
-<ul>
-<li>This is the source of information on the speed and progress of currently executed merges.</li>
-</ul>
-</li>
-</ul>
-<h3 id="monitor-and-alerts">Monitor and Alerts</h3>
-<p>Configure the notifications for events and thresholds based on the following table:</p>
-<ul>
-<li><a href="https://docs.google.com/spreadsheets/d/1K92yZr5slVQEvDglfZ88k_7bfsAKqahY9RPp_2tSdVU/edit#gid=521173956" target="_blank">Monitor and Alerts</a></li>
-</ul>
-<h4 id="health-checks">Health Checks</h4>
-<p>The following health checks should be monitored:</p>
-<table>
-  <tr>
-   <td><strong>Check Name</strong>
-   </td>
-   <td><strong><code>Shell or SQL command</code></strong>
-   </td>
-   <td><strong><code>Severity</code></strong>
-   </td>
-  </tr>
-  <tr>
-   <td>ClickHouse status
-   </td>
-   <td><code>$ curl 'http://localhost:8123/'</code>
-<p>
-<code>Ok.</code>
-   </td>
-   <td><code>Critical</code>
-   </td>
-  </tr>
-  <tr>
-   <td>Too many simultaneous queries. Maximum: 100 (by default)
-   </td>
-   <td><code>select value from system.metrics </code>
-<p>
-<code>where metric='Query'</code>
-   </td>
-   <td><code>Critical</code>
-   </td>
-  </tr>
-  <tr>
-   <td>Replication status
-   </td>
-   <td><code>$ curl 'http://localhost:8123/replicas_status'</code>
-<p>
-<code>Ok.</code>
-   </td>
-   <td><code>High</code>
-   </td>
-  </tr>
-  <tr>
-   <td>Read only replicas (reflected by <code>replicas_status</code> as well)
-   </td>
-   <td><code>select value from system.metrics </code>
-<p>
-<code>where metric='ReadonlyReplica'</code>
-   </td>
-   <td><code>High</code>
-   </td>
-  </tr>
-  <tr>
-   <td>Some replication tasks are stuck
-   </td>
-   <td><code>select count()</code>
-<p>
-<code>from system.replication_queue</code>
-<p>
-<code>where num_tries > 100 or num_postponed > 1000</code>
-   </td>
-   <td><code>High</code>
-   </td>
-  </tr>
-  <tr>
-   <td>ZooKeeper is available
-   </td>
-   <td><code>select count() from system.zookeeper </code>
-<p>
-<code>where path='/'</code>
-   </td>
-   <td><code>Critical for writes</code>
-   </td>
-  </tr>
-  <tr>
-   <td>ZooKeeper exceptions
-   </td>
-   <td><code>select value from system.events </code>
-<p>
-<code>where event='ZooKeeperHardwareExceptions'</code>
-   </td>
-   <td><code>Medium</code>
-   </td>
-  </tr>
-  <tr>
-   <td>Other CH nodes are available
-   </td>
-   <td><code>$ for node in `echo "select distinct host_address from system.clusters where host_name !='localhost'" | curl 'http://localhost:8123/' --silent --data-binary @-`; do curl "http://$node:8123/" --silent ; done | sort -u</code>
-<p>
-<code>Ok.</code>
-   </td>
-   <td><code>High</code>
-   </td>
-  </tr>
-  <tr>
-   <td>All CH clusters are available (i.e. every configured cluster has enough replicas to serve queries)
-   </td>
-   <td><code>for cluster in `echo "select distinct cluster from system.clusters where host_name !='localhost'" | curl 'http://localhost:8123/' --silent --data-binary @-` ; do clickhouse-client --query="select '$cluster', 'OK' from cluster('$cluster', system, one)" ; done </code>
-   </td>
-   <td><code>Critical</code>
-   </td>
-  </tr>
-  <tr>
-   <td>There are files in 'detached' folders
-   </td>
-   <td><code>$ find /var/lib/clickhouse/data/*/*/detached/* -type d | wc -l; \
-19.8+</code>
-<p>
-<code>select count() from system.detached_parts</code>
-   </td>
-   <td><code>Medium</code>
-   </td>
-  </tr>
-  <tr>
-   <td>Too many parts: \
-Number of parts is growing; \
-Inserts are being delayed; \
-Inserts are being rejected
-   </td>
-   <td><code>select value from system.asynchronous_metrics </code>
-<p>
-<code>where metric='MaxPartCountForPartition';</code>
-<p>
-<code>select value from system.events/system.metrics </code>
-<p>
-<code>where event/metric='DelayedInserts'; \
-select value from system.events </code>
-<p>
-<code>where event='RejectedInserts'</code>
-   </td>
-   <td><code>Critical</code>
-   </td>
-  </tr>
-  <tr>
-   <td>Dictionaries: exception
-   </td>
-   <td><code>select concat(name,': ',last_exception) </code>
-<p>
-<code>from system.dictionaries</code>
-<p>
-<code>where last_exception != ''</code>
-   </td>
-   <td><code>Medium</code>
-   </td>
-  </tr>
-  <tr>
-   <td>ClickHouse has been restarted
-   </td>
-   <td><code>select uptime();</code>
-<p>
-<code>select value from system.asynchronous_metrics </code>
-<p>
-<code>where metric='Uptime'</code>
-   </td>
-   <td>
-   </td>
-  </tr>
-  <tr>
-   <td>DistributedFilesToInsert should not be always increasing
-   </td>
-   <td><code>select value from system.metrics </code>
-<p>
-<code>where metric='DistributedFilesToInsert'</code>
-   </td>
-   <td><code>Medium</code>
-   </td>
-  </tr>
-  <tr>
-   <td>A data part was lost
-   </td>
-   <td><code>select value from system.events </code>
-<p>
-<code>where event='ReplicatedDataLoss'</code>
-   </td>
-   <td><code>High</code>
-   </td>
-  </tr>
-  <tr>
-   <td>Data parts are not the same on different replicas
-   </td>
-   <td><code>select value from system.events where event='DataAfterMergeDiffersFromReplica'; \
-select value from system.events where event='DataAfterMutationDiffersFromReplica'</code>
-   </td>
-   <td><code>Medium</code>
-   </td>
-  </tr>
-  <tr>
-   <td>
-   </td>
-   <td>
-   </td>
-   <td>
-   </td>
-  </tr>
-</table>
-<h4 id="monitoring-references">Monitoring References</h4>
-<ul>
-<li><a href="http://kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-monitoring/">altinity-kb-monitoring</a></li>
-<li><a href="https://tech.marksblogg.com/clickhouse-prometheus-grafana.html" target="_blank">https://tech.marksblogg.com/clickhouse-prometheus-grafana.html</a></li>
-<li><a href="https://sematext.com/blog/clickhouse-monitoring-key-metrics/" target="_blank">Key Metrics for Monitoring ClickHouse</a></li>
-<li><a href="https://dzone.com/articles/clickhouse-monitoring-key-metrics-to-monitor-semat" target="_blank">ClickHouse Monitoring Key Metrics to Monitor</a></li>
-<li><a href="https://dzone.com/articles/clickhouse-monitoring-tools-five-tools-to-consider" target="_blank">ClickHouse Monitoring Tools: Five Tools to Consider</a></li>
-<li><a href="https://docs.instana.io/ecosystem/clickhouse/" target="_blank">Monitoring ClickHouse</a></li>
-<li><a href="https://www.datadoghq.com/blog/monitor-clickhouse/" target="_blank">Monitor ClickHouse with Datadog</a></li>
-</ul>
+	<p>See [/altinity-kb-setup-and-maintenance/altinity-kb-monitoring.md]</p>
 
 	
 	
 	<div class="text-muted mt-5 pt-3 border-top">
 
     Last modified
-    2021.12.02
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/2f100fa61cd29639a65049c3d6387d4ddd6a34a5">Updating table to match Google Docs. (2f100fa61)</a>
+    2022.02.11
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/3da4dabfb215a3cea574636e86c02b45f46cce99">Update monitoring-considerations.md (3da4dabfb)</a>
 
 </div>
 
