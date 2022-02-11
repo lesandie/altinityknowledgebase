@@ -29,7 +29,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.9f52b184b4f1317466e937010699cc6d.json"
+  data-offline-search-index-json-src="/offline-search-index.1bc29980f6d56b0ba1387a7460c3ef1e.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -51,11 +51,11 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://kb.altinity.com/altinity-kb-setup-and-maintenance/clickhouse-deployment-plan/" /><meta property="article:section" content="altinity-kb-setup-and-maintenance" />
 
-<meta property="article:modified_time" content="2022-02-11T13:48:00+01:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
+<meta property="article:modified_time" content="2022-02-11T13:59:32+01:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
 
 <meta itemprop="name" content="Successful ClickHouse deployment plan">
 <meta itemprop="description" content="Successful ClickHouse deployment plan.">
-<meta itemprop="dateModified" content="2022-02-11T13:48:00+01:00" />
+<meta itemprop="dateModified" content="2022-02-11T13:59:32+01:00" />
 <meta itemprop="wordCount" content="427">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Successful ClickHouse deployment plan"/>
@@ -104,7 +104,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.9f52b184b4f1317466e937010699cc6d.json"
+  data-offline-search-index-json-src="/offline-search-index.1bc29980f6d56b0ba1387a7460c3ef1e.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -132,7 +132,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.9f52b184b4f1317466e937010699cc6d.json"
+  data-offline-search-index-json-src="/offline-search-index.1bc29980f6d56b0ba1387a7460c3ef1e.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -770,7 +770,7 @@
 <li>Review the partition by and order by. <a href="https://kb.altinity.com/engines/mergetree-table-engine-family/pick-keys/" target="_blank">https://kb.altinity.com/engines/mergetree-table-engine-family/pick-keys/</a></li>
 <li>Create the schema(s) with better/promising order by / partitioning, load data in. Pick the best schema.</li>
 <li>consider different improvements of particular columns (codecs / better data types etc.) <a href="https://kb.altinity.com/altinity-kb-schema-design/codecs/altinity-kb-how-to-test-different-compression-codecs/" target="_blank">https://kb.altinity.com/altinity-kb-schema-design/codecs/altinity-kb-how-to-test-different-compression-codecs/</a></li>
-<li>Repeat 2-8 for next big table. Avoid scenarios when you need to join big tables.</li>
+<li>Repeat 2-8 for next big table(s). Avoid scenarios when you need to join big tables.</li>
 <li>Pick the clients library for you programming language (the most mature are python / golang / java / c++), build some pipeline - for inserts (low QPS, lot of rows in singe insert, check acknowledgements &amp; retry the same block on failures), ETLs if needed, some reporting layer (<a href="https://kb.altinity.com/altinity-kb-integrations/bi-tools/" target="_blank">https://kb.altinity.com/altinity-kb-integrations/bi-tools/</a>) </li>
 </ol>
 <h3 id="stage-1-planning-the-production-setup">Stage 1. Planning the production setup</h3>
@@ -847,7 +847,7 @@
 
     Last modified
     2022.02.11
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/ce1e9b1d3e22a73de822828b69284784434eda1d">Rename change-me.md to clickhouse-deployment-plan.md (ce1e9b1d3)</a>
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/818c507ce219eba9ff52641d4faf07a81a64e275">Update clickhouse-deployment-plan.md (818c507ce)</a>
 
 </div>
 
