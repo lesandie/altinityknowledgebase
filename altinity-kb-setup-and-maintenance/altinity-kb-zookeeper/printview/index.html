@@ -30,7 +30,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.e4b026aece2eedb19d7c8805852a4c72.json"
+  data-offline-search-index-json-src="/offline-search-index.ddeaba9ef936a9c48cdc264ae818f7b9.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -104,7 +104,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.e4b026aece2eedb19d7c8805852a4c72.json"
+  data-offline-search-index-json-src="/offline-search-index.ddeaba9ef936a9c48cdc264ae818f7b9.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -163,7 +163,7 @@ This the multi-page printable view of this section.
     
     
 	
-<li>2: <a href="#pg-4b2037cae63d87dd18115b5fa7174451"></a></li>
+<li>2: <a href="#pg-4c33701373e85b893c3b3464fa4f6683">clickhouse-keeper</a></li>
 
 
     
@@ -171,7 +171,7 @@ This the multi-page printable view of this section.
     
     
 	
-<li>3: <a href="#pg-4c33701373e85b893c3b3464fa4f6683">clickhouse-keeper</a></li>
+<li>3: <a href="#pg-564a3bbd39f9550e577334d912a883dc">How to check the list of watches</a></li>
 
 
     
@@ -179,7 +179,7 @@ This the multi-page printable view of this section.
     
     
 	
-<li>4: <a href="#pg-564a3bbd39f9550e577334d912a883dc">How to check the list of watches</a></li>
+<li>4: <a href="#pg-722cb96284be123698aa3e56ea92ecaf">JVM sizes and garbage collector settings</a></li>
 
 
     
@@ -187,7 +187,7 @@ This the multi-page printable view of this section.
     
     
 	
-<li>5: <a href="#pg-722cb96284be123698aa3e56ea92ecaf">JVM sizes and garbage collector settings</a></li>
+<li>5: <a href="#pg-1ef2081889fb4a086febf3b281e44778">Proper setup</a></li>
 
 
     
@@ -195,7 +195,7 @@ This the multi-page printable view of this section.
     
     
 	
-<li>6: <a href="#pg-1ef2081889fb4a086febf3b281e44778">Proper setup</a></li>
+<li>6: <a href="#pg-66b660806f12af38114754857823e52a">Recovering from complete metadata loss in ZooKeeper</a></li>
 
 
     
@@ -203,7 +203,7 @@ This the multi-page printable view of this section.
     
     
 	
-<li>7: <a href="#pg-66b660806f12af38114754857823e52a">Recovering from complete metadata loss in ZooKeeper</a></li>
+<li>7: <a href="#pg-8892167f56e913cb6f2d429fc16315c8">ZooKeeper backup</a></li>
 
 
     
@@ -211,7 +211,7 @@ This the multi-page printable view of this section.
     
     
 	
-<li>8: <a href="#pg-8892167f56e913cb6f2d429fc16315c8">ZooKeeper backup</a></li>
+<li>8: <a href="#pg-f9f14245cdbc89d13e77a5b1b24de46e">ZooKeeper cluster migration</a></li>
 
 
     
@@ -219,7 +219,7 @@ This the multi-page printable view of this section.
     
     
 	
-<li>9: <a href="#pg-f9f14245cdbc89d13e77a5b1b24de46e">ZooKeeper cluster migration</a></li>
+<li>9: <a href="#pg-4b2037cae63d87dd18115b5fa7174451">ZooKeeper Monitoring</a></li>
 
 
     
@@ -384,59 +384,7 @@ sudo systemctl start zookeeper.service
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-4b2037cae63d87dd18115b5fa7174451">2 - </h1>
-    
-	<h1 id="zookeeper-monitoring">ZooKeeper Monitoring</h1>
-<h2 id="zookeeper">ZooKeeper</h2>
-<h3 id="scrape-metrics">scrape metrics</h3>
-<ul>
-<li>embedded exporter since version 3.6.0
-<ul>
-<li><a href="https://zookeeper.apache.org/doc/r3.6.2/zookeeperMonitor.html" target="_blank">https://zookeeper.apache.org/doc/r3.6.2/zookeeperMonitor.html</a></li>
-</ul>
-</li>
-<li>standalone exporter
-<ul>
-<li><a href="https://github.com/dabealu/zookeeper-exporter" target="_blank">https://github.com/dabealu/zookeeper-exporter</a></li>
-</ul>
-</li>
-</ul>
-<h3 id="install-dashboards">Install dashboards</h3>
-<ul>
-<li>embedded exporter <a href="https://grafana.com/grafana/dashboards/10465" target="_blank">https://grafana.com/grafana/dashboards/10465</a></li>
-<li>dabealu exporter <a href="https://grafana.com/grafana/dashboards/11442" target="_blank">https://grafana.com/grafana/dashboards/11442</a></li>
-</ul>
-<p>See also <a href="https://grafana.com/grafana/dashboards?search=ZooKeeper&amp;dataSource=prometheus" target="_blank">https://grafana.com/grafana/dashboards?search=ZooKeeper&amp;amp;dataSource=prometheus</a></p>
-<h3 id="setup-alert-rules">setup alert rules</h3>
-<ul>
-<li>embedded exporter <a href="https://github.com/Altinity/clickhouse-operator/blob/master/deploy/prometheus/prometheus-alert-rules.yaml#L480-L805" target="_blank">https://github.com/Altinity/clickhouse-operator/blob/master/deploy/prometheus/prometheus-alert-rules.yaml#L480-L805</a></li>
-</ul>
-<h3 id="see-also">See also</h3>
-<ul>
-<li><a href="https://blog.serverdensity.com/how-to-monitor-zookeeper/" target="_blank">https://blog.serverdensity.com/how-to-monitor-zookeeper/</a></li>
-<li><a href="https://www.datadoghq.com/blog/monitoring-kafka-performance-metrics/#zookeeper-metrics" target="_blank">https://www.datadoghq.com/blog/monitoring-kafka-performance-metrics/#zookeeper-metrics</a></li>
-<li><a href="https://dzone.com/articles/monitoring-apache-zookeeper-servers" target="_blank">https://dzone.com/articles/monitoring-apache-zookeeper-servers</a></li>
-<li><a href="https://docs.signalfx.com/en/latest/integrations/integrations-reference/integrations.zookeeper.html" target="_blank">https://docs.signalfx.com/en/latest/integrations/integrations-reference/integrations.zookeeper.html</a></li>
-<li><a href="https://github.com/samber/awesome-prometheus-alerts/blob/c3ba0cf1997c7e952369a090aeb10343cdca4878/_data/rules.yml#L1146-L1170" target="_blank">https://github.com/samber/awesome-prometheus-alerts/blob/c3ba0cf1997c7e952369a090aeb10343cdca4878/_data/rules.yml#L1146-L1170</a> (or <a href="https://awesome-prometheus-alerts.grep.to/rules.html#zookeeper" target="_blank">https://awesome-prometheus-alerts.grep.to/rules.html#zookeeper</a> )</li>
-<li><a href="https://alex.dzyoba.com/blog/prometheus-alerts/" target="_blank">https://alex.dzyoba.com/blog/prometheus-alerts/</a></li>
-<li><a href="https://docs.datadoghq.com/integrations/zk/?tab=host" target="_blank">https://docs.datadoghq.com/integrations/zk/?tab=host</a></li>
-</ul>
-
-</div>
-
-
-
-    
-	
-  
-    
-    
-	
-    
-
-<div class="td-content" style="page-break-before: always">
-    
-	<h1 id="pg-4c33701373e85b893c3b3464fa4f6683">3 - clickhouse-keeper</h1>
+	<h1 id="pg-4c33701373e85b893c3b3464fa4f6683">2 - clickhouse-keeper</h1>
     <div class="lead">clickhouse-keeper</div>
 	<p>In 21.3 there is already an option to run own clickhouse zookeeper implementation. It&rsquo;s still experimental, and still need to be started additionally on few nodes (similar to &lsquo;normal&rsquo; zookeeper) and speaks normal zookeeper protocol - needed to simplify A/B tests with real zookeeper.</p>
 <p>No docs, for now, only PR with code &amp; tests. Of course, if you want to play with it - you can, and early feedback is very valuable. But be prepared for a lot of tiny issues here and there, so don&rsquo;t be disappointed if it will not satisfy your expectations for some reason. It&rsquo;s very-very fresh :slightly_smiling_face: It&rsquo;s ready for some trial runs, but not ready yet for production use cases.</p>
@@ -603,7 +551,7 @@ $ cat /etc/clickhouse-server/config.d/macros.xml
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-564a3bbd39f9550e577334d912a883dc">4 - How to check the list of watches</h1>
+	<h1 id="pg-564a3bbd39f9550e577334d912a883dc">3 - How to check the list of watches</h1>
     <div class="lead">How to check the list of watches</div>
 	<p>Zookeeper use watches to notify a client on znode changes. This article explains how to check watches set by ZooKeeper servers and how it is used.</p>
 <p><strong>Solution:</strong></p>
@@ -630,7 +578,7 @@ $ cat /etc/clickhouse-server/config.d/macros.xml
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-722cb96284be123698aa3e56ea92ecaf">5 - JVM sizes and garbage collector settings</h1>
+	<h1 id="pg-722cb96284be123698aa3e56ea92ecaf">4 - JVM sizes and garbage collector settings</h1>
     <div class="lead">JVM sizes and garbage collector settings</div>
 	<h2 id="tldr-version">TLDR version</h2>
 <p>use fresh Java version (11 or newer), disable swap and set up (for 4 Gb node):</p>
@@ -716,7 +664,7 @@ On older JVM version (before 10) you may want to make some tuning to decrease pa
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-1ef2081889fb4a086febf3b281e44778">6 - Proper setup</h1>
+	<h1 id="pg-1ef2081889fb4a086febf3b281e44778">5 - Proper setup</h1>
     <div class="lead">Proper setup</div>
 	<h3 id="main-docs-article">Main docs article</h3>
 <p><a href="https://docs.altinity.com/operationsguide/clickhouse-zookeeper/zookeeper-installation/" target="_blank">https://docs.altinity.com/operationsguide/clickhouse-zookeeper/zookeeper-installation/</a></p>
@@ -766,7 +714,7 @@ in many cases, the slowness of the zookeeper is actually a symptom of some issue
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-66b660806f12af38114754857823e52a">7 - Recovering from complete metadata loss in ZooKeeper</h1>
+	<h1 id="pg-66b660806f12af38114754857823e52a">6 - Recovering from complete metadata loss in ZooKeeper</h1>
     <div class="lead">Recovering from complete metadata loss in ZooKeeper</div>
 	<h2 id="problem">Problem</h2>
 <p>Every ClickHouse user experienced a loss of ZooKeeper one day. While the data is available and replicas respond to queries, inserts are no longer possible. ClickHouse uses ZooKeeper in order to store the reference version of the table structure and part of data, and when it is not available can not guarantee data consistency anymore. Replicated tables turn to the read-only mode. In this article we describe step-by-step instructions of how to restore ZooKeeper metadata and bring ClickHouse cluster back to normal operation.</p>
@@ -875,7 +823,7 @@ in many cases, the slowness of the zookeeper is actually a symptom of some issue
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-8892167f56e913cb6f2d429fc16315c8">8 - ZooKeeper backup</h1>
+	<h1 id="pg-8892167f56e913cb6f2d429fc16315c8">7 - ZooKeeper backup</h1>
     <div class="lead">ZooKeeper backup</div>
 	<p>You may have a question: “Do I need to backup Zookeeper Database, because it’s pretty important for ClickHouse?”</p>
 <p>Answer: <em>ZK is in memory database. All nodes of ZK has exactly the same data.</em></p>
@@ -906,7 +854,7 @@ in many cases, the slowness of the zookeeper is actually a symptom of some issue
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-f9f14245cdbc89d13e77a5b1b24de46e">9 - ZooKeeper cluster migration</h1>
+	<h1 id="pg-f9f14245cdbc89d13e77a5b1b24de46e">8 - ZooKeeper cluster migration</h1>
     <div class="lead">ZooKeeper cluster migration</div>
 	<p>Here is a plan for ZK 3.4.9 (no dynamic reconfiguration):</p>
 <ol>
@@ -927,6 +875,58 @@ in many cases, the slowness of the zookeeper is actually a symptom of some issue
 <li>Turn off the 3 old ZK nodes.</li>
 </ol>
 <p>This plan works, but it is not the only way to do this, it can be changed if needed.</p>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-4b2037cae63d87dd18115b5fa7174451">9 - ZooKeeper Monitoring</h1>
+    <div class="lead">ZooKeeper Monitoring</div>
+	<h1 id="zookeeper-monitoring">ZooKeeper Monitoring</h1>
+<h2 id="zookeeper">ZooKeeper</h2>
+<h3 id="scrape-metrics">scrape metrics</h3>
+<ul>
+<li>embedded exporter since version 3.6.0
+<ul>
+<li><a href="https://zookeeper.apache.org/doc/r3.6.2/zookeeperMonitor.html" target="_blank">https://zookeeper.apache.org/doc/r3.6.2/zookeeperMonitor.html</a></li>
+</ul>
+</li>
+<li>standalone exporter
+<ul>
+<li><a href="https://github.com/dabealu/zookeeper-exporter" target="_blank">https://github.com/dabealu/zookeeper-exporter</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="install-dashboards">Install dashboards</h3>
+<ul>
+<li>embedded exporter <a href="https://grafana.com/grafana/dashboards/10465" target="_blank">https://grafana.com/grafana/dashboards/10465</a></li>
+<li>dabealu exporter <a href="https://grafana.com/grafana/dashboards/11442" target="_blank">https://grafana.com/grafana/dashboards/11442</a></li>
+</ul>
+<p>See also <a href="https://grafana.com/grafana/dashboards?search=ZooKeeper&amp;dataSource=prometheus" target="_blank">https://grafana.com/grafana/dashboards?search=ZooKeeper&amp;amp;dataSource=prometheus</a></p>
+<h3 id="setup-alert-rules">setup alert rules</h3>
+<ul>
+<li>embedded exporter <a href="https://github.com/Altinity/clickhouse-operator/blob/master/deploy/prometheus/prometheus-alert-rules.yaml#L480-L805" target="_blank">https://github.com/Altinity/clickhouse-operator/blob/master/deploy/prometheus/prometheus-alert-rules.yaml#L480-L805</a></li>
+</ul>
+<h3 id="see-also">See also</h3>
+<ul>
+<li><a href="https://blog.serverdensity.com/how-to-monitor-zookeeper/" target="_blank">https://blog.serverdensity.com/how-to-monitor-zookeeper/</a></li>
+<li><a href="https://www.datadoghq.com/blog/monitoring-kafka-performance-metrics/#zookeeper-metrics" target="_blank">https://www.datadoghq.com/blog/monitoring-kafka-performance-metrics/#zookeeper-metrics</a></li>
+<li><a href="https://dzone.com/articles/monitoring-apache-zookeeper-servers" target="_blank">https://dzone.com/articles/monitoring-apache-zookeeper-servers</a></li>
+<li><a href="https://docs.signalfx.com/en/latest/integrations/integrations-reference/integrations.zookeeper.html" target="_blank">https://docs.signalfx.com/en/latest/integrations/integrations-reference/integrations.zookeeper.html</a></li>
+<li><a href="https://github.com/samber/awesome-prometheus-alerts/blob/c3ba0cf1997c7e952369a090aeb10343cdca4878/_data/rules.yml#L1146-L1170" target="_blank">https://github.com/samber/awesome-prometheus-alerts/blob/c3ba0cf1997c7e952369a090aeb10343cdca4878/_data/rules.yml#L1146-L1170</a> (or <a href="https://awesome-prometheus-alerts.grep.to/rules.html#zookeeper" target="_blank">https://awesome-prometheus-alerts.grep.to/rules.html#zookeeper</a> )</li>
+<li><a href="https://alex.dzyoba.com/blog/prometheus-alerts/" target="_blank">https://alex.dzyoba.com/blog/prometheus-alerts/</a></li>
+<li><a href="https://docs.datadoghq.com/integrations/zk/?tab=host" target="_blank">https://docs.datadoghq.com/integrations/zk/?tab=host</a></li>
+</ul>
 
 </div>
 

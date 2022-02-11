@@ -29,7 +29,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.e4b026aece2eedb19d7c8805852a4c72.json"
+  data-offline-search-index-json-src="/offline-search-index.ddeaba9ef936a9c48cdc264ae818f7b9.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -40,35 +40,30 @@
 
 
 <meta name="keywords" content="">
-<meta name="description" content="Altinity Knowledge Base">
+<meta name="description" content="ZooKeeper Monitoring">
 
 <link rel="shortcut icon" href="/favicons/favicon.ico" >
 <link rel="icon" href="/favicons/favicon.ico" >
-<title>Altinity Knowledge Base</title>
+<title>ZooKeeper Monitoring | Altinity Knowledge Base</title>
 <meta name="description" content="ZooKeeper Monitoring
-ZooKeeper
-scrape metrics
-
-embedded exporter since version 3.6.0
-
-https://zookeeper.apache.org/doc/r3.6.2/zookeeperMonitor.html …">
-<meta property="og:title" content="" />
-<meta property="og:description" content="ZooKeeper Monitoring ZooKeeper scrape metrics  embedded exporter since version 3.6.0  https://zookeeper.apache.org/doc/r3.6.2/zookeeperMonitor.html   standalone exporter  https://github.com/dabealu/zookeeper-exporter    Install dashboards  embedded exporter https://grafana.com/grafana/dashboards/10465 dabealu exporter https://grafana.com/grafana/dashboards/11442  See also https://grafana.com/grafana/dashboards?search=ZooKeeper&amp;amp;dataSource=prometheus
-setup alert rules  embedded exporter https://github.com/Altinity/clickhouse-operator/blob/master/deploy/prometheus/prometheus-alert-rules.yaml#L480-L805  See also  https://blog.serverdensity.com/how-to-monitor-zookeeper/ https://www.datadoghq.com/blog/monitoring-kafka-performance-metrics/#zookeeper-metrics https://dzone.com/articles/monitoring-apache-zookeeper-servers https://docs.signalfx.com/en/latest/integrations/integrations-reference/integrations.zookeeper.html https://github.com/samber/awesome-prometheus-alerts/blob/c3ba0cf1997c7e952369a090aeb10343cdca4878/_data/rules.yml#L1146-L1170 (or https://awesome-prometheus-alerts.grep.to/rules.html#zookeeper ) https://alex.dzyoba.com/blog/prometheus-alerts/ https://docs.datadoghq.com/integrations/zk/?tab=host  " />
+">
+<meta property="og:title" content="ZooKeeper Monitoring" />
+<meta property="og:description" content="ZooKeeper Monitoring
+" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-zookeeper/zookeeper-monitoring/" /><meta property="article:section" content="altinity-kb-setup-and-maintenance" />
 
-<meta property="article:modified_time" content="2021-10-04T09:05:24-06:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
+<meta property="article:modified_time" content="2022-02-11T13:13:32+01:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
 
-<meta itemprop="name" content="">
-<meta itemprop="description" content="ZooKeeper Monitoring ZooKeeper scrape metrics  embedded exporter since version 3.6.0  https://zookeeper.apache.org/doc/r3.6.2/zookeeperMonitor.html   standalone exporter  https://github.com/dabealu/zookeeper-exporter    Install dashboards  embedded exporter https://grafana.com/grafana/dashboards/10465 dabealu exporter https://grafana.com/grafana/dashboards/11442  See also https://grafana.com/grafana/dashboards?search=ZooKeeper&amp;amp;dataSource=prometheus
-setup alert rules  embedded exporter https://github.com/Altinity/clickhouse-operator/blob/master/deploy/prometheus/prometheus-alert-rules.yaml#L480-L805  See also  https://blog.serverdensity.com/how-to-monitor-zookeeper/ https://www.datadoghq.com/blog/monitoring-kafka-performance-metrics/#zookeeper-metrics https://dzone.com/articles/monitoring-apache-zookeeper-servers https://docs.signalfx.com/en/latest/integrations/integrations-reference/integrations.zookeeper.html https://github.com/samber/awesome-prometheus-alerts/blob/c3ba0cf1997c7e952369a090aeb10343cdca4878/_data/rules.yml#L1146-L1170 (or https://awesome-prometheus-alerts.grep.to/rules.html#zookeeper ) https://alex.dzyoba.com/blog/prometheus-alerts/ https://docs.datadoghq.com/integrations/zk/?tab=host  ">
-<meta itemprop="dateModified" content="2021-10-04T09:05:24-06:00" />
+<meta itemprop="name" content="ZooKeeper Monitoring">
+<meta itemprop="description" content="ZooKeeper Monitoring
+">
+<meta itemprop="dateModified" content="2022-02-11T13:13:32+01:00" />
 <meta itemprop="wordCount" content="43">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content=""/>
-<meta name="twitter:description" content="ZooKeeper Monitoring ZooKeeper scrape metrics  embedded exporter since version 3.6.0  https://zookeeper.apache.org/doc/r3.6.2/zookeeperMonitor.html   standalone exporter  https://github.com/dabealu/zookeeper-exporter    Install dashboards  embedded exporter https://grafana.com/grafana/dashboards/10465 dabealu exporter https://grafana.com/grafana/dashboards/11442  See also https://grafana.com/grafana/dashboards?search=ZooKeeper&amp;amp;dataSource=prometheus
-setup alert rules  embedded exporter https://github.com/Altinity/clickhouse-operator/blob/master/deploy/prometheus/prometheus-alert-rules.yaml#L480-L805  See also  https://blog.serverdensity.com/how-to-monitor-zookeeper/ https://www.datadoghq.com/blog/monitoring-kafka-performance-metrics/#zookeeper-metrics https://dzone.com/articles/monitoring-apache-zookeeper-servers https://docs.signalfx.com/en/latest/integrations/integrations-reference/integrations.zookeeper.html https://github.com/samber/awesome-prometheus-alerts/blob/c3ba0cf1997c7e952369a090aeb10343cdca4878/_data/rules.yml#L1146-L1170 (or https://awesome-prometheus-alerts.grep.to/rules.html#zookeeper ) https://alex.dzyoba.com/blog/prometheus-alerts/ https://docs.datadoghq.com/integrations/zk/?tab=host  "/>
+<meta name="twitter:title" content="ZooKeeper Monitoring"/>
+<meta name="twitter:description" content="ZooKeeper Monitoring
+"/>
 
 
 
@@ -113,7 +108,7 @@ setup alert rules  embedded exporter https://github.com/Altinity/clickhouse-oper
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.e4b026aece2eedb19d7c8805852a4c72.json"
+  data-offline-search-index-json-src="/offline-search-index.ddeaba9ef936a9c48cdc264ae818f7b9.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -141,7 +136,7 @@ setup alert rules  embedded exporter https://github.com/Altinity/clickhouse-oper
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.e4b026aece2eedb19d7c8805852a4c72.json"
+  data-offline-search-index-json-src="/offline-search-index.ddeaba9ef936a9c48cdc264ae818f7b9.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -491,8 +486,6 @@ setup alert rules  embedded exporter https://github.com/Altinity/clickhouse-oper
   <ul class="ul-3 foldable">
     <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenancealtinity-kb-zookeeperinstall_ubuntu-li">
   <a href="/altinity-kb-setup-and-maintenance/altinity-kb-zookeeper/install_ubuntu/" title="Install standalone Zookeeper for ClickHouse on Ubuntu / Debian" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancealtinity-kb-zookeeperinstall_ubuntu"><span class="">Zookeeper install on Ubuntu</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-altinity-kb-setup-and-maintenancealtinity-kb-zookeeperzookeeper-monitoring-li">
-  <a href="/altinity-kb-setup-and-maintenance/altinity-kb-zookeeper/zookeeper-monitoring/" class="align-left pl-0 active td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancealtinity-kb-zookeeperzookeeper-monitoring"><span class="td-sidebar-nav-active-item"></span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenancealtinity-kb-zookeeperclickhouse-keeper-li">
   <a href="/altinity-kb-setup-and-maintenance/altinity-kb-zookeeper/clickhouse-keeper/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancealtinity-kb-zookeeperclickhouse-keeper"><span class="">clickhouse-keeper</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenancealtinity-kb-zookeeperaltinity-kb-how-to-check-the-list-of-watches-li">
@@ -507,6 +500,8 @@ setup alert rules  embedded exporter https://github.com/Altinity/clickhouse-oper
   <a href="/altinity-kb-setup-and-maintenance/altinity-kb-zookeeper/altinity-kb-zookeeper-backup/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancealtinity-kb-zookeeperaltinity-kb-zookeeper-backup"><span class="">ZooKeeper backup</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenancealtinity-kb-zookeeperaltinity-kb-zookeeper-cluster-migration-li">
   <a href="/altinity-kb-setup-and-maintenance/altinity-kb-zookeeper/altinity-kb-zookeeper-cluster-migration/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancealtinity-kb-zookeeperaltinity-kb-zookeeper-cluster-migration"><span class="">ZooKeeper cluster migration</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-altinity-kb-setup-and-maintenancealtinity-kb-zookeeperzookeeper-monitoring-li">
+  <a href="/altinity-kb-setup-and-maintenance/altinity-kb-zookeeper/zookeeper-monitoring/" class="align-left pl-0 active td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancealtinity-kb-zookeeperzookeeper-monitoring"><span class="td-sidebar-nav-active-item">ZooKeeper Monitoring</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenancealtinity-kb-zookeeperzookeeper-schema-li">
   <a href="/altinity-kb-setup-and-maintenance/altinity-kb-zookeeper/zookeeper-schema/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancealtinity-kb-zookeeperzookeeper-schema"><span class="">ZooKeeper schema</span></a>
 </li>
@@ -698,9 +693,9 @@ setup alert rules  embedded exporter https://github.com/Altinity/clickhouse-oper
   <p>&nbsp;</p>
   <p>Share on Social Media:</p>
   <span style="display:flex; flex-direction: row; justify-content: space-between; align-items: flex-start; padding-left: 10px; padding-right: 75px;">
-    <a href="https://twitter.com/intent/tweet?text=&amp;url=http://kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-zookeeper/zookeeper-monitoring/" target="_blank" class="fab fa-twitter"></a>
+    <a href="https://twitter.com/intent/tweet?text=ZooKeeper%20Monitoring&amp;url=http://kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-zookeeper/zookeeper-monitoring/" target="_blank" class="fab fa-twitter"></a>
     <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-zookeeper/zookeeper-monitoring/" target="_blank" class="fab fa-facebook"></a>
-    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http://kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-zookeeper/zookeeper-monitoring/&amp;title="target="_blank" class="fab fa-linkedin"></a>
+    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http://kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-zookeeper/zookeeper-monitoring/&amp;title=ZooKeeper%20Monitoring"target="_blank" class="fab fa-linkedin"></a>
   </span>
 </div>
 
@@ -757,7 +752,7 @@ setup alert rules  embedded exporter https://github.com/Altinity/clickhouse-oper
 
 
 <li class="breadcrumb-item active" aria-current="page">
-	<a href="http://kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-zookeeper/zookeeper-monitoring/"></a>
+	<a href="http://kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-zookeeper/zookeeper-monitoring/">ZooKeeper Monitoring</a>
 </li>
 
 	</ol>
@@ -765,7 +760,7 @@ setup alert rules  embedded exporter https://github.com/Altinity/clickhouse-oper
 
             
 <div class="td-content">
-	<h1></h1>
+	<h1>ZooKeeper Monitoring</h1>
     <div class="lead">
 	</div>
 	
@@ -811,8 +806,8 @@ setup alert rules  embedded exporter https://github.com/Altinity/clickhouse-oper
 	<div class="text-muted mt-5 pt-3 border-top">
 
     Last modified
-    2021.10.04
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/f1b97ce8ec9741e0d0d702c266bebbc75db50a56">Update zookeeper-monitoring.md (f1b97ce8e)</a>
+    2022.02.11
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/60a843a3e99daf499513ca4a3eef1096b42f8600">Update zookeeper-monitoring.md (60a843a3e)</a>
 
 </div>
 
