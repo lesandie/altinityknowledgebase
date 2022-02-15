@@ -12,12 +12,12 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://kb.altinity.com/altinity-kb-schema-design/insert_deduplication/" /><meta property="article:section" content="altinity-kb-schema-design" />
 
-<meta property="article:modified_time" content="2022-02-01T11:21:19-04:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
+<meta property="article:modified_time" content="2022-02-15T15:02:59-04:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
 
 <meta itemprop="name" content="Insert Deduplication / Insert idempotency">
 <meta itemprop="description" content="Insert Deduplication / Insert idempotency , insert_deduplicate setting.">
-<meta itemprop="dateModified" content="2022-02-01T11:21:19-04:00" />
-<meta itemprop="wordCount" content="532">
+<meta itemprop="dateModified" content="2022-02-15T15:02:59-04:00" />
+<meta itemprop="wordCount" content="596">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Insert Deduplication / Insert idempotency"/>
 <meta name="twitter:description" content="Insert Deduplication / Insert idempotency , insert_deduplicate setting."/>
@@ -75,7 +75,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.407cd13bd5f18d0625402081e8e6a159.json"
+  data-offline-search-index-json-src="/offline-search-index.824c09f4011c630e6dc300568305231c.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -103,7 +103,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.407cd13bd5f18d0625402081e8e6a159.json"
+  data-offline-search-index-json-src="/offline-search-index.824c09f4011c630e6dc300568305231c.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -657,6 +657,7 @@
         <li><a href="#example-to-demonstrate-how-functions-are-expanded">Example to demonstrate how functions are expanded:</a></li>
       </ul>
     </li>
+    <li><a href="#insert_deduplication_token">insert_deduplication_token</a></li>
   </ul>
 </nav>
 
@@ -810,7 +811,7 @@
         <span style="color:#204a87;font-weight:bold">&lt;/default&gt;</span>
     <span style="color:#a40000">&lt;</span>/profile
 <span style="color:#204a87;font-weight:bold">&lt;/yandex&gt;</span>    
-</code></pre></div><p>Other related settings: <a href="https://clickhouse.com/docs/en/operations/settings/merge-tree-settings/#replicated-deduplication-window" target="_blank">replicated_deduplication_window</a>, <a href="https://clickhouse.com/docs/en/operations/settings/merge-tree-settings/#replicated-deduplication-window-seconds" target="_blank">replicated_deduplication_window_seconds</a></p>
+</code></pre></div><p>Other related settings: <a href="https://clickhouse.com/docs/en/operations/settings/merge-tree-settings/#replicated-deduplication-window" target="_blank">replicated_deduplication_window</a>, <a href="https://clickhouse.com/docs/en/operations/settings/merge-tree-settings/#replicated-deduplication-window-seconds" target="_blank">replicated_deduplication_window_seconds</a>, <a href="https://clickhouse.com/docs/en/operations/settings/settings/#insert_deduplication_token" target="_blank">insert_deduplication_token</a>.</p>
 <p>More info: <a href="https://github.com/ClickHouse/ClickHouse/issues/16037" target="_blank">https://github.com/ClickHouse/ClickHouse/issues/16037</a> <a href="https://github.com/ClickHouse/ClickHouse/issues/3322" target="_blank">https://github.com/ClickHouse/ClickHouse/issues/3322</a></p>
 <h2 id="non-replicated-mergetree-tables">Non-replicated MergeTree tables</h2>
 <p>By default insert deduplication is disabled for non-replicated tables (for backward compatibility).</p>
@@ -914,14 +915,38 @@
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">2022</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#0000cf;font-weight:bold">01</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#0000cf;font-weight:bold">31</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">15</span><span style="color:#000;font-weight:bold">:</span><span style="color:#0000cf;font-weight:bold">43</span><span style="color:#000;font-weight:bold">:</span><span style="color:#0000cf;font-weight:bold">45</span><span style="color:#000;font-weight:bold">.</span><span style="color:#0000cf;font-weight:bold">364</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">2022</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#0000cf;font-weight:bold">01</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#0000cf;font-weight:bold">31</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">15</span><span style="color:#000;font-weight:bold">:</span><span style="color:#0000cf;font-weight:bold">43</span><span style="color:#000;font-weight:bold">:</span><span style="color:#0000cf;font-weight:bold">41</span><span style="color:#000;font-weight:bold">.</span><span style="color:#0000cf;font-weight:bold">944</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">└───┴─────────────────────────┘</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></code></pre></div><h2 id="insert_deduplication_token">insert_deduplication_token</h2>
+<p>Since Clikhouse 22.2 there is a new setting <a href="https://clickhouse.com/docs/en/operations/settings/settings/#insert_deduplication_token" target="_blank">insert_dedupplication_token</a>.
+This setting allows you to define an explicit token that will be used for deduplication instead of calculating a checksum from the inserted data.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#204a87;font-weight:bold">CREATE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">TABLE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">test_table</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000;font-weight:bold">(</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">A</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Int64</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">ENGINE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">MergeTree</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">ORDER</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">BY</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">A</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">SETTINGS</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">non_replicated_deduplication_window</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">100</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">INSERT</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">INTO</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">test_table</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">FORMAT</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">Values</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">SETTINGS</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">insert_deduplication_token</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;test&#39;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">(</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">);</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#8f5902;font-style:italic">-- the next insert won&#39;t be deduplicated because insert_deduplication_token is different
+</span><span style="color:#8f5902;font-style:italic"></span><span style="color:#204a87;font-weight:bold">INSERT</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">INTO</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">test_table</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">FORMAT</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">Values</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">SETTINGS</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">insert_deduplication_token</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;test1&#39;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">(</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">);</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#8f5902;font-style:italic">-- the next insert will be deduplicated because insert_deduplication_token 
+</span><span style="color:#8f5902;font-style:italic">-- is the same as one of the previous
+</span><span style="color:#8f5902;font-style:italic"></span><span style="color:#204a87;font-weight:bold">INSERT</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">INTO</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">test_table</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">FORMAT</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">Values</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">SETTINGS</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">insert_deduplication_token</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;test&#39;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">(</span><span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">);</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">SELECT</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">FROM</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">test_table</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">┌─</span><span style="color:#000">A</span><span style="color:#a40000">─┐</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">└───┘</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">┌─</span><span style="color:#000">A</span><span style="color:#a40000">─┐</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">└───┘</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></code></pre></div>
 	
 	
 	<div class="text-muted mt-5 pt-3 border-top">
 
     Last modified
-    2022.02.01
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/1abb82b64009b8007fbcf9094a3af41dbde06d28">Update insert_deduplication.md (1abb82b64)</a>
+    2022.02.15
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/63ce9f11c24e6d42f8ab276a14ccf10331ee6dff">Update insert_deduplication.md (63ce9f11c)</a>
 
 </div>
 
