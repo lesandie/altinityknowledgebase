@@ -13,13 +13,13 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://kb.altinity.com/upgrade/removing-lost-parts/" /><meta property="article:section" content="upgrade" />
 
-<meta property="article:modified_time" content="2021-12-01T16:38:26-04:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
+<meta property="article:modified_time" content="2022-02-16T17:17:26-04:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
 
 <meta itemprop="name" content="Removing lost parts">
 <meta itemprop="description" content="Removing lost parts
 ">
-<meta itemprop="dateModified" content="2021-12-01T16:38:26-04:00" />
-<meta itemprop="wordCount" content="255">
+<meta itemprop="dateModified" content="2022-02-16T17:17:26-04:00" />
+<meta itemprop="wordCount" content="272">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Removing lost parts"/>
 <meta name="twitter:description" content="Removing lost parts
@@ -78,7 +78,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.4a46489d1bdc7f1d6f1be4fd5ea7fa3d.json"
+  data-offline-search-index-json-src="/offline-search-index.054328e246e6ca9d3ba29e83eb340c44.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -106,7 +106,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.4a46489d1bdc7f1d6f1be4fd5ea7fa3d.json"
+  data-offline-search-index-json-src="/offline-search-index.054328e246e6ca9d3ba29e83eb340c44.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -648,6 +648,7 @@
     <li><a href="#there-might-be-parts-left-in-zookeeper-that-dont-exist-on-disk">There might be parts left in ZooKeeper that don&rsquo;t exist on disk</a></li>
     <li><a href="#regarding-the-procedure-to-reproduce-the-issue">Regarding the procedure to reproduce the issue:</a></li>
     <li><a href="#a-query-to-find-forgotten-parts">A query to find &lsquo;forgotten&rsquo; parts</a></li>
+    <li><a href="#a-query-to-drop-empty-partitions-with-failing-replication-tasks">A query to drop empty partitions with failing replication tasks</a></li>
   </ul>
 </nav>
 
@@ -754,14 +755,24 @@ If this happens, then we think that after a restart of the replica with extra pa
 </ol>
 <h2 id="a-query-to-find-forgotten-parts">A query to find &lsquo;forgotten&rsquo; parts</h2>
 <p><a href="https://kb.altinity.com/altinity-kb-useful-queries/parts-consistency/#compare-the-list-of-parts-in-zookeeper-with-the-list-of-parts-on-disk" target="_blank">https://kb.altinity.com/altinity-kb-useful-queries/parts-consistency/#compare-the-list-of-parts-in-zookeeper-with-the-list-of-parts-on-disk</a></p>
-
+<h2 id="a-query-to-drop-empty-partitions-with-failing-replication-tasks">A query to drop empty partitions with failing replication tasks</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#204a87;font-weight:bold">select</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;alter table &#39;</span><span style="color:#ce5c00;font-weight:bold">||</span><span style="color:#204a87;font-weight:bold">database</span><span style="color:#ce5c00;font-weight:bold">||</span><span style="color:#4e9a06">&#39;.&#39;</span><span style="color:#ce5c00;font-weight:bold">||</span><span style="color:#204a87;font-weight:bold">table</span><span style="color:#ce5c00;font-weight:bold">||</span><span style="color:#4e9a06">&#39; drop partition id &#39;&#39;&#39;</span><span style="color:#ce5c00;font-weight:bold">||</span><span style="color:#000">partition_id</span><span style="color:#ce5c00;font-weight:bold">||</span><span style="color:#4e9a06">&#39;&#39;&#39;;&#39;</span><span style="color:#f8f8f8;text-decoration:underline"> 
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">from</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">(</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">select</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">database</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">table</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">splitByChar</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;_&#39;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#000">new_part_name</span><span style="color:#000;font-weight:bold">)[</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">]</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">partition_id</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">from</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">system</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">replication_queue</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">group</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">by</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">database</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">table</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">partition_id</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">q</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">left</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">join</span><span style="color:#f8f8f8;text-decoration:underline"> 
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">select</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">database</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">table</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">partition_id</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">countIf</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">active</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">cnt_active</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">count</span><span style="color:#000;font-weight:bold">()</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">cnt_total</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">from</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">system</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">parts</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">group</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">by</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">database</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">table</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">partition_id</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">p</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">using</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">database</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">table</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">partition_id</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">where</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">cnt_active</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></code></pre></div>
 	
 	
 	<div class="text-muted mt-5 pt-3 border-top">
 
     Last modified
-    2021.12.01
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/f2673192628e612f74ca7ddcb429eaa75c03ba97">Create removing-lost-parts.md (f26731926)</a>
+    2022.02.16
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/c7197afef0ae88d19e6a63547cee57142f93d1d8">Update removing-lost-parts.md (c7197afef)</a>
 
 </div>
 
