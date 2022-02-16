@@ -12,12 +12,12 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://kb.altinity.com/altinity-kb-schema-design/how-much-is-too-much/" /><meta property="article:section" content="altinity-kb-schema-design" />
 
-<meta property="article:modified_time" content="2021-12-20T16:21:40+01:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
+<meta property="article:modified_time" content="2022-02-16T14:22:32+01:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
 
 <meta itemprop="name" content="How much is too much?">
 <meta itemprop="description" content="ClickHouse Limitations.">
-<meta itemprop="dateModified" content="2021-12-20T16:21:40+01:00" />
-<meta itemprop="wordCount" content="584">
+<meta itemprop="dateModified" content="2022-02-16T14:22:32+01:00" />
+<meta itemprop="wordCount" content="585">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="How much is too much?"/>
 <meta name="twitter:description" content="ClickHouse Limitations."/>
@@ -75,7 +75,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.d2aa211b2886cf16ff5b0b7fc40df8bb.json"
+  data-offline-search-index-json-src="/offline-search-index.4a46489d1bdc7f1d6f1be4fd5ea7fa3d.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -103,7 +103,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.d2aa211b2886cf16ff5b0b7fc40df8bb.json"
+  data-offline-search-index-json-src="/offline-search-index.4a46489d1bdc7f1d6f1be4fd5ea7fa3d.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -746,7 +746,8 @@
 <h3 id="number-of-databases">Number of databases</h3>
 <p>Fewer than number of tables (above). Dozens / hundreds is usually still acceptable.</p>
 <h3 id="number-of-columns-in-the-table">Number of columns in the table</h3>
-<p>Up to a few hundreds. With thousands of columns the inserts / background merges may become slower / require more of RAM. See for example <a href="https://github.com/ClickHouse/ClickHouse/issues/6943" target="_blank">https://github.com/ClickHouse/ClickHouse/issues/6943</a></p>
+<p>Up to a few hundreds. With thousands of columns the inserts / background merges may become slower / require more of RAM.
+See for example <a href="https://github.com/ClickHouse/ClickHouse/issues/6943" target="_blank">https://github.com/ClickHouse/ClickHouse/issues/6943</a> <a href="https://github.com/ClickHouse/ClickHouse/issues/27502" target="_blank">https://github.com/ClickHouse/ClickHouse/issues/27502</a></p>
 <h3 id="clickhouse-instances-on-a-single-node--vm">ClickHouse instances on a single node / VM</h3>
 <p>One is enough. Single ClickHouse can use resources of the node very efficiently, and it may require some complicated tuning to run several instances on a single node.</p>
 <h3 id="number-of-parts--partitions-system-wide-across-all-databases">Number of parts / partitions (system-wide, across all databases)</h3>
@@ -778,8 +779,8 @@ You can combine many columns into a single index and this index will work for an
 	<div class="text-muted mt-5 pt-3 border-top">
 
     Last modified
-    2021.12.20
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/aad10feb93cd121c95cac4d431ed1b7cd6146efb">Update how-much-is-too-much.md (aad10feb9)</a>
+    2022.02.16
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/20203a5190f7018e800e8f76686068b47c1708d7">Update how-much-is-too-much.md (20203a519)</a>
 
 </div>
 

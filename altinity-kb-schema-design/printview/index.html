@@ -74,7 +74,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.d2aa211b2886cf16ff5b0b7fc40df8bb.json"
+  data-offline-search-index-json-src="/offline-search-index.4a46489d1bdc7f1d6f1be4fd5ea7fa3d.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -611,7 +611,8 @@ Need to use <code>alter table test.fact ... setting allow_nondeterministic_mutat
 <h3 id="number-of-databases">Number of databases</h3>
 <p>Fewer than number of tables (above). Dozens / hundreds is usually still acceptable.</p>
 <h3 id="number-of-columns-in-the-table">Number of columns in the table</h3>
-<p>Up to a few hundreds. With thousands of columns the inserts / background merges may become slower / require more of RAM. See for example <a href="https://github.com/ClickHouse/ClickHouse/issues/6943" target="_blank">https://github.com/ClickHouse/ClickHouse/issues/6943</a></p>
+<p>Up to a few hundreds. With thousands of columns the inserts / background merges may become slower / require more of RAM.
+See for example <a href="https://github.com/ClickHouse/ClickHouse/issues/6943" target="_blank">https://github.com/ClickHouse/ClickHouse/issues/6943</a> <a href="https://github.com/ClickHouse/ClickHouse/issues/27502" target="_blank">https://github.com/ClickHouse/ClickHouse/issues/27502</a></p>
 <h3 id="clickhouse-instances-on-a-single-node--vm">ClickHouse instances on a single node / VM</h3>
 <p>One is enough. Single ClickHouse can use resources of the node very efficiently, and it may require some complicated tuning to run several instances on a single node.</p>
 <h3 id="number-of-parts--partitions-system-wide-across-all-databases">Number of parts / partitions (system-wide, across all databases)</h3>
