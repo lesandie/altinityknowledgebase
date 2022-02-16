@@ -13,13 +13,13 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-server-config-files/" /><meta property="article:section" content="altinity-kb-setup-and-maintenance" />
 
-<meta property="article:modified_time" content="2022-01-25T09:55:11-07:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
+<meta property="article:modified_time" content="2022-02-16T11:01:14+01:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
 
 <meta itemprop="name" content="Server config files">
 <meta itemprop="description" content="How to manage server config files in Clickhouse
 ">
-<meta itemprop="dateModified" content="2022-01-25T09:55:11-07:00" />
-<meta itemprop="wordCount" content="835">
+<meta itemprop="dateModified" content="2022-02-16T11:01:14+01:00" />
+<meta itemprop="wordCount" content="844">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Server config files"/>
 <meta name="twitter:description" content="How to manage server config files in Clickhouse
@@ -78,7 +78,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.36da44d21e053df9078ab524d0653c2d.json"
+  data-offline-search-index-json-src="/offline-search-index.d2aa211b2886cf16ff5b0b7fc40df8bb.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -106,7 +106,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.36da44d21e053df9078ab524d0653c2d.json"
+  data-offline-search-index-json-src="/offline-search-index.d2aa211b2886cf16ff5b0b7fc40df8bb.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -739,7 +739,14 @@
 <p><strong>/etc/clickhouse-server/conf.d</strong> – sub-folder for any (both) settings.</p>
 <p>File names of your xml files can be arbitrary but they applied in alphabetical order.</p>
 <p>Examples:</p>
-<pre tabindex="0"><code class="language-markup" data-lang="markup">$ cat /etc/clickhouse-server/config.d/macros.xml
+<pre tabindex="0"><code class="language-markup" data-lang="markup">$ cat /etc/clickhouse-server/config.d/listen_host.xml
+&lt;?xml version=&quot;1.0&quot; ?&gt;
+&lt;yandex&gt;
+  &lt;listen_host&gt;::&lt;/listen_host&gt;
+&lt;/yandex&gt;
+
+
+$ cat /etc/clickhouse-server/config.d/macros.xml
 &lt;?xml version=&quot;1.0&quot; ?&gt;
 &lt;yandex&gt;
   &lt;macros&gt;
@@ -957,8 +964,8 @@ That means that that new setting will be applied to new sessions / after reconne
 	<div class="text-muted mt-5 pt-3 border-top">
 
     Last modified
-    2022.01.25
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/7b21c0eaff00b0d3b75ab95b0de4a1229bfcbad7">Update altinity-kb-server-config-files.md (7b21c0eaf)</a>
+    2022.02.16
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/403c06a5ff825d191844369c240f7c4092281f72">Update altinity-kb-server-config-files.md (403c06a5f)</a>
 
 </div>
 

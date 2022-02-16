@@ -74,7 +74,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.36da44d21e053df9078ab524d0653c2d.json"
+  data-offline-search-index-json-src="/offline-search-index.d2aa211b2886cf16ff5b0b7fc40df8bb.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -4719,7 +4719,14 @@ There is 2 possible solutions:</p>
 <p><strong>/etc/clickhouse-server/conf.d</strong> – sub-folder for any (both) settings.</p>
 <p>File names of your xml files can be arbitrary but they applied in alphabetical order.</p>
 <p>Examples:</p>
-<pre tabindex="0"><code class="language-markup" data-lang="markup">$ cat /etc/clickhouse-server/config.d/macros.xml
+<pre tabindex="0"><code class="language-markup" data-lang="markup">$ cat /etc/clickhouse-server/config.d/listen_host.xml
+&lt;?xml version=&quot;1.0&quot; ?&gt;
+&lt;yandex&gt;
+  &lt;listen_host&gt;::&lt;/listen_host&gt;
+&lt;/yandex&gt;
+
+
+$ cat /etc/clickhouse-server/config.d/macros.xml
 &lt;?xml version=&quot;1.0&quot; ?&gt;
 &lt;yandex&gt;
   &lt;macros&gt;
