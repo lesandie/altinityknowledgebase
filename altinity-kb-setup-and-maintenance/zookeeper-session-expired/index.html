@@ -12,12 +12,12 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://kb.altinity.com/altinity-kb-setup-and-maintenance/zookeeper-session-expired/" /><meta property="article:section" content="altinity-kb-setup-and-maintenance" />
 
-<meta property="article:modified_time" content="2021-11-11T11:17:25+01:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
+<meta property="article:modified_time" content="2022-02-17T13:02:33+01:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
 
 <meta itemprop="name" content="ZooKeeper session has expired">
 <meta itemprop="description" content="ZooKeeper session has expired.">
-<meta itemprop="dateModified" content="2021-11-11T11:17:25+01:00" />
-<meta itemprop="wordCount" content="691">
+<meta itemprop="dateModified" content="2022-02-17T13:02:33+01:00" />
+<meta itemprop="wordCount" content="829">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="ZooKeeper session has expired"/>
 <meta name="twitter:description" content="ZooKeeper session has expired."/>
@@ -75,7 +75,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.71fcc6998891254702bc9e9742db8ea1.json"
+  data-offline-search-index-json-src="/offline-search-index.e9665e9e4e85f43e24195863572177e8.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -103,7 +103,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.71fcc6998891254702bc9e9742db8ea1.json"
+  data-offline-search-index-json-src="/offline-search-index.e9665e9e4e85f43e24195863572177e8.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -752,14 +752,33 @@ know &amp; print to logs the real reason, while all &lsquo;user&rsquo; threads j
 <li><code>jute.maxbuffer</code> overrun. If you need to pass too much data in a single zookeeper transaction. (often happens if you need to do ALTER table UPDATE or other mutation on the table with big number of parts). The fix is adjusting JVM setting: -Djute.maxbuffer=8388608. See <a href="https://kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-zookeeper/jvm-sizes-and-garbage-collector-settings/" target="_blank">https://kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-zookeeper/jvm-sizes-and-garbage-collector-settings/</a></li>
 <li>XID overflow. XID is a transaction counter in zookeeper, if you do too many transactions the counter reaches maxint32, and to restart the counter zookeeper closes all the connections. Usually, that happens rarely, and is not avoidable in zookeeper (well in clickhouse-keeper that problem solved). There are some corner cases / some schemas which may end up with that XID overflow happening quite often. (a worst case we saw was once per 3 weeks).</li>
 </ol>
+<blockquote>
+<p><strong>Q. &ldquo;ZooKeeper session has expired&rdquo; happens every time I try to start the mutation / do other ALTER on Replicated table.</strong></p>
+</blockquote>
+<p>During ALTERing replicated table ClickHouse need to create a record in zookeeper listing all the parts which should be mutated (that usually means = list names of all parts of the table). If the size of list of parts exceeds maximum buffer size - zookeeper drops the connection.</p>
+<p>Parts name length can be different for different tables. In average with default <code>jute.maxbuffer</code> (1Mb) mutations start to fail for tables which have more than 5000 parts.</p>
+<p>Solutions:</p>
+<ol>
+<li>rethink partitioning, high number of parts in table is usually <a href="https://kb.altinity.com/altinity-kb-schema-design/how-much-is-too-much/#number-of-parts--partitions-system-wide-across-all-databases" target="_blank">not recommended</a></li>
+<li>increase <code>jute.maxbuffer</code> on zookeeper side <a href="https://kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-zookeeper/jvm-sizes-and-garbage-collector-settings/" target="_blank">to values about 8M</a></li>
+<li>use IN PARITION clause for mutations (where applicable) - since <a href="https://github.com/ClickHouse/ClickHouse/pull/13403" target="_blank">20.12</a></li>
+<li>switch to clickhouse-keeper</li>
+</ol>
+<p>Related issues:</p>
+<ul>
+<li><a href="https://github.com/ClickHouse/ClickHouse/issues/16307" target="_blank">https://github.com/ClickHouse/ClickHouse/issues/16307</a></li>
+<li><a href="https://github.com/ClickHouse/ClickHouse/issues/11933" target="_blank">https://github.com/ClickHouse/ClickHouse/issues/11933</a></li>
+<li><a href="https://github.com/ClickHouse/ClickHouse/issues/32646" target="_blank">https://github.com/ClickHouse/ClickHouse/issues/32646</a></li>
+<li><a href="https://github.com/ClickHouse/ClickHouse/issues/15882" target="_blank">https://github.com/ClickHouse/ClickHouse/issues/15882</a></li>
+</ul>
 
 	
 	
 	<div class="text-muted mt-5 pt-3 border-top">
 
     Last modified
-    2021.11.11
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/c20d0c0c4469bb1ecc76035c065b1f05c698cf84">Update zookeeper-session-expired.md (c20d0c0c4)</a>
+    2022.02.17
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/656c426b953aafa531fd0f093b08208aa0cf99d6">Update zookeeper-session-expired.md (656c426b9)</a>
 
 </div>
 
