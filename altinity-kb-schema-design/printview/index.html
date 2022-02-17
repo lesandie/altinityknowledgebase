@@ -74,7 +74,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.054328e246e6ca9d3ba29e83eb340c44.json"
+  data-offline-search-index-json-src="/offline-search-index.a18b93690e60205db54b5028c2c4f464.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -616,7 +616,7 @@ See for example <a href="https://github.com/ClickHouse/ClickHouse/issues/6943" t
 <h3 id="clickhouse-instances-on-a-single-node--vm">ClickHouse instances on a single node / VM</h3>
 <p>One is enough. Single ClickHouse can use resources of the node very efficiently, and it may require some complicated tuning to run several instances on a single node.</p>
 <h3 id="number-of-parts--partitions-system-wide-across-all-databases">Number of parts / partitions (system-wide, across all databases)</h3>
-<p>More than several dozens thousands may lead to performance degradation.</p>
+<p>More than several dozens thousands may lead to performance degradation: slow starts (see <a href="https://github.com/ClickHouse/ClickHouse/issues/10087" target="_blank">https://github.com/ClickHouse/ClickHouse/issues/10087</a> ), and query speed degradation.</p>
 <h3 id="number-of-tables--partitions-touched-by-a-single-insert">Number of tables &amp; partitions touched by a single insert</h3>
 <p>If you have realtime / frequent inserts no more than few.</p>
 <p>For the inserts are rare - up to couple of dozens.</p>

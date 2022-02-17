@@ -12,12 +12,12 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://kb.altinity.com/altinity-kb-schema-design/how-much-is-too-much/" /><meta property="article:section" content="altinity-kb-schema-design" />
 
-<meta property="article:modified_time" content="2022-02-16T14:22:32+01:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
+<meta property="article:modified_time" content="2022-02-17T11:01:43+01:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
 
 <meta itemprop="name" content="How much is too much?">
 <meta itemprop="description" content="ClickHouse Limitations.">
-<meta itemprop="dateModified" content="2022-02-16T14:22:32+01:00" />
-<meta itemprop="wordCount" content="585">
+<meta itemprop="dateModified" content="2022-02-17T11:01:43+01:00" />
+<meta itemprop="wordCount" content="594">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="How much is too much?"/>
 <meta name="twitter:description" content="ClickHouse Limitations."/>
@@ -75,7 +75,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.054328e246e6ca9d3ba29e83eb340c44.json"
+  data-offline-search-index-json-src="/offline-search-index.a18b93690e60205db54b5028c2c4f464.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -103,7 +103,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.054328e246e6ca9d3ba29e83eb340c44.json"
+  data-offline-search-index-json-src="/offline-search-index.a18b93690e60205db54b5028c2c4f464.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -751,7 +751,7 @@ See for example <a href="https://github.com/ClickHouse/ClickHouse/issues/6943" t
 <h3 id="clickhouse-instances-on-a-single-node--vm">ClickHouse instances on a single node / VM</h3>
 <p>One is enough. Single ClickHouse can use resources of the node very efficiently, and it may require some complicated tuning to run several instances on a single node.</p>
 <h3 id="number-of-parts--partitions-system-wide-across-all-databases">Number of parts / partitions (system-wide, across all databases)</h3>
-<p>More than several dozens thousands may lead to performance degradation.</p>
+<p>More than several dozens thousands may lead to performance degradation: slow starts (see <a href="https://github.com/ClickHouse/ClickHouse/issues/10087" target="_blank">https://github.com/ClickHouse/ClickHouse/issues/10087</a> ), and query speed degradation.</p>
 <h3 id="number-of-tables--partitions-touched-by-a-single-insert">Number of tables &amp; partitions touched by a single insert</h3>
 <p>If you have realtime / frequent inserts no more than few.</p>
 <p>For the inserts are rare - up to couple of dozens.</p>
@@ -779,8 +779,8 @@ You can combine many columns into a single index and this index will work for an
 	<div class="text-muted mt-5 pt-3 border-top">
 
     Last modified
-    2022.02.16
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/20203a5190f7018e800e8f76686068b47c1708d7">Update how-much-is-too-much.md (20203a519)</a>
+    2022.02.17
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/db533d24922bf8479c35fa212b1351b1ee748d7e">Update how-much-is-too-much.md (db533d249)</a>
 
 </div>
 
