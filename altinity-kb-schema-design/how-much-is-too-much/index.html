@@ -12,12 +12,12 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://kb.altinity.com/altinity-kb-schema-design/how-much-is-too-much/" /><meta property="article:section" content="altinity-kb-schema-design" />
 
-<meta property="article:modified_time" content="2022-02-17T12:51:27+01:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
+<meta property="article:modified_time" content="2022-02-17T13:11:03+01:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
 
 <meta itemprop="name" content="How much is too much?">
 <meta itemprop="description" content="ClickHouse Limitations.">
-<meta itemprop="dateModified" content="2022-02-17T12:51:27+01:00" />
-<meta itemprop="wordCount" content="622">
+<meta itemprop="dateModified" content="2022-02-17T13:11:03+01:00" />
+<meta itemprop="wordCount" content="639">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="How much is too much?"/>
 <meta name="twitter:description" content="ClickHouse Limitations."/>
@@ -75,7 +75,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.e9665e9e4e85f43e24195863572177e8.json"
+  data-offline-search-index-json-src="/offline-search-index.5b7b46092e46d9803afbc84710c8da2b.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -103,7 +103,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.e9665e9e4e85f43e24195863572177e8.json"
+  data-offline-search-index-json-src="/offline-search-index.5b7b46092e46d9803afbc84710c8da2b.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -740,8 +740,8 @@
 <p>While those numbers can vary a lot depending on your hardware &amp; settings there is some safe &lsquo;Goldilocks&rsquo; zone where ClickHouse work the best with default settings &amp; usual hardware.</p>
 <h3 id="number-of-tables-system-wide-across-all-databases">Number of tables (system-wide, across all databases)</h3>
 <ul>
-<li>non-replicated MergeTree-family tables = few thousands is still acceptable, if you don&rsquo;t do realtime inserts in more that few dozens of them. See <a href="https://github.com/ClickHouse/ClickHouse/issues/32259" target="_blank">32259</a></li>
-<li>ReplicatedXXXMergeTree = few hundreds is still acceptable, if you don&rsquo;t do realtime inserts in more that few dozens of them. See <a href="https://github.com/ClickHouse/ClickHouse/issues/31919" target="_blank">31919</a></li>
+<li>non-replicated MergeTree-family tables = few thousands is still acceptable, if you don&rsquo;t do realtime inserts in more that few dozens of them. See <a href="https://github.com/ClickHouse/ClickHouse/issues/32259" target="_blank">#32259</a></li>
+<li>ReplicatedXXXMergeTree = few hundreds is still acceptable, if you don&rsquo;t do realtime inserts in more that few dozens of them. Every Replicated table comes with it&rsquo;s own cost (need to do housekeepeing operations, monitoing replication queues etc). See <a href="https://github.com/ClickHouse/ClickHouse/issues/31919" target="_blank">#31919</a></li>
 <li>Log family table = even dozens of thousands is still ok, especially if database engine = Lazy is used.</li>
 </ul>
 <h3 id="number-of-databases">Number of databases</h3>
@@ -783,7 +783,7 @@ You can combine many columns into a single index and this index will work for an
 
     Last modified
     2022.02.17
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/1a6ac4219cad68a3e2acd928642d8bf5db22ad59">Update how-much-is-too-much.md (1a6ac4219)</a>
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/44688d961ea2cfc02a3b8a95731652d6dbfdd2dd">Update how-much-is-too-much.md (44688d961)</a>
 
 </div>
 

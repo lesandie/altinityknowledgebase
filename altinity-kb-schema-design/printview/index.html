@@ -74,7 +74,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.e9665e9e4e85f43e24195863572177e8.json"
+  data-offline-search-index-json-src="/offline-search-index.5b7b46092e46d9803afbc84710c8da2b.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -604,8 +604,8 @@ Need to use <code>alter table test.fact ... setting allow_nondeterministic_mutat
 <p>While those numbers can vary a lot depending on your hardware &amp; settings there is some safe &lsquo;Goldilocks&rsquo; zone where ClickHouse work the best with default settings &amp; usual hardware.</p>
 <h3 id="number-of-tables-system-wide-across-all-databases">Number of tables (system-wide, across all databases)</h3>
 <ul>
-<li>non-replicated MergeTree-family tables = few thousands is still acceptable, if you don&rsquo;t do realtime inserts in more that few dozens of them. See <a href="https://github.com/ClickHouse/ClickHouse/issues/32259" target="_blank">32259</a></li>
-<li>ReplicatedXXXMergeTree = few hundreds is still acceptable, if you don&rsquo;t do realtime inserts in more that few dozens of them. See <a href="https://github.com/ClickHouse/ClickHouse/issues/31919" target="_blank">31919</a></li>
+<li>non-replicated MergeTree-family tables = few thousands is still acceptable, if you don&rsquo;t do realtime inserts in more that few dozens of them. See <a href="https://github.com/ClickHouse/ClickHouse/issues/32259" target="_blank">#32259</a></li>
+<li>ReplicatedXXXMergeTree = few hundreds is still acceptable, if you don&rsquo;t do realtime inserts in more that few dozens of them. Every Replicated table comes with it&rsquo;s own cost (need to do housekeepeing operations, monitoing replication queues etc). See <a href="https://github.com/ClickHouse/ClickHouse/issues/31919" target="_blank">#31919</a></li>
 <li>Log family table = even dozens of thousands is still ok, especially if database engine = Lazy is used.</li>
 </ul>
 <h3 id="number-of-databases">Number of databases</h3>
