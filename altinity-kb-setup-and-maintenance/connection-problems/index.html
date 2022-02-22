@@ -12,12 +12,12 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://kb.altinity.com/altinity-kb-setup-and-maintenance/connection-problems/" /><meta property="article:section" content="altinity-kb-setup-and-maintenance" />
 
-<meta property="article:modified_time" content="2022-02-22T15:57:50+01:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
+<meta property="article:modified_time" content="2022-02-22T18:16:37+01:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
 
 <meta itemprop="name" content="Can not connect to my ClickHouse server">
 <meta itemprop="description" content="Can not connect to my ClickHouse server.">
-<meta itemprop="dateModified" content="2022-02-22T15:57:50+01:00" />
-<meta itemprop="wordCount" content="267">
+<meta itemprop="dateModified" content="2022-02-22T18:16:37+01:00" />
+<meta itemprop="wordCount" content="446">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Can not connect to my ClickHouse server"/>
 <meta name="twitter:description" content="Can not connect to my ClickHouse server."/>
@@ -75,7 +75,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.30dafd90f99a6f687b8532776a44e3f7.json"
+  data-offline-search-index-json-src="/offline-search-index.6793ef8635ab585fc5ac6232a25fed51.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -103,7 +103,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.30dafd90f99a6f687b8532776a44e3f7.json"
+  data-offline-search-index-json-src="/offline-search-index.6793ef8635ab585fc5ac6232a25fed51.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -722,7 +722,12 @@
 <li>
 <p>Ensure that the clickhouse-server is running</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">systemctl status clickhouse-server
-</code></pre></div></li>
+</code></pre></div><p>If server was restarted recently and don&rsquo;t accept the connections after the restart - most probably it still just starting.
+During the startup sequence it need to iterate over all data folders in /var/lib/clickhouse-server
+In case if you have a very high number of folders there (usually caused by a wrong partitioning, or a very high number of tables / databases)
+that startup time can take a lot of time.</p>
+<p>You can check that by looking for &lsquo;Ready for connections&rsquo; line in <code>/var/log/clickhouse-server/clickhouse-server.log</code> (<code>Information</code> log level neede)</p>
+</li>
 <li>
 <p>Ensure you use the proper port ip / interface?</p>
 <p>Ensure you&rsquo;re not trying to connect to secure port without tls / https or vice versa.</p>
@@ -760,8 +765,13 @@ sudo clickhouse-extract-from-config --config<span style="color:#ce5c00;font-weig
 curl 127.0.0.1:8123
 </code></pre></div></li>
 <li>
-<p>Check number of sockets opened by clickhouse - can it</p>
+<p>Check number of sockets opened by clickhouse</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">sudo lsof -i -a -p <span style="color:#204a87;font-weight:bold">$(</span>pidof clickhouse-server<span style="color:#204a87;font-weight:bold">)</span>
+
+<span style="color:#8f5902;font-style:italic"># or (adjust 9000 / 8123 ports if needed)</span>
+netstat -tn 2&gt;/dev/null <span style="color:#000;font-weight:bold">|</span> tail -n +3 <span style="color:#000;font-weight:bold">|</span> awk <span style="color:#4e9a06">&#39;{ printf(&#34;%s\t%s\t%s\t%s\t%s\t%s\n&#34;, $1, $2, $3, $4, $5, $6) }&#39;</span> <span style="color:#000;font-weight:bold">|</span> clickhouse-local -S <span style="color:#4e9a06">&#34;Proto String, RecvQ Int64, SendQ Int64, LocalAddress String, ForeignAddress String, State LowCardinality(String)&#34;</span> --query<span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;SELECT * FROM table WHERE LocalAddress like &#39;%:9000&#39; FORMAT PrettyCompact&#34;</span>
+
+netstat -tn 2&gt;/dev/null <span style="color:#000;font-weight:bold">|</span> tail -n +3 <span style="color:#000;font-weight:bold">|</span> awk <span style="color:#4e9a06">&#39;{ printf(&#34;%s\t%s\t%s\t%s\t%s\t%s\n&#34;, $1, $2, $3, $4, $5, $6) }&#39;</span> <span style="color:#000;font-weight:bold">|</span> clickhouse-local -S <span style="color:#4e9a06">&#34;Proto String, RecvQ Int64, SendQ Int64, LocalAddress String, ForeignAddress String, State LowCardinality(String)&#34;</span> --query<span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;SELECT * FROM table WHERE LocalAddress like &#39;%:8123&#39; FORMAT PrettyCompact&#34;</span>
 </code></pre></div><p>ClickHouse has a limit of number of open connections (4000 by default).</p>
 </li>
 <li>
@@ -783,7 +793,7 @@ cat /proc/<span style="color:#204a87;font-weight:bold">$(</span>pidof -s clickho
 
     Last modified
     2022.02.22
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/6f010a362bca351d1dbcd180ff658907fef2acff">Create connection-problems.md (6f010a362)</a>
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/57858acab0a73435ded0b9d0856e8682da715ef2">Update connection-problems.md (57858acab)</a>
 
 </div>
 
