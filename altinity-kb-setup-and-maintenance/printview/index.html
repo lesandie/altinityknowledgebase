@@ -74,7 +74,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.35252dbe14c6b712181472796db5482e.json"
+  data-offline-search-index-json-src="/offline-search-index.16a907d6e300fa884694b58fe80a2d5c.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -1297,7 +1297,7 @@ Therefore, it results in doubling of counts, when uniqState created by different
 </code></pre></div><p>If server was restarted recently and don&rsquo;t accept the connections after the restart - most probably it still just starting.
 During the startup sequence it need to iterate over all data folders in /var/lib/clickhouse-server
 In case if you have a very high number of folders there (usually caused by a wrong partitioning, or a very high number of tables / databases)
-that startup time can take a lot of time.</p>
+that startup time can take a lot of time (same can happen if disk is very slow, for example NFS).</p>
 <p>You can check that by looking for &lsquo;Ready for connections&rsquo; line in <code>/var/log/clickhouse-server/clickhouse-server.log</code> (<code>Information</code> log level neede)</p>
 </li>
 <li>
