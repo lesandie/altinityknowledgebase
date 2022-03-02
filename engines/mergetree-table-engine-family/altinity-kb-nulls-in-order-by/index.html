@@ -13,13 +13,13 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://kb.altinity.com/engines/mergetree-table-engine-family/altinity-kb-nulls-in-order-by/" /><meta property="article:section" content="engines" />
 
-<meta property="article:modified_time" content="2021-08-24T12:59:49-06:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
+<meta property="article:modified_time" content="2022-03-02T12:54:01+01:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
 
 <meta itemprop="name" content="Nulls in order by">
 <meta itemprop="description" content="Nulls in order by
 ">
-<meta itemprop="dateModified" content="2021-08-24T12:59:49-06:00" />
-<meta itemprop="wordCount" content="1">
+<meta itemprop="dateModified" content="2022-03-02T12:54:01+01:00" />
+<meta itemprop="wordCount" content="22">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Nulls in order by"/>
 <meta name="twitter:description" content="Nulls in order by
@@ -78,7 +78,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.41dc426efce12b05b3e1ade368ef5ff4.json"
+  data-offline-search-index-json-src="/offline-search-index.3a364856a1b7ca1a4cd07646212a51b2.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -106,7 +106,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.41dc426efce12b05b3e1ade368ef5ff4.json"
+  data-offline-search-index-json-src="/offline-search-index.3a364856a1b7ca1a4cd07646212a51b2.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -732,7 +732,12 @@
 	</div>
 	
 	       
-	<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">CREATE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">TABLE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">x</span><span style="color:#f8f8f8;text-decoration:underline">
+	<ol>
+<li>It is NOT RECOMMENDED for a general use</li>
+<li>Use on your own risk</li>
+<li>Use latest ClickHouse version if you need that.</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">CREATE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">TABLE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">x</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000;font-weight:bold">(</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#ce5c00;font-weight:bold">`</span><span style="color:#000">a</span><span style="color:#ce5c00;font-weight:bold">`</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">Nullable</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">UInt32</span><span style="color:#000;font-weight:bold">),</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#ce5c00;font-weight:bold">`</span><span style="color:#000">b</span><span style="color:#ce5c00;font-weight:bold">`</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">Nullable</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">UInt32</span><span style="color:#000;font-weight:bold">),</span><span style="color:#f8f8f8;text-decoration:underline">
@@ -756,8 +761,8 @@
 	<div class="text-muted mt-5 pt-3 border-top">
 
     Last modified
-    2021.08.24
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/5cdec4106d860a1959fafa170ad6998be341a087">Format corrections and spell checks. (5cdec4106)</a>
+    2022.03.02
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/4af0977df8a8d2d28f99d4b70216533d0f07e5a3">Update altinity-kb-nulls-in-order-by.md (4af0977df)</a>
 
 </div>
 
