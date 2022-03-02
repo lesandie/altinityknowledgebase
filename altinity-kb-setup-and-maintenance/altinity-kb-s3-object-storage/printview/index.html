@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.92.2" /><link rel="canonical" type="text/html" href="http://kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-s3-object-storage/">
+<meta name="generator" content="Hugo 0.93.0" /><link rel="canonical" type="text/html" href="http://kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-s3-object-storage/">
 <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
 <link rel="shortcut icon" href="/favicons/favicon.ico" >
 <link rel="icon" href="/favicons/favicon.ico" >
@@ -74,7 +74,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.035286ffea94b20115412349c1d2df50.json"
+  data-offline-search-index-json-src="/offline-search-index.41dc426efce12b05b3e1ade368ef5ff4.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -170,47 +170,47 @@ This the multi-page printable view of this section.
 <p>For EC2 instance, there is an option to configure an IAM role:</p>
 <p><img src="/assets/select-ec2-iam-role.png" alt=""></p>
 <p>Role shall contain a policy with permissions like:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#000;font-weight:bold">{</span>
-    <span style="color:#204a87;font-weight:bold">&#34;Version&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;2012-10-17&#34;</span><span style="color:#000;font-weight:bold">,</span>
-    <span style="color:#204a87;font-weight:bold">&#34;Statement&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
-        <span style="color:#000;font-weight:bold">{</span>
-            <span style="color:#204a87;font-weight:bold">&#34;Sid&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;allow-put-and-get&#34;</span><span style="color:#000;font-weight:bold">,</span>
-            <span style="color:#204a87;font-weight:bold">&#34;Effect&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;Allow&#34;</span><span style="color:#000;font-weight:bold">,</span>
-            <span style="color:#204a87;font-weight:bold">&#34;Action&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
-                <span style="color:#4e9a06">&#34;s3:PutObject&#34;</span><span style="color:#000;font-weight:bold">,</span>
-                <span style="color:#4e9a06">&#34;s3:GetObject&#34;</span>
-            <span style="color:#000;font-weight:bold">],</span>
-            <span style="color:#204a87;font-weight:bold">&#34;Resource&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;arn:aws:s3:::BUCKET_NAME/test_s3_disk/*&#34;</span>
-        <span style="color:#000;font-weight:bold">}</span>
-    <span style="color:#000;font-weight:bold">]</span>
-<span style="color:#000;font-weight:bold">}</span>
-</code></pre></div><p>Corresponding configuration of ClickHouse:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#204a87;font-weight:bold">&lt;clickhouse&gt;</span>
-    <span style="color:#204a87;font-weight:bold">&lt;storage_configuration&gt;</span>
-        <span style="color:#204a87;font-weight:bold">&lt;disks&gt;</span>
-            <span style="color:#204a87;font-weight:bold">&lt;disk_s3&gt;</span>
-                <span style="color:#204a87;font-weight:bold">&lt;type&gt;</span>s3<span style="color:#204a87;font-weight:bold">&lt;/type&gt;</span>
-                <span style="color:#204a87;font-weight:bold">&lt;endpoint&gt;</span>http://s3.us-east-1.amazonaws.com/BUCKET_NAME/test_s3_disk/<span style="color:#204a87;font-weight:bold">&lt;/endpoint&gt;</span>
-                <span style="color:#204a87;font-weight:bold">&lt;use_environment_credentials&gt;</span>true<span style="color:#204a87;font-weight:bold">&lt;/use_environment_credentials&gt;</span>
-            <span style="color:#204a87;font-weight:bold">&lt;/disk_s3&gt;</span>
-        <span style="color:#204a87;font-weight:bold">&lt;/disks&gt;</span>
-        <span style="color:#204a87;font-weight:bold">&lt;policies&gt;</span>
-            <span style="color:#204a87;font-weight:bold">&lt;policy_s3_only&gt;</span>
-                <span style="color:#204a87;font-weight:bold">&lt;volumes&gt;</span>
-                    <span style="color:#204a87;font-weight:bold">&lt;volume_s3&gt;</span>
-                        <span style="color:#204a87;font-weight:bold">&lt;disk&gt;</span>disk_s3<span style="color:#204a87;font-weight:bold">&lt;/disk&gt;</span>
-                    <span style="color:#204a87;font-weight:bold">&lt;/volume_s3&gt;</span>
-                <span style="color:#204a87;font-weight:bold">&lt;/volumes&gt;</span>
-            <span style="color:#204a87;font-weight:bold">&lt;/policy_s3_only&gt;</span>
-        <span style="color:#204a87;font-weight:bold">&lt;/policies&gt;</span>
-    <span style="color:#204a87;font-weight:bold">&lt;/storage_configuration&gt;</span>
-<span style="color:#204a87;font-weight:bold">&lt;/clickhouse&gt;</span>
-</code></pre></div><p>Small check:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#204a87;font-weight:bold">CREATE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">TABLE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">table_s3</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">(</span><span style="color:#204a87">number</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Int64</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">ENGINE</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000">MergeTree</span><span style="color:#000;font-weight:bold">()</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">ORDER</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">BY</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">tuple</span><span style="color:#000;font-weight:bold">()</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">PARTITION</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">BY</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">tuple</span><span style="color:#000;font-weight:bold">()</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">SETTINGS</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">storage_policy</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#39;policy_s3_only&#39;</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">INSERT</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">INTO</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">table_s3</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">SELECT</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">FROM</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">system</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">numbers</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">LIMIT</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">100000000</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">SELECT</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">FROM</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">table_s3</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">DROP</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">TABLE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">table_s3</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></code></pre></div>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&#34;Version&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;2012-10-17&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&#34;Statement&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#204a87;font-weight:bold">&#34;Sid&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;allow-put-and-get&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#204a87;font-weight:bold">&#34;Effect&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;Allow&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#204a87;font-weight:bold">&#34;Action&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">[</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#4e9a06">&#34;s3:PutObject&#34;</span><span style="color:#000;font-weight:bold">,</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#4e9a06">&#34;s3:GetObject&#34;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#000;font-weight:bold">],</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#204a87;font-weight:bold">&#34;Resource&#34;</span><span style="color:#000;font-weight:bold">:</span> <span style="color:#4e9a06">&#34;arn:aws:s3:::BUCKET_NAME/test_s3_disk/*&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#000;font-weight:bold">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}</span>
+</span></span></code></pre></div><p>Corresponding configuration of ClickHouse:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">&lt;clickhouse&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&lt;storage_configuration&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&lt;disks&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#204a87;font-weight:bold">&lt;disk_s3&gt;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#204a87;font-weight:bold">&lt;type&gt;</span>s3<span style="color:#204a87;font-weight:bold">&lt;/type&gt;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#204a87;font-weight:bold">&lt;endpoint&gt;</span>http://s3.us-east-1.amazonaws.com/BUCKET_NAME/test_s3_disk/<span style="color:#204a87;font-weight:bold">&lt;/endpoint&gt;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#204a87;font-weight:bold">&lt;use_environment_credentials&gt;</span>true<span style="color:#204a87;font-weight:bold">&lt;/use_environment_credentials&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#204a87;font-weight:bold">&lt;/disk_s3&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&lt;/disks&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&lt;policies&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#204a87;font-weight:bold">&lt;policy_s3_only&gt;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#204a87;font-weight:bold">&lt;volumes&gt;</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#204a87;font-weight:bold">&lt;volume_s3&gt;</span>
+</span></span><span style="display:flex;"><span>                        <span style="color:#204a87;font-weight:bold">&lt;disk&gt;</span>disk_s3<span style="color:#204a87;font-weight:bold">&lt;/disk&gt;</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#204a87;font-weight:bold">&lt;/volume_s3&gt;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#204a87;font-weight:bold">&lt;/volumes&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#204a87;font-weight:bold">&lt;/policy_s3_only&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&lt;/policies&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&lt;/storage_configuration&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">&lt;/clickhouse&gt;</span>
+</span></span></code></pre></div><p>Small check:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">CREATE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">TABLE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">table_s3</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">(</span><span style="color:#204a87">number</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Int64</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">ENGINE</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000">MergeTree</span><span style="color:#000;font-weight:bold">()</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">ORDER</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">BY</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">tuple</span><span style="color:#000;font-weight:bold">()</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">PARTITION</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">BY</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">tuple</span><span style="color:#000;font-weight:bold">()</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">SETTINGS</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">storage_policy</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#39;policy_s3_only&#39;</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">INSERT</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">INTO</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">table_s3</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">SELECT</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">FROM</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">system</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">numbers</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">LIMIT</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">100000000</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">SELECT</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">FROM</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">table_s3</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">DROP</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">TABLE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">table_s3</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div>
 </div>
 
 
@@ -228,19 +228,19 @@ This the multi-page printable view of this section.
 	<h1 id="pg-56d30b1c77fb6e372359df908c32cf1a">2 - S3Disk</h1>
     
 	<h2 id="settings">Settings</h2>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#204a87;font-weight:bold">&lt;clickhouse&gt;</span>
-  <span style="color:#204a87;font-weight:bold">&lt;storage_configuration&gt;</span>
-    <span style="color:#204a87;font-weight:bold">&lt;disks&gt;</span>
-      <span style="color:#204a87;font-weight:bold">&lt;s3&gt;</span>
-        <span style="color:#204a87;font-weight:bold">&lt;type&gt;</span>s3<span style="color:#204a87;font-weight:bold">&lt;/type&gt;</span>
-        <span style="color:#204a87;font-weight:bold">&lt;endpoint&gt;</span>http://s3.us-east-1.amazonaws.com/BUCKET_NAME/test_s3_disk/<span style="color:#204a87;font-weight:bold">&lt;/endpoint&gt;</span>
-        <span style="color:#204a87;font-weight:bold">&lt;access_key_id&gt;</span>ACCESS_KEY_ID<span style="color:#204a87;font-weight:bold">&lt;/access_key_id&gt;</span>
-        <span style="color:#204a87;font-weight:bold">&lt;secret_access_key&gt;</span>SECRET_ACCESS_KEY<span style="color:#204a87;font-weight:bold">&lt;/secret_access_key&gt;</span>
-        <span style="color:#204a87;font-weight:bold">&lt;skip_access_check&gt;</span>true<span style="color:#204a87;font-weight:bold">&lt;/skip_access_check&gt;</span>
-        <span style="color:#204a87;font-weight:bold">&lt;send_metadata&gt;</span>true<span style="color:#204a87;font-weight:bold">&lt;/send_metadata&gt;</span>
-      <span style="color:#204a87;font-weight:bold">&lt;/s3&gt;</span>
-<span style="color:#204a87;font-weight:bold">&lt;/clickhouse&gt;</span>
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">&lt;clickhouse&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&lt;storage_configuration&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&lt;disks&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#204a87;font-weight:bold">&lt;s3&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&lt;type&gt;</span>s3<span style="color:#204a87;font-weight:bold">&lt;/type&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&lt;endpoint&gt;</span>http://s3.us-east-1.amazonaws.com/BUCKET_NAME/test_s3_disk/<span style="color:#204a87;font-weight:bold">&lt;/endpoint&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&lt;access_key_id&gt;</span>ACCESS_KEY_ID<span style="color:#204a87;font-weight:bold">&lt;/access_key_id&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&lt;secret_access_key&gt;</span>SECRET_ACCESS_KEY<span style="color:#204a87;font-weight:bold">&lt;/secret_access_key&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&lt;skip_access_check&gt;</span>true<span style="color:#204a87;font-weight:bold">&lt;/skip_access_check&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&lt;send_metadata&gt;</span>true<span style="color:#204a87;font-weight:bold">&lt;/send_metadata&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#204a87;font-weight:bold">&lt;/s3&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">&lt;/clickhouse&gt;</span>
+</span></span></code></pre></div><ul>
 <li>
 <p>skip_access_check — if true, it&rsquo;s possible to use read only credentials with regular MergeTree table. But you would need to disable merges (<code>prefer_not_to_merge</code> setting) on s3 volume as well.</p>
 </li>
@@ -255,8 +255,8 @@ This the multi-page printable view of this section.
 <li>ClickHouse need RW access to this bucket</li>
 </ol>
 <p>In order to restore metadata, you would need to create restore file in <code>metadata_path/_s3_disk_name_</code> directory:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">touch /var/lib/clickhouse/disks/_s3_disk_name_/restore
-</code></pre></div><p>In that case ClickHouse would restore to the same bucket and path and update only metadata files in s3 bucket.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>touch /var/lib/clickhouse/disks/_s3_disk_name_/restore
+</span></span></code></pre></div><p>In that case ClickHouse would restore to the same bucket and path and update only metadata files in s3 bucket.</p>
 <h3 id="custom">Custom</h3>
 <p>Limitations:</p>
 <ol>
@@ -264,11 +264,11 @@ This the multi-page printable view of this section.
 <li>ClickHouse will copy objects in case of restoring to a different bucket or path.</li>
 </ol>
 <p>If you would like to change bucket or path, you need to populate restore file with settings in key=value format:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cat /var/lib/clickhouse/disks/_s3_disk_name_/restore
-
-<span style="color:#000">source_bucket</span><span style="color:#ce5c00;font-weight:bold">=</span>s3disk
-<span style="color:#000">source_path</span><span style="color:#ce5c00;font-weight:bold">=</span>vol1/
-</code></pre></div><h2 id="links">Links</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cat /var/lib/clickhouse/disks/_s3_disk_name_/restore
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000">source_bucket</span><span style="color:#ce5c00;font-weight:bold">=</span>s3disk
+</span></span><span style="display:flex;"><span><span style="color:#000">source_path</span><span style="color:#ce5c00;font-weight:bold">=</span>vol1/
+</span></span></code></pre></div><h2 id="links">Links</h2>
 <p><a href="https://altinity.com/blog/integrating-clickhouse-with-minio" target="_blank">https://altinity.com/blog/integrating-clickhouse-with-minio</a>
 <a href="https://altinity.com/blog/clickhouse-object-storage-performance-minio-vs-aws-s3" target="_blank">https://altinity.com/blog/clickhouse-object-storage-performance-minio-vs-aws-s3</a>
 <a href="https://altinity.com/blog/tips-for-high-performance-clickhouse-clusters-with-s3-object-storage" target="_blank">https://altinity.com/blog/tips-for-high-performance-clickhouse-clusters-with-s3-object-storage</a></p>
@@ -379,7 +379,7 @@ This the multi-page printable view of this section.
 
 
 
-<script src="/js/main.min.3b172c13b62c2bea8b1c9d2599cddc8cf89718a92d792c680871c81ba43d8c85.js" integrity="sha256-OxcsE7YsK&#43;qLHJ0lmc3cjPiXGKkteSxoCHHIG6Q9jIU=" crossorigin="anonymous"></script>
+<script src="/js/main.min.7fa9e3e39f56ebd66798993ef3c080218d9696c971a28ef8872d750b7416a435.js" integrity="sha256-f6nj459W69ZnmJk&#43;88CAIY2Wlslxoo74hy11C3QWpDU=" crossorigin="anonymous"></script>
 
 
 

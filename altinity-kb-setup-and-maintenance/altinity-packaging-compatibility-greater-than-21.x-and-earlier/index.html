@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.92.2" /><META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
+<meta name="generator" content="Hugo 0.93.0" /><META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
 <link rel="shortcut icon" href="/favicons/favicon.ico" >
 <link rel="icon" href="/favicons/favicon.ico" >
 <title>Altinity packaging compatibility &gt;21.x and earlier | Altinity Knowledge Base</title>
@@ -78,7 +78,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.035286ffea94b20115412349c1d2df50.json"
+  data-offline-search-index-json-src="/offline-search-index.41dc426efce12b05b3e1ade368ef5ff4.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -106,7 +106,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.035286ffea94b20115412349c1d2df50.json"
+  data-offline-search-index-json-src="/offline-search-index.41dc426efce12b05b3e1ade368ef5ff4.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -739,116 +739,116 @@
 <p>Unfortunately, that change leads to compatibility issues - automatic dependencies resolution gets confused by the conflicting package names: both when you update ClickHouse to the new version (the one which uses older packaging) and when you want to install older altinity packages (20.8 and older).</p>
 <h3 id="installing-old-clickhouse-version-with-old-packaging-schema">Installing old clickhouse version (with old packaging schema)</h3>
 <p>When you try to install versions 20.8 or older from Altinity repo -</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#000">version</span><span style="color:#ce5c00;font-weight:bold">=</span>20.8.12.2-1.el7
-yum install clickhouse-client-<span style="color:#4e9a06">${</span><span style="color:#000">version</span><span style="color:#4e9a06">}</span> clickhouse-server-<span style="color:#4e9a06">${</span><span style="color:#000">version</span><span style="color:#4e9a06">}</span>
-</code></pre></div><p>yum outputs smth like</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">yum install clickhouse-client-<span style="color:#4e9a06">${</span><span style="color:#000">version</span><span style="color:#4e9a06">}</span> clickhouse-server-<span style="color:#4e9a06">${</span><span style="color:#000">version</span><span style="color:#4e9a06">}</span>
-Loaded plugins: fastestmirror, ovl
-Loading mirror speeds from cached hostfile
- * base: centos.hitme.net.pl
- * extras: centos1.hti.pl
- * updates: centos1.hti.pl
-Altinity_clickhouse-altinity-stable/x86_64/signature                                                                                                                                <span style="color:#000;font-weight:bold">|</span>  <span style="color:#0000cf;font-weight:bold">833</span> B  00:00:00
-Altinity_clickhouse-altinity-stable/x86_64/signature                                                                                                                                <span style="color:#000;font-weight:bold">|</span> 1.0 kB  00:00:01 !!!
-Altinity_clickhouse-altinity-stable-source/signature                                                                                                                                <span style="color:#000;font-weight:bold">|</span>  <span style="color:#0000cf;font-weight:bold">833</span> B  00:00:00
-Altinity_clickhouse-altinity-stable-source/signature                                                                                                                                <span style="color:#000;font-weight:bold">|</span>  <span style="color:#0000cf;font-weight:bold">951</span> B  00:00:00 !!!
-Resolving Dependencies
---&gt; Running transaction check
----&gt; Package clickhouse-client.x86_64 0:20.8.12.2-1.el7 will be installed
----&gt; Package clickhouse-server.x86_64 0:20.8.12.2-1.el7 will be installed
---&gt; Processing Dependency: clickhouse-server-common <span style="color:#ce5c00;font-weight:bold">=</span> 20.8.12.2-1.el7 <span style="color:#204a87;font-weight:bold">for</span> package: clickhouse-server-20.8.12.2-1.el7.x86_64
-Package clickhouse-server-common is obsoleted by clickhouse-server, but obsoleting package does not provide <span style="color:#204a87;font-weight:bold">for</span> requirements
---&gt; Processing Dependency: clickhouse-common-static <span style="color:#ce5c00;font-weight:bold">=</span> 20.8.12.2-1.el7 <span style="color:#204a87;font-weight:bold">for</span> package: clickhouse-server-20.8.12.2-1.el7.x86_64
---&gt; Running transaction check
----&gt; Package clickhouse-common-static.x86_64 0:20.8.12.2-1.el7 will be installed
----&gt; Package clickhouse-server.x86_64 0:20.8.12.2-1.el7 will be installed
---&gt; Processing Dependency: clickhouse-server-common <span style="color:#ce5c00;font-weight:bold">=</span> 20.8.12.2-1.el7 <span style="color:#204a87;font-weight:bold">for</span> package: clickhouse-server-20.8.12.2-1.el7.x86_64
-Package clickhouse-server-common is obsoleted by clickhouse-server, but obsoleting package does not provide <span style="color:#204a87;font-weight:bold">for</span> requirements
---&gt; Finished Dependency Resolution
-Error: Package: clickhouse-server-20.8.12.2-1.el7.x86_64 <span style="color:#ce5c00;font-weight:bold">(</span>Altinity_clickhouse-altinity-stable<span style="color:#ce5c00;font-weight:bold">)</span>
-           Requires: clickhouse-server-common <span style="color:#ce5c00;font-weight:bold">=</span> 20.8.12.2-1.el7
-           Available: clickhouse-server-common-1.1.54370-2.x86_64 <span style="color:#ce5c00;font-weight:bold">(</span>clickhouse-stable<span style="color:#ce5c00;font-weight:bold">)</span>
-               clickhouse-server-common <span style="color:#ce5c00;font-weight:bold">=</span> 1.1.54370-2
-           Available: clickhouse-server-common-1.1.54378-2.x86_64 <span style="color:#ce5c00;font-weight:bold">(</span>clickhouse-stable<span style="color:#ce5c00;font-weight:bold">)</span>
-               clickhouse-server-common <span style="color:#ce5c00;font-weight:bold">=</span> 1.1.54378-2
-...
-           Available: clickhouse-server-common-20.8.11.17-1.el7.x86_64 <span style="color:#ce5c00;font-weight:bold">(</span>Altinity_clickhouse-altinity-stable<span style="color:#ce5c00;font-weight:bold">)</span>
-               clickhouse-server-common <span style="color:#ce5c00;font-weight:bold">=</span> 20.8.11.17-1.el7
-           Available: clickhouse-server-common-20.8.12.2-1.el7.x86_64 <span style="color:#ce5c00;font-weight:bold">(</span>Altinity_clickhouse-altinity-stable<span style="color:#ce5c00;font-weight:bold">)</span>
-               clickhouse-server-common <span style="color:#ce5c00;font-weight:bold">=</span> 20.8.12.2-1.el7
- You could try using --skip-broken to work around the problem
- You could try running: rpm -Va --nofiles --nodigest
-</code></pre></div><p>As you can see yum has an issue with resolving <code>clickhouse-server-common</code> dependency, which marked as obsoleted by newer packages.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#000">version</span><span style="color:#ce5c00;font-weight:bold">=</span>20.8.12.2-1.el7
+</span></span><span style="display:flex;"><span>yum install clickhouse-client-<span style="color:#4e9a06">${</span><span style="color:#000">version</span><span style="color:#4e9a06">}</span> clickhouse-server-<span style="color:#4e9a06">${</span><span style="color:#000">version</span><span style="color:#4e9a06">}</span>
+</span></span></code></pre></div><p>yum outputs smth like</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>yum install clickhouse-client-<span style="color:#4e9a06">${</span><span style="color:#000">version</span><span style="color:#4e9a06">}</span> clickhouse-server-<span style="color:#4e9a06">${</span><span style="color:#000">version</span><span style="color:#4e9a06">}</span>
+</span></span><span style="display:flex;"><span>Loaded plugins: fastestmirror, ovl
+</span></span><span style="display:flex;"><span>Loading mirror speeds from cached hostfile
+</span></span><span style="display:flex;"><span> * base: centos.hitme.net.pl
+</span></span><span style="display:flex;"><span> * extras: centos1.hti.pl
+</span></span><span style="display:flex;"><span> * updates: centos1.hti.pl
+</span></span><span style="display:flex;"><span>Altinity_clickhouse-altinity-stable/x86_64/signature                                                                                                                                <span style="color:#000;font-weight:bold">|</span>  <span style="color:#0000cf;font-weight:bold">833</span> B  00:00:00
+</span></span><span style="display:flex;"><span>Altinity_clickhouse-altinity-stable/x86_64/signature                                                                                                                                <span style="color:#000;font-weight:bold">|</span> 1.0 kB  00:00:01 !!!
+</span></span><span style="display:flex;"><span>Altinity_clickhouse-altinity-stable-source/signature                                                                                                                                <span style="color:#000;font-weight:bold">|</span>  <span style="color:#0000cf;font-weight:bold">833</span> B  00:00:00
+</span></span><span style="display:flex;"><span>Altinity_clickhouse-altinity-stable-source/signature                                                                                                                                <span style="color:#000;font-weight:bold">|</span>  <span style="color:#0000cf;font-weight:bold">951</span> B  00:00:00 !!!
+</span></span><span style="display:flex;"><span>Resolving Dependencies
+</span></span><span style="display:flex;"><span>--&gt; Running transaction check
+</span></span><span style="display:flex;"><span>---&gt; Package clickhouse-client.x86_64 0:20.8.12.2-1.el7 will be installed
+</span></span><span style="display:flex;"><span>---&gt; Package clickhouse-server.x86_64 0:20.8.12.2-1.el7 will be installed
+</span></span><span style="display:flex;"><span>--&gt; Processing Dependency: clickhouse-server-common <span style="color:#ce5c00;font-weight:bold">=</span> 20.8.12.2-1.el7 <span style="color:#204a87;font-weight:bold">for</span> package: clickhouse-server-20.8.12.2-1.el7.x86_64
+</span></span><span style="display:flex;"><span>Package clickhouse-server-common is obsoleted by clickhouse-server, but obsoleting package does not provide <span style="color:#204a87;font-weight:bold">for</span> requirements
+</span></span><span style="display:flex;"><span>--&gt; Processing Dependency: clickhouse-common-static <span style="color:#ce5c00;font-weight:bold">=</span> 20.8.12.2-1.el7 <span style="color:#204a87;font-weight:bold">for</span> package: clickhouse-server-20.8.12.2-1.el7.x86_64
+</span></span><span style="display:flex;"><span>--&gt; Running transaction check
+</span></span><span style="display:flex;"><span>---&gt; Package clickhouse-common-static.x86_64 0:20.8.12.2-1.el7 will be installed
+</span></span><span style="display:flex;"><span>---&gt; Package clickhouse-server.x86_64 0:20.8.12.2-1.el7 will be installed
+</span></span><span style="display:flex;"><span>--&gt; Processing Dependency: clickhouse-server-common <span style="color:#ce5c00;font-weight:bold">=</span> 20.8.12.2-1.el7 <span style="color:#204a87;font-weight:bold">for</span> package: clickhouse-server-20.8.12.2-1.el7.x86_64
+</span></span><span style="display:flex;"><span>Package clickhouse-server-common is obsoleted by clickhouse-server, but obsoleting package does not provide <span style="color:#204a87;font-weight:bold">for</span> requirements
+</span></span><span style="display:flex;"><span>--&gt; Finished Dependency Resolution
+</span></span><span style="display:flex;"><span>Error: Package: clickhouse-server-20.8.12.2-1.el7.x86_64 <span style="color:#ce5c00;font-weight:bold">(</span>Altinity_clickhouse-altinity-stable<span style="color:#ce5c00;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>           Requires: clickhouse-server-common <span style="color:#ce5c00;font-weight:bold">=</span> 20.8.12.2-1.el7
+</span></span><span style="display:flex;"><span>           Available: clickhouse-server-common-1.1.54370-2.x86_64 <span style="color:#ce5c00;font-weight:bold">(</span>clickhouse-stable<span style="color:#ce5c00;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>               clickhouse-server-common <span style="color:#ce5c00;font-weight:bold">=</span> 1.1.54370-2
+</span></span><span style="display:flex;"><span>           Available: clickhouse-server-common-1.1.54378-2.x86_64 <span style="color:#ce5c00;font-weight:bold">(</span>clickhouse-stable<span style="color:#ce5c00;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>               clickhouse-server-common <span style="color:#ce5c00;font-weight:bold">=</span> 1.1.54378-2
+</span></span><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span>           Available: clickhouse-server-common-20.8.11.17-1.el7.x86_64 <span style="color:#ce5c00;font-weight:bold">(</span>Altinity_clickhouse-altinity-stable<span style="color:#ce5c00;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>               clickhouse-server-common <span style="color:#ce5c00;font-weight:bold">=</span> 20.8.11.17-1.el7
+</span></span><span style="display:flex;"><span>           Available: clickhouse-server-common-20.8.12.2-1.el7.x86_64 <span style="color:#ce5c00;font-weight:bold">(</span>Altinity_clickhouse-altinity-stable<span style="color:#ce5c00;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>               clickhouse-server-common <span style="color:#ce5c00;font-weight:bold">=</span> 20.8.12.2-1.el7
+</span></span><span style="display:flex;"><span> You could try using --skip-broken to work around the problem
+</span></span><span style="display:flex;"><span> You could try running: rpm -Va --nofiles --nodigest
+</span></span></code></pre></div><p>As you can see yum has an issue with resolving <code>clickhouse-server-common</code> dependency, which marked as obsoleted by newer packages.</p>
 <h4 id="solution-with-old-packaging-scheme">Solution with Old Packaging Scheme</h4>
 <p>add <code>--setopt=obsoletes=0</code> flag to the yum call.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#000">version</span><span style="color:#ce5c00;font-weight:bold">=</span>20.8.12.2-1.el7
-yum install --setopt<span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000">obsoletes</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">0</span> clickhouse-client-<span style="color:#4e9a06">${</span><span style="color:#000">version</span><span style="color:#4e9a06">}</span> clickhouse-server-<span style="color:#4e9a06">${</span><span style="color:#000">version</span><span style="color:#4e9a06">}</span>
----
-title: <span style="color:#4e9a06">&#34;installation succeeded&#34;</span>
-linkTitle: <span style="color:#4e9a06">&#34;installation succeeded&#34;</span>
-description: &gt;
-    installation succeeded
----
-</code></pre></div><p>Alternatively, you can add <code>obsoletes=0</code> into <code>/etc/yum.conf</code>.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#000">version</span><span style="color:#ce5c00;font-weight:bold">=</span>20.8.12.2-1.el7
+</span></span><span style="display:flex;"><span>yum install --setopt<span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000">obsoletes</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">0</span> clickhouse-client-<span style="color:#4e9a06">${</span><span style="color:#000">version</span><span style="color:#4e9a06">}</span> clickhouse-server-<span style="color:#4e9a06">${</span><span style="color:#000">version</span><span style="color:#4e9a06">}</span>
+</span></span><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span>title: <span style="color:#4e9a06">&#34;installation succeeded&#34;</span>
+</span></span><span style="display:flex;"><span>linkTitle: <span style="color:#4e9a06">&#34;installation succeeded&#34;</span>
+</span></span><span style="display:flex;"><span>description: &gt;
+</span></span><span style="display:flex;"><span>    installation succeeded
+</span></span><span style="display:flex;"><span>---
+</span></span></code></pre></div><p>Alternatively, you can add <code>obsoletes=0</code> into <code>/etc/yum.conf</code>.</p>
 <h3 id="to-update-to-new-clickhouse-version-from-old-packaging-schema-to-new-packaging-schema">To update to new ClickHouse version (from old packaging schema to new packaging schema)</h3>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#000">version</span><span style="color:#ce5c00;font-weight:bold">=</span>21.1.7.1-2
-yum install clickhouse-client-<span style="color:#4e9a06">${</span><span style="color:#000">version</span><span style="color:#4e9a06">}</span> clickhouse-server-<span style="color:#4e9a06">${</span><span style="color:#000">version</span><span style="color:#4e9a06">}</span>
-</code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">Loaded plugins: fastestmirror, ovl
-Loading mirror speeds from cached hostfile
- * base: centos.hitme.net.pl
- * extras: centos1.hti.pl
- * updates: centos1.hti.pl
-Altinity_clickhouse-altinity-stable/x86_64/signature                                                                                                                                <span style="color:#000;font-weight:bold">|</span>  <span style="color:#0000cf;font-weight:bold">833</span> B  00:00:00
-Altinity_clickhouse-altinity-stable/x86_64/signature                                                                                                                                <span style="color:#000;font-weight:bold">|</span> 1.0 kB  00:00:01 !!!
-Altinity_clickhouse-altinity-stable-source/signature                                                                                                                                <span style="color:#000;font-weight:bold">|</span>  <span style="color:#0000cf;font-weight:bold">833</span> B  00:00:00
-Altinity_clickhouse-altinity-stable-source/signature                                                                                                                                <span style="color:#000;font-weight:bold">|</span>  <span style="color:#0000cf;font-weight:bold">951</span> B  00:00:00 !!!
-Nothing to <span style="color:#204a87;font-weight:bold">do</span>
-</code></pre></div><p>It is caused by wrong dependencies resolution.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#000">version</span><span style="color:#ce5c00;font-weight:bold">=</span>21.1.7.1-2
+</span></span><span style="display:flex;"><span>yum install clickhouse-client-<span style="color:#4e9a06">${</span><span style="color:#000">version</span><span style="color:#4e9a06">}</span> clickhouse-server-<span style="color:#4e9a06">${</span><span style="color:#000">version</span><span style="color:#4e9a06">}</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Loaded plugins: fastestmirror, ovl
+</span></span><span style="display:flex;"><span>Loading mirror speeds from cached hostfile
+</span></span><span style="display:flex;"><span> * base: centos.hitme.net.pl
+</span></span><span style="display:flex;"><span> * extras: centos1.hti.pl
+</span></span><span style="display:flex;"><span> * updates: centos1.hti.pl
+</span></span><span style="display:flex;"><span>Altinity_clickhouse-altinity-stable/x86_64/signature                                                                                                                                <span style="color:#000;font-weight:bold">|</span>  <span style="color:#0000cf;font-weight:bold">833</span> B  00:00:00
+</span></span><span style="display:flex;"><span>Altinity_clickhouse-altinity-stable/x86_64/signature                                                                                                                                <span style="color:#000;font-weight:bold">|</span> 1.0 kB  00:00:01 !!!
+</span></span><span style="display:flex;"><span>Altinity_clickhouse-altinity-stable-source/signature                                                                                                                                <span style="color:#000;font-weight:bold">|</span>  <span style="color:#0000cf;font-weight:bold">833</span> B  00:00:00
+</span></span><span style="display:flex;"><span>Altinity_clickhouse-altinity-stable-source/signature                                                                                                                                <span style="color:#000;font-weight:bold">|</span>  <span style="color:#0000cf;font-weight:bold">951</span> B  00:00:00 !!!
+</span></span><span style="display:flex;"><span>Nothing to <span style="color:#204a87;font-weight:bold">do</span>
+</span></span></code></pre></div><p>It is caused by wrong dependencies resolution.</p>
 <h4 id="solution-with-new-package-scheme">Solution with New Package Scheme</h4>
 <p>To update to the latest available version - just add <code>clickhouse-server-common</code>:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">yum install clickhouse-client clickhouse-server clickhouse-server-common
-</code></pre></div><p>This way the latest available version will be installed (even if you will request some other version explicitly).</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>yum install clickhouse-client clickhouse-server clickhouse-server-common
+</span></span></code></pre></div><p>This way the latest available version will be installed (even if you will request some other version explicitly).</p>
 <p>To install some specific version remove old packages first, then install new ones.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">yum erase clickhouse-client clickhouse-server clickhouse-server-common clickhouse-common-static
-<span style="color:#000">version</span><span style="color:#ce5c00;font-weight:bold">=</span>21.1.7.1
-yum install clickhouse-client-<span style="color:#4e9a06">${</span><span style="color:#000">version</span><span style="color:#4e9a06">}</span> clickhouse-server-<span style="color:#4e9a06">${</span><span style="color:#000">version</span><span style="color:#4e9a06">}</span>
-</code></pre></div><h3 id="downgrade-from-new-version-to-old-one">Downgrade from new version to old one</h3>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#000">version</span><span style="color:#ce5c00;font-weight:bold">=</span>20.8.12.2-1.el7
-yum downgrade  clickhouse-client-<span style="color:#4e9a06">${</span><span style="color:#000">version</span><span style="color:#4e9a06">}</span> clickhouse-server-<span style="color:#4e9a06">${</span><span style="color:#000">version</span><span style="color:#4e9a06">}</span>
-</code></pre></div><p>will not work:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">Loaded plugins: fastestmirror, ovl
-Loading mirror speeds from cached hostfile
- * base: ftp.agh.edu.pl
- * extras: ftp.agh.edu.pl
- * updates: centos.wielun.net
-Resolving Dependencies
---&gt; Running transaction check
----&gt; Package clickhouse-client.x86_64 0:20.8.12.2-1.el7 will be a downgrade
----&gt; Package clickhouse-client.noarch 0:21.1.7.1-2 will be erased
----&gt; Package clickhouse-server.x86_64 0:20.8.12.2-1.el7 will be a downgrade
---&gt; Processing Dependency: clickhouse-server-common <span style="color:#ce5c00;font-weight:bold">=</span> 20.8.12.2-1.el7 <span style="color:#204a87;font-weight:bold">for</span> package: clickhouse-server-20.8.12.2-1.el7.x86_64
-Package clickhouse-server-common-20.8.12.2-1.el7.x86_64 is obsoleted by clickhouse-server-21.1.7.1-2.noarch which is already installed
---&gt; Processing Dependency: clickhouse-common-static <span style="color:#ce5c00;font-weight:bold">=</span> 20.8.12.2-1.el7 <span style="color:#204a87;font-weight:bold">for</span> package: clickhouse-server-20.8.12.2-1.el7.x86_64
----&gt; Package clickhouse-server.noarch 0:21.1.7.1-2 will be erased
---&gt; Finished Dependency Resolution
-Error: Package: clickhouse-server-20.8.12.2-1.el7.x86_64 <span style="color:#ce5c00;font-weight:bold">(</span>Altinity_clickhouse-altinity-stable<span style="color:#ce5c00;font-weight:bold">)</span>
-           Requires: clickhouse-common-static <span style="color:#ce5c00;font-weight:bold">=</span> 20.8.12.2-1.el7
-           Installed: clickhouse-common-static-21.1.7.1-2.x86_64 <span style="color:#ce5c00;font-weight:bold">(</span>@clickhouse-stable<span style="color:#ce5c00;font-weight:bold">)</span>
-               clickhouse-common-static <span style="color:#ce5c00;font-weight:bold">=</span> 21.1.7.1-2
-           Available: clickhouse-common-static-1.1.54378-2.x86_64 <span style="color:#ce5c00;font-weight:bold">(</span>clickhouse-stable<span style="color:#ce5c00;font-weight:bold">)</span>
-               clickhouse-common-static <span style="color:#ce5c00;font-weight:bold">=</span> 1.1.54378-2
-Error: Package: clickhouse-server-20.8.12.2-1.el7.x86_64 <span style="color:#ce5c00;font-weight:bold">(</span>Altinity_clickhouse-altinity-stable<span style="color:#ce5c00;font-weight:bold">)</span>
-...
-           Available: clickhouse-server-common-20.8.12.2-1.el7.x86_64 <span style="color:#ce5c00;font-weight:bold">(</span>Altinity_clickhouse-altinity-stable<span style="color:#ce5c00;font-weight:bold">)</span>
-               clickhouse-server-common <span style="color:#ce5c00;font-weight:bold">=</span> 20.8.12.2-1.el7
- You could try using --skip-broken to work around the problem
- You could try running: rpm -Va --nofiles --nodigest
-</code></pre></div><h4 id="solution-with-downgrading">Solution With Downgrading</h4>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>yum erase clickhouse-client clickhouse-server clickhouse-server-common clickhouse-common-static
+</span></span><span style="display:flex;"><span><span style="color:#000">version</span><span style="color:#ce5c00;font-weight:bold">=</span>21.1.7.1
+</span></span><span style="display:flex;"><span>yum install clickhouse-client-<span style="color:#4e9a06">${</span><span style="color:#000">version</span><span style="color:#4e9a06">}</span> clickhouse-server-<span style="color:#4e9a06">${</span><span style="color:#000">version</span><span style="color:#4e9a06">}</span>
+</span></span></code></pre></div><h3 id="downgrade-from-new-version-to-old-one">Downgrade from new version to old one</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#000">version</span><span style="color:#ce5c00;font-weight:bold">=</span>20.8.12.2-1.el7
+</span></span><span style="display:flex;"><span>yum downgrade  clickhouse-client-<span style="color:#4e9a06">${</span><span style="color:#000">version</span><span style="color:#4e9a06">}</span> clickhouse-server-<span style="color:#4e9a06">${</span><span style="color:#000">version</span><span style="color:#4e9a06">}</span>
+</span></span></code></pre></div><p>will not work:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Loaded plugins: fastestmirror, ovl
+</span></span><span style="display:flex;"><span>Loading mirror speeds from cached hostfile
+</span></span><span style="display:flex;"><span> * base: ftp.agh.edu.pl
+</span></span><span style="display:flex;"><span> * extras: ftp.agh.edu.pl
+</span></span><span style="display:flex;"><span> * updates: centos.wielun.net
+</span></span><span style="display:flex;"><span>Resolving Dependencies
+</span></span><span style="display:flex;"><span>--&gt; Running transaction check
+</span></span><span style="display:flex;"><span>---&gt; Package clickhouse-client.x86_64 0:20.8.12.2-1.el7 will be a downgrade
+</span></span><span style="display:flex;"><span>---&gt; Package clickhouse-client.noarch 0:21.1.7.1-2 will be erased
+</span></span><span style="display:flex;"><span>---&gt; Package clickhouse-server.x86_64 0:20.8.12.2-1.el7 will be a downgrade
+</span></span><span style="display:flex;"><span>--&gt; Processing Dependency: clickhouse-server-common <span style="color:#ce5c00;font-weight:bold">=</span> 20.8.12.2-1.el7 <span style="color:#204a87;font-weight:bold">for</span> package: clickhouse-server-20.8.12.2-1.el7.x86_64
+</span></span><span style="display:flex;"><span>Package clickhouse-server-common-20.8.12.2-1.el7.x86_64 is obsoleted by clickhouse-server-21.1.7.1-2.noarch which is already installed
+</span></span><span style="display:flex;"><span>--&gt; Processing Dependency: clickhouse-common-static <span style="color:#ce5c00;font-weight:bold">=</span> 20.8.12.2-1.el7 <span style="color:#204a87;font-weight:bold">for</span> package: clickhouse-server-20.8.12.2-1.el7.x86_64
+</span></span><span style="display:flex;"><span>---&gt; Package clickhouse-server.noarch 0:21.1.7.1-2 will be erased
+</span></span><span style="display:flex;"><span>--&gt; Finished Dependency Resolution
+</span></span><span style="display:flex;"><span>Error: Package: clickhouse-server-20.8.12.2-1.el7.x86_64 <span style="color:#ce5c00;font-weight:bold">(</span>Altinity_clickhouse-altinity-stable<span style="color:#ce5c00;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>           Requires: clickhouse-common-static <span style="color:#ce5c00;font-weight:bold">=</span> 20.8.12.2-1.el7
+</span></span><span style="display:flex;"><span>           Installed: clickhouse-common-static-21.1.7.1-2.x86_64 <span style="color:#ce5c00;font-weight:bold">(</span>@clickhouse-stable<span style="color:#ce5c00;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>               clickhouse-common-static <span style="color:#ce5c00;font-weight:bold">=</span> 21.1.7.1-2
+</span></span><span style="display:flex;"><span>           Available: clickhouse-common-static-1.1.54378-2.x86_64 <span style="color:#ce5c00;font-weight:bold">(</span>clickhouse-stable<span style="color:#ce5c00;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>               clickhouse-common-static <span style="color:#ce5c00;font-weight:bold">=</span> 1.1.54378-2
+</span></span><span style="display:flex;"><span>Error: Package: clickhouse-server-20.8.12.2-1.el7.x86_64 <span style="color:#ce5c00;font-weight:bold">(</span>Altinity_clickhouse-altinity-stable<span style="color:#ce5c00;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span>           Available: clickhouse-server-common-20.8.12.2-1.el7.x86_64 <span style="color:#ce5c00;font-weight:bold">(</span>Altinity_clickhouse-altinity-stable<span style="color:#ce5c00;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>               clickhouse-server-common <span style="color:#ce5c00;font-weight:bold">=</span> 20.8.12.2-1.el7
+</span></span><span style="display:flex;"><span> You could try using --skip-broken to work around the problem
+</span></span><span style="display:flex;"><span> You could try running: rpm -Va --nofiles --nodigest
+</span></span></code></pre></div><h4 id="solution-with-downgrading">Solution With Downgrading</h4>
 <p>Remove packages first, then install older versions:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">yum erase clickhouse-client clickhouse-server clickhouse-server-common clickhouse-common-static
-<span style="color:#000">version</span><span style="color:#ce5c00;font-weight:bold">=</span>20.8.12.2-1.el7
-yum install --setopt<span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000">obsoletes</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">0</span> clickhouse-client-<span style="color:#4e9a06">${</span><span style="color:#000">version</span><span style="color:#4e9a06">}</span> clickhouse-server-<span style="color:#4e9a06">${</span><span style="color:#000">version</span><span style="color:#4e9a06">}</span>
-</code></pre></div>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>yum erase clickhouse-client clickhouse-server clickhouse-server-common clickhouse-common-static
+</span></span><span style="display:flex;"><span><span style="color:#000">version</span><span style="color:#ce5c00;font-weight:bold">=</span>20.8.12.2-1.el7
+</span></span><span style="display:flex;"><span>yum install --setopt<span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000">obsoletes</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">0</span> clickhouse-client-<span style="color:#4e9a06">${</span><span style="color:#000">version</span><span style="color:#4e9a06">}</span> clickhouse-server-<span style="color:#4e9a06">${</span><span style="color:#000">version</span><span style="color:#4e9a06">}</span>
+</span></span></code></pre></div>
 	
 	
 	<div class="text-muted mt-5 pt-3 border-top">
@@ -958,7 +958,7 @@ yum install --setopt<span style="color:#ce5c00;font-weight:bold">=</span><span s
 
 
 
-<script src="/js/main.min.3b172c13b62c2bea8b1c9d2599cddc8cf89718a92d792c680871c81ba43d8c85.js" integrity="sha256-OxcsE7YsK&#43;qLHJ0lmc3cjPiXGKkteSxoCHHIG6Q9jIU=" crossorigin="anonymous"></script>
+<script src="/js/main.min.7fa9e3e39f56ebd66798993ef3c080218d9696c971a28ef8872d750b7416a435.js" integrity="sha256-f6nj459W69ZnmJk&#43;88CAIY2Wlslxoo74hy11C3QWpDU=" crossorigin="anonymous"></script>
 
 
 

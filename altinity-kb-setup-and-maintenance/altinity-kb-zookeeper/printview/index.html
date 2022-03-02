@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.92.2" /><link rel="canonical" type="text/html" href="http://kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-zookeeper/">
+<meta name="generator" content="Hugo 0.93.0" /><link rel="canonical" type="text/html" href="http://kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-zookeeper/">
 <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
 <link rel="shortcut icon" href="/favicons/favicon.ico" >
 <link rel="icon" href="/favicons/favicon.ico" >
@@ -74,7 +74,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.035286ffea94b20115412349c1d2df50.json"
+  data-offline-search-index-json-src="/offline-search-index.41dc426efce12b05b3e1ade368ef5ff4.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -244,15 +244,15 @@ in many cases, the slowness of the zookeeper is actually a symptom of some issue
 </ul>
 </blockquote>
 <h3 id="how-to-check-number-of-followers">How to check number of followers:</h3>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#204a87">echo</span> mntr <span style="color:#000;font-weight:bold">|</span> nc zookeeper <span style="color:#0000cf;font-weight:bold">2187</span> <span style="color:#000;font-weight:bold">|</span> grep foll
-zk_synced_followers    <span style="color:#0000cf;font-weight:bold">2</span>
-zk_synced_non_voting_followers    <span style="color:#0000cf;font-weight:bold">0</span>
-zk_avg_follower_sync_time    0.0
-zk_min_follower_sync_time    <span style="color:#0000cf;font-weight:bold">0</span>
-zk_max_follower_sync_time    <span style="color:#0000cf;font-weight:bold">0</span>
-zk_cnt_follower_sync_time    <span style="color:#0000cf;font-weight:bold">0</span>
-zk_sum_follower_sync_time    <span style="color:#0000cf;font-weight:bold">0</span>
-</code></pre></div><h2 id="tools">Tools</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#204a87">echo</span> mntr <span style="color:#000;font-weight:bold">|</span> nc zookeeper <span style="color:#0000cf;font-weight:bold">2187</span> <span style="color:#000;font-weight:bold">|</span> grep foll
+</span></span><span style="display:flex;"><span>zk_synced_followers    <span style="color:#0000cf;font-weight:bold">2</span>
+</span></span><span style="display:flex;"><span>zk_synced_non_voting_followers    <span style="color:#0000cf;font-weight:bold">0</span>
+</span></span><span style="display:flex;"><span>zk_avg_follower_sync_time    0.0
+</span></span><span style="display:flex;"><span>zk_min_follower_sync_time    <span style="color:#0000cf;font-weight:bold">0</span>
+</span></span><span style="display:flex;"><span>zk_max_follower_sync_time    <span style="color:#0000cf;font-weight:bold">0</span>
+</span></span><span style="display:flex;"><span>zk_cnt_follower_sync_time    <span style="color:#0000cf;font-weight:bold">0</span>
+</span></span><span style="display:flex;"><span>zk_sum_follower_sync_time    <span style="color:#0000cf;font-weight:bold">0</span>
+</span></span></code></pre></div><h2 id="tools">Tools</h2>
 <p><a href="https://github.com/apache/zookeeper/blob/master/zookeeper-docs/src/main/resources/markdown/zookeeperTools.md" target="_blank">https://github.com/apache/zookeeper/blob/master/zookeeper-docs/src/main/resources/markdown/zookeeperTools.md</a></p>
 <h2 id="alternatives-for-zkcli">Alternatives for zkCli</h2>
 <ul>
@@ -291,89 +291,89 @@ zk_sum_follower_sync_time    <span style="color:#0000cf;font-weight:bold">0</spa
     <div class="lead">Install standalone Zookeeper for ClickHouse on Ubuntu / Debian.</div>
 	<h2 id="reference-script-to-install-standalone-zookeeper-for-ubuntu--debian">Reference script to install standalone Zookeeper for Ubuntu / Debian</h2>
 <p>Tested on Ubuntu 20.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#8f5902;font-style:italic"># install java runtime environment</span>
-sudo apt-get update
-sudo apt install default-jre
-
-<span style="color:#8f5902;font-style:italic"># prepare folders, logs folder should be on the low-latency disk.</span>
-sudo mkdir -p /var/lib/zookeeper/data /var/lib/zookeeper/logs /etc/zookeeper /var/log/zookeeper /opt 
-
-<span style="color:#8f5902;font-style:italic"># download and install files </span>
-<span style="color:#204a87">export</span> <span style="color:#000">ZOOKEEPER_VERSION</span><span style="color:#ce5c00;font-weight:bold">=</span>3.6.3
-wget https://dlcdn.apache.org/zookeeper/zookeeper-<span style="color:#4e9a06">${</span><span style="color:#000">ZOOKEEPER_VERSION</span><span style="color:#4e9a06">}</span>/apache-zookeeper-<span style="color:#4e9a06">${</span><span style="color:#000">ZOOKEEPER_VERSION</span><span style="color:#4e9a06">}</span>-bin.tar.gz -O /tmp/apache-zookeeper-<span style="color:#4e9a06">${</span><span style="color:#000">ZOOKEEPER_VERSION</span><span style="color:#4e9a06">}</span>-bin.tar.gz
-sudo tar -xvf /tmp/apache-zookeeper-<span style="color:#4e9a06">${</span><span style="color:#000">ZOOKEEPER_VERSION</span><span style="color:#4e9a06">}</span>-bin.tar.gz -C /opt
-rm -rf /tmp/apache-zookeeper-<span style="color:#4e9a06">${</span><span style="color:#000">ZOOKEEPER_VERSION</span><span style="color:#4e9a06">}</span>-bin.tar.gz
-
-<span style="color:#8f5902;font-style:italic"># create the user </span>
-sudo groupadd -r zookeeper
-sudo useradd -r -g zookeeper --home-dir<span style="color:#ce5c00;font-weight:bold">=</span>/var/lib/zookeeper --shell<span style="color:#ce5c00;font-weight:bold">=</span>/bin/false zookeeper
-
-<span style="color:#8f5902;font-style:italic"># symlink pointing to the used version of zookeeper distibution</span>
-sudo ln -s /opt/apache-zookeeper-<span style="color:#4e9a06">${</span><span style="color:#000">ZOOKEEPER_VERSION</span><span style="color:#4e9a06">}</span>-bin /opt/zookeeper 
-sudo chown -R zookeeper:zookeeper /var/lib/zookeeper /var/log/zookeeper /etc/zookeeper /opt/apache-zookeeper-<span style="color:#4e9a06">${</span><span style="color:#000">ZOOKEEPER_VERSION</span><span style="color:#4e9a06">}</span>-bin
-sudo chown -h zookeeper:zookeeper /opt/zookeeper
-
-<span style="color:#8f5902;font-style:italic"># shortcuts in /usr/local/bin/</span>
-<span style="color:#204a87">echo</span> -e <span style="color:#4e9a06">&#39;#!/usr/bin/env bash\n/opt/zookeeper/bin/zkCli.sh &#34;$@&#34;&#39;</span>             <span style="color:#000;font-weight:bold">|</span> sudo tee /usr/local/bin/zkCli
-<span style="color:#204a87">echo</span> -e <span style="color:#4e9a06">&#39;#!/usr/bin/env bash\n/opt/zookeeper/bin/zkServer.sh &#34;$@&#34;&#39;</span>          <span style="color:#000;font-weight:bold">|</span> sudo tee /usr/local/bin/zkServer
-<span style="color:#204a87">echo</span> -e <span style="color:#4e9a06">&#39;#!/usr/bin/env bash\n/opt/zookeeper/bin/zkCleanup.sh &#34;$@&#34;&#39;</span>         <span style="color:#000;font-weight:bold">|</span> sudo tee /usr/local/bin/zkCleanup
-<span style="color:#204a87">echo</span> -e <span style="color:#4e9a06">&#39;#!/usr/bin/env bash\n/opt/zookeeper/bin/zkSnapShotToolkit.sh &#34;$@&#34;&#39;</span> <span style="color:#000;font-weight:bold">|</span> sudo tee /usr/local/bin/zkSnapShotToolkit
-<span style="color:#204a87">echo</span> -e <span style="color:#4e9a06">&#39;#!/usr/bin/env bash\n/opt/zookeeper/bin/zkTxnLogToolkit.sh &#34;$@&#34;&#39;</span>   <span style="color:#000;font-weight:bold">|</span> sudo tee /usr/local/bin/zkTxnLogToolkit
-sudo chmod +x /usr/local/bin/zkCli /usr/local/bin/zkServer /usr/local/bin/zkCleanup /usr/local/bin/zkSnapShotToolkit /usr/local/bin/zkTxnLogToolkit
-
-<span style="color:#8f5902;font-style:italic"># put in the config</span>
-sudo cp opt/zookeeper/conf/* /etc/zookeeper
-cat <span style="color:#4e9a06">&lt;&lt;EOF | sudo tee /etc/zookeeper/zoo.cfg
-</span><span style="color:#4e9a06">syncLimit=10
-</span><span style="color:#4e9a06">maxSessionTimeout=60000000
-</span><span style="color:#4e9a06">maxClientCnxns=2000
-</span><span style="color:#4e9a06">preAllocSize=131072
-</span><span style="color:#4e9a06">snapCount=3000000
-</span><span style="color:#4e9a06">dataDir=/var/lib/zookeeper/data
-</span><span style="color:#4e9a06">dataLogDir=/var/lib/zookeeper/logs # use low-latency disk!
-</span><span style="color:#4e9a06">clientPort=2181
-</span><span style="color:#4e9a06">#clientPortAddress=nthk-zoo1.localdomain
-</span><span style="color:#4e9a06">autopurge.snapRetainCount=10
-</span><span style="color:#4e9a06">autopurge.purgeInterval=1
-</span><span style="color:#4e9a06">4lw.commands.whitelist=*
-</span><span style="color:#4e9a06">EOF</span>
-sudo chown -R zookeeper:zookeeper /etc/zookeeper
-
-<span style="color:#8f5902;font-style:italic"># create systemd service file</span>
-cat <span style="color:#4e9a06">&lt;&lt;EOF | sudo tee /etc/systemd/system/zookeeper.service
-</span><span style="color:#4e9a06">[Unit]
-</span><span style="color:#4e9a06">Description=Zookeeper Daemon
-</span><span style="color:#4e9a06">Documentation=http://zookeeper.apache.org
-</span><span style="color:#4e9a06">Requires=network.target
-</span><span style="color:#4e9a06">After=network.target
-</span><span style="color:#4e9a06">
-</span><span style="color:#4e9a06">[Service]
-</span><span style="color:#4e9a06">Type=forking
-</span><span style="color:#4e9a06">WorkingDirectory=/var/lib/zookeeper
-</span><span style="color:#4e9a06">User=zookeeper
-</span><span style="color:#4e9a06">Group=zookeeper
-</span><span style="color:#4e9a06">Environment=ZK_SERVER_HEAP=1536 # in megabytes, adjust to ~ 80-90% of avaliable RAM (more than 8Gb is rather overkill)
-</span><span style="color:#4e9a06">Environment=SERVER_JVMFLAGS=&#34;-Xms256m -XX:+AlwaysPreTouch -Djute.maxbuffer=8388608 -XX:MaxGCPauseMillis=50&#34;
-</span><span style="color:#4e9a06">Environment=ZOO_LOG_DIR=/var/log/zookeeper
-</span><span style="color:#4e9a06">ExecStart=/opt/zookeeper/bin/zkServer.sh start /etc/zookeeper/zoo.cfg
-</span><span style="color:#4e9a06">ExecStop=/opt/zookeeper/bin/zkServer.sh stop /etc/zookeeper/zoo.cfg
-</span><span style="color:#4e9a06">ExecReload=/opt/zookeeper/bin/zkServer.sh restart /etc/zookeeper/zoo.cfg
-</span><span style="color:#4e9a06">TimeoutSec=30
-</span><span style="color:#4e9a06">Restart=on-failure
-</span><span style="color:#4e9a06">
-</span><span style="color:#4e9a06">[Install]
-</span><span style="color:#4e9a06">WantedBy=default.target
-</span><span style="color:#4e9a06">EOF</span>
-
-<span style="color:#8f5902;font-style:italic"># start zookeeper</span>
-sudo systemctl daemon-reload
-sudo systemctl start zookeeper.service 
-
-<span style="color:#8f5902;font-style:italic"># check status etc.</span>
-<span style="color:#204a87">echo</span> stat <span style="color:#000;font-weight:bold">|</span> nc localhost <span style="color:#0000cf;font-weight:bold">2181</span>
-<span style="color:#204a87">echo</span> ruok <span style="color:#000;font-weight:bold">|</span> nc localhost <span style="color:#0000cf;font-weight:bold">2181</span>
-<span style="color:#204a87">echo</span> mntr <span style="color:#000;font-weight:bold">|</span> nc localhost <span style="color:#0000cf;font-weight:bold">2181</span>
-</code></pre></div>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># install java runtime environment</span>
+</span></span><span style="display:flex;"><span>sudo apt-get update
+</span></span><span style="display:flex;"><span>sudo apt install default-jre
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># prepare folders, logs folder should be on the low-latency disk.</span>
+</span></span><span style="display:flex;"><span>sudo mkdir -p /var/lib/zookeeper/data /var/lib/zookeeper/logs /etc/zookeeper /var/log/zookeeper /opt 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># download and install files </span>
+</span></span><span style="display:flex;"><span><span style="color:#204a87">export</span> <span style="color:#000">ZOOKEEPER_VERSION</span><span style="color:#ce5c00;font-weight:bold">=</span>3.6.3
+</span></span><span style="display:flex;"><span>wget https://dlcdn.apache.org/zookeeper/zookeeper-<span style="color:#4e9a06">${</span><span style="color:#000">ZOOKEEPER_VERSION</span><span style="color:#4e9a06">}</span>/apache-zookeeper-<span style="color:#4e9a06">${</span><span style="color:#000">ZOOKEEPER_VERSION</span><span style="color:#4e9a06">}</span>-bin.tar.gz -O /tmp/apache-zookeeper-<span style="color:#4e9a06">${</span><span style="color:#000">ZOOKEEPER_VERSION</span><span style="color:#4e9a06">}</span>-bin.tar.gz
+</span></span><span style="display:flex;"><span>sudo tar -xvf /tmp/apache-zookeeper-<span style="color:#4e9a06">${</span><span style="color:#000">ZOOKEEPER_VERSION</span><span style="color:#4e9a06">}</span>-bin.tar.gz -C /opt
+</span></span><span style="display:flex;"><span>rm -rf /tmp/apache-zookeeper-<span style="color:#4e9a06">${</span><span style="color:#000">ZOOKEEPER_VERSION</span><span style="color:#4e9a06">}</span>-bin.tar.gz
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># create the user </span>
+</span></span><span style="display:flex;"><span>sudo groupadd -r zookeeper
+</span></span><span style="display:flex;"><span>sudo useradd -r -g zookeeper --home-dir<span style="color:#ce5c00;font-weight:bold">=</span>/var/lib/zookeeper --shell<span style="color:#ce5c00;font-weight:bold">=</span>/bin/false zookeeper
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># symlink pointing to the used version of zookeeper distibution</span>
+</span></span><span style="display:flex;"><span>sudo ln -s /opt/apache-zookeeper-<span style="color:#4e9a06">${</span><span style="color:#000">ZOOKEEPER_VERSION</span><span style="color:#4e9a06">}</span>-bin /opt/zookeeper 
+</span></span><span style="display:flex;"><span>sudo chown -R zookeeper:zookeeper /var/lib/zookeeper /var/log/zookeeper /etc/zookeeper /opt/apache-zookeeper-<span style="color:#4e9a06">${</span><span style="color:#000">ZOOKEEPER_VERSION</span><span style="color:#4e9a06">}</span>-bin
+</span></span><span style="display:flex;"><span>sudo chown -h zookeeper:zookeeper /opt/zookeeper
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># shortcuts in /usr/local/bin/</span>
+</span></span><span style="display:flex;"><span><span style="color:#204a87">echo</span> -e <span style="color:#4e9a06">&#39;#!/usr/bin/env bash\n/opt/zookeeper/bin/zkCli.sh &#34;$@&#34;&#39;</span>             <span style="color:#000;font-weight:bold">|</span> sudo tee /usr/local/bin/zkCli
+</span></span><span style="display:flex;"><span><span style="color:#204a87">echo</span> -e <span style="color:#4e9a06">&#39;#!/usr/bin/env bash\n/opt/zookeeper/bin/zkServer.sh &#34;$@&#34;&#39;</span>          <span style="color:#000;font-weight:bold">|</span> sudo tee /usr/local/bin/zkServer
+</span></span><span style="display:flex;"><span><span style="color:#204a87">echo</span> -e <span style="color:#4e9a06">&#39;#!/usr/bin/env bash\n/opt/zookeeper/bin/zkCleanup.sh &#34;$@&#34;&#39;</span>         <span style="color:#000;font-weight:bold">|</span> sudo tee /usr/local/bin/zkCleanup
+</span></span><span style="display:flex;"><span><span style="color:#204a87">echo</span> -e <span style="color:#4e9a06">&#39;#!/usr/bin/env bash\n/opt/zookeeper/bin/zkSnapShotToolkit.sh &#34;$@&#34;&#39;</span> <span style="color:#000;font-weight:bold">|</span> sudo tee /usr/local/bin/zkSnapShotToolkit
+</span></span><span style="display:flex;"><span><span style="color:#204a87">echo</span> -e <span style="color:#4e9a06">&#39;#!/usr/bin/env bash\n/opt/zookeeper/bin/zkTxnLogToolkit.sh &#34;$@&#34;&#39;</span>   <span style="color:#000;font-weight:bold">|</span> sudo tee /usr/local/bin/zkTxnLogToolkit
+</span></span><span style="display:flex;"><span>sudo chmod +x /usr/local/bin/zkCli /usr/local/bin/zkServer /usr/local/bin/zkCleanup /usr/local/bin/zkSnapShotToolkit /usr/local/bin/zkTxnLogToolkit
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># put in the config</span>
+</span></span><span style="display:flex;"><span>sudo cp opt/zookeeper/conf/* /etc/zookeeper
+</span></span><span style="display:flex;"><span>cat <span style="color:#4e9a06">&lt;&lt;EOF | sudo tee /etc/zookeeper/zoo.cfg
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">syncLimit=10
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">maxSessionTimeout=60000000
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">maxClientCnxns=2000
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">preAllocSize=131072
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">snapCount=3000000
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">dataDir=/var/lib/zookeeper/data
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">dataLogDir=/var/lib/zookeeper/logs # use low-latency disk!
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">clientPort=2181
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">#clientPortAddress=nthk-zoo1.localdomain
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">autopurge.snapRetainCount=10
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">autopurge.purgeInterval=1
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">4lw.commands.whitelist=*
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">EOF</span>
+</span></span><span style="display:flex;"><span>sudo chown -R zookeeper:zookeeper /etc/zookeeper
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># create systemd service file</span>
+</span></span><span style="display:flex;"><span>cat <span style="color:#4e9a06">&lt;&lt;EOF | sudo tee /etc/systemd/system/zookeeper.service
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">[Unit]
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">Description=Zookeeper Daemon
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">Documentation=http://zookeeper.apache.org
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">Requires=network.target
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">After=network.target
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">[Service]
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">Type=forking
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">WorkingDirectory=/var/lib/zookeeper
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">User=zookeeper
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">Group=zookeeper
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">Environment=ZK_SERVER_HEAP=1536 # in megabytes, adjust to ~ 80-90% of avaliable RAM (more than 8Gb is rather overkill)
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">Environment=SERVER_JVMFLAGS=&#34;-Xms256m -XX:+AlwaysPreTouch -Djute.maxbuffer=8388608 -XX:MaxGCPauseMillis=50&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">Environment=ZOO_LOG_DIR=/var/log/zookeeper
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">ExecStart=/opt/zookeeper/bin/zkServer.sh start /etc/zookeeper/zoo.cfg
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">ExecStop=/opt/zookeeper/bin/zkServer.sh stop /etc/zookeeper/zoo.cfg
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">ExecReload=/opt/zookeeper/bin/zkServer.sh restart /etc/zookeeper/zoo.cfg
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">TimeoutSec=30
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">Restart=on-failure
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">[Install]
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">WantedBy=default.target
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">EOF</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># start zookeeper</span>
+</span></span><span style="display:flex;"><span>sudo systemctl daemon-reload
+</span></span><span style="display:flex;"><span>sudo systemctl start zookeeper.service 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># check status etc.</span>
+</span></span><span style="display:flex;"><span><span style="color:#204a87">echo</span> stat <span style="color:#000;font-weight:bold">|</span> nc localhost <span style="color:#0000cf;font-weight:bold">2181</span>
+</span></span><span style="display:flex;"><span><span style="color:#204a87">echo</span> ruok <span style="color:#000;font-weight:bold">|</span> nc localhost <span style="color:#0000cf;font-weight:bold">2181</span>
+</span></span><span style="display:flex;"><span><span style="color:#204a87">echo</span> mntr <span style="color:#000;font-weight:bold">|</span> nc localhost <span style="color:#0000cf;font-weight:bold">2181</span>
+</span></span></code></pre></div>
 </div>
 
 
@@ -390,7 +390,7 @@ sudo systemctl start zookeeper.service
     
 	<h1 id="pg-4c33701373e85b893c3b3464fa4f6683">2 - clickhouse-keeper</h1>
     <div class="lead">clickhouse-keeper</div>
-	<p>In 21.3 there is already an option to run own clickhouse zookeeper implementation. It&rsquo;s still experimental, and still need to be started additionally on few nodes (similar to &lsquo;normal&rsquo; zookeeper) and speaks normal zookeeper protocol - needed to simplify A/B tests with real zookeeper.</p>
+	<p>In 21.3 there is already an option to run own clickhouse zookeeper implementation. It&rsquo;s still experimental, and still need to be started additionally on few nodes (similar to &rsquo;normal&rsquo; zookeeper) and speaks normal zookeeper protocol - needed to simplify A/B tests with real zookeeper.</p>
 <p>No docs, for now, only PR with code &amp; tests. Of course, if you want to play with it - you can, and early feedback is very valuable. But be prepared for a lot of tiny issues here and there, so don&rsquo;t be disappointed if it will not satisfy your expectations for some reason. It&rsquo;s very-very fresh :slightly_smiling_face: It&rsquo;s ready for some trial runs, but not ready yet for production use cases.</p>
 <p>To test that you need to run 3 instances of clickhouse-server (which will mimic zookeeper) with an extra config like that:</p>
 <p><a href="https://github.com/ClickHouse/ClickHouse/blob/c8b1004ecb4bfc4aa581dbcbbbe3a4c72ce57123/tests/integration/test_keeper_multinode_simple/configs/enable_keeper1.xml" target="_blank">https://github.com/ClickHouse/ClickHouse/blob/c8b1004ecb4bfc4aa581dbcbbbe3a4c72ce57123/tests/integration/test_keeper_multinode_simple/configs/enable_keeper1.xml</a></p>
@@ -402,145 +402,145 @@ sudo systemctl start zookeeper.service
 <h2 id="example-of-a-simple-cluster-with-2-nodes-of-clickhouse-using-built-in-keeper">Example of a simple cluster with 2 nodes of Clickhouse using built-in keeper</h2>
 <p>For example you can start two Clikhouse nodes (hostname1, hostname2)</p>
 <h3 id="hostname1">hostname1</h3>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml">$ cat /etc/clickhouse-server/config.d/keeper.xml
-
-<span style="color:#8f5902;font-style:italic">&lt;?xml version=&#34;1.0&#34; ?&gt;</span>
-<span style="color:#204a87;font-weight:bold">&lt;yandex&gt;</span>
-    <span style="color:#204a87;font-weight:bold">&lt;keeper_server&gt;</span>
-        <span style="color:#204a87;font-weight:bold">&lt;tcp_port&gt;</span>2181<span style="color:#204a87;font-weight:bold">&lt;/tcp_port&gt;</span>
-        <span style="color:#204a87;font-weight:bold">&lt;server_id&gt;</span>1<span style="color:#204a87;font-weight:bold">&lt;/server_id&gt;</span>
-        <span style="color:#204a87;font-weight:bold">&lt;log_storage_path&gt;</span>/var/lib/clickhouse/coordination/log<span style="color:#204a87;font-weight:bold">&lt;/log_storage_path&gt;</span>
-        <span style="color:#204a87;font-weight:bold">&lt;snapshot_storage_path&gt;</span>/var/lib/clickhouse/coordination/snapshots<span style="color:#204a87;font-weight:bold">&lt;/snapshot_storage_path&gt;</span>
-
-        <span style="color:#204a87;font-weight:bold">&lt;coordination_settings&gt;</span>
-            <span style="color:#204a87;font-weight:bold">&lt;operation_timeout_ms&gt;</span>10000<span style="color:#204a87;font-weight:bold">&lt;/operation_timeout_ms&gt;</span>
-            <span style="color:#204a87;font-weight:bold">&lt;session_timeout_ms&gt;</span>30000<span style="color:#204a87;font-weight:bold">&lt;/session_timeout_ms&gt;</span>
-            <span style="color:#204a87;font-weight:bold">&lt;raft_logs_level&gt;</span>trace<span style="color:#204a87;font-weight:bold">&lt;/raft_logs_level&gt;</span>
-              <span style="color:#204a87;font-weight:bold">&lt;rotate_log_storage_interval&gt;</span>10000<span style="color:#204a87;font-weight:bold">&lt;/rotate_log_storage_interval&gt;</span>
-        <span style="color:#204a87;font-weight:bold">&lt;/coordination_settings&gt;</span>
-
-      <span style="color:#204a87;font-weight:bold">&lt;raft_configuration&gt;</span>
-            <span style="color:#204a87;font-weight:bold">&lt;server&gt;</span>
-               <span style="color:#204a87;font-weight:bold">&lt;id&gt;</span>1<span style="color:#204a87;font-weight:bold">&lt;/id&gt;</span>
-                 <span style="color:#204a87;font-weight:bold">&lt;hostname&gt;</span>hostname1<span style="color:#204a87;font-weight:bold">&lt;/hostname&gt;</span>
-               <span style="color:#204a87;font-weight:bold">&lt;port&gt;</span>9444<span style="color:#204a87;font-weight:bold">&lt;/port&gt;</span>
-          <span style="color:#204a87;font-weight:bold">&lt;/server&gt;</span>
-          <span style="color:#204a87;font-weight:bold">&lt;server&gt;</span>
-               <span style="color:#204a87;font-weight:bold">&lt;id&gt;</span>2<span style="color:#204a87;font-weight:bold">&lt;/id&gt;</span>
-                 <span style="color:#204a87;font-weight:bold">&lt;hostname&gt;</span>hostname2<span style="color:#204a87;font-weight:bold">&lt;/hostname&gt;</span>
-               <span style="color:#204a87;font-weight:bold">&lt;port&gt;</span>9444<span style="color:#204a87;font-weight:bold">&lt;/port&gt;</span>
-          <span style="color:#204a87;font-weight:bold">&lt;/server&gt;</span>
-      <span style="color:#204a87;font-weight:bold">&lt;/raft_configuration&gt;</span>
-
-    <span style="color:#204a87;font-weight:bold">&lt;/keeper_server&gt;</span>
-
-    <span style="color:#204a87;font-weight:bold">&lt;zookeeper&gt;</span>
-        <span style="color:#204a87;font-weight:bold">&lt;node&gt;</span>
-            <span style="color:#204a87;font-weight:bold">&lt;host&gt;</span>localhost<span style="color:#204a87;font-weight:bold">&lt;/host&gt;</span>
-            <span style="color:#204a87;font-weight:bold">&lt;port&gt;</span>2181<span style="color:#204a87;font-weight:bold">&lt;/port&gt;</span>
-        <span style="color:#204a87;font-weight:bold">&lt;/node&gt;</span>
-    <span style="color:#204a87;font-weight:bold">&lt;/zookeeper&gt;</span>
-
-    <span style="color:#204a87;font-weight:bold">&lt;distributed_ddl&gt;</span>
-        <span style="color:#204a87;font-weight:bold">&lt;path&gt;</span>/clickhouse/testcluster/task_queue/ddl<span style="color:#204a87;font-weight:bold">&lt;/path&gt;</span>
-    <span style="color:#204a87;font-weight:bold">&lt;/distributed_ddl&gt;</span>
-<span style="color:#204a87;font-weight:bold">&lt;/yandex&gt;</span>
-
-$ cat /etc/clickhouse-server/config.d/macros.xml
-
-<span style="color:#8f5902;font-style:italic">&lt;?xml version=&#34;1.0&#34; ?&gt;</span>
-<span style="color:#204a87;font-weight:bold">&lt;yandex&gt;</span>
-    <span style="color:#204a87;font-weight:bold">&lt;macros&gt;</span>
-        <span style="color:#204a87;font-weight:bold">&lt;cluster&gt;</span>testcluster<span style="color:#204a87;font-weight:bold">&lt;/cluster&gt;</span>
-        <span style="color:#204a87;font-weight:bold">&lt;replica&gt;</span>replica1<span style="color:#204a87;font-weight:bold">&lt;/replica&gt;</span>
-        <span style="color:#204a87;font-weight:bold">&lt;shard&gt;</span>1<span style="color:#204a87;font-weight:bold">&lt;/shard&gt;</span>
-    <span style="color:#204a87;font-weight:bold">&lt;/macros&gt;</span>
-<span style="color:#204a87;font-weight:bold">&lt;/yandex&gt;</span>
-</code></pre></div><h3 id="hostname2">hostname2</h3>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml">$ cat /etc/clickhouse-server/config.d/keeper.xml
-
-<span style="color:#8f5902;font-style:italic">&lt;?xml version=&#34;1.0&#34; ?&gt;</span>
-<span style="color:#204a87;font-weight:bold">&lt;yandex&gt;</span>
-    <span style="color:#204a87;font-weight:bold">&lt;keeper_server&gt;</span>
-        <span style="color:#204a87;font-weight:bold">&lt;tcp_port&gt;</span>2181<span style="color:#204a87;font-weight:bold">&lt;/tcp_port&gt;</span>
-        <span style="color:#204a87;font-weight:bold">&lt;server_id&gt;</span>2<span style="color:#204a87;font-weight:bold">&lt;/server_id&gt;</span>
-        <span style="color:#204a87;font-weight:bold">&lt;log_storage_path&gt;</span>/var/lib/clickhouse/coordination/log<span style="color:#204a87;font-weight:bold">&lt;/log_storage_path&gt;</span>
-        <span style="color:#204a87;font-weight:bold">&lt;snapshot_storage_path&gt;</span>/var/lib/clickhouse/coordination/snapshots<span style="color:#204a87;font-weight:bold">&lt;/snapshot_storage_path&gt;</span>
-
-        <span style="color:#204a87;font-weight:bold">&lt;coordination_settings&gt;</span>
-            <span style="color:#204a87;font-weight:bold">&lt;operation_timeout_ms&gt;</span>10000<span style="color:#204a87;font-weight:bold">&lt;/operation_timeout_ms&gt;</span>
-            <span style="color:#204a87;font-weight:bold">&lt;session_timeout_ms&gt;</span>30000<span style="color:#204a87;font-weight:bold">&lt;/session_timeout_ms&gt;</span>
-            <span style="color:#204a87;font-weight:bold">&lt;raft_logs_level&gt;</span>trace<span style="color:#204a87;font-weight:bold">&lt;/raft_logs_level&gt;</span>
-              <span style="color:#204a87;font-weight:bold">&lt;rotate_log_storage_interval&gt;</span>10000<span style="color:#204a87;font-weight:bold">&lt;/rotate_log_storage_interval&gt;</span>
-        <span style="color:#204a87;font-weight:bold">&lt;/coordination_settings&gt;</span>
-
-      <span style="color:#204a87;font-weight:bold">&lt;raft_configuration&gt;</span>
-            <span style="color:#204a87;font-weight:bold">&lt;server&gt;</span>
-               <span style="color:#204a87;font-weight:bold">&lt;id&gt;</span>1<span style="color:#204a87;font-weight:bold">&lt;/id&gt;</span>
-                 <span style="color:#204a87;font-weight:bold">&lt;hostname&gt;</span>hostname1<span style="color:#204a87;font-weight:bold">&lt;/hostname&gt;</span>
-               <span style="color:#204a87;font-weight:bold">&lt;port&gt;</span>9444<span style="color:#204a87;font-weight:bold">&lt;/port&gt;</span>
-          <span style="color:#204a87;font-weight:bold">&lt;/server&gt;</span>
-          <span style="color:#204a87;font-weight:bold">&lt;server&gt;</span>
-               <span style="color:#204a87;font-weight:bold">&lt;id&gt;</span>2<span style="color:#204a87;font-weight:bold">&lt;/id&gt;</span>
-                 <span style="color:#204a87;font-weight:bold">&lt;hostname&gt;</span>hostname2<span style="color:#204a87;font-weight:bold">&lt;/hostname&gt;</span>
-               <span style="color:#204a87;font-weight:bold">&lt;port&gt;</span>9444<span style="color:#204a87;font-weight:bold">&lt;/port&gt;</span>
-          <span style="color:#204a87;font-weight:bold">&lt;/server&gt;</span>
-      <span style="color:#204a87;font-weight:bold">&lt;/raft_configuration&gt;</span>
-
-    <span style="color:#204a87;font-weight:bold">&lt;/keeper_server&gt;</span>
-
-    <span style="color:#204a87;font-weight:bold">&lt;zookeeper&gt;</span>
-        <span style="color:#204a87;font-weight:bold">&lt;node&gt;</span>
-            <span style="color:#204a87;font-weight:bold">&lt;host&gt;</span>localhost<span style="color:#204a87;font-weight:bold">&lt;/host&gt;</span>
-            <span style="color:#204a87;font-weight:bold">&lt;port&gt;</span>2181<span style="color:#204a87;font-weight:bold">&lt;/port&gt;</span>
-        <span style="color:#204a87;font-weight:bold">&lt;/node&gt;</span>
-    <span style="color:#204a87;font-weight:bold">&lt;/zookeeper&gt;</span>
-
-    <span style="color:#204a87;font-weight:bold">&lt;distributed_ddl&gt;</span>
-        <span style="color:#204a87;font-weight:bold">&lt;path&gt;</span>/clickhouse/testcluster/task_queue/ddl<span style="color:#204a87;font-weight:bold">&lt;/path&gt;</span>
-    <span style="color:#204a87;font-weight:bold">&lt;/distributed_ddl&gt;</span>
-<span style="color:#204a87;font-weight:bold">&lt;/yandex&gt;</span>
-
-$ cat /etc/clickhouse-server/config.d/macros.xml
-
-<span style="color:#8f5902;font-style:italic">&lt;?xml version=&#34;1.0&#34; ?&gt;</span>
-<span style="color:#204a87;font-weight:bold">&lt;yandex&gt;</span>
-    <span style="color:#204a87;font-weight:bold">&lt;macros&gt;</span>
-        <span style="color:#204a87;font-weight:bold">&lt;cluster&gt;</span>testcluster<span style="color:#204a87;font-weight:bold">&lt;/cluster&gt;</span>
-        <span style="color:#204a87;font-weight:bold">&lt;replica&gt;</span>replica2<span style="color:#204a87;font-weight:bold">&lt;/replica&gt;</span>
-        <span style="color:#204a87;font-weight:bold">&lt;shard&gt;</span>1<span style="color:#204a87;font-weight:bold">&lt;/shard&gt;</span>
-    <span style="color:#204a87;font-weight:bold">&lt;/macros&gt;</span>
-<span style="color:#204a87;font-weight:bold">&lt;/yandex&gt;</span>
-</code></pre></div><h3 id="on-both">on both</h3>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml">$ cat /etc/clickhouse-server/config.d/clusters.xml
-
-<span style="color:#8f5902;font-style:italic">&lt;?xml version=&#34;1.0&#34; ?&gt;</span>
-<span style="color:#204a87;font-weight:bold">&lt;yandex&gt;</span>
-    <span style="color:#204a87;font-weight:bold">&lt;remote_servers&gt;</span>
-        <span style="color:#204a87;font-weight:bold">&lt;testcluster&gt;</span>
-            <span style="color:#204a87;font-weight:bold">&lt;shard&gt;</span>
-                <span style="color:#204a87;font-weight:bold">&lt;replica&gt;</span>
-                    <span style="color:#204a87;font-weight:bold">&lt;host&gt;</span>hostname1<span style="color:#204a87;font-weight:bold">&lt;/host&gt;</span>
-                    <span style="color:#204a87;font-weight:bold">&lt;port&gt;</span>9000<span style="color:#204a87;font-weight:bold">&lt;/port&gt;</span>
-                <span style="color:#204a87;font-weight:bold">&lt;/replica&gt;</span>
-                <span style="color:#204a87;font-weight:bold">&lt;replica&gt;</span>
-                    <span style="color:#204a87;font-weight:bold">&lt;host&gt;</span>hostname2<span style="color:#204a87;font-weight:bold">&lt;/host&gt;</span>
-                    <span style="color:#204a87;font-weight:bold">&lt;port&gt;</span>9000<span style="color:#204a87;font-weight:bold">&lt;/port&gt;</span>
-                <span style="color:#204a87;font-weight:bold">&lt;/replica&gt;</span>
-            <span style="color:#204a87;font-weight:bold">&lt;/shard&gt;</span>
-        <span style="color:#204a87;font-weight:bold">&lt;/testcluster&gt;</span>
-    <span style="color:#204a87;font-weight:bold">&lt;/remote_servers&gt;</span>
-<span style="color:#204a87;font-weight:bold">&lt;/yandex&gt;</span>
-</code></pre></div><p>Then create a table</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#204a87;font-weight:bold">create</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">table</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">test</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">on</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;{cluster}&#39;</span><span style="color:#f8f8f8;text-decoration:underline">   </span><span style="color:#000;font-weight:bold">(</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">A</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Int64</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">S</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">String</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">Engine</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">ReplicatedMergeTree</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;/clickhouse/{cluster}/tables/{database}/{table}&#39;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#4e9a06">&#39;{replica}&#39;</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">Order</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">by</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">A</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">insert</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">into</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">test</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">select</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87">number</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;&#39;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">from</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">numbers</span><span style="color:#000;font-weight:bold">(</span><span style="color:#0000cf;font-weight:bold">100000000</span><span style="color:#000;font-weight:bold">);</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#8f5902;font-style:italic">-- on both nodes:
-</span><span style="color:#8f5902;font-style:italic"></span><span style="color:#204a87;font-weight:bold">select</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">count</span><span style="color:#000;font-weight:bold">()</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">from</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">test</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></code></pre></div>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span>$ cat /etc/clickhouse-server/config.d/keeper.xml
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">&lt;?xml version=&#34;1.0&#34; ?&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">&lt;yandex&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&lt;keeper_server&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&lt;tcp_port&gt;</span>2181<span style="color:#204a87;font-weight:bold">&lt;/tcp_port&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&lt;server_id&gt;</span>1<span style="color:#204a87;font-weight:bold">&lt;/server_id&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&lt;log_storage_path&gt;</span>/var/lib/clickhouse/coordination/log<span style="color:#204a87;font-weight:bold">&lt;/log_storage_path&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&lt;snapshot_storage_path&gt;</span>/var/lib/clickhouse/coordination/snapshots<span style="color:#204a87;font-weight:bold">&lt;/snapshot_storage_path&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&lt;coordination_settings&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#204a87;font-weight:bold">&lt;operation_timeout_ms&gt;</span>10000<span style="color:#204a87;font-weight:bold">&lt;/operation_timeout_ms&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#204a87;font-weight:bold">&lt;session_timeout_ms&gt;</span>30000<span style="color:#204a87;font-weight:bold">&lt;/session_timeout_ms&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#204a87;font-weight:bold">&lt;raft_logs_level&gt;</span>trace<span style="color:#204a87;font-weight:bold">&lt;/raft_logs_level&gt;</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#204a87;font-weight:bold">&lt;rotate_log_storage_interval&gt;</span>10000<span style="color:#204a87;font-weight:bold">&lt;/rotate_log_storage_interval&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&lt;/coordination_settings&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      <span style="color:#204a87;font-weight:bold">&lt;raft_configuration&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#204a87;font-weight:bold">&lt;server&gt;</span>
+</span></span><span style="display:flex;"><span>               <span style="color:#204a87;font-weight:bold">&lt;id&gt;</span>1<span style="color:#204a87;font-weight:bold">&lt;/id&gt;</span>
+</span></span><span style="display:flex;"><span>                 <span style="color:#204a87;font-weight:bold">&lt;hostname&gt;</span>hostname1<span style="color:#204a87;font-weight:bold">&lt;/hostname&gt;</span>
+</span></span><span style="display:flex;"><span>               <span style="color:#204a87;font-weight:bold">&lt;port&gt;</span>9444<span style="color:#204a87;font-weight:bold">&lt;/port&gt;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#204a87;font-weight:bold">&lt;/server&gt;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#204a87;font-weight:bold">&lt;server&gt;</span>
+</span></span><span style="display:flex;"><span>               <span style="color:#204a87;font-weight:bold">&lt;id&gt;</span>2<span style="color:#204a87;font-weight:bold">&lt;/id&gt;</span>
+</span></span><span style="display:flex;"><span>                 <span style="color:#204a87;font-weight:bold">&lt;hostname&gt;</span>hostname2<span style="color:#204a87;font-weight:bold">&lt;/hostname&gt;</span>
+</span></span><span style="display:flex;"><span>               <span style="color:#204a87;font-weight:bold">&lt;port&gt;</span>9444<span style="color:#204a87;font-weight:bold">&lt;/port&gt;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#204a87;font-weight:bold">&lt;/server&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#204a87;font-weight:bold">&lt;/raft_configuration&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&lt;/keeper_server&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&lt;zookeeper&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&lt;node&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#204a87;font-weight:bold">&lt;host&gt;</span>localhost<span style="color:#204a87;font-weight:bold">&lt;/host&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#204a87;font-weight:bold">&lt;port&gt;</span>2181<span style="color:#204a87;font-weight:bold">&lt;/port&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&lt;/node&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&lt;/zookeeper&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&lt;distributed_ddl&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&lt;path&gt;</span>/clickhouse/testcluster/task_queue/ddl<span style="color:#204a87;font-weight:bold">&lt;/path&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&lt;/distributed_ddl&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">&lt;/yandex&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ cat /etc/clickhouse-server/config.d/macros.xml
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">&lt;?xml version=&#34;1.0&#34; ?&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">&lt;yandex&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&lt;macros&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&lt;cluster&gt;</span>testcluster<span style="color:#204a87;font-weight:bold">&lt;/cluster&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&lt;replica&gt;</span>replica1<span style="color:#204a87;font-weight:bold">&lt;/replica&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&lt;shard&gt;</span>1<span style="color:#204a87;font-weight:bold">&lt;/shard&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&lt;/macros&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">&lt;/yandex&gt;</span>
+</span></span></code></pre></div><h3 id="hostname2">hostname2</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span>$ cat /etc/clickhouse-server/config.d/keeper.xml
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">&lt;?xml version=&#34;1.0&#34; ?&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">&lt;yandex&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&lt;keeper_server&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&lt;tcp_port&gt;</span>2181<span style="color:#204a87;font-weight:bold">&lt;/tcp_port&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&lt;server_id&gt;</span>2<span style="color:#204a87;font-weight:bold">&lt;/server_id&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&lt;log_storage_path&gt;</span>/var/lib/clickhouse/coordination/log<span style="color:#204a87;font-weight:bold">&lt;/log_storage_path&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&lt;snapshot_storage_path&gt;</span>/var/lib/clickhouse/coordination/snapshots<span style="color:#204a87;font-weight:bold">&lt;/snapshot_storage_path&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&lt;coordination_settings&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#204a87;font-weight:bold">&lt;operation_timeout_ms&gt;</span>10000<span style="color:#204a87;font-weight:bold">&lt;/operation_timeout_ms&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#204a87;font-weight:bold">&lt;session_timeout_ms&gt;</span>30000<span style="color:#204a87;font-weight:bold">&lt;/session_timeout_ms&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#204a87;font-weight:bold">&lt;raft_logs_level&gt;</span>trace<span style="color:#204a87;font-weight:bold">&lt;/raft_logs_level&gt;</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#204a87;font-weight:bold">&lt;rotate_log_storage_interval&gt;</span>10000<span style="color:#204a87;font-weight:bold">&lt;/rotate_log_storage_interval&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&lt;/coordination_settings&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      <span style="color:#204a87;font-weight:bold">&lt;raft_configuration&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#204a87;font-weight:bold">&lt;server&gt;</span>
+</span></span><span style="display:flex;"><span>               <span style="color:#204a87;font-weight:bold">&lt;id&gt;</span>1<span style="color:#204a87;font-weight:bold">&lt;/id&gt;</span>
+</span></span><span style="display:flex;"><span>                 <span style="color:#204a87;font-weight:bold">&lt;hostname&gt;</span>hostname1<span style="color:#204a87;font-weight:bold">&lt;/hostname&gt;</span>
+</span></span><span style="display:flex;"><span>               <span style="color:#204a87;font-weight:bold">&lt;port&gt;</span>9444<span style="color:#204a87;font-weight:bold">&lt;/port&gt;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#204a87;font-weight:bold">&lt;/server&gt;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#204a87;font-weight:bold">&lt;server&gt;</span>
+</span></span><span style="display:flex;"><span>               <span style="color:#204a87;font-weight:bold">&lt;id&gt;</span>2<span style="color:#204a87;font-weight:bold">&lt;/id&gt;</span>
+</span></span><span style="display:flex;"><span>                 <span style="color:#204a87;font-weight:bold">&lt;hostname&gt;</span>hostname2<span style="color:#204a87;font-weight:bold">&lt;/hostname&gt;</span>
+</span></span><span style="display:flex;"><span>               <span style="color:#204a87;font-weight:bold">&lt;port&gt;</span>9444<span style="color:#204a87;font-weight:bold">&lt;/port&gt;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#204a87;font-weight:bold">&lt;/server&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#204a87;font-weight:bold">&lt;/raft_configuration&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&lt;/keeper_server&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&lt;zookeeper&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&lt;node&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#204a87;font-weight:bold">&lt;host&gt;</span>localhost<span style="color:#204a87;font-weight:bold">&lt;/host&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#204a87;font-weight:bold">&lt;port&gt;</span>2181<span style="color:#204a87;font-weight:bold">&lt;/port&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&lt;/node&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&lt;/zookeeper&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&lt;distributed_ddl&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&lt;path&gt;</span>/clickhouse/testcluster/task_queue/ddl<span style="color:#204a87;font-weight:bold">&lt;/path&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&lt;/distributed_ddl&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">&lt;/yandex&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ cat /etc/clickhouse-server/config.d/macros.xml
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">&lt;?xml version=&#34;1.0&#34; ?&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">&lt;yandex&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&lt;macros&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&lt;cluster&gt;</span>testcluster<span style="color:#204a87;font-weight:bold">&lt;/cluster&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&lt;replica&gt;</span>replica2<span style="color:#204a87;font-weight:bold">&lt;/replica&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&lt;shard&gt;</span>1<span style="color:#204a87;font-weight:bold">&lt;/shard&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&lt;/macros&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">&lt;/yandex&gt;</span>
+</span></span></code></pre></div><h3 id="on-both">on both</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span>$ cat /etc/clickhouse-server/config.d/clusters.xml
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">&lt;?xml version=&#34;1.0&#34; ?&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">&lt;yandex&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&lt;remote_servers&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&lt;testcluster&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#204a87;font-weight:bold">&lt;shard&gt;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#204a87;font-weight:bold">&lt;replica&gt;</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#204a87;font-weight:bold">&lt;host&gt;</span>hostname1<span style="color:#204a87;font-weight:bold">&lt;/host&gt;</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#204a87;font-weight:bold">&lt;port&gt;</span>9000<span style="color:#204a87;font-weight:bold">&lt;/port&gt;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#204a87;font-weight:bold">&lt;/replica&gt;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#204a87;font-weight:bold">&lt;replica&gt;</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#204a87;font-weight:bold">&lt;host&gt;</span>hostname2<span style="color:#204a87;font-weight:bold">&lt;/host&gt;</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#204a87;font-weight:bold">&lt;port&gt;</span>9000<span style="color:#204a87;font-weight:bold">&lt;/port&gt;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#204a87;font-weight:bold">&lt;/replica&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#204a87;font-weight:bold">&lt;/shard&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&lt;/testcluster&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&lt;/remote_servers&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">&lt;/yandex&gt;</span>
+</span></span></code></pre></div><p>Then create a table</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">create</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">table</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">test</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">on</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;{cluster}&#39;</span><span style="color:#f8f8f8;text-decoration:underline">   </span><span style="color:#000;font-weight:bold">(</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">A</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Int64</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">S</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">String</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">Engine</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">ReplicatedMergeTree</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;/clickhouse/{cluster}/tables/{database}/{table}&#39;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#4e9a06">&#39;{replica}&#39;</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">Order</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">by</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">A</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">insert</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">into</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">test</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">select</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87">number</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;&#39;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">from</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">numbers</span><span style="color:#000;font-weight:bold">(</span><span style="color:#0000cf;font-weight:bold">100000000</span><span style="color:#000;font-weight:bold">);</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#8f5902;font-style:italic">-- on both nodes:
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span><span style="color:#204a87;font-weight:bold">select</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">count</span><span style="color:#000;font-weight:bold">()</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">from</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">test</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div>
 </div>
 
 
@@ -586,10 +586,10 @@ $ cat /etc/clickhouse-server/config.d/macros.xml
     <div class="lead">JVM sizes and garbage collector settings</div>
 	<h2 id="tldr-version">TLDR version</h2>
 <p>use fresh Java version (11 or newer), disable swap and set up (for 4 Gb node):</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#000">JAVA_OPTS</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;-Xms512m -Xmx3G -XX:+AlwaysPreTouch -Djute.maxbuffer=8388608 -XX:MaxGCPauseMillis=50&#34;</span>
-</code></pre></div><p>If you have a node with more RAM - change it accordingly, for example for 8Gb node:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#000">JAVA_OPTS</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;-Xms512m -Xmx7G -XX:+AlwaysPreTouch -Djute.maxbuffer=8388608 -XX:MaxGCPauseMillis=50&#34;</span>
-</code></pre></div><h2 id="details">Details</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#000">JAVA_OPTS</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;-Xms512m -Xmx3G -XX:+AlwaysPreTouch -Djute.maxbuffer=8388608 -XX:MaxGCPauseMillis=50&#34;</span>
+</span></span></code></pre></div><p>If you have a node with more RAM - change it accordingly, for example for 8Gb node:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#000">JAVA_OPTS</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;-Xms512m -Xmx7G -XX:+AlwaysPreTouch -Djute.maxbuffer=8388608 -XX:MaxGCPauseMillis=50&#34;</span>
+</span></span></code></pre></div><h2 id="details">Details</h2>
 <ol>
 <li>
 <p>ZooKeeper runs as in JVM. Depending on version different garbage collectors are available.</p>
@@ -612,7 +612,7 @@ On older JVM version (before 10) you may want to make some tuning to decrease pa
 <p>Set min (<code>Xms</code>) heap size to the values like 512Mb, or even to the same value as max (<code>Xmx</code>) to avoid resizing and returning the RAM to OS. Add <code>XX:+AlwaysPreTouch</code> flag as well to load the memory pages into memory at the start of the zookeeper.</p>
 </li>
 <li>
-<p><code>MaxGCPauseMillis=50</code> (by default 200) - the &lsquo;target&rsquo; acceptable pause for garbage collection (milliseconds)</p>
+<p><code>MaxGCPauseMillis=50</code> (by default 200) - the &rsquo;target&rsquo; acceptable pause for garbage collection (milliseconds)</p>
 </li>
 <li>
 <p><code>jute.maxbuffer</code> limits the maximum size of znode content. By default it&rsquo;s 1Mb. In some usecases (lot of partitions in table) ClickHouse may need to create bigger znodes.</p>
@@ -623,24 +623,24 @@ On older JVM version (before 10) you may want to make some tuning to decrease pa
 </ol>
 <h2 id="zookeeper-configurarion-used-by-yandex-metrika-from-2017">Zookeeper configurarion used by Yandex Metrika (from 2017)</h2>
 <p>The configuration used by Yandex ( <a href="https://clickhouse.tech/docs/en/operations/tips/#zookeeper" target="_blank">https://clickhouse.tech/docs/en/operations/tips/#zookeeper</a> ) - they use older JVM version (with <code>UseParNewGC</code> garbage collector), and tune GC logs heavily:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#000">JAVA_OPTS</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;-Xms{{ cluster.get(&#39;xms&#39;,&#39;128M&#39;) }} \
-</span><span style="color:#4e9a06">    -Xmx{{ cluster.get(&#39;xmx&#39;,&#39;1G&#39;) }} \
-</span><span style="color:#4e9a06">    -Xloggc:/var/log/</span><span style="color:#000">$NAME</span><span style="color:#4e9a06">/zookeeper-gc.log \
-</span><span style="color:#4e9a06">    -XX:+UseGCLogFileRotation \
-</span><span style="color:#4e9a06">    -XX:NumberOfGCLogFiles=16 \
-</span><span style="color:#4e9a06">    -XX:GCLogFileSize=16M \
-</span><span style="color:#4e9a06">    -verbose:gc \
-</span><span style="color:#4e9a06">    -XX:+PrintGCTimeStamps \
-</span><span style="color:#4e9a06">    -XX:+PrintGCDateStamps \
-</span><span style="color:#4e9a06">    -XX:+PrintGCDetails
-</span><span style="color:#4e9a06">    -XX:+PrintTenuringDistribution \
-</span><span style="color:#4e9a06">    -XX:+PrintGCApplicationStoppedTime \
-</span><span style="color:#4e9a06">    -XX:+PrintGCApplicationConcurrentTime \
-</span><span style="color:#4e9a06">    -XX:+PrintSafepointStatistics \
-</span><span style="color:#4e9a06">    -XX:+UseParNewGC \
-</span><span style="color:#4e9a06">    -XX:+UseConcMarkSweepGC \
-</span><span style="color:#4e9a06">    -XX:+CMSParallelRemarkEnabled&#34;</span>
-</code></pre></div><h2 id="see-also">See also</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#000">JAVA_OPTS</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;-Xms{{ cluster.get(&#39;xms&#39;,&#39;128M&#39;) }} \
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">    -Xmx{{ cluster.get(&#39;xmx&#39;,&#39;1G&#39;) }} \
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">    -Xloggc:/var/log/</span><span style="color:#000">$NAME</span><span style="color:#4e9a06">/zookeeper-gc.log \
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">    -XX:+UseGCLogFileRotation \
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">    -XX:NumberOfGCLogFiles=16 \
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">    -XX:GCLogFileSize=16M \
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">    -verbose:gc \
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">    -XX:+PrintGCTimeStamps \
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">    -XX:+PrintGCDateStamps \
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">    -XX:+PrintGCDetails
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">    -XX:+PrintTenuringDistribution \
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">    -XX:+PrintGCApplicationStoppedTime \
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">    -XX:+PrintGCApplicationConcurrentTime \
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">    -XX:+PrintSafepointStatistics \
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">    -XX:+UseParNewGC \
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">    -XX:+UseConcMarkSweepGC \
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">    -XX:+CMSParallelRemarkEnabled&#34;</span>
+</span></span></code></pre></div><h2 id="see-also">See also</h2>
 <ul>
 <li><a href="https://wikitech.wikimedia.org/wiki/JVM_Tuning#G1_for_full_gcs" target="_blank">https://wikitech.wikimedia.org/wiki/JVM_Tuning#G1_for_full_gcs</a></li>
 <li><a href="https://sematext.com/blog/java-garbage-collection-tuning/" target="_blank">https://sematext.com/blog/java-garbage-collection-tuning/</a></li>
@@ -723,8 +723,8 @@ in many cases, the slowness of the zookeeper is actually a symptom of some issue
 	<h2 id="problem">Problem</h2>
 <p>Every ClickHouse user experienced a loss of ZooKeeper one day. While the data is available and replicas respond to queries, inserts are no longer possible. ClickHouse uses ZooKeeper in order to store the reference version of the table structure and part of data, and when it is not available can not guarantee data consistency anymore. Replicated tables turn to the read-only mode. In this article we describe step-by-step instructions of how to restore ZooKeeper metadata and bring ClickHouse cluster back to normal operation.</p>
 <p>In order to restore ZooKeeper we have to solve two tasks. First, we need to restore table metadata in ZooKeeper. Currently, the only way to do it is to recreate the table with the <code>CREATE TABLE DDL</code> statement.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#204a87;font-weight:bold">CREATE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">TABLE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">table_name</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">...</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">ENGINE</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000">ReplicatedMergeTree</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;zookeeper_path&#39;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#4e9a06">&#39;replica_name&#39;</span><span style="color:#000;font-weight:bold">);</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></code></pre></div><p>The second and more difficult task is to populate zookeeper with information of clickhouse data parts. As mentioned above, ClickHouse stores the reference data about all parts of replicated tables in ZooKeeper, so we have to traverse all partitions and re-attach them to the recovered replicated table in order to fix that.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">CREATE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">TABLE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">table_name</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">...</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">ENGINE</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000">ReplicatedMergeTree</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;zookeeper_path&#39;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#4e9a06">&#39;replica_name&#39;</span><span style="color:#000;font-weight:bold">);</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div><p>The second and more difficult task is to populate zookeeper with information of clickhouse data parts. As mentioned above, ClickHouse stores the reference data about all parts of replicated tables in ZooKeeper, so we have to traverse all partitions and re-attach them to the recovered replicated table in order to fix that.</p>
 
 
 <div class="alert alert-info" role="alert">
@@ -737,77 +737,77 @@ in many cases, the slowness of the zookeeper is actually a symptom of some issue
 <p><a href="https://altinity.com/blog/a-new-way-to-restore-clickhouse-after-zookeeper-metadata-is-lost" target="_blank">https://altinity.com/blog/a-new-way-to-restore-clickhouse-after-zookeeper-metadata-is-lost</a></p>
 <h2 id="test-case">Test case</h2>
 <p>Let&rsquo;s say we have replicated table <code>table_repl</code>.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#204a87;font-weight:bold">CREATE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">TABLE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">table_repl</span><span style="color:#f8f8f8;text-decoration:underline"> 
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000;font-weight:bold">(</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">   </span><span style="color:#ce5c00;font-weight:bold">`</span><span style="color:#204a87">number</span><span style="color:#ce5c00;font-weight:bold">`</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">UInt32</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">ENGINE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">ReplicatedMergeTree</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;/clickhouse/{cluster}/tables/{shard}/table_repl&#39;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#4e9a06">&#39;{replica}&#39;</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">PARTITION</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">BY</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">intDiv</span><span style="color:#000;font-weight:bold">(</span><span style="color:#204a87">number</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">1000</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">ORDER</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">BY</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87">number</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></code></pre></div><p>And populate it with some data</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#204a87;font-weight:bold">SELECT</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">FROM</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">system</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">zookeeper</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">WHERE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">path</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#39;/clickhouse/cluster_1/tables/01/&#39;</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">INSERT</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">INTO</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">table_repl</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">SELECT</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">FROM</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">numbers</span><span style="color:#000;font-weight:bold">(</span><span style="color:#0000cf;font-weight:bold">1000</span><span style="color:#000;font-weight:bold">,</span><span style="color:#0000cf;font-weight:bold">2000</span><span style="color:#000;font-weight:bold">);</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">SELECT</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">partition</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">sum</span><span style="color:#000;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">rows</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">AS</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">rows</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">count</span><span style="color:#000;font-weight:bold">()</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">FROM</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">system</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">parts</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">WHERE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">table</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#39;table_repl&#39;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">AND</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">active</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">GROUP</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">BY</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">partition</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></code></pre></div><p>Now let’s remove metadata in zookeeper using <code>ZkCli.sh</code> at ZooKeeper host:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">deleteall  /clickhouse/cluster_1/tables/01/table_repl
-</code></pre></div><p>And try to resync clickhouse replica state with zookeeper:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#204a87;font-weight:bold">SYSTEM</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">RESTART</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">REPLICA</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">table_repl</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></code></pre></div><p>If we try to insert some data in the table, error happens:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#204a87;font-weight:bold">INSERT</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">INTO</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">table_repl</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">SELECT</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87">number</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">AS</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87">number</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">FROM</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">numbers</span><span style="color:#000;font-weight:bold">(</span><span style="color:#0000cf;font-weight:bold">1000</span><span style="color:#000;font-weight:bold">,</span><span style="color:#0000cf;font-weight:bold">2000</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">WHERE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87">number</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">%</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">2</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></code></pre></div><p>And now we have an exception that we lost all metadata in zookeeper. It is time to recover!</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">CREATE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">TABLE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">table_repl</span><span style="color:#f8f8f8;text-decoration:underline"> 
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000;font-weight:bold">(</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">   </span><span style="color:#ce5c00;font-weight:bold">`</span><span style="color:#204a87">number</span><span style="color:#ce5c00;font-weight:bold">`</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">UInt32</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">ENGINE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">ReplicatedMergeTree</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;/clickhouse/{cluster}/tables/{shard}/table_repl&#39;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#4e9a06">&#39;{replica}&#39;</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">PARTITION</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">BY</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">intDiv</span><span style="color:#000;font-weight:bold">(</span><span style="color:#204a87">number</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">1000</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">ORDER</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">BY</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87">number</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div><p>And populate it with some data</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">SELECT</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">FROM</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">system</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">zookeeper</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">WHERE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">path</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#39;/clickhouse/cluster_1/tables/01/&#39;</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">INSERT</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">INTO</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">table_repl</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">SELECT</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">FROM</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">numbers</span><span style="color:#000;font-weight:bold">(</span><span style="color:#0000cf;font-weight:bold">1000</span><span style="color:#000;font-weight:bold">,</span><span style="color:#0000cf;font-weight:bold">2000</span><span style="color:#000;font-weight:bold">);</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">SELECT</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">partition</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">sum</span><span style="color:#000;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">rows</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">AS</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">rows</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">count</span><span style="color:#000;font-weight:bold">()</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">FROM</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">system</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">parts</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">WHERE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">table</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#39;table_repl&#39;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">AND</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">active</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">GROUP</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">BY</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">partition</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div><p>Now let’s remove metadata in zookeeper using <code>ZkCli.sh</code> at ZooKeeper host:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>deleteall  /clickhouse/cluster_1/tables/01/table_repl
+</span></span></code></pre></div><p>And try to resync clickhouse replica state with zookeeper:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">SYSTEM</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">RESTART</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">REPLICA</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">table_repl</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div><p>If we try to insert some data in the table, error happens:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">INSERT</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">INTO</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">table_repl</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">SELECT</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87">number</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">AS</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87">number</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">FROM</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">numbers</span><span style="color:#000;font-weight:bold">(</span><span style="color:#0000cf;font-weight:bold">1000</span><span style="color:#000;font-weight:bold">,</span><span style="color:#0000cf;font-weight:bold">2000</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">WHERE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87">number</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">%</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">2</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div><p>And now we have an exception that we lost all metadata in zookeeper. It is time to recover!</p>
 <h2 id="current-solution">Current Solution</h2>
 <ol>
 <li>
 <p>Detach replicated table.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000">DETACH</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">TABLE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">table_repl</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></code></pre></div></li>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#000">DETACH</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">TABLE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">table_repl</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div></li>
 <li>
 <p>Save the table’s attach script and change engine of replicated table to non-replicated *mergetree analogue. Table definition is located in the ‘metadata’ folder, ‘<code>/var/lib/clickhouse/metadata/default/table_repl.sql</code>’ in our example. Please make a backup copy and modify the file as follows:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000">ATTACH</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">TABLE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">table_repl</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000;font-weight:bold">(</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">   </span><span style="color:#ce5c00;font-weight:bold">`</span><span style="color:#204a87">number</span><span style="color:#ce5c00;font-weight:bold">`</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">UInt32</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">ENGINE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">ReplicatedMergeTree</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;/clickhouse/{cluster}/tables/{shard}/table_repl&#39;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;{replica}&#39;</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">PARTITION</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">BY</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">intDiv</span><span style="color:#000;font-weight:bold">(</span><span style="color:#204a87">number</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">1000</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">ORDER</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">BY</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87">number</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">SETTINGS</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">index_granularity</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">8192</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></code></pre></div><p>Needs to be replaced with this:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000">ATTACH</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">TABLE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">table_repl</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000;font-weight:bold">(</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">   </span><span style="color:#ce5c00;font-weight:bold">`</span><span style="color:#204a87">number</span><span style="color:#ce5c00;font-weight:bold">`</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">UInt32</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">ENGINE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">MergeTree</span><span style="color:#000;font-weight:bold">()</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">PARTITION</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">BY</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">intDiv</span><span style="color:#000;font-weight:bold">(</span><span style="color:#204a87">number</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">1000</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">ORDER</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">BY</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87">number</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">SETTINGS</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">index_granularity</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">8192</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></code></pre></div></li>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#000">ATTACH</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">TABLE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">table_repl</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000;font-weight:bold">(</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">   </span><span style="color:#ce5c00;font-weight:bold">`</span><span style="color:#204a87">number</span><span style="color:#ce5c00;font-weight:bold">`</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">UInt32</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">ENGINE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">ReplicatedMergeTree</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;/clickhouse/{cluster}/tables/{shard}/table_repl&#39;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;{replica}&#39;</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">PARTITION</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">BY</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">intDiv</span><span style="color:#000;font-weight:bold">(</span><span style="color:#204a87">number</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">1000</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">ORDER</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">BY</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87">number</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">SETTINGS</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">index_granularity</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">8192</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div><p>Needs to be replaced with this:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#000">ATTACH</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">TABLE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">table_repl</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000;font-weight:bold">(</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">   </span><span style="color:#ce5c00;font-weight:bold">`</span><span style="color:#204a87">number</span><span style="color:#ce5c00;font-weight:bold">`</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">UInt32</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">ENGINE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">MergeTree</span><span style="color:#000;font-weight:bold">()</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">PARTITION</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">BY</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">intDiv</span><span style="color:#000;font-weight:bold">(</span><span style="color:#204a87">number</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">1000</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">ORDER</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">BY</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87">number</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">SETTINGS</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">index_granularity</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">8192</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div></li>
 <li>
 <p>Attach non-replicated table.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000">ATTACH</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">TABLE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">table_repl</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></code></pre></div></li>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#000">ATTACH</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">TABLE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">table_repl</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div></li>
 <li>
 <p>Rename non-replicated table.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#204a87;font-weight:bold">RENAME</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">TABLE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">table_repl</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">TO</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">table_repl_old</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></code></pre></div></li>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">RENAME</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">TABLE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">table_repl</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">TO</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">table_repl_old</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div></li>
 <li>
 <p>Create a new replicated table. Take the saved attach script and replace ATTACH with CREATE, and run it.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#204a87;font-weight:bold">CREATE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">TABLE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">table_repl</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000;font-weight:bold">(</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">   </span><span style="color:#ce5c00;font-weight:bold">`</span><span style="color:#204a87">number</span><span style="color:#ce5c00;font-weight:bold">`</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">UInt32</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">ENGINE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">ReplicatedMergeTree</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;/clickhouse/{cluster}/tables/{shard}/table_repl&#39;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;{replica}&#39;</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">PARTITION</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">BY</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">intDiv</span><span style="color:#000;font-weight:bold">(</span><span style="color:#204a87">number</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">1000</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">ORDER</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">BY</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87">number</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">SETTINGS</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">index_granularity</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">8192</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></code></pre></div></li>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">CREATE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">TABLE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">table_repl</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000;font-weight:bold">(</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">   </span><span style="color:#ce5c00;font-weight:bold">`</span><span style="color:#204a87">number</span><span style="color:#ce5c00;font-weight:bold">`</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">UInt32</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">ENGINE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">ReplicatedMergeTree</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;/clickhouse/{cluster}/tables/{shard}/table_repl&#39;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;{replica}&#39;</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">PARTITION</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">BY</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">intDiv</span><span style="color:#000;font-weight:bold">(</span><span style="color:#204a87">number</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">1000</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">ORDER</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">BY</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87">number</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">SETTINGS</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">index_granularity</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">8192</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div></li>
 <li>
 <p>Attach parts from old table to new.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#204a87;font-weight:bold">ALTER</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">TABLE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">table_repl</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">ATTACH</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">PARTITION</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">FROM</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">table_repl_old</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">ALTER</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">TABLE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">table_repl</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">ATTACH</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">PARTITION</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">2</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">FROM</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">table_repl_old</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></code></pre></div></li>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">ALTER</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">TABLE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">table_repl</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">ATTACH</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">PARTITION</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">FROM</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">table_repl_old</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">ALTER</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">TABLE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">table_repl</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">ATTACH</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">PARTITION</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">2</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">FROM</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">table_repl_old</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div></li>
 </ol>
 <p>If the table has many partitions, it may require some shell script to make it easier.</p>
 <h3 id="automated-approach">Automated approach</h3>
@@ -950,37 +950,37 @@ in many cases, the slowness of the zookeeper is actually a symptom of some issue
     <div class="lead">ZooKeeper schema</div>
 	<h2 id="metadata">/metadata</h2>
 <p>Table schema.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">date column -&gt; legacy MergeTree partition expression.
-sampling expression -&gt; SAMPLE BY
-index granularity -&gt; index_granularity
-mode -&gt; <span style="color:#204a87">type</span> of MergeTree table
-sign column -&gt; sign - CollapsingMergeTree / VersionedCollapsingMergeTree
-primary key -&gt; ORDER BY key <span style="color:#204a87;font-weight:bold">if</span> PRIMARY KEY not defined.
-sorting key -&gt; ORDER BY key <span style="color:#204a87;font-weight:bold">if</span> PRIMARY KEY defined.
-data format version -&gt; <span style="color:#0000cf;font-weight:bold">1</span>
-partition key -&gt; PARTITION BY
-granularity bytes -&gt; index_granularity_bytes
-
-types of MergeTree tables:
-<span style="color:#000">Ordinary</span>            <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#0000cf;font-weight:bold">0</span>
-<span style="color:#000">Collapsing</span>          <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#0000cf;font-weight:bold">1</span>
-<span style="color:#000">Summing</span>             <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#0000cf;font-weight:bold">2</span>
-<span style="color:#000">Aggregating</span>         <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#0000cf;font-weight:bold">3</span>
-<span style="color:#000">Replacing</span>           <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#0000cf;font-weight:bold">5</span>
-<span style="color:#000">Graphite</span>            <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#0000cf;font-weight:bold">6</span>
-<span style="color:#000">VersionedCollapsing</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#0000cf;font-weight:bold">7</span>
-</code></pre></div><h2 id="mutations">/mutations</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>date column -&gt; legacy MergeTree partition expression.
+</span></span><span style="display:flex;"><span>sampling expression -&gt; SAMPLE BY
+</span></span><span style="display:flex;"><span>index granularity -&gt; index_granularity
+</span></span><span style="display:flex;"><span>mode -&gt; <span style="color:#204a87">type</span> of MergeTree table
+</span></span><span style="display:flex;"><span>sign column -&gt; sign - CollapsingMergeTree / VersionedCollapsingMergeTree
+</span></span><span style="display:flex;"><span>primary key -&gt; ORDER BY key <span style="color:#204a87;font-weight:bold">if</span> PRIMARY KEY not defined.
+</span></span><span style="display:flex;"><span>sorting key -&gt; ORDER BY key <span style="color:#204a87;font-weight:bold">if</span> PRIMARY KEY defined.
+</span></span><span style="display:flex;"><span>data format version -&gt; <span style="color:#0000cf;font-weight:bold">1</span>
+</span></span><span style="display:flex;"><span>partition key -&gt; PARTITION BY
+</span></span><span style="display:flex;"><span>granularity bytes -&gt; index_granularity_bytes
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>types of MergeTree tables:
+</span></span><span style="display:flex;"><span><span style="color:#000">Ordinary</span>            <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#0000cf;font-weight:bold">0</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">Collapsing</span>          <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#0000cf;font-weight:bold">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">Summing</span>             <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#0000cf;font-weight:bold">2</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">Aggregating</span>         <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#0000cf;font-weight:bold">3</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">Replacing</span>           <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#0000cf;font-weight:bold">5</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">Graphite</span>            <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#0000cf;font-weight:bold">6</span>
+</span></span><span style="display:flex;"><span><span style="color:#000">VersionedCollapsing</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#0000cf;font-weight:bold">7</span>
+</span></span></code></pre></div><h2 id="mutations">/mutations</h2>
 <p>Log of latest mutations</p>
 <h2 id="columns">/columns</h2>
 <p>List of columns for latest (reference) table version. Replicas would try to reach this state.</p>
 <h2 id="log">/log</h2>
 <p>Log of latest actions with table.</p>
 <p>Related settings:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#a40000">┌─</span><span style="color:#000">name</span><span style="color:#a40000">────────────────────────┬─</span><span style="color:#000">value</span><span style="color:#a40000">─┬─</span><span style="color:#000">changed</span><span style="color:#a40000">─┬─</span><span style="color:#000">description</span><span style="color:#a40000">────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┬─</span><span style="color:#204a87;font-weight:bold">type</span><span style="color:#a40000">───┐</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">max_replicated_logs_to_keep</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">1000</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline">       </span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">How</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">many</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">records</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">may</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">be</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">in</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">log</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">if</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">there</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">is</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">inactive</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">replica</span><span style="color:#000;font-weight:bold">.</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Inactive</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">replica</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">becomes</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">lost</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">when</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">when</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">this</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87">number</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">exceed</span><span style="color:#000;font-weight:bold">.</span><span style="color:#f8f8f8;text-decoration:underline">                                                  </span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">UInt64</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">min_replicated_logs_to_keep</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">10</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline">       </span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Keep</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">about</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">this</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87">number</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">of</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">last</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">records</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">in</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">ZooKeeper</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">log</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">even</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">if</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">they</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">are</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">obsolete</span><span style="color:#000;font-weight:bold">.</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">It</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">doesn</span><span style="color:#4e9a06">&#39;t affect work of tables: used only to diagnose ZooKeeper log before cleaning. │ UInt64 │
-</span><span style="color:#4e9a06">└─────────────────────────────┴───────┴─────────┴────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┴────────┘
-</span></code></pre></div><h2 id="replicas">/replicas</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#a40000">┌─</span><span style="color:#000">name</span><span style="color:#a40000">────────────────────────┬─</span><span style="color:#000">value</span><span style="color:#a40000">─┬─</span><span style="color:#000">changed</span><span style="color:#a40000">─┬─</span><span style="color:#000">description</span><span style="color:#a40000">────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┬─</span><span style="color:#204a87;font-weight:bold">type</span><span style="color:#a40000">───┐</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">max_replicated_logs_to_keep</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">1000</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline">       </span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">How</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">many</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">records</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">may</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">be</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">in</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">log</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">if</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">there</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">is</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">inactive</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">replica</span><span style="color:#000;font-weight:bold">.</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Inactive</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">replica</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">becomes</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">lost</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">when</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">when</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">this</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87">number</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">exceed</span><span style="color:#000;font-weight:bold">.</span><span style="color:#f8f8f8;text-decoration:underline">                                                  </span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">UInt64</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">min_replicated_logs_to_keep</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">10</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline">       </span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Keep</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">about</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">this</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87">number</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">of</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">last</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">records</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">in</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">ZooKeeper</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">log</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">even</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">if</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">they</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">are</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">obsolete</span><span style="color:#000;font-weight:bold">.</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">It</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">doesn</span><span style="color:#4e9a06">&#39;t affect work of tables: used only to diagnose ZooKeeper log before cleaning. │ UInt64 │
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">└─────────────────────────────┴───────┴─────────┴────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┴────────┘
+</span></span></span></code></pre></div><h2 id="replicas">/replicas</h2>
 <p>List of table replicas.</p>
 <h2 id="replicasreplica_name">/replicas/replica_name/</h2>
 <h3 id="replicasreplica_namemutation_pointer">/replicas/replica_name/mutation_pointer</h3>
@@ -1101,7 +1101,7 @@ types of MergeTree tables:
 
 
 
-<script src="/js/main.min.3b172c13b62c2bea8b1c9d2599cddc8cf89718a92d792c680871c81ba43d8c85.js" integrity="sha256-OxcsE7YsK&#43;qLHJ0lmc3cjPiXGKkteSxoCHHIG6Q9jIU=" crossorigin="anonymous"></script>
+<script src="/js/main.min.7fa9e3e39f56ebd66798993ef3c080218d9696c971a28ef8872d750b7416a435.js" integrity="sha256-f6nj459W69ZnmJk&#43;88CAIY2Wlslxoo74hy11C3QWpDU=" crossorigin="anonymous"></script>
 
 
 

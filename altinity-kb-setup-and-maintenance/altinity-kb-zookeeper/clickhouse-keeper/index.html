@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.92.2" /><META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
+<meta name="generator" content="Hugo 0.93.0" /><META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
 <link rel="shortcut icon" href="/favicons/favicon.ico" >
 <link rel="icon" href="/favicons/favicon.ico" >
 <title>clickhouse-keeper | Altinity Knowledge Base</title>
@@ -78,7 +78,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.035286ffea94b20115412349c1d2df50.json"
+  data-offline-search-index-json-src="/offline-search-index.41dc426efce12b05b3e1ade368ef5ff4.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -106,7 +106,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.035286ffea94b20115412349c1d2df50.json"
+  data-offline-search-index-json-src="/offline-search-index.41dc426efce12b05b3e1ade368ef5ff4.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -744,7 +744,7 @@
 	</div>
 	
 	       
-	<p>In 21.3 there is already an option to run own clickhouse zookeeper implementation. It&rsquo;s still experimental, and still need to be started additionally on few nodes (similar to &lsquo;normal&rsquo; zookeeper) and speaks normal zookeeper protocol - needed to simplify A/B tests with real zookeeper.</p>
+	<p>In 21.3 there is already an option to run own clickhouse zookeeper implementation. It&rsquo;s still experimental, and still need to be started additionally on few nodes (similar to &rsquo;normal&rsquo; zookeeper) and speaks normal zookeeper protocol - needed to simplify A/B tests with real zookeeper.</p>
 <p>No docs, for now, only PR with code &amp; tests. Of course, if you want to play with it - you can, and early feedback is very valuable. But be prepared for a lot of tiny issues here and there, so don&rsquo;t be disappointed if it will not satisfy your expectations for some reason. It&rsquo;s very-very fresh :slightly_smiling_face: It&rsquo;s ready for some trial runs, but not ready yet for production use cases.</p>
 <p>To test that you need to run 3 instances of clickhouse-server (which will mimic zookeeper) with an extra config like that:</p>
 <p><a href="https://github.com/ClickHouse/ClickHouse/blob/c8b1004ecb4bfc4aa581dbcbbbe3a4c72ce57123/tests/integration/test_keeper_multinode_simple/configs/enable_keeper1.xml" target="_blank">https://github.com/ClickHouse/ClickHouse/blob/c8b1004ecb4bfc4aa581dbcbbbe3a4c72ce57123/tests/integration/test_keeper_multinode_simple/configs/enable_keeper1.xml</a></p>
@@ -756,145 +756,145 @@
 <h2 id="example-of-a-simple-cluster-with-2-nodes-of-clickhouse-using-built-in-keeper">Example of a simple cluster with 2 nodes of Clickhouse using built-in keeper</h2>
 <p>For example you can start two Clikhouse nodes (hostname1, hostname2)</p>
 <h3 id="hostname1">hostname1</h3>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml">$ cat /etc/clickhouse-server/config.d/keeper.xml
-
-<span style="color:#8f5902;font-style:italic">&lt;?xml version=&#34;1.0&#34; ?&gt;</span>
-<span style="color:#204a87;font-weight:bold">&lt;yandex&gt;</span>
-    <span style="color:#204a87;font-weight:bold">&lt;keeper_server&gt;</span>
-        <span style="color:#204a87;font-weight:bold">&lt;tcp_port&gt;</span>2181<span style="color:#204a87;font-weight:bold">&lt;/tcp_port&gt;</span>
-        <span style="color:#204a87;font-weight:bold">&lt;server_id&gt;</span>1<span style="color:#204a87;font-weight:bold">&lt;/server_id&gt;</span>
-        <span style="color:#204a87;font-weight:bold">&lt;log_storage_path&gt;</span>/var/lib/clickhouse/coordination/log<span style="color:#204a87;font-weight:bold">&lt;/log_storage_path&gt;</span>
-        <span style="color:#204a87;font-weight:bold">&lt;snapshot_storage_path&gt;</span>/var/lib/clickhouse/coordination/snapshots<span style="color:#204a87;font-weight:bold">&lt;/snapshot_storage_path&gt;</span>
-
-        <span style="color:#204a87;font-weight:bold">&lt;coordination_settings&gt;</span>
-            <span style="color:#204a87;font-weight:bold">&lt;operation_timeout_ms&gt;</span>10000<span style="color:#204a87;font-weight:bold">&lt;/operation_timeout_ms&gt;</span>
-            <span style="color:#204a87;font-weight:bold">&lt;session_timeout_ms&gt;</span>30000<span style="color:#204a87;font-weight:bold">&lt;/session_timeout_ms&gt;</span>
-            <span style="color:#204a87;font-weight:bold">&lt;raft_logs_level&gt;</span>trace<span style="color:#204a87;font-weight:bold">&lt;/raft_logs_level&gt;</span>
-              <span style="color:#204a87;font-weight:bold">&lt;rotate_log_storage_interval&gt;</span>10000<span style="color:#204a87;font-weight:bold">&lt;/rotate_log_storage_interval&gt;</span>
-        <span style="color:#204a87;font-weight:bold">&lt;/coordination_settings&gt;</span>
-
-      <span style="color:#204a87;font-weight:bold">&lt;raft_configuration&gt;</span>
-            <span style="color:#204a87;font-weight:bold">&lt;server&gt;</span>
-               <span style="color:#204a87;font-weight:bold">&lt;id&gt;</span>1<span style="color:#204a87;font-weight:bold">&lt;/id&gt;</span>
-                 <span style="color:#204a87;font-weight:bold">&lt;hostname&gt;</span>hostname1<span style="color:#204a87;font-weight:bold">&lt;/hostname&gt;</span>
-               <span style="color:#204a87;font-weight:bold">&lt;port&gt;</span>9444<span style="color:#204a87;font-weight:bold">&lt;/port&gt;</span>
-          <span style="color:#204a87;font-weight:bold">&lt;/server&gt;</span>
-          <span style="color:#204a87;font-weight:bold">&lt;server&gt;</span>
-               <span style="color:#204a87;font-weight:bold">&lt;id&gt;</span>2<span style="color:#204a87;font-weight:bold">&lt;/id&gt;</span>
-                 <span style="color:#204a87;font-weight:bold">&lt;hostname&gt;</span>hostname2<span style="color:#204a87;font-weight:bold">&lt;/hostname&gt;</span>
-               <span style="color:#204a87;font-weight:bold">&lt;port&gt;</span>9444<span style="color:#204a87;font-weight:bold">&lt;/port&gt;</span>
-          <span style="color:#204a87;font-weight:bold">&lt;/server&gt;</span>
-      <span style="color:#204a87;font-weight:bold">&lt;/raft_configuration&gt;</span>
-
-    <span style="color:#204a87;font-weight:bold">&lt;/keeper_server&gt;</span>
-
-    <span style="color:#204a87;font-weight:bold">&lt;zookeeper&gt;</span>
-        <span style="color:#204a87;font-weight:bold">&lt;node&gt;</span>
-            <span style="color:#204a87;font-weight:bold">&lt;host&gt;</span>localhost<span style="color:#204a87;font-weight:bold">&lt;/host&gt;</span>
-            <span style="color:#204a87;font-weight:bold">&lt;port&gt;</span>2181<span style="color:#204a87;font-weight:bold">&lt;/port&gt;</span>
-        <span style="color:#204a87;font-weight:bold">&lt;/node&gt;</span>
-    <span style="color:#204a87;font-weight:bold">&lt;/zookeeper&gt;</span>
-
-    <span style="color:#204a87;font-weight:bold">&lt;distributed_ddl&gt;</span>
-        <span style="color:#204a87;font-weight:bold">&lt;path&gt;</span>/clickhouse/testcluster/task_queue/ddl<span style="color:#204a87;font-weight:bold">&lt;/path&gt;</span>
-    <span style="color:#204a87;font-weight:bold">&lt;/distributed_ddl&gt;</span>
-<span style="color:#204a87;font-weight:bold">&lt;/yandex&gt;</span>
-
-$ cat /etc/clickhouse-server/config.d/macros.xml
-
-<span style="color:#8f5902;font-style:italic">&lt;?xml version=&#34;1.0&#34; ?&gt;</span>
-<span style="color:#204a87;font-weight:bold">&lt;yandex&gt;</span>
-    <span style="color:#204a87;font-weight:bold">&lt;macros&gt;</span>
-        <span style="color:#204a87;font-weight:bold">&lt;cluster&gt;</span>testcluster<span style="color:#204a87;font-weight:bold">&lt;/cluster&gt;</span>
-        <span style="color:#204a87;font-weight:bold">&lt;replica&gt;</span>replica1<span style="color:#204a87;font-weight:bold">&lt;/replica&gt;</span>
-        <span style="color:#204a87;font-weight:bold">&lt;shard&gt;</span>1<span style="color:#204a87;font-weight:bold">&lt;/shard&gt;</span>
-    <span style="color:#204a87;font-weight:bold">&lt;/macros&gt;</span>
-<span style="color:#204a87;font-weight:bold">&lt;/yandex&gt;</span>
-</code></pre></div><h3 id="hostname2">hostname2</h3>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml">$ cat /etc/clickhouse-server/config.d/keeper.xml
-
-<span style="color:#8f5902;font-style:italic">&lt;?xml version=&#34;1.0&#34; ?&gt;</span>
-<span style="color:#204a87;font-weight:bold">&lt;yandex&gt;</span>
-    <span style="color:#204a87;font-weight:bold">&lt;keeper_server&gt;</span>
-        <span style="color:#204a87;font-weight:bold">&lt;tcp_port&gt;</span>2181<span style="color:#204a87;font-weight:bold">&lt;/tcp_port&gt;</span>
-        <span style="color:#204a87;font-weight:bold">&lt;server_id&gt;</span>2<span style="color:#204a87;font-weight:bold">&lt;/server_id&gt;</span>
-        <span style="color:#204a87;font-weight:bold">&lt;log_storage_path&gt;</span>/var/lib/clickhouse/coordination/log<span style="color:#204a87;font-weight:bold">&lt;/log_storage_path&gt;</span>
-        <span style="color:#204a87;font-weight:bold">&lt;snapshot_storage_path&gt;</span>/var/lib/clickhouse/coordination/snapshots<span style="color:#204a87;font-weight:bold">&lt;/snapshot_storage_path&gt;</span>
-
-        <span style="color:#204a87;font-weight:bold">&lt;coordination_settings&gt;</span>
-            <span style="color:#204a87;font-weight:bold">&lt;operation_timeout_ms&gt;</span>10000<span style="color:#204a87;font-weight:bold">&lt;/operation_timeout_ms&gt;</span>
-            <span style="color:#204a87;font-weight:bold">&lt;session_timeout_ms&gt;</span>30000<span style="color:#204a87;font-weight:bold">&lt;/session_timeout_ms&gt;</span>
-            <span style="color:#204a87;font-weight:bold">&lt;raft_logs_level&gt;</span>trace<span style="color:#204a87;font-weight:bold">&lt;/raft_logs_level&gt;</span>
-              <span style="color:#204a87;font-weight:bold">&lt;rotate_log_storage_interval&gt;</span>10000<span style="color:#204a87;font-weight:bold">&lt;/rotate_log_storage_interval&gt;</span>
-        <span style="color:#204a87;font-weight:bold">&lt;/coordination_settings&gt;</span>
-
-      <span style="color:#204a87;font-weight:bold">&lt;raft_configuration&gt;</span>
-            <span style="color:#204a87;font-weight:bold">&lt;server&gt;</span>
-               <span style="color:#204a87;font-weight:bold">&lt;id&gt;</span>1<span style="color:#204a87;font-weight:bold">&lt;/id&gt;</span>
-                 <span style="color:#204a87;font-weight:bold">&lt;hostname&gt;</span>hostname1<span style="color:#204a87;font-weight:bold">&lt;/hostname&gt;</span>
-               <span style="color:#204a87;font-weight:bold">&lt;port&gt;</span>9444<span style="color:#204a87;font-weight:bold">&lt;/port&gt;</span>
-          <span style="color:#204a87;font-weight:bold">&lt;/server&gt;</span>
-          <span style="color:#204a87;font-weight:bold">&lt;server&gt;</span>
-               <span style="color:#204a87;font-weight:bold">&lt;id&gt;</span>2<span style="color:#204a87;font-weight:bold">&lt;/id&gt;</span>
-                 <span style="color:#204a87;font-weight:bold">&lt;hostname&gt;</span>hostname2<span style="color:#204a87;font-weight:bold">&lt;/hostname&gt;</span>
-               <span style="color:#204a87;font-weight:bold">&lt;port&gt;</span>9444<span style="color:#204a87;font-weight:bold">&lt;/port&gt;</span>
-          <span style="color:#204a87;font-weight:bold">&lt;/server&gt;</span>
-      <span style="color:#204a87;font-weight:bold">&lt;/raft_configuration&gt;</span>
-
-    <span style="color:#204a87;font-weight:bold">&lt;/keeper_server&gt;</span>
-
-    <span style="color:#204a87;font-weight:bold">&lt;zookeeper&gt;</span>
-        <span style="color:#204a87;font-weight:bold">&lt;node&gt;</span>
-            <span style="color:#204a87;font-weight:bold">&lt;host&gt;</span>localhost<span style="color:#204a87;font-weight:bold">&lt;/host&gt;</span>
-            <span style="color:#204a87;font-weight:bold">&lt;port&gt;</span>2181<span style="color:#204a87;font-weight:bold">&lt;/port&gt;</span>
-        <span style="color:#204a87;font-weight:bold">&lt;/node&gt;</span>
-    <span style="color:#204a87;font-weight:bold">&lt;/zookeeper&gt;</span>
-
-    <span style="color:#204a87;font-weight:bold">&lt;distributed_ddl&gt;</span>
-        <span style="color:#204a87;font-weight:bold">&lt;path&gt;</span>/clickhouse/testcluster/task_queue/ddl<span style="color:#204a87;font-weight:bold">&lt;/path&gt;</span>
-    <span style="color:#204a87;font-weight:bold">&lt;/distributed_ddl&gt;</span>
-<span style="color:#204a87;font-weight:bold">&lt;/yandex&gt;</span>
-
-$ cat /etc/clickhouse-server/config.d/macros.xml
-
-<span style="color:#8f5902;font-style:italic">&lt;?xml version=&#34;1.0&#34; ?&gt;</span>
-<span style="color:#204a87;font-weight:bold">&lt;yandex&gt;</span>
-    <span style="color:#204a87;font-weight:bold">&lt;macros&gt;</span>
-        <span style="color:#204a87;font-weight:bold">&lt;cluster&gt;</span>testcluster<span style="color:#204a87;font-weight:bold">&lt;/cluster&gt;</span>
-        <span style="color:#204a87;font-weight:bold">&lt;replica&gt;</span>replica2<span style="color:#204a87;font-weight:bold">&lt;/replica&gt;</span>
-        <span style="color:#204a87;font-weight:bold">&lt;shard&gt;</span>1<span style="color:#204a87;font-weight:bold">&lt;/shard&gt;</span>
-    <span style="color:#204a87;font-weight:bold">&lt;/macros&gt;</span>
-<span style="color:#204a87;font-weight:bold">&lt;/yandex&gt;</span>
-</code></pre></div><h3 id="on-both">on both</h3>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml">$ cat /etc/clickhouse-server/config.d/clusters.xml
-
-<span style="color:#8f5902;font-style:italic">&lt;?xml version=&#34;1.0&#34; ?&gt;</span>
-<span style="color:#204a87;font-weight:bold">&lt;yandex&gt;</span>
-    <span style="color:#204a87;font-weight:bold">&lt;remote_servers&gt;</span>
-        <span style="color:#204a87;font-weight:bold">&lt;testcluster&gt;</span>
-            <span style="color:#204a87;font-weight:bold">&lt;shard&gt;</span>
-                <span style="color:#204a87;font-weight:bold">&lt;replica&gt;</span>
-                    <span style="color:#204a87;font-weight:bold">&lt;host&gt;</span>hostname1<span style="color:#204a87;font-weight:bold">&lt;/host&gt;</span>
-                    <span style="color:#204a87;font-weight:bold">&lt;port&gt;</span>9000<span style="color:#204a87;font-weight:bold">&lt;/port&gt;</span>
-                <span style="color:#204a87;font-weight:bold">&lt;/replica&gt;</span>
-                <span style="color:#204a87;font-weight:bold">&lt;replica&gt;</span>
-                    <span style="color:#204a87;font-weight:bold">&lt;host&gt;</span>hostname2<span style="color:#204a87;font-weight:bold">&lt;/host&gt;</span>
-                    <span style="color:#204a87;font-weight:bold">&lt;port&gt;</span>9000<span style="color:#204a87;font-weight:bold">&lt;/port&gt;</span>
-                <span style="color:#204a87;font-weight:bold">&lt;/replica&gt;</span>
-            <span style="color:#204a87;font-weight:bold">&lt;/shard&gt;</span>
-        <span style="color:#204a87;font-weight:bold">&lt;/testcluster&gt;</span>
-    <span style="color:#204a87;font-weight:bold">&lt;/remote_servers&gt;</span>
-<span style="color:#204a87;font-weight:bold">&lt;/yandex&gt;</span>
-</code></pre></div><p>Then create a table</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#204a87;font-weight:bold">create</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">table</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">test</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">on</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;{cluster}&#39;</span><span style="color:#f8f8f8;text-decoration:underline">   </span><span style="color:#000;font-weight:bold">(</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">A</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Int64</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">S</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">String</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">Engine</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">ReplicatedMergeTree</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;/clickhouse/{cluster}/tables/{database}/{table}&#39;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#4e9a06">&#39;{replica}&#39;</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">Order</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">by</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">A</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">insert</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">into</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">test</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">select</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87">number</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;&#39;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">from</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">numbers</span><span style="color:#000;font-weight:bold">(</span><span style="color:#0000cf;font-weight:bold">100000000</span><span style="color:#000;font-weight:bold">);</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#8f5902;font-style:italic">-- on both nodes:
-</span><span style="color:#8f5902;font-style:italic"></span><span style="color:#204a87;font-weight:bold">select</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">count</span><span style="color:#000;font-weight:bold">()</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">from</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">test</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></code></pre></div>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span>$ cat /etc/clickhouse-server/config.d/keeper.xml
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">&lt;?xml version=&#34;1.0&#34; ?&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">&lt;yandex&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&lt;keeper_server&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&lt;tcp_port&gt;</span>2181<span style="color:#204a87;font-weight:bold">&lt;/tcp_port&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&lt;server_id&gt;</span>1<span style="color:#204a87;font-weight:bold">&lt;/server_id&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&lt;log_storage_path&gt;</span>/var/lib/clickhouse/coordination/log<span style="color:#204a87;font-weight:bold">&lt;/log_storage_path&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&lt;snapshot_storage_path&gt;</span>/var/lib/clickhouse/coordination/snapshots<span style="color:#204a87;font-weight:bold">&lt;/snapshot_storage_path&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&lt;coordination_settings&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#204a87;font-weight:bold">&lt;operation_timeout_ms&gt;</span>10000<span style="color:#204a87;font-weight:bold">&lt;/operation_timeout_ms&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#204a87;font-weight:bold">&lt;session_timeout_ms&gt;</span>30000<span style="color:#204a87;font-weight:bold">&lt;/session_timeout_ms&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#204a87;font-weight:bold">&lt;raft_logs_level&gt;</span>trace<span style="color:#204a87;font-weight:bold">&lt;/raft_logs_level&gt;</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#204a87;font-weight:bold">&lt;rotate_log_storage_interval&gt;</span>10000<span style="color:#204a87;font-weight:bold">&lt;/rotate_log_storage_interval&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&lt;/coordination_settings&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      <span style="color:#204a87;font-weight:bold">&lt;raft_configuration&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#204a87;font-weight:bold">&lt;server&gt;</span>
+</span></span><span style="display:flex;"><span>               <span style="color:#204a87;font-weight:bold">&lt;id&gt;</span>1<span style="color:#204a87;font-weight:bold">&lt;/id&gt;</span>
+</span></span><span style="display:flex;"><span>                 <span style="color:#204a87;font-weight:bold">&lt;hostname&gt;</span>hostname1<span style="color:#204a87;font-weight:bold">&lt;/hostname&gt;</span>
+</span></span><span style="display:flex;"><span>               <span style="color:#204a87;font-weight:bold">&lt;port&gt;</span>9444<span style="color:#204a87;font-weight:bold">&lt;/port&gt;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#204a87;font-weight:bold">&lt;/server&gt;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#204a87;font-weight:bold">&lt;server&gt;</span>
+</span></span><span style="display:flex;"><span>               <span style="color:#204a87;font-weight:bold">&lt;id&gt;</span>2<span style="color:#204a87;font-weight:bold">&lt;/id&gt;</span>
+</span></span><span style="display:flex;"><span>                 <span style="color:#204a87;font-weight:bold">&lt;hostname&gt;</span>hostname2<span style="color:#204a87;font-weight:bold">&lt;/hostname&gt;</span>
+</span></span><span style="display:flex;"><span>               <span style="color:#204a87;font-weight:bold">&lt;port&gt;</span>9444<span style="color:#204a87;font-weight:bold">&lt;/port&gt;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#204a87;font-weight:bold">&lt;/server&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#204a87;font-weight:bold">&lt;/raft_configuration&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&lt;/keeper_server&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&lt;zookeeper&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&lt;node&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#204a87;font-weight:bold">&lt;host&gt;</span>localhost<span style="color:#204a87;font-weight:bold">&lt;/host&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#204a87;font-weight:bold">&lt;port&gt;</span>2181<span style="color:#204a87;font-weight:bold">&lt;/port&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&lt;/node&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&lt;/zookeeper&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&lt;distributed_ddl&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&lt;path&gt;</span>/clickhouse/testcluster/task_queue/ddl<span style="color:#204a87;font-weight:bold">&lt;/path&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&lt;/distributed_ddl&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">&lt;/yandex&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ cat /etc/clickhouse-server/config.d/macros.xml
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">&lt;?xml version=&#34;1.0&#34; ?&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">&lt;yandex&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&lt;macros&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&lt;cluster&gt;</span>testcluster<span style="color:#204a87;font-weight:bold">&lt;/cluster&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&lt;replica&gt;</span>replica1<span style="color:#204a87;font-weight:bold">&lt;/replica&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&lt;shard&gt;</span>1<span style="color:#204a87;font-weight:bold">&lt;/shard&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&lt;/macros&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">&lt;/yandex&gt;</span>
+</span></span></code></pre></div><h3 id="hostname2">hostname2</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span>$ cat /etc/clickhouse-server/config.d/keeper.xml
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">&lt;?xml version=&#34;1.0&#34; ?&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">&lt;yandex&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&lt;keeper_server&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&lt;tcp_port&gt;</span>2181<span style="color:#204a87;font-weight:bold">&lt;/tcp_port&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&lt;server_id&gt;</span>2<span style="color:#204a87;font-weight:bold">&lt;/server_id&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&lt;log_storage_path&gt;</span>/var/lib/clickhouse/coordination/log<span style="color:#204a87;font-weight:bold">&lt;/log_storage_path&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&lt;snapshot_storage_path&gt;</span>/var/lib/clickhouse/coordination/snapshots<span style="color:#204a87;font-weight:bold">&lt;/snapshot_storage_path&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&lt;coordination_settings&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#204a87;font-weight:bold">&lt;operation_timeout_ms&gt;</span>10000<span style="color:#204a87;font-weight:bold">&lt;/operation_timeout_ms&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#204a87;font-weight:bold">&lt;session_timeout_ms&gt;</span>30000<span style="color:#204a87;font-weight:bold">&lt;/session_timeout_ms&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#204a87;font-weight:bold">&lt;raft_logs_level&gt;</span>trace<span style="color:#204a87;font-weight:bold">&lt;/raft_logs_level&gt;</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#204a87;font-weight:bold">&lt;rotate_log_storage_interval&gt;</span>10000<span style="color:#204a87;font-weight:bold">&lt;/rotate_log_storage_interval&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&lt;/coordination_settings&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      <span style="color:#204a87;font-weight:bold">&lt;raft_configuration&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#204a87;font-weight:bold">&lt;server&gt;</span>
+</span></span><span style="display:flex;"><span>               <span style="color:#204a87;font-weight:bold">&lt;id&gt;</span>1<span style="color:#204a87;font-weight:bold">&lt;/id&gt;</span>
+</span></span><span style="display:flex;"><span>                 <span style="color:#204a87;font-weight:bold">&lt;hostname&gt;</span>hostname1<span style="color:#204a87;font-weight:bold">&lt;/hostname&gt;</span>
+</span></span><span style="display:flex;"><span>               <span style="color:#204a87;font-weight:bold">&lt;port&gt;</span>9444<span style="color:#204a87;font-weight:bold">&lt;/port&gt;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#204a87;font-weight:bold">&lt;/server&gt;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#204a87;font-weight:bold">&lt;server&gt;</span>
+</span></span><span style="display:flex;"><span>               <span style="color:#204a87;font-weight:bold">&lt;id&gt;</span>2<span style="color:#204a87;font-weight:bold">&lt;/id&gt;</span>
+</span></span><span style="display:flex;"><span>                 <span style="color:#204a87;font-weight:bold">&lt;hostname&gt;</span>hostname2<span style="color:#204a87;font-weight:bold">&lt;/hostname&gt;</span>
+</span></span><span style="display:flex;"><span>               <span style="color:#204a87;font-weight:bold">&lt;port&gt;</span>9444<span style="color:#204a87;font-weight:bold">&lt;/port&gt;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#204a87;font-weight:bold">&lt;/server&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#204a87;font-weight:bold">&lt;/raft_configuration&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&lt;/keeper_server&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&lt;zookeeper&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&lt;node&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#204a87;font-weight:bold">&lt;host&gt;</span>localhost<span style="color:#204a87;font-weight:bold">&lt;/host&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#204a87;font-weight:bold">&lt;port&gt;</span>2181<span style="color:#204a87;font-weight:bold">&lt;/port&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&lt;/node&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&lt;/zookeeper&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&lt;distributed_ddl&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&lt;path&gt;</span>/clickhouse/testcluster/task_queue/ddl<span style="color:#204a87;font-weight:bold">&lt;/path&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&lt;/distributed_ddl&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">&lt;/yandex&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ cat /etc/clickhouse-server/config.d/macros.xml
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">&lt;?xml version=&#34;1.0&#34; ?&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">&lt;yandex&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&lt;macros&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&lt;cluster&gt;</span>testcluster<span style="color:#204a87;font-weight:bold">&lt;/cluster&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&lt;replica&gt;</span>replica2<span style="color:#204a87;font-weight:bold">&lt;/replica&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&lt;shard&gt;</span>1<span style="color:#204a87;font-weight:bold">&lt;/shard&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&lt;/macros&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">&lt;/yandex&gt;</span>
+</span></span></code></pre></div><h3 id="on-both">on both</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span>$ cat /etc/clickhouse-server/config.d/clusters.xml
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">&lt;?xml version=&#34;1.0&#34; ?&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">&lt;yandex&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&lt;remote_servers&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&lt;testcluster&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#204a87;font-weight:bold">&lt;shard&gt;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#204a87;font-weight:bold">&lt;replica&gt;</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#204a87;font-weight:bold">&lt;host&gt;</span>hostname1<span style="color:#204a87;font-weight:bold">&lt;/host&gt;</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#204a87;font-weight:bold">&lt;port&gt;</span>9000<span style="color:#204a87;font-weight:bold">&lt;/port&gt;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#204a87;font-weight:bold">&lt;/replica&gt;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#204a87;font-weight:bold">&lt;replica&gt;</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#204a87;font-weight:bold">&lt;host&gt;</span>hostname2<span style="color:#204a87;font-weight:bold">&lt;/host&gt;</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#204a87;font-weight:bold">&lt;port&gt;</span>9000<span style="color:#204a87;font-weight:bold">&lt;/port&gt;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#204a87;font-weight:bold">&lt;/replica&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#204a87;font-weight:bold">&lt;/shard&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&lt;/testcluster&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&lt;/remote_servers&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">&lt;/yandex&gt;</span>
+</span></span></code></pre></div><p>Then create a table</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">create</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">table</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">test</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">on</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;{cluster}&#39;</span><span style="color:#f8f8f8;text-decoration:underline">   </span><span style="color:#000;font-weight:bold">(</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">A</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Int64</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">S</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">String</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">Engine</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">ReplicatedMergeTree</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;/clickhouse/{cluster}/tables/{database}/{table}&#39;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#4e9a06">&#39;{replica}&#39;</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">Order</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">by</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">A</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">insert</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">into</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">test</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">select</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87">number</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;&#39;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">from</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">numbers</span><span style="color:#000;font-weight:bold">(</span><span style="color:#0000cf;font-weight:bold">100000000</span><span style="color:#000;font-weight:bold">);</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#8f5902;font-style:italic">-- on both nodes:
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span><span style="color:#204a87;font-weight:bold">select</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">count</span><span style="color:#000;font-weight:bold">()</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">from</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">test</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div>
 	
 	
 	<div class="text-muted mt-5 pt-3 border-top">
@@ -1004,7 +1004,7 @@ $ cat /etc/clickhouse-server/config.d/macros.xml
 
 
 
-<script src="/js/main.min.3b172c13b62c2bea8b1c9d2599cddc8cf89718a92d792c680871c81ba43d8c85.js" integrity="sha256-OxcsE7YsK&#43;qLHJ0lmc3cjPiXGKkteSxoCHHIG6Q9jIU=" crossorigin="anonymous"></script>
+<script src="/js/main.min.7fa9e3e39f56ebd66798993ef3c080218d9696c971a28ef8872d750b7416a435.js" integrity="sha256-f6nj459W69ZnmJk&#43;88CAIY2Wlslxoo74hy11C3QWpDU=" crossorigin="anonymous"></script>
 
 
 

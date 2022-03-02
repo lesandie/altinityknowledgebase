@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.92.2" /><META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
+<meta name="generator" content="Hugo 0.93.0" /><META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
 <link rel="shortcut icon" href="/favicons/favicon.ico" >
 <link rel="icon" href="/favicons/favicon.ico" >
 <title>Best schema for storing many metrics registered from the single source | Altinity Knowledge Base</title>
@@ -78,7 +78,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.035286ffea94b20115412349c1d2df50.json"
+  data-offline-search-index-json-src="/offline-search-index.41dc426efce12b05b3e1ade368ef5ff4.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -106,7 +106,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.035286ffea94b20115412349c1d2df50.json"
+  data-offline-search-index-json-src="/offline-search-index.41dc426efce12b05b3e1ade368ef5ff4.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -781,7 +781,7 @@ That approach is usually a source of debates about how to put all the metrics in
 <li>adding new metric = changing the schema (adding new column). not suitable when set of metric changes dynamically</li>
 <li>not applicable when there are too many metrics (when you have more than 100-200)</li>
 <li>when each timepoint have only small subset of metrics recorded - if will create a lot of sparse filled columns.</li>
-<li>you need to store &lsquo;lack of value&rsquo; somehow (NULLs or default values)</li>
+<li>you need to store &rsquo;lack of value&rsquo; somehow (NULLs or default values)</li>
 <li>to read full row - you need to read a lot of column files.</li>
 </ul>
 </li>
@@ -863,7 +863,7 @@ The same as 2b, but there are several key-value arrays (&lsquo;basket&rsquo;), a
 </ul>
 <h3 id="2f-combined-approach">2f Combined approach</h3>
 <p>In real life Pareto principle is correct for many fields.</p>
-<p>For that particular case: usually you need only about 20% of metrics 80% of the time. So you can pick the metrics which are used intensively, and which have a high density, and extract them into separate columns (like in option 2a), leaving the rest in a common &lsquo;trash bin&rsquo; (like in variants 2b-2e).</p>
+<p>For that particular case: usually you need only about 20% of metrics 80% of the time. So you can pick the metrics which are used intensively, and which have a high density, and extract them into separate columns (like in option 2a), leaving the rest in a common &rsquo;trash bin&rsquo; (like in variants 2b-2e).</p>
 <p>With that approach you can have as many metrics as you need and they can be very dynamic. At the same time the most used metrics are stored in special, fine-tuned columns.</p>
 <p>At any time you can decide to move one more metric to a separate column <code>ALTER TABLE ... ADD COLUMN metricX Float64 MATERIALIZED metrics.value[indexOf(metrics.names,'metricX')];</code></p>
 <h3 id="2e-subcolumns-future">2e Subcolumns [future]</h3>
@@ -984,7 +984,7 @@ The same as 2b, but there are several key-value arrays (&lsquo;basket&rsquo;), a
 
 
 
-<script src="/js/main.min.3b172c13b62c2bea8b1c9d2599cddc8cf89718a92d792c680871c81ba43d8c85.js" integrity="sha256-OxcsE7YsK&#43;qLHJ0lmc3cjPiXGKkteSxoCHHIG6Q9jIU=" crossorigin="anonymous"></script>
+<script src="/js/main.min.7fa9e3e39f56ebd66798993ef3c080218d9696c971a28ef8872d750b7416a435.js" integrity="sha256-f6nj459W69ZnmJk&#43;88CAIY2Wlslxoo74hy11C3QWpDU=" crossorigin="anonymous"></script>
 
 
 

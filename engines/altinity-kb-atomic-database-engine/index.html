@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.92.2" /><link rel="alternate" type="text/html" href="http://kb.altinity.com/engines/altinity-kb-atomic-database-engine/printview/">
+<meta name="generator" content="Hugo 0.93.0" /><link rel="alternate" type="text/html" href="http://kb.altinity.com/engines/altinity-kb-atomic-database-engine/printview/">
 <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
 <link rel="shortcut icon" href="/favicons/favicon.ico" >
 <link rel="icon" href="/favicons/favicon.ico" >
@@ -74,7 +74,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.035286ffea94b20115412349c1d2df50.json"
+  data-offline-search-index-json-src="/offline-search-index.41dc426efce12b05b3e1ade368ef5ff4.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -102,7 +102,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.035286ffea94b20115412349c1d2df50.json"
+  data-offline-search-index-json-src="/offline-search-index.41dc426efce12b05b3e1ade368ef5ff4.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -752,7 +752,7 @@
 <li>non-blocking drop table / rename table</li>
 <li>tables delete (&amp;detach) async (wait for selects finish but invisible for new selects)</li>
 <li>atomic drop table (all files / folders removed)</li>
-<li>atomic table swap (table swap by &ldquo;EXCHANGE TABLES t1 AND t2;&quot;)</li>
+<li>atomic table swap (table swap by &ldquo;EXCHANGE TABLES t1 AND t2;&rdquo;)</li>
 <li>rename dictionary / rename database</li>
 <li>unique automatic UUID paths in FS and ZK for Replicated</li>
 </ul>
@@ -760,25 +760,25 @@
 <h3 id="q-data-is-not-removed-immediately"><strong>Q. Data is not removed immediately</strong></h3>
 <p>A. Use<code>DROP TABLE t SYNC;</code></p>
 <p>Or use parameter (user level) database_atomic_wait_for_drop_and_detach_synchronously<code>:</code></p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#204a87;font-weight:bold">SET</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">database_atomic_wait_for_drop_and_detach_synchronously</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></code></pre></div><p>Also, you can decrease the delay used by Atomic for real table drop (it’s 8 minutes by default)</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cat /etc/clickhouse-server/config.d/database_atomic_delay_before_drop_table.xml
-&lt;yandex&gt;
-    &lt;database_atomic_delay_before_drop_table_sec&gt;1&lt;/database_atomic_delay_before_drop_table_sec&gt;
-&lt;/yandex&gt;
-</code></pre></div><h3 id="q-i-cannot-reuse-zookeeper-path-after-dropping-the-table"><strong>Q. I cannot reuse zookeeper path after dropping the table.</strong></h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">SET</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">database_atomic_wait_for_drop_and_detach_synchronously</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div><p>Also, you can decrease the delay used by Atomic for real table drop (it’s 8 minutes by default)</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cat /etc/clickhouse-server/config.d/database_atomic_delay_before_drop_table.xml
+</span></span><span style="display:flex;"><span>&lt;yandex&gt;
+</span></span><span style="display:flex;"><span>    &lt;database_atomic_delay_before_drop_table_sec&gt;1&lt;/database_atomic_delay_before_drop_table_sec&gt;
+</span></span><span style="display:flex;"><span>&lt;/yandex&gt;
+</span></span></code></pre></div><h3 id="q-i-cannot-reuse-zookeeper-path-after-dropping-the-table"><strong>Q. I cannot reuse zookeeper path after dropping the table.</strong></h3>
 <p>A. This happens because real table deletion occurs with a controlled delay. See the previous question to remove the table immediately.</p>
 <p>With engine=Atomic it’s possible (and is a good practice if you do it correctly) to include UUID into zookeeper path, i.e. :</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#204a87;font-weight:bold">CREATE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">...</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">ON</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">CLUSTER</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">...</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">ENGINE</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000">ReplicatedMergeTree</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;/clickhouse/tables/{uuid}/{shard}/&#39;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;{replica}&#39;</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></code></pre></div><p>See also: <a href="https://github.com/ClickHouse/ClickHouse/issues/12135#issuecomment-653932557" target="_blank">https://github.com/ClickHouse/ClickHouse/issues/12135#issuecomment-653932557</a></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">CREATE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">...</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">ON</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">CLUSTER</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">...</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">ENGINE</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000">ReplicatedMergeTree</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;/clickhouse/tables/{uuid}/{shard}/&#39;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;{replica}&#39;</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div><p>See also: <a href="https://github.com/ClickHouse/ClickHouse/issues/12135#issuecomment-653932557" target="_blank">https://github.com/ClickHouse/ClickHouse/issues/12135#issuecomment-653932557</a></p>
 <p>It’s very important that the table will have the same UUID cluster-wide.</p>
 <p>When the table is created using <em>ON CLUSTER</em> - all tables will get the same UUID automatically.
 When it needs to be done manually (for example - you need to add one more replica), pick CREATE TABLE statement with UUID from one of the existing replicas.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#204a87;font-weight:bold">set</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">show_table_uuid_in_table_create_qquery_if_not_nil</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#f8f8f8;text-decoration:underline">　</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">SHOW</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">CREATE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">TABLE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">xxx</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic">/* or SELECT create_table_query FROM system.tables WHERE ... */</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></code></pre></div><h3 id="q-should-i-use-atomic-or-ordinary-for-new-setups">Q. Should I use Atomic or Ordinary for new setups?</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">set</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">show_table_uuid_in_table_create_qquery_if_not_nil</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#f8f8f8;text-decoration:underline">　</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">SHOW</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">CREATE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">TABLE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">xxx</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic">/* or SELECT create_table_query FROM system.tables WHERE ... */</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div><h3 id="q-should-i-use-atomic-or-ordinary-for-new-setups">Q. Should I use Atomic or Ordinary for new setups?</h3>
 <p>All things inside clickhouse itself should work smoothly with <code>Atomic</code>.</p>
 <p>But some external tools - backup tools, things involving other kinds of direct manipulations with clickhouse files &amp; folders may have issues with <code>Atomic</code>.</p>
 <p><code>Ordinary</code> layout on the filesystem is simpler. And the issues which address Atomic (lock-free renames, drops, atomic exchange of table) are not so critical in most cases.</p>
@@ -860,21 +860,21 @@ When it needs to be done manually (for example - you need to add one more replic
   </tbody>
 </table>
 <h2 id="using-ordinary-by-default-instead-of-atomic">Using Ordinary by default instead of Atomic</h2>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">---
-title: <span style="color:#4e9a06">&#34;cat /etc/clickhouse-server/users.d/disable_atomic_database.xml &#34;</span>
-linkTitle: <span style="color:#4e9a06">&#34;cat /etc/clickhouse-server/users.d/disable_atomic_database.xml &#34;</span>
-description: &gt;
-    cat /etc/clickhouse-server/users.d/disable_atomic_database.xml
----
-&lt;?xml <span style="color:#000">version</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;1.0&#34;</span>?&gt;
-&lt;yandex&gt;
-    &lt;profiles&gt;
-        &lt;default&gt;
-            &lt;default_database_engine&gt;Ordinary&lt;/default_database_engine&gt;
-        &lt;/default&gt;
-    &lt;/profiles&gt;
-&lt;/yandex&gt;
-</code></pre></div><h2 id="other-sources">Other sources</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span>title: <span style="color:#4e9a06">&#34;cat /etc/clickhouse-server/users.d/disable_atomic_database.xml &#34;</span>
+</span></span><span style="display:flex;"><span>linkTitle: <span style="color:#4e9a06">&#34;cat /etc/clickhouse-server/users.d/disable_atomic_database.xml &#34;</span>
+</span></span><span style="display:flex;"><span>description: &gt;
+</span></span><span style="display:flex;"><span>    cat /etc/clickhouse-server/users.d/disable_atomic_database.xml
+</span></span><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span>&lt;?xml <span style="color:#000">version</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;1.0&#34;</span>?&gt;
+</span></span><span style="display:flex;"><span>&lt;yandex&gt;
+</span></span><span style="display:flex;"><span>    &lt;profiles&gt;
+</span></span><span style="display:flex;"><span>        &lt;default&gt;
+</span></span><span style="display:flex;"><span>            &lt;default_database_engine&gt;Ordinary&lt;/default_database_engine&gt;
+</span></span><span style="display:flex;"><span>        &lt;/default&gt;
+</span></span><span style="display:flex;"><span>    &lt;/profiles&gt;
+</span></span><span style="display:flex;"><span>&lt;/yandex&gt;
+</span></span></code></pre></div><h2 id="other-sources">Other sources</h2>
 <p>Presentation <a href="https://youtu.be/1LVJ_WcLgF8?t=2744" target="_blank">https://youtu.be/1LVJ_WcLgF8?t=2744</a></p>
 <p><a href="https://github.com/ClickHouse/clickhouse-presentations/blob/master/meetup46/database_engines.pdf" target="_blank">https://github.com/ClickHouse/clickhouse-presentations/blob/master/meetup46/database_engines.pdf</a></p>
 
@@ -1049,7 +1049,7 @@ description: &gt;
 
 
 
-<script src="/js/main.min.3b172c13b62c2bea8b1c9d2599cddc8cf89718a92d792c680871c81ba43d8c85.js" integrity="sha256-OxcsE7YsK&#43;qLHJ0lmc3cjPiXGKkteSxoCHHIG6Q9jIU=" crossorigin="anonymous"></script>
+<script src="/js/main.min.7fa9e3e39f56ebd66798993ef3c080218d9696c971a28ef8872d750b7416a435.js" integrity="sha256-f6nj459W69ZnmJk&#43;88CAIY2Wlslxoo74hy11C3QWpDU=" crossorigin="anonymous"></script>
 
 
 

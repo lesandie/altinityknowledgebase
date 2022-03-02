@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.92.2" /><META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
+<meta name="generator" content="Hugo 0.93.0" /><META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
 <link rel="shortcut icon" href="/favicons/favicon.ico" >
 <link rel="icon" href="/favicons/favicon.ico" >
 <title>Can not connect to my ClickHouse server | Altinity Knowledge Base</title>
@@ -75,7 +75,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.035286ffea94b20115412349c1d2df50.json"
+  data-offline-search-index-json-src="/offline-search-index.41dc426efce12b05b3e1ade368ef5ff4.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -103,7 +103,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.035286ffea94b20115412349c1d2df50.json"
+  data-offline-search-index-json-src="/offline-search-index.41dc426efce12b05b3e1ade368ef5ff4.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -725,8 +725,8 @@
 <ol>
 <li>
 <p>Ensure that the clickhouse-server is running</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">systemctl status clickhouse-server
-</code></pre></div><p>If server was restarted recently and don&rsquo;t accept the connections after the restart - most probably it still just starting.
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>systemctl status clickhouse-server
+</span></span></code></pre></div><p>If server was restarted recently and don&rsquo;t accept the connections after the restart - most probably it still just starting.
 During the startup sequence it need to iterate over all data folders in /var/lib/clickhouse-server
 In case if you have a very high number of folders there (usually caused by a wrong partitioning, or a very high number of tables / databases)
 that startup time can take a lot of time (same can happen if disk is very slow, for example NFS).</p>
@@ -740,19 +740,19 @@ that startup time can take a lot of time (same can happen if disk is very slow, 
 <p>Note: If you uncomment line <code>&lt;listen_host&gt;0.0.0.0&lt;/listen_host&gt;</code> only - clickhouse will listen only ipv4 interfaces,
 while the localhost (used by clickhouse-client) may be resolved to ipv6 address. And clickhouse-client may be failing to connect.</p>
 <p>How to check which interfaces / ports do clickhouse listen?</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">sudo lsof -i -P -n <span style="color:#000;font-weight:bold">|</span> grep LISTEN
-
-<span style="color:#204a87">echo</span> listen_host
-sudo clickhouse-extract-from-config --config<span style="color:#ce5c00;font-weight:bold">=</span>/etc/clickhouse-server/config.xml --key<span style="color:#ce5c00;font-weight:bold">=</span>listen_host
-<span style="color:#204a87">echo</span> tcp_port
-sudo clickhouse-extract-from-config --config<span style="color:#ce5c00;font-weight:bold">=</span>/etc/clickhouse-server/config.xml --key<span style="color:#ce5c00;font-weight:bold">=</span>tcp_port
-<span style="color:#204a87">echo</span> tcp_port_secure
-sudo clickhouse-extract-from-config --config<span style="color:#ce5c00;font-weight:bold">=</span>/etc/clickhouse-server/config.xml --key<span style="color:#ce5c00;font-weight:bold">=</span>tcp_port_secure
-<span style="color:#204a87">echo</span> http_port
-sudo clickhouse-extract-from-config --config<span style="color:#ce5c00;font-weight:bold">=</span>/etc/clickhouse-server/config.xml --key<span style="color:#ce5c00;font-weight:bold">=</span>http_port
-<span style="color:#204a87">echo</span> https_port
-sudo clickhouse-extract-from-config --config<span style="color:#ce5c00;font-weight:bold">=</span>/etc/clickhouse-server/config.xml --key<span style="color:#ce5c00;font-weight:bold">=</span>https_port
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>sudo lsof -i -P -n <span style="color:#000;font-weight:bold">|</span> grep LISTEN
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#204a87">echo</span> listen_host
+</span></span><span style="display:flex;"><span>sudo clickhouse-extract-from-config --config<span style="color:#ce5c00;font-weight:bold">=</span>/etc/clickhouse-server/config.xml --key<span style="color:#ce5c00;font-weight:bold">=</span>listen_host
+</span></span><span style="display:flex;"><span><span style="color:#204a87">echo</span> tcp_port
+</span></span><span style="display:flex;"><span>sudo clickhouse-extract-from-config --config<span style="color:#ce5c00;font-weight:bold">=</span>/etc/clickhouse-server/config.xml --key<span style="color:#ce5c00;font-weight:bold">=</span>tcp_port
+</span></span><span style="display:flex;"><span><span style="color:#204a87">echo</span> tcp_port_secure
+</span></span><span style="display:flex;"><span>sudo clickhouse-extract-from-config --config<span style="color:#ce5c00;font-weight:bold">=</span>/etc/clickhouse-server/config.xml --key<span style="color:#ce5c00;font-weight:bold">=</span>tcp_port_secure
+</span></span><span style="display:flex;"><span><span style="color:#204a87">echo</span> http_port
+</span></span><span style="display:flex;"><span>sudo clickhouse-extract-from-config --config<span style="color:#ce5c00;font-weight:bold">=</span>/etc/clickhouse-server/config.xml --key<span style="color:#ce5c00;font-weight:bold">=</span>http_port
+</span></span><span style="display:flex;"><span><span style="color:#204a87">echo</span> https_port
+</span></span><span style="display:flex;"><span>sudo clickhouse-extract-from-config --config<span style="color:#ce5c00;font-weight:bold">=</span>/etc/clickhouse-server/config.xml --key<span style="color:#ce5c00;font-weight:bold">=</span>https_port
+</span></span></code></pre></div></li>
 <li>
 <p>For secure connection:</p>
 <ul>
@@ -765,27 +765,27 @@ sudo clickhouse-extract-from-config --config<span style="color:#ce5c00;font-weig
 </li>
 <li>
 <p>Is clickhouse able to serve some trivial tcp / http requests from localhost?</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">curl 127.0.0.1:9200
-curl 127.0.0.1:8123
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>curl 127.0.0.1:9200
+</span></span><span style="display:flex;"><span>curl 127.0.0.1:8123
+</span></span></code></pre></div></li>
 <li>
 <p>Check number of sockets opened by clickhouse</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">sudo lsof -i -a -p <span style="color:#204a87;font-weight:bold">$(</span>pidof clickhouse-server<span style="color:#204a87;font-weight:bold">)</span>
-
-<span style="color:#8f5902;font-style:italic"># or (adjust 9000 / 8123 ports if needed)</span>
-netstat -tn 2&gt;/dev/null <span style="color:#000;font-weight:bold">|</span> tail -n +3 <span style="color:#000;font-weight:bold">|</span> awk <span style="color:#4e9a06">&#39;{ printf(&#34;%s\t%s\t%s\t%s\t%s\t%s\n&#34;, $1, $2, $3, $4, $5, $6) }&#39;</span> <span style="color:#000;font-weight:bold">|</span> clickhouse-local -S <span style="color:#4e9a06">&#34;Proto String, RecvQ Int64, SendQ Int64, LocalAddress String, ForeignAddress String, State LowCardinality(String)&#34;</span> --query<span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;SELECT * FROM table WHERE LocalAddress like &#39;%:9000&#39; FORMAT PrettyCompact&#34;</span>
-
-netstat -tn 2&gt;/dev/null <span style="color:#000;font-weight:bold">|</span> tail -n +3 <span style="color:#000;font-weight:bold">|</span> awk <span style="color:#4e9a06">&#39;{ printf(&#34;%s\t%s\t%s\t%s\t%s\t%s\n&#34;, $1, $2, $3, $4, $5, $6) }&#39;</span> <span style="color:#000;font-weight:bold">|</span> clickhouse-local -S <span style="color:#4e9a06">&#34;Proto String, RecvQ Int64, SendQ Int64, LocalAddress String, ForeignAddress String, State LowCardinality(String)&#34;</span> --query<span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;SELECT * FROM table WHERE LocalAddress like &#39;%:8123&#39; FORMAT PrettyCompact&#34;</span>
-</code></pre></div><p>ClickHouse has a limit of number of open connections (4000 by default).</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>sudo lsof -i -a -p <span style="color:#204a87;font-weight:bold">$(</span>pidof clickhouse-server<span style="color:#204a87;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># or (adjust 9000 / 8123 ports if needed)</span>
+</span></span><span style="display:flex;"><span>netstat -tn 2&gt;/dev/null <span style="color:#000;font-weight:bold">|</span> tail -n +3 <span style="color:#000;font-weight:bold">|</span> awk <span style="color:#4e9a06">&#39;{ printf(&#34;%s\t%s\t%s\t%s\t%s\t%s\n&#34;, $1, $2, $3, $4, $5, $6) }&#39;</span> <span style="color:#000;font-weight:bold">|</span> clickhouse-local -S <span style="color:#4e9a06">&#34;Proto String, RecvQ Int64, SendQ Int64, LocalAddress String, ForeignAddress String, State LowCardinality(String)&#34;</span> --query<span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;SELECT * FROM table WHERE LocalAddress like &#39;%:9000&#39; FORMAT PrettyCompact&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>netstat -tn 2&gt;/dev/null <span style="color:#000;font-weight:bold">|</span> tail -n +3 <span style="color:#000;font-weight:bold">|</span> awk <span style="color:#4e9a06">&#39;{ printf(&#34;%s\t%s\t%s\t%s\t%s\t%s\n&#34;, $1, $2, $3, $4, $5, $6) }&#39;</span> <span style="color:#000;font-weight:bold">|</span> clickhouse-local -S <span style="color:#4e9a06">&#34;Proto String, RecvQ Int64, SendQ Int64, LocalAddress String, ForeignAddress String, State LowCardinality(String)&#34;</span> --query<span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;SELECT * FROM table WHERE LocalAddress like &#39;%:8123&#39; FORMAT PrettyCompact&#34;</span>
+</span></span></code></pre></div><p>ClickHouse has a limit of number of open connections (4000 by default).</p>
 </li>
 <li>
 <p>Check also:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#8f5902;font-style:italic"># system overall support limited number of connections it can handle</span>
-netstat
-
-<span style="color:#8f5902;font-style:italic"># you can also be reaching of of the process ulimits (Max open files)</span>
-cat /proc/<span style="color:#204a87;font-weight:bold">$(</span>pidof -s clickhouse-server<span style="color:#204a87;font-weight:bold">)</span>/limits
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># system overall support limited number of connections it can handle</span>
+</span></span><span style="display:flex;"><span>netstat
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># you can also be reaching of of the process ulimits (Max open files)</span>
+</span></span><span style="display:flex;"><span>cat /proc/<span style="color:#204a87;font-weight:bold">$(</span>pidof -s clickhouse-server<span style="color:#204a87;font-weight:bold">)</span>/limits
+</span></span></code></pre></div></li>
 <li>
 <p>Check firewall / selinux rules (if used)</p>
 </li>
@@ -900,7 +900,7 @@ cat /proc/<span style="color:#204a87;font-weight:bold">$(</span>pidof -s clickho
 
 
 
-<script src="/js/main.min.3b172c13b62c2bea8b1c9d2599cddc8cf89718a92d792c680871c81ba43d8c85.js" integrity="sha256-OxcsE7YsK&#43;qLHJ0lmc3cjPiXGKkteSxoCHHIG6Q9jIU=" crossorigin="anonymous"></script>
+<script src="/js/main.min.7fa9e3e39f56ebd66798993ef3c080218d9696c971a28ef8872d750b7416a435.js" integrity="sha256-f6nj459W69ZnmJk&#43;88CAIY2Wlslxoo74hy11C3QWpDU=" crossorigin="anonymous"></script>
 
 
 

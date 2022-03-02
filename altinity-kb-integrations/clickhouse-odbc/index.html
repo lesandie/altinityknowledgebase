@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.92.2" /><META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
+<meta name="generator" content="Hugo 0.93.0" /><META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
 <link rel="shortcut icon" href="/favicons/favicon.ico" >
 <link rel="icon" href="/favicons/favicon.ico" >
 <title>ODBC Driver for ClickHouse | Altinity Knowledge Base</title>
@@ -75,7 +75,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.035286ffea94b20115412349c1d2df50.json"
+  data-offline-search-index-json-src="/offline-search-index.41dc426efce12b05b3e1ade368ef5ff4.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -103,7 +103,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.035286ffea94b20115412349c1d2df50.json"
+  data-offline-search-index-json-src="/offline-search-index.41dc426efce12b05b3e1ade368ef5ff4.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -759,8 +759,8 @@ applications (cygwin / msys64 based) may require driver linked agains unixodbc. 
 <li>Install <a href="https://brew.sh/" target="_blank">homebrew</a>.</li>
 <li>Install driver</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">brew install https://raw.githubusercontent.com/proller/homebrew-core/chodbc/Formula/clickhouse-odbc.rb
-</code></pre></div><ol start="3">
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>brew install https://raw.githubusercontent.com/proller/homebrew-core/chodbc/Formula/clickhouse-odbc.rb
+</span></span></code></pre></div><ol start="3">
 <li>Add clickhouse DSN configuration into ~/.odbc.ini file. (<a href="">sample</a>)</li>
 </ol>
 <p>Note: that install driver linked against iodbc (which is default for Mac), some homebrew applications
@@ -902,48 +902,48 @@ applications (cygwin / msys64 based) may require driver linked agains unixodbc. 
 <li>SSL library (openssl)</li>
 </ul>
 <p>Generic build scenario:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">git clone --recursive git@github.com:ClickHouse/clickhouse-odbc.git
-<span style="color:#204a87">cd</span> clickhouse-odbc
-mkdir build
-<span style="color:#204a87">cd</span> build
-cmake -DCMAKE_BUILD_TYPE<span style="color:#ce5c00;font-weight:bold">=</span>RelWithDebInfo ..
-cmake --build . -C RelWithDebInfo
-</code></pre></div><p>Additional requirements exist for each platform, which also depend on whether packaging and/or testing is performed.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>git clone --recursive git@github.com:ClickHouse/clickhouse-odbc.git
+</span></span><span style="display:flex;"><span><span style="color:#204a87">cd</span> clickhouse-odbc
+</span></span><span style="display:flex;"><span>mkdir build
+</span></span><span style="display:flex;"><span><span style="color:#204a87">cd</span> build
+</span></span><span style="display:flex;"><span>cmake -DCMAKE_BUILD_TYPE<span style="color:#ce5c00;font-weight:bold">=</span>RelWithDebInfo ..
+</span></span><span style="display:flex;"><span>cmake --build . -C RelWithDebInfo
+</span></span></code></pre></div><p>Additional requirements exist for each platform, which also depend on whether packaging and/or testing is performed.</p>
 <h3 id="linuxmacos">Linux/macOS</h3>
 <p>Execute the following in the terminal to install needed dependencies:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#8f5902;font-style:italic"># on Red Hat/CentOS (tested on CentOS 7)</span>
-sudo yum groupinstall <span style="color:#4e9a06">&#34;Development Tools&#34;</span>
-sudo yum install centos-release-scl
-sudo yum install devtoolset-8
-sudo yum install git cmake openssl-devel unixODBC-devel <span style="color:#8f5902;font-style:italic"># You may use libiodbc-devel INSTEAD of unixODBC-devel</span>
-scl <span style="color:#204a87">enable</span> devtoolset-8 -- bash <span style="color:#8f5902;font-style:italic"># Enable Software collections for that terminal session, to use newer versions of complilers</span>
-
-<span style="color:#8f5902;font-style:italic"># on Ubuntu (tested on Ubuntu 18.10, for older versions you may need to install newer c++ compiler and cmake versions)</span>
-sudo apt install build-essential git cmake libpoco-dev libssl-dev unixodbc-dev <span style="color:#8f5902;font-style:italic"># You may use libiodbc-devel INSEAD of unixODBC-devel</span>
-
-<span style="color:#8f5902;font-style:italic"># MacOS: </span>
-<span style="color:#8f5902;font-style:italic"># You will need Xcode 10 or later and Command Line Tools to be installed, as well as [Homebrew](https://brew.sh/).</span>
-brew install git cmake make poco openssl libiodbc <span style="color:#8f5902;font-style:italic"># You may use unixodbc INSTEAD of libiodbc </span>
-</code></pre></div><p><strong>Note:</strong> usually on Linux you use unixODBC driver manager, and on Mac - iODBC.
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># on Red Hat/CentOS (tested on CentOS 7)</span>
+</span></span><span style="display:flex;"><span>sudo yum groupinstall <span style="color:#4e9a06">&#34;Development Tools&#34;</span>
+</span></span><span style="display:flex;"><span>sudo yum install centos-release-scl
+</span></span><span style="display:flex;"><span>sudo yum install devtoolset-8
+</span></span><span style="display:flex;"><span>sudo yum install git cmake openssl-devel unixODBC-devel <span style="color:#8f5902;font-style:italic"># You may use libiodbc-devel INSTEAD of unixODBC-devel</span>
+</span></span><span style="display:flex;"><span>scl <span style="color:#204a87">enable</span> devtoolset-8 -- bash <span style="color:#8f5902;font-style:italic"># Enable Software collections for that terminal session, to use newer versions of complilers</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># on Ubuntu (tested on Ubuntu 18.10, for older versions you may need to install newer c++ compiler and cmake versions)</span>
+</span></span><span style="display:flex;"><span>sudo apt install build-essential git cmake libpoco-dev libssl-dev unixodbc-dev <span style="color:#8f5902;font-style:italic"># You may use libiodbc-devel INSEAD of unixODBC-devel</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># MacOS: </span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># You will need Xcode 10 or later and Command Line Tools to be installed, as well as [Homebrew](https://brew.sh/).</span>
+</span></span><span style="display:flex;"><span>brew install git cmake make poco openssl libiodbc <span style="color:#8f5902;font-style:italic"># You may use unixodbc INSTEAD of libiodbc </span>
+</span></span></code></pre></div><p><strong>Note:</strong> usually on Linux you use unixODBC driver manager, and on Mac - iODBC.
 In some (rare) cases you may need use other driver manager, please do it only
 if you clearly understand the differencies. Driver should be used with the driver
 manager it was linked to.</p>
 <p>Clone the repo with submodules:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">git clone --recursive git@github.com:ClickHouse/clickhouse-odbc.git
-</code></pre></div><p>Enter the cloned source tree, create a temporary build folder, and generate a Makefile for the project in it:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#204a87">cd</span> clickhouse-odbc
-mkdir build
-<span style="color:#204a87">cd</span> build
-
-<span style="color:#8f5902;font-style:italic"># Configuration options for the project can be specified in the next command in a form of &#39;-Dopt=val&#39;</span>
-<span style="color:#8f5902;font-style:italic"># For MacOS: you may also add &#39;-G Xcode&#39; to the next command, in order to use Xcode as a build system or IDE, and generate the solution and project files instead of Makefile.</span>
-cmake -DCMAKE_BUILD_TYPE<span style="color:#ce5c00;font-weight:bold">=</span>RelWithDebInfo ..
-</code></pre></div><p>Build the generated solution in-place:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">cmake --build . -C RelWithDebInfo
-cmake --build . -C RelWithDebInfo --target package
-</code></pre></div><p>&hellip;and, optionally, run tests (note, that for non-unit tests, preconfigured driver and DSN entries must exist, that point to the binaries generated in this build folder):</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">cmake --build . -C RelWithDebInfo --target <span style="color:#204a87">test</span>
-</code></pre></div><p>For MacOS: if you configured the project with &lsquo;-G Xcode&rsquo; initially, open the IDE and build <code>all</code>, <code>package</code>, and <code>test</code> targets manually from there</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>git clone --recursive git@github.com:ClickHouse/clickhouse-odbc.git
+</span></span></code></pre></div><p>Enter the cloned source tree, create a temporary build folder, and generate a Makefile for the project in it:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#204a87">cd</span> clickhouse-odbc
+</span></span><span style="display:flex;"><span>mkdir build
+</span></span><span style="display:flex;"><span><span style="color:#204a87">cd</span> build
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Configuration options for the project can be specified in the next command in a form of &#39;-Dopt=val&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># For MacOS: you may also add &#39;-G Xcode&#39; to the next command, in order to use Xcode as a build system or IDE, and generate the solution and project files instead of Makefile.</span>
+</span></span><span style="display:flex;"><span>cmake -DCMAKE_BUILD_TYPE<span style="color:#ce5c00;font-weight:bold">=</span>RelWithDebInfo ..
+</span></span></code></pre></div><p>Build the generated solution in-place:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>cmake --build . -C RelWithDebInfo
+</span></span><span style="display:flex;"><span>cmake --build . -C RelWithDebInfo --target package
+</span></span></code></pre></div><p>&hellip;and, optionally, run tests (note, that for non-unit tests, preconfigured driver and DSN entries must exist, that point to the binaries generated in this build folder):</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>cmake --build . -C RelWithDebInfo --target <span style="color:#204a87">test</span>
+</span></span></code></pre></div><p>For MacOS: if you configured the project with &lsquo;-G Xcode&rsquo; initially, open the IDE and build <code>all</code>, <code>package</code>, and <code>test</code> targets manually from there</p>
 <pre tabindex="0"><code>cmake --open .
 </code></pre><h3 id="windows-1">Windows</h3>
 <p>CMake bundled with the recent versions of Visual Studio can be used.</p>
@@ -955,27 +955,27 @@ cmake --build . -C RelWithDebInfo --target package
 <li>use <code>x64 Native Tools Command Prompt for VS 2019</code> or equivalent for 64-bit builds</li>
 </ul>
 <p>Clone the repo with submodules:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">git clone --recursive git@github.com:ClickHouse/clickhouse-odbc.git
-</code></pre></div><p>Enter the cloned source tree, create a temporary build folder, and generate the solution and project files in it:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#204a87">cd</span> clickhouse-odbc
-mkdir build
-<span style="color:#204a87">cd</span> build
-
-<span style="color:#8f5902;font-style:italic"># Configuration options for the project can be specified in the next command in a form of &#39;-Dopt=val&#39;</span>
-
-<span style="color:#8f5902;font-style:italic"># Use the following command for 32-bit build only.</span>
-cmake -A Win32 -DCMAKE_BUILD_TYPE<span style="color:#ce5c00;font-weight:bold">=</span>RelWithDebInfo ..
-
-<span style="color:#8f5902;font-style:italic"># Use the following command for 64-bit build only.</span>
-cmake -A x64 -DCMAKE_BUILD_TYPE<span style="color:#ce5c00;font-weight:bold">=</span>RelWithDebInfo ..
-</code></pre></div><p>Build the generated solution in-place:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">cmake --build . -C RelWithDebInfo
-cmake --build . -C RelWithDebInfo --target package
-</code></pre></div><p>&hellip;and, optionally, run tests (note, that for non-unit tests, preconfigured driver and DSN entries must exist, that point to the binaries generated in this build folder):</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">cmake --build . -C RelWithDebInfo --target <span style="color:#204a87">test</span>
-</code></pre></div><p>&hellip;or open the IDE and build <code>all</code>, <code>package</code>, and <code>test</code> targets manually from there:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">cmake --open .
-</code></pre></div><h3 id="cmake-options">cmake options</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>git clone --recursive git@github.com:ClickHouse/clickhouse-odbc.git
+</span></span></code></pre></div><p>Enter the cloned source tree, create a temporary build folder, and generate the solution and project files in it:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#204a87">cd</span> clickhouse-odbc
+</span></span><span style="display:flex;"><span>mkdir build
+</span></span><span style="display:flex;"><span><span style="color:#204a87">cd</span> build
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Configuration options for the project can be specified in the next command in a form of &#39;-Dopt=val&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Use the following command for 32-bit build only.</span>
+</span></span><span style="display:flex;"><span>cmake -A Win32 -DCMAKE_BUILD_TYPE<span style="color:#ce5c00;font-weight:bold">=</span>RelWithDebInfo ..
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Use the following command for 64-bit build only.</span>
+</span></span><span style="display:flex;"><span>cmake -A x64 -DCMAKE_BUILD_TYPE<span style="color:#ce5c00;font-weight:bold">=</span>RelWithDebInfo ..
+</span></span></code></pre></div><p>Build the generated solution in-place:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>cmake --build . -C RelWithDebInfo
+</span></span><span style="display:flex;"><span>cmake --build . -C RelWithDebInfo --target package
+</span></span></code></pre></div><p>&hellip;and, optionally, run tests (note, that for non-unit tests, preconfigured driver and DSN entries must exist, that point to the binaries generated in this build folder):</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>cmake --build . -C RelWithDebInfo --target <span style="color:#204a87">test</span>
+</span></span></code></pre></div><p>&hellip;or open the IDE and build <code>all</code>, <code>package</code>, and <code>test</code> targets manually from there:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>cmake --open .
+</span></span></code></pre></div><h3 id="cmake-options">cmake options</h3>
 <p>The list of configuration options recognized during the CMake generation step is as follows:</p>
 <table>
 <thead>
@@ -1078,16 +1078,16 @@ cmake --build . -C RelWithDebInfo --target package
 </ul>
 </li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#8f5902;font-style:italic"># CentOS / RedHat</span>
-sudo yum install openssl unixODBC
-
-<span style="color:#8f5902;font-style:italic"># Debian/Ubuntu</span>
-sudo apt install openssl unixodbc
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># CentOS / RedHat</span>
+</span></span><span style="display:flex;"><span>sudo yum install openssl unixODBC
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Debian/Ubuntu</span>
+</span></span><span style="display:flex;"><span>sudo apt install openssl unixodbc
+</span></span></code></pre></div><ul>
 <li>MacOS (assuming you have <a href="https://brew.sh/" target="_blank">Homebrew</a> installed):</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">brew install poco openssl libiodbc
-</code></pre></div><ol start="2">
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>brew install poco openssl libiodbc
+</span></span></code></pre></div><ol start="2">
 <li>register the driver so that the corresponding ODBC provider is able to locate it.</li>
 </ol>
 <p>All this involves modifying a dedicated registry keys in case of MDAC, or editing <code>odbcinst.ini</code> (for driver registration) and <code>odbc.ini</code> (for DSN definition) files for UnixODBC or iODBC, directly or indirectly.</p>
@@ -1203,7 +1203,7 @@ sudo apt install openssl unixodbc
 
 
 
-<script src="/js/main.min.3b172c13b62c2bea8b1c9d2599cddc8cf89718a92d792c680871c81ba43d8c85.js" integrity="sha256-OxcsE7YsK&#43;qLHJ0lmc3cjPiXGKkteSxoCHHIG6Q9jIU=" crossorigin="anonymous"></script>
+<script src="/js/main.min.7fa9e3e39f56ebd66798993ef3c080218d9696c971a28ef8872d750b7416a435.js" integrity="sha256-f6nj459W69ZnmJk&#43;88CAIY2Wlslxoo74hy11C3QWpDU=" crossorigin="anonymous"></script>
 
 
 

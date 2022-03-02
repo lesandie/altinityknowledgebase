@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.92.2" /><META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
+<meta name="generator" content="Hugo 0.93.0" /><META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
 <link rel="shortcut icon" href="/favicons/favicon.ico" >
 <link rel="icon" href="/favicons/favicon.ico" >
 <title>System tables eat my disk | Altinity Knowledge Base</title>
@@ -78,7 +78,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.035286ffea94b20115412349c1d2df50.json"
+  data-offline-search-index-json-src="/offline-search-index.41dc426efce12b05b3e1ade368ef5ff4.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -106,7 +106,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.035286ffea94b20115412349c1d2df50.json"
+  data-offline-search-index-json-src="/offline-search-index.41dc426efce12b05b3e1ade368ef5ff4.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -743,27 +743,27 @@
 <h2 id="you-can-disable-all--any-of-them">You can disable all / any of them</h2>
 <p>Do not create log tables at all (a restart is needed for these changes to take effect).</p>
 <pre tabindex="0"><code class="language-markup" data-lang="markup">$ cat /etc/clickhouse-server/config.d/z_log_disable.xml
-&lt;?xml version=&quot;1.0&quot;?&gt;
+&lt;?xml version=&#34;1.0&#34;?&gt;
 &lt;yandex&gt;
-    &lt;asynchronous_metric_log remove=&quot;1&quot;/&gt;
-    &lt;metric_log remove=&quot;1&quot;/&gt;
-    &lt;query_thread_log remove=&quot;1&quot; /&gt;  
-    &lt;query_log remove=&quot;1&quot; /&gt;
-    &lt;query_views_log remove=&quot;1&quot; /&gt;
-    &lt;part_log remove=&quot;1&quot;/&gt;
-    &lt;session_log remove=&quot;1&quot;/&gt;
-    &lt;text_log remove=&quot;1&quot; /&gt;
-    &lt;trace_log remove=&quot;1&quot;/&gt;
-    &lt;crash_log remove=&quot;1&quot;/&gt;
-    &lt;opentelemetry_span_log remove=&quot;1&quot;/&gt;
-    &lt;zookeeper_log remove=&quot;1&quot;/&gt;
+    &lt;asynchronous_metric_log remove=&#34;1&#34;/&gt;
+    &lt;metric_log remove=&#34;1&#34;/&gt;
+    &lt;query_thread_log remove=&#34;1&#34; /&gt;  
+    &lt;query_log remove=&#34;1&#34; /&gt;
+    &lt;query_views_log remove=&#34;1&#34; /&gt;
+    &lt;part_log remove=&#34;1&#34;/&gt;
+    &lt;session_log remove=&#34;1&#34;/&gt;
+    &lt;text_log remove=&#34;1&#34; /&gt;
+    &lt;trace_log remove=&#34;1&#34;/&gt;
+    &lt;crash_log remove=&#34;1&#34;/&gt;
+    &lt;opentelemetry_span_log remove=&#34;1&#34;/&gt;
+    &lt;zookeeper_log remove=&#34;1&#34;/&gt;
 &lt;/yandex&gt;
-</code></pre><p><strong>We do not recommend removing <code>query_log</code> and <code>query_thread_log</code> as queries' (they have very useful information for debugging), and logging can be easily turned off without a restart through user profiles:</strong></p>
+</code></pre><p><strong>We do not recommend removing <code>query_log</code> and <code>query_thread_log</code> as queries&rsquo; (they have very useful information for debugging), and logging can be easily turned off without a restart through user profiles:</strong></p>
 <pre tabindex="0"><code class="language-markup" data-lang="markup">$ cat /etc/clickhouse-server/users.d/z_log_queries.xml
 &lt;yandex&gt;
     &lt;profiles&gt;
         &lt;default&gt;
-            &lt;log_queries&gt;0&lt;/log_queries&gt; &lt;!-- normally it's better to keep it turned on! --&gt;
+            &lt;log_queries&gt;0&lt;/log_queries&gt; &lt;!-- normally it&#39;s better to keep it turned on! --&gt;
             &lt;log_query_threads&gt;0&lt;/log_query_threads&gt;
         &lt;/default&gt;
     &lt;/profiles&gt;
@@ -781,7 +781,7 @@ log_queries_probability           | 1           | Log queries with the specified
 </code></pre><h2 id="you-can-configure-ttl">You can configure TTL</h2>
 <p>Example for <code>query_log</code>. It drops partitions with data older than 14 days:</p>
 <pre tabindex="0"><code class="language-markup" data-lang="markup">$ cat /etc/clickhouse-server/config.d/query_log_ttl.xml
-&lt;?xml version=&quot;1.0&quot;?&gt;
+&lt;?xml version=&#34;1.0&#34;?&gt;
 &lt;yandex&gt;
     &lt;query_log&gt;
         &lt;database&gt;system&lt;/database&gt;
@@ -795,18 +795,18 @@ log_queries_probability           | 1           | Log queries with the specified
     &lt;/query_log&gt;
 &lt;/yandex&gt;
 </code></pre><p>After that you need to restart ClickHouse and drop or rename the existing system.query_log table, then CH creates a new table with these settings.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#204a87;font-weight:bold">RENAME</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">TABLE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">system</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">query_log</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">TO</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">system</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">query_log_1</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></code></pre></div><p>Important part here is a daily partitioning <code>PARTITION BY (event_date)</code> and <code>ttl_only_drop_parts=1</code>. In this case ClickHouse drops whole partitions. Dropping of partitions is very easy operation for CPU / Disk I/O.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">RENAME</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">TABLE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">system</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">query_log</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">TO</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">system</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">query_log_1</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div><p>Important part here is a daily partitioning <code>PARTITION BY (event_date)</code> and <code>ttl_only_drop_parts=1</code>. In this case ClickHouse drops whole partitions. Dropping of partitions is very easy operation for CPU / Disk I/O.</p>
 <p>Usual TTL (without <code>ttl_only_drop_parts=1</code>) is heavy CPU / Disk I/O consuming operation which re-writes data parts without expired rows.</p>
 <p>You can add TTL without ClickHouse restart (and table dropping or renaming):</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#204a87;font-weight:bold">ALTER</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">TABLE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">system</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">query_log</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">MODIFY</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">SETTING</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">ttl_only_drop_parts</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">ALTER</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">TABLE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">system</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">query_log</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">MODIFY</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">TTL</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">event_date</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">+</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87">INTERVAL</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">14</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">DAY</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></code></pre></div><p>But in this case ClickHouse will drop only whole monthly partitions (will store data older than 14 days).</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">ALTER</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">TABLE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">system</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">query_log</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">MODIFY</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">SETTING</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">ttl_only_drop_parts</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">ALTER</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">TABLE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">system</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">query_log</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">MODIFY</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">TTL</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">event_date</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">+</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87">INTERVAL</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">14</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">DAY</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div><p>But in this case ClickHouse will drop only whole monthly partitions (will store data older than 14 days).</p>
 <h2 id="one-more-way-to-configure-ttl-for-system-tables">One more way to configure TTL for system tables</h2>
 <p>This way just adds TTL to a table and leaves monthly (default) partitioning (will store data older than 14 days).</p>
 <pre tabindex="0"><code class="language-markup" data-lang="markup">$ cat /etc/clickhouse-server/config.d/query_log_ttl.xml
-&lt;?xml version=&quot;1.0&quot;?&gt;
+&lt;?xml version=&#34;1.0&#34;?&gt;
 &lt;yandex&gt;
     &lt;query_log&gt;
         &lt;database&gt;system&lt;/database&gt;
@@ -938,7 +938,7 @@ log_queries_probability           | 1           | Log queries with the specified
 
 
 
-<script src="/js/main.min.3b172c13b62c2bea8b1c9d2599cddc8cf89718a92d792c680871c81ba43d8c85.js" integrity="sha256-OxcsE7YsK&#43;qLHJ0lmc3cjPiXGKkteSxoCHHIG6Q9jIU=" crossorigin="anonymous"></script>
+<script src="/js/main.min.7fa9e3e39f56ebd66798993ef3c080218d9696c971a28ef8872d750b7416a435.js" integrity="sha256-f6nj459W69ZnmJk&#43;88CAIY2Wlslxoo74hy11C3QWpDU=" crossorigin="anonymous"></script>
 
 
 

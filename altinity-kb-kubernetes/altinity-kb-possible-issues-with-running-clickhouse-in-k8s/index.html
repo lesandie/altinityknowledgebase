@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.92.2" /><META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
+<meta name="generator" content="Hugo 0.93.0" /><META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
 <link rel="shortcut icon" href="/favicons/favicon.ico" >
 <link rel="icon" href="/favicons/favicon.ico" >
 <title>Possible issues with running ClickHouse in k8s | Altinity Knowledge Base</title>
@@ -78,7 +78,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.035286ffea94b20115412349c1d2df50.json"
+  data-offline-search-index-json-src="/offline-search-index.41dc426efce12b05b3e1ade368ef5ff4.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -106,7 +106,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.035286ffea94b20115412349c1d2df50.json"
+  data-offline-search-index-json-src="/offline-search-index.41dc426efce12b05b3e1ade368ef5ff4.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -745,9 +745,9 @@ There is two ways, how you can get access to data:</p>
 <li>Some cloud providers (GKE) can have slow unlink command, which is important for clickhouse because it&rsquo;s needed for parts management. (<code>max_part_removal_threads</code> setting)</li>
 </ol>
 <p>Useful commands:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl logs chi-chcluster-2-1-0 -c clickhouse-pod -n chcluster --previous
-kubectl describe pod chi-chcluster-2-1-0 -n chcluster
-</code></pre></div><p>Q. Clickhouse is caching the Kafka pod&rsquo;s IP and trying to connect to the same ip even when there is a new Kafka pod running and the old one is deprecated. Is there some setting where we could refresh the connection</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>kubectl logs chi-chcluster-2-1-0 -c clickhouse-pod -n chcluster --previous
+</span></span><span style="display:flex;"><span>kubectl describe pod chi-chcluster-2-1-0 -n chcluster
+</span></span></code></pre></div><p>Q. Clickhouse is caching the Kafka pod&rsquo;s IP and trying to connect to the same ip even when there is a new Kafka pod running and the old one is deprecated. Is there some setting where we could refresh the connection</p>
 <p><code>&lt;disable_internal_dns_cache&gt;1&lt;/disable_internal_dns_cache&gt;</code> in config.xml</p>
 <h3 id="clickhouse-init-process-failed">ClickHouse init process failed</h3>
 <p>It&rsquo;s due to low value for env <code>CLICKHOUSE_INIT_TIMEOUT</code> value. Consider increasing it up to 1 min.
@@ -862,7 +862,7 @@ kubectl describe pod chi-chcluster-2-1-0 -n chcluster
 
 
 
-<script src="/js/main.min.3b172c13b62c2bea8b1c9d2599cddc8cf89718a92d792c680871c81ba43d8c85.js" integrity="sha256-OxcsE7YsK&#43;qLHJ0lmc3cjPiXGKkteSxoCHHIG6Q9jIU=" crossorigin="anonymous"></script>
+<script src="/js/main.min.7fa9e3e39f56ebd66798993ef3c080218d9696c971a28ef8872d750b7416a435.js" integrity="sha256-f6nj459W69ZnmJk&#43;88CAIY2Wlslxoo74hy11C3QWpDU=" crossorigin="anonymous"></script>
 
 
 

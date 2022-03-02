@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.92.2" /><link rel="alternate" type="text/html" href="http://kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-zookeeper/printview/">
+<meta name="generator" content="Hugo 0.93.0" /><link rel="alternate" type="text/html" href="http://kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-zookeeper/printview/">
 <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
 <link rel="shortcut icon" href="/favicons/favicon.ico" >
 <link rel="icon" href="/favicons/favicon.ico" >
@@ -74,7 +74,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.035286ffea94b20115412349c1d2df50.json"
+  data-offline-search-index-json-src="/offline-search-index.41dc426efce12b05b3e1ade368ef5ff4.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -102,7 +102,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.035286ffea94b20115412349c1d2df50.json"
+  data-offline-search-index-json-src="/offline-search-index.41dc426efce12b05b3e1ade368ef5ff4.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -787,15 +787,15 @@ in many cases, the slowness of the zookeeper is actually a symptom of some issue
 </ul>
 </blockquote>
 <h3 id="how-to-check-number-of-followers">How to check number of followers:</h3>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#204a87">echo</span> mntr <span style="color:#000;font-weight:bold">|</span> nc zookeeper <span style="color:#0000cf;font-weight:bold">2187</span> <span style="color:#000;font-weight:bold">|</span> grep foll
-zk_synced_followers    <span style="color:#0000cf;font-weight:bold">2</span>
-zk_synced_non_voting_followers    <span style="color:#0000cf;font-weight:bold">0</span>
-zk_avg_follower_sync_time    0.0
-zk_min_follower_sync_time    <span style="color:#0000cf;font-weight:bold">0</span>
-zk_max_follower_sync_time    <span style="color:#0000cf;font-weight:bold">0</span>
-zk_cnt_follower_sync_time    <span style="color:#0000cf;font-weight:bold">0</span>
-zk_sum_follower_sync_time    <span style="color:#0000cf;font-weight:bold">0</span>
-</code></pre></div><h2 id="tools">Tools</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#204a87">echo</span> mntr <span style="color:#000;font-weight:bold">|</span> nc zookeeper <span style="color:#0000cf;font-weight:bold">2187</span> <span style="color:#000;font-weight:bold">|</span> grep foll
+</span></span><span style="display:flex;"><span>zk_synced_followers    <span style="color:#0000cf;font-weight:bold">2</span>
+</span></span><span style="display:flex;"><span>zk_synced_non_voting_followers    <span style="color:#0000cf;font-weight:bold">0</span>
+</span></span><span style="display:flex;"><span>zk_avg_follower_sync_time    0.0
+</span></span><span style="display:flex;"><span>zk_min_follower_sync_time    <span style="color:#0000cf;font-weight:bold">0</span>
+</span></span><span style="display:flex;"><span>zk_max_follower_sync_time    <span style="color:#0000cf;font-weight:bold">0</span>
+</span></span><span style="display:flex;"><span>zk_cnt_follower_sync_time    <span style="color:#0000cf;font-weight:bold">0</span>
+</span></span><span style="display:flex;"><span>zk_sum_follower_sync_time    <span style="color:#0000cf;font-weight:bold">0</span>
+</span></span></code></pre></div><h2 id="tools">Tools</h2>
 <p><a href="https://github.com/apache/zookeeper/blob/master/zookeeper-docs/src/main/resources/markdown/zookeeperTools.md" target="_blank">https://github.com/apache/zookeeper/blob/master/zookeeper-docs/src/main/resources/markdown/zookeeperTools.md</a></p>
 <h2 id="alternatives-for-zkcli">Alternatives for zkCli</h2>
 <ul>
@@ -1167,7 +1167,7 @@ zk_sum_follower_sync_time    <span style="color:#0000cf;font-weight:bold">0</spa
 
 
 
-<script src="/js/main.min.3b172c13b62c2bea8b1c9d2599cddc8cf89718a92d792c680871c81ba43d8c85.js" integrity="sha256-OxcsE7YsK&#43;qLHJ0lmc3cjPiXGKkteSxoCHHIG6Q9jIU=" crossorigin="anonymous"></script>
+<script src="/js/main.min.7fa9e3e39f56ebd66798993ef3c080218d9696c971a28ef8872d750b7416a435.js" integrity="sha256-f6nj459W69ZnmJk&#43;88CAIY2Wlslxoo74hy11C3QWpDU=" crossorigin="anonymous"></script>
 
 
 

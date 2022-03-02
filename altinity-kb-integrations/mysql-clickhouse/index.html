@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.92.2" /><META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
+<meta name="generator" content="Hugo 0.93.0" /><META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
 <link rel="shortcut icon" href="/favicons/favicon.ico" >
 <link rel="icon" href="/favicons/favicon.ico" >
 <title>MySQL | Altinity Knowledge Base</title>
@@ -75,7 +75,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.035286ffea94b20115412349c1d2df50.json"
+  data-offline-search-index-json-src="/offline-search-index.41dc426efce12b05b3e1ade368ef5ff4.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -103,7 +103,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.035286ffea94b20115412349c1d2df50.json"
+  data-offline-search-index-json-src="/offline-search-index.41dc426efce12b05b3e1ade368ef5ff4.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -739,7 +739,7 @@
 <li><a href="https://translate.google.com/translate?sl=auto&amp;tl=en&amp;u=https://www.jianshu.com/p/d0d4306411b3" target="_blank">https://translate.google.com/translate?sl=auto&amp;tl=en&amp;u=https://www.jianshu.com/p/d0d4306411b3</a></li>
 <li><a href="https://raw.githubusercontent.com/ClickHouse/clickhouse-presentations/master/meetup47/materialize_mysql.pdf" target="_blank">https://raw.githubusercontent.com/ClickHouse/clickhouse-presentations/master/meetup47/materialize_mysql.pdf</a></li>
 </ul>
-<p>It reads mysql binlog directly and transform queries into something which clickhouse can support. Supports updates and deletes (under the hood implemented via something like ReplacingMergeTree with enforced FINAL and &lsquo;deleted&rsquo; flag). Status is &lsquo;experimental&rsquo;, there are quite a lot of known limitations and issues, but some people use it. The original author of that went to another project, and the main team don&rsquo;t have a lot of resource to improve that for now (more important thing in the backlog)</p>
+<p>It reads mysql binlog directly and transform queries into something which clickhouse can support. Supports updates and deletes (under the hood implemented via something like ReplacingMergeTree with enforced FINAL and &lsquo;deleted&rsquo; flag). Status is &rsquo;experimental&rsquo;, there are quite a lot of known limitations and issues, but some people use it. The original author of that went to another project, and the main team don&rsquo;t have a lot of resource to improve that for now (more important thing in the backlog)</p>
 <p>The replication happens on the mysql database level.</p>
 <h3 id="replication-using-debezium--kafka">Replication using debezium + Kafka</h3>
 <p>Debezium can read the binlog and transform it to Kafka messages. You can later capture the stream of message on ClickHouse side and process it as you like.
@@ -756,8 +756,8 @@ Not supported currently. But it&rsquo;s just a python, so maybe can be adjusted 
 <p>MySQL <a href="https://clickhouse.com/docs/en/engines/table-engines/integrations/mysql/" target="_blank">table engine</a> / <a href="https://clickhouse.com/docs/en/sql-reference/table-functions/mysql/" target="_blank">table function</a>, or <a href="https://clickhouse.com/docs/en/engines/database-engines/mysql/" target="_blank">MySQL database engine</a> - clickhouse just connects to mysql server as a client, and can do normal selects.</p>
 <p>We had webinar about that a year ago: <a href="https://www.youtube.com/watch?v=44kO3UzIDLI" target="_blank">https://www.youtube.com/watch?v=44kO3UzIDLI</a></p>
 <p>Using that you can easily create some ETL script which will copy the data from mysql to clickhouse regularly, i.e. something like</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#204a87;font-weight:bold">INSERT</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">INTO</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">clickhouse_table</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">SELECT</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">FROM</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">mysql_table</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">WHERE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">id</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">&gt;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">...</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></code></pre></div><p>Works great if you have append only table in MySQL.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">INSERT</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">INTO</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">clickhouse_table</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">SELECT</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">FROM</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">mysql_table</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">WHERE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">id</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">&gt;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">...</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div><p>Works great if you have append only table in MySQL.</p>
 <p>In newer clickhouse versions you can query this was also sharded / replicated MySQL cluster - see <a href="https://clickhouse.com/docs/en/engines/table-engines/integrations/ExternalDistributed/" target="_blank">ExternalDistributed</a></p>
 <h3 id="mysql-dictionaries">MySQL dictionaries</h3>
 <p>There are also MySQL dictionaries, which can be very nice alternative for storing some dimensions information in star schema.</p>
@@ -875,7 +875,7 @@ Not supported currently. But it&rsquo;s just a python, so maybe can be adjusted 
 
 
 
-<script src="/js/main.min.3b172c13b62c2bea8b1c9d2599cddc8cf89718a92d792c680871c81ba43d8c85.js" integrity="sha256-OxcsE7YsK&#43;qLHJ0lmc3cjPiXGKkteSxoCHHIG6Q9jIU=" crossorigin="anonymous"></script>
+<script src="/js/main.min.7fa9e3e39f56ebd66798993ef3c080218d9696c971a28ef8872d750b7416a435.js" integrity="sha256-f6nj459W69ZnmJk&#43;88CAIY2Wlslxoo74hy11C3QWpDU=" crossorigin="anonymous"></script>
 
 
 

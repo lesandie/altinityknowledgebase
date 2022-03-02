@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.92.2" /><link rel="canonical" type="text/html" href="http://kb.altinity.com/altinity-kb-integrations/">
+<meta name="generator" content="Hugo 0.93.0" /><link rel="canonical" type="text/html" href="http://kb.altinity.com/altinity-kb-integrations/">
 <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
 <link rel="shortcut icon" href="/favicons/favicon.ico" >
 <link rel="icon" href="/favicons/favicon.ico" >
@@ -74,7 +74,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.035286ffea94b20115412349c1d2df50.json"
+  data-offline-search-index-json-src="/offline-search-index.41dc426efce12b05b3e1ade368ef5ff4.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -371,17 +371,17 @@ This the multi-page printable view of this section.
 </li>
 <li>
 <p><strong>Contents</strong>:  Enter the following to allow the <code>clickhouse_operator</code> that controls the cluster through the <code>clickhouse-operator</code> the ability to set administrative options:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#204a87;font-weight:bold">&lt;yandex&gt;</span>
-    <span style="color:#204a87;font-weight:bold">&lt;users&gt;</span>
-        <span style="color:#204a87;font-weight:bold">&lt;admin&gt;</span>
-            <span style="color:#204a87;font-weight:bold">&lt;access_management&gt;</span>1<span style="color:#204a87;font-weight:bold">&lt;/access_management&gt;</span>
-        <span style="color:#204a87;font-weight:bold">&lt;/admin&gt;</span>
-        <span style="color:#204a87;font-weight:bold">&lt;clickhouse_operator&gt;</span>
-            <span style="color:#204a87;font-weight:bold">&lt;access_management&gt;</span>1<span style="color:#204a87;font-weight:bold">&lt;/access_management&gt;</span>
-        <span style="color:#204a87;font-weight:bold">&lt;/clickhouse_operator&gt;</span>
-    <span style="color:#204a87;font-weight:bold">&lt;/users&gt;</span>
-<span style="color:#204a87;font-weight:bold">&lt;/yandex&gt;</span>
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">&lt;yandex&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&lt;users&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&lt;admin&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#204a87;font-weight:bold">&lt;access_management&gt;</span>1<span style="color:#204a87;font-weight:bold">&lt;/access_management&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&lt;/admin&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&lt;clickhouse_operator&gt;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#204a87;font-weight:bold">&lt;access_management&gt;</span>1<span style="color:#204a87;font-weight:bold">&lt;/access_management&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&lt;/clickhouse_operator&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&lt;/users&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">&lt;/yandex&gt;</span>
+</span></span></code></pre></div></li>
 </ol>
 <p>access_management=1 means that users <code>admin</code>, <code>clickhouse_operator</code> are able to create users and grant them privileges using SQL.</p>
 </li>
@@ -399,17 +399,17 @@ This the multi-page printable view of this section.
 </li>
 <li>
 <p><strong>Contents</strong>:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#204a87;font-weight:bold">&lt;yandex&gt;</span>
-  <span style="color:#204a87;font-weight:bold">&lt;user_directories</span> <span style="color:#c4a000">replace=</span><span style="color:#4e9a06">&#34;replace&#34;</span><span style="color:#204a87;font-weight:bold">&gt;</span>
-    <span style="color:#204a87;font-weight:bold">&lt;users_xml&gt;</span>
-      <span style="color:#204a87;font-weight:bold">&lt;path&gt;</span>/etc/clickhouse-server/users.xml<span style="color:#204a87;font-weight:bold">&lt;/path&gt;</span>
-    <span style="color:#204a87;font-weight:bold">&lt;/users_xml&gt;</span>
-    <span style="color:#204a87;font-weight:bold">&lt;replicated&gt;</span>
-      <span style="color:#204a87;font-weight:bold">&lt;zookeeper_path&gt;</span>/clickhouse/access/<span style="color:#204a87;font-weight:bold">&lt;/zookeeper_path&gt;</span>
-    <span style="color:#204a87;font-weight:bold">&lt;/replicated&gt;</span>
-  <span style="color:#204a87;font-weight:bold">&lt;/user_directories&gt;</span>
-<span style="color:#204a87;font-weight:bold">&lt;/yandex&gt;</span>
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">&lt;yandex&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&lt;user_directories</span> <span style="color:#c4a000">replace=</span><span style="color:#4e9a06">&#34;replace&#34;</span><span style="color:#204a87;font-weight:bold">&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&lt;users_xml&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#204a87;font-weight:bold">&lt;path&gt;</span>/etc/clickhouse-server/users.xml<span style="color:#204a87;font-weight:bold">&lt;/path&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&lt;/users_xml&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&lt;replicated&gt;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#204a87;font-weight:bold">&lt;zookeeper_path&gt;</span>/clickhouse/access/<span style="color:#204a87;font-weight:bold">&lt;/zookeeper_path&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&lt;/replicated&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&lt;/user_directories&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">&lt;/yandex&gt;</span>
+</span></span></code></pre></div></li>
 </ol>
 </li>
 </ol>
@@ -440,7 +440,7 @@ This the multi-page printable view of this section.
 <li><a href="https://translate.google.com/translate?sl=auto&amp;tl=en&amp;u=https://www.jianshu.com/p/d0d4306411b3" target="_blank">https://translate.google.com/translate?sl=auto&amp;tl=en&amp;u=https://www.jianshu.com/p/d0d4306411b3</a></li>
 <li><a href="https://raw.githubusercontent.com/ClickHouse/clickhouse-presentations/master/meetup47/materialize_mysql.pdf" target="_blank">https://raw.githubusercontent.com/ClickHouse/clickhouse-presentations/master/meetup47/materialize_mysql.pdf</a></li>
 </ul>
-<p>It reads mysql binlog directly and transform queries into something which clickhouse can support. Supports updates and deletes (under the hood implemented via something like ReplacingMergeTree with enforced FINAL and &lsquo;deleted&rsquo; flag). Status is &lsquo;experimental&rsquo;, there are quite a lot of known limitations and issues, but some people use it. The original author of that went to another project, and the main team don&rsquo;t have a lot of resource to improve that for now (more important thing in the backlog)</p>
+<p>It reads mysql binlog directly and transform queries into something which clickhouse can support. Supports updates and deletes (under the hood implemented via something like ReplacingMergeTree with enforced FINAL and &lsquo;deleted&rsquo; flag). Status is &rsquo;experimental&rsquo;, there are quite a lot of known limitations and issues, but some people use it. The original author of that went to another project, and the main team don&rsquo;t have a lot of resource to improve that for now (more important thing in the backlog)</p>
 <p>The replication happens on the mysql database level.</p>
 <h3 id="replication-using-debezium--kafka">Replication using debezium + Kafka</h3>
 <p>Debezium can read the binlog and transform it to Kafka messages. You can later capture the stream of message on ClickHouse side and process it as you like.
@@ -457,8 +457,8 @@ Not supported currently. But it&rsquo;s just a python, so maybe can be adjusted 
 <p>MySQL <a href="https://clickhouse.com/docs/en/engines/table-engines/integrations/mysql/" target="_blank">table engine</a> / <a href="https://clickhouse.com/docs/en/sql-reference/table-functions/mysql/" target="_blank">table function</a>, or <a href="https://clickhouse.com/docs/en/engines/database-engines/mysql/" target="_blank">MySQL database engine</a> - clickhouse just connects to mysql server as a client, and can do normal selects.</p>
 <p>We had webinar about that a year ago: <a href="https://www.youtube.com/watch?v=44kO3UzIDLI" target="_blank">https://www.youtube.com/watch?v=44kO3UzIDLI</a></p>
 <p>Using that you can easily create some ETL script which will copy the data from mysql to clickhouse regularly, i.e. something like</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#204a87;font-weight:bold">INSERT</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">INTO</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">clickhouse_table</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">SELECT</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">FROM</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">mysql_table</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">WHERE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">id</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">&gt;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">...</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></code></pre></div><p>Works great if you have append only table in MySQL.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">INSERT</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">INTO</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">clickhouse_table</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">SELECT</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">FROM</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">mysql_table</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">WHERE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">id</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">&gt;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">...</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div><p>Works great if you have append only table in MySQL.</p>
 <p>In newer clickhouse versions you can query this was also sharded / replicated MySQL cluster - see <a href="https://clickhouse.com/docs/en/engines/table-engines/integrations/ExternalDistributed/" target="_blank">ExternalDistributed</a></p>
 <h3 id="mysql-dictionaries">MySQL dictionaries</h3>
 <p>There are also MySQL dictionaries, which can be very nice alternative for storing some dimensions information in star schema.</p>
@@ -500,8 +500,8 @@ applications (cygwin / msys64 based) may require driver linked agains unixodbc. 
 <li>Install <a href="https://brew.sh/" target="_blank">homebrew</a>.</li>
 <li>Install driver</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">brew install https://raw.githubusercontent.com/proller/homebrew-core/chodbc/Formula/clickhouse-odbc.rb
-</code></pre></div><ol start="3">
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>brew install https://raw.githubusercontent.com/proller/homebrew-core/chodbc/Formula/clickhouse-odbc.rb
+</span></span></code></pre></div><ol start="3">
 <li>Add clickhouse DSN configuration into ~/.odbc.ini file. (<a href="">sample</a>)</li>
 </ol>
 <p>Note: that install driver linked against iodbc (which is default for Mac), some homebrew applications
@@ -643,48 +643,48 @@ applications (cygwin / msys64 based) may require driver linked agains unixodbc. 
 <li>SSL library (openssl)</li>
 </ul>
 <p>Generic build scenario:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">git clone --recursive git@github.com:ClickHouse/clickhouse-odbc.git
-<span style="color:#204a87">cd</span> clickhouse-odbc
-mkdir build
-<span style="color:#204a87">cd</span> build
-cmake -DCMAKE_BUILD_TYPE<span style="color:#ce5c00;font-weight:bold">=</span>RelWithDebInfo ..
-cmake --build . -C RelWithDebInfo
-</code></pre></div><p>Additional requirements exist for each platform, which also depend on whether packaging and/or testing is performed.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>git clone --recursive git@github.com:ClickHouse/clickhouse-odbc.git
+</span></span><span style="display:flex;"><span><span style="color:#204a87">cd</span> clickhouse-odbc
+</span></span><span style="display:flex;"><span>mkdir build
+</span></span><span style="display:flex;"><span><span style="color:#204a87">cd</span> build
+</span></span><span style="display:flex;"><span>cmake -DCMAKE_BUILD_TYPE<span style="color:#ce5c00;font-weight:bold">=</span>RelWithDebInfo ..
+</span></span><span style="display:flex;"><span>cmake --build . -C RelWithDebInfo
+</span></span></code></pre></div><p>Additional requirements exist for each platform, which also depend on whether packaging and/or testing is performed.</p>
 <h3 id="linuxmacos">Linux/macOS</h3>
 <p>Execute the following in the terminal to install needed dependencies:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#8f5902;font-style:italic"># on Red Hat/CentOS (tested on CentOS 7)</span>
-sudo yum groupinstall <span style="color:#4e9a06">&#34;Development Tools&#34;</span>
-sudo yum install centos-release-scl
-sudo yum install devtoolset-8
-sudo yum install git cmake openssl-devel unixODBC-devel <span style="color:#8f5902;font-style:italic"># You may use libiodbc-devel INSTEAD of unixODBC-devel</span>
-scl <span style="color:#204a87">enable</span> devtoolset-8 -- bash <span style="color:#8f5902;font-style:italic"># Enable Software collections for that terminal session, to use newer versions of complilers</span>
-
-<span style="color:#8f5902;font-style:italic"># on Ubuntu (tested on Ubuntu 18.10, for older versions you may need to install newer c++ compiler and cmake versions)</span>
-sudo apt install build-essential git cmake libpoco-dev libssl-dev unixodbc-dev <span style="color:#8f5902;font-style:italic"># You may use libiodbc-devel INSEAD of unixODBC-devel</span>
-
-<span style="color:#8f5902;font-style:italic"># MacOS: </span>
-<span style="color:#8f5902;font-style:italic"># You will need Xcode 10 or later and Command Line Tools to be installed, as well as [Homebrew](https://brew.sh/).</span>
-brew install git cmake make poco openssl libiodbc <span style="color:#8f5902;font-style:italic"># You may use unixodbc INSTEAD of libiodbc </span>
-</code></pre></div><p><strong>Note:</strong> usually on Linux you use unixODBC driver manager, and on Mac - iODBC.
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># on Red Hat/CentOS (tested on CentOS 7)</span>
+</span></span><span style="display:flex;"><span>sudo yum groupinstall <span style="color:#4e9a06">&#34;Development Tools&#34;</span>
+</span></span><span style="display:flex;"><span>sudo yum install centos-release-scl
+</span></span><span style="display:flex;"><span>sudo yum install devtoolset-8
+</span></span><span style="display:flex;"><span>sudo yum install git cmake openssl-devel unixODBC-devel <span style="color:#8f5902;font-style:italic"># You may use libiodbc-devel INSTEAD of unixODBC-devel</span>
+</span></span><span style="display:flex;"><span>scl <span style="color:#204a87">enable</span> devtoolset-8 -- bash <span style="color:#8f5902;font-style:italic"># Enable Software collections for that terminal session, to use newer versions of complilers</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># on Ubuntu (tested on Ubuntu 18.10, for older versions you may need to install newer c++ compiler and cmake versions)</span>
+</span></span><span style="display:flex;"><span>sudo apt install build-essential git cmake libpoco-dev libssl-dev unixodbc-dev <span style="color:#8f5902;font-style:italic"># You may use libiodbc-devel INSEAD of unixODBC-devel</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># MacOS: </span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># You will need Xcode 10 or later and Command Line Tools to be installed, as well as [Homebrew](https://brew.sh/).</span>
+</span></span><span style="display:flex;"><span>brew install git cmake make poco openssl libiodbc <span style="color:#8f5902;font-style:italic"># You may use unixodbc INSTEAD of libiodbc </span>
+</span></span></code></pre></div><p><strong>Note:</strong> usually on Linux you use unixODBC driver manager, and on Mac - iODBC.
 In some (rare) cases you may need use other driver manager, please do it only
 if you clearly understand the differencies. Driver should be used with the driver
 manager it was linked to.</p>
 <p>Clone the repo with submodules:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">git clone --recursive git@github.com:ClickHouse/clickhouse-odbc.git
-</code></pre></div><p>Enter the cloned source tree, create a temporary build folder, and generate a Makefile for the project in it:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#204a87">cd</span> clickhouse-odbc
-mkdir build
-<span style="color:#204a87">cd</span> build
-
-<span style="color:#8f5902;font-style:italic"># Configuration options for the project can be specified in the next command in a form of &#39;-Dopt=val&#39;</span>
-<span style="color:#8f5902;font-style:italic"># For MacOS: you may also add &#39;-G Xcode&#39; to the next command, in order to use Xcode as a build system or IDE, and generate the solution and project files instead of Makefile.</span>
-cmake -DCMAKE_BUILD_TYPE<span style="color:#ce5c00;font-weight:bold">=</span>RelWithDebInfo ..
-</code></pre></div><p>Build the generated solution in-place:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">cmake --build . -C RelWithDebInfo
-cmake --build . -C RelWithDebInfo --target package
-</code></pre></div><p>&hellip;and, optionally, run tests (note, that for non-unit tests, preconfigured driver and DSN entries must exist, that point to the binaries generated in this build folder):</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">cmake --build . -C RelWithDebInfo --target <span style="color:#204a87">test</span>
-</code></pre></div><p>For MacOS: if you configured the project with &lsquo;-G Xcode&rsquo; initially, open the IDE and build <code>all</code>, <code>package</code>, and <code>test</code> targets manually from there</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>git clone --recursive git@github.com:ClickHouse/clickhouse-odbc.git
+</span></span></code></pre></div><p>Enter the cloned source tree, create a temporary build folder, and generate a Makefile for the project in it:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#204a87">cd</span> clickhouse-odbc
+</span></span><span style="display:flex;"><span>mkdir build
+</span></span><span style="display:flex;"><span><span style="color:#204a87">cd</span> build
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Configuration options for the project can be specified in the next command in a form of &#39;-Dopt=val&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># For MacOS: you may also add &#39;-G Xcode&#39; to the next command, in order to use Xcode as a build system or IDE, and generate the solution and project files instead of Makefile.</span>
+</span></span><span style="display:flex;"><span>cmake -DCMAKE_BUILD_TYPE<span style="color:#ce5c00;font-weight:bold">=</span>RelWithDebInfo ..
+</span></span></code></pre></div><p>Build the generated solution in-place:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>cmake --build . -C RelWithDebInfo
+</span></span><span style="display:flex;"><span>cmake --build . -C RelWithDebInfo --target package
+</span></span></code></pre></div><p>&hellip;and, optionally, run tests (note, that for non-unit tests, preconfigured driver and DSN entries must exist, that point to the binaries generated in this build folder):</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>cmake --build . -C RelWithDebInfo --target <span style="color:#204a87">test</span>
+</span></span></code></pre></div><p>For MacOS: if you configured the project with &lsquo;-G Xcode&rsquo; initially, open the IDE and build <code>all</code>, <code>package</code>, and <code>test</code> targets manually from there</p>
 <pre tabindex="0"><code>cmake --open .
 </code></pre><h3 id="windows-1">Windows</h3>
 <p>CMake bundled with the recent versions of Visual Studio can be used.</p>
@@ -696,27 +696,27 @@ cmake --build . -C RelWithDebInfo --target package
 <li>use <code>x64 Native Tools Command Prompt for VS 2019</code> or equivalent for 64-bit builds</li>
 </ul>
 <p>Clone the repo with submodules:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">git clone --recursive git@github.com:ClickHouse/clickhouse-odbc.git
-</code></pre></div><p>Enter the cloned source tree, create a temporary build folder, and generate the solution and project files in it:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#204a87">cd</span> clickhouse-odbc
-mkdir build
-<span style="color:#204a87">cd</span> build
-
-<span style="color:#8f5902;font-style:italic"># Configuration options for the project can be specified in the next command in a form of &#39;-Dopt=val&#39;</span>
-
-<span style="color:#8f5902;font-style:italic"># Use the following command for 32-bit build only.</span>
-cmake -A Win32 -DCMAKE_BUILD_TYPE<span style="color:#ce5c00;font-weight:bold">=</span>RelWithDebInfo ..
-
-<span style="color:#8f5902;font-style:italic"># Use the following command for 64-bit build only.</span>
-cmake -A x64 -DCMAKE_BUILD_TYPE<span style="color:#ce5c00;font-weight:bold">=</span>RelWithDebInfo ..
-</code></pre></div><p>Build the generated solution in-place:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">cmake --build . -C RelWithDebInfo
-cmake --build . -C RelWithDebInfo --target package
-</code></pre></div><p>&hellip;and, optionally, run tests (note, that for non-unit tests, preconfigured driver and DSN entries must exist, that point to the binaries generated in this build folder):</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">cmake --build . -C RelWithDebInfo --target <span style="color:#204a87">test</span>
-</code></pre></div><p>&hellip;or open the IDE and build <code>all</code>, <code>package</code>, and <code>test</code> targets manually from there:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">cmake --open .
-</code></pre></div><h3 id="cmake-options">cmake options</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>git clone --recursive git@github.com:ClickHouse/clickhouse-odbc.git
+</span></span></code></pre></div><p>Enter the cloned source tree, create a temporary build folder, and generate the solution and project files in it:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#204a87">cd</span> clickhouse-odbc
+</span></span><span style="display:flex;"><span>mkdir build
+</span></span><span style="display:flex;"><span><span style="color:#204a87">cd</span> build
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Configuration options for the project can be specified in the next command in a form of &#39;-Dopt=val&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Use the following command for 32-bit build only.</span>
+</span></span><span style="display:flex;"><span>cmake -A Win32 -DCMAKE_BUILD_TYPE<span style="color:#ce5c00;font-weight:bold">=</span>RelWithDebInfo ..
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Use the following command for 64-bit build only.</span>
+</span></span><span style="display:flex;"><span>cmake -A x64 -DCMAKE_BUILD_TYPE<span style="color:#ce5c00;font-weight:bold">=</span>RelWithDebInfo ..
+</span></span></code></pre></div><p>Build the generated solution in-place:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>cmake --build . -C RelWithDebInfo
+</span></span><span style="display:flex;"><span>cmake --build . -C RelWithDebInfo --target package
+</span></span></code></pre></div><p>&hellip;and, optionally, run tests (note, that for non-unit tests, preconfigured driver and DSN entries must exist, that point to the binaries generated in this build folder):</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>cmake --build . -C RelWithDebInfo --target <span style="color:#204a87">test</span>
+</span></span></code></pre></div><p>&hellip;or open the IDE and build <code>all</code>, <code>package</code>, and <code>test</code> targets manually from there:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>cmake --open .
+</span></span></code></pre></div><h3 id="cmake-options">cmake options</h3>
 <p>The list of configuration options recognized during the CMake generation step is as follows:</p>
 <table>
 <thead>
@@ -819,16 +819,16 @@ cmake --build . -C RelWithDebInfo --target package
 </ul>
 </li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#8f5902;font-style:italic"># CentOS / RedHat</span>
-sudo yum install openssl unixODBC
-
-<span style="color:#8f5902;font-style:italic"># Debian/Ubuntu</span>
-sudo apt install openssl unixodbc
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># CentOS / RedHat</span>
+</span></span><span style="display:flex;"><span>sudo yum install openssl unixODBC
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># Debian/Ubuntu</span>
+</span></span><span style="display:flex;"><span>sudo apt install openssl unixodbc
+</span></span></code></pre></div><ul>
 <li>MacOS (assuming you have <a href="https://brew.sh/" target="_blank">Homebrew</a> installed):</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">brew install poco openssl libiodbc
-</code></pre></div><ol start="2">
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>brew install poco openssl libiodbc
+</span></span></code></pre></div><ol start="2">
 <li>register the driver so that the corresponding ODBC provider is able to locate it.</li>
 </ol>
 <p>All this involves modifying a dedicated registry keys in case of MDAC, or editing <code>odbcinst.ini</code> (for driver registration) and <code>odbc.ini</code> (for DSN definition) files for UnixODBC or iODBC, directly or indirectly.</p>
@@ -1054,8 +1054,8 @@ Arrays, Higher-order functions, machine learning, integration with lot of differ
     
 	<h1 id="pg-baebc0ff2257ac7906ebf1b6671d8990">8 - Kafka</h1>
     <div class="lead">Kafka</div>
-	<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git log -- contrib/librdkafka <span style="color:#000;font-weight:bold">|</span> git name-rev --stdin
-</code></pre></div><table>
+	<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git log -- contrib/librdkafka <span style="color:#000;font-weight:bold">|</span> git name-rev --stdin
+</span></span></code></pre></div><table>
 <thead>
 <tr>
 <th style="text-align:left"><strong>ClickHouse version</strong></th>
@@ -1142,60 +1142,60 @@ Arrays, Higher-order functions, machine learning, integration with lot of differ
 </li>
 </ul>
 <p>Some random example:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#204a87;font-weight:bold">&lt;kafka&gt;</span>
-    <span style="color:#204a87;font-weight:bold">&lt;max_poll_interval_ms&gt;</span>60000<span style="color:#204a87;font-weight:bold">&lt;/max_poll_interval_ms&gt;</span>
-    <span style="color:#204a87;font-weight:bold">&lt;session_timeout_ms&gt;</span>60000<span style="color:#204a87;font-weight:bold">&lt;/session_timeout_ms&gt;</span>
-    <span style="color:#204a87;font-weight:bold">&lt;heartbeat_interval_ms&gt;</span>10000<span style="color:#204a87;font-weight:bold">&lt;/heartbeat_interval_ms&gt;</span>
-    <span style="color:#204a87;font-weight:bold">&lt;reconnect_backoff_ms&gt;</span>5000<span style="color:#204a87;font-weight:bold">&lt;/reconnect_backoff_ms&gt;</span>
-    <span style="color:#204a87;font-weight:bold">&lt;reconnect_backoff_max_ms&gt;</span>60000<span style="color:#204a87;font-weight:bold">&lt;/reconnect_backoff_max_ms&gt;</span>
-    <span style="color:#204a87;font-weight:bold">&lt;request_timeout_ms&gt;</span>20000<span style="color:#204a87;font-weight:bold">&lt;/request_timeout_ms&gt;</span>
-    <span style="color:#204a87;font-weight:bold">&lt;retry_backoff_ms&gt;</span>500<span style="color:#204a87;font-weight:bold">&lt;/retry_backoff_ms&gt;</span>
-    <span style="color:#204a87;font-weight:bold">&lt;message_max_bytes&gt;</span>20971520<span style="color:#204a87;font-weight:bold">&lt;/message_max_bytes&gt;</span>
-    <span style="color:#204a87;font-weight:bold">&lt;debug&gt;</span>all<span style="color:#204a87;font-weight:bold">&lt;/debug&gt;</span><span style="color:#8f5902;font-style:italic">&lt;!-- only to get the errors --&gt;</span>
-    <span style="color:#204a87;font-weight:bold">&lt;security_protocol&gt;</span>SSL<span style="color:#204a87;font-weight:bold">&lt;/security_protocol&gt;</span>
-    <span style="color:#204a87;font-weight:bold">&lt;ssl_ca_location&gt;</span>/etc/clickhouse-server/ssl/kafka-ca-qa.crt<span style="color:#204a87;font-weight:bold">&lt;/ssl_ca_location&gt;</span>
-    <span style="color:#204a87;font-weight:bold">&lt;ssl_certificate_location&gt;</span>/etc/clickhouse-server/ssl/client_clickhouse_client.pem<span style="color:#204a87;font-weight:bold">&lt;/ssl_certificate_location&gt;</span>
-    <span style="color:#204a87;font-weight:bold">&lt;ssl_key_location&gt;</span>/etc/clickhouse-server/ssl/client_clickhouse_client.key<span style="color:#204a87;font-weight:bold">&lt;/ssl_key_location&gt;</span>
-    <span style="color:#204a87;font-weight:bold">&lt;ssl_key_password&gt;</span>pass<span style="color:#204a87;font-weight:bold">&lt;/ssl_key_password&gt;</span>
-<span style="color:#204a87;font-weight:bold">&lt;/kafka&gt;</span>
-</code></pre></div><h2 id="authentication--connectivity">Authentication / connectivity</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">&lt;kafka&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&lt;max_poll_interval_ms&gt;</span>60000<span style="color:#204a87;font-weight:bold">&lt;/max_poll_interval_ms&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&lt;session_timeout_ms&gt;</span>60000<span style="color:#204a87;font-weight:bold">&lt;/session_timeout_ms&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&lt;heartbeat_interval_ms&gt;</span>10000<span style="color:#204a87;font-weight:bold">&lt;/heartbeat_interval_ms&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&lt;reconnect_backoff_ms&gt;</span>5000<span style="color:#204a87;font-weight:bold">&lt;/reconnect_backoff_ms&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&lt;reconnect_backoff_max_ms&gt;</span>60000<span style="color:#204a87;font-weight:bold">&lt;/reconnect_backoff_max_ms&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&lt;request_timeout_ms&gt;</span>20000<span style="color:#204a87;font-weight:bold">&lt;/request_timeout_ms&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&lt;retry_backoff_ms&gt;</span>500<span style="color:#204a87;font-weight:bold">&lt;/retry_backoff_ms&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&lt;message_max_bytes&gt;</span>20971520<span style="color:#204a87;font-weight:bold">&lt;/message_max_bytes&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&lt;debug&gt;</span>all<span style="color:#204a87;font-weight:bold">&lt;/debug&gt;</span><span style="color:#8f5902;font-style:italic">&lt;!-- only to get the errors --&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&lt;security_protocol&gt;</span>SSL<span style="color:#204a87;font-weight:bold">&lt;/security_protocol&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&lt;ssl_ca_location&gt;</span>/etc/clickhouse-server/ssl/kafka-ca-qa.crt<span style="color:#204a87;font-weight:bold">&lt;/ssl_ca_location&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&lt;ssl_certificate_location&gt;</span>/etc/clickhouse-server/ssl/client_clickhouse_client.pem<span style="color:#204a87;font-weight:bold">&lt;/ssl_certificate_location&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&lt;ssl_key_location&gt;</span>/etc/clickhouse-server/ssl/client_clickhouse_client.key<span style="color:#204a87;font-weight:bold">&lt;/ssl_key_location&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&lt;ssl_key_password&gt;</span>pass<span style="color:#204a87;font-weight:bold">&lt;/ssl_key_password&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">&lt;/kafka&gt;</span>
+</span></span></code></pre></div><h2 id="authentication--connectivity">Authentication / connectivity</h2>
 <h3 id="amazon-msk">Amazon MSK</h3>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#204a87;font-weight:bold">&lt;yandex&gt;</span>
-  <span style="color:#204a87;font-weight:bold">&lt;kafka&gt;</span>
-    <span style="color:#204a87;font-weight:bold">&lt;security_protocol&gt;</span>sasl_ssl<span style="color:#204a87;font-weight:bold">&lt;/security_protocol&gt;</span>
-    <span style="color:#204a87;font-weight:bold">&lt;sasl_username&gt;</span>root<span style="color:#204a87;font-weight:bold">&lt;/sasl_username&gt;</span>
-    <span style="color:#204a87;font-weight:bold">&lt;sasl_password&gt;</span>toor<span style="color:#204a87;font-weight:bold">&lt;/sasl_password&gt;</span>
-  <span style="color:#204a87;font-weight:bold">&lt;/kafka&gt;</span>
-<span style="color:#204a87;font-weight:bold">&lt;/yandex&gt;</span>
-</code></pre></div><h3 id="saslscram">SASL/SCRAM</h3>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#204a87;font-weight:bold">&lt;yandex&gt;</span>
-  <span style="color:#204a87;font-weight:bold">&lt;kafka&gt;</span>
-    <span style="color:#204a87;font-weight:bold">&lt;security_protocol&gt;</span>sasl_ssl<span style="color:#204a87;font-weight:bold">&lt;/security_protocol&gt;</span>
-    <span style="color:#204a87;font-weight:bold">&lt;sasl_mechanism&gt;</span>SCRAM-SHA-512<span style="color:#204a87;font-weight:bold">&lt;/sasl_mechanism&gt;</span>
-    <span style="color:#204a87;font-weight:bold">&lt;sasl_username&gt;</span>root<span style="color:#204a87;font-weight:bold">&lt;/sasl_username&gt;</span>
-    <span style="color:#204a87;font-weight:bold">&lt;sasl_password&gt;</span>toor<span style="color:#204a87;font-weight:bold">&lt;/sasl_password&gt;</span>
-  <span style="color:#204a87;font-weight:bold">&lt;/kafka&gt;</span>
-<span style="color:#204a87;font-weight:bold">&lt;/yandex&gt;</span>
-</code></pre></div><p><a href="https://leftjoin.ru/all/clickhouse-as-a-consumer-to-amazon-msk/" target="_blank">https://leftjoin.ru/all/clickhouse-as-a-consumer-to-amazon-msk/</a></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">&lt;yandex&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&lt;kafka&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&lt;security_protocol&gt;</span>sasl_ssl<span style="color:#204a87;font-weight:bold">&lt;/security_protocol&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&lt;sasl_username&gt;</span>root<span style="color:#204a87;font-weight:bold">&lt;/sasl_username&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&lt;sasl_password&gt;</span>toor<span style="color:#204a87;font-weight:bold">&lt;/sasl_password&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&lt;/kafka&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">&lt;/yandex&gt;</span>
+</span></span></code></pre></div><h3 id="saslscram">SASL/SCRAM</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">&lt;yandex&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&lt;kafka&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&lt;security_protocol&gt;</span>sasl_ssl<span style="color:#204a87;font-weight:bold">&lt;/security_protocol&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&lt;sasl_mechanism&gt;</span>SCRAM-SHA-512<span style="color:#204a87;font-weight:bold">&lt;/sasl_mechanism&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&lt;sasl_username&gt;</span>root<span style="color:#204a87;font-weight:bold">&lt;/sasl_username&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&lt;sasl_password&gt;</span>toor<span style="color:#204a87;font-weight:bold">&lt;/sasl_password&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&lt;/kafka&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">&lt;/yandex&gt;</span>
+</span></span></code></pre></div><p><a href="https://leftjoin.ru/all/clickhouse-as-a-consumer-to-amazon-msk/" target="_blank">https://leftjoin.ru/all/clickhouse-as-a-consumer-to-amazon-msk/</a></p>
 <h3 id="inline-kafka-certs">Inline Kafka certs</h3>
 <p>To connect to some Kafka cloud services you may need to use certificates.</p>
 <p>If needed they can be converted to pem format and inlined into ClickHouse config.xml
 Example:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#204a87;font-weight:bold">&lt;kafka&gt;</span>
-<span style="color:#204a87;font-weight:bold">&lt;ssl_key_pem&gt;</span><span style="color:#8f5902;font-style:italic">&lt;![CDATA[
-</span><span style="color:#8f5902;font-style:italic">  RSA Private-Key: (3072 bit, 2 primes)
-</span><span style="color:#8f5902;font-style:italic">    ....
-</span><span style="color:#8f5902;font-style:italic">-----BEGIN RSA PRIVATE KEY-----
-</span><span style="color:#8f5902;font-style:italic">...
-</span><span style="color:#8f5902;font-style:italic">-----END RSA PRIVATE KEY-----
-</span><span style="color:#8f5902;font-style:italic">]]&gt;</span><span style="color:#204a87;font-weight:bold">&lt;/ssl_key_pem&gt;</span>
-<span style="color:#204a87;font-weight:bold">&lt;ssl_certificate_pem&gt;</span><span style="color:#8f5902;font-style:italic">&lt;![CDATA[
-</span><span style="color:#8f5902;font-style:italic">-----BEGIN CERTIFICATE-----
-</span><span style="color:#8f5902;font-style:italic">...
-</span><span style="color:#8f5902;font-style:italic">-----END CERTIFICATE-----
-</span><span style="color:#8f5902;font-style:italic">]]&gt;</span><span style="color:#204a87;font-weight:bold">&lt;/ssl_certificate_pem&gt;</span>
-<span style="color:#204a87;font-weight:bold">&lt;/kafka&gt;</span>
-</code></pre></div><p>See xml</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">&lt;kafka&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">&lt;ssl_key_pem&gt;</span><span style="color:#8f5902;font-style:italic">&lt;![CDATA[
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">  RSA Private-Key: (3072 bit, 2 primes)
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">    ....
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">-----BEGIN RSA PRIVATE KEY-----
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">...
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">-----END RSA PRIVATE KEY-----
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">]]&gt;</span><span style="color:#204a87;font-weight:bold">&lt;/ssl_key_pem&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">&lt;ssl_certificate_pem&gt;</span><span style="color:#8f5902;font-style:italic">&lt;![CDATA[
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">-----BEGIN CERTIFICATE-----
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">...
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">-----END CERTIFICATE-----
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">]]&gt;</span><span style="color:#204a87;font-weight:bold">&lt;/ssl_certificate_pem&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">&lt;/kafka&gt;</span>
+</span></span></code></pre></div><p>See xml</p>
 <p><a href="https://help.aiven.io/en/articles/489572-getting-started-with-aiven-kafka" target="_blank">https://help.aiven.io/en/articles/489572-getting-started-with-aiven-kafka</a></p>
 <p><a href="https://stackoverflow.com/questions/991758/how-to-get-pem-file-from-key-and-crt-files" target="_blank">https://stackoverflow.com/questions/991758/how-to-get-pem-file-from-key-and-crt-files</a></p>
 <h3 id="azure-event-hub">Azure Event Hub</h3>
@@ -1205,37 +1205,36 @@ Example:</p>
 <li><a href="https://clickhouse.tech/docs/en/engines/table-engines/integrations/kafka/#kafka-kerberos-support" target="_blank">https://clickhouse.tech/docs/en/engines/table-engines/integrations/kafka/#kafka-kerberos-support</a></li>
 <li><a href="https://github.com/ClickHouse/ClickHouse/blob/master/tests/integration/test_storage_kerberized_kafka/configs/kafka.xml" target="_blank">https://github.com/ClickHouse/ClickHouse/blob/master/tests/integration/test_storage_kerberized_kafka/configs/kafka.xml</a></li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml">  <span style="color:#8f5902;font-style:italic">&lt;!-- Kerberos-aware Kafka --&gt;</span>
-  <span style="color:#204a87;font-weight:bold">&lt;kafka&gt;</span>
-    <span style="color:#204a87;font-weight:bold">&lt;security_protocol&gt;</span>SASL_PLAINTEXT<span style="color:#204a87;font-weight:bold">&lt;/security_protocol&gt;</span>
-    <span style="color:#204a87;font-weight:bold">&lt;sasl_kerberos_keytab&gt;</span>/home/kafkauser/kafkauser.keytab<span style="color:#204a87;font-weight:bold">&lt;/sasl_kerberos_keytab&gt;</span>
-    <span style="color:#204a87;font-weight:bold">&lt;sasl_kerberos_principal&gt;</span>kafkauser/kafkahost@EXAMPLE.COM<span style="color:#204a87;font-weight:bold">&lt;/sasl_kerberos_principal&gt;</span>
-  <span style="color:#204a87;font-weight:bold">&lt;/kafka&gt;</span>
-</code></pre></div><h3 id="confluent-cloud">confluent cloud</h3>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml">    <span style="color:#204a87;font-weight:bold">&lt;yandex&gt;</span>
-        <span style="color:#204a87;font-weight:bold">&lt;kafka&gt;</span>
-        <span style="color:#204a87;font-weight:bold">&lt;auto_offset_reset&gt;</span>smallest<span style="color:#204a87;font-weight:bold">&lt;/auto_offset_reset&gt;</span>
-        <span style="color:#204a87;font-weight:bold">&lt;security_protocol&gt;</span>SASL_SSL<span style="color:#204a87;font-weight:bold">&lt;/security_protocol&gt;</span>
-        <span style="color:#204a87;font-weight:bold">&lt;ssl_endpoint_identification_algorithm&gt;</span>https<span style="color:#204a87;font-weight:bold">&lt;/ssl_endpoint_identification_algorithm&gt;</span>
-        <span style="color:#204a87;font-weight:bold">&lt;sasl_mechanism&gt;</span>PLAIN<span style="color:#204a87;font-weight:bold">&lt;/sasl_mechanism&gt;</span>
-xml<span style="color:#204a87;font-weight:bold">&lt;sasl_username&gt;</span>username<span style="color:#204a87;font-weight:bold">&lt;/sasl_username&gt;</span>
-        <span style="color:#204a87;font-weight:bold">&lt;sasl_password&gt;</span>password<span style="color:#204a87;font-weight:bold">&lt;/sasl_password&gt;</span>
-        <span style="color:#204a87;font-weight:bold">&lt;ssl_ca_location&gt;</span>probe<span style="color:#204a87;font-weight:bold">&lt;/ssl_ca_location&gt;</span>
-        <span style="color:#8f5902;font-style:italic">&lt;!--
-</span><span style="color:#8f5902;font-style:italic">          &lt;ssl_ca_location&gt;/path/to/cert.pem&lt;/ssl_ca_location&gt;      
-</span><span style="color:#8f5902;font-style:italic">        --&gt;</span>
-        <span style="color:#204a87;font-weight:bold">&lt;/kafka&gt;</span>
-    <span style="color:#204a87;font-weight:bold">&lt;/yandex&gt;</span>
-</code></pre></div><p><a href="https://docs.confluent.io/cloud/current/client-apps/config-client.html" target="_blank">https://docs.confluent.io/cloud/current/client-apps/config-client.html</a></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span>  <span style="color:#8f5902;font-style:italic">&lt;!-- Kerberos-aware Kafka --&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&lt;kafka&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&lt;security_protocol&gt;</span>SASL_PLAINTEXT<span style="color:#204a87;font-weight:bold">&lt;/security_protocol&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&lt;sasl_kerberos_keytab&gt;</span>/home/kafkauser/kafkauser.keytab<span style="color:#204a87;font-weight:bold">&lt;/sasl_kerberos_keytab&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&lt;sasl_kerberos_principal&gt;</span>kafkauser/kafkahost@EXAMPLE.COM<span style="color:#204a87;font-weight:bold">&lt;/sasl_kerberos_principal&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&lt;/kafka&gt;</span>
+</span></span></code></pre></div><h3 id="confluent-cloud">confluent cloud</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&lt;yandex&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&lt;kafka&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&lt;auto_offset_reset&gt;</span>smallest<span style="color:#204a87;font-weight:bold">&lt;/auto_offset_reset&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&lt;security_protocol&gt;</span>SASL_SSL<span style="color:#204a87;font-weight:bold">&lt;/security_protocol&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&lt;ssl_endpoint_identification_algorithm&gt;</span>https<span style="color:#204a87;font-weight:bold">&lt;/ssl_endpoint_identification_algorithm&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&lt;sasl_mechanism&gt;</span>PLAIN<span style="color:#204a87;font-weight:bold">&lt;/sasl_mechanism&gt;</span>
+</span></span><span style="display:flex;"><span>xml<span style="color:#204a87;font-weight:bold">&lt;sasl_username&gt;</span>username<span style="color:#204a87;font-weight:bold">&lt;/sasl_username&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&lt;sasl_password&gt;</span>password<span style="color:#204a87;font-weight:bold">&lt;/sasl_password&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&lt;ssl_ca_location&gt;</span>probe<span style="color:#204a87;font-weight:bold">&lt;/ssl_ca_location&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#8f5902;font-style:italic">&lt;!--
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">          &lt;ssl_ca_location&gt;/path/to/cert.pem&lt;/ssl_ca_location&gt;      
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">        --&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#204a87;font-weight:bold">&lt;/kafka&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&lt;/yandex&gt;</span>
+</span></span></code></pre></div><p><a href="https://docs.confluent.io/cloud/current/client-apps/config-client.html" target="_blank">https://docs.confluent.io/cloud/current/client-apps/config-client.html</a></p>
 <h2 id="how-to-test-connection-settings">How to test connection settings</h2>
 <p>Use kafkacat utility - it internally uses same library to access Kafla as clickhouse itself and allows easily to test different settings.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kafkacat -b my_broker:9092 -C -o -10 -t my_topic <span style="color:#4e9a06">\
-</span><span style="color:#4e9a06"></span>   -X security.protocol<span style="color:#ce5c00;font-weight:bold">=</span>SASL_SSL  <span style="color:#4e9a06">\
-</span><span style="color:#4e9a06"></span>   -X sasl.mechanisms<span style="color:#ce5c00;font-weight:bold">=</span>PLAIN <span style="color:#4e9a06">\
-</span><span style="color:#4e9a06"></span>   -X sasl.username<span style="color:#ce5c00;font-weight:bold">=</span>uerName <span style="color:#4e9a06">\
-</span><span style="color:#4e9a06"></span>   -X sasl.password<span style="color:#ce5c00;font-weight:bold">=</span>Password
-
-</code></pre></div><h1 id="different-configurations-for-different-tables">Different configurations for different tables?</h1>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>kafkacat -b my_broker:9092 -C -o -10 -t my_topic <span style="color:#4e9a06">\
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06"></span>   -X security.protocol<span style="color:#ce5c00;font-weight:bold">=</span>SASL_SSL  <span style="color:#4e9a06">\
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06"></span>   -X sasl.mechanisms<span style="color:#ce5c00;font-weight:bold">=</span>PLAIN <span style="color:#4e9a06">\
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06"></span>   -X sasl.username<span style="color:#ce5c00;font-weight:bold">=</span>uerName <span style="color:#4e9a06">\
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06"></span>   -X sasl.password<span style="color:#ce5c00;font-weight:bold">=</span>Password
+</span></span></code></pre></div><h1 id="different-configurations-for-different-tables">Different configurations for different tables?</h1>
 <blockquote>
 <p>Is there some more documentation how to use this multiconfiguration for Kafka ?</p>
 </blockquote>
@@ -1245,18 +1244,18 @@ xml<span style="color:#204a87;font-weight:bold">&lt;sasl_username&gt;</span>user
 <p>Also since v21.12 it&rsquo;s possible to use more straght-forward way using named_collections:
 <a href="https://github.com/ClickHouse/ClickHouse/pull/31691" target="_blank">https://github.com/ClickHouse/ClickHouse/pull/31691</a></p>
 <p>So you can say something like</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#204a87;font-weight:bold">CREATE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">TABLE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">test</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">kafka</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">key</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">UInt64</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">value</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">UInt64</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">ENGINE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Kafka</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">kafka1</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">kafka_format</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#39;CSV&#39;</span><span style="color:#000;font-weight:bold">);</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></code></pre></div><p>And after that in configuration:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#204a87;font-weight:bold">&lt;clickhouse&gt;</span>
- <span style="color:#204a87;font-weight:bold">&lt;named_collections&gt;</span>
-  <span style="color:#204a87;font-weight:bold">&lt;kafka1&gt;</span>
-   <span style="color:#204a87;font-weight:bold">&lt;kafka_broker_list&gt;</span>kafka1:19092<span style="color:#204a87;font-weight:bold">&lt;/kafka_broker_list&gt;</span>
-   <span style="color:#204a87;font-weight:bold">&lt;kafka_topic_list&gt;</span>conf<span style="color:#204a87;font-weight:bold">&lt;/kafka_topic_list&gt;</span>
-   <span style="color:#204a87;font-weight:bold">&lt;kafka_group_name&gt;</span>conf<span style="color:#204a87;font-weight:bold">&lt;/kafka_group_name&gt;</span>
-  <span style="color:#204a87;font-weight:bold">&lt;/kafka1&gt;</span>
- <span style="color:#204a87;font-weight:bold">&lt;/named_collections&gt;</span>
-<span style="color:#204a87;font-weight:bold">&lt;/clickhouse&gt;</span>
-</code></pre></div><p>The same fragment of code in newer versions:
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">CREATE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">TABLE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">test</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">kafka</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">key</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">UInt64</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">value</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">UInt64</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">ENGINE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Kafka</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">kafka1</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">kafka_format</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#39;CSV&#39;</span><span style="color:#000;font-weight:bold">);</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div><p>And after that in configuration:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">&lt;clickhouse&gt;</span>
+</span></span><span style="display:flex;"><span> <span style="color:#204a87;font-weight:bold">&lt;named_collections&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&lt;kafka1&gt;</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#204a87;font-weight:bold">&lt;kafka_broker_list&gt;</span>kafka1:19092<span style="color:#204a87;font-weight:bold">&lt;/kafka_broker_list&gt;</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#204a87;font-weight:bold">&lt;kafka_topic_list&gt;</span>conf<span style="color:#204a87;font-weight:bold">&lt;/kafka_topic_list&gt;</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#204a87;font-weight:bold">&lt;kafka_group_name&gt;</span>conf<span style="color:#204a87;font-weight:bold">&lt;/kafka_group_name&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&lt;/kafka1&gt;</span>
+</span></span><span style="display:flex;"><span> <span style="color:#204a87;font-weight:bold">&lt;/named_collections&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">&lt;/clickhouse&gt;</span>
+</span></span></code></pre></div><p>The same fragment of code in newer versions:
 <a href="https://github.com/ClickHouse/ClickHouse/blob/d19e24f530c30f002488bc136da78f5fb55aedab/src/Storages/Kafka/StorageKafka.cpp#L474-L496" target="_blank">https://github.com/ClickHouse/ClickHouse/blob/d19e24f530c30f002488bc136da78f5fb55aedab/src/Storages/Kafka/StorageKafka.cpp#L474-L496</a></p>
 
 </div>
@@ -1282,38 +1281,38 @@ xml<span style="color:#204a87;font-weight:bold">&lt;sasl_username&gt;</span>user
 <h2 id="after-216">After 21.6</h2>
 <p>It&rsquo;s possible to stream messages which could not be parsed, this behavior could be enabled via setting: <code>kafka_handle_error_mode='stream'</code> and clickhouse wil write error and message from Kafka itself to two new virtual columns: <code>_error, _raw_message</code>.</p>
 <p>So you can create another Materialized View which would collect to a separate table all errors happening while parsing with all important information like offset and content of message.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#204a87;font-weight:bold">CREATE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">TABLE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">default</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">kafka_engine</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000;font-weight:bold">(</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#ce5c00;font-weight:bold">`</span><span style="color:#000">i</span><span style="color:#ce5c00;font-weight:bold">`</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Int64</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#ce5c00;font-weight:bold">`</span><span style="color:#000">s</span><span style="color:#ce5c00;font-weight:bold">`</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">String</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">ENGINE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Kafka</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">SETTINGS</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">kafka_broker_list</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;kafka:9092&#39;</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">kafka_topic_list</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;topic&#39;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">kafka_group_name</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;clickhouse&#39;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">kafka_format</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;JSONEachRow&#39;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">kafka_handle_error_mode</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#39;stream&#39;</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">CREATE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">MATERIALIZED</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">VIEW</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">default</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">kafka_errors</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000;font-weight:bold">(</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#ce5c00;font-weight:bold">`</span><span style="color:#000">topic</span><span style="color:#ce5c00;font-weight:bold">`</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">String</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#ce5c00;font-weight:bold">`</span><span style="color:#000">partition</span><span style="color:#ce5c00;font-weight:bold">`</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Int64</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#ce5c00;font-weight:bold">`</span><span style="color:#204a87;font-weight:bold">offset</span><span style="color:#ce5c00;font-weight:bold">`</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Int64</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#ce5c00;font-weight:bold">`</span><span style="color:#000">raw</span><span style="color:#ce5c00;font-weight:bold">`</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">String</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#ce5c00;font-weight:bold">`</span><span style="color:#000">error</span><span style="color:#ce5c00;font-weight:bold">`</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">String</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">ENGINE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">MergeTree</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">ORDER</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">BY</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">topic</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">partition</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">offset</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">SETTINGS</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">index_granularity</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">8192</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">AS</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">SELECT</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#000">_topic</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">AS</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">topic</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#000">_partition</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">AS</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">partition</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#000">_offset</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">AS</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">offset</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#000">_raw_message</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">AS</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">raw</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#000">_error</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">AS</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">error</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">FROM</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">default</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">kafka_engine</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">WHERE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">length</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">_error</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">&gt;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></code></pre></div><p><img src="/assets/Untitled-2021-08-05-1027.png" alt="Table connections"></p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">CREATE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">TABLE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">default</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">kafka_engine</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000;font-weight:bold">(</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#ce5c00;font-weight:bold">`</span><span style="color:#000">i</span><span style="color:#ce5c00;font-weight:bold">`</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Int64</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#ce5c00;font-weight:bold">`</span><span style="color:#000">s</span><span style="color:#ce5c00;font-weight:bold">`</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">String</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">ENGINE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Kafka</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">SETTINGS</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">kafka_broker_list</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;kafka:9092&#39;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">kafka_topic_list</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;topic&#39;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">kafka_group_name</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;clickhouse&#39;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">kafka_format</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;JSONEachRow&#39;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">kafka_handle_error_mode</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#39;stream&#39;</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">CREATE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">MATERIALIZED</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">VIEW</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">default</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">kafka_errors</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000;font-weight:bold">(</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#ce5c00;font-weight:bold">`</span><span style="color:#000">topic</span><span style="color:#ce5c00;font-weight:bold">`</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">String</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#ce5c00;font-weight:bold">`</span><span style="color:#000">partition</span><span style="color:#ce5c00;font-weight:bold">`</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Int64</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#ce5c00;font-weight:bold">`</span><span style="color:#204a87;font-weight:bold">offset</span><span style="color:#ce5c00;font-weight:bold">`</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Int64</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#ce5c00;font-weight:bold">`</span><span style="color:#000">raw</span><span style="color:#ce5c00;font-weight:bold">`</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">String</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#ce5c00;font-weight:bold">`</span><span style="color:#000">error</span><span style="color:#ce5c00;font-weight:bold">`</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">String</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">ENGINE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">MergeTree</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">ORDER</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">BY</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">topic</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">partition</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">offset</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">SETTINGS</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">index_granularity</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">8192</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">AS</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">SELECT</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#000">_topic</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">AS</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">topic</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#000">_partition</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">AS</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">partition</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#000">_offset</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">AS</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">offset</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#000">_raw_message</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">AS</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">raw</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#000">_error</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">AS</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">error</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">FROM</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">default</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">kafka_engine</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">WHERE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">length</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">_error</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">&gt;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">0</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div><p><img src="/assets/Untitled-2021-08-05-1027.png" alt="Table connections"></p>
 <p><a href="https://github.com/ClickHouse/ClickHouse/pull/20249%5c#issuecomment-779054737" target="_blank">https://github.com/ClickHouse/ClickHouse/pull/20249#issuecomment-779054737</a></p>
 <p><a href="https://github.com/ClickHouse/ClickHouse/pull/21850" target="_blank">https://github.com/ClickHouse/ClickHouse/pull/21850</a></p>
 <p><a href="https://altinity.com/blog/clickhouse-kafka-engine-faq" target="_blank">https://altinity.com/blog/clickhouse-kafka-engine-faq</a></p>
@@ -1403,9 +1402,9 @@ xml<span style="color:#204a87;font-weight:bold">&lt;sasl_username&gt;</span>user
 	<h1 id="pg-8de9ef71664f1495dde935e5d9c292a4">8.5 - Kafka parallel consuming</h1>
     <div class="lead">Kafka parallel consuming</div>
 	<p>For very large topics when you need more parallelism (especially on the insert side) you may use several tables with the same pipeline (pre 20.9) or enable <code>kafka_thread_per_consumer</code> (after 20.9).</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ini" data-lang="ini"><span style="color:#c4a000">kafka_num_consumers</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">N,</span>
-<span style="color:#c4a000">kafka_thread_per_consumer</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">1</span>
-</code></pre></div><p>Notes:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ini" data-lang="ini"><span style="display:flex;"><span><span style="color:#c4a000">kafka_num_consumers</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#4e9a06">N,</span>
+</span></span><span style="display:flex;"><span><span style="color:#c4a000">kafka_thread_per_consumer</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">1</span>
+</span></span></code></pre></div><p>Notes:</p>
 <ul>
 <li>the inserts will happen in parallel (without that setting inserts happen linearly)</li>
 <li>enough partitions are needed.</li>
@@ -1578,7 +1577,7 @@ xml<span style="color:#204a87;font-weight:bold">&lt;sasl_username&gt;</span>user
 
 
 
-<script src="/js/main.min.3b172c13b62c2bea8b1c9d2599cddc8cf89718a92d792c680871c81ba43d8c85.js" integrity="sha256-OxcsE7YsK&#43;qLHJ0lmc3cjPiXGKkteSxoCHHIG6Q9jIU=" crossorigin="anonymous"></script>
+<script src="/js/main.min.7fa9e3e39f56ebd66798993ef3c080218d9696c971a28ef8872d750b7416a435.js" integrity="sha256-f6nj459W69ZnmJk&#43;88CAIY2Wlslxoo74hy11C3QWpDU=" crossorigin="anonymous"></script>
 
 
 

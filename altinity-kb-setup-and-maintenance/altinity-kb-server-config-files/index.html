@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.92.2" /><META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
+<meta name="generator" content="Hugo 0.93.0" /><META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
 <link rel="shortcut icon" href="/favicons/favicon.ico" >
 <link rel="icon" href="/favicons/favicon.ico" >
 <title>Server config files | Altinity Knowledge Base</title>
@@ -78,7 +78,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.035286ffea94b20115412349c1d2df50.json"
+  data-offline-search-index-json-src="/offline-search-index.41dc426efce12b05b3e1ade368ef5ff4.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -106,7 +106,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.035286ffea94b20115412349c1d2df50.json"
+  data-offline-search-index-json-src="/offline-search-index.41dc426efce12b05b3e1ade368ef5ff4.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -748,14 +748,14 @@
 <p>File names of your xml files can be arbitrary but they are applied in alphabetical order.</p>
 <p>Examples:</p>
 <pre tabindex="0"><code class="language-markup" data-lang="markup">$ cat /etc/clickhouse-server/config.d/listen_host.xml
-&lt;?xml version=&quot;1.0&quot; ?&gt;
+&lt;?xml version=&#34;1.0&#34; ?&gt;
 &lt;yandex&gt;
   &lt;listen_host&gt;::&lt;/listen_host&gt;
 &lt;/yandex&gt;
 
 
 $ cat /etc/clickhouse-server/config.d/macros.xml
-&lt;?xml version=&quot;1.0&quot; ?&gt;
+&lt;?xml version=&#34;1.0&#34; ?&gt;
 &lt;yandex&gt;
   &lt;macros&gt;
     &lt;cluster&gt;test&lt;/cluster&gt;
@@ -767,7 +767,7 @@ $ cat /etc/clickhouse-server/config.d/macros.xml
 &lt;/yandex&gt;
 
 cat /etc/clickhouse-server/config.d/zoo.xml
-&lt;?xml version=&quot;1.0&quot; ?&gt;
+&lt;?xml version=&#34;1.0&#34; ?&gt;
 &lt;yandex&gt;
   &lt;zookeeper&gt;
     &lt;node&gt;
@@ -781,7 +781,7 @@ cat /etc/clickhouse-server/config.d/zoo.xml
 &lt;/yandex&gt;
 
 cat /etc/clickhouse-server/users.d/enable_access_management_for_user_default.xml
-&lt;?xml version=&quot;1.0&quot; ?&gt;
+&lt;?xml version=&#34;1.0&#34; ?&gt;
 &lt;yandex&gt;
   &lt;users&gt;
     &lt;default&gt;
@@ -790,24 +790,24 @@ cat /etc/clickhouse-server/users.d/enable_access_management_for_user_default.xml
   &lt;/users&gt;
 &lt;/yandex&gt;
 </code></pre><p>BTW, you can define any macro in your configuration and use them in Zookeeper paths</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"> ReplicatedMergeTree(&#39;/clickhouse/{cluster}/tables/my_table&#39;,&#39;{replica}&#39;)
-</code></pre></div><p>or in your code using function getMacro:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#204a87;font-weight:bold">CREATE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">OR</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">REPLACE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">VIEW</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">srv_server_info</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">SELECT</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">SELECT</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">getMacro</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;shard&#39;</span><span style="color:#000;font-weight:bold">))</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">AS</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">shard_num</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">       </span><span style="color:#000;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">SELECT</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">getMacro</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;server_name&#39;</span><span style="color:#000;font-weight:bold">))</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">AS</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">server_name</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">       </span><span style="color:#000;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">SELECT</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">getMacro</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;server_id&#39;</span><span style="color:#000;font-weight:bold">))</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">AS</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">server_key</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></code></pre></div><p>Settings can be appended to an XML tree (default behaviour) or replaced or removed.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span> ReplicatedMergeTree(&#39;/clickhouse/{cluster}/tables/my_table&#39;,&#39;{replica}&#39;)
+</span></span></code></pre></div><p>or in your code using function getMacro:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">CREATE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">OR</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">REPLACE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">VIEW</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">srv_server_info</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">SELECT</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">SELECT</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">getMacro</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;shard&#39;</span><span style="color:#000;font-weight:bold">))</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">AS</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">shard_num</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">       </span><span style="color:#000;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">SELECT</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">getMacro</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;server_name&#39;</span><span style="color:#000;font-weight:bold">))</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">AS</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">server_name</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">       </span><span style="color:#000;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">SELECT</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">getMacro</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;server_id&#39;</span><span style="color:#000;font-weight:bold">))</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">AS</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">server_key</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div><p>Settings can be appended to an XML tree (default behaviour) or replaced or removed.</p>
 <p>Example how to delete <strong>tcp_port</strong> &amp; <strong>http_port</strong> defined on higher level in the main config.xml (it disables open tcp &amp; http ports if you configured secure ssl):</p>
 <pre tabindex="0"><code class="language-markup" data-lang="markup">cat /etc/clickhouse-server/config.d/disable_open_network.xml
-&lt;?xml version=&quot;1.0&quot;?&gt;
+&lt;?xml version=&#34;1.0&#34;?&gt;
 &lt;yandex&gt;
-  &lt;http_port remove=&quot;1&quot;/&gt;
-  &lt;tcp_port remove=&quot;1&quot;/&gt;
+  &lt;http_port remove=&#34;1&#34;/&gt;
+  &lt;tcp_port remove=&#34;1&#34;/&gt;
 &lt;/yandex&gt;
 </code></pre><p>Example how to replace <strong>remote_servers</strong> section defined on higher level in the main config.xml (it allows to remove default test clusters.</p>
-<pre tabindex="0"><code class="language-markup" data-lang="markup">&lt;?xml version=&quot;1.0&quot; ?&gt;
+<pre tabindex="0"><code class="language-markup" data-lang="markup">&lt;?xml version=&#34;1.0&#34; ?&gt;
 &lt;yandex&gt;
-  &lt;remote_servers replace=&quot;1&quot;&gt;
+  &lt;remote_servers replace=&#34;1&#34;&gt;
     &lt;mycluster&gt;
       ....
     &lt;/mycluster&gt;
@@ -865,11 +865,11 @@ That means that that new setting will be applied to new sessions / after reconne
 <li><code>&lt;max_replicated_sends_network_bandwidth_for_server&gt;</code></li>
 </ul>
 <p>See also <code>select * from system.settings where description ilike '%start%'</code></p>
-<p>Also there are several &lsquo;long-running&rsquo; user sessions which are almost never restarted and can keep the setting from the server start (it&rsquo;s DDLWorker, Kafka, and some other service things).</p>
+<p>Also there are several &rsquo;long-running&rsquo; user sessions which are almost never restarted and can keep the setting from the server start (it&rsquo;s DDLWorker, Kafka, and some other service things).</p>
 <h2 id="dictionaries">Dictionaries</h2>
 <p>We suggest to store each dictionary description in a separate (own) file in a <strong>/etc/clickhouse-server/dict</strong> sub-folder.</p>
 <pre tabindex="0"><code class="language-markup" data-lang="markup">$ cat /etc/clickhouse-server/dict/country.xml
-&lt;?xml version=&quot;1.0&quot;?&gt;
+&lt;?xml version=&#34;1.0&#34;?&gt;
 &lt;dictionaries&gt;
   &lt;dictionary&gt;
     &lt;name&gt;country&lt;/name&gt;
@@ -880,7 +880,7 @@ That means that that new setting will be applied to new sessions / after reconne
 &lt;/dictionaries&gt;
 </code></pre><p>and add to the configuration</p>
 <pre tabindex="0"><code class="language-markup" data-lang="markup">$ cat /etc/clickhouse-server/config.d/dictionaries.xml
-&lt;?xml version=&quot;1.0&quot;?&gt;
+&lt;?xml version=&#34;1.0&#34;?&gt;
 &lt;yandex&gt;
   &lt;dictionaries_config&gt;dict/*.xml&lt;/dictionaries_config&gt;
   &lt;dictionaries_lazy_load&gt;true&lt;/dictionaries_lazy_load&gt;
@@ -891,7 +891,7 @@ That means that that new setting will be applied to new sessions / after reconne
 <p>By default <strong>include</strong> file is <strong>/etc/metrika.xml</strong>. You can use many include files for each XML section.</p>
 <p>For example to avoid repetition of user/password for each dictionary you can create an XML file:</p>
 <pre tabindex="0"><code class="language-markup" data-lang="markup">$ cat /etc/clickhouse-server/dict_sources.xml
-&lt;?xml version=&quot;1.0&quot;?&gt;
+&lt;?xml version=&#34;1.0&#34;?&gt;
 &lt;yandex&gt;
   &lt;mysql_config&gt;
       &lt;port&gt;3306&lt;/port&gt;
@@ -906,19 +906,19 @@ That means that that new setting will be applied to new sessions / after reconne
 &lt;/yandex&gt;
 </code></pre><p>Include this file:</p>
 <pre tabindex="0"><code class="language-markup" data-lang="markup">$ cat /etc/clickhouse-server/config.d/dictionaries.xml
-&lt;?xml version=&quot;1.0&quot;?&gt;
+&lt;?xml version=&#34;1.0&#34;?&gt;
 &lt;yandex&gt;
   ...
   &lt;include_from&gt;/etc/clickhouse-server/dict_sources.xml&lt;/include_from&gt;
 &lt;/yandex&gt;
 </code></pre><p>And use in dictionary descriptions (<strong>incl=&ldquo;mysql_config&rdquo;</strong>):</p>
 <pre tabindex="0"><code class="language-markup" data-lang="markup">$ cat /etc/clickhouse-server/dict/country.xml
-&lt;?xml version=&quot;1.0&quot;?&gt;
+&lt;?xml version=&#34;1.0&#34;?&gt;
 &lt;dictionaries&gt;
   &lt;dictionary&gt;
     &lt;name&gt;country&lt;/name&gt;
     &lt;source&gt;
-        &lt;mysql incl=&quot;mysql_config&quot;&gt;
+        &lt;mysql incl=&#34;mysql_config&#34;&gt;
             &lt;table&gt;my_table&lt;/table&gt;
             &lt;invalidate_query&gt;select max(id) from my_table&lt;/invalidate_query&gt;
         &lt;/mysql&gt;
@@ -936,32 +936,32 @@ That means that that new setting will be applied to new sessions / after reconne
 <p>Clickhouse uses the path from <strong>config-file</strong> parameter as base folder and seeks for other configs by relative path. All sub-folders <strong>users.d / config.d</strong> are relative.</p>
 <p>You can start multiple <strong>clickhouse-server</strong> each with own <strong>&ndash;config-file.</strong></p>
 <p>For example:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">/usr/bin/clickhouse-server --config-file /etc/clickhouse-server-node1/config.xml
-  /etc/clickhouse-server-node1/  config.xml ... users.xml
-  /etc/clickhouse-server-node1/config.d/disable_open_network.xml
-  /etc/clickhouse-server-node1/users.d/....
-
-/usr/bin/clickhouse-server --config-file /etc/clickhouse-server-node2/config.xml
-  /etc/clickhouse-server-node2/   config.xml ... users.xml
-  /etc/clickhouse-server-node2/config.d/disable_open_network.xml
-  /etc/clickhouse-server-node2/users.d/....
-</code></pre></div><p>If you need to run multiple servers for CI purposes you can combine all settings in a single fat XML file and start ClickHouse without config folders/sub-folders.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">/usr/bin/clickhouse-server --config-file /tmp/ch1.xml
-/usr/bin/clickhouse-server --config-file /tmp/ch2.xml
-/usr/bin/clickhouse-server --config-file /tmp/ch3.xml
-</code></pre></div><p>Each ClickHouse instance must work with own <strong>data-folder</strong> and <strong>tmp-folder</strong>.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>/usr/bin/clickhouse-server --config-file /etc/clickhouse-server-node1/config.xml
+</span></span><span style="display:flex;"><span>  /etc/clickhouse-server-node1/  config.xml ... users.xml
+</span></span><span style="display:flex;"><span>  /etc/clickhouse-server-node1/config.d/disable_open_network.xml
+</span></span><span style="display:flex;"><span>  /etc/clickhouse-server-node1/users.d/....
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>/usr/bin/clickhouse-server --config-file /etc/clickhouse-server-node2/config.xml
+</span></span><span style="display:flex;"><span>  /etc/clickhouse-server-node2/   config.xml ... users.xml
+</span></span><span style="display:flex;"><span>  /etc/clickhouse-server-node2/config.d/disable_open_network.xml
+</span></span><span style="display:flex;"><span>  /etc/clickhouse-server-node2/users.d/....
+</span></span></code></pre></div><p>If you need to run multiple servers for CI purposes you can combine all settings in a single fat XML file and start ClickHouse without config folders/sub-folders.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>/usr/bin/clickhouse-server --config-file /tmp/ch1.xml
+</span></span><span style="display:flex;"><span>/usr/bin/clickhouse-server --config-file /tmp/ch2.xml
+</span></span><span style="display:flex;"><span>/usr/bin/clickhouse-server --config-file /tmp/ch3.xml
+</span></span></code></pre></div><p>Each ClickHouse instance must work with own <strong>data-folder</strong> and <strong>tmp-folder</strong>.</p>
 <p>By default ClickHouse uses <strong>/var/lib/clickhouse/</strong>. It can be overridden in path settings</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#204a87;font-weight:bold">&lt;path&gt;</span>/data/clickhouse-ch1/<span style="color:#204a87;font-weight:bold">&lt;/path&gt;</span>
-
-<span style="color:#204a87;font-weight:bold">&lt;tmp_path&gt;</span>/data/clickhouse-ch1/tmp/<span style="color:#204a87;font-weight:bold">&lt;/tmp_path&gt;</span>
-
-<span style="color:#204a87;font-weight:bold">&lt;user_files_path&gt;</span>/data/clickhouse-ch1/user_files/<span style="color:#204a87;font-weight:bold">&lt;/user_files_path&gt;</span>
-  <span style="color:#204a87;font-weight:bold">&lt;local_directory&gt;</span>
-    <span style="color:#204a87;font-weight:bold">&lt;path&gt;</span>/data/clickhouse-ch1/access/<span style="color:#204a87;font-weight:bold">&lt;/path&gt;</span>
-  <span style="color:#204a87;font-weight:bold">&lt;/local_directory&gt;</span>
-
-<span style="color:#204a87;font-weight:bold">&lt;format_schema_path&gt;</span>/data/clickhouse-ch1/format_schemas/<span style="color:#204a87;font-weight:bold">&lt;/format_schema_path&gt;</span>
-</code></pre></div><h2 id="preprocessed_configs">preprocessed_configs</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">&lt;path&gt;</span>/data/clickhouse-ch1/<span style="color:#204a87;font-weight:bold">&lt;/path&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">&lt;tmp_path&gt;</span>/data/clickhouse-ch1/tmp/<span style="color:#204a87;font-weight:bold">&lt;/tmp_path&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">&lt;user_files_path&gt;</span>/data/clickhouse-ch1/user_files/<span style="color:#204a87;font-weight:bold">&lt;/user_files_path&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&lt;local_directory&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#204a87;font-weight:bold">&lt;path&gt;</span>/data/clickhouse-ch1/access/<span style="color:#204a87;font-weight:bold">&lt;/path&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#204a87;font-weight:bold">&lt;/local_directory&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">&lt;format_schema_path&gt;</span>/data/clickhouse-ch1/format_schemas/<span style="color:#204a87;font-weight:bold">&lt;/format_schema_path&gt;</span>
+</span></span></code></pre></div><h2 id="preprocessed_configs">preprocessed_configs</h2>
 <p>Clickhouse server watches config files and folders. When you change, add or remove XML files Clickhouse immediately assembles XML files into a combined file. These combined files are stored in <strong>/var/lib/clickhouse/preprocessed_configs/</strong> folders.</p>
 <p>You can verify that your changes are valid by checking <strong>/var/lib/clickhouse/preprocessed_configs/config.xml</strong>, <strong>/var/lib/clickhouse/preprocessed_configs/users.xml</strong>.</p>
 <p>If something wrong with with your settings e.g. unclosed XML element or typo you can see alerts about this mistakes in <strong>/var/log/clickhouse-server/clickhouse-server.log</strong></p>
@@ -1076,7 +1076,7 @@ That means that that new setting will be applied to new sessions / after reconne
 
 
 
-<script src="/js/main.min.3b172c13b62c2bea8b1c9d2599cddc8cf89718a92d792c680871c81ba43d8c85.js" integrity="sha256-OxcsE7YsK&#43;qLHJ0lmc3cjPiXGKkteSxoCHHIG6Q9jIU=" crossorigin="anonymous"></script>
+<script src="/js/main.min.7fa9e3e39f56ebd66798993ef3c080218d9696c971a28ef8872d750b7416a435.js" integrity="sha256-f6nj459W69ZnmJk&#43;88CAIY2Wlslxoo74hy11C3QWpDU=" crossorigin="anonymous"></script>
 
 
 

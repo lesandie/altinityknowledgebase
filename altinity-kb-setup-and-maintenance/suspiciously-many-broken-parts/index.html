@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.92.2" /><META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
+<meta name="generator" content="Hugo 0.93.0" /><META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
 <link rel="shortcut icon" href="/favicons/favicon.ico" >
 <link rel="icon" href="/favicons/favicon.ico" >
 <title>Suspiciously many broken parts | Altinity Knowledge Base</title>
@@ -78,7 +78,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.035286ffea94b20115412349c1d2df50.json"
+  data-offline-search-index-json-src="/offline-search-index.41dc426efce12b05b3e1ade368ef5ff4.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -106,7 +106,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.035286ffea94b20115412349c1d2df50.json"
+  data-offline-search-index-json-src="/offline-search-index.41dc426efce12b05b3e1ade368ef5ff4.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -752,11 +752,11 @@
 <ol>
 <li>
 <p>If you ok to accept the data loss: set up <code>force_restrore_data</code> flag and clickhouse will move the parts to detached.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo -u clickhouse touch /var/lib/clickhouse/flags/force_restore_data
-</code></pre></div><p>then restart clickhouse, the table will be attached, and the broken parts will be detached, which means the data from those parts will not be available for the selects. You can see the list of those parts in the <code>system.detached_parts</code> table and drop them if needed using <code>ALTER TABLE ...  DROP DETACHED PART ...</code> commands.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo -u clickhouse touch /var/lib/clickhouse/flags/force_restore_data
+</span></span></code></pre></div><p>then restart clickhouse, the table will be attached, and the broken parts will be detached, which means the data from those parts will not be available for the selects. You can see the list of those parts in the <code>system.detached_parts</code> table and drop them if needed using <code>ALTER TABLE ...  DROP DETACHED PART ...</code> commands.</p>
 <p>If you are ok to tolerate bigger losses automatically you can change that safeguard configuration to be less sensitive by increasing <code>max_suspicious_broken_parts</code> setting:</p>
 <pre tabindex="0"><code>cat /etc/clickhouse-server/config.d/max_suspicious_broken_parts.xml
-&lt;?xml version=&quot;1.0&quot;?&gt;
+&lt;?xml version=&#34;1.0&#34;?&gt;
 &lt;yandex&gt;
      &lt;merge_tree&gt;
          &lt;max_suspicious_broken_parts&gt;50&lt;/max_suspicious_broken_parts&gt;
@@ -908,7 +908,7 @@ sudo service clickhouse-server restart
 
 
 
-<script src="/js/main.min.3b172c13b62c2bea8b1c9d2599cddc8cf89718a92d792c680871c81ba43d8c85.js" integrity="sha256-OxcsE7YsK&#43;qLHJ0lmc3cjPiXGKkteSxoCHHIG6Q9jIU=" crossorigin="anonymous"></script>
+<script src="/js/main.min.7fa9e3e39f56ebd66798993ef3c080218d9696c971a28ef8872d750b7416a435.js" integrity="sha256-f6nj459W69ZnmJk&#43;88CAIY2Wlslxoo74hy11C3QWpDU=" crossorigin="anonymous"></script>
 
 
 

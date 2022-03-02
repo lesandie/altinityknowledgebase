@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.92.2" /><META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
+<meta name="generator" content="Hugo 0.93.0" /><META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
 <link rel="shortcut icon" href="/favicons/favicon.ico" >
 <link rel="icon" href="/favicons/favicon.ico" >
 <title>Precreate parts using clickhouse-local | Altinity Knowledge Base</title>
@@ -75,7 +75,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.035286ffea94b20115412349c1d2df50.json"
+  data-offline-search-index-json-src="/offline-search-index.41dc426efce12b05b3e1ade368ef5ff4.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -103,7 +103,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.035286ffea94b20115412349c1d2df50.json"
+  data-offline-search-index-json-src="/offline-search-index.41dc426efce12b05b3e1ade368ef5ff4.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -730,17 +730,17 @@ cd /tmp/precreate_parts
 ## 1. Imagine we want to process this file:
 
 cat &lt;&lt;EOF &gt; /tmp/data.csv
-1,2020-01-01,&quot;String&quot;
-2,2020-02-02,&quot;Another string&quot;
-3,2020-03-03,&quot;One more string&quot;
-4,2020-01-02,&quot;String for first partition&quot;
+1,2020-01-01,&#34;String&#34;
+2,2020-02-02,&#34;Another string&#34;
+3,2020-03-03,&#34;One more string&#34;
+4,2020-01-02,&#34;String for first partition&#34;
 EOF
 
 ## 2. that is the metadata for the table we want to fill
 ## schema should match the schema of the table from server
 ## (the easiest way is just to copy it from the server)
 
-## I've added sleepEachRow(0.5) here just to mimic slow insert
+## I&#39;ve added sleepEachRow(0.5) here just to mimic slow insert
 
 cat &lt;&lt;EOF &gt; metadata/local/test.sql
 ATTACH TABLE local.test (id UInt64, d Date, s String, x MATERIALIZED sleepEachRow(0.5)) Engine=MergeTree ORDER BY id PARTITION BY toYYYYMM(d);
@@ -758,7 +758,7 @@ EOF
 ## 3b. Instead of stdin you can use file path 
 
 cat &lt;&lt;EOF &gt; metadata/local/data_csv.sql 
-ATTACH TABLE local.data_csv (id UInt64, d Date, s String) Engine=File(CSV, '/tmp/data.csv');
+ATTACH TABLE local.data_csv (id UInt64, d Date, s String) Engine=File(CSV, &#39;/tmp/data.csv&#39;);
 EOF
 
 ## All preparations done,
@@ -766,16 +766,16 @@ EOF
 
 # option a (if 3a used) with pipe / reading stdin
 
-cat /tmp/data.csv | clickhouse-local --query &quot;INSERT INTO local.test SELECT * FROM local.stdin&quot; -- --path=.
+cat /tmp/data.csv | clickhouse-local --query &#34;INSERT INTO local.test SELECT * FROM local.stdin&#34; -- --path=.
 
 # option b (if 3b used) 0 with filepath 
 cd /tmp/precreate_parts
-clickhouse-local --query &quot;INSERT INTO local.test SELECT * FROM local.data_csv&quot; -- --path=.
+clickhouse-local --query &#34;INSERT INTO local.test SELECT * FROM local.data_csv&#34; -- --path=.
 
 
 # now you can check what was inserted (i did both options so i have doubled data)
 
-clickhouse-local --query &quot;SELECT _part,* FROM local.test ORDER BY id&quot; -- --path=.
+clickhouse-local --query &#34;SELECT _part,* FROM local.test ORDER BY id&#34; -- --path=.
 202001_4_4_0	1	2020-01-01	String
 202001_1_1_0	1	2020-01-01	String
 202002_5_5_0	2	2020-02-02	Another string
@@ -785,8 +785,8 @@ clickhouse-local --query &quot;SELECT _part,* FROM local.test ORDER BY id&quot; 
 202001_4_4_0	4	2020-01-02	String for first partition
 202001_1_1_0	4	2020-01-02	String for first partition
 
-# But you can't do OPTIMIZE (local will die with coredump) :) That would be too good
-# clickhouse-local --query &quot;OPTIMIZE TABLE local.test FINAL&quot; -- --path=.
+# But you can&#39;t do OPTIMIZE (local will die with coredump) :) That would be too good
+# clickhouse-local --query &#34;OPTIMIZE TABLE local.test FINAL&#34; -- --path=.
 
 ## now you can upload those parts to a server (in detached subfolder) and attach them.
 
@@ -927,7 +927,7 @@ drwxrwxr-x 9 mfilimonov mfilimonov 4096 paź 15 11:15 ..
 
 
 
-<script src="/js/main.min.3b172c13b62c2bea8b1c9d2599cddc8cf89718a92d792c680871c81ba43d8c85.js" integrity="sha256-OxcsE7YsK&#43;qLHJ0lmc3cjPiXGKkteSxoCHHIG6Q9jIU=" crossorigin="anonymous"></script>
+<script src="/js/main.min.7fa9e3e39f56ebd66798993ef3c080218d9696c971a28ef8872d750b7416a435.js" integrity="sha256-f6nj459W69ZnmJk&#43;88CAIY2Wlslxoo74hy11C3QWpDU=" crossorigin="anonymous"></script>
 
 
 

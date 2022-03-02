@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.92.2" /><META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
+<meta name="generator" content="Hugo 0.93.0" /><META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
 <link rel="shortcut icon" href="/favicons/favicon.ico" >
 <link rel="icon" href="/favicons/favicon.ico" >
 <title>JVM sizes and garbage collector settings | Altinity Knowledge Base</title>
@@ -78,7 +78,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.035286ffea94b20115412349c1d2df50.json"
+  data-offline-search-index-json-src="/offline-search-index.41dc426efce12b05b3e1ade368ef5ff4.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -106,7 +106,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.035286ffea94b20115412349c1d2df50.json"
+  data-offline-search-index-json-src="/offline-search-index.41dc426efce12b05b3e1ade368ef5ff4.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -743,10 +743,10 @@
 	       
 	<h2 id="tldr-version">TLDR version</h2>
 <p>use fresh Java version (11 or newer), disable swap and set up (for 4 Gb node):</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#000">JAVA_OPTS</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;-Xms512m -Xmx3G -XX:+AlwaysPreTouch -Djute.maxbuffer=8388608 -XX:MaxGCPauseMillis=50&#34;</span>
-</code></pre></div><p>If you have a node with more RAM - change it accordingly, for example for 8Gb node:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#000">JAVA_OPTS</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;-Xms512m -Xmx7G -XX:+AlwaysPreTouch -Djute.maxbuffer=8388608 -XX:MaxGCPauseMillis=50&#34;</span>
-</code></pre></div><h2 id="details">Details</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#000">JAVA_OPTS</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;-Xms512m -Xmx3G -XX:+AlwaysPreTouch -Djute.maxbuffer=8388608 -XX:MaxGCPauseMillis=50&#34;</span>
+</span></span></code></pre></div><p>If you have a node with more RAM - change it accordingly, for example for 8Gb node:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#000">JAVA_OPTS</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;-Xms512m -Xmx7G -XX:+AlwaysPreTouch -Djute.maxbuffer=8388608 -XX:MaxGCPauseMillis=50&#34;</span>
+</span></span></code></pre></div><h2 id="details">Details</h2>
 <ol>
 <li>
 <p>ZooKeeper runs as in JVM. Depending on version different garbage collectors are available.</p>
@@ -769,7 +769,7 @@ On older JVM version (before 10) you may want to make some tuning to decrease pa
 <p>Set min (<code>Xms</code>) heap size to the values like 512Mb, or even to the same value as max (<code>Xmx</code>) to avoid resizing and returning the RAM to OS. Add <code>XX:+AlwaysPreTouch</code> flag as well to load the memory pages into memory at the start of the zookeeper.</p>
 </li>
 <li>
-<p><code>MaxGCPauseMillis=50</code> (by default 200) - the &lsquo;target&rsquo; acceptable pause for garbage collection (milliseconds)</p>
+<p><code>MaxGCPauseMillis=50</code> (by default 200) - the &rsquo;target&rsquo; acceptable pause for garbage collection (milliseconds)</p>
 </li>
 <li>
 <p><code>jute.maxbuffer</code> limits the maximum size of znode content. By default it&rsquo;s 1Mb. In some usecases (lot of partitions in table) ClickHouse may need to create bigger znodes.</p>
@@ -780,24 +780,24 @@ On older JVM version (before 10) you may want to make some tuning to decrease pa
 </ol>
 <h2 id="zookeeper-configurarion-used-by-yandex-metrika-from-2017">Zookeeper configurarion used by Yandex Metrika (from 2017)</h2>
 <p>The configuration used by Yandex ( <a href="https://clickhouse.tech/docs/en/operations/tips/#zookeeper" target="_blank">https://clickhouse.tech/docs/en/operations/tips/#zookeeper</a> ) - they use older JVM version (with <code>UseParNewGC</code> garbage collector), and tune GC logs heavily:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#000">JAVA_OPTS</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;-Xms{{ cluster.get(&#39;xms&#39;,&#39;128M&#39;) }} \
-</span><span style="color:#4e9a06">    -Xmx{{ cluster.get(&#39;xmx&#39;,&#39;1G&#39;) }} \
-</span><span style="color:#4e9a06">    -Xloggc:/var/log/</span><span style="color:#000">$NAME</span><span style="color:#4e9a06">/zookeeper-gc.log \
-</span><span style="color:#4e9a06">    -XX:+UseGCLogFileRotation \
-</span><span style="color:#4e9a06">    -XX:NumberOfGCLogFiles=16 \
-</span><span style="color:#4e9a06">    -XX:GCLogFileSize=16M \
-</span><span style="color:#4e9a06">    -verbose:gc \
-</span><span style="color:#4e9a06">    -XX:+PrintGCTimeStamps \
-</span><span style="color:#4e9a06">    -XX:+PrintGCDateStamps \
-</span><span style="color:#4e9a06">    -XX:+PrintGCDetails
-</span><span style="color:#4e9a06">    -XX:+PrintTenuringDistribution \
-</span><span style="color:#4e9a06">    -XX:+PrintGCApplicationStoppedTime \
-</span><span style="color:#4e9a06">    -XX:+PrintGCApplicationConcurrentTime \
-</span><span style="color:#4e9a06">    -XX:+PrintSafepointStatistics \
-</span><span style="color:#4e9a06">    -XX:+UseParNewGC \
-</span><span style="color:#4e9a06">    -XX:+UseConcMarkSweepGC \
-</span><span style="color:#4e9a06">    -XX:+CMSParallelRemarkEnabled&#34;</span>
-</code></pre></div><h2 id="see-also">See also</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#000">JAVA_OPTS</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;-Xms{{ cluster.get(&#39;xms&#39;,&#39;128M&#39;) }} \
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">    -Xmx{{ cluster.get(&#39;xmx&#39;,&#39;1G&#39;) }} \
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">    -Xloggc:/var/log/</span><span style="color:#000">$NAME</span><span style="color:#4e9a06">/zookeeper-gc.log \
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">    -XX:+UseGCLogFileRotation \
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">    -XX:NumberOfGCLogFiles=16 \
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">    -XX:GCLogFileSize=16M \
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">    -verbose:gc \
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">    -XX:+PrintGCTimeStamps \
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">    -XX:+PrintGCDateStamps \
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">    -XX:+PrintGCDetails
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">    -XX:+PrintTenuringDistribution \
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">    -XX:+PrintGCApplicationStoppedTime \
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">    -XX:+PrintGCApplicationConcurrentTime \
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">    -XX:+PrintSafepointStatistics \
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">    -XX:+UseParNewGC \
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">    -XX:+UseConcMarkSweepGC \
+</span></span></span><span style="display:flex;"><span><span style="color:#4e9a06">    -XX:+CMSParallelRemarkEnabled&#34;</span>
+</span></span></code></pre></div><h2 id="see-also">See also</h2>
 <ul>
 <li><a href="https://wikitech.wikimedia.org/wiki/JVM_Tuning#G1_for_full_gcs" target="_blank">https://wikitech.wikimedia.org/wiki/JVM_Tuning#G1_for_full_gcs</a></li>
 <li><a href="https://sematext.com/blog/java-garbage-collection-tuning/" target="_blank">https://sematext.com/blog/java-garbage-collection-tuning/</a></li>
@@ -920,7 +920,7 @@ On older JVM version (before 10) you may want to make some tuning to decrease pa
 
 
 
-<script src="/js/main.min.3b172c13b62c2bea8b1c9d2599cddc8cf89718a92d792c680871c81ba43d8c85.js" integrity="sha256-OxcsE7YsK&#43;qLHJ0lmc3cjPiXGKkteSxoCHHIG6Q9jIU=" crossorigin="anonymous"></script>
+<script src="/js/main.min.7fa9e3e39f56ebd66798993ef3c080218d9696c971a28ef8872d750b7416a435.js" integrity="sha256-f6nj459W69ZnmJk&#43;88CAIY2Wlslxoo74hy11C3QWpDU=" crossorigin="anonymous"></script>
 
 
 

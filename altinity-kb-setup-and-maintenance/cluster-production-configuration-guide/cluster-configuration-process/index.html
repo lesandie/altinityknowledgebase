@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.92.2" /><META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
+<meta name="generator" content="Hugo 0.93.0" /><META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
 <link rel="shortcut icon" href="/favicons/favicon.ico" >
 <link rel="icon" href="/favicons/favicon.ico" >
 <title>Cluster Configuration Process | Altinity Knowledge Base</title>
@@ -78,7 +78,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.035286ffea94b20115412349c1d2df50.json"
+  data-offline-search-index-json-src="/offline-search-index.41dc426efce12b05b3e1ade368ef5ff4.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -106,7 +106,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.035286ffea94b20115412349c1d2df50.json"
+  data-offline-search-index-json-src="/offline-search-index.41dc426efce12b05b3e1ade368ef5ff4.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -824,16 +824,16 @@
 </li>
 </ol>
 <p>Once this is complete, other queries that span nodes can be performed. For example:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#204a87;font-weight:bold">CREATE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">TABLE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">test_table_local</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">ON</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">CLUSTER</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;{cluster}&#39;</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000;font-weight:bold">(</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#000">id</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">UInt8</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">Engine</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000">ReplicatedMergeTree</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;/clickhouse/tables/{database}/{table}/{shard}&#39;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;{replica}&#39;</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">ORDER</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">BY</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">id</span><span style="color:#000;font-weight:bold">);</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></code></pre></div><p>That will create a table on all servers in the cluster. You can insert data into this table and it will be replicated automatically to the other shards.To store the data or read the data from all shards at the same time, create a Distributed table that links to the replicatedMergeTree table.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#204a87;font-weight:bold">CREATE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">TABLE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">test_table</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">ON</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">CLUSTER</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;{cluster}&#39;</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">Engine</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000">Distributed</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;{cluster}&#39;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;default&#39;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;
-</span></code></pre></div><h4 id="hardening-clickhouse-security"><strong>Hardening ClickHouse Security</strong></h4>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">CREATE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">TABLE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">test_table_local</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">ON</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">CLUSTER</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;{cluster}&#39;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000;font-weight:bold">(</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#000">id</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">UInt8</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">Engine</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000">ReplicatedMergeTree</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;/clickhouse/tables/{database}/{table}/{shard}&#39;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;{replica}&#39;</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">ORDER</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">BY</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">id</span><span style="color:#000;font-weight:bold">);</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div><p>That will create a table on all servers in the cluster. You can insert data into this table and it will be replicated automatically to the other shards.To store the data or read the data from all shards at the same time, create a Distributed table that links to the replicatedMergeTree table.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">CREATE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">TABLE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">test_table</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">ON</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">CLUSTER</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;{cluster}&#39;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">Engine</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000">Distributed</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;{cluster}&#39;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;default&#39;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;
+</span></span></span></code></pre></div><h4 id="hardening-clickhouse-security"><strong>Hardening ClickHouse Security</strong></h4>
 <p><strong>See</strong> <a href="https://docs.altinity.com/operationsguide/security/clickhouse-hardening-guide/" target="_blank">https://docs.altinity.com/operationsguide/security/clickhouse-hardening-guide/</a></p>
 <h3 id="additional-settings">Additional Settings</h3>
 <p>See <a href="http://kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-settings-to-adjust/">altinity-kb-settings-to-adjust</a></p>
@@ -845,9 +845,9 @@
 <p>For general explanations of roles of different engines - check the post <a href="https://github.com/yandex/ClickHouse/issues/2161" target="_blank">Distributed vs Shard vs Replicated ahhh, help me!!!</a>.</p>
 <h4 id="zookeeper-paths">Zookeeper Paths</h4>
 <p>Use conventions  for zookeeper paths.  For example, use:</p>
-<p>ReplicatedMergeTree('/clickhouse/{cluster}/tables/{shard}/table_name', &lsquo;{replica}')</p>
+<p>ReplicatedMergeTree(&rsquo;/clickhouse/{cluster}/tables/{shard}/table_name&rsquo;, &lsquo;{replica}&rsquo;)</p>
 <p>for:</p>
-<p>SELECT * FROM system.zookeeper WHERE path='/ &hellip;';</p>
+<p>SELECT * FROM system.zookeeper WHERE path=&rsquo;/ &hellip;';</p>
 <h4 id="configuration-best-practices">Configuration Best Practices</h4>
 <table>
   <thead>
@@ -868,17 +868,17 @@
 </ol>
 </li>
 </ol>
-<pre tabindex="0"><code class="language-markup" data-lang="markup">&lt;?xml version=&quot;1.0&quot;?&gt;
+<pre tabindex="0"><code class="language-markup" data-lang="markup">&lt;?xml version=&#34;1.0&#34;?&gt;
 &lt;yandex&gt;
-    &lt;listen_host replace=&quot;replace&quot;&gt;::&lt;/listen_host&gt;
+    &lt;listen_host replace=&#34;replace&#34;&gt;::&lt;/listen_host&gt;
 &lt;/yandex&gt;
 </code></pre><ol>
 <li>The same is true for users. For example, change the default profile by putting the file in users.d/profile_default.xml:</li>
 </ol>
-<pre tabindex="0"><code class="language-markup" data-lang="markup">&lt;?xml version=&quot;1.0&quot;?&gt;
+<pre tabindex="0"><code class="language-markup" data-lang="markup">&lt;?xml version=&#34;1.0&#34;?&gt;
 &lt;yandex&gt;
     &lt;profiles&gt;
-        &lt;default replace=&quot;replace&quot;&gt;
+        &lt;default replace=&#34;replace&#34;&gt;
             &lt;max_memory_usage&gt;15000000000&lt;/max_memory_usage&gt;
             &lt;max_bytes_before_external_group_by&gt;12000000000&lt;/max_bytes_before_external_group_by&gt;
             &lt;max_bytes_before_external_sort&gt;12000000000&lt;/max_bytes_before_external_sort&gt;
@@ -893,23 +893,23 @@
 </code></pre><ol>
 <li>Or you can create a user by putting a file users.d/user_xxx.xml (since 20.5 you can also use CREATE USER)</li>
 </ol>
-<pre tabindex="0"><code class="language-markup" data-lang="markup">&lt;?xml version=&quot;1.0&quot;?&gt;
+<pre tabindex="0"><code class="language-markup" data-lang="markup">&lt;?xml version=&#34;1.0&#34;?&gt;
 &lt;yandex&gt;
     &lt;users&gt;
         &lt;xxx&gt;
-            &lt;!-- PASSWORD=$(base64 &lt; /dev/urandom | head -c8); echo &quot;$PASSWORD&quot;; echo -n &quot;$PASSWORD&quot; | sha256sum | tr -d '-' --&gt;
+            &lt;!-- PASSWORD=$(base64 &lt; /dev/urandom | head -c8); echo &#34;$PASSWORD&#34;; echo -n &#34;$PASSWORD&#34; | sha256sum | tr -d &#39;-&#39; --&gt;
             &lt;password_sha256_hex&gt;...&lt;/password_sha256_hex&gt;
-            &lt;networks incl=&quot;networks&quot; /&gt;
+            &lt;networks incl=&#34;networks&#34; /&gt;
             &lt;profile&gt;readonly&lt;/profile&gt;
             &lt;quota&gt;default&lt;/quota&gt;
-            &lt;allow_databases incl=&quot;allowed_databases&quot; /&gt;
+            &lt;allow_databases incl=&#34;allowed_databases&#34; /&gt;
         &lt;/xxx&gt;
     &lt;/users&gt;
 &lt;/yandex&gt;
 </code></pre><ol>
 <li>Some parts of configuration will contain repeated elements (like allowed ips for all the users). To avoid repeating that - use substitutions file. By default its /etc/metrika.xml, but you can change it for example to /etc/clickhouse-server/substitutions.xml with the &lt;include_from&gt; section of the main config. Put the repeated parts into substitutions file, like this:</li>
 </ol>
-<pre tabindex="0"><code class="language-markup" data-lang="markup">&lt;?xml version=&quot;1.0&quot;?&gt;
+<pre tabindex="0"><code class="language-markup" data-lang="markup">&lt;?xml version=&#34;1.0&#34;?&gt;
 &lt;yandex&gt;
     &lt;networks&gt;
         &lt;ip&gt;::1&lt;/ip&gt;
@@ -918,7 +918,6 @@
         &lt;ip&gt;192.168.0.0/24&lt;/ip&gt;
     &lt;/networks&gt;
 &lt;/yandex&gt;
-
 </code></pre><p>These files can be common for all the servers inside the cluster or can be individualized per server. If you choose to use one substitutions file per cluster, not per node, you will also need to generate the file with macros, if macros are used.</p>
 <p>This way you have full flexibility; you’re not limited to the settings described in the template. You can change any settings per server or data center just by assigning files with some settings to that server or server group. It becomes easy to navigate, edit, and assign files.</p>
 <h3 id="other-configuration-recommendations">Other Configuration Recommendations</h3>
@@ -1070,7 +1069,7 @@
 
 
 
-<script src="/js/main.min.3b172c13b62c2bea8b1c9d2599cddc8cf89718a92d792c680871c81ba43d8c85.js" integrity="sha256-OxcsE7YsK&#43;qLHJ0lmc3cjPiXGKkteSxoCHHIG6Q9jIU=" crossorigin="anonymous"></script>
+<script src="/js/main.min.7fa9e3e39f56ebd66798993ef3c080218d9696c971a28ef8872d750b7416a435.js" integrity="sha256-f6nj459W69ZnmJk&#43;88CAIY2Wlslxoo74hy11C3QWpDU=" crossorigin="anonymous"></script>
 
 
 
