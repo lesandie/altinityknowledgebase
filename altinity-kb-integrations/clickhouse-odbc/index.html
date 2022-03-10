@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.93.2" /><META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
+<meta name="generator" content="Hugo 0.93.3" /><META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
 <link rel="shortcut icon" href="/favicons/favicon.ico" >
 <link rel="icon" href="/favicons/favicon.ico" >
 <title>ODBC Driver for ClickHouse | Altinity Knowledge Base</title>
@@ -17,7 +17,7 @@
 <meta itemprop="name" content="ODBC Driver for ClickHouse">
 <meta itemprop="description" content="ODBC Driver for ClickHouse">
 <meta itemprop="dateModified" content="2021-09-24T19:01:22+02:00" />
-<meta itemprop="wordCount" content="1868">
+<meta itemprop="wordCount" content="1871">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="ODBC Driver for ClickHouse"/>
 <meta name="twitter:description" content="ODBC Driver for ClickHouse"/>
@@ -75,7 +75,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.4d450fe9fed96ffc8988bba9d2bf9510.json"
+  data-offline-search-index-json-src="/offline-search-index.097dbe43ce691ac207fd3f4613ce9fbf.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -103,7 +103,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.4d450fe9fed96ffc8988bba9d2bf9510.json"
+  data-offline-search-index-json-src="/offline-search-index.097dbe43ce691ac207fd3f4613ce9fbf.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -138,6 +138,8 @@
   <ul class="ul-3 foldable">
     <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-enginesmergetree-table-engine-familycollapsing-vs-replacing-li">
   <a href="/engines/mergetree-table-engine-family/collapsing-vs-replacing/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-enginesmergetree-table-engine-familycollapsing-vs-replacing"><span class="">CollapsingMergeTree vs ReplacingMergeTree</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-enginesmergetree-table-engine-familypart-naming-and-mvcc-li">
+  <a href="/engines/mergetree-table-engine-family/part-naming-and-mvcc/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-enginesmergetree-table-engine-familypart-naming-and-mvcc"><span class="">Part names &amp; MVCC</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-enginesmergetree-table-engine-familypick-keys-li">
   <a href="/engines/mergetree-table-engine-family/pick-keys/" title="How to pick an ORDER BY / PRIMARY KEY / PARTITION BY for the MergeTree-family table" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-enginesmergetree-table-engine-familypick-keys"><span class="">Proper ordering and partitioning the MergeTree tables</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-enginesmergetree-table-engine-familyaggregatingmergetree-li">
@@ -889,7 +891,7 @@ applications (cygwin / msys64 based) may require driver linked agains unixodbc. 
 <li><strong>iODBC</strong> - less common ODBC provider, mainly used in Unix-like systems, however, it is the standard ODBC provider in macOS. Theoretically, could be used in Cygwin or MSYS/MinGW environments in Windows too.</li>
 </ul>
 <p>If you don&rsquo;t see a package that matches your platforms, or the version of your system is significantly different than those of the available packages, or maybe you want to try a bleeding edge version of the code that hasn&rsquo;t been released yet, you can always build the driver manually from sources.</p>
-<p>Note, that it is always a good idea to install the driver from the corresponding <strong>native</strong> package (<!-- `.deb`, `.rpm`, --><code>.msi</code>, etc., which you can also easily create if you are building from sources), than use the binaries that were manually copied to some folder.</p>
+<p>Note, that it is always a good idea to install the driver from the corresponding <strong>native</strong> package (&lt;!&ndash; <code>.deb</code>, <code>.rpm</code>, &ndash;&gt;<code>.msi</code>, etc., which you can also easily create if you are building from sources), than use the binaries that were manually copied to some folder.</p>
 <h2 id="building-from-sources">Building from sources</h2>
 <p>The general requirements for building the driver from sources are as follows:</p>
 <ul>
