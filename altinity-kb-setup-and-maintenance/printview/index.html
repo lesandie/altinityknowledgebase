@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.94.0" /><link rel="canonical" type="text/html" href="http://kb.altinity.com/altinity-kb-setup-and-maintenance/">
+<meta name="generator" content="Hugo 0.94.2" /><link rel="canonical" type="text/html" href="http://kb.altinity.com/altinity-kb-setup-and-maintenance/">
 <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
 <link rel="shortcut icon" href="/favicons/favicon.ico" >
 <link rel="icon" href="/favicons/favicon.ico" >
@@ -74,7 +74,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.9e993b843f7b7980a13bbf1ef2c633f2.json"
+  data-offline-search-index-json-src="/offline-search-index.088cc005384d90dfb84f403a6fca2615.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -5027,6 +5027,17 @@ cat /etc/clickhouse-server/users.d/enable_access_management_for_user_default.xml
       &lt;access_management&gt;1&lt;/access_management&gt;
     &lt;/default&gt;
   &lt;/users&gt;
+&lt;/yandex&gt;
+
+cat /etc/clickhouse-server/users.d/memory_usage.xml
+&lt;?xml version=&#34;1.0&#34; ?&gt;
+&lt;yandex&gt;
+    &lt;profiles&gt;
+        &lt;default&gt;
+            &lt;max_bytes_before_external_group_by&gt;25290221568&lt;/max_bytes_before_external_group_by&gt;
+            &lt;max_memory_usage&gt;50580443136&lt;/max_memory_usage&gt;
+        &lt;/default&gt;
+    &lt;/profiles&gt;
 &lt;/yandex&gt;
 </code></pre><p>BTW, you can define any macro in your configuration and use them in Zookeeper paths</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span> ReplicatedMergeTree(&#39;/clickhouse/{cluster}/tables/my_table&#39;,&#39;{replica}&#39;)

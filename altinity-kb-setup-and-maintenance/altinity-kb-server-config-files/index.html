@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.94.0" /><META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
+<meta name="generator" content="Hugo 0.94.2" /><META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
 <link rel="shortcut icon" href="/favicons/favicon.ico" >
 <link rel="icon" href="/favicons/favicon.ico" >
 <title>Server config files | Altinity Knowledge Base</title>
@@ -13,13 +13,13 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-server-config-files/" /><meta property="article:section" content="altinity-kb-setup-and-maintenance" />
 
-<meta property="article:modified_time" content="2022-02-17T10:07:15-04:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
+<meta property="article:modified_time" content="2022-03-13T16:44:25-03:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
 
 <meta itemprop="name" content="Server config files">
 <meta itemprop="description" content="How to manage server config files in Clickhouse
 ">
-<meta itemprop="dateModified" content="2022-02-17T10:07:15-04:00" />
-<meta itemprop="wordCount" content="845">
+<meta itemprop="dateModified" content="2022-03-13T16:44:25-03:00" />
+<meta itemprop="wordCount" content="858">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Server config files"/>
 <meta name="twitter:description" content="How to manage server config files in Clickhouse
@@ -78,7 +78,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.9e993b843f7b7980a13bbf1ef2c633f2.json"
+  data-offline-search-index-json-src="/offline-search-index.088cc005384d90dfb84f403a6fca2615.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -106,7 +106,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.9e993b843f7b7980a13bbf1ef2c633f2.json"
+  data-offline-search-index-json-src="/offline-search-index.088cc005384d90dfb84f403a6fca2615.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -797,6 +797,17 @@ cat /etc/clickhouse-server/users.d/enable_access_management_for_user_default.xml
     &lt;/default&gt;
   &lt;/users&gt;
 &lt;/yandex&gt;
+
+cat /etc/clickhouse-server/users.d/memory_usage.xml
+&lt;?xml version=&#34;1.0&#34; ?&gt;
+&lt;yandex&gt;
+    &lt;profiles&gt;
+        &lt;default&gt;
+            &lt;max_bytes_before_external_group_by&gt;25290221568&lt;/max_bytes_before_external_group_by&gt;
+            &lt;max_memory_usage&gt;50580443136&lt;/max_memory_usage&gt;
+        &lt;/default&gt;
+    &lt;/profiles&gt;
+&lt;/yandex&gt;
 </code></pre><p>BTW, you can define any macro in your configuration and use them in Zookeeper paths</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span> ReplicatedMergeTree(&#39;/clickhouse/{cluster}/tables/my_table&#39;,&#39;{replica}&#39;)
 </span></span></code></pre></div><p>or in your code using function getMacro:</p>
@@ -980,8 +991,8 @@ That means that that new setting will be applied to new sessions / after reconne
 	<div class="text-muted mt-5 pt-3 border-top">
 
     Last modified
-    2022.02.17
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/a563535df6f72ad8502d5f134c12e2a979fab27d">Update altinity-kb-server-config-files.md (a563535df)</a>
+    2022.03.13
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/5fa34b0b43060de156539b8b808021a32cf638de">Update altinity-kb-server-config-files.md (5fa34b0b4)</a>
 
 </div>
 
