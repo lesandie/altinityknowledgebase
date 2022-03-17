@@ -6,24 +6,21 @@
 <meta name="generator" content="Hugo 0.94.2" /><META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
 <link rel="shortcut icon" href="/favicons/favicon.ico" >
 <link rel="icon" href="/favicons/favicon.ico" >
-<title>Nulls in order by | Altinity Knowledge Base</title>
-<meta name="description" content="Altinity Knowledge Base"><meta property="og:title" content="Nulls in order by" />
-<meta property="og:description" content="Nulls in order by
-" />
+<title>Using array functions to mimic window-functions alike behavior | Altinity Knowledge Base</title>
+<meta name="description" content="Altinity Knowledge Base"><meta property="og:title" content="Using array functions to mimic window-functions alike behavior" />
+<meta property="og:description" content="Using array functions to mimic window-functions alike behavior." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://kb.altinity.com/engines/mergetree-table-engine-family/altinity-kb-nulls-in-order-by/" /><meta property="article:section" content="engines" />
+<meta property="og:url" content="http://kb.altinity.com/altinity-kb-queries-and-syntax/array-functions-as-window/" /><meta property="article:section" content="altinity-kb-queries-and-syntax" />
 
-<meta property="article:modified_time" content="2022-03-02T12:54:01+01:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
+<meta property="article:modified_time" content="2022-03-17T14:38:12+01:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
 
-<meta itemprop="name" content="Nulls in order by">
-<meta itemprop="description" content="Nulls in order by
-">
-<meta itemprop="dateModified" content="2022-03-02T12:54:01+01:00" />
-<meta itemprop="wordCount" content="22">
+<meta itemprop="name" content="Using array functions to mimic window-functions alike behavior">
+<meta itemprop="description" content="Using array functions to mimic window-functions alike behavior.">
+<meta itemprop="dateModified" content="2022-03-17T14:38:12+01:00" />
+<meta itemprop="wordCount" content="2254">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Nulls in order by"/>
-<meta name="twitter:description" content="Nulls in order by
-"/>
+<meta name="twitter:title" content="Using array functions to mimic window-functions alike behavior"/>
+<meta name="twitter:description" content="Using array functions to mimic window-functions alike behavior."/>
 
 
 
@@ -122,10 +119,10 @@
       <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m--li">
   <a href="/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section tree-root" id="m-"><span class="">Altinity Knowledge Base</span></a>
   <ul class="ul-1">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-engines-li">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-engines-li">
   <a href="/engines/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-engines"><span class="">Engines</span></a>
   <ul class="ul-2 foldable">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-enginesaltinity-kb-atomic-database-engine-li">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child collapse" id="m-enginesaltinity-kb-atomic-database-engine-li">
   <a href="/engines/altinity-kb-atomic-database-engine/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-enginesaltinity-kb-atomic-database-engine"><span class="">Atomic Database Engine</span></a>
   <ul class="ul-3 foldable">
     <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-enginesaltinity-kb-atomic-database-enginehow-to-convert-ordinary-to-atomic-li">
@@ -134,111 +131,111 @@
   <a href="/engines/altinity-kb-atomic-database-engine/altinity-kb-how-to-convert-atomic-to-ordinary/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-enginesaltinity-kb-atomic-database-enginealtinity-kb-how-to-convert-atomic-to-ordinary"><span class="">How to Convert Atomic to Ordinary</span></a>
 </li>
   </ul>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-enginesaltinity-kb-embeddedrocksdb-and-dictionary-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-enginesaltinity-kb-embeddedrocksdb-and-dictionary-li">
   <a href="/engines/altinity-kb-embeddedrocksdb-and-dictionary/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-enginesaltinity-kb-embeddedrocksdb-and-dictionary"><span class="">EmbeddedRocksDB &amp; dictionary</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-enginesmergetree-table-engine-family-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child collapse" id="m-enginesmergetree-table-engine-family-li">
   <a href="/engines/mergetree-table-engine-family/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-enginesmergetree-table-engine-family"><span class="">MergeTree table engine family</span></a>
   <ul class="ul-3 foldable">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-enginesmergetree-table-engine-familycollapsing-vs-replacing-li">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-enginesmergetree-table-engine-familycollapsing-vs-replacing-li">
   <a href="/engines/mergetree-table-engine-family/collapsing-vs-replacing/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-enginesmergetree-table-engine-familycollapsing-vs-replacing"><span class="">CollapsingMergeTree vs ReplacingMergeTree</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-enginesmergetree-table-engine-familypart-naming-and-mvcc-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-enginesmergetree-table-engine-familypart-naming-and-mvcc-li">
   <a href="/engines/mergetree-table-engine-family/part-naming-and-mvcc/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-enginesmergetree-table-engine-familypart-naming-and-mvcc"><span class="">Part names &amp; MVCC</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-enginesmergetree-table-engine-familypick-keys-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-enginesmergetree-table-engine-familypick-keys-li">
   <a href="/engines/mergetree-table-engine-family/pick-keys/" title="How to pick an ORDER BY / PRIMARY KEY / PARTITION BY for the MergeTree-family table" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-enginesmergetree-table-engine-familypick-keys"><span class="">Proper ordering and partitioning the MergeTree tables</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-enginesmergetree-table-engine-familyaggregatingmergetree-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-enginesmergetree-table-engine-familyaggregatingmergetree-li">
   <a href="/engines/mergetree-table-engine-family/aggregatingmergetree/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-enginesmergetree-table-engine-familyaggregatingmergetree"><span class="">AggregatingMergeTree</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-enginesmergetree-table-engine-familyindex-and-column-files-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-enginesmergetree-table-engine-familyindex-and-column-files-li">
   <a href="/engines/mergetree-table-engine-family/index-and-column-files/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-enginesmergetree-table-engine-familyindex-and-column-files"><span class="">index &amp; column files</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-enginesmergetree-table-engine-familyaltinity-kb-nulls-in-order-by-li">
-  <a href="/engines/mergetree-table-engine-family/altinity-kb-nulls-in-order-by/" class="align-left pl-0 active td-sidebar-link td-sidebar-link__page" id="m-enginesmergetree-table-engine-familyaltinity-kb-nulls-in-order-by"><span class="td-sidebar-nav-active-item">Nulls in order by</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-enginesmergetree-table-engine-familyreplacingmergetree-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-enginesmergetree-table-engine-familyaltinity-kb-nulls-in-order-by-li">
+  <a href="/engines/mergetree-table-engine-family/altinity-kb-nulls-in-order-by/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-enginesmergetree-table-engine-familyaltinity-kb-nulls-in-order-by"><span class="">Nulls in order by</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child collapse" id="m-enginesmergetree-table-engine-familyreplacingmergetree-li">
   <a href="/engines/mergetree-table-engine-family/replacingmergetree/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-enginesmergetree-table-engine-familyreplacingmergetree"><span class="">ReplacingMergeTree</span></a>
   <ul class="ul-4 foldable">
     <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-enginesmergetree-table-engine-familyreplacingmergetreealtinity-kb-replacingmergetree-does-not-collapse-duplicates-li">
   <a href="/engines/mergetree-table-engine-family/replacingmergetree/altinity-kb-replacingmergetree-does-not-collapse-duplicates/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-enginesmergetree-table-engine-familyreplacingmergetreealtinity-kb-replacingmergetree-does-not-collapse-duplicates"><span class="">ReplacingMergeTree does not collapse duplicates</span></a>
 </li>
   </ul>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-enginesmergetree-table-engine-familyskip-index-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-enginesmergetree-table-engine-familyskip-index-li">
   <a href="/engines/mergetree-table-engine-family/skip-index/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-enginesmergetree-table-engine-familyskip-index"><span class="">Skip index</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-enginesmergetree-table-engine-familysummingmergetree-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-enginesmergetree-table-engine-familysummingmergetree-li">
   <a href="/engines/mergetree-table-engine-family/summingmergetree/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-enginesmergetree-table-engine-familysummingmergetree"><span class="">SummingMergeTree</span></a>
 </li>
   </ul>
 </li>
   </ul>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-altinity-kb-queries-and-syntax-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-altinity-kb-queries-and-syntax-li">
   <a href="/altinity-kb-queries-and-syntax/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-altinity-kb-queries-and-syntax"><span class="">Queries &amp; Syntax</span></a>
   <ul class="ul-2 foldable">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-queries-and-syntaxdatetime64-li">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-queries-and-syntaxdatetime64-li">
   <a href="/altinity-kb-queries-and-syntax/datetime64/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-queries-and-syntaxdatetime64"><span class="">DateTime64</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-queries-and-syntaxliteral-decimal-or-float-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-queries-and-syntaxliteral-decimal-or-float-li">
   <a href="/altinity-kb-queries-and-syntax/literal-decimal-or-float/" title="Imprecise parsing of literal Decimal or Float64" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-queries-and-syntaxliteral-decimal-or-float"><span class="">Imprecise literal Decimal or Float64 values</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-queries-and-syntaxmultiple-date-column-in-partition-key-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-queries-and-syntaxmultiple-date-column-in-partition-key-li">
   <a href="/altinity-kb-queries-and-syntax/multiple-date-column-in-partition-key/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-queries-and-syntaxmultiple-date-column-in-partition-key"><span class="">Multiple aligned date columns in PARTITION BY expression</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-queries-and-syntaxtrace_log-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-queries-and-syntaxtrace_log-li">
   <a href="/altinity-kb-queries-and-syntax/trace_log/" title="Collecting query execution flamegraphs using system.trace_log" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-queries-and-syntaxtrace_log"><span class="">trace_log</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-queries-and-syntaxarray-functions-as-window-li">
-  <a href="/altinity-kb-queries-and-syntax/array-functions-as-window/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-queries-and-syntaxarray-functions-as-window"><span class="">Using array functions to mimic window-functions alike behavior</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-queries-and-syntaxstate-and-merge-combinators-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-altinity-kb-queries-and-syntaxarray-functions-as-window-li">
+  <a href="/altinity-kb-queries-and-syntax/array-functions-as-window/" class="align-left pl-0 active td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-queries-and-syntaxarray-functions-as-window"><span class="td-sidebar-nav-active-item">Using array functions to mimic window-functions alike behavior</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-queries-and-syntaxstate-and-merge-combinators-li">
   <a href="/altinity-kb-queries-and-syntax/state-and-merge-combinators/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-queries-and-syntaxstate-and-merge-combinators"><span class="">-State &amp; -Merge combinators</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-queries-and-syntaxaltinity-kb-alter-modify-column-is-stuck-the-column-is-inaccessible-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-queries-and-syntaxaltinity-kb-alter-modify-column-is-stuck-the-column-is-inaccessible-li">
   <a href="/altinity-kb-queries-and-syntax/altinity-kb-alter-modify-column-is-stuck-the-column-is-inaccessible/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-queries-and-syntaxaltinity-kb-alter-modify-column-is-stuck-the-column-is-inaccessible"><span class="">ALTER MODIFY COLUMN is stuck, the column is inaccessible.</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-queries-and-syntaxansi-sql-mode-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-queries-and-syntaxansi-sql-mode-li">
   <a href="/altinity-kb-queries-and-syntax/ansi-sql-mode/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-queries-and-syntaxansi-sql-mode"><span class="">ANSI SQL mode</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-queries-and-syntaxatomic-insert-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-queries-and-syntaxatomic-insert-li">
   <a href="/altinity-kb-queries-and-syntax/atomic-insert/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-queries-and-syntaxatomic-insert"><span class="">Atomic insert</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-queries-and-syntaxcumulative-unique-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-queries-and-syntaxcumulative-unique-li">
   <a href="/altinity-kb-queries-and-syntax/cumulative-unique/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-queries-and-syntaxcumulative-unique"><span class="">Cumulative Anything</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-queries-and-syntaxdata-types-on-disk-and-in-ram-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-queries-and-syntaxdata-types-on-disk-and-in-ram-li">
   <a href="/altinity-kb-queries-and-syntax/data-types-on-disk-and-in-ram/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-queries-and-syntaxdata-types-on-disk-and-in-ram"><span class="">Data types on disk and in RAM</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-queries-and-syntaxdelete-via-tombstone-column-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-queries-and-syntaxdelete-via-tombstone-column-li">
   <a href="/altinity-kb-queries-and-syntax/delete-via-tombstone-column/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-queries-and-syntaxdelete-via-tombstone-column"><span class="">DELETE via tombstone column</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-queries-and-syntaxexplain-query-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-queries-and-syntaxexplain-query-li">
   <a href="/altinity-kb-queries-and-syntax/explain-query/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-queries-and-syntaxexplain-query"><span class="">EXPLAIN query</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-queries-and-syntaxfill-missing-values-at-query-time-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-queries-and-syntaxfill-missing-values-at-query-time-li">
   <a href="/altinity-kb-queries-and-syntax/fill-missing-values-at-query-time/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-queries-and-syntaxfill-missing-values-at-query-time"><span class="">Fill missing values at query time</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-queries-and-syntaxaltinity-kb-final-clause-speed-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-queries-and-syntaxaltinity-kb-final-clause-speed-li">
   <a href="/altinity-kb-queries-and-syntax/altinity-kb-final-clause-speed/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-queries-and-syntaxaltinity-kb-final-clause-speed"><span class="">FINAL clause speed</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-queries-and-syntaxjoin-with-calendar-using-arrays-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-queries-and-syntaxjoin-with-calendar-using-arrays-li">
   <a href="/altinity-kb-queries-and-syntax/join-with-calendar-using-arrays/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-queries-and-syntaxjoin-with-calendar-using-arrays"><span class="">Join with Calendar using Arrays</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child collapse" id="m-altinity-kb-queries-and-syntaxjoins-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-altinity-kb-queries-and-syntaxjoins-li">
   <a href="/altinity-kb-queries-and-syntax/joins/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-altinity-kb-queries-and-syntaxjoins"><span class="">JOINs</span></a>
   <ul class="ul-3 foldable">
     <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-queries-and-syntaxjoinsjoin-table-engine-li">
   <a href="/altinity-kb-queries-and-syntax/joins/join-table-engine/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-queries-and-syntaxjoinsjoin-table-engine"><span class="">JOIN table engine</span></a>
 </li>
   </ul>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-queries-and-syntaxjsonextract-to-parse-many-attributes-at-a-time-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-queries-and-syntaxjsonextract-to-parse-many-attributes-at-a-time-li">
   <a href="/altinity-kb-queries-and-syntax/jsonextract-to-parse-many-attributes-at-a-time/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-queries-and-syntaxjsonextract-to-parse-many-attributes-at-a-time"><span class="">JSONExtract to parse many attributes at a time</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-queries-and-syntaxaltinity-kb-kill-query-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-queries-and-syntaxaltinity-kb-kill-query-li">
   <a href="/altinity-kb-queries-and-syntax/altinity-kb-kill-query/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-queries-and-syntaxaltinity-kb-kill-query"><span class="">KILL QUERY</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-queries-and-syntaxlag-lead-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-queries-and-syntaxlag-lead-li">
   <a href="/altinity-kb-queries-and-syntax/lag-lead/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-queries-and-syntaxlag-lead"><span class="">Lag / Lead</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-queries-and-syntaxmachine-learning-in-clickhouse-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-queries-and-syntaxmachine-learning-in-clickhouse-li">
   <a href="/altinity-kb-queries-and-syntax/machine-learning-in-clickhouse/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-queries-and-syntaxmachine-learning-in-clickhouse"><span class="">Machine learning in ClickHouse</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-queries-and-syntaxmutations-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-queries-and-syntaxmutations-li">
   <a href="/altinity-kb-queries-and-syntax/mutations/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-queries-and-syntaxmutations"><span class="">Mutations</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-queries-and-syntaxaltinity-kb-optimize-vs-optimize-final-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-queries-and-syntaxaltinity-kb-optimize-vs-optimize-final-li">
   <a href="/altinity-kb-queries-and-syntax/altinity-kb-optimize-vs-optimize-final/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-queries-and-syntaxaltinity-kb-optimize-vs-optimize-final"><span class="">OPTIMIZE vs OPTIMIZE FINAL</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-queries-and-syntaxaltinity-kb-parameterized-views-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-queries-and-syntaxaltinity-kb-parameterized-views-li">
   <a href="/altinity-kb-queries-and-syntax/altinity-kb-parameterized-views/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-queries-and-syntaxaltinity-kb-parameterized-views"><span class="">Parameterized views</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-queries-and-syntaxpartial-projection-optimization-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-queries-and-syntaxpartial-projection-optimization-li">
   <a href="/altinity-kb-queries-and-syntax/partial-projection-optimization/" title="Use both projection and raw data in single query" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-queries-and-syntaxpartial-projection-optimization"><span class="">partial-projection-optimization</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-queries-and-syntaxpivot-unpivot-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-queries-and-syntaxpivot-unpivot-li">
   <a href="/altinity-kb-queries-and-syntax/pivot-unpivot/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-queries-and-syntaxpivot-unpivot"><span class="">PIVOT / UNPIVOT</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-queries-and-syntaxaltinity-kb-possible-deadlock-avoided-client-should-retry-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-queries-and-syntaxaltinity-kb-possible-deadlock-avoided-client-should-retry-li">
   <a href="/altinity-kb-queries-and-syntax/altinity-kb-possible-deadlock-avoided.-client-should-retry/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-queries-and-syntaxaltinity-kb-possible-deadlock-avoided-client-should-retry"><span class="">Possible deadlock avoided. Client should retry</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-queries-and-syntaxprojections-examples-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-queries-and-syntaxprojections-examples-li">
   <a href="/altinity-kb-queries-and-syntax/projections-examples/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-queries-and-syntaxprojections-examples"><span class="">Projections examples</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-queries-and-syntaxroaring-bitmaps-for-calculating-retention-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-queries-and-syntaxroaring-bitmaps-for-calculating-retention-li">
   <a href="/altinity-kb-queries-and-syntax/roaring-bitmaps-for-calculating-retention/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-queries-and-syntaxroaring-bitmaps-for-calculating-retention"><span class="">Roaring bitmaps for calculating retention</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-queries-and-syntaxaltinity-kb-sample-by-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-queries-and-syntaxaltinity-kb-sample-by-li">
   <a href="/altinity-kb-queries-and-syntax/altinity-kb-sample-by/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-queries-and-syntaxaltinity-kb-sample-by"><span class="">SAMPLE by</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-queries-and-syntaxsampling-example-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-queries-and-syntaxsampling-example-li">
   <a href="/altinity-kb-queries-and-syntax/sampling-example/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-queries-and-syntaxsampling-example"><span class="">Sampling Example</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-queries-and-syntaxsimplestateif-or-ifstate-for-simple-aggregate-functions-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-queries-and-syntaxsimplestateif-or-ifstate-for-simple-aggregate-functions-li">
   <a href="/altinity-kb-queries-and-syntax/simplestateif-or-ifstate-for-simple-aggregate-functions/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-queries-and-syntaxsimplestateif-or-ifstate-for-simple-aggregate-functions"><span class="">Simple aggregate functions &amp; combinators</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child collapse" id="m-altinity-kb-queries-and-syntaxskip-indexes-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-altinity-kb-queries-and-syntaxskip-indexes-li">
   <a href="/altinity-kb-queries-and-syntax/skip-indexes/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-altinity-kb-queries-and-syntaxskip-indexes"><span class="">Skip indexes</span></a>
   <ul class="ul-3 foldable">
     <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-queries-and-syntaxskip-indexesminmax-li">
@@ -249,15 +246,15 @@
   <a href="/altinity-kb-queries-and-syntax/skip-indexes/skip-indexes-examples/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-queries-and-syntaxskip-indexesskip-indexes-examples"><span class="">Skip indexes examples</span></a>
 </li>
   </ul>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-queries-and-syntaxtime-zones-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-queries-and-syntaxtime-zones-li">
   <a href="/altinity-kb-queries-and-syntax/time-zones/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-queries-and-syntaxtime-zones"><span class="">Time zones</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-queries-and-syntaxts-interpolation-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-queries-and-syntaxts-interpolation-li">
   <a href="/altinity-kb-queries-and-syntax/ts-interpolation/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-queries-and-syntaxts-interpolation"><span class="">Time-series alignment with interpolation</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-queries-and-syntaxtop-n-and-remain-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-queries-and-syntaxtop-n-and-remain-li">
   <a href="/altinity-kb-queries-and-syntax/top-n-and-remain/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-queries-and-syntaxtop-n-and-remain"><span class="">Top N &amp; Remain</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-queries-and-syntaxtroubleshooting-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-queries-and-syntaxtroubleshooting-li">
   <a href="/altinity-kb-queries-and-syntax/troubleshooting/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-queries-and-syntaxtroubleshooting"><span class="">Troubleshooting</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child collapse" id="m-altinity-kb-queries-and-syntaxttl-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-altinity-kb-queries-and-syntaxttl-li">
   <a href="/altinity-kb-queries-and-syntax/ttl/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-altinity-kb-queries-and-syntaxttl"><span class="">TTL</span></a>
   <ul class="ul-3 foldable">
     <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-queries-and-syntaxttlttl-group-by-examples-li">
@@ -266,11 +263,11 @@
   <a href="/altinity-kb-queries-and-syntax/ttl/ttl-recompress-example/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-queries-and-syntaxttlttl-recompress-example"><span class="">TTL Recompress example</span></a>
 </li>
   </ul>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-queries-and-syntaxupdate-via-dictionary-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-queries-and-syntaxupdate-via-dictionary-li">
   <a href="/altinity-kb-queries-and-syntax/update-via-dictionary/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-queries-and-syntaxupdate-via-dictionary"><span class="">UPDATE via Dictionary</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-queries-and-syntaxvalues-mapping-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-queries-and-syntaxvalues-mapping-li">
   <a href="/altinity-kb-queries-and-syntax/values-mapping/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-queries-and-syntaxvalues-mapping"><span class="">Values mapping</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-queries-and-syntaxwindow-functions-li">
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-queries-and-syntaxwindow-functions-li">
   <a href="/altinity-kb-queries-and-syntax/window-functions/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-queries-and-syntaxwindow-functions"><span class="">Window functions</span></a>
 </li>
   </ul>
@@ -648,20 +645,34 @@
     
     
 
-    <a href="https://github.com/Altinity/altinityknowledgebase/edit/main/content/en/engines/mergetree-table-engine-family/altinity-kb-nulls-in-order-by.md" target="_blank"><i class="fa fa-edit fa-fw"></i> Edit this page</a>
-    <a href="https://github.com/Altinity/altinityknowledgebase/new/main/content/en/engines/mergetree-table-engine-family/altinity-kb-nulls-in-order-by.md?filename=change-me.md&amp;value=---%0Atitle%3A&#43;%22Long&#43;Page&#43;Title%22%0AlinkTitle%3A&#43;%22Short&#43;Nav&#43;Title%22%0Aweight%3A&#43;100%0Adescription%3A&#43;%3E-%0A&#43;&#43;&#43;&#43;&#43;Page&#43;description&#43;for&#43;heading&#43;and&#43;indexes.%0A---%0A%0A%23%23&#43;Heading%0A%0AEdit&#43;this&#43;template&#43;to&#43;create&#43;your&#43;new&#43;page.%0A%0A%2A&#43;Give&#43;it&#43;a&#43;good&#43;name%2C&#43;ending&#43;in&#43;%60.md%60&#43;-&#43;e.g.&#43;%60getting-started.md%60%0A%2A&#43;Edit&#43;the&#43;%22front&#43;matter%22&#43;section&#43;at&#43;the&#43;top&#43;of&#43;the&#43;page&#43;%28weight&#43;controls&#43;how&#43;its&#43;ordered&#43;amongst&#43;other&#43;pages&#43;in&#43;the&#43;same&#43;directory%3B&#43;lowest&#43;number&#43;first%29.%0A%2A&#43;Add&#43;a&#43;good&#43;commit&#43;message&#43;at&#43;the&#43;bottom&#43;of&#43;the&#43;page&#43;%28%3C80&#43;characters%3B&#43;use&#43;the&#43;extended&#43;description&#43;field&#43;for&#43;more&#43;detail%29.%0A%2A&#43;Create&#43;a&#43;new&#43;branch&#43;so&#43;you&#43;can&#43;preview&#43;your&#43;new&#43;file&#43;and&#43;request&#43;a&#43;review&#43;via&#43;Pull&#43;Request.%0A" target="_blank"><i class="fa fa-edit fa-fw"></i> Create child page</a>
-    <a href="https://github.com/Altinity/altinityknowledgebase/issues/new?title=/engines/mergetree-table-engine-family/altinity-kb-nulls-in-order-by/" target="_blank"><i class="fab fa-github fa-fw"></i> Create documentation issue</a>
+    <a href="https://github.com/Altinity/altinityknowledgebase/edit/main/content/en/altinity-kb-queries-and-syntax/array-functions-as-window.md" target="_blank"><i class="fa fa-edit fa-fw"></i> Edit this page</a>
+    <a href="https://github.com/Altinity/altinityknowledgebase/new/main/content/en/altinity-kb-queries-and-syntax/array-functions-as-window.md?filename=change-me.md&amp;value=---%0Atitle%3A&#43;%22Long&#43;Page&#43;Title%22%0AlinkTitle%3A&#43;%22Short&#43;Nav&#43;Title%22%0Aweight%3A&#43;100%0Adescription%3A&#43;%3E-%0A&#43;&#43;&#43;&#43;&#43;Page&#43;description&#43;for&#43;heading&#43;and&#43;indexes.%0A---%0A%0A%23%23&#43;Heading%0A%0AEdit&#43;this&#43;template&#43;to&#43;create&#43;your&#43;new&#43;page.%0A%0A%2A&#43;Give&#43;it&#43;a&#43;good&#43;name%2C&#43;ending&#43;in&#43;%60.md%60&#43;-&#43;e.g.&#43;%60getting-started.md%60%0A%2A&#43;Edit&#43;the&#43;%22front&#43;matter%22&#43;section&#43;at&#43;the&#43;top&#43;of&#43;the&#43;page&#43;%28weight&#43;controls&#43;how&#43;its&#43;ordered&#43;amongst&#43;other&#43;pages&#43;in&#43;the&#43;same&#43;directory%3B&#43;lowest&#43;number&#43;first%29.%0A%2A&#43;Add&#43;a&#43;good&#43;commit&#43;message&#43;at&#43;the&#43;bottom&#43;of&#43;the&#43;page&#43;%28%3C80&#43;characters%3B&#43;use&#43;the&#43;extended&#43;description&#43;field&#43;for&#43;more&#43;detail%29.%0A%2A&#43;Create&#43;a&#43;new&#43;branch&#43;so&#43;you&#43;can&#43;preview&#43;your&#43;new&#43;file&#43;and&#43;request&#43;a&#43;review&#43;via&#43;Pull&#43;Request.%0A" target="_blank"><i class="fa fa-edit fa-fw"></i> Create child page</a>
+    <a href="https://github.com/Altinity/altinityknowledgebase/issues/new?title=/altinity-kb-queries-and-syntax/array-functions-as-window/" target="_blank"><i class="fab fa-github fa-fw"></i> Create documentation issue</a>
     
 
   
   
-    <a id="print" href="http://kb.altinity.com/engines/mergetree-table-engine-family/printview/"><i class="fa fa-print fa-fw"></i> Print entire section</a>
+    <a id="print" href="http://kb.altinity.com/altinity-kb-queries-and-syntax/printview/"><i class="fa fa-print fa-fw"></i> Print entire section</a>
   
   </div>
 
 
             
 
+
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#running-difference-sample">Running difference sample</a></li>
+    <li><a href="#arrays-">Arrays !</a>
+      <ul>
+        <li><a href="#1-group--collect-the-data-into-array">1. Group &amp; Collect the data into array</a></li>
+        <li><a href="#do-needed-ordering-in-each-array">Do needed ordering in each array</a></li>
+        <li><a href="#apply-needed-logic-arraymap--arraydifference-etc">Apply needed logic arrayMap / arrayDifference etc</a></li>
+        <li><a href="#now-you-can-return-you-arrays-back-to-rows">Now you can return you arrays back to rows</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
 
 
 
@@ -672,9 +683,9 @@
   <p>&nbsp;</p>
   <p>Share on Social Media:</p>
   <span style="display:flex; flex-direction: row; justify-content: space-between; align-items: flex-start; padding-left: 10px; padding-right: 75px;">
-    <a href="https://twitter.com/intent/tweet?text=Nulls%20in%20order%20by&amp;url=http://kb.altinity.com/engines/mergetree-table-engine-family/altinity-kb-nulls-in-order-by/" target="_blank" class="fab fa-twitter"></a>
-    <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://kb.altinity.com/engines/mergetree-table-engine-family/altinity-kb-nulls-in-order-by/" target="_blank" class="fab fa-facebook"></a>
-    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http://kb.altinity.com/engines/mergetree-table-engine-family/altinity-kb-nulls-in-order-by/&amp;title=Nulls%20in%20order%20by"target="_blank" class="fab fa-linkedin"></a>
+    <a href="https://twitter.com/intent/tweet?text=Using%20array%20functions%20to%20mimic%20window-functions%20alike%20behavior&amp;url=http://kb.altinity.com/altinity-kb-queries-and-syntax/array-functions-as-window/" target="_blank" class="fab fa-twitter"></a>
+    <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://kb.altinity.com/altinity-kb-queries-and-syntax/array-functions-as-window/" target="_blank" class="fab fa-facebook"></a>
+    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http://kb.altinity.com/altinity-kb-queries-and-syntax/array-functions-as-window/&amp;title=Using%20array%20functions%20to%20mimic%20window-functions%20alike%20behavior"target="_blank" class="fab fa-linkedin"></a>
   </span>
 </div>
 
@@ -713,25 +724,15 @@
 
 
 
-
-
-
 <li class="breadcrumb-item" >
-	<a href="http://kb.altinity.com/engines/">Engines</a>
-</li>
-
-
-
-
-<li class="breadcrumb-item" >
-	<a href="http://kb.altinity.com/engines/mergetree-table-engine-family/">MergeTree table engine family</a>
+	<a href="http://kb.altinity.com/altinity-kb-queries-and-syntax/">Queries &amp; Syntax</a>
 </li>
 
 
 
 
 <li class="breadcrumb-item active" aria-current="page">
-	<a href="http://kb.altinity.com/engines/mergetree-table-engine-family/altinity-kb-nulls-in-order-by/">Nulls in order by</a>
+	<a href="http://kb.altinity.com/altinity-kb-queries-and-syntax/array-functions-as-window/">Using array functions to mimic window-functions alike behavior</a>
 </li>
 
 	</ol>
@@ -739,42 +740,385 @@
 
             
 <div class="td-content">
-	<h1>Nulls in order by</h1>
-    <div class="lead">
+	<h1>Using array functions to mimic window-functions alike behavior</h1>
+    <div class="lead">Using array functions to mimic window-functions alike behavior.
 	</div>
 	
 	       
-	<ol>
-<li>It is NOT RECOMMENDED for a general use</li>
-<li>Use on your own risk</li>
-<li>Use latest ClickHouse version if you need that.</li>
-</ol>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">CREATE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">TABLE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">x</span><span style="color:#f8f8f8;text-decoration:underline">
+	<h1 id="using-array-functions-to-mimic-window-functions-alike-behavior">Using array functions to mimic window functions alike behavior</h1>
+<p>There are some usecases when you may want to mimic window functions using Arrays - as an optimization step, or to contol the memory better / use on-disk spiling, or just if you have old ClickHouse version.</p>
+<h2 id="running-difference-sample">Running difference sample</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">DROP</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">TABLE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">IS</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">EXISTS</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">test_running_difference</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">CREATE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">TABLE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">test_running_difference</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">ENGINE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Log</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">AS</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">SELECT</span><span style="color:#f8f8f8;text-decoration:underline"> 
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87">number</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">%</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">20</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">AS</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">id</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> 
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#000">toDateTime</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;2010-01-01 00:00:00&#39;</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">+</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">intDiv</span><span style="color:#000;font-weight:bold">(</span><span style="color:#204a87">number</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">20</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">15</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">AS</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">ts</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> 
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#000;font-weight:bold">(</span><span style="color:#204a87">number</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">round</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">xxHash32</span><span style="color:#000;font-weight:bold">(</span><span style="color:#204a87">number</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">%</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">20</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">1000000</span><span style="color:#000;font-weight:bold">))</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">round</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">rand</span><span style="color:#000;font-weight:bold">()</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">1000000</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">AS</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">val</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">FROM</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">numbers</span><span style="color:#000;font-weight:bold">(</span><span style="color:#0000cf;font-weight:bold">100</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">SELECT</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">FROM</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">test_running_difference</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>┌─id─┬──────────────────ts─┬────val─┐
+</span></span><span style="display:flex;"><span>│  0 │ 2010-01-01 00:00:00 │  -1209 │
+</span></span><span style="display:flex;"><span>│  1 │ 2010-01-01 00:00:00 │     43 │
+</span></span><span style="display:flex;"><span>│  2 │ 2010-01-01 00:00:00 │   4322 │
+</span></span><span style="display:flex;"><span>│  3 │ 2010-01-01 00:00:00 │    -25 │
+</span></span><span style="display:flex;"><span>│  4 │ 2010-01-01 00:00:00 │  13720 │
+</span></span><span style="display:flex;"><span>│  5 │ 2010-01-01 00:00:00 │    903 │
+</span></span><span style="display:flex;"><span>│  6 │ 2010-01-01 00:00:00 │  18062 │
+</span></span><span style="display:flex;"><span>│  7 │ 2010-01-01 00:00:00 │  -2873 │
+</span></span><span style="display:flex;"><span>│  8 │ 2010-01-01 00:00:00 │   6286 │
+</span></span><span style="display:flex;"><span>│  9 │ 2010-01-01 00:00:00 │  13399 │
+</span></span><span style="display:flex;"><span>│ 10 │ 2010-01-01 00:00:00 │  18320 │
+</span></span><span style="display:flex;"><span>│ 11 │ 2010-01-01 00:00:00 │  11731 │
+</span></span><span style="display:flex;"><span>│ 12 │ 2010-01-01 00:00:00 │    857 │
+</span></span><span style="display:flex;"><span>│ 13 │ 2010-01-01 00:00:00 │   8752 │
+</span></span><span style="display:flex;"><span>│ 14 │ 2010-01-01 00:00:00 │  23060 │
+</span></span><span style="display:flex;"><span>│ 15 │ 2010-01-01 00:00:00 │  41902 │
+</span></span><span style="display:flex;"><span>│ 16 │ 2010-01-01 00:00:00 │  39406 │
+</span></span><span style="display:flex;"><span>│ 17 │ 2010-01-01 00:00:00 │  50010 │
+</span></span><span style="display:flex;"><span>│ 18 │ 2010-01-01 00:00:00 │  57673 │
+</span></span><span style="display:flex;"><span>│ 19 │ 2010-01-01 00:00:00 │  51389 │
+</span></span><span style="display:flex;"><span>│  0 │ 2010-01-01 00:00:15 │  66839 │
+</span></span><span style="display:flex;"><span>│  1 │ 2010-01-01 00:00:15 │  19440 │
+</span></span><span style="display:flex;"><span>│  2 │ 2010-01-01 00:00:15 │  74513 │
+</span></span><span style="display:flex;"><span>│  3 │ 2010-01-01 00:00:15 │  10542 │
+</span></span><span style="display:flex;"><span>│  4 │ 2010-01-01 00:00:15 │  94245 │
+</span></span><span style="display:flex;"><span>│  5 │ 2010-01-01 00:00:15 │   8230 │
+</span></span><span style="display:flex;"><span>│  6 │ 2010-01-01 00:00:15 │  87823 │
+</span></span><span style="display:flex;"><span>│  7 │ 2010-01-01 00:00:15 │   -128 │
+</span></span><span style="display:flex;"><span>│  8 │ 2010-01-01 00:00:15 │  30101 │
+</span></span><span style="display:flex;"><span>│  9 │ 2010-01-01 00:00:15 │  54321 │
+</span></span><span style="display:flex;"><span>│ 10 │ 2010-01-01 00:00:15 │  64078 │
+</span></span><span style="display:flex;"><span>│ 11 │ 2010-01-01 00:00:15 │  31886 │
+</span></span><span style="display:flex;"><span>│ 12 │ 2010-01-01 00:00:15 │   8749 │
+</span></span><span style="display:flex;"><span>│ 13 │ 2010-01-01 00:00:15 │  28982 │
+</span></span><span style="display:flex;"><span>│ 14 │ 2010-01-01 00:00:15 │  61299 │
+</span></span><span style="display:flex;"><span>│ 15 │ 2010-01-01 00:00:15 │  95867 │
+</span></span><span style="display:flex;"><span>│ 16 │ 2010-01-01 00:00:15 │  93667 │
+</span></span><span style="display:flex;"><span>│ 17 │ 2010-01-01 00:00:15 │ 114072 │
+</span></span><span style="display:flex;"><span>│ 18 │ 2010-01-01 00:00:15 │ 124279 │
+</span></span><span style="display:flex;"><span>│ 19 │ 2010-01-01 00:00:15 │ 109605 │
+</span></span><span style="display:flex;"><span>│  0 │ 2010-01-01 00:00:30 │ 135082 │
+</span></span><span style="display:flex;"><span>│  1 │ 2010-01-01 00:00:30 │  37345 │
+</span></span><span style="display:flex;"><span>│  2 │ 2010-01-01 00:00:30 │ 148744 │
+</span></span><span style="display:flex;"><span>│  3 │ 2010-01-01 00:00:30 │  21607 │
+</span></span><span style="display:flex;"><span>│  4 │ 2010-01-01 00:00:30 │ 171744 │
+</span></span><span style="display:flex;"><span>│  5 │ 2010-01-01 00:00:30 │  14736 │
+</span></span><span style="display:flex;"><span>│  6 │ 2010-01-01 00:00:30 │ 155349 │
+</span></span><span style="display:flex;"><span>│  7 │ 2010-01-01 00:00:30 │  -3901 │
+</span></span><span style="display:flex;"><span>│  8 │ 2010-01-01 00:00:30 │  54303 │
+</span></span><span style="display:flex;"><span>│  9 │ 2010-01-01 00:00:30 │  89629 │
+</span></span><span style="display:flex;"><span>│ 10 │ 2010-01-01 00:00:30 │ 106595 │
+</span></span><span style="display:flex;"><span>│ 11 │ 2010-01-01 00:00:30 │  54545 │
+</span></span><span style="display:flex;"><span>│ 12 │ 2010-01-01 00:00:30 │  18903 │
+</span></span><span style="display:flex;"><span>│ 13 │ 2010-01-01 00:00:30 │  48023 │
+</span></span><span style="display:flex;"><span>│ 14 │ 2010-01-01 00:00:30 │  97930 │
+</span></span><span style="display:flex;"><span>│ 15 │ 2010-01-01 00:00:30 │ 152165 │
+</span></span><span style="display:flex;"><span>│ 16 │ 2010-01-01 00:00:30 │ 146130 │
+</span></span><span style="display:flex;"><span>│ 17 │ 2010-01-01 00:00:30 │ 174854 │
+</span></span><span style="display:flex;"><span>│ 18 │ 2010-01-01 00:00:30 │ 189194 │
+</span></span><span style="display:flex;"><span>│ 19 │ 2010-01-01 00:00:30 │ 170134 │
+</span></span><span style="display:flex;"><span>│  0 │ 2010-01-01 00:00:45 │ 207471 │
+</span></span><span style="display:flex;"><span>│  1 │ 2010-01-01 00:00:45 │  54323 │
+</span></span><span style="display:flex;"><span>│  2 │ 2010-01-01 00:00:45 │ 217984 │
+</span></span><span style="display:flex;"><span>│  3 │ 2010-01-01 00:00:45 │  31835 │
+</span></span><span style="display:flex;"><span>│  4 │ 2010-01-01 00:00:45 │ 252709 │
+</span></span><span style="display:flex;"><span>│  5 │ 2010-01-01 00:00:45 │  21493 │
+</span></span><span style="display:flex;"><span>│  6 │ 2010-01-01 00:00:45 │ 221271 │
+</span></span><span style="display:flex;"><span>│  7 │ 2010-01-01 00:00:45 │   -488 │
+</span></span><span style="display:flex;"><span>│  8 │ 2010-01-01 00:00:45 │  76827 │
+</span></span><span style="display:flex;"><span>│  9 │ 2010-01-01 00:00:45 │ 131066 │
+</span></span><span style="display:flex;"><span>│ 10 │ 2010-01-01 00:00:45 │ 149087 │
+</span></span><span style="display:flex;"><span>│ 11 │ 2010-01-01 00:00:45 │  71934 │
+</span></span><span style="display:flex;"><span>│ 12 │ 2010-01-01 00:00:45 │  25125 │
+</span></span><span style="display:flex;"><span>│ 13 │ 2010-01-01 00:00:45 │  65274 │
+</span></span><span style="display:flex;"><span>│ 14 │ 2010-01-01 00:00:45 │ 135980 │
+</span></span><span style="display:flex;"><span>│ 15 │ 2010-01-01 00:00:45 │ 210910 │
+</span></span><span style="display:flex;"><span>│ 16 │ 2010-01-01 00:00:45 │ 200007 │
+</span></span><span style="display:flex;"><span>│ 17 │ 2010-01-01 00:00:45 │ 235872 │
+</span></span><span style="display:flex;"><span>│ 18 │ 2010-01-01 00:00:45 │ 256112 │
+</span></span><span style="display:flex;"><span>│ 19 │ 2010-01-01 00:00:45 │ 229371 │
+</span></span><span style="display:flex;"><span>│  0 │ 2010-01-01 00:01:00 │ 275331 │
+</span></span><span style="display:flex;"><span>│  1 │ 2010-01-01 00:01:00 │  72668 │
+</span></span><span style="display:flex;"><span>│  2 │ 2010-01-01 00:01:00 │ 290366 │
+</span></span><span style="display:flex;"><span>│  3 │ 2010-01-01 00:01:00 │  46074 │
+</span></span><span style="display:flex;"><span>│  4 │ 2010-01-01 00:01:00 │ 329207 │
+</span></span><span style="display:flex;"><span>│  5 │ 2010-01-01 00:01:00 │  26770 │
+</span></span><span style="display:flex;"><span>│  6 │ 2010-01-01 00:01:00 │ 287619 │
+</span></span><span style="display:flex;"><span>│  7 │ 2010-01-01 00:01:00 │  -2207 │
+</span></span><span style="display:flex;"><span>│  8 │ 2010-01-01 00:01:00 │ 100456 │
+</span></span><span style="display:flex;"><span>│  9 │ 2010-01-01 00:01:00 │ 165688 │
+</span></span><span style="display:flex;"><span>│ 10 │ 2010-01-01 00:01:00 │ 194136 │
+</span></span><span style="display:flex;"><span>│ 11 │ 2010-01-01 00:01:00 │  94113 │
+</span></span><span style="display:flex;"><span>│ 12 │ 2010-01-01 00:01:00 │  35810 │
+</span></span><span style="display:flex;"><span>│ 13 │ 2010-01-01 00:01:00 │  85081 │
+</span></span><span style="display:flex;"><span>│ 14 │ 2010-01-01 00:01:00 │ 170256 │
+</span></span><span style="display:flex;"><span>│ 15 │ 2010-01-01 00:01:00 │ 265445 │
+</span></span><span style="display:flex;"><span>│ 16 │ 2010-01-01 00:01:00 │ 254828 │
+</span></span><span style="display:flex;"><span>│ 17 │ 2010-01-01 00:01:00 │ 297238 │
+</span></span><span style="display:flex;"><span>│ 18 │ 2010-01-01 00:01:00 │ 323494 │
+</span></span><span style="display:flex;"><span>│ 19 │ 2010-01-01 00:01:00 │ 286252 │
+</span></span><span style="display:flex;"><span>└────┴─────────────────────┴────────┘
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>100 rows in set. Elapsed: 0.003 sec. 
+</span></span></code></pre></div><p>runningDifference works only in blocks &amp; require ordered data &amp; problematic when group changes</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">select</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">id</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">val</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">runningDifference</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">val</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">from</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">select</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">from</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">test_running_difference</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">order</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">by</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">id</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">ts</span><span style="color:#000;font-weight:bold">);</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div><pre tabindex="0"><code>┌─id─┬────val─┬─runningDifference(val)─┐
+│  0 │  -1209 │                      0 │
+│  0 │  66839 │                  68048 │
+│  0 │ 135082 │                  68243 │
+│  0 │ 207471 │                  72389 │
+│  0 │ 275331 │                  67860 │
+│  1 │     43 │                -275288 │
+│  1 │  19440 │                  19397 │
+│  1 │  37345 │                  17905 │
+│  1 │  54323 │                  16978 │
+│  1 │  72668 │                  18345 │
+│  2 │   4322 │                 -68346 │
+│  2 │  74513 │                  70191 │
+│  2 │ 148744 │                  74231 │
+│  2 │ 217984 │                  69240 │
+│  2 │ 290366 │                  72382 │
+│  3 │    -25 │                -290391 │
+│  3 │  10542 │                  10567 │
+│  3 │  21607 │                  11065 │
+│  3 │  31835 │                  10228 │
+│  3 │  46074 │                  14239 │
+│  4 │  13720 │                 -32354 │
+│  4 │  94245 │                  80525 │
+│  4 │ 171744 │                  77499 │
+│  4 │ 252709 │                  80965 │
+│  4 │ 329207 │                  76498 │
+│  5 │    903 │                -328304 │
+│  5 │   8230 │                   7327 │
+│  5 │  14736 │                   6506 │
+│  5 │  21493 │                   6757 │
+│  5 │  26770 │                   5277 │
+│  6 │  18062 │                  -8708 │
+│  6 │  87823 │                  69761 │
+│  6 │ 155349 │                  67526 │
+│  6 │ 221271 │                  65922 │
+│  6 │ 287619 │                  66348 │
+│  7 │  -2873 │                -290492 │
+│  7 │   -128 │                   2745 │
+│  7 │  -3901 │                  -3773 │
+│  7 │   -488 │                   3413 │
+│  7 │  -2207 │                  -1719 │
+│  8 │   6286 │                   8493 │
+│  8 │  30101 │                  23815 │
+│  8 │  54303 │                  24202 │
+│  8 │  76827 │                  22524 │
+│  8 │ 100456 │                  23629 │
+│  9 │  13399 │                 -87057 │
+│  9 │  54321 │                  40922 │
+│  9 │  89629 │                  35308 │
+│  9 │ 131066 │                  41437 │
+│  9 │ 165688 │                  34622 │
+│ 10 │  18320 │                -147368 │
+│ 10 │  64078 │                  45758 │
+│ 10 │ 106595 │                  42517 │
+│ 10 │ 149087 │                  42492 │
+│ 10 │ 194136 │                  45049 │
+│ 11 │  11731 │                -182405 │
+│ 11 │  31886 │                  20155 │
+│ 11 │  54545 │                  22659 │
+│ 11 │  71934 │                  17389 │
+│ 11 │  94113 │                  22179 │
+│ 12 │    857 │                 -93256 │
+│ 12 │   8749 │                   7892 │
+│ 12 │  18903 │                  10154 │
+│ 12 │  25125 │                   6222 │
+│ 12 │  35810 │                  10685 │
+│ 13 │   8752 │                 -27058 │
+│ 13 │  28982 │                  20230 │
+│ 13 │  48023 │                  19041 │
+│ 13 │  65274 │                  17251 │
+│ 13 │  85081 │                  19807 │
+│ 14 │  23060 │                 -62021 │
+│ 14 │  61299 │                  38239 │
+│ 14 │  97930 │                  36631 │
+│ 14 │ 135980 │                  38050 │
+│ 14 │ 170256 │                  34276 │
+│ 15 │  41902 │                -128354 │
+│ 15 │  95867 │                  53965 │
+│ 15 │ 152165 │                  56298 │
+│ 15 │ 210910 │                  58745 │
+│ 15 │ 265445 │                  54535 │
+│ 16 │  39406 │                -226039 │
+│ 16 │  93667 │                  54261 │
+│ 16 │ 146130 │                  52463 │
+│ 16 │ 200007 │                  53877 │
+│ 16 │ 254828 │                  54821 │
+│ 17 │  50010 │                -204818 │
+│ 17 │ 114072 │                  64062 │
+│ 17 │ 174854 │                  60782 │
+│ 17 │ 235872 │                  61018 │
+│ 17 │ 297238 │                  61366 │
+│ 18 │  57673 │                -239565 │
+│ 18 │ 124279 │                  66606 │
+│ 18 │ 189194 │                  64915 │
+│ 18 │ 256112 │                  66918 │
+│ 18 │ 323494 │                  67382 │
+│ 19 │  51389 │                -272105 │
+│ 19 │ 109605 │                  58216 │
+│ 19 │ 170134 │                  60529 │
+│ 19 │ 229371 │                  59237 │
+│ 19 │ 286252 │                  56881 │
+└────┴────────┴────────────────────────┘
+
+100 rows in set. Elapsed: 0.005 sec. 
+</code></pre><h2 id="arrays-">Arrays !</h2>
+<h3 id="1-group--collect-the-data-into-array">1. Group &amp; Collect the data into array</h3>
+<p>you can collect several column by builing array of tuples:</p>
+<pre tabindex="0"><code>SELECT 
+    id, 
+    groupArray(tuple(ts, val))
+FROM test_running_difference
+GROUP BY id
+
+┌─id─┬─groupArray(tuple(ts, val))──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
+│  0 │ [(&#39;2010-01-01 00:00:00&#39;,-1209),(&#39;2010-01-01 00:00:15&#39;,66839),(&#39;2010-01-01 00:00:30&#39;,135082),(&#39;2010-01-01 00:00:45&#39;,207471),(&#39;2010-01-01 00:01:00&#39;,275331)]  │
+│  1 │ [(&#39;2010-01-01 00:00:00&#39;,43),(&#39;2010-01-01 00:00:15&#39;,19440),(&#39;2010-01-01 00:00:30&#39;,37345),(&#39;2010-01-01 00:00:45&#39;,54323),(&#39;2010-01-01 00:01:00&#39;,72668)]        │
+│  2 │ [(&#39;2010-01-01 00:00:00&#39;,4322),(&#39;2010-01-01 00:00:15&#39;,74513),(&#39;2010-01-01 00:00:30&#39;,148744),(&#39;2010-01-01 00:00:45&#39;,217984),(&#39;2010-01-01 00:01:00&#39;,290366)]   │
+│  3 │ [(&#39;2010-01-01 00:00:00&#39;,-25),(&#39;2010-01-01 00:00:15&#39;,10542),(&#39;2010-01-01 00:00:30&#39;,21607),(&#39;2010-01-01 00:00:45&#39;,31835),(&#39;2010-01-01 00:01:00&#39;,46074)]       │
+│  4 │ [(&#39;2010-01-01 00:00:00&#39;,13720),(&#39;2010-01-01 00:00:15&#39;,94245),(&#39;2010-01-01 00:00:30&#39;,171744),(&#39;2010-01-01 00:00:45&#39;,252709),(&#39;2010-01-01 00:01:00&#39;,329207)]  │
+│  5 │ [(&#39;2010-01-01 00:00:00&#39;,903),(&#39;2010-01-01 00:00:15&#39;,8230),(&#39;2010-01-01 00:00:30&#39;,14736),(&#39;2010-01-01 00:00:45&#39;,21493),(&#39;2010-01-01 00:01:00&#39;,26770)]        │
+│  6 │ [(&#39;2010-01-01 00:00:00&#39;,18062),(&#39;2010-01-01 00:00:15&#39;,87823),(&#39;2010-01-01 00:00:30&#39;,155349),(&#39;2010-01-01 00:00:45&#39;,221271),(&#39;2010-01-01 00:01:00&#39;,287619)]  │
+│  7 │ [(&#39;2010-01-01 00:00:00&#39;,-2873),(&#39;2010-01-01 00:00:15&#39;,-128),(&#39;2010-01-01 00:00:30&#39;,-3901),(&#39;2010-01-01 00:00:45&#39;,-488),(&#39;2010-01-01 00:01:00&#39;,-2207)]       │
+│  8 │ [(&#39;2010-01-01 00:00:00&#39;,6286),(&#39;2010-01-01 00:00:15&#39;,30101),(&#39;2010-01-01 00:00:30&#39;,54303),(&#39;2010-01-01 00:00:45&#39;,76827),(&#39;2010-01-01 00:01:00&#39;,100456)]     │
+│  9 │ [(&#39;2010-01-01 00:00:00&#39;,13399),(&#39;2010-01-01 00:00:15&#39;,54321),(&#39;2010-01-01 00:00:30&#39;,89629),(&#39;2010-01-01 00:00:45&#39;,131066),(&#39;2010-01-01 00:01:00&#39;,165688)]   │
+│ 10 │ [(&#39;2010-01-01 00:00:00&#39;,18320),(&#39;2010-01-01 00:00:15&#39;,64078),(&#39;2010-01-01 00:00:30&#39;,106595),(&#39;2010-01-01 00:00:45&#39;,149087),(&#39;2010-01-01 00:01:00&#39;,194136)]  │
+│ 11 │ [(&#39;2010-01-01 00:00:00&#39;,11731),(&#39;2010-01-01 00:00:15&#39;,31886),(&#39;2010-01-01 00:00:30&#39;,54545),(&#39;2010-01-01 00:00:45&#39;,71934),(&#39;2010-01-01 00:01:00&#39;,94113)]     │
+│ 12 │ [(&#39;2010-01-01 00:00:00&#39;,857),(&#39;2010-01-01 00:00:15&#39;,8749),(&#39;2010-01-01 00:00:30&#39;,18903),(&#39;2010-01-01 00:00:45&#39;,25125),(&#39;2010-01-01 00:01:00&#39;,35810)]        │
+│ 13 │ [(&#39;2010-01-01 00:00:00&#39;,8752),(&#39;2010-01-01 00:00:15&#39;,28982),(&#39;2010-01-01 00:00:30&#39;,48023),(&#39;2010-01-01 00:00:45&#39;,65274),(&#39;2010-01-01 00:01:00&#39;,85081)]      │
+│ 14 │ [(&#39;2010-01-01 00:00:00&#39;,23060),(&#39;2010-01-01 00:00:15&#39;,61299),(&#39;2010-01-01 00:00:30&#39;,97930),(&#39;2010-01-01 00:00:45&#39;,135980),(&#39;2010-01-01 00:01:00&#39;,170256)]   │
+│ 15 │ [(&#39;2010-01-01 00:00:00&#39;,41902),(&#39;2010-01-01 00:00:15&#39;,95867),(&#39;2010-01-01 00:00:30&#39;,152165),(&#39;2010-01-01 00:00:45&#39;,210910),(&#39;2010-01-01 00:01:00&#39;,265445)]  │
+│ 16 │ [(&#39;2010-01-01 00:00:00&#39;,39406),(&#39;2010-01-01 00:00:15&#39;,93667),(&#39;2010-01-01 00:00:30&#39;,146130),(&#39;2010-01-01 00:00:45&#39;,200007),(&#39;2010-01-01 00:01:00&#39;,254828)]  │
+│ 17 │ [(&#39;2010-01-01 00:00:00&#39;,50010),(&#39;2010-01-01 00:00:15&#39;,114072),(&#39;2010-01-01 00:00:30&#39;,174854),(&#39;2010-01-01 00:00:45&#39;,235872),(&#39;2010-01-01 00:01:00&#39;,297238)] │
+│ 18 │ [(&#39;2010-01-01 00:00:00&#39;,57673),(&#39;2010-01-01 00:00:15&#39;,124279),(&#39;2010-01-01 00:00:30&#39;,189194),(&#39;2010-01-01 00:00:45&#39;,256112),(&#39;2010-01-01 00:01:00&#39;,323494)] │
+│ 19 │ [(&#39;2010-01-01 00:00:00&#39;,51389),(&#39;2010-01-01 00:00:15&#39;,109605),(&#39;2010-01-01 00:00:30&#39;,170134),(&#39;2010-01-01 00:00:45&#39;,229371),(&#39;2010-01-01 00:01:00&#39;,286252)] │
+└────┴─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
+</code></pre><h3 id="do-needed-ordering-in-each-array">Do needed ordering in each array</h3>
+<p>For example - by second element of tuple:</p>
+<pre tabindex="0"><code>SELECT 
+    id, 
+    arraySort(x -&gt; (x.2), groupArray((ts, val)))
+FROM test_running_difference
+GROUP BY id
+
+┌─id─┬─arraySort(lambda(tuple(x), tupleElement(x, 2)), groupArray(tuple(ts, val)))─────────────────────────────────────────────────────────────────────────────────┐
+│  0 │ [(&#39;2010-01-01 00:00:00&#39;,-1209),(&#39;2010-01-01 00:00:15&#39;,66839),(&#39;2010-01-01 00:00:30&#39;,135082),(&#39;2010-01-01 00:00:45&#39;,207471),(&#39;2010-01-01 00:01:00&#39;,275331)]  │
+│  1 │ [(&#39;2010-01-01 00:00:00&#39;,43),(&#39;2010-01-01 00:00:15&#39;,19440),(&#39;2010-01-01 00:00:30&#39;,37345),(&#39;2010-01-01 00:00:45&#39;,54323),(&#39;2010-01-01 00:01:00&#39;,72668)]        │
+│  2 │ [(&#39;2010-01-01 00:00:00&#39;,4322),(&#39;2010-01-01 00:00:15&#39;,74513),(&#39;2010-01-01 00:00:30&#39;,148744),(&#39;2010-01-01 00:00:45&#39;,217984),(&#39;2010-01-01 00:01:00&#39;,290366)]   │
+│  3 │ [(&#39;2010-01-01 00:00:00&#39;,-25),(&#39;2010-01-01 00:00:15&#39;,10542),(&#39;2010-01-01 00:00:30&#39;,21607),(&#39;2010-01-01 00:00:45&#39;,31835),(&#39;2010-01-01 00:01:00&#39;,46074)]       │
+│  4 │ [(&#39;2010-01-01 00:00:00&#39;,13720),(&#39;2010-01-01 00:00:15&#39;,94245),(&#39;2010-01-01 00:00:30&#39;,171744),(&#39;2010-01-01 00:00:45&#39;,252709),(&#39;2010-01-01 00:01:00&#39;,329207)]  │
+│  5 │ [(&#39;2010-01-01 00:00:00&#39;,903),(&#39;2010-01-01 00:00:15&#39;,8230),(&#39;2010-01-01 00:00:30&#39;,14736),(&#39;2010-01-01 00:00:45&#39;,21493),(&#39;2010-01-01 00:01:00&#39;,26770)]        │
+│  6 │ [(&#39;2010-01-01 00:00:00&#39;,18062),(&#39;2010-01-01 00:00:15&#39;,87823),(&#39;2010-01-01 00:00:30&#39;,155349),(&#39;2010-01-01 00:00:45&#39;,221271),(&#39;2010-01-01 00:01:00&#39;,287619)]  │
+│  7 │ [(&#39;2010-01-01 00:00:30&#39;,-3901),(&#39;2010-01-01 00:00:00&#39;,-2873),(&#39;2010-01-01 00:01:00&#39;,-2207),(&#39;2010-01-01 00:00:45&#39;,-488),(&#39;2010-01-01 00:00:15&#39;,-128)]       │
+│  8 │ [(&#39;2010-01-01 00:00:00&#39;,6286),(&#39;2010-01-01 00:00:15&#39;,30101),(&#39;2010-01-01 00:00:30&#39;,54303),(&#39;2010-01-01 00:00:45&#39;,76827),(&#39;2010-01-01 00:01:00&#39;,100456)]     │
+│  9 │ [(&#39;2010-01-01 00:00:00&#39;,13399),(&#39;2010-01-01 00:00:15&#39;,54321),(&#39;2010-01-01 00:00:30&#39;,89629),(&#39;2010-01-01 00:00:45&#39;,131066),(&#39;2010-01-01 00:01:00&#39;,165688)]   │
+│ 10 │ [(&#39;2010-01-01 00:00:00&#39;,18320),(&#39;2010-01-01 00:00:15&#39;,64078),(&#39;2010-01-01 00:00:30&#39;,106595),(&#39;2010-01-01 00:00:45&#39;,149087),(&#39;2010-01-01 00:01:00&#39;,194136)]  │
+│ 11 │ [(&#39;2010-01-01 00:00:00&#39;,11731),(&#39;2010-01-01 00:00:15&#39;,31886),(&#39;2010-01-01 00:00:30&#39;,54545),(&#39;2010-01-01 00:00:45&#39;,71934),(&#39;2010-01-01 00:01:00&#39;,94113)]     │
+│ 12 │ [(&#39;2010-01-01 00:00:00&#39;,857),(&#39;2010-01-01 00:00:15&#39;,8749),(&#39;2010-01-01 00:00:30&#39;,18903),(&#39;2010-01-01 00:00:45&#39;,25125),(&#39;2010-01-01 00:01:00&#39;,35810)]        │
+│ 13 │ [(&#39;2010-01-01 00:00:00&#39;,8752),(&#39;2010-01-01 00:00:15&#39;,28982),(&#39;2010-01-01 00:00:30&#39;,48023),(&#39;2010-01-01 00:00:45&#39;,65274),(&#39;2010-01-01 00:01:00&#39;,85081)]      │
+│ 14 │ [(&#39;2010-01-01 00:00:00&#39;,23060),(&#39;2010-01-01 00:00:15&#39;,61299),(&#39;2010-01-01 00:00:30&#39;,97930),(&#39;2010-01-01 00:00:45&#39;,135980),(&#39;2010-01-01 00:01:00&#39;,170256)]   │
+│ 15 │ [(&#39;2010-01-01 00:00:00&#39;,41902),(&#39;2010-01-01 00:00:15&#39;,95867),(&#39;2010-01-01 00:00:30&#39;,152165),(&#39;2010-01-01 00:00:45&#39;,210910),(&#39;2010-01-01 00:01:00&#39;,265445)]  │
+│ 16 │ [(&#39;2010-01-01 00:00:00&#39;,39406),(&#39;2010-01-01 00:00:15&#39;,93667),(&#39;2010-01-01 00:00:30&#39;,146130),(&#39;2010-01-01 00:00:45&#39;,200007),(&#39;2010-01-01 00:01:00&#39;,254828)]  │
+│ 17 │ [(&#39;2010-01-01 00:00:00&#39;,50010),(&#39;2010-01-01 00:00:15&#39;,114072),(&#39;2010-01-01 00:00:30&#39;,174854),(&#39;2010-01-01 00:00:45&#39;,235872),(&#39;2010-01-01 00:01:00&#39;,297238)] │
+│ 18 │ [(&#39;2010-01-01 00:00:00&#39;,57673),(&#39;2010-01-01 00:00:15&#39;,124279),(&#39;2010-01-01 00:00:30&#39;,189194),(&#39;2010-01-01 00:00:45&#39;,256112),(&#39;2010-01-01 00:01:00&#39;,323494)] │
+│ 19 │ [(&#39;2010-01-01 00:00:00&#39;,51389),(&#39;2010-01-01 00:00:15&#39;,109605),(&#39;2010-01-01 00:00:30&#39;,170134),(&#39;2010-01-01 00:00:45&#39;,229371),(&#39;2010-01-01 00:01:00&#39;,286252)] │
+└────┴─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+20 rows in set. Elapsed: 0.004 sec. 
+</code></pre><p>That can be rewritten like this:</p>
+<pre tabindex="0"><code>WITH 
+    groupArray(tuple(ts, val)) as window_rows,
+    arraySort(x -&gt; x.1, window_rows) as sorted_window_rows
+SELECT 
+    id, 
+    sorted_window_rows
+FROM test_running_difference
+GROUP BY id
+</code></pre><h3 id="apply-needed-logic-arraymap--arraydifference-etc">Apply needed logic arrayMap / arrayDifference etc</h3>
+<pre tabindex="0"><code>WITH 
+    groupArray(tuple(ts, val)) as window_rows,
+    arraySort(x -&gt; x.1, window_rows) as sorted_window_rows,
+    arrayMap(x -&gt; x.2, sorted_window_rows) as sorted_window_rows_val_column,
+	arrayDifference(sorted_window_rows_val_column) as sorted_window_rows_val_column_diff
+SELECT 
+    id, 
+    sorted_window_rows_val_column_diff
+FROM test_running_difference
+GROUP BY id
+</code></pre><pre tabindex="0"><code>┌─id─┬─sorted_window_rows_val_column_diff─┐
+│  0 │ [0,68048,68243,72389,67860]        │
+│  1 │ [0,19397,17905,16978,18345]        │
+│  2 │ [0,70191,74231,69240,72382]        │
+│  3 │ [0,10567,11065,10228,14239]        │
+│  4 │ [0,80525,77499,80965,76498]        │
+│  5 │ [0,7327,6506,6757,5277]            │
+│  6 │ [0,69761,67526,65922,66348]        │
+│  7 │ [0,2745,-3773,3413,-1719]          │
+│  8 │ [0,23815,24202,22524,23629]        │
+│  9 │ [0,40922,35308,41437,34622]        │
+│ 10 │ [0,45758,42517,42492,45049]        │
+│ 11 │ [0,20155,22659,17389,22179]        │
+│ 12 │ [0,7892,10154,6222,10685]          │
+│ 13 │ [0,20230,19041,17251,19807]        │
+│ 14 │ [0,38239,36631,38050,34276]        │
+│ 15 │ [0,53965,56298,58745,54535]        │
+│ 16 │ [0,54261,52463,53877,54821]        │
+│ 17 │ [0,64062,60782,61018,61366]        │
+│ 18 │ [0,66606,64915,66918,67382]        │
+│ 19 │ [0,58216,60529,59237,56881]        │
+└────┴────────────────────────────────────┘
+
+20 rows in set. Elapsed: 0.005 sec. 
+</code></pre><p>You can do also a lot of magic with arrayEnumerate and accessing different values by their ids.</p>
+<h3 id="now-you-can-return-you-arrays-back-to-rows">Now you can return you arrays back to rows</h3>
+<p>use arrayJoin</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">WITH</span><span style="color:#f8f8f8;text-decoration:underline"> 
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#000">groupArray</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">tuple</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">ts</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">val</span><span style="color:#000;font-weight:bold">))</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">as</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">window_rows</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#000">arraySort</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">-&gt;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">x</span><span style="color:#000;font-weight:bold">.</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">window_rows</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">as</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">sorted_window_rows</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#000">arrayMap</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">-&gt;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">x</span><span style="color:#000;font-weight:bold">.</span><span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">sorted_window_rows</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">as</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">sorted_window_rows_val_column</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">	</span><span style="color:#000">arrayDifference</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">sorted_window_rows_val_column</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">as</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">sorted_window_rows_val_column_diff</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">	</span><span style="color:#000">arrayJoin</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">sorted_window_rows_val_column_diff</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">as</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">diff</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">SELECT</span><span style="color:#f8f8f8;text-decoration:underline"> 
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#000">id</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> 
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#000">diff</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">FROM</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">test_running_difference</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">GROUP</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">BY</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">id</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div><p>or ARRAY JOIN</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">SELECT</span><span style="color:#f8f8f8;text-decoration:underline"> 
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#000">id</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#000">diff</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#000">ts</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">FROM</span><span style="color:#f8f8f8;text-decoration:underline"> 
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000;font-weight:bold">(</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#ce5c00;font-weight:bold">`</span><span style="color:#000">a</span><span style="color:#ce5c00;font-weight:bold">`</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">Nullable</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">UInt32</span><span style="color:#000;font-weight:bold">),</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#ce5c00;font-weight:bold">`</span><span style="color:#000">b</span><span style="color:#ce5c00;font-weight:bold">`</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">Nullable</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">UInt32</span><span style="color:#000;font-weight:bold">),</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#ce5c00;font-weight:bold">`</span><span style="color:#000">cnt</span><span style="color:#ce5c00;font-weight:bold">`</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">UInt32</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">ENGINE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">SummingMergeTree</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">ORDER</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">BY</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">a</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">b</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">SETTINGS</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">allow_nullable_key</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">INSERT</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">INTO</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">x</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">VALUES</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">Null</span><span style="color:#000;font-weight:bold">,</span><span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">,</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">),</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">Null</span><span style="color:#000;font-weight:bold">,</span><span style="color:#204a87;font-weight:bold">Null</span><span style="color:#000;font-weight:bold">,</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">),</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">(</span><span style="color:#0000cf;font-weight:bold">3</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">Null</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">),</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">(</span><span style="color:#0000cf;font-weight:bold">4</span><span style="color:#000;font-weight:bold">,</span><span style="color:#0000cf;font-weight:bold">4</span><span style="color:#000;font-weight:bold">,</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">);</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">INSERT</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">INTO</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">x</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">VALUES</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">Null</span><span style="color:#000;font-weight:bold">,</span><span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">,</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">),</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">Null</span><span style="color:#000;font-weight:bold">,</span><span style="color:#204a87;font-weight:bold">Null</span><span style="color:#000;font-weight:bold">,</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">),</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">(</span><span style="color:#0000cf;font-weight:bold">3</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">Null</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">),</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">(</span><span style="color:#0000cf;font-weight:bold">4</span><span style="color:#000;font-weight:bold">,</span><span style="color:#0000cf;font-weight:bold">4</span><span style="color:#000;font-weight:bold">,</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">);</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">SELECT</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">*</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">FROM</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">x</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">┌────</span><span style="color:#000">a</span><span style="color:#a40000">─┬────</span><span style="color:#000">b</span><span style="color:#a40000">─┬─</span><span style="color:#000">cnt</span><span style="color:#a40000">─┐</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#0000cf;font-weight:bold">3</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">null</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline">   </span><span style="color:#0000cf;font-weight:bold">2</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#0000cf;font-weight:bold">4</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#0000cf;font-weight:bold">4</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline">   </span><span style="color:#0000cf;font-weight:bold">2</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">null</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#0000cf;font-weight:bold">2</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline">   </span><span style="color:#0000cf;font-weight:bold">2</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">null</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">null</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline">   </span><span style="color:#0000cf;font-weight:bold">2</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">└──────┴──────┴─────┘</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span></code></pre></div>
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">WITH</span><span style="color:#f8f8f8;text-decoration:underline"> 
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#000">groupArray</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">tuple</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">ts</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">val</span><span style="color:#000;font-weight:bold">))</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">as</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">window_rows</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#000">arraySort</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">-&gt;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">x</span><span style="color:#000;font-weight:bold">.</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">window_rows</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">as</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">sorted_window_rows</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#000">arrayMap</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">-&gt;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">x</span><span style="color:#000;font-weight:bold">.</span><span style="color:#0000cf;font-weight:bold">2</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">sorted_window_rows</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">as</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">sorted_window_rows_val_column</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">SELECT</span><span style="color:#f8f8f8;text-decoration:underline"> 
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#000">id</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> 
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">	</span><span style="color:#000">arrayDifference</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">sorted_window_rows_val_column</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">as</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">sorted_window_rows_val_column_diff</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#000">arrayMap</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">-&gt;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">x</span><span style="color:#000;font-weight:bold">.</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">sorted_window_rows</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">as</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">sorted_window_rows_ts_column</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">FROM</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">test_running_difference</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">GROUP</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">BY</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">id</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">as</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">t1</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87">ARRAY</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">JOIN</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">sorted_window_rows_val_column_diff</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">as</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">diff</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">sorted_window_rows_ts_column</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">as</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">ts</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div><p>etc.</p>
+
 	
 	
 	<div class="text-muted mt-5 pt-3 border-top">
 
     Last modified
-    2022.03.02
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/4af0977df8a8d2d28f99d4b70216533d0f07e5a3">Update altinity-kb-nulls-in-order-by.md (4af0977df)</a>
+    2022.03.17
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/750d53a0a234985d5f17344e51a14700bcf35772">Create array-functions-as-window.md (750d53a0a)</a>
 
 </div>
 
