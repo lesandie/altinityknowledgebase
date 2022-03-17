@@ -74,7 +74,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.d5cfe1cadaa922644cf298e2261eaf88.json"
+  data-offline-search-index-json-src="/offline-search-index.3b121b59b3776feba0b0f277eb62ca34.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -125,7 +125,7 @@ This the multi-page printable view of this section.
     
     
 	
-<li>1: <a href="#pg-51f5584a0c33dfad80ddd52f05b0ff7f">Removing empty parts</a></li>
+<li>1: <a href="#pg-06ff440b95ba6f51135176bbbc9a61f4">Vulnerabilities</a></li>
 
 
     
@@ -133,7 +133,15 @@ This the multi-page printable view of this section.
     
     
 	
-<li>2: <a href="#pg-4f0b5e6619b8a3ab62f90a0ae7370c20">Removing lost parts</a></li>
+<li>2: <a href="#pg-51f5584a0c33dfad80ddd52f05b0ff7f">Removing empty parts</a></li>
+
+
+    
+  
+    
+    
+	
+<li>3: <a href="#pg-4f0b5e6619b8a3ab62f90a0ae7370c20">Removing lost parts</a></li>
 
 
     
@@ -164,7 +172,37 @@ This the multi-page printable view of this section.
 
 <div class="td-content" style="">
     
-	<h1 id="pg-51f5584a0c33dfad80ddd52f05b0ff7f">1 - Removing empty parts</h1>
+	<h1 id="pg-06ff440b95ba6f51135176bbbc9a61f4">1 - Vulnerabilities</h1>
+    <div class="lead">Vulnerabilities</div>
+	<h2 id="2020-03-15-7-vulnerabulities-in-clickhouse-were-published">2020-03-15: 7 vulnerabulities in ClickHouse were published.</h2>
+<p>See the details <a href="https://jfrog.com/blog/7-rce-and-dos-vulnerabilities-found-in-clickhouse-dbms/" target="_blank">https://jfrog.com/blog/7-rce-and-dos-vulnerabilities-found-in-clickhouse-dbms/</a></p>
+<p>Those vulnerabilities were fixed by 2 PRs:</p>
+<ul>
+<li><a href="https://github.com/ClickHouse/ClickHouse/pull/27136" target="_blank">https://github.com/ClickHouse/ClickHouse/pull/27136</a></li>
+<li><a href="https://github.com/ClickHouse/ClickHouse/pull/27743" target="_blank">https://github.com/ClickHouse/ClickHouse/pull/27743</a></li>
+</ul>
+<p>All releases starting from v21.10.2.15 have that problem fixed.</p>
+<p>Also, the fix was backported to 21.3 and 21.8 branches - versions v21.8.11.4-lts and v21.3.19.1-lts
+accordingly have the problem fixed (and all newer releases in those branches).</p>
+<p>If you use some older version we recommend upgrading.</p>
+<p>Before the upgrade - please ensure that ports 9000 and 8123 are not exposed to the internet, so external
+clients who can try to exploit those vulnerabilities can not access your clickhouse node.</p>
+
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-51f5584a0c33dfad80ddd52f05b0ff7f">2 - Removing empty parts</h1>
     <div class="lead">Removing empty parts</div>
 	<p>Removing of empty parts is a new feature introduced in 20.12.
 Earlier versions leave empty parts (with 0 rows) if TTL removes all rows from a part (<a href="https://github.com/ClickHouse/ClickHouse/issues/5491" target="_blank">https://github.com/ClickHouse/ClickHouse/issues/5491</a>).
@@ -212,7 +250,7 @@ Restart one replica, wait for replication queue to process, then restart the nex
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-4f0b5e6619b8a3ab62f90a0ae7370c20">2 - Removing lost parts</h1>
+	<h1 id="pg-4f0b5e6619b8a3ab62f90a0ae7370c20">3 - Removing lost parts</h1>
     <div class="lead">Removing lost parts</div>
 	<h2 id="there-might-be-parts-left-in-zookeeper-that-dont-exist-on-disk">There might be parts left in ZooKeeper that don&rsquo;t exist on disk</h2>
 <p>The explanation is here <a href="https://github.com/ClickHouse/ClickHouse/pull/26716" target="_blank">https://github.com/ClickHouse/ClickHouse/pull/26716</a></p>
