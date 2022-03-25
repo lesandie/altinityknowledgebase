@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.94.2" /><link rel="canonical" type="text/html" href="http://kb.altinity.com/altinity-kb-useful-queries/">
+<meta name="generator" content="Hugo 0.95.0" /><link rel="canonical" type="text/html" href="http://kb.altinity.com/altinity-kb-useful-queries/">
 <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
 <link rel="shortcut icon" href="/favicons/favicon.ico" >
 <link rel="icon" href="/favicons/favicon.ico" >
@@ -74,7 +74,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.4133f90e37b7b6b0e83a0d4813fec7f2.json"
+  data-offline-search-index-json-src="/offline-search-index.f20e357e81414e448da2335fdd6b519d.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -133,7 +133,7 @@ This the multi-page printable view of this section.
     
     
 	
-<li>2: <a href="#pg-10f25820508d00c9e0650390a42361ea">Handy queries for a system.query_log</a></li>
+<li>2: <a href="#pg-cf943ceb9a63bdd48ef3b4fd52fba64e">Debug hunging thing</a></li>
 
 
     
@@ -141,7 +141,7 @@ This the multi-page printable view of this section.
     
     
 	
-<li>3: <a href="#pg-d513ecaa3a77a116065353cc360a57fc">Can detached parts be dropped?</a></li>
+<li>3: <a href="#pg-10f25820508d00c9e0650390a42361ea">Handy queries for a system.query_log</a></li>
 
 
     
@@ -149,7 +149,7 @@ This the multi-page printable view of this section.
     
     
 	
-<li>4: <a href="#pg-d276b38fbf7a101890ac65681f9fc6ab">Database Size - Table - Column size</a></li>
+<li>4: <a href="#pg-d513ecaa3a77a116065353cc360a57fc">Can detached parts be dropped?</a></li>
 
 
     
@@ -157,7 +157,7 @@ This the multi-page printable view of this section.
     
     
 	
-<li>5: <a href="#pg-1d27ec0f0307f996cbd76b8697c78470">Datasets</a></li>
+<li>5: <a href="#pg-d276b38fbf7a101890ac65681f9fc6ab">Database Size - Table - Column size</a></li>
 
 
     
@@ -165,7 +165,7 @@ This the multi-page printable view of this section.
     
     
 	
-<li>6: <a href="#pg-adffc17f31e6074c402b6b2a4353932d">Number of active parts in a partition</a></li>
+<li>6: <a href="#pg-1d27ec0f0307f996cbd76b8697c78470">Datasets</a></li>
 
 
     
@@ -173,7 +173,15 @@ This the multi-page printable view of this section.
     
     
 	
-<li>7: <a href="#pg-db303ad1636093488b37a8d1b16311e4">Parts consistency</a></li>
+<li>7: <a href="#pg-adffc17f31e6074c402b6b2a4353932d">Number of active parts in a partition</a></li>
+
+
+    
+  
+    
+    
+	
+<li>8: <a href="#pg-db303ad1636093488b37a8d1b16311e4">Parts consistency</a></li>
 
 
     
@@ -250,7 +258,40 @@ ORDER BY
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-10f25820508d00c9e0650390a42361ea">2 - Handy queries for a system.query_log</h1>
+	<h1 id="pg-cf943ceb9a63bdd48ef3b4fd52fba64e">2 - Debug hunging thing</h1>
+    <div class="lead">Debug hunging / freezing things</div>
+	<h2 id="debug-hunging--freezing-things">Debug hunging / freezing things</h2>
+<p>If ClickHouse is busy with something and you don&rsquo;t know what&rsquo;s happeing, you can easily check the stacktraces of all the thread which are working</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">SELECT</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">arrayStringConcat</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">arrayMap</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">-&gt;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">demangle</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">addressToSymbol</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">x</span><span style="color:#000;font-weight:bold">)),</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">trace</span><span style="color:#000;font-weight:bold">),</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;\n&#39;</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">AS</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">trace_functions</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">count</span><span style="color:#000;font-weight:bold">()</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">FROM</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">system</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">stack_trace</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">GROUP</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">BY</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">trace_functions</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">ORDER</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">BY</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">count</span><span style="color:#000;font-weight:bold">()</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">DESC</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">SETTINGS</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">allow_introspection_functions</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">FORMAT</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Vertical</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div><p>If you can&rsquo;t start any queries, but you have access to the node, you can sent a singal</p>
+<pre tabindex="0"><code># older versions
+for i in $(ls -1 /proc/$(pidof clickhouse-server)/task/); do kill -TSTP $i; done
+# even older versions
+for i in $(ls -1 /proc/$(pidof clickhouse-server)/task/); do kill -SIGPROF $i; done
+</code></pre>
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-10f25820508d00c9e0650390a42361ea">3 - Handy queries for a system.query_log</h1>
     <div class="lead">Handy queries for a system.query_log.</div>
 	<h2 id="the-most-cpu--write--read-intensive-queries-from-query_log">The most cpu / write / read-intensive queries from query_log</h2>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">SELECT</span><span style="color:#f8f8f8;text-decoration:underline">
@@ -314,7 +355,7 @@ ORDER BY
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-d513ecaa3a77a116065353cc360a57fc">3 - Can detached parts be dropped?</h1>
+	<h1 id="pg-d513ecaa3a77a116065353cc360a57fc">4 - Can detached parts be dropped?</h1>
     <div class="lead">Can detached parts be dropped?</div>
 	<p>Here is what different statuses mean:</p>
 <ol>
@@ -350,7 +391,7 @@ If there is another way you could confirm that there is no data loss in the affe
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-d276b38fbf7a101890ac65681f9fc6ab">4 - Database Size - Table - Column size</h1>
+	<h1 id="pg-d276b38fbf7a101890ac65681f9fc6ab">5 - Database Size - Table - Column size</h1>
     <div class="lead">Database Size - Table - Column size</div>
 	<h2 id="tables">Tables</h2>
 <h3 id="table-size">Table size</h3>
@@ -537,7 +578,7 @@ If there is another way you could confirm that there is no data loss in the affe
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-1d27ec0f0307f996cbd76b8697c78470">5 - Datasets</h1>
+	<h1 id="pg-1d27ec0f0307f996cbd76b8697c78470">6 - Datasets</h1>
     <div class="lead">Datasets</div>
 	
 </div>
@@ -554,7 +595,7 @@ If there is another way you could confirm that there is no data loss in the affe
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-adffc17f31e6074c402b6b2a4353932d">6 - Number of active parts in a partition</h1>
+	<h1 id="pg-adffc17f31e6074c402b6b2a4353932d">7 - Number of active parts in a partition</h1>
     <div class="lead">Number of active parts in a partition</div>
 	<h2 id="q-why-do-i-have-several-active-parts-in-a-partition-why-clickhouse-does-not-merge-them-immediately">Q: Why do I have several active parts in a partition? Why Clickhouse does not merge them immediately?</h2>
 <h3 id="a-ch-does-not-merge-parts-by-time">A: CH does not merge parts by time</h3>
@@ -591,7 +632,7 @@ limit 20
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-db303ad1636093488b37a8d1b16311e4">7 - Parts consistency</h1>
+	<h1 id="pg-db303ad1636093488b37a8d1b16311e4">8 - Parts consistency</h1>
     
 	<h2 id="check-if-there-are-blocks-missing">Check if there are blocks missing</h2>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">SELECT</span><span style="color:#f8f8f8;text-decoration:underline">
