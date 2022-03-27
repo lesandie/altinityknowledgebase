@@ -74,7 +74,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.f20e357e81414e448da2335fdd6b519d.json"
+  data-offline-search-index-json-src="/offline-search-index.f58dc1e8e34984265acf62399d8a4760.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -125,7 +125,7 @@ This the multi-page printable view of this section.
     
     
 	
-<li>1: <a href="#pg-aa7585e74ad5fc4d1296e47a4fea8470">TTL GROUP BY Examples</a></li>
+<li>1: <a href="#pg-999e491b8ff27fc2a84fb0b542e2a0fc">What are my TTL settings?</a></li>
 
 
     
@@ -133,7 +133,15 @@ This the multi-page printable view of this section.
     
     
 	
-<li>2: <a href="#pg-62f8acba4b7f1d56232694670e018078">TTL Recompress example</a></li>
+<li>2: <a href="#pg-aa7585e74ad5fc4d1296e47a4fea8470">TTL GROUP BY Examples</a></li>
+
+
+    
+  
+    
+    
+	
+<li>3: <a href="#pg-62f8acba4b7f1d56232694670e018078">TTL Recompress example</a></li>
 
 
     
@@ -164,7 +172,79 @@ This the multi-page printable view of this section.
 
 <div class="td-content" style="">
     
-	<h1 id="pg-aa7585e74ad5fc4d1296e47a4fea8470">1 - TTL GROUP BY Examples</h1>
+	<h1 id="pg-999e491b8ff27fc2a84fb0b542e2a0fc">1 - What are my TTL settings?</h1>
+    <div class="lead">What are my TTL settings?</div>
+	<h2 id="using-show-create-table">Using <code>SHOW CREATE TABLE</code></h2>
+<p>If you just want to see the current TTL settings on a table, you can look at the schema definition.</p>
+<pre tabindex="0"><code>SHOW CREATE TABLE events2_local
+FORMAT Vertical
+
+Query id: eba671e5-6b8c-4a81-a4d8-3e21e39fb76b
+
+Row 1:
+──────
+statement: CREATE TABLE default.events2_local
+(
+    `EventDate` DateTime,
+    `EventID` UInt32,
+    `Value` String
+)
+ENGINE = ReplicatedMergeTree(&#39;/clickhouse/{cluster}/tables/{shard}/default/events2_local&#39;, &#39;{replica}&#39;)
+PARTITION BY toYYYYMM(EventDate)
+ORDER BY (EventID, EventDate)
+TTL EventDate + toIntervalMonth(1)
+SETTINGS index_granularity = 8192
+</code></pre><p>This works even when there&rsquo;s no data in the table. It does not tell you when the</p>
+<h2 id="using-systemparts">Using system.parts</h2>
+<p>If you want to see the actually TTL values for specific data, run a query on system.parts.
+There are columns listing all currently applicable TTL limits for each part.
+(It does not work if the table is empty because there aren&rsquo;t any parts yet.)</p>
+<pre tabindex="0"><code>SELECT *
+FROM system.parts
+WHERE (database = &#39;default&#39;) AND (table = &#39;events2_local&#39;)
+FORMAT Vertical
+
+Query id: 59106476-210f-4397-b843-9920745b6200
+
+Row 1:
+──────
+partition:                             202203
+name:                                  202203_0_0_0
+...
+database:                              default
+table:                                 events2_local
+...
+delete_ttl_info_min:                   2022-04-27 21:26:30
+delete_ttl_info_max:                   2022-04-27 21:26:30
+move_ttl_info.expression:              []
+move_ttl_info.min:                     []
+move_ttl_info.max:                     []
+default_compression_codec:             LZ4
+recompression_ttl_info.expression:     []
+recompression_ttl_info.min:            []
+recompression_ttl_info.max:            []
+group_by_ttl_info.expression:          []
+group_by_ttl_info.min:                 []
+group_by_ttl_info.max:                 []
+rows_where_ttl_info.expression:        []
+rows_where_ttl_info.min:               []
+rows_where_ttl_info.max:               []
+</code></pre>
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-aa7585e74ad5fc4d1296e47a4fea8470">2 - TTL GROUP BY Examples</h1>
     <div class="lead">TTL GROUP BY Examples</div>
 	<h3 id="example-with-mergetree-table">Example with MergeTree table</h3>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">CREATE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">TABLE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">test_ttl_group_by</span><span style="color:#f8f8f8;text-decoration:underline">
@@ -510,7 +590,7 @@ This the multi-page printable view of this section.
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-62f8acba4b7f1d56232694670e018078">2 - TTL Recompress example</h1>
+	<h1 id="pg-62f8acba4b7f1d56232694670e018078">3 - TTL Recompress example</h1>
     <div class="lead">TTL Recompress example</div>
 	<h2 id="example-how-to-create-a-table-and-define-recompression-rules">Example how to create a table and define recompression rules</h2>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">CREATE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">TABLE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">hits</span><span style="color:#f8f8f8;text-decoration:underline">
