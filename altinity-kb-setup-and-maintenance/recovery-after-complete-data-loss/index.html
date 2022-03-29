@@ -12,12 +12,12 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://kb.altinity.com/altinity-kb-setup-and-maintenance/recovery-after-complete-data-loss/" /><meta property="article:section" content="altinity-kb-setup-and-maintenance" />
 
-<meta property="article:modified_time" content="2022-03-29T16:13:24-03:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
+<meta property="article:modified_time" content="2022-03-29T16:24:14-03:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
 
 <meta itemprop="name" content="recovery-after-complete-data-loss">
 <meta itemprop="description" content="Recovery after complete data loss ">
-<meta itemprop="dateModified" content="2022-03-29T16:13:24-03:00" />
-<meta itemprop="wordCount" content="147">
+<meta itemprop="dateModified" content="2022-03-29T16:24:14-03:00" />
+<meta itemprop="wordCount" content="146">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="recovery-after-complete-data-loss"/>
 <meta name="twitter:description" content="Recovery after complete data loss "/>
@@ -75,7 +75,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.7ee843ae49bbbc2bcc77d6f4f54485bb.json"
+  data-offline-search-index-json-src="/offline-search-index.ac3ab6599ace52d7705e5e909c953662.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -103,7 +103,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.7ee843ae49bbbc2bcc77d6f4f54485bb.json"
+  data-offline-search-index-json-src="/offline-search-index.ac3ab6599ace52d7705e5e909c953662.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -670,7 +670,7 @@
   <ul>
     <li><a href="#test-data">test data</a></li>
     <li><a href="#destroy-srv2">destroy srv2</a></li>
-    <li><a href="#generate-script-which-will-re-create-databases-create_databasesql">generate script which will re-create databases (create_database.sql).</a></li>
+    <li><a href="#generate-script-to-re-create-databases-create_databasesql">generate script to re-create databases (create_database.sql).</a></li>
     <li><a href="#make-a-copy-of-schema-sql-files-metadata_schematar">make a copy of schema sql files (metadata_schema.tar)</a></li>
     <li><a href="#create-databases-at-srv2">create databases at srv2</a></li>
     <li><a href="#create-tables-at-srv2">create tables at srv2</a></li>
@@ -779,7 +779,7 @@ srv2 &ndash; lost replica / will restore it from srv1</p>
 <p>srv2</p>
 <pre tabindex="0"><code>/etc/init.d/clickhouse-server stop
 rm -rf /var/lib/clickhouse/*
-</code></pre><h2 id="generate-script-which-will-re-create-databases-create_databasesql">generate script which will re-create databases (create_database.sql).</h2>
+</code></pre><h2 id="generate-script-to-re-create-databases-create_databasesql">generate script to re-create databases (create_database.sql).</h2>
 <p>srv1</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#a40000">$</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">cat</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">home</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">ubuntu</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">generate_schema</span><span style="color:#000;font-weight:bold">.</span><span style="color:#204a87;font-weight:bold">sql</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">SELECT</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">concat</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;CREATE DATABASE &#34;&#39;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">name</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;&#34; ENGINE = &#39;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">engine</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39; COMMENT \&#39;&#39;, comment, &#39;</span><span style="color:#a40000">\</span><span style="color:#4e9a06">&#39;;&#39;</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline">
@@ -829,7 +829,7 @@ rm -rf /var/lib/clickhouse/*
 
     Last modified
     2022.03.29
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/e87fa2651a03cec99d91d8e25d2c4efce03086c3">Update recovery-after-complete-data-loss.md (e87fa2651)</a>
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/637961b776c33c705f3e76c130a49e4fe36691a2">Update recovery-after-complete-data-loss.md (637961b77)</a>
 
 </div>
 

@@ -74,7 +74,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.7ee843ae49bbbc2bcc77d6f4f54485bb.json"
+  data-offline-search-index-json-src="/offline-search-index.ac3ab6599ace52d7705e5e909c953662.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -1879,7 +1879,7 @@ srv2 &ndash; lost replica / will restore it from srv1</p>
 <p>srv2</p>
 <pre tabindex="0"><code>/etc/init.d/clickhouse-server stop
 rm -rf /var/lib/clickhouse/*
-</code></pre><h2 id="generate-script-which-will-re-create-databases-create_databasesql">generate script which will re-create databases (create_database.sql).</h2>
+</code></pre><h2 id="generate-script-to-re-create-databases-create_databasesql">generate script to re-create databases (create_database.sql).</h2>
 <p>srv1</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#a40000">$</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">cat</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">home</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">ubuntu</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">generate_schema</span><span style="color:#000;font-weight:bold">.</span><span style="color:#204a87;font-weight:bold">sql</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">SELECT</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">concat</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;CREATE DATABASE &#34;&#39;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">name</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;&#34; ENGINE = &#39;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">engine</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39; COMMENT \&#39;&#39;, comment, &#39;</span><span style="color:#a40000">\</span><span style="color:#4e9a06">&#39;;&#39;</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline">
