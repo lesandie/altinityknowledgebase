@@ -74,7 +74,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.efc7bfbeb628ca0603334dd838e4c7b8.json"
+  data-offline-search-index-json-src="/offline-search-index.d59df1a81c52b5ebfb3838dcae7d56b6.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -1850,8 +1850,8 @@ drwxrwxr-x 9 mfilimonov mfilimonov 4096 paź 15 11:15 ..
 	<h1 id="pg-178be1fa49d7fab0cb9c1deba7df54ca">11 - recovery-after-complete-data-loss</h1>
     <div class="lead">Recovery after complete data loss</div>
 	<h1 id="atomic--ordinary-databases">Atomic &amp; Ordinary databases.</h1>
-<p>srv1 &ndash; good replica
-srv2 &ndash; lost replica / will restore it from srv1</p>
+<p>srv1 &ndash; good replica</p>
+<p>srv2 &ndash; lost replica / we will restore it from srv1</p>
 <h2 id="test-data-3-tables-atomic--ordinary-databases">test data (3 tables (atomic &amp; ordinary databases))</h2>
 <p>srv1</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">create</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">database</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">testatomic</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">on</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">cluster</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;{cluster}&#39;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">engine</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#204a87;font-weight:bold">Atomic</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
