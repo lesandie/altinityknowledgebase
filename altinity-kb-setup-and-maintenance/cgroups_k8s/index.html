@@ -12,11 +12,11 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://kb.altinity.com/altinity-kb-setup-and-maintenance/cgroups_k8s/" /><meta property="article:section" content="altinity-kb-setup-and-maintenance" />
 
-<meta property="article:modified_time" content="2022-03-30T11:16:45-03:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
+<meta property="article:modified_time" content="2022-03-30T11:21:07-03:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
 
 <meta itemprop="name" content="cgroups and kubernetes cloud providers">
 <meta itemprop="description" content="cgroups and kubernetes cloud providers.">
-<meta itemprop="dateModified" content="2022-03-30T11:16:45-03:00" />
+<meta itemprop="dateModified" content="2022-03-30T11:21:07-03:00" />
 <meta itemprop="wordCount" content="136">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="cgroups and kubernetes cloud providers"/>
@@ -75,7 +75,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.5b04fb46ca67dec51b54b024d344ec4e.json"
+  data-offline-search-index-json-src="/offline-search-index.931e4701118e2e8af411f63edef6148f.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -103,7 +103,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.5b04fb46ca67dec51b54b024d344ec4e.json"
+  data-offline-search-index-json-src="/offline-search-index.931e4701118e2e8af411f63edef6148f.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -752,7 +752,7 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">┌─</span><span style="color:#000">name</span><span style="color:#a40000">────────┬─</span><span style="color:#000">value</span><span style="color:#a40000">─────┐</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">max_threads</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;auto(1)&#39;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">└─────────────┴───────────┘</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span></code></pre></div><p>This make ClickHouse to execute all queries with a single thread (normal behavior is half of available CPU cores, cores = 64, then &lsquo;auto(32)&rsquo;).</p>
+</span></span></span></code></pre></div><p>This makes ClickHouse to execute all queries with a single thread (normal behavior is half of available CPU cores, cores = 64, then &lsquo;auto(32)&rsquo;).</p>
 <p>We observe this cgroups behavior with AWS EKS (Kubernetes) environment and <a href="https://github.com/Altinity/clickhouse-operator" target="_blank">Altinity
 ClickHouse Operator</a> in case if requests.cpu and limits.cpu are not set for a resource.</p>
 <p>We suggest to set requests.cpu = <code>half of available CPU cores</code>, and limits.cpu = <code>CPU cores</code>.</p>
@@ -781,7 +781,7 @@ ClickHouse Operator</a> in case if requests.cpu and limits.cpu are not set for a
 
     Last modified
     2022.03.30
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/a084e55011ffb41928fccecba982d4b44ac55673">Update cgroups_k8s.md (a084e5501)</a>
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/2ac01289c1c347238f35111eb316227c243d3f36">Update cgroups_k8s.md (2ac01289c)</a>
 
 </div>
 
