@@ -12,12 +12,12 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://kb.altinity.com/altinity-kb-setup-and-maintenance/cgroups_k8s/" /><meta property="article:section" content="altinity-kb-setup-and-maintenance" />
 
-<meta property="article:modified_time" content="2022-03-30T11:31:14-03:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
+<meta property="article:modified_time" content="2022-03-30T11:31:42-03:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
 
 <meta itemprop="name" content="cgroups and kubernetes cloud providers">
 <meta itemprop="description" content="cgroups and kubernetes cloud providers.">
-<meta itemprop="dateModified" content="2022-03-30T11:31:14-03:00" />
-<meta itemprop="wordCount" content="195">
+<meta itemprop="dateModified" content="2022-03-30T11:31:42-03:00" />
+<meta itemprop="wordCount" content="197">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="cgroups and kubernetes cloud providers"/>
 <meta name="twitter:description" content="cgroups and kubernetes cloud providers."/>
@@ -75,7 +75,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.fdcf0af047912c62b3f61ff4838f6914.json"
+  data-offline-search-index-json-src="/offline-search-index.e0de46ee05cbea1fa6fd7f9d7aee3fd8.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -103,7 +103,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.fdcf0af047912c62b3f61ff4838f6914.json"
+  data-offline-search-index-json-src="/offline-search-index.e0de46ee05cbea1fa6fd7f9d7aee3fd8.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -782,7 +782,7 @@ ClickHouse Operator</a> in case if requests.cpu and limits.cpu are not set for a
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">max_threads</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;auto(8)&#39;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">└─────────────┴───────────┘</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span></code></pre></div><h2 id="in-depth">in depth</h2>
-<p>For some reason AWS EKS sets cgroup kernel parameters in case of empty requests.cpu &amp; limits.cpu</p>
+<p>For some reason AWS EKS sets cgroup kernel parameters in case of empty requests.cpu &amp; limits.cpu into these:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"># cat /sys/fs/cgroup/cpu/cpu.cfs_quota_us</span>
 </span></span><span style="display:flex;"><span>-1
 </span></span><span style="display:flex;"><span>
@@ -802,7 +802,7 @@ ClickHouse Operator</a> in case if requests.cpu and limits.cpu are not set for a
 
     Last modified
     2022.03.30
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/a17099db2fdb59422ea0010da32246908c4c8ac9">Update cgroups_k8s.md (a17099db2)</a>
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/cd99ef37f0c9e3c6c29eb74b9a2eb3e618763a1f">Update cgroups_k8s.md (cd99ef37f)</a>
 
 </div>
 
