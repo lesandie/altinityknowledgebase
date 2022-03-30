@@ -74,7 +74,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.f6376e656bbff3255ca787fdcd0e6ea4.json"
+  data-offline-search-index-json-src="/offline-search-index.5b04fb46ca67dec51b54b024d344ec4e.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -1400,8 +1400,8 @@ while the localhost (used by clickhouse-client) may be resolved to ipv6 address.
 	<h1 id="pg-5c047eed8f820765587e3275057bd864">4 - cgroups and kubernetes cloud providers</h1>
     <div class="lead">cgroups and kubernetes cloud providers.</div>
 	<h2 id="cgroups-and-kubernetes-cloud-providers">cgroups and kubernetes cloud providers</h2>
-<p>Why my Clichkouse is slow after upgrade to version 22.2 and higher?</p>
-<p>The probable reason is that Clichkouse 22.2 started to respect cgroups (Respect cgroups limits in max_threads autodetection. <a href="https://github.com/ClickHouse/ClickHouse/pull/33342" target="_blank">#33342</a> (<a href="https://github.com/JaySon-Huang" target="_blank">JaySon</a>).</p>
+<p>Why my ClickHouse is slow after upgrade to version 22.2 and higher?</p>
+<p>The probable reason is that ClickHouse 22.2 started to respect cgroups (Respect cgroups limits in max_threads autodetection. <a href="https://github.com/ClickHouse/ClickHouse/pull/33342" target="_blank">#33342</a> (<a href="https://github.com/JaySon-Huang" target="_blank">JaySon</a>).</p>
 <p>You can observe that <code>max_threads = 1</code></p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">SELECT</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#000">name</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline">
@@ -1412,11 +1412,11 @@ while the localhost (used by clickhouse-client) may be resolved to ipv6 address.
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">┌─</span><span style="color:#000">name</span><span style="color:#a40000">────────┬─</span><span style="color:#000">value</span><span style="color:#a40000">─────┐</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">max_threads</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;auto(1)&#39;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">└─────────────┴───────────┘</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span></code></pre></div><p>This make Clichkouse to execute all queries with a single thread (normal behavior is half of available CPU cores, cores = 64, then &lsquo;auto(32)&rsquo;).</p>
+</span></span></span></code></pre></div><p>This make ClickHouse to execute all queries with a single thread (normal behavior is half of available CPU cores, cores = 64, then &lsquo;auto(32)&rsquo;).</p>
 <p>We observe this cgroups behavior with AWS EKS (Kubernetes) environment and <a href="https://github.com/Altinity/clickhouse-operator" target="_blank">Altinity
 ClickHouse Operator</a> in case if requests.cpu and limits.cpu are not set for a resource.</p>
-<p>We suggest to set requests.cpu = half of available CPU cores, and limits.cpu = CPU cores.</p>
-<p>For example in case of 16 CPU cores</p>
+<p>We suggest to set requests.cpu = <code>half of available CPU cores</code>, and limits.cpu = <code>CPU cores</code>.</p>
+<p>For example in case of 16 CPU cores:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span>          resources:
 </span></span><span style="display:flex;"><span>            requests:
 </span></span><span style="display:flex;"><span>              memory: ...
