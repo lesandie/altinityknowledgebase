@@ -74,7 +74,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.dcd9a8d268c15064e652811bdaeb86a0.json"
+  data-offline-search-index-json-src="/offline-search-index.0bf23cb1c2dbc4c22578691e0dfe4f62.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -1423,6 +1423,7 @@ while the localhost (used by clickhouse-client) may be resolved to ipv6 address.
 </span></span></span></code></pre></div><p>This makes ClickHouse to execute all queries with a single thread (normal behavior is half of available CPU cores, cores = 64, then &lsquo;auto(32)&rsquo;).</p>
 <p>We observe this cgroups behavior with AWS EKS (Kubernetes) environment and <a href="https://github.com/Altinity/clickhouse-operator" target="_blank">Altinity
 ClickHouse Operator</a> in case if requests.cpu and limits.cpu are not set for a resource.</p>
+<h2 id="workaround">Workaround</h2>
 <p>We suggest to set requests.cpu = <code>half of available CPU cores</code>, and limits.cpu = <code>CPU cores</code>.</p>
 <p>For example in case of 16 CPU cores:</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span>          resources:
@@ -1456,7 +1457,9 @@ ClickHouse Operator</a> in case if requests.cpu and limits.cpu are not set for a
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>cgroup_share = /sys/fs/cgroup/cpu/cpu.shares (2)
 </span></span><span style="display:flex;"><span>PER_CPU_SHARES = 1024
 </span></span><span style="display:flex;"><span>share_count = ceil( cgroup_share / PER_CPU_SHARES ) ---&gt; ceil(2 / 1024) ---&gt; 1
-</span></span></code></pre></div>
+</span></span></code></pre></div><h2 id="fix">Fix</h2>
+<p>Incorrect calculation was fixed in <a href="https://github.com/ClickHouse/ClickHouse/pull/35815" target="_blank">https://github.com/ClickHouse/ClickHouse/pull/35815</a> and will work correctly on newer releases.</p>
+
 </div>
 
 
