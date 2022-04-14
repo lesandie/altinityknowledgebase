@@ -74,7 +74,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.2e60dac8695bcfca147b669f9d55de12.json"
+  data-offline-search-index-json-src="/offline-search-index.c59fb35855c82eff53ac62c199fe1c30.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -388,7 +388,7 @@ select name, partition_id, min_block_number, max_block_number, level, data_versi
 	<h1 id="pg-eabd97bf38d9bf51a18f6fc47b73976c">3 - How to pick an ORDER BY / PRIMARY KEY / PARTITION BY for the MergeTree-family table</h1>
     <div class="lead">How to pick an ORDER BY / PRIMARY KEY / PARTITION BY for the MergeTree table.</div>
 	<h2 id="how-to-pick-an-order-by--primary-key">How to pick an ORDER BY / PRIMARY KEY</h2>
-<p>good order by usually have 3 to 5 columns, from lowest cardinal on the left (and the most important for filtering) to highest cardinal (and less important for filtering).</p>
+<p>Good <code>order by</code> usually have 3 to 5 columns, from lowest cardinal on the left (and the most important for filtering) to highest cardinal (and less important for filtering).</p>
 <p>Practical approach to create an good ORDER BY for a table:</p>
 <ol>
 <li>Pick the columns you use in filtering always</li>
@@ -404,9 +404,9 @@ special variants of MergeTree may require special ORDER BY to make the record un
 </code></pre><pre tabindex="0"><code>ORDER BY (site_id, toStartOfHour(timestamp), sessionid, timestamp )
 PRIMARY KEY (site_id, toStartOfHour(timestamp), sessionid)
 </code></pre><h3 id="for-summing--aggregating">For Summing / Aggregating</h3>
-<p>All dimentions go to ORDER BY, all metrics - outside of that.</p>
+<p>All dimensions go to ORDER BY, all metrics - outside of that.</p>
 <p>The most important for filtering columns with the lowest cardinality should be the left most.</p>
-<p>If number of dimentions is high it&rsquo;s typically make sense to use a prefix of ORDER BY as a PRIMARY KEY to avoid polluting sparse index.</p>
+<p>If number of dimensions is high it&rsquo;s typically make sense to use a prefix of ORDER BY as a PRIMARY KEY to avoid polluting sparse index.</p>
 <p>Examples:</p>
 <pre tabindex="0"><code>ORDER BY (tenant_id, hour, country_code, team_id, group_id, source_id)
 PRIMARY KEY (tenant_id, hour, country_code, team_id)
