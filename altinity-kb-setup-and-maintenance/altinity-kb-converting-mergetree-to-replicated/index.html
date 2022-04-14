@@ -13,12 +13,12 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-converting-mergetree-to-replicated/" /><meta property="article:section" content="altinity-kb-setup-and-maintenance" />
 
-<meta property="article:modified_time" content="2022-03-14T09:52:05+02:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
+<meta property="article:modified_time" content="2022-04-14T10:11:10-04:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
 
 <meta itemprop="name" content="Converting MergeTree to Replicated">
 <meta itemprop="description" content="Converting MergeTree to Replicated
 ">
-<meta itemprop="dateModified" content="2022-03-14T09:52:05+02:00" />
+<meta itemprop="dateModified" content="2022-04-14T10:11:10-04:00" />
 <meta itemprop="wordCount" content="231">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Converting MergeTree to Replicated"/>
@@ -78,7 +78,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.91f01086ef615dd47c9fc06c919b6695.json"
+  data-offline-search-index-json-src="/offline-search-index.cfdf85b293b3dd69ba8bf6b6b32fae47.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -106,7 +106,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.91f01086ef615dd47c9fc06c919b6695.json"
+  data-offline-search-index-json-src="/offline-search-index.cfdf85b293b3dd69ba8bf6b6b32fae47.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -755,7 +755,7 @@
 <li>Embedded command for that should be added in future.</li>
 </ol>
 <h2 id="example-for-option-2">example for option 2</h2>
-<p>Note: ATTACH PARTITION ID &lsquo;bar&rsquo; FROM &lsquo;foo&rsquo;` is practically free from compute and disk space perpespective. This feature utilizes filesysem hard-links and the fact that files are immutable in Clickhouse ( it&rsquo;s the core of the Clickhouse design, filesysem hard-links and such file manipulations are widely used ).</p>
+<p>Note: ATTACH PARTITION ID &lsquo;bar&rsquo; FROM &lsquo;foo&rsquo;` is practically free from compute and disk space perspective. This feature utilizes filesysem hard-links and the fact that files are immutable in Clickhouse ( it&rsquo;s the core of the Clickhouse design, filesystem hard-links and such file manipulations are widely used ).</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">create</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">table</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">foo</span><span style="color:#000;font-weight:bold">(</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">A</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Int64</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">D</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87">Date</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">S</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">String</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline"> 
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">Engine</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">MergeTree</span><span style="color:#f8f8f8;text-decoration:underline"> 
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">partition</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">by</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">toYYYYMM</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">D</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">order</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">by</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">A</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
@@ -799,8 +799,8 @@
 	<div class="text-muted mt-5 pt-3 border-top">
 
     Last modified
-    2022.03.14
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/5d7b4e098a032036a6b34157256c8279ad6cdc26">Update altinity-kb-converting-mergetree-to-replicated.md (5d7b4e098)</a>
+    2022.04.14
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/7f05ed5fb24f3943bf97203cd574acd7e800e137">Update altinity-kb-converting-mergetree-to-replicated.md (7f05ed5fb)</a>
 
 </div>
 
