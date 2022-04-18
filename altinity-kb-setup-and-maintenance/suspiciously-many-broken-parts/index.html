@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.96.0" /><META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
+<meta name="generator" content="Hugo 0.97.2" /><META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
 <link rel="shortcut icon" href="/favicons/favicon.ico" >
 <link rel="icon" href="/favicons/favicon.ico" >
 <title>Suspiciously many broken parts | Altinity Knowledge Base</title>
@@ -13,13 +13,13 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://kb.altinity.com/altinity-kb-setup-and-maintenance/suspiciously-many-broken-parts/" /><meta property="article:section" content="altinity-kb-setup-and-maintenance" />
 
-<meta property="article:modified_time" content="2022-01-31T15:17:37-04:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
+<meta property="article:modified_time" content="2022-04-18T14:45:56-03:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
 
 <meta itemprop="name" content="Suspiciously many broken parts">
 <meta itemprop="description" content="Suspiciously many broken parts error during the server startup.
 ">
-<meta itemprop="dateModified" content="2022-01-31T15:17:37-04:00" />
-<meta itemprop="wordCount" content="471">
+<meta itemprop="dateModified" content="2022-04-18T14:45:56-03:00" />
+<meta itemprop="wordCount" content="500">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Suspiciously many broken parts"/>
 <meta name="twitter:description" content="Suspiciously many broken parts error during the server startup.
@@ -78,7 +78,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.0351aef05d5ba23ee399230ff4f67c5f.json"
+  data-offline-search-index-json-src="/offline-search-index.d507c2fe47db3805c25df184160d386c.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -106,7 +106,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.0351aef05d5ba23ee399230ff4f67c5f.json"
+  data-offline-search-index-json-src="/offline-search-index.d507c2fe47db3805c25df184160d386c.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -775,7 +775,7 @@
 <h2 id="action">Action:</h2>
 <ol>
 <li>
-<p>If you ok to accept the data loss: set up <code>force_restrore_data</code> flag and clickhouse will move the parts to detached.</p>
+<p>If you ok to accept the data loss: set up <code>force_restore_data</code> flag and clickhouse will move the parts to detached. Data loss is possible the issue is a result of misconfiguration (someone accidentally changed configs for shard/replica macros, data will be moved to detached folder and can be recovered).</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo -u clickhouse touch /var/lib/clickhouse/flags/force_restore_data
 </span></span></code></pre></div><p>then restart clickhouse, the table will be attached, and the broken parts will be detached, which means the data from those parts will not be available for the selects. You can see the list of those parts in the <code>system.detached_parts</code> table and drop them if needed using <code>ALTER TABLE ...  DROP DETACHED PART ...</code> commands.</p>
 <p>If you are ok to tolerate bigger losses automatically you can change that safeguard configuration to be less sensitive by increasing <code>max_suspicious_broken_parts</code> setting:</p>
@@ -828,8 +828,8 @@ sudo service clickhouse-server restart
 	<div class="text-muted mt-5 pt-3 border-top">
 
     Last modified
-    2022.01.31
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/093bcb9764c1fddd2eb8a1a9b9e5eeb3c3ecd3f8">Update suspiciously-many-broken-parts.md (093bcb976)</a>
+    2022.04.18
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/fc638308feef2e85bff7a1e3770a18e983e3b20b">Update suspiciously-many-broken-parts.md (fc638308f)</a>
 
 </div>
 
@@ -932,7 +932,7 @@ sudo service clickhouse-server restart
 
 
 
-<script src="/js/main.min.7fa9e3e39f56ebd66798993ef3c080218d9696c971a28ef8872d750b7416a435.js" integrity="sha256-f6nj459W69ZnmJk&#43;88CAIY2Wlslxoo74hy11C3QWpDU=" crossorigin="anonymous"></script>
+<script src="/js/main.min.ed4d5ba6dd1e553488f282988ee384ef44608aeee43296d0ef373812eab68dc0.js" integrity="sha256-7U1bpt0eVTSI8oKYjuOE70Rgiu7kMpbQ7zc4Euq2jcA=" crossorigin="anonymous"></script>
 
 
 
