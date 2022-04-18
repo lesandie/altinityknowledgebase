@@ -74,7 +74,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.d507c2fe47db3805c25df184160d386c.json"
+  data-offline-search-index-json-src="/offline-search-index.fe4cc4d1a7a1025c04bc9d76909e1a26.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -5696,7 +5696,7 @@ It’s possible to check it via query:</p>
 <h2 id="action">Action:</h2>
 <ol>
 <li>
-<p>If you ok to accept the data loss: set up <code>force_restore_data</code> flag and clickhouse will move the parts to detached. Data loss is possible the issue is a result of misconfiguration (someone accidentally changed configs for shard/replica macros, data will be moved to detached folder and can be recovered).</p>
+<p>If you ok to accept the data loss: set up <code>force_restore_data</code> flag and clickhouse will move the parts to detached. Data loss is possible if the issue is a result of misconfiguration (i.e. someone accidentally has fixed xml configs with incorrect shard/replica macros, data will be moved to detached folder and can be recovered).</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo -u clickhouse touch /var/lib/clickhouse/flags/force_restore_data
 </span></span></code></pre></div><p>then restart clickhouse, the table will be attached, and the broken parts will be detached, which means the data from those parts will not be available for the selects. You can see the list of those parts in the <code>system.detached_parts</code> table and drop them if needed using <code>ALTER TABLE ...  DROP DETACHED PART ...</code> commands.</p>
 <p>If you are ok to tolerate bigger losses automatically you can change that safeguard configuration to be less sensitive by increasing <code>max_suspicious_broken_parts</code> setting:</p>
