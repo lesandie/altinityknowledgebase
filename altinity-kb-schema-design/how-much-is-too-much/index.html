@@ -12,12 +12,12 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://kb.altinity.com/altinity-kb-schema-design/how-much-is-too-much/" /><meta property="article:section" content="altinity-kb-schema-design" />
 
-<meta property="article:modified_time" content="2022-02-17T13:11:03+01:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
+<meta property="article:modified_time" content="2022-04-22T14:14:49+02:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
 
 <meta itemprop="name" content="How much is too much?">
 <meta itemprop="description" content="ClickHouse Limitations.">
-<meta itemprop="dateModified" content="2022-02-17T13:11:03+01:00" />
-<meta itemprop="wordCount" content="639">
+<meta itemprop="dateModified" content="2022-04-22T14:14:49+02:00" />
+<meta itemprop="wordCount" content="720">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="How much is too much?"/>
 <meta name="twitter:description" content="ClickHouse Limitations."/>
@@ -75,7 +75,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.0824a05a84db93ca50e82b7f32291a87.json"
+  data-offline-search-index-json-src="/offline-search-index.59c178fb831b78e6b9c2685640b94972.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -103,7 +103,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.0824a05a84db93ca50e82b7f32291a87.json"
+  data-offline-search-index-json-src="/offline-search-index.59c178fb831b78e6b9c2685640b94972.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -692,6 +692,7 @@
         <li><a href="#number-of-materialized-view-attached-to-a-single-table">Number of materialized view attached to a single table.</a></li>
         <li><a href="#number-of-projections-inside-a-single-table">Number of projections inside a single table.</a></li>
         <li><a href="#number-of-secondary-indexes-a-single-table">Number of secondary indexes a single table.</a></li>
+        <li><a href="#number-of-kafka-tables--consumers-inside">Number of Kafka tables / consumers inside</a></li>
       </ul>
     </li>
   </ul>
@@ -810,14 +811,19 @@ See for example <a href="https://github.com/ClickHouse/ClickHouse/issues/6943" t
 <p>One to about a dozen. Different types of indexes has different penalty, bloom_filter is 100 times heavier than min_max index
 At some point your inserts will slow down. Try to create possible minimum of indexes.
 You can combine many columns into a single index and this index will work for any predicate but create less impact.</p>
+<h3 id="number-of-kafka-tables--consumers-inside">Number of Kafka tables / consumers inside</h3>
+<p>High number of Kafka tables maybe quite expensive (every consumer = very expensive librdkafka object with several threads inside).
+Usually alternative approaches are preferrable (mixing several datastreams in one topic, denormalizing, consuming several topics of identical structure with a single Kafka table, etc).</p>
+<p>If you really need a lot of Kafka tables you may need more ram / CPU on the node and
+increase <code>background_message_broker_schedule_pool_size</code> (default is 16) to the number of Kafka tables.</p>
 
 	
 	
 	<div class="text-muted mt-5 pt-3 border-top">
 
     Last modified
-    2022.02.17
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/44688d961ea2cfc02a3b8a95731652d6dbfdd2dd">Update how-much-is-too-much.md (44688d961)</a>
+    2022.04.22
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/4d97ba14ece4436a6530897f5b497a7bc7243bb0">Update how-much-is-too-much.md (4d97ba14e)</a>
 
 </div>
 
