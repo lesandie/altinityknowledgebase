@@ -74,7 +74,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.7a86aa8c26a855df78c040859554901a.json"
+  data-offline-search-index-json-src="/offline-search-index.428135378bfbc0793e2387d160915064.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -102,7 +102,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.7a86aa8c26a855df78c040859554901a.json"
+  data-offline-search-index-json-src="/offline-search-index.428135378bfbc0793e2387d160915064.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -790,7 +790,7 @@
 <li>
 <p>Use MATERIALIZED VIEW with TO syntax (explicit storage table)</p>
 <p>First you create the table which will store the data calculated by MV explicitly, and after that create materialized view itself with TO syntax.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">CREATE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">TABLE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">target</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">(</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">...</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Engine</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000">ReplacingSummingMergeTree</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">CREATE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">TABLE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">target</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">(</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">...</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Engine</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#000;font-weight:bold">[</span><span style="color:#000">Replicated</span><span style="color:#000;font-weight:bold">][</span><span style="color:#000">Replacing</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000">Summing</span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#000;font-weight:bold">...]</span><span style="color:#000">MergeTree</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">...;</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">CREATE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">MATERIALIZED</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">VIEW</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">mv_source2target</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">TO</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">target</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">AS</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">SELECT</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">...</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">FROM</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">source</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
@@ -972,8 +972,8 @@ If you really need to update the MV with the left-most table, not impacting the 
 	<div class="text-muted mt-5 pt-3 border-top">
 
     Last modified
-    2022.02.15
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/df3e39c1a4c35799492b345db24c1d42b3b38009">Update _index.md (df3e39c1a)</a>
+    2022.04.25
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/e36f97f0b19d00e67d4bc8add6c9069fc71be81b">Update _index.md (e36f97f0b)</a>
 
 </div>
 
