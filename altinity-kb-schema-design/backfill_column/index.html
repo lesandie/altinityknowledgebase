@@ -12,11 +12,11 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://kb.altinity.com/altinity-kb-schema-design/backfill_column/" /><meta property="article:section" content="altinity-kb-schema-design" />
 
-<meta property="article:modified_time" content="2022-01-31T14:16:56-04:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
+<meta property="article:modified_time" content="2022-04-25T16:53:07+00:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
 
 <meta itemprop="name" content="Column backfilling with alter/update using a dictionary">
 <meta itemprop="description" content="Column backfilling with alter/update using a dictionary">
-<meta itemprop="dateModified" content="2022-01-31T14:16:56-04:00" />
+<meta itemprop="dateModified" content="2022-04-25T16:53:07+00:00" />
 <meta itemprop="wordCount" content="169">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Column backfilling with alter/update using a dictionary"/>
@@ -75,7 +75,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.428135378bfbc0793e2387d160915064.json"
+  data-offline-search-index-json-src="/offline-search-index.5ad95791fcfb5c39f4178bba7d77703d.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -103,7 +103,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.428135378bfbc0793e2387d160915064.json"
+  data-offline-search-index-json-src="/offline-search-index.5ad95791fcfb5c39f4178bba7d77703d.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -787,7 +787,7 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#8f5902;font-style:italic">-- let&#39;s test that the discionary is working
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#8f5902;font-style:italic">-- let&#39;s test that the dictionary is working
 </span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">select</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">dictGetString</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;item_dict&#39;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;S&#39;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">tuple</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">toUInt64</span><span style="color:#000;font-weight:bold">(</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">),</span><span style="color:#4e9a06">&#39;1&#39;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#4e9a06">&#39;1&#39;</span><span style="color:#000;font-weight:bold">));</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">┌─</span><span style="color:#000">dictGetString</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;item_dict&#39;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;S&#39;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">tuple</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">toUInt64</span><span style="color:#000;font-weight:bold">(</span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#000;font-weight:bold">),</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;1&#39;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;1&#39;</span><span style="color:#000;font-weight:bold">))</span><span style="color:#a40000">─┐</span><span style="color:#f8f8f8;text-decoration:underline">
@@ -902,8 +902,8 @@ Need to use <code>alter table test.fact ... setting allow_nondeterministic_mutat
 	<div class="text-muted mt-5 pt-3 border-top">
 
     Last modified
-    2022.01.31
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/80206f62609a2d297f6434ddfb35ba297930c440">Update backfill_column.md (80206f626)</a>
+    2022.04.25
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/237358b627ef520895c1e382c47d9c337e97c076">fix typo (discionary -&gt; dictionary) in &#34;Column backfilling with alter/update using a dictionary&#34; (237358b62)</a>
 
 </div>
 
