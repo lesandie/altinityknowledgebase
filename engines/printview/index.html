@@ -74,7 +74,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.5ad95791fcfb5c39f4178bba7d77703d.json"
+  data-offline-search-index-json-src="/offline-search-index.a2260cb1df4a15011722e22703e6819c.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -1040,7 +1040,7 @@ PRIMARY KEY (tenantid, site_id) -- eventid is not used for filtering, needed onl
 </code></pre><h2 id="partition-by">PARTITION BY</h2>
 <ul>
 <li>Good size for single partition is something like 1-300Gb.</li>
-<li>For Summing/Replacing a but smaller (400Mb-40Gb)</li>
+<li>For Summing/Replacing a bit smaller (400Mb-40Gb)</li>
 <li>Better to avoid touching more that few dozens of partitions with typical SELECT query.</li>
 <li>Single insert should bring data to one or few partitions.</li>
 <li>The number of partitons in table - dozen or hundreds, not thousands.</li>
