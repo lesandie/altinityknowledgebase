@@ -74,7 +74,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.a2ec0d7086aac7e8199478b25dc6bb9d.json"
+  data-offline-search-index-json-src="/offline-search-index.23a7f6b627ac05f642864c3f28d4462a.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -3043,7 +3043,16 @@ select value from system.events where event='DataAfterMutationDiffersFromReplica
 <li>/var/log/clickhouse-server/clickhouse-server.log (trace logs,  very detailed, useful for debugging, usually too verbose to monitor).</li>
 </ul>
 <p>You can additionally enable system.text_log table to have an access to the logs from clickhouse sql queries (ensure that you will not expose some information to the users which should not see it).</p>
-<h2 id="opentelemetry-support">OpenTelemetry support</h2>
+<pre tabindex="0"><code>$ cat /etc/clickhouse-server/config.d/text_log.xml
+&lt;yandex&gt;
+    &lt;text_log&gt;
+        &lt;database&gt;system&lt;/database&gt;
+        &lt;table&gt;text_log&lt;/table&gt;
+        &lt;flush_interval_milliseconds&gt;7500&lt;/flush_interval_milliseconds&gt;
+        &lt;level&gt;warning&lt;/level&gt;
+    &lt;/text_log&gt;
+&lt;/yandex&gt;
+</code></pre><h2 id="opentelemetry-support">OpenTelemetry support</h2>
 <p>See <a href="https://clickhouse.com/docs/en/operations/opentelemetry/" target="_blank">https://clickhouse.com/docs/en/operations/opentelemetry/</a></p>
 <h2 id="other-sources">Other sources</h2>
 <ul>

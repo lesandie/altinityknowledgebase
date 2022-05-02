@@ -13,13 +13,13 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-monitoring/" /><meta property="article:section" content="altinity-kb-setup-and-maintenance" />
 
-<meta property="article:modified_time" content="2022-02-17T13:07:21+01:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
+<meta property="article:modified_time" content="2022-05-02T13:27:24-03:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
 
 <meta itemprop="name" content="ClickHouse Monitoring">
 <meta itemprop="description" content="ClickHouse Monitoring
 ">
-<meta itemprop="dateModified" content="2022-02-17T13:07:21+01:00" />
-<meta itemprop="wordCount" content="719">
+<meta itemprop="dateModified" content="2022-05-02T13:27:24-03:00" />
+<meta itemprop="wordCount" content="730">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="ClickHouse Monitoring"/>
 <meta name="twitter:description" content="ClickHouse Monitoring
@@ -78,7 +78,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.a2ec0d7086aac7e8199478b25dc6bb9d.json"
+  data-offline-search-index-json-src="/offline-search-index.23a7f6b627ac05f642864c3f28d4462a.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -106,7 +106,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.a2ec0d7086aac7e8199478b25dc6bb9d.json"
+  data-offline-search-index-json-src="/offline-search-index.23a7f6b627ac05f642864c3f28d4462a.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -1086,7 +1086,16 @@ select value from system.events where event='DataAfterMutationDiffersFromReplica
 <li>/var/log/clickhouse-server/clickhouse-server.log (trace logs,  very detailed, useful for debugging, usually too verbose to monitor).</li>
 </ul>
 <p>You can additionally enable system.text_log table to have an access to the logs from clickhouse sql queries (ensure that you will not expose some information to the users which should not see it).</p>
-<h2 id="opentelemetry-support">OpenTelemetry support</h2>
+<pre tabindex="0"><code>$ cat /etc/clickhouse-server/config.d/text_log.xml
+&lt;yandex&gt;
+    &lt;text_log&gt;
+        &lt;database&gt;system&lt;/database&gt;
+        &lt;table&gt;text_log&lt;/table&gt;
+        &lt;flush_interval_milliseconds&gt;7500&lt;/flush_interval_milliseconds&gt;
+        &lt;level&gt;warning&lt;/level&gt;
+    &lt;/text_log&gt;
+&lt;/yandex&gt;
+</code></pre><h2 id="opentelemetry-support">OpenTelemetry support</h2>
 <p>See <a href="https://clickhouse.com/docs/en/operations/opentelemetry/" target="_blank">https://clickhouse.com/docs/en/operations/opentelemetry/</a></p>
 <h2 id="other-sources">Other sources</h2>
 <ul>
@@ -1107,8 +1116,8 @@ select value from system.events where event='DataAfterMutationDiffersFromReplica
 	<div class="text-muted mt-5 pt-3 border-top">
 
     Last modified
-    2022.02.17
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/1c263cd9b2610ef0cff270025aec78d7d6dd134d">Update altinity-kb-monitoring.md (1c263cd9b)</a>
+    2022.05.02
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/43c5e664f08ab9ca3774c1c0d9dacbc28725ad93">Update altinity-kb-monitoring.md (43c5e664f)</a>
 
 </div>
 
