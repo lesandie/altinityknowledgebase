@@ -13,13 +13,13 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-settings-to-adjust/" /><meta property="article:section" content="altinity-kb-setup-and-maintenance" />
 
-<meta property="article:modified_time" content="2022-02-08T10:52:06+01:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
+<meta property="article:modified_time" content="2022-05-02T13:28:00-03:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
 
 <meta itemprop="name" content="Settings to adjust">
 <meta itemprop="description" content="Settings to adjust
 ">
-<meta itemprop="dateModified" content="2022-02-08T10:52:06+01:00" />
-<meta itemprop="wordCount" content="322">
+<meta itemprop="dateModified" content="2022-05-02T13:28:00-03:00" />
+<meta itemprop="wordCount" content="356">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Settings to adjust"/>
 <meta name="twitter:description" content="Settings to adjust
@@ -78,7 +78,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.23a7f6b627ac05f642864c3f28d4462a.json"
+  data-offline-search-index-json-src="/offline-search-index.4117ce6c4e8a0e63b99b8a9dfcbfa049.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -106,7 +106,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.23a7f6b627ac05f642864c3f28d4462a.json"
+  data-offline-search-index-json-src="/offline-search-index.4117ce6c4e8a0e63b99b8a9dfcbfa049.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -768,11 +768,16 @@ SETTINGS ttl_only_drop_parts=1
 &lt;/yandex&gt;
 </code></pre></li>
 <li>
-<p><code>query_thread_log</code> - typically is not too useful for end users, you can disable it (or set up TTL).</p>
-<pre tabindex="0"><code class="language-markup" data-lang="markup">cat /etc/clickhouse-server/config.d/disable_query_thread_log.xml
-&lt;yandex&gt;
-    &lt;query_thread_log remove=&#34;1&#34; /&gt;
-&lt;/yandex&gt;
+<p><code>query_thread_log</code> - typically is not too useful for end users, you can disable it (or set up TTL).
+We do not recommend removing this table completely as you might need it for debug one day and the threads&rsquo; logging can be easily disabled/enabled without a restart through user profiles:</p>
+<pre tabindex="0"><code class="language-markup" data-lang="markup"> $ cat /etc/clickhouse-server/users.d/z_log_queries.xml
+ &lt;yandex&gt;
+     &lt;profiles&gt;
+         &lt;default&gt;
+             &lt;log_query_threads&gt;0&lt;/log_query_threads&gt;
+         &lt;/default&gt;
+     &lt;/profiles&gt;
+ &lt;/yandex&gt;
 </code></pre></li>
 <li>
 <p>If you have a good monitoring outside ClickHouse you don&rsquo;t need to store the history of metrics in ClickHouse</p>
@@ -849,8 +854,8 @@ Also, force_index_by_date + force_primary_key can be a nice idea to avoid querie
 	<div class="text-muted mt-5 pt-3 border-top">
 
     Last modified
-    2022.02.08
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/11a5b29f96290c29c42ac9eefb7de1e3f3c5c183">Update altinity-kb-settings-to-adjust.md (11a5b29f9)</a>
+    2022.05.02
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/bab4a2b33a721215f71d51bcb6f7ce7c16399fa3">Update altinity-kb-settings-to-adjust.md (bab4a2b33)</a>
 
 </div>
 

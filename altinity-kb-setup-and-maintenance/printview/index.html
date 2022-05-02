@@ -74,7 +74,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.23a7f6b627ac05f642864c3f28d4462a.json"
+  data-offline-search-index-json-src="/offline-search-index.4117ce6c4e8a0e63b99b8a9dfcbfa049.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -5629,11 +5629,16 @@ SETTINGS ttl_only_drop_parts=1
 &lt;/yandex&gt;
 </code></pre></li>
 <li>
-<p><code>query_thread_log</code> - typically is not too useful for end users, you can disable it (or set up TTL).</p>
-<pre tabindex="0"><code class="language-markup" data-lang="markup">cat /etc/clickhouse-server/config.d/disable_query_thread_log.xml
-&lt;yandex&gt;
-    &lt;query_thread_log remove=&#34;1&#34; /&gt;
-&lt;/yandex&gt;
+<p><code>query_thread_log</code> - typically is not too useful for end users, you can disable it (or set up TTL).
+We do not recommend removing this table completely as you might need it for debug one day and the threads&rsquo; logging can be easily disabled/enabled without a restart through user profiles:</p>
+<pre tabindex="0"><code class="language-markup" data-lang="markup"> $ cat /etc/clickhouse-server/users.d/z_log_queries.xml
+ &lt;yandex&gt;
+     &lt;profiles&gt;
+         &lt;default&gt;
+             &lt;log_query_threads&gt;0&lt;/log_query_threads&gt;
+         &lt;/default&gt;
+     &lt;/profiles&gt;
+ &lt;/yandex&gt;
 </code></pre></li>
 <li>
 <p>If you have a good monitoring outside ClickHouse you don&rsquo;t need to store the history of metrics in ClickHouse</p>
