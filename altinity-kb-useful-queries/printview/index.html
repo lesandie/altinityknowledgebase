@@ -74,7 +74,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.1127a1016c4f3f46e44d318785a2b5dc.json"
+  data-offline-search-index-json-src="/offline-search-index.8729f6e04d8a8d165d2c9007ee64ba01.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -365,8 +365,7 @@ for i in $(ls -1 /proc/$(pidof clickhouse-server)/task/); do kill -SIGPROF $i; d
     
 	<h1 id="pg-c45e95d27689195552b92b57b6e44e8d">4 - Ingestion metrics from system.part_log</h1>
     <div class="lead">Query to gather information about ingestion rate from system.part_log.</div>
-	<h2 id="ingestion-metrics-from-systempart_log">Ingestion metrics from system.part_log</h2>
-<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">SELECT</span><span style="color:#f8f8f8;text-decoration:underline"> 
+	<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">SELECT</span><span style="color:#f8f8f8;text-decoration:underline"> 
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">	</span><span style="color:#204a87;font-weight:bold">database</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> 
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">	</span><span style="color:#204a87;font-weight:bold">table</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">	</span><span style="color:#000">toStartOfHour</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">event_time</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">AS</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">time_bucket</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> 
