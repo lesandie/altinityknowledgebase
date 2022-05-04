@@ -74,7 +74,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.b6df0f89260a7dc19261fb29692502a2.json"
+  data-offline-search-index-json-src="/offline-search-index.1127a1016c4f3f46e44d318785a2b5dc.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -149,7 +149,7 @@ This the multi-page printable view of this section.
     
     
 	
-<li>4: <a href="#pg-d513ecaa3a77a116065353cc360a57fc">Can detached parts be dropped?</a></li>
+<li>4: <a href="#pg-c45e95d27689195552b92b57b6e44e8d">Ingestion metrics from system.part_log</a></li>
 
 
     
@@ -157,7 +157,7 @@ This the multi-page printable view of this section.
     
     
 	
-<li>5: <a href="#pg-d276b38fbf7a101890ac65681f9fc6ab">Database Size - Table - Column size</a></li>
+<li>5: <a href="#pg-d513ecaa3a77a116065353cc360a57fc">Can detached parts be dropped?</a></li>
 
 
     
@@ -165,7 +165,7 @@ This the multi-page printable view of this section.
     
     
 	
-<li>6: <a href="#pg-1d27ec0f0307f996cbd76b8697c78470">Datasets</a></li>
+<li>6: <a href="#pg-d276b38fbf7a101890ac65681f9fc6ab">Database Size - Table - Column size</a></li>
 
 
     
@@ -173,7 +173,7 @@ This the multi-page printable view of this section.
     
     
 	
-<li>7: <a href="#pg-adffc17f31e6074c402b6b2a4353932d">Number of active parts in a partition</a></li>
+<li>7: <a href="#pg-1d27ec0f0307f996cbd76b8697c78470">Datasets</a></li>
 
 
     
@@ -181,7 +181,15 @@ This the multi-page printable view of this section.
     
     
 	
-<li>8: <a href="#pg-db303ad1636093488b37a8d1b16311e4">Parts consistency</a></li>
+<li>8: <a href="#pg-adffc17f31e6074c402b6b2a4353932d">Number of active parts in a partition</a></li>
+
+
+    
+  
+    
+    
+	
+<li>9: <a href="#pg-db303ad1636093488b37a8d1b16311e4">Parts consistency</a></li>
 
 
     
@@ -355,7 +363,46 @@ for i in $(ls -1 /proc/$(pidof clickhouse-server)/task/); do kill -SIGPROF $i; d
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-d513ecaa3a77a116065353cc360a57fc">4 - Can detached parts be dropped?</h1>
+	<h1 id="pg-c45e95d27689195552b92b57b6e44e8d">4 - Ingestion metrics from system.part_log</h1>
+    <div class="lead">Query to gather information about ingestion rate from system.part_log.</div>
+	<h2 id="ingestion-metrics-from-systempart_log">Ingestion metrics from system.part_log</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">SELECT</span><span style="color:#f8f8f8;text-decoration:underline"> 
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">	</span><span style="color:#204a87;font-weight:bold">database</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> 
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">	</span><span style="color:#204a87;font-weight:bold">table</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">	</span><span style="color:#000">toStartOfHour</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">event_time</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">AS</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">time_bucket</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> 
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">	</span><span style="color:#204a87;font-weight:bold">count</span><span style="color:#000;font-weight:bold">()</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">AS</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">number_of_parts_per_insert</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">	</span><span style="color:#204a87;font-weight:bold">min</span><span style="color:#000;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">rows</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">AS</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">min_rows</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">	</span><span style="color:#204a87;font-weight:bold">max</span><span style="color:#000;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">rows</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">AS</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">max_rows</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> 
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">	</span><span style="color:#000">median</span><span style="color:#000;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">rows</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">AS</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">median_rows</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">	</span><span style="color:#204a87;font-weight:bold">min</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">size_in_bytes</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">AS</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">min_bytes</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> 
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">	</span><span style="color:#204a87;font-weight:bold">max</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">size_in_bytes</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">AS</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">max_bytes</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">	</span><span style="color:#000">median</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000">size_in_bytes</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">AS</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">median_bytes</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> 
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">	</span><span style="color:#000">median_bytes</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">/</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">median_rows</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">AS</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">avg_row_size</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">FROM</span><span style="color:#f8f8f8;text-decoration:underline"> 
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">	</span><span style="color:#204a87;font-weight:bold">system</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">part_log</span><span style="color:#f8f8f8;text-decoration:underline"> 
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">WHERE</span><span style="color:#f8f8f8;text-decoration:underline"> 
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">	</span><span style="color:#000">event_type</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#f8f8f8;text-decoration:underline"> 
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">	</span><span style="color:#204a87;font-weight:bold">AND</span><span style="color:#f8f8f8;text-decoration:underline"> 
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#8f5902;font-style:italic">-- change if another time period is desired
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span><span style="color:#f8f8f8;text-decoration:underline">	</span><span style="color:#000">event_date</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">&gt;=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">today</span><span style="color:#000;font-weight:bold">()</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87">interval</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">15</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">day</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">GROUP</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">BY</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">query_id</span><span style="color:#000;font-weight:bold">,</span><span style="color:#204a87;font-weight:bold">database</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">table</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">time_bucket</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">ORDER</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">BY</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">time_bucket</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">database</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">table</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">ASC</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div>
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-d513ecaa3a77a116065353cc360a57fc">5 - Can detached parts be dropped?</h1>
     <div class="lead">Can detached parts be dropped?</div>
 	<p>Here is what different statuses mean:</p>
 <ol>
@@ -392,7 +439,7 @@ If there is another way you could confirm that there is no data loss in the affe
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-d276b38fbf7a101890ac65681f9fc6ab">5 - Database Size - Table - Column size</h1>
+	<h1 id="pg-d276b38fbf7a101890ac65681f9fc6ab">6 - Database Size - Table - Column size</h1>
     <div class="lead">Database Size - Table - Column size</div>
 	<h2 id="tables">Tables</h2>
 <h3 id="table-size">Table size</h3>
@@ -594,7 +641,7 @@ If there is another way you could confirm that there is no data loss in the affe
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-1d27ec0f0307f996cbd76b8697c78470">6 - Datasets</h1>
+	<h1 id="pg-1d27ec0f0307f996cbd76b8697c78470">7 - Datasets</h1>
     <div class="lead">Datasets</div>
 	
 </div>
@@ -611,7 +658,7 @@ If there is another way you could confirm that there is no data loss in the affe
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-adffc17f31e6074c402b6b2a4353932d">7 - Number of active parts in a partition</h1>
+	<h1 id="pg-adffc17f31e6074c402b6b2a4353932d">8 - Number of active parts in a partition</h1>
     <div class="lead">Number of active parts in a partition</div>
 	<h2 id="q-why-do-i-have-several-active-parts-in-a-partition-why-clickhouse-does-not-merge-them-immediately">Q: Why do I have several active parts in a partition? Why Clickhouse does not merge them immediately?</h2>
 <h3 id="a-ch-does-not-merge-parts-by-time">A: CH does not merge parts by time</h3>
@@ -648,7 +695,7 @@ limit 20
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-db303ad1636093488b37a8d1b16311e4">8 - Parts consistency</h1>
+	<h1 id="pg-db303ad1636093488b37a8d1b16311e4">9 - Parts consistency</h1>
     
 	<h2 id="check-if-there-are-blocks-missing">Check if there are blocks missing</h2>
 <div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">SELECT</span><span style="color:#f8f8f8;text-decoration:underline">
