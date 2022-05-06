@@ -74,7 +74,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.b98d987b874c0d37f685a5d5f0a74d68.json"
+  data-offline-search-index-json-src="/offline-search-index.374ad04886be32c8c406ccc53156a7fa.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -125,15 +125,7 @@ This the multi-page printable view of this section.
     
     
 	
-<li>1: <a href="#pg-6b8cf3862e661a5ba53de12323896812"></a></li>
-
-
-    
-  
-    
-    
-	
-<li>2: <a href="#pg-49f38a883c7ec4fc908726a6854c7bbe">clickhouse-copier</a></li>
+<li>1: <a href="#pg-49f38a883c7ec4fc908726a6854c7bbe">clickhouse-copier</a></li>
 
 
     
@@ -148,7 +140,7 @@ This the multi-page printable view of this section.
     
     
 	
-<li>2.1: <a href="#pg-e1f1d825521583c133a8d3bf2a72f6e7">clickhouse-copier 20.3 and earlier</a></li>
+<li>1.1: <a href="#pg-e1f1d825521583c133a8d3bf2a72f6e7">clickhouse-copier 20.3 and earlier</a></li>
 
 
     
@@ -156,13 +148,21 @@ This the multi-page printable view of this section.
     
     
 	
-<li>2.2: <a href="#pg-7cba4646c1996d768d76c912356b9762">clickhouse-copier 20.4 - 21.6</a></li>
+<li>1.2: <a href="#pg-7cba4646c1996d768d76c912356b9762">clickhouse-copier 20.4 - 21.6</a></li>
 
 
     
   
 
     </ul>
+    
+  
+    
+    
+	
+<li>2: <a href="#pg-6b8cf3862e661a5ba53de12323896812">Fetch Alter Table</a></li>
+
+
     
   
     
@@ -346,24 +346,7 @@ This the multi-page printable view of this section.
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-6b8cf3862e661a5ba53de12323896812">1 - </h1>
-    
-	
-</div>
-
-
-
-    
-	
-  
-    
-    
-	
-    
-
-<div class="td-content" style="page-break-before: always">
-    
-	<h1 id="pg-49f38a883c7ec4fc908726a6854c7bbe">2 - clickhouse-copier</h1>
+	<h1 id="pg-49f38a883c7ec4fc908726a6854c7bbe">1 - clickhouse-copier</h1>
     <div class="lead">clickhouse-copier</div>
 	<p>The description of the utility and its parameters, as well as examples of the config files that you need to create for the copier are in the doc <a href="https://clickhouse.tech/docs/en/operations/utilities/clickhouse-copier/" target="_blank">https://clickhouse.tech/docs/en/operations/utilities/clickhouse-copier/</a></p>
 <p>The steps to run a task:</p>
@@ -420,7 +403,7 @@ This the multi-page printable view of this section.
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-e1f1d825521583c133a8d3bf2a72f6e7">2.1 - clickhouse-copier 20.3 and earlier</h1>
+	<h1 id="pg-e1f1d825521583c133a8d3bf2a72f6e7">1.1 - clickhouse-copier 20.3 and earlier</h1>
     <div class="lead">clickhouse-copier 20.3 and earlier</div>
 	<p>Clickhouse-copier was created to move data between clusters.
 It runs simple INSERT…SELECT queries and can copy data between tables with different engine parameters and between clusters with different number of shards.
@@ -519,7 +502,7 @@ Here is a list of queries that you can use to see what’s happening.</p>
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-7cba4646c1996d768d76c912356b9762">2.2 - clickhouse-copier 20.4 - 21.6</h1>
+	<h1 id="pg-7cba4646c1996d768d76c912356b9762">1.2 - clickhouse-copier 20.4 - 21.6</h1>
     <div class="lead">clickhouse-copier 20.4 - 21.6</div>
 	<p>Clickhouse-copier was created to move data between clusters.
 It runs simple INSERT…SELECT queries and can copy data between tables with different engine parameters and between clusters with different number of shards.
@@ -654,6 +637,59 @@ Here is a list of queries that you can use to see what’s happening.</p>
     
 	
   
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-6b8cf3862e661a5ba53de12323896812">2 - Fetch Alter Table</h1>
+    <div class="lead">Fetch Alter Table</div>
+	<h1 id="fetch-parts-from-zookeeper">FETCH Parts from Zookeeper</h1>
+<p>This is a detailed explanation on how to move data by fetching partitions or parts between replicas</p>
+<h3 id="get-partitions-by-database-and-table">Get partitions by database and table:</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">SELECT</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#000">hostName</span><span style="color:#000;font-weight:bold">()</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">AS</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">host</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">database</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">table</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#000">partition_id</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#000">name</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">as</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">part_id</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">FROM</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">cluster</span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;{cluster}&#39;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">system</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">parts</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">WHERE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">database</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">IN</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;db1&#39;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#4e9a06">&#39;db2&#39;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">...</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;dbn&#39;</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">AND</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">active</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div><p>This query will return all the partitions and parts stored in this node for the <code>ORION</code> and <code>ORIONREPLICA</code> databases and their tables.</p>
+<h3 id="fetch-the-partitions">Fetch the partitions:</h3>
+<p>Prior starting with the fetching process it is recommended to check the <code>system.detached_parts</code> table of the destination node. There is a chance that detached folders already contain some old parts, and you will have to remove them all before starting moving data. Otherwise you will attach those old parts together with the fetched parts. Also you could run into issues if there are detached folders with the same names as the ones you are fetching (not very probable, put possible). Simply delete the detached parts and continue with the process.</p>
+<p>To fetch a partition:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">ALTER</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">TABLE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">tablename</span><span style="color:#ce5c00;font-weight:bold">&gt;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">FETCH</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">PARTITION</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">partition_id</span><span style="color:#ce5c00;font-weight:bold">&gt;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">FROM</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;/clickhouse/{cluster}/tables/{shard}/{table}&#39;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div><p>The <code>FROM</code> path is from the zookeeper node and you have to specify the shard from you&rsquo;re <a href="https://clickhouse.com/docs/en/sql-reference/statements/alter/partition#alter_fetch-partition" target="_blank">fetching the partition</a>. Next executing the DDL query:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">ALTER</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">TABLE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">tablename</span><span style="color:#ce5c00;font-weight:bold">&gt;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">ATTACH</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">PARTITION</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#000">partition_id</span><span style="color:#ce5c00;font-weight:bold">&gt;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div><p>will attach the partitions to a table. Again and because the process is manual, it is recommended to check that the fetched partitions are attached correctly and that there are no detached parts left. Check both <code>system.parts</code> and <code>system.detached_parts</code> tables.</p>
+<h3 id="detach-tables-and-delete-replicas">Detach tables and delete replicas:</h3>
+<p>If needed, after moving the data and checking that everything is sound, you can detach the tables and delete the replicas.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">-- Required for DROP REPLICA
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span><span style="color:#000">DETACH</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">TABLE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">&lt;</span><span style="color:#204a87;font-weight:bold">table_name</span><span style="color:#ce5c00;font-weight:bold">&gt;</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">  
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#8f5902;font-style:italic">-- It will remove everything from /table_path_in_z
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">-- but not the data. You could reattach the table again and
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic">-- restore the replica if needed
+</span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span><span style="color:#204a87;font-weight:bold">SYSTEM</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">DROP</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">REPLICA</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;replica_name&#39;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">FROM</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">ZKPATH</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;/table_path_in_zk/&#39;</span><span style="color:#000;font-weight:bold">;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div><h3 id="query-to-generate-all-the-ddl">Query to generate all the DDL:</h3>
+<p>With this query you can generate the DDL script that will do the fetch and attach operations for each table and partition.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#204a87;font-weight:bold">SELECT</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">DISTINCT</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#4e9a06">&#39;alter table &#39;</span><span style="color:#ce5c00;font-weight:bold">||</span><span style="color:#204a87;font-weight:bold">database</span><span style="color:#ce5c00;font-weight:bold">||</span><span style="color:#4e9a06">&#39;.&#39;</span><span style="color:#ce5c00;font-weight:bold">||</span><span style="color:#204a87;font-weight:bold">table</span><span style="color:#ce5c00;font-weight:bold">||</span><span style="color:#4e9a06">&#39; FETCH PARTITION &#39;&#39;&#39;</span><span style="color:#ce5c00;font-weight:bold">||</span><span style="color:#000">partition_id</span><span style="color:#ce5c00;font-weight:bold">||</span><span style="color:#4e9a06">&#39;&#39;&#39; FROM &#39;&#39;&#39;</span><span style="color:#ce5c00;font-weight:bold">||</span><span style="color:#000">zookeeper_path</span><span style="color:#ce5c00;font-weight:bold">||</span><span style="color:#4e9a06">&#39;&#39;&#39;; &#39;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#ce5c00;font-weight:bold">||</span><span style="color:#4e9a06">&#39;alter table &#39;</span><span style="color:#ce5c00;font-weight:bold">||</span><span style="color:#204a87;font-weight:bold">database</span><span style="color:#ce5c00;font-weight:bold">||</span><span style="color:#4e9a06">&#39;.&#39;</span><span style="color:#ce5c00;font-weight:bold">||</span><span style="color:#204a87;font-weight:bold">table</span><span style="color:#ce5c00;font-weight:bold">||</span><span style="color:#4e9a06">&#39; ATTACH PARTITION &#39;&#39;&#39;</span><span style="color:#ce5c00;font-weight:bold">||</span><span style="color:#000">partition_id</span><span style="color:#ce5c00;font-weight:bold">||</span><span style="color:#4e9a06">&#39;&#39;&#39;;&#39;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">FROM</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">system</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">parts</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">INNER</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">JOIN</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">system</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">replicas</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">USING</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">database</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">table</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">WHERE</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">database</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">IN</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">(</span><span style="color:#4e9a06">&#39;db1&#39;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#4e9a06">&#39;db2&#39;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">...</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;dbn&#39;</span><span style="color:#000;font-weight:bold">)</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">AND</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">active</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span></code></pre></div><p>You could add an ORDER BY to manually make the list in the order you need, or use ORDER BY rand() to randomize it. You will then need to split the commands between the shards.</p>
+
+</div>
+
+
 
     
 	
