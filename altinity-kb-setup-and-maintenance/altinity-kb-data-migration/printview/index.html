@@ -74,7 +74,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.7c2664c448d4478526cc4f99a3c8082c.json"
+  data-offline-search-index-json-src="/offline-search-index.b98d987b874c0d37f685a5d5f0a74d68.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -125,7 +125,15 @@ This the multi-page printable view of this section.
     
     
 	
-<li>1: <a href="#pg-49f38a883c7ec4fc908726a6854c7bbe">clickhouse-copier</a></li>
+<li>1: <a href="#pg-6b8cf3862e661a5ba53de12323896812"></a></li>
+
+
+    
+  
+    
+    
+	
+<li>2: <a href="#pg-49f38a883c7ec4fc908726a6854c7bbe">clickhouse-copier</a></li>
 
 
     
@@ -140,7 +148,7 @@ This the multi-page printable view of this section.
     
     
 	
-<li>1.1: <a href="#pg-e1f1d825521583c133a8d3bf2a72f6e7">clickhouse-copier 20.3 and earlier</a></li>
+<li>2.1: <a href="#pg-e1f1d825521583c133a8d3bf2a72f6e7">clickhouse-copier 20.3 and earlier</a></li>
 
 
     
@@ -148,7 +156,7 @@ This the multi-page printable view of this section.
     
     
 	
-<li>1.2: <a href="#pg-7cba4646c1996d768d76c912356b9762">clickhouse-copier 20.4 - 21.6</a></li>
+<li>2.2: <a href="#pg-7cba4646c1996d768d76c912356b9762">clickhouse-copier 20.4 - 21.6</a></li>
 
 
     
@@ -160,7 +168,7 @@ This the multi-page printable view of this section.
     
     
 	
-<li>2: <a href="#pg-384352a945ec192141ea6fb13e0f518f">Remote table function</a></li>
+<li>3: <a href="#pg-384352a945ec192141ea6fb13e0f518f">Remote table function</a></li>
 
 
     
@@ -168,7 +176,7 @@ This the multi-page printable view of this section.
     
     
 	
-<li>3: <a href="#pg-69e50f36eba192534d9f891226a8196a">rsync</a></li>
+<li>4: <a href="#pg-69e50f36eba192534d9f891226a8196a">rsync</a></li>
 
 
     
@@ -338,7 +346,24 @@ This the multi-page printable view of this section.
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-49f38a883c7ec4fc908726a6854c7bbe">1 - clickhouse-copier</h1>
+	<h1 id="pg-6b8cf3862e661a5ba53de12323896812">1 - </h1>
+    
+	
+</div>
+
+
+
+    
+	
+  
+    
+    
+	
+    
+
+<div class="td-content" style="page-break-before: always">
+    
+	<h1 id="pg-49f38a883c7ec4fc908726a6854c7bbe">2 - clickhouse-copier</h1>
     <div class="lead">clickhouse-copier</div>
 	<p>The description of the utility and its parameters, as well as examples of the config files that you need to create for the copier are in the doc <a href="https://clickhouse.tech/docs/en/operations/utilities/clickhouse-copier/" target="_blank">https://clickhouse.tech/docs/en/operations/utilities/clickhouse-copier/</a></p>
 <p>The steps to run a task:</p>
@@ -395,7 +420,7 @@ This the multi-page printable view of this section.
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-e1f1d825521583c133a8d3bf2a72f6e7">1.1 - clickhouse-copier 20.3 and earlier</h1>
+	<h1 id="pg-e1f1d825521583c133a8d3bf2a72f6e7">2.1 - clickhouse-copier 20.3 and earlier</h1>
     <div class="lead">clickhouse-copier 20.3 and earlier</div>
 	<p>Clickhouse-copier was created to move data between clusters.
 It runs simple INSERT…SELECT queries and can copy data between tables with different engine parameters and between clusters with different number of shards.
@@ -494,7 +519,7 @@ Here is a list of queries that you can use to see what’s happening.</p>
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-7cba4646c1996d768d76c912356b9762">1.2 - clickhouse-copier 20.4 - 21.6</h1>
+	<h1 id="pg-7cba4646c1996d768d76c912356b9762">2.2 - clickhouse-copier 20.4 - 21.6</h1>
     <div class="lead">clickhouse-copier 20.4 - 21.6</div>
 	<p>Clickhouse-copier was created to move data between clusters.
 It runs simple INSERT…SELECT queries and can copy data between tables with different engine parameters and between clusters with different number of shards.
@@ -640,7 +665,7 @@ Here is a list of queries that you can use to see what’s happening.</p>
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-384352a945ec192141ea6fb13e0f518f">2 - Remote table function</h1>
+	<h1 id="pg-384352a945ec192141ea6fb13e0f518f">3 - Remote table function</h1>
     <div class="lead">Remote table function</div>
 	<h2 id="remote-table-function">remote(&hellip;) table function</h2>
 <p>Suitable for moving up to hundreds of gigabytes of data.</p>
@@ -696,7 +721,7 @@ So maximum memory usage can be calculated like this: <code>max_insert_threads * 
 
 <div class="td-content" style="page-break-before: always">
     
-	<h1 id="pg-69e50f36eba192534d9f891226a8196a">3 - rsync</h1>
+	<h1 id="pg-69e50f36eba192534d9f891226a8196a">4 - rsync</h1>
     <div class="lead">rsync</div>
 	<h3 id="short-instruction">Short Instruction</h3>
 <ol>
