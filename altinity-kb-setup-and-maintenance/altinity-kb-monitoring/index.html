@@ -13,13 +13,13 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://kb.altinity.com/altinity-kb-setup-and-maintenance/altinity-kb-monitoring/" /><meta property="article:section" content="altinity-kb-setup-and-maintenance" />
 
-<meta property="article:modified_time" content="2022-05-02T13:27:24-03:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
+<meta property="article:modified_time" content="2022-05-11T22:39:24+02:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
 
 <meta itemprop="name" content="ClickHouse Monitoring">
 <meta itemprop="description" content="ClickHouse Monitoring
 ">
-<meta itemprop="dateModified" content="2022-05-02T13:27:24-03:00" />
-<meta itemprop="wordCount" content="730">
+<meta itemprop="dateModified" content="2022-05-11T22:39:24+02:00" />
+<meta itemprop="wordCount" content="743">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="ClickHouse Monitoring"/>
 <meta name="twitter:description" content="ClickHouse Monitoring
@@ -78,7 +78,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.85261eba3bba5bf0c8585b3b9b0c055e.json"
+  data-offline-search-index-json-src="/offline-search-index.dbf0adfad18da9dbc4fa95de0d9417b9.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -106,7 +106,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.85261eba3bba5bf0c8585b3b9b0c055e.json"
+  data-offline-search-index-json-src="/offline-search-index.dbf0adfad18da9dbc4fa95de0d9417b9.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -689,7 +689,11 @@
         <li><a href="#prometheus-embedded-exporter--grafana">Prometheus (embedded exporter) + Grafana</a></li>
         <li><a href="#clickhouse-operator-embedded-exporter">clickhouse-operator embedded exporter</a></li>
         <li><a href="#prometheus-exporter-external--grafana">Prometheus exporter (external) + Grafana</a></li>
-        <li><a href="#dashboards-quering-clickhouse-directly">Dashboards quering clickhouse directly</a></li>
+        <li><a href="#dashboards-quering-clickhouse-directly-via-vertamedia--altinity-plugin">Dashboards quering clickhouse directly via vertamedia / Altinity plugin</a></li>
+      </ul>
+    </li>
+    <li><a href="#dashboard-quering-clickhouse-directly-via-grafana-plugin">Dashboard quering clickhouse directly via Grafana plugin</a>
+      <ul>
         <li><a href="#zabbix">Zabbix</a></li>
         <li><a href="#graphite">Graphite</a></li>
         <li><a href="#influxdb">InfluxDB</a></li>
@@ -834,10 +838,14 @@
 <li>Dashboard: <a href="https://grafana.com/grafana/dashboards/882" target="_blank">https://grafana.com/grafana/dashboards/882</a></li>
 </ul>
 <p>(unmaintained)</p>
-<h3 id="dashboards-quering-clickhouse-directly">Dashboards quering clickhouse directly</h3>
+<h3 id="dashboards-quering-clickhouse-directly-via-vertamedia--altinity-plugin">Dashboards quering clickhouse directly via vertamedia / Altinity plugin</h3>
 <ul>
 <li>Overview: <a href="https://grafana.com/grafana/dashboards/13606" target="_blank">https://grafana.com/grafana/dashboards/13606</a></li>
 <li>Queries dashboard (analyzing system.query_log) <a href="https://grafana.com/grafana/dashboards/2515" target="_blank">https://grafana.com/grafana/dashboards/2515</a></li>
+</ul>
+<h2 id="dashboard-quering-clickhouse-directly-via-grafana-plugin">Dashboard quering clickhouse directly via Grafana plugin</h2>
+<ul>
+<li><a href="https://grafana.com/blog/2022/05/05/introducing-the-official-clickhouse-plugin-for-grafana/" target="_blank">https://grafana.com/blog/2022/05/05/introducing-the-official-clickhouse-plugin-for-grafana/</a></li>
 </ul>
 <h3 id="zabbix">Zabbix</h3>
 <ul>
@@ -1119,8 +1127,8 @@ select value from system.events where event='DataAfterMutationDiffersFromReplica
 	<div class="text-muted mt-5 pt-3 border-top">
 
     Last modified
-    2022.05.02
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/43c5e664f08ab9ca3774c1c0d9dacbc28725ad93">Update altinity-kb-monitoring.md (43c5e664f)</a>
+    2022.05.11
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/51ed5ba62fb105394eed264daa3dbb0962b41031">Update altinity-kb-monitoring.md (51ed5ba62)</a>
 
 </div>
 
