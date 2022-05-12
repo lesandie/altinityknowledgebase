@@ -12,12 +12,12 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://kb.altinity.com/altinity-kb-schema-design/backfill_column/" /><meta property="article:section" content="altinity-kb-schema-design" />
 
-<meta property="article:modified_time" content="2022-04-25T16:53:07+00:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
+<meta property="article:modified_time" content="2022-05-12T13:39:42+00:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
 
 <meta itemprop="name" content="Column backfilling with alter/update using a dictionary">
 <meta itemprop="description" content="Column backfilling with alter/update using a dictionary">
-<meta itemprop="dateModified" content="2022-04-25T16:53:07+00:00" />
-<meta itemprop="wordCount" content="169">
+<meta itemprop="dateModified" content="2022-05-12T13:39:42+00:00" />
+<meta itemprop="wordCount" content="201">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Column backfilling with alter/update using a dictionary"/>
 <meta name="twitter:description" content="Column backfilling with alter/update using a dictionary"/>
@@ -75,7 +75,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.dbf0adfad18da9dbc4fa95de0d9417b9.json"
+  data-offline-search-index-json-src="/offline-search-index.c1d6c4e5aac9be8ba5ed7326f06f5850.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -103,7 +103,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.dbf0adfad18da9dbc4fa95de0d9417b9.json"
+  data-offline-search-index-json-src="/offline-search-index.c1d6c4e5aac9be8ba5ed7326f06f5850.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -897,16 +897,16 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">11111</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">90</span><span style="color:#f8f8f8;text-decoration:underline">   </span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">9</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">2022</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#0000cf;font-weight:bold">01</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#0000cf;font-weight:bold">28</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">11111</span><span style="color:#000">xxx</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">11111</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">90</span><span style="color:#f8f8f8;text-decoration:underline">   </span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">9</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">2021</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#0000cf;font-weight:bold">11</span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#0000cf;font-weight:bold">30</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">11111</span><span style="color:#000">xxx</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#a40000">│</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#a40000">└───────┴──────┴──────┴────────────┴──────────┘</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></span></span></code></pre></div><p>In case of replicated / sharded setup need to create dict_table / item_dict at all nodes and it has to have the EXACTLY same data (probaly it&rsquo;s easier to make dict_table replicated).
-Need to use <code>alter table test.fact ... setting allow_nondeterministic_mutations=1</code></p>
+</span></span></span></code></pre></div><p>In case of a replicated / sharded setup you need to have the dictionary and source table (dict_table / item_dict) on all nodes and they have to all have EXACTLY the same data. The easiest way to do this is to make dict_table replicated.</p>
+<p>In this case, you will need to set the setting <code>allow_nondeterministic_mutations=1</code> on the user that runs the <code>ALTER TABLE</code>. See the <a href="https://clickhouse.com/docs/en/operations/settings/settings#allow_nondeterministic_mutations" target="_blank">ClickHouse docs</a> for more information about this setting.</p>
 
 	
 	
 	<div class="text-muted mt-5 pt-3 border-top">
 
     Last modified
-    2022.04.25
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/237358b627ef520895c1e382c47d9c337e97c076">fix typo (discionary -&gt; dictionary) in &#34;Column backfilling with alter/update using a dictionary&#34; (237358b62)</a>
+    2022.05.12
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/c456a63c754f0451026ec55f8ce1281775a11a45">improve information about allow_nondeterministic_mutations (c456a63c7)</a>
 
 </div>
 
