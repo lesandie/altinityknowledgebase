@@ -12,11 +12,11 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://kb.altinity.com/altinity-kb-useful-queries/ingestion-rate-part_log/" /><meta property="article:section" content="altinity-kb-useful-queries" />
 
-<meta property="article:modified_time" content="2022-05-04T12:04:35-03:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
+<meta property="article:modified_time" content="2022-05-12T14:59:25-03:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
 
 <meta itemprop="name" content="Ingestion metrics from system.part_log">
 <meta itemprop="description" content="Query to gather information about ingestion rate from system.part_log. ">
-<meta itemprop="dateModified" content="2022-05-04T12:04:35-03:00" />
+<meta itemprop="dateModified" content="2022-05-12T14:59:25-03:00" />
 <meta itemprop="wordCount" content="9">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Ingestion metrics from system.part_log"/>
@@ -75,7 +75,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.c1d6c4e5aac9be8ba5ed7326f06f5850.json"
+  data-offline-search-index-json-src="/offline-search-index.2bf27c0f4f0d0baf50e4b969c2677766.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -103,7 +103,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.c1d6c4e5aac9be8ba5ed7326f06f5850.json"
+  data-offline-search-index-json-src="/offline-search-index.2bf27c0f4f0d0baf50e4b969c2677766.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -769,14 +769,20 @@
 </span></span></span><span style="display:flex;"><span><span style="color:#8f5902;font-style:italic"></span><span style="color:#f8f8f8;text-decoration:underline">	</span><span style="color:#000">event_date</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">&gt;=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">today</span><span style="color:#000;font-weight:bold">()</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">-</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87">interval</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">15</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">day</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">GROUP</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">BY</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">query_id</span><span style="color:#000;font-weight:bold">,</span><span style="color:#204a87;font-weight:bold">database</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">table</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">time_bucket</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">ORDER</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">BY</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">time_bucket</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">database</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">table</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">ASC</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">select</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">database</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">table</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">event_type</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">partition_id</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">count</span><span style="color:#000;font-weight:bold">()</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">c</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">round</span><span style="color:#000;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">avg</span><span style="color:#000;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">rows</span><span style="color:#000;font-weight:bold">))</span><span style="color:#f8f8f8;text-decoration:underline"> 
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">from</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">system</span><span style="color:#000;font-weight:bold">.</span><span style="color:#000">part_log</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">where</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">event_date</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">&gt;=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">today</span><span style="color:#000;font-weight:bold">()</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">and</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">event_type</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;NewPart&#39;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">group</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">by</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">database</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">table</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">event_type</span><span style="color:#000;font-weight:bold">,</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">partition_id</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></span></span><span style="display:flex;"><span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">order</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">by</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">c</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">desc</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></span></span></code></pre></div>
 	
 	
 	<div class="text-muted mt-5 pt-3 border-top">
 
     Last modified
-    2022.05.04
-    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/5ca6431daab27badb8209ebd06e8e9230d442231">Update ingestion-rate-part_log.md (5ca6431da)</a>
+    2022.05.12
+    : <a  href="https://github.com/Altinity/altinityknowledgebase/commit/60d70cddf5443bcadcf30e751a068c6f9783e8d8">Update ingestion-rate-part_log.md (60d70cddf)</a>
 
 </div>
 
