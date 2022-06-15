@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.100.1" />
+<meta name="generator" content="Hugo 0.100.2" />
 <meta name="robots" content="index, follow">
 <link rel="shortcut icon" href="/favicons/favicon.ico" >
 <link rel="icon" href="/favicons/favicon.ico" >
@@ -16,13 +16,13 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://kb.altinity.com/altinity-kb-queries-and-syntax/altinity-kb-final-clause-speed/" /><meta property="article:section" content="altinity-kb-queries-and-syntax" />
 
-<meta property="article:modified_time" content="2022-05-31T17:00:27+02:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
+<meta property="article:modified_time" content="2022-06-15T15:07:49+03:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
 
 <meta itemprop="name" content="FINAL clause speed">
 <meta itemprop="description" content="FINAL clause speed
 ">
-<meta itemprop="dateModified" content="2022-05-31T17:00:27+02:00" />
-<meta itemprop="wordCount" content="433">
+<meta itemprop="dateModified" content="2022-06-15T15:07:49+03:00" />
+<meta itemprop="wordCount" content="435">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="FINAL clause speed"/>
 <meta name="twitter:description" content="FINAL clause speed
@@ -67,7 +67,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.e7217eeaf0754af648f8ce4a3b5af62b.json"
+  data-offline-search-index-json-src="/offline-search-index.2a12b5351cba1a35b5fd535088edb896.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -90,7 +90,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.e7217eeaf0754af648f8ce4a3b5af62b.json"
+  data-offline-search-index-json-src="/offline-search-index.2a12b5351cba1a35b5fd535088edb896.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -728,18 +728,10 @@
 	       
 	<p><code>SELECT * FROM table FINAL</code></p>
 <ul>
-<li>
-<p>Before 20.5 - always executed in a single thread and slow.</p>
-</li>
-<li>
-<p>Since 20.5   - final can be parallel, see <a href="https://github.com/ClickHouse/ClickHouse/pull/10463" target="_blank">https://github.com/ClickHouse/ClickHouse/pull/10463</a></p>
-</li>
-<li>
-<p>Since 20.10 - you can use <code>do_not_merge_across_partitions_select_final</code> setting.</p>
-</li>
-<li>
-<p>Unreleased (yet) - see <a href="https://github.com/ClickHouse/ClickHouse/issues/30387" target="_blank">https://github.com/ClickHouse/ClickHouse/issues/30387</a> and <a href="https://github.com/ClickHouse/ClickHouse/pull/36396" target="_blank">https://github.com/ClickHouse/ClickHouse/pull/36396</a></p>
-</li>
+<li>Before 20.5 - always executed in a single thread and slow.</li>
+<li>Since 20.5  - final can be parallel, see <a href="https://github.com/ClickHouse/ClickHouse/pull/10463" target="_blank">https://github.com/ClickHouse/ClickHouse/pull/10463</a></li>
+<li>Since 20.10 - you can use <code>do_not_merge_across_partitions_select_final</code> setting.</li>
+<li>Sinse 22.6  - final even more parallel, see <a href="https://github.com/ClickHouse/ClickHouse/pull/36396" target="_blank">https://github.com/ClickHouse/ClickHouse/pull/36396</a></li>
 </ul>
 <p>See <a href="https://github.com/ClickHouse/ClickHouse/pull/15938" target="_blank">https://github.com/ClickHouse/ClickHouse/pull/15938</a> and <a href="https://github.com/ClickHouse/ClickHouse/issues/11722" target="_blank">https://github.com/ClickHouse/ClickHouse/issues/11722</a></p>
 <p>So it can work in the following way:</p>
@@ -811,7 +803,7 @@
 	
 	
 	<div class="text-muted mt-5 pt-3 border-top">
-  Last modified 2022.05.31: <a href="https://github.com/Altinity/altinityknowledgebase/commit/316f18ecdc56ace4f55645417f96f0d79b9373f9">Update altinity-kb-final-clause-speed.md (316f18ecd)</a>
+  Last modified 2022.06.15: <a href="https://github.com/Altinity/altinityknowledgebase/commit/8d72bb2e72050fca4938b8e67b1e3728d2aa0f23">Update altinity-kb-final-clause-speed.md (8d72bb2e7)</a>
 </div>
 
 </div>

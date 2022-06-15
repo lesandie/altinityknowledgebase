@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.100.1" />
+<meta name="generator" content="Hugo 0.100.2" />
 <link rel="canonical" type="text/html" href="http://kb.altinity.com/altinity-kb-queries-and-syntax/">
 <meta name="robots" content="noindex, nofollow">
 <link rel="shortcut icon" href="/favicons/favicon.ico" >
@@ -63,7 +63,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.e7217eeaf0754af648f8ce4a3b5af62b.json"
+  data-offline-search-index-json-src="/offline-search-index.2a12b5351cba1a35b5fd535088edb896.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -1990,18 +1990,10 @@ GROUP BY id
     <div class="lead">FINAL clause speed</div>
 	<p><code>SELECT * FROM table FINAL</code></p>
 <ul>
-<li>
-<p>Before 20.5 - always executed in a single thread and slow.</p>
-</li>
-<li>
-<p>Since 20.5   - final can be parallel, see <a href="https://github.com/ClickHouse/ClickHouse/pull/10463" target="_blank">https://github.com/ClickHouse/ClickHouse/pull/10463</a></p>
-</li>
-<li>
-<p>Since 20.10 - you can use <code>do_not_merge_across_partitions_select_final</code> setting.</p>
-</li>
-<li>
-<p>Unreleased (yet) - see <a href="https://github.com/ClickHouse/ClickHouse/issues/30387" target="_blank">https://github.com/ClickHouse/ClickHouse/issues/30387</a> and <a href="https://github.com/ClickHouse/ClickHouse/pull/36396" target="_blank">https://github.com/ClickHouse/ClickHouse/pull/36396</a></p>
-</li>
+<li>Before 20.5 - always executed in a single thread and slow.</li>
+<li>Since 20.5  - final can be parallel, see <a href="https://github.com/ClickHouse/ClickHouse/pull/10463" target="_blank">https://github.com/ClickHouse/ClickHouse/pull/10463</a></li>
+<li>Since 20.10 - you can use <code>do_not_merge_across_partitions_select_final</code> setting.</li>
+<li>Sinse 22.6  - final even more parallel, see <a href="https://github.com/ClickHouse/ClickHouse/pull/36396" target="_blank">https://github.com/ClickHouse/ClickHouse/pull/36396</a></li>
 </ul>
 <p>See <a href="https://github.com/ClickHouse/ClickHouse/pull/15938" target="_blank">https://github.com/ClickHouse/ClickHouse/pull/15938</a> and <a href="https://github.com/ClickHouse/ClickHouse/issues/11722" target="_blank">https://github.com/ClickHouse/ClickHouse/issues/11722</a></p>
 <p>So it can work in the following way:</p>
