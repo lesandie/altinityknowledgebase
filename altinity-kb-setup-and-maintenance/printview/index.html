@@ -63,7 +63,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.96681e951c16e1fff1b6f5c7c8aafc66.json"
+  data-offline-search-index-json-src="/offline-search-index.82f5ec71cece2b570c5ec5cbde5085ad.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -1505,7 +1505,7 @@ others and they found that they accidentally set up those servers with XFS inste
 <p>Maybe the above problem can be workaround by some tuning/settings, but so far we do not have a working and confirmed way to do this.</p>
 <h3 id="zfs">ZFS</h3>
 <p>Limitations exist, extra tuning may be needed, and having more RAM is recommended. Old kernels are not recommended.</p>
-<p>Memory usage control - ZFS adaptive replacement cache (ARC) can take a lot of RAM which can be the reason of out-of-memory issues when memory is also requested by the ClickHouse.</p>
+<p>Memory usage control - ZFS adaptive replacement cache (ARC) can take a lot of RAM.  It can be the reason of out-of-memory issues when memory is also requested by the ClickHouse.</p>
 <ul>
 <li>It seems that the most important thing is zfs_arc_max - you just need to limit the maximum size of the ARC so that the sum of the maximum size of the arc + the CH itself does not exceed the size of the available RAM. For example, we set a limit of 80% RAM for Clickhouse and 10% for ARC. 10% will remain for the system and other applications</li>
 </ul>
@@ -1532,6 +1532,15 @@ therefore some of the Atomic functionality will not be available.</p>
 <p>There are reports that some people successfully use it in their setups.
 A fast network is required.</p>
 <p>There were some reports about data damage on the disks on older clickhouse versions, which could be caused by the issues with O_DIRECT or <a href="https://lustre-discuss.lustre.narkive.com/zwcvyEEY/asynchronous-posix-i-o-with-lustre" target="_blank">async io support</a> on Lustre.</p>
+<h3 id="nfs-and-efs">NFS (and EFS)</h3>
+<p>Accouding to the reports - it works, throughput depends a lot on the network speed. IOPS / number of file operations per seconds can be super low (due to the locking mechanism).</p>
+<p><a href="https://github.com/ClickHouse/ClickHouse/issues/31113" target="_blank">https://github.com/ClickHouse/ClickHouse/issues/31113</a></p>
+<h3 id="moosefs">MooseFS</h3>
+<p>There are installations using that. No extra info.</p>
+<h3 id="glusterfs">GlusterFS</h3>
+<p>There are installations using that. No extra info.</p>
+<h3 id="ceph">Ceph</h3>
+<p>There are installations using that. Some information: <a href="https://github.com/ClickHouse/ClickHouse/issues/8315" target="_blank">https://github.com/ClickHouse/ClickHouse/issues/8315</a></p>
 
 </div>
 
