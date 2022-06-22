@@ -7,26 +7,22 @@
 <meta name="robots" content="index, follow">
 <link rel="shortcut icon" href="/favicons/favicon.ico" >
 <link rel="icon" href="/favicons/favicon.ico" >
-<title>Load balancers | Altinity Knowledge Base</title>
-<meta name="description" content="Load balancers
-">
-<meta property="og:title" content="Load balancers" />
-<meta property="og:description" content="Load balancers
-" />
+<title>ClickHouse and different filesystems | Altinity Knowledge Base</title>
+<meta name="description" content="ClickHouse and different filesystems.">
+<meta property="og:title" content="ClickHouse and different filesystems" />
+<meta property="og:description" content="ClickHouse and different filesystems." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://kb.altinity.com/altinity-kb-setup-and-maintenance/load-balancers/" /><meta property="article:section" content="altinity-kb-setup-and-maintenance" />
+<meta property="og:url" content="http://kb.altinity.com/altinity-kb-setup-and-maintenance/filesystems/" /><meta property="article:section" content="altinity-kb-setup-and-maintenance" />
 
-<meta property="article:modified_time" content="2021-08-24T12:59:49-06:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
+<meta property="article:modified_time" content="2022-06-22T11:47:46+02:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
 
-<meta itemprop="name" content="Load balancers">
-<meta itemprop="description" content="Load balancers
-">
-<meta itemprop="dateModified" content="2021-08-24T12:59:49-06:00" />
-<meta itemprop="wordCount" content="239">
+<meta itemprop="name" content="ClickHouse and different filesystems">
+<meta itemprop="description" content="ClickHouse and different filesystems.">
+<meta itemprop="dateModified" content="2022-06-22T11:47:46+02:00" />
+<meta itemprop="wordCount" content="434">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Load balancers"/>
-<meta name="twitter:description" content="Load balancers
-"/>
+<meta name="twitter:title" content="ClickHouse and different filesystems"/>
+<meta name="twitter:description" content="ClickHouse and different filesystems."/>
 
 
 
@@ -336,7 +332,7 @@
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenancecgroups_k8s-li">
   <a href="/altinity-kb-setup-and-maintenance/cgroups_k8s/" title="cgroups and kubernetes cloud providers" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancecgroups_k8s"><span class="">cgroups and k8s</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenancefilesystems-li">
-  <a href="/altinity-kb-setup-and-maintenance/filesystems/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancefilesystems"><span class="">ClickHouse and different filesystems</span></a>
+  <a href="/altinity-kb-setup-and-maintenance/filesystems/" class="align-left pl-0 active td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancefilesystems"><span class="td-sidebar-nav-active-item">ClickHouse and different filesystems</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenancech-logs-2-json-vectordev-li">
   <a href="/altinity-kb-setup-and-maintenance/ch-logs-2-json-vectordev/" title="Transformation Clickhouse logs to ndjson using Vector.dev" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancech-logs-2-json-vectordev"><span class="">Clickhouse logs and Vector.dev</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenanceclickhouse-operator-li">
@@ -413,7 +409,7 @@
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenancehigh-cpu-usage-li">
   <a href="/altinity-kb-setup-and-maintenance/high-cpu-usage/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancehigh-cpu-usage"><span class="">High CPU usage</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenanceload-balancers-li">
-  <a href="/altinity-kb-setup-and-maintenance/load-balancers/" class="align-left pl-0 active td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenanceload-balancers"><span class="td-sidebar-nav-active-item">Load balancers</span></a>
+  <a href="/altinity-kb-setup-and-maintenance/load-balancers/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenanceload-balancers"><span class="">Load balancers</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenancealtinity-kb-memory-configuration-settings-li">
   <a href="/altinity-kb-setup-and-maintenance/altinity-kb-memory-configuration-settings/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-setup-and-maintenancealtinity-kb-memory-configuration-settings"><span class="">memory configuration settings</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-setup-and-maintenancealtinity-kb-moving-table-to-another-device-li">
@@ -654,9 +650,9 @@
     
     
 
-    <a href="https://github.com/Altinity/altinityknowledgebase/edit/main/content/en/altinity-kb-setup-and-maintenance/load-balancers.md" target="_blank"><i class="fa fa-edit fa-fw"></i> Edit this page</a>
-    <a href="https://github.com/Altinity/altinityknowledgebase/new/main/content/en/altinity-kb-setup-and-maintenance/load-balancers.md?filename=change-me.md&amp;value=---%0Atitle%3A&#43;%22Long&#43;Page&#43;Title%22%0AlinkTitle%3A&#43;%22Short&#43;Nav&#43;Title%22%0Aweight%3A&#43;100%0Adescription%3A&#43;%3E-%0A&#43;&#43;&#43;&#43;&#43;Page&#43;description&#43;for&#43;heading&#43;and&#43;indexes.%0A---%0A%0A%23%23&#43;Heading%0A%0AEdit&#43;this&#43;template&#43;to&#43;create&#43;your&#43;new&#43;page.%0A%0A%2A&#43;Give&#43;it&#43;a&#43;good&#43;name%2C&#43;ending&#43;in&#43;%60.md%60&#43;-&#43;e.g.&#43;%60getting-started.md%60%0A%2A&#43;Edit&#43;the&#43;%22front&#43;matter%22&#43;section&#43;at&#43;the&#43;top&#43;of&#43;the&#43;page&#43;%28weight&#43;controls&#43;how&#43;its&#43;ordered&#43;amongst&#43;other&#43;pages&#43;in&#43;the&#43;same&#43;directory%3B&#43;lowest&#43;number&#43;first%29.%0A%2A&#43;Add&#43;a&#43;good&#43;commit&#43;message&#43;at&#43;the&#43;bottom&#43;of&#43;the&#43;page&#43;%28%3C80&#43;characters%3B&#43;use&#43;the&#43;extended&#43;description&#43;field&#43;for&#43;more&#43;detail%29.%0A%2A&#43;Create&#43;a&#43;new&#43;branch&#43;so&#43;you&#43;can&#43;preview&#43;your&#43;new&#43;file&#43;and&#43;request&#43;a&#43;review&#43;via&#43;Pull&#43;Request.%0A" target="_blank"><i class="fa fa-edit fa-fw"></i> Create child page</a>
-    <a href="https://github.com/Altinity/altinityknowledgebase/issues/new?title=/altinity-kb-setup-and-maintenance/load-balancers/" target="_blank"><i class="fab fa-github fa-fw"></i> Create documentation issue</a>
+    <a href="https://github.com/Altinity/altinityknowledgebase/edit/main/content/en/altinity-kb-setup-and-maintenance/filesystems.md" target="_blank"><i class="fa fa-edit fa-fw"></i> Edit this page</a>
+    <a href="https://github.com/Altinity/altinityknowledgebase/new/main/content/en/altinity-kb-setup-and-maintenance/filesystems.md?filename=change-me.md&amp;value=---%0Atitle%3A&#43;%22Long&#43;Page&#43;Title%22%0AlinkTitle%3A&#43;%22Short&#43;Nav&#43;Title%22%0Aweight%3A&#43;100%0Adescription%3A&#43;%3E-%0A&#43;&#43;&#43;&#43;&#43;Page&#43;description&#43;for&#43;heading&#43;and&#43;indexes.%0A---%0A%0A%23%23&#43;Heading%0A%0AEdit&#43;this&#43;template&#43;to&#43;create&#43;your&#43;new&#43;page.%0A%0A%2A&#43;Give&#43;it&#43;a&#43;good&#43;name%2C&#43;ending&#43;in&#43;%60.md%60&#43;-&#43;e.g.&#43;%60getting-started.md%60%0A%2A&#43;Edit&#43;the&#43;%22front&#43;matter%22&#43;section&#43;at&#43;the&#43;top&#43;of&#43;the&#43;page&#43;%28weight&#43;controls&#43;how&#43;its&#43;ordered&#43;amongst&#43;other&#43;pages&#43;in&#43;the&#43;same&#43;directory%3B&#43;lowest&#43;number&#43;first%29.%0A%2A&#43;Add&#43;a&#43;good&#43;commit&#43;message&#43;at&#43;the&#43;bottom&#43;of&#43;the&#43;page&#43;%28%3C80&#43;characters%3B&#43;use&#43;the&#43;extended&#43;description&#43;field&#43;for&#43;more&#43;detail%29.%0A%2A&#43;Create&#43;a&#43;new&#43;branch&#43;so&#43;you&#43;can&#43;preview&#43;your&#43;new&#43;file&#43;and&#43;request&#43;a&#43;review&#43;via&#43;Pull&#43;Request.%0A" target="_blank"><i class="fa fa-edit fa-fw"></i> Create child page</a>
+    <a href="https://github.com/Altinity/altinityknowledgebase/issues/new?title=/altinity-kb-setup-and-maintenance/filesystems/" target="_blank"><i class="fab fa-github fa-fw"></i> Create documentation issue</a>
     
 
   
@@ -671,8 +667,16 @@
 
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#clickhouse-native-protocol-port-9000">ClickHouse native protocol (port 9000)</a></li>
-    <li><a href="#http-protocol-port-8123">HTTP protocol (port 8123)</a></li>
+    <li><a href="#clickhouse-and-different-filesystems">ClickHouse and different filesystems</a>
+      <ul>
+        <li><a href="#ext4">ext4</a></li>
+        <li><a href="#xfs">XFS</a></li>
+        <li><a href="#zfs">ZFS</a></li>
+        <li><a href="#btrfs">BTRFS</a></li>
+        <li><a href="#reiserfs">ReiserFS</a></li>
+        <li><a href="#lustre">Lustre</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 
@@ -687,9 +691,9 @@
 
   <p>Share on Social Media:</p>
   <span style="display:flex; flex-direction: row; justify-content: space-between; align-items: flex-start; padding-left: 10px; padding-right: 75px;">
-    <a href="https://twitter.com/intent/tweet?text=Load%20balancers&amp;url=http://kb.altinity.com/altinity-kb-setup-and-maintenance/load-balancers/" target="_blank" class="fab fa-twitter"></a>
-    <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://kb.altinity.com/altinity-kb-setup-and-maintenance/load-balancers/" target="_blank" class="fab fa-facebook"></a>
-    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http://kb.altinity.com/altinity-kb-setup-and-maintenance/load-balancers/&amp;title=Load%20balancers"target="_blank" class="fab fa-linkedin"></a>
+    <a href="https://twitter.com/intent/tweet?text=ClickHouse%20and%20different%20filesystems&amp;url=http://kb.altinity.com/altinity-kb-setup-and-maintenance/filesystems/" target="_blank" class="fab fa-twitter"></a>
+    <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://kb.altinity.com/altinity-kb-setup-and-maintenance/filesystems/" target="_blank" class="fab fa-facebook"></a>
+    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http://kb.altinity.com/altinity-kb-setup-and-maintenance/filesystems/&amp;title=ClickHouse%20and%20different%20filesystems"target="_blank" class="fab fa-linkedin"></a>
   </span>
 </div>
 
@@ -724,39 +728,68 @@
     <a href="http://kb.altinity.com/altinity-kb-setup-and-maintenance/">Setup &amp; maintenance</a>
   </li>
   <li class="breadcrumb-item active" aria-current="page">
-    <a href="http://kb.altinity.com/altinity-kb-setup-and-maintenance/load-balancers/">Load balancers</a>
+    <a href="http://kb.altinity.com/altinity-kb-setup-and-maintenance/filesystems/">ClickHouse and different filesystems</a>
   </li>
   </ol>
 </nav>
             
 <div class="td-content">
-	<h1>Load balancers</h1>
-    <div class="lead">
+	<h1>ClickHouse and different filesystems</h1>
+    <div class="lead">ClickHouse and different filesystems.
 	</div>
 	
 	       
-	<p>In general - one of the simplest option to do load balancing is to implement it on the client side.</p>
-<p>I.e. list several endpoints for clickhouse connections and add some logic to pick one of the nodes.</p>
-<p>Many client libraries support that.</p>
-<h2 id="clickhouse-native-protocol-port-9000">ClickHouse native protocol (port 9000)</h2>
-<p>Currently there are no protocol-aware proxies for clickhouse protocol, so the proxy / load balancer can work only on TCP level.</p>
-<p>One of the best option for TCP load balancer is haproxy, also nginx can work in that mode.</p>
-<p>Haproxy will pick one upstream when connection is established, and after that it will keep it connected to the same server until the client or server will disconnect (or some timeout will happen).</p>
-<p>It can’t send different queries coming via a single connection to different servers, as he knows nothing about clickhouse protocol and doesn&rsquo;t know when one query ends and another start, it just sees the binary stream.</p>
-<p>So for native protocol, there are only 3 possibilities:</p>
-<ol>
-<li>close connection after each query client-side</li>
-<li>close connection after each query server-side (currently there is only one setting for that - idle_connection_timeout=0, which is not exact what you need, but similar).</li>
-<li>use a clickhouse server with Distributed table as a proxy.</li>
-</ol>
-<h2 id="http-protocol-port-8123">HTTP protocol (port 8123)</h2>
-<p>There are many more options and you can use haproxy / nginx / chproxy, etc.
-chproxy give some extra clickhouse-specific features, you can find a list of them at <a href="https://github.com/Vertamedia/chproxy" target="_blank">https://github.com/Vertamedia/chproxy</a></p>
+	<h2 id="clickhouse-and-different-filesystems">ClickHouse and different filesystems</h2>
+<h3 id="ext4">ext4</h3>
+<p>no issues, fully supported.</p>
+<p>minimum kernel version required is 3.15 (newer are recommended)</p>
+<h3 id="xfs">XFS</h3>
+<p>Performance issues reported by users, use on own risk. Old kernels are not recommened (4.0 or newer is recommended).</p>
+<p>According to the users feedback XFS behave worse with Clickhose under heavy load.
+We don&rsquo;t have real real proofs/benchmarks though, example reports:</p>
+<ul>
+<li>In github there are <a href="https://github.com/ClickHouse/ClickHouse/issues/520" target="_blank">complaints about XFS</a> from CloudFlare.</li>
+<li>Recently my colleague discovered that two of ClickHouse servers perform worse in a cluster than
+others and they found that they accidentally setup those servers with XFS instead of Ext4.</li>
+<li>in system journal you can sometimes see reports like &rsquo;task XYZ blocked for more than 120 seconds&rsquo; and stacktrace pointing to xfs code (example: <a href="https://gist.github.com/filimonov/85b894268f978c2ccc18ea69bae5adbd" target="_blank">https://gist.github.com/filimonov/85b894268f978c2ccc18ea69bae5adbd</a> )</li>
+<li>system goes to 99% io kernel under load sometimes.</li>
+<li>we have XFS, sometimes clickhouse goes to &ldquo;sleep&rdquo; because XFS daemon is doing smth unknown</li>
+</ul>
+<p>Maybe the above problem can be workarounded by some tuning / settings, but so far we do not have a working and confirmed way to do this.</p>
+<h3 id="zfs">ZFS</h3>
+<p>Limitations exists, extra tuning maybe needed, having more RAM is recommended. Old kernels are not recommened.</p>
+<p>Memory usage control:</p>
+<ul>
+<li>It seems that the most important thing in our case is zfs_arc_max - you just need to limit the maximum size of the arc so that the sum of the maximum size of the arc + the CH itself does not exceed the size of the available RAM. For example, we set a limit of 80% RAM for Clickhouse and 10% for arc. 10% will remain for the system and other applications</li>
+</ul>
+<p>Tuning:</p>
+<ul>
+<li>another potentially interesting setting is primarycache=metadata, see benchmark example: <a href="https://www.ikus-soft.com/en/blog/2018-05-23-proxmox-primarycache-all-metadata/" target="_blank">https://www.ikus-soft.com/en/blog/2018-05-23-proxmox-primarycache-all-metadata/</a></li>
+<li>examples of tuning ZFS for MySQL <a href="https://wiki.freebsd.org/ZFSTuningGuide" target="_blank">https://wiki.freebsd.org/ZFSTuningGuide</a> - perhaps some of this can also be useful (atime, recordsize) but everything needs to be carefully checked with benchmarks (I have no way).</li>
+<li>best practices
+<ul>
+<li><a href="https://efim360.ru/zfs-best-practices-guide/" target="_blank">https://efim360.ru/zfs-best-practices-guide/</a></li>
+<li><a href="https://pthree.org/2012/12/13/zfs-administration-part-viii-zpool-best-practices-and-caveats/" target="_blank">https://pthree.org/2012/12/13/zfs-administration-part-viii-zpool-best-practices-and-caveats/</a></li>
+</ul>
+</li>
+</ul>
+<p><strong>important note</strong>: ZFS does not support the <code>renameat2</code> command, which is used by the Atomic database engine, and
+therefore some of the Atomic functionality will not be available.</p>
+<p>In old versions of clickhouse you can face issues with O_DIRECT mode.</p>
+<p>Also there is a well-known (and controversional) Linus Torvalds opinion: &ldquo;Don&rsquo;t Use ZFS on Linux&rdquo; <a href="https://www.realworldtech.com/forum/?threadid=189711&amp;curpostid=189959" target="_blank">[1]</a>, <a href="https://arstechnica.com/gadgets/2020/01/linus-torvalds-zfs-statements-arent-right-heres-the-straight-dope/" target="_blank">[2]</a>, <a href="https://arstechnica.com/gadgets/2020/01/linus-torvalds-zfs-statements-arent-right-heres-the-straight-dope/" target="_blank">[3]</a>.</p>
+<h3 id="btrfs">BTRFS</h3>
+<p>Not enough information. Some users <a href="https://github.com/ClickHouse/ClickHouse/issues/2743#issuecomment-517845388" target="_blank">report</a> performance improvement for their usecase.</p>
+<h3 id="reiserfs">ReiserFS</h3>
+<p>Not enough information.</p>
+<h3 id="lustre">Lustre</h3>
+<p>There are reports that some people successfully use it in their setups.
+Fast network is required.</p>
+<p>There were some reports about data damage on the disks on older clickhouse versions, which could be caused by the issues with O_DIRECT or <a href="https://lustre-discuss.lustre.narkive.com/zwcvyEEY/asynchronous-posix-i-o-with-lustre" target="_blank">async io support</a> on lustre.</p>
 
 	
 	
 	<div class="text-muted mt-5 pt-3 border-top">
-  Last modified 2021.08.24: <a href="https://github.com/Altinity/altinityknowledgebase/commit/5cdec4106d860a1959fafa170ad6998be341a087">Format corrections and spell checks. (5cdec4106)</a>
+  Last modified 2022.06.22: <a href="https://github.com/Altinity/altinityknowledgebase/commit/57f68b106d782d260e5daa7afd8ea107925553c6">Create filesystems.md (57f68b106)</a>
 </div>
 
 </div>
