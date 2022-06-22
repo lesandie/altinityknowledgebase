@@ -14,11 +14,11 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://kb.altinity.com/altinity-kb-setup-and-maintenance/filesystems/" /><meta property="article:section" content="altinity-kb-setup-and-maintenance" />
 
-<meta property="article:modified_time" content="2022-06-22T11:56:06+02:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
+<meta property="article:modified_time" content="2022-06-22T11:55:26+02:00" /><meta property="og:site_name" content="Altinity Knowledge Base" />
 
 <meta itemprop="name" content="ClickHouse and different filesystems">
 <meta itemprop="description" content="ClickHouse and different filesystems.">
-<meta itemprop="dateModified" content="2022-06-22T11:56:06+02:00" />
+<meta itemprop="dateModified" content="2022-06-22T11:55:26+02:00" />
 <meta itemprop="wordCount" content="465">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="ClickHouse and different filesystems"/>
@@ -63,7 +63,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.b0ec1741a7afdf71407cb9827819f803.json"
+  data-offline-search-index-json-src="/offline-search-index.96681e951c16e1fff1b6f5c7c8aafc66.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -86,7 +86,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.b0ec1741a7afdf71407cb9827819f803.json"
+  data-offline-search-index-json-src="/offline-search-index.96681e951c16e1fff1b6f5c7c8aafc66.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -758,7 +758,7 @@ others and they found that they accidentally set up those servers with XFS inste
 <p>Maybe the above problem can be workaround by some tuning/settings, but so far we do not have a working and confirmed way to do this.</p>
 <h3 id="zfs">ZFS</h3>
 <p>Limitations exist, extra tuning may be needed, and having more RAM is recommended. Old kernels are not recommended.</p>
-<p>Memory usage control - ZFS adaptive replacement cache (ARC) can take a lot of RAM.  It can be the reason of out-of-memory issues when memory is also requested by the ClickHouse.</p>
+<p>Memory usage control - ZFS adaptive replacement cache (ARC) can take a lot of RAM which can be the reason of out-of-memory issues when memory is also requested by the ClickHouse.</p>
 <ul>
 <li>It seems that the most important thing is zfs_arc_max - you just need to limit the maximum size of the ARC so that the sum of the maximum size of the arc + the CH itself does not exceed the size of the available RAM. For example, we set a limit of 80% RAM for Clickhouse and 10% for ARC. 10% will remain for the system and other applications</li>
 </ul>
@@ -789,7 +789,7 @@ A fast network is required.</p>
 	
 	
 	<div class="text-muted mt-5 pt-3 border-top">
-  Last modified 2022.06.22: <a href="https://github.com/Altinity/altinityknowledgebase/commit/72c048800b8be740f54c9a40b1e982aa8e4797b1">Update filesystems.md (72c048800)</a>
+  Last modified 2022.06.22: <a href="https://github.com/Altinity/altinityknowledgebase/commit/83ca273e9d43301bd57b3e45b7ebff2949291598">Update filesystems.md (83ca273e9)</a>
 </div>
 
 </div>
