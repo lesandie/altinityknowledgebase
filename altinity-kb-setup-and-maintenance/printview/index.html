@@ -63,7 +63,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.01f4fba3b1b9c4ca0dc66bcc1c88a0a0.json"
+  data-offline-search-index-json-src="/offline-search-index.082999d76a12a7a20b05fffc65b279de.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -1489,25 +1489,25 @@ ClickHouse Operator</a> in case if requests.cpu and limits.cpu are not set for a
 	<h2 id="clickhouse-and-different-filesystems">ClickHouse and different filesystems</h2>
 <h3 id="ext4">ext4</h3>
 <p>no issues, fully supported.</p>
-<p>minimum kernel version required is 3.15 (newer are recommended)</p>
+<p>The minimum kernel version required is 3.15 (newer are recommended)</p>
 <h3 id="xfs">XFS</h3>
-<p>Performance issues reported by users, use on own risk. Old kernels are not recommened (4.0 or newer is recommended).</p>
-<p>According to the users feedback XFS behave worse with Clickhose under heavy load.
-We don&rsquo;t have real real proofs/benchmarks though, example reports:</p>
+<p>Performance issues reported by users, use on own risk. Old kernels are not recommended (4.0 or newer is recommended).</p>
+<p>According to the users&rsquo; feedback, XFS behaves worse with ClickHouse under heavy load.
+We don&rsquo;t have real proofs/benchmarks though, example reports:</p>
 <ul>
-<li>In github there are <a href="https://github.com/ClickHouse/ClickHouse/issues/520" target="_blank">complaints about XFS</a> from CloudFlare.</li>
+<li>In GitHub there are <a href="https://github.com/ClickHouse/ClickHouse/issues/520" target="_blank">complaints about XFS</a> from Cloudflare.</li>
 <li>Recently my colleague discovered that two of ClickHouse servers perform worse in a cluster than
-others and they found that they accidentally setup those servers with XFS instead of Ext4.</li>
-<li>in system journal you can sometimes see reports like &rsquo;task XYZ blocked for more than 120 seconds&rsquo; and stacktrace pointing to xfs code (example: <a href="https://gist.github.com/filimonov/85b894268f978c2ccc18ea69bae5adbd" target="_blank">https://gist.github.com/filimonov/85b894268f978c2ccc18ea69bae5adbd</a> )</li>
+others and they found that they accidentally set up those servers with XFS instead of Ext4.</li>
+<li>in the system journal you can sometimes see reports like &rsquo;task XYZ blocked for more than 120 seconds&rsquo; and stack trace pointing to XFS code (example: <a href="https://gist.github.com/filimonov/85b894268f978c2ccc18ea69bae5adbd" target="_blank">https://gist.github.com/filimonov/85b894268f978c2ccc18ea69bae5adbd</a> )</li>
 <li>system goes to 99% io kernel under load sometimes.</li>
 <li>we have XFS, sometimes clickhouse goes to &ldquo;sleep&rdquo; because XFS daemon is doing smth unknown</li>
 </ul>
-<p>Maybe the above problem can be workarounded by some tuning / settings, but so far we do not have a working and confirmed way to do this.</p>
+<p>Maybe the above problem can be workaround by some tuning/settings, but so far we do not have a working and confirmed way to do this.</p>
 <h3 id="zfs">ZFS</h3>
-<p>Limitations exists, extra tuning maybe needed, having more RAM is recommended. Old kernels are not recommened.</p>
+<p>Limitations exist, extra tuning may be needed, and having more RAM is recommended. Old kernels are not recommended.</p>
 <p>Memory usage control:</p>
 <ul>
-<li>It seems that the most important thing in our case is zfs_arc_max - you just need to limit the maximum size of the arc so that the sum of the maximum size of the arc + the CH itself does not exceed the size of the available RAM. For example, we set a limit of 80% RAM for Clickhouse and 10% for arc. 10% will remain for the system and other applications</li>
+<li>It seems that the most important thing in our case is zfs_arc_max - you just need to limit the maximum size of the arc so that the sum of the maximum size of the arc + the CH itself does not exceed the size of the available RAM. For example, we set a limit of 80% RAM for Clickhouse and 10% for ARC. 10% will remain for the system and other applications</li>
 </ul>
 <p>Tuning:</p>
 <ul>
@@ -1522,16 +1522,16 @@ others and they found that they accidentally setup those servers with XFS instea
 </ul>
 <p><strong>important note</strong>: ZFS does not support the <code>renameat2</code> command, which is used by the Atomic database engine, and
 therefore some of the Atomic functionality will not be available.</p>
-<p>In old versions of clickhouse you can face issues with O_DIRECT mode.</p>
+<p>In old versions of clickhouse, you can face issues with the O_DIRECT mode.</p>
 <p>Also there is a well-known (and controversional) Linus Torvalds opinion: &ldquo;Don&rsquo;t Use ZFS on Linux&rdquo; <a href="https://www.realworldtech.com/forum/?threadid=189711&amp;curpostid=189959" target="_blank">[1]</a>, <a href="https://arstechnica.com/gadgets/2020/01/linus-torvalds-zfs-statements-arent-right-heres-the-straight-dope/" target="_blank">[2]</a>, <a href="https://arstechnica.com/gadgets/2020/01/linus-torvalds-zfs-statements-arent-right-heres-the-straight-dope/" target="_blank">[3]</a>.</p>
 <h3 id="btrfs">BTRFS</h3>
-<p>Not enough information. Some users <a href="https://github.com/ClickHouse/ClickHouse/issues/2743#issuecomment-517845388" target="_blank">report</a> performance improvement for their usecase.</p>
+<p>Not enough information. Some users <a href="https://github.com/ClickHouse/ClickHouse/issues/2743#issuecomment-517845388" target="_blank">report</a> performance improvement for their use case.</p>
 <h3 id="reiserfs">ReiserFS</h3>
 <p>Not enough information.</p>
 <h3 id="lustre">Lustre</h3>
 <p>There are reports that some people successfully use it in their setups.
-Fast network is required.</p>
-<p>There were some reports about data damage on the disks on older clickhouse versions, which could be caused by the issues with O_DIRECT or <a href="https://lustre-discuss.lustre.narkive.com/zwcvyEEY/asynchronous-posix-i-o-with-lustre" target="_blank">async io support</a> on lustre.</p>
+A fast network is required.</p>
+<p>There were some reports about data damage on the disks on older clickhouse versions, which could be caused by the issues with O_DIRECT or <a href="https://lustre-discuss.lustre.narkive.com/zwcvyEEY/asynchronous-posix-i-o-with-lustre" target="_blank">async io support</a> on Lustre.</p>
 
 </div>
 
