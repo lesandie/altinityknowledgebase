@@ -63,7 +63,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.6483eeac8cd32f59c7f111fde034d99b.json"
+  data-offline-search-index-json-src="/offline-search-index.c9d6b77987befca8f71b9632482d33d5.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -86,7 +86,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.6483eeac8cd32f59c7f111fde034d99b.json"
+  data-offline-search-index-json-src="/offline-search-index.c9d6b77987befca8f71b9632482d33d5.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -783,8 +783,9 @@ So you should have enough RAM to hold one bucket (1/256 of whole GROUP BY size).
 <p>Usually it works slower than regular GROUP BY, because ClickHouse need&rsquo;s to read and process data in specific ORDER, which makes it much more complicated to parallelize reading and aggregating.</p>
 <p>But it use much less memory, because ClickHouse can stream resultset and there is no need to keep it in memory.</p>
 <h2 id="last-item-cache">Last item cache</h2>
-<p>ClickHouse saves value of previous hash calculation, just in case second value will be the same (need to confirm)</p>
-<p><a href="https://github.com/ClickHouse/ClickHouse/pull/5417" target="_blank">https://github.com/ClickHouse/ClickHouse/pull/5417</a></p>
+<p>ClickHouse saves value of previous hash calculation, just in case next value will be the same.</p>
+<p><a href="https://github.com/ClickHouse/ClickHouse/pull/5417" target="_blank">https://github.com/ClickHouse/ClickHouse/pull/5417</a>
+<a href="https://github.com/ClickHouse/ClickHouse/blob/808d9afd0f8110faba5ae027051bf0a64e506da3/src/Common/ColumnsHashingImpl.h#L40" target="_blank">https://github.com/ClickHouse/ClickHouse/blob/808d9afd0f8110faba5ae027051bf0a64e506da3/src/Common/ColumnsHashingImpl.h#L40</a></p>
 <h2 id="stringhashmap">StringHashMap</h2>
 <p>Actually uses 5 different hash tables</p>
 <ol>
@@ -1007,7 +1008,7 @@ So you should have enough RAM to hold one bucket (1/256 of whole GROUP BY size).
 	
 	
 	<div class="text-muted mt-5 pt-3 border-top">
-  Last modified 2022.06.23: <a href="https://github.com/Altinity/altinityknowledgebase/commit/58c736f9902f32192853f023671906d382a83c0f">Update _index.md (58c736f99)</a>
+  Last modified 2022.06.23: <a href="https://github.com/Altinity/altinityknowledgebase/commit/dc58f4d736b50eb1bcd0596f5ec9bb474b7a9151">Update _index.md (dc58f4d73)</a>
 </div>
 
 </div>
