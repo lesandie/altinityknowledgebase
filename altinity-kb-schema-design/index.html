@@ -8,21 +8,17 @@
 <meta name="robots" content="index, follow">
 <link rel="shortcut icon" href="/favicons/favicon.ico" >
 <link rel="icon" href="/favicons/favicon.ico" >
-<title>Schema design | Altinity Knowledge Base</title>
-<meta name="description" content="All you need to know about ClickHouse schema design, including materialized view, limitations, lowcardinality, codecs.
-">
-<meta property="og:title" content="Schema design" />
-<meta property="og:description" content="All you need to know about ClickHouse schema design, including materialized view, limitations, lowcardinality, codecs.
-" />
+<title>Altinity-kb-schema-designs | Altinity Knowledge Base</title>
+<meta name="description" content="">
+<meta property="og:title" content="Altinity-kb-schema-designs" />
+<meta property="og:description" content="Altinity Knowledge Base" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="http://kb.altinity.com/altinity-kb-schema-design/" /><meta property="og:site_name" content="Altinity Knowledge Base" />
 
-<meta itemprop="name" content="Schema design">
-<meta itemprop="description" content="All you need to know about ClickHouse schema design, including materialized view, limitations, lowcardinality, codecs.
-"><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Schema design"/>
-<meta name="twitter:description" content="All you need to know about ClickHouse schema design, including materialized view, limitations, lowcardinality, codecs.
-"/>
+<meta itemprop="name" content="Altinity-kb-schema-designs">
+<meta itemprop="description" content="Altinity Knowledge Base"><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Altinity-kb-schema-designs"/>
+<meta name="twitter:description" content="Altinity Knowledge Base"/>
 
 
 
@@ -39,7 +35,7 @@
   integrity="sha384-203J0SNzyqHby3iU6hzvzltrWi/M41wOP5Gu+BiJMz5nwKykbkUx8Kp7iti0Lpli"
   crossorigin="anonymous"></script>
 <link rel="stylesheet" href="/css/prism.css"/>
-<meta name="keywords" content="clickhouse schema, clickhouse lowcardinality, clickhouse materialized view">
+<meta name="keywords" content="">
   </head>
   <body class="td-section">
     <header>
@@ -63,7 +59,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.c9d6b77987befca8f71b9632482d33d5.json"
+  data-offline-search-index-json-src="/offline-search-index.c9719c658c1153189b5bf0c2106ca7aa.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -86,7 +82,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.c9d6b77987befca8f71b9632482d33d5.json"
+  data-offline-search-index-json-src="/offline-search-index.c9719c658c1153189b5bf0c2106ca7aa.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -517,61 +513,6 @@
   <a href="/altinity-kb-useful-queries/parts-consistency/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-useful-queriesparts-consistency"><span class="">Parts consistency</span></a>
 </li>
   </ul>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-altinity-kb-schema-design-li">
-  <a href="/altinity-kb-schema-design/" class="align-left pl-0 active td-sidebar-link td-sidebar-link__section" id="m-altinity-kb-schema-design"><span class="td-sidebar-nav-active-item">Schema design</span></a>
-  <ul class="ul-2 foldable">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-schema-designrow-level-deduplication-li">
-  <a href="/altinity-kb-schema-design/row-level-deduplication/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-schema-designrow-level-deduplication"><span class="">ClickHouse row-level deduplication</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-schema-designbackfill_column-li">
-  <a href="/altinity-kb-schema-design/backfill_column/" title="Column backfilling with alter/update using a dictionary" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-schema-designbackfill_column"><span class="">Column backfilling from dictionary</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-schema-designuniq-functions-li">
-  <a href="/altinity-kb-schema-design/uniq-functions/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-schema-designuniq-functions"><span class="">Functions to count uniqs</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-schema-designhow-much-is-too-much-li">
-  <a href="/altinity-kb-schema-design/how-much-is-too-much/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-schema-designhow-much-is-too-much"><span class="">How much is too much?</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-schema-designchange-order-by-li">
-  <a href="/altinity-kb-schema-design/change-order-by/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-schema-designchange-order-by"><span class="">How to change ORDER BY</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-schema-designinsert_deduplication-li">
-  <a href="/altinity-kb-schema-design/insert_deduplication/" title="Insert Deduplication / Insert idempotency" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-schema-designinsert_deduplication"><span class="">insert deduplication</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-schema-designpreaggregations-li">
-  <a href="/altinity-kb-schema-design/preaggregations/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-schema-designpreaggregations"><span class="">Pre-Aggregation approaches</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-schema-designbest-schema-for-storing-many-metrics-registered-from-the-single-source-li">
-  <a href="/altinity-kb-schema-design/best-schema-for-storing-many-metrics-registered-from-the-single-source/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-schema-designbest-schema-for-storing-many-metrics-registered-from-the-single-source"><span class="">Best schema for storing many metrics registered from the single source</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-altinity-kb-schema-designcodecs-li">
-  <a href="/altinity-kb-schema-design/codecs/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-altinity-kb-schema-designcodecs"><span class="">Codecs</span></a>
-  <ul class="ul-3 foldable">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-schema-designcodecscodecs-on-array-columns-li">
-  <a href="/altinity-kb-schema-design/codecs/codecs-on-array-columns/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-schema-designcodecscodecs-on-array-columns"><span class="">Codecs on array columns</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-schema-designcodecscodecs-speed-li">
-  <a href="/altinity-kb-schema-design/codecs/codecs-speed/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-schema-designcodecscodecs-speed"><span class="">Codecs speed</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-schema-designcodecsaltinity-kb-how-to-test-different-compression-codecs-li">
-  <a href="/altinity-kb-schema-design/codecs/altinity-kb-how-to-test-different-compression-codecs/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-schema-designcodecsaltinity-kb-how-to-test-different-compression-codecs"><span class="">How to test different compression codecs</span></a>
-</li>
-  </ul>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-schema-designaltinity-kb-dictionaries-vs-lowcardinality-li">
-  <a href="/altinity-kb-schema-design/altinity-kb-dictionaries-vs-lowcardinality/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-schema-designaltinity-kb-dictionaries-vs-lowcardinality"><span class="">Dictionaries vs LowCardinality</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-schema-designflattened-table-li">
-  <a href="/altinity-kb-schema-design/flattened-table/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-schema-designflattened-table"><span class="">Flattened table</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-schema-designfloats-vs-decimals-li">
-  <a href="/altinity-kb-schema-design/floats-vs-decimals/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-schema-designfloats-vs-decimals"><span class="">Floats vs Decimals</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-schema-designingestion-performance-and-formats-li">
-  <a href="/altinity-kb-schema-design/ingestion-performance-and-formats/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-schema-designingestion-performance-and-formats"><span class="">Ingestion performance and formats</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-schema-designhow-to-store-ips-li">
-  <a href="/altinity-kb-schema-design/how-to-store-ips/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-schema-designhow-to-store-ips"><span class="">IPs/masks</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-schema-designaltinity-kb-jsonasstring-and-mat-view-as-json-parser-li">
-  <a href="/altinity-kb-schema-design/altinity-kb-jsonasstring-and-mat.-view-as-json-parser/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-schema-designaltinity-kb-jsonasstring-and-mat-view-as-json-parser"><span class="">JSONAsString and Mat. View as JSON parser</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-schema-designlowcardinality-li">
-  <a href="/altinity-kb-schema-design/lowcardinality/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-schema-designlowcardinality"><span class="">LowCardinality</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-altinity-kb-schema-designmaterialized-views-li">
-  <a href="/altinity-kb-schema-design/materialized-views/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-altinity-kb-schema-designmaterialized-views"><span class="">MATERIALIZED VIEWS</span></a>
-  <ul class="ul-3 foldable">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-schema-designmaterialized-viewsidempotent_inserts_mv-li">
-  <a href="/altinity-kb-schema-design/materialized-views/idempotent_inserts_mv/" title="Idempotent inserts into a materialized view" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-schema-designmaterialized-viewsidempotent_inserts_mv"><span class="">Idempotent insert MV</span></a>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-schema-designmaterialized-viewsbackfill-populate-mv-in-a-controlled-manner-li">
-  <a href="/altinity-kb-schema-design/materialized-views/backfill-populate-mv-in-a-controlled-manner/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-schema-designmaterialized-viewsbackfill-populate-mv-in-a-controlled-manner"><span class="">Backfill/populate MV in a controlled manner</span></a>
-</li>
-  </ul>
-</li>
-  </ul>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-altinity-kb-kubernetes-li">
   <a href="/altinity-kb-kubernetes/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-altinity-kb-kubernetes"><span class="">Kubernetes</span></a>
   <ul class="ul-2 foldable">
@@ -625,6 +566,61 @@
   </ul>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-search-li">
   <a href="/search/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-search"><span class=""></span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-altinity-kb-schema-design-li">
+  <a href="/altinity-kb-schema-design/" class="align-left pl-0 active td-sidebar-link td-sidebar-link__section" id="m-altinity-kb-schema-design"><span class="td-sidebar-nav-active-item">Altinity-kb-schema-designs</span></a>
+  <ul class="ul-2 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-schema-designrow-level-deduplication-li">
+  <a href="/altinity-kb-schema-design/row-level-deduplication/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-schema-designrow-level-deduplication"><span class="">ClickHouse row-level deduplication</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-schema-designbackfill_column-li">
+  <a href="/altinity-kb-schema-design/backfill_column/" title="Column backfilling with alter/update using a dictionary" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-schema-designbackfill_column"><span class="">Column backfilling from dictionary</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-schema-designuniq-functions-li">
+  <a href="/altinity-kb-schema-design/uniq-functions/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-schema-designuniq-functions"><span class="">Functions to count uniqs</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-schema-designhow-much-is-too-much-li">
+  <a href="/altinity-kb-schema-design/how-much-is-too-much/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-schema-designhow-much-is-too-much"><span class="">How much is too much?</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-schema-designchange-order-by-li">
+  <a href="/altinity-kb-schema-design/change-order-by/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-schema-designchange-order-by"><span class="">How to change ORDER BY</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-schema-designinsert_deduplication-li">
+  <a href="/altinity-kb-schema-design/insert_deduplication/" title="Insert Deduplication / Insert idempotency" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-schema-designinsert_deduplication"><span class="">insert deduplication</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-schema-designpreaggregations-li">
+  <a href="/altinity-kb-schema-design/preaggregations/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-schema-designpreaggregations"><span class="">Pre-Aggregation approaches</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-schema-designbest-schema-for-storing-many-metrics-registered-from-the-single-source-li">
+  <a href="/altinity-kb-schema-design/best-schema-for-storing-many-metrics-registered-from-the-single-source/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-schema-designbest-schema-for-storing-many-metrics-registered-from-the-single-source"><span class="">Best schema for storing many metrics registered from the single source</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-altinity-kb-schema-designcodecs-li">
+  <a href="/altinity-kb-schema-design/codecs/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-altinity-kb-schema-designcodecs"><span class="">Codecs</span></a>
+  <ul class="ul-3 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-schema-designcodecscodecs-on-array-columns-li">
+  <a href="/altinity-kb-schema-design/codecs/codecs-on-array-columns/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-schema-designcodecscodecs-on-array-columns"><span class="">Codecs on array columns</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-schema-designcodecscodecs-speed-li">
+  <a href="/altinity-kb-schema-design/codecs/codecs-speed/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-schema-designcodecscodecs-speed"><span class="">Codecs speed</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-schema-designcodecsaltinity-kb-how-to-test-different-compression-codecs-li">
+  <a href="/altinity-kb-schema-design/codecs/altinity-kb-how-to-test-different-compression-codecs/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-schema-designcodecsaltinity-kb-how-to-test-different-compression-codecs"><span class="">How to test different compression codecs</span></a>
+</li>
+  </ul>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-schema-designaltinity-kb-dictionaries-vs-lowcardinality-li">
+  <a href="/altinity-kb-schema-design/altinity-kb-dictionaries-vs-lowcardinality/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-schema-designaltinity-kb-dictionaries-vs-lowcardinality"><span class="">Dictionaries vs LowCardinality</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-schema-designflattened-table-li">
+  <a href="/altinity-kb-schema-design/flattened-table/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-schema-designflattened-table"><span class="">Flattened table</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-schema-designfloats-vs-decimals-li">
+  <a href="/altinity-kb-schema-design/floats-vs-decimals/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-schema-designfloats-vs-decimals"><span class="">Floats vs Decimals</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-schema-designingestion-performance-and-formats-li">
+  <a href="/altinity-kb-schema-design/ingestion-performance-and-formats/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-schema-designingestion-performance-and-formats"><span class="">Ingestion performance and formats</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-schema-designhow-to-store-ips-li">
+  <a href="/altinity-kb-schema-design/how-to-store-ips/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-schema-designhow-to-store-ips"><span class="">IPs/masks</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-schema-designaltinity-kb-jsonasstring-and-mat-view-as-json-parser-li">
+  <a href="/altinity-kb-schema-design/altinity-kb-jsonasstring-and-mat.-view-as-json-parser/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-schema-designaltinity-kb-jsonasstring-and-mat-view-as-json-parser"><span class="">JSONAsString and Mat. View as JSON parser</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-altinity-kb-schema-designlowcardinality-li">
+  <a href="/altinity-kb-schema-design/lowcardinality/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-schema-designlowcardinality"><span class="">LowCardinality</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child" id="m-altinity-kb-schema-designmaterialized-views-li">
+  <a href="/altinity-kb-schema-design/materialized-views/" class="align-left pl-0 td-sidebar-link td-sidebar-link__section" id="m-altinity-kb-schema-designmaterialized-views"><span class="">MATERIALIZED VIEWS</span></a>
+  <ul class="ul-3 foldable">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-schema-designmaterialized-viewsidempotent_inserts_mv-li">
+  <a href="/altinity-kb-schema-design/materialized-views/idempotent_inserts_mv/" title="Idempotent inserts into a materialized view" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-schema-designmaterialized-viewsidempotent_inserts_mv"><span class="">Idempotent insert MV</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child collapse" id="m-altinity-kb-schema-designmaterialized-viewsbackfill-populate-mv-in-a-controlled-manner-li">
+  <a href="/altinity-kb-schema-design/materialized-views/backfill-populate-mv-in-a-controlled-manner/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-altinity-kb-schema-designmaterialized-viewsbackfill-populate-mv-in-a-controlled-manner"><span class="">Backfill/populate MV in a controlled manner</span></a>
+</li>
+  </ul>
+</li>
+  </ul>
 </li>
   </ul>
 </li>
@@ -635,43 +631,8 @@
           </aside>
           <aside class="d-none d-xl-block col-xl-2 td-sidebar-toc d-print-none">
             
-  
-  
-  
-  
-  
-  <div class="td-page-meta ml-2 pb-1 pt-2 mb-0">
-  
-    
-    
-      
-    
-    
-    <a href="https://altinity.com/contact/" target="_blank"><img src="/images/general/banners/altinity-docs-banner-support.png" width="200"></a>
-    <br />
-    
-    
-    
-    
-    
-    
-    
-
-    <a href="https://github.com/Altinity/altinityknowledgebase/edit/main/content/en/altinity-kb-schema-design/_index.md" target="_blank"><i class="fa fa-edit fa-fw"></i> Edit this page</a>
-    <a href="https://github.com/Altinity/altinityknowledgebase/new/main/content/en/altinity-kb-schema-design/_index.md?filename=change-me.md&amp;value=---%0Atitle%3A&#43;%22Long&#43;Page&#43;Title%22%0AlinkTitle%3A&#43;%22Short&#43;Nav&#43;Title%22%0Aweight%3A&#43;100%0Adescription%3A&#43;%3E-%0A&#43;&#43;&#43;&#43;&#43;Page&#43;description&#43;for&#43;heading&#43;and&#43;indexes.%0A---%0A%0A%23%23&#43;Heading%0A%0AEdit&#43;this&#43;template&#43;to&#43;create&#43;your&#43;new&#43;page.%0A%0A%2A&#43;Give&#43;it&#43;a&#43;good&#43;name%2C&#43;ending&#43;in&#43;%60.md%60&#43;-&#43;e.g.&#43;%60getting-started.md%60%0A%2A&#43;Edit&#43;the&#43;%22front&#43;matter%22&#43;section&#43;at&#43;the&#43;top&#43;of&#43;the&#43;page&#43;%28weight&#43;controls&#43;how&#43;its&#43;ordered&#43;amongst&#43;other&#43;pages&#43;in&#43;the&#43;same&#43;directory%3B&#43;lowest&#43;number&#43;first%29.%0A%2A&#43;Add&#43;a&#43;good&#43;commit&#43;message&#43;at&#43;the&#43;bottom&#43;of&#43;the&#43;page&#43;%28%3C80&#43;characters%3B&#43;use&#43;the&#43;extended&#43;description&#43;field&#43;for&#43;more&#43;detail%29.%0A%2A&#43;Create&#43;a&#43;new&#43;branch&#43;so&#43;you&#43;can&#43;preview&#43;your&#43;new&#43;file&#43;and&#43;request&#43;a&#43;review&#43;via&#43;Pull&#43;Request.%0A" target="_blank"><i class="fa fa-edit fa-fw"></i> Create child page</a>
-    <a href="https://github.com/Altinity/altinityknowledgebase/issues/new?title=/altinity-kb-schema-design/" target="_blank"><i class="fab fa-github fa-fw"></i> Create documentation issue</a>
-    
-
-  
-  
-    <a id="print" href="http://kb.altinity.com/altinity-kb-schema-design/printview/"><i class="fa fa-print fa-fw"></i> Print entire section</a>
-  
-  </div>
-
 
             
-
-
 
 
 
@@ -683,9 +644,9 @@
 
   <p>Share on Social Media:</p>
   <span style="display:flex; flex-direction: row; justify-content: space-between; align-items: flex-start; padding-left: 10px; padding-right: 75px;">
-    <a href="https://twitter.com/intent/tweet?text=Schema%20design&amp;url=http://kb.altinity.com/altinity-kb-schema-design/" target="_blank" class="fab fa-twitter"></a>
+    <a href="https://twitter.com/intent/tweet?text=Altinity-kb-schema-designs&amp;url=http://kb.altinity.com/altinity-kb-schema-design/" target="_blank" class="fab fa-twitter"></a>
     <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://kb.altinity.com/altinity-kb-schema-design/" target="_blank" class="fab fa-facebook"></a>
-    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http://kb.altinity.com/altinity-kb-schema-design/&amp;title=Schema%20design"target="_blank" class="fab fa-linkedin"></a>
+    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http://kb.altinity.com/altinity-kb-schema-design/&amp;title=Altinity-kb-schema-designs"target="_blank" class="fab fa-linkedin"></a>
   </span>
 </div>
 
@@ -717,14 +678,14 @@
             <nav aria-label="breadcrumb" class="td-breadcrumbs td-breadcrumbs__single">
   <ol class="breadcrumb">
   <li class="breadcrumb-item active" aria-current="page">
-    <a href="http://kb.altinity.com/altinity-kb-schema-design/">Schema design</a>
+    <a href="http://kb.altinity.com/altinity-kb-schema-design/">Altinity-kb-schema-designs</a>
   </li>
   </ol>
 </nav>
             
 <div class="td-content">
-	<h1>Schema design</h1>
-    <div class="lead">All you need to know about ClickHouse schema design, including materialized view, limitations, lowcardinality, codecs.</div>
+	<h1>Altinity-kb-schema-designs</h1>
+    
 	<header class="article-meta">
 		
 		
@@ -748,8 +709,6 @@
     
     
     
-        
-            
         
             
                 <div class="entry">
@@ -835,6 +794,8 @@
                         
                     </p>
                 </div>
+            
+        
             
         
             
@@ -970,10 +931,7 @@
 
 	
 	
-	<div class="text-muted mt-5 pt-3 border-top">
-  Last modified 2022.02.18: <a href="https://github.com/Altinity/altinityknowledgebase/commit/94db6c5cb391284069660d64f85d8c2dc9a5a3e3">Update _index.md (94db6c5cb)</a>
-</div>
-
+	
 </div>
 
           </main>
