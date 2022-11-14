@@ -35,6 +35,8 @@ See details in:
 
 [remote-table-function.md]({{<ref "remote-table-function.md" >}})
 
+[distributed-table-cluster.md]({{<ref "distributed-table-cluster.md" >}})
+
 ## clickhouse-copier
 
 Pros:
